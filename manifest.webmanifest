@@ -1,0 +1,15 @@
+{
+  "name": "자산 나침반 — 재산 증가 내비게이션",
+  "short_name": "자산 나침반",
+  "description": "순자산 대비 소비율을 메인 지표로 관리하는 자산 관리 앱",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "lang": "ko",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "./assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
