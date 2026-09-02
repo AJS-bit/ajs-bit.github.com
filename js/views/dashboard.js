@@ -1,7 +1,7 @@
 /* 홈 — 목표까지 남은 거리(히어로) · 소비율 조절 · 핵심 요약
    상세 지표는 자산/지출/목표 탭으로 넘기고 홈은 의도적으로 단순하게 유지한다. */
 import { state, commit } from '../store.js';
-import { metrics, spendingLimit, allocateGoals, futureValue, monthsToTarget, totals } from '../finance.js';
+import { metrics, spendingLimit, allocateGoals, futureValue, monthsToTarget, totals, warnings } from '../finance.js';
 import {
   compact, won, pct, pctSigned, months as fmtMonths, n, clamp,
 } from '../format.js';
@@ -30,11 +30,33 @@ export function render() {
 
   return `
     ${fg ? goalHero(fg, alloc, m) : goalEmpty()}
+    ${alertCard()}
     ${burnCard(m, s)}
     ${summary(m, t)}
     ${todayCard(m, lim)}
     <button class="fab" data-act="quick-add" aria-label="지출 입력">＋</button>
   `;
+}
+
+/* ================= 지금 조치할 일 =================
+   경고가 상단 벨 배지 뒤에만 있어서 홈에서는 보이지 않았다. 숫자는 가득한데
+   "지금 뭘 해야 하나"에 답하는 자리가 없었던 것이다.
+   가장 급한 한 건만 꺼내 놓고 나머지는 기존 알림 모달로 넘긴다.
+   급한 경고(danger/warn)가 없으면 아무것도 그리지 않아 홈이 길어지지 않는다.
+   info/good 까지 세면 배지가 늘 켜져 신호가 죽으므로 배지와 같은 기준을 쓴다. */
+function alertCard() {
+  const ws = warnings(state).filter((w) => w.level === 'danger' || w.level === 'warn');
+  if (!ws.length) return '';
+  const top = ws[0];
+  return `<div class="alert alert--${top.level}" style="margin-bottom:14px">
+    <span class="alert__ico">${top.icon}</span>
+    <div style="flex:1;min-width:0">
+      <b>${esc(top.title)}</b>
+      <p>${esc(top.body)}</p>
+      ${ws.length > 1 ? `<button class="btn btn--sm btn--ghost" data-act="all-warnings"
+        style="margin-top:9px">나머지 ${ws.length - 1}건 보기</button>` : ''}
+    </div>
+  </div>`;
 }
 
 /* ================= 1. 목표 히어로 ================= */

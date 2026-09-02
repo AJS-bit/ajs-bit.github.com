@@ -22,6 +22,17 @@ const alerts = await p.locator('.modal .alert').count();
 ok('알림 모달 경고 목록', alerts >= 3, alerts + '건');
 await p.click('.modal__hd [data-close]'); await p.waitForTimeout(300);
 
+// 2-1) 가장 급한 경고는 홈에서 바로 보여야 한다
+//      예전에는 벨 배지 뒤에만 있어서 홈이 "지금 뭘 해야 하나"에 답하지 못했다.
+const homeAlert = p.locator('#main > .alert').first();
+ok('홈에 최상위 경고 노출', await homeAlert.count() === 1);
+const alertText = await homeAlert.innerText();
+ok('경고 제목과 근거가 함께 나옴', alertText.length > 20, alertText.split('\n')[1] || '');
+ok('나머지 건수로 모달 연결', (await homeAlert.locator('[data-act="all-warnings"]').count()) === 1);
+await homeAlert.locator('[data-act="all-warnings"]').click(); await p.waitForSelector('.modal__box');
+ok('더보기 → 알림 모달', (await p.locator('.modal .alert').count()) >= 3);
+await p.click('.modal__hd [data-close]'); await p.waitForTimeout(300);
+
 // 3) 테마 토글이 상단바에서 사라졌는지
 ok('상단바에 테마 버튼 없음', await p.locator('.topbar [data-act=theme]').count() === 0);
 
