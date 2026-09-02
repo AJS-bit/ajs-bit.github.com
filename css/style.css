@@ -236,6 +236,16 @@ a{color:var(--accent)}
 
 /* charts */
 .chart{width:100%;display:block;overflow:visible}
+
+/* 스파크라인 라벨. SVG 안이 아니라 위에 얹는다 —
+   spark 의 svg 는 preserveAspectRatio="none" 이라 가로로만 늘어나서
+   안에 글자를 넣으면 글자까지 납작하게 퍼진다(넓은 화면에서 2배 이상). */
+.spark{position:relative}
+.spark__lbl{
+  position:absolute;white-space:nowrap;pointer-events:none;
+  font-size:10.5px;font-weight:700;line-height:14px;color:var(--ink3);
+}
+.spark__lbl--mark{color:var(--warn);transform:translateX(-50%)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px}
 .legend span{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink2)}
 .legend i{width:9px;height:9px;border-radius:3px;flex:0 0 auto}

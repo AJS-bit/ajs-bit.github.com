@@ -86,9 +86,6 @@ function goalHero(r, alloc, m) {
           <span class="hint">지금</span>
           <span class="hint">${g.targetDate ? `목표일 ${g.targetDate.slice(0, 7).replace('-', '.')}` : '기한 없음'}</span>
         </div>
-        ${deadlineIdx !== null ? `<p class="hint" style="margin-top:6px;line-height:1.5">
-          적립 곡선이 <b style="color:var(--ink2)">목표 금액</b> 가로선을
-          <b class="warn">목표일</b> 세로선보다 왼쪽에서 넘으면 기한 내 달성입니다.</p>` : ''}
       </div>` : ''}
 
       <div class="hero__foot">
