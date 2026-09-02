@@ -44,6 +44,84 @@ function renderBadge() {
   badge.classList.toggle('badge--warn', !ws.some((w) => w.level === 'danger'));
 }
 
+/**
+ * 최소 변경 DOM 갱신 (morph).
+ *
+ * innerHTML 을 통째로 갈아치우면 드래그 중인 슬라이더 노드가 사라져서
+ * 그 즉시 드래그가 끊긴다. 노드를 새 트리로 옮겨 심어도 크롬은 range 입력이
+ * 재배치되면 내부 드래그 상태를 버린다. 그래서 드래그 중에는 노드를 아예
+ * 건드리지 않고, 실제로 달라진 텍스트와 속성만 제자리에서 고친다.
+ *
+ * skip: 이 노드는 속성/값을 손대지 않는다 (드래그 중인 슬라이더).
+ */
+/** 컨테이너 자신은 유지하고 자식 목록만 맞춘다. */
+function morphChildren(from, to, skip) {
+  const fc = [...from.childNodes];
+  const tc = [...to.childNodes];
+  for (let i = 0; i < Math.max(fc.length, tc.length); i++) {
+    if (i >= tc.length) {
+      // 보존 대상을 품은 노드는 지우지 않는다
+      if (!holds(fc[i], skip)) fc[i].remove();
+      continue;
+    }
+    if (i >= fc.length) { from.appendChild(tc[i].cloneNode(true)); continue; }
+    morph(fc[i], tc[i], skip);
+  }
+}
+
+/* 조작 중인 슬라이더 추적.
+   크롬은 range 입력에서 input 이벤트를 포커스 이동보다 먼저 쏘는 경우가 있어
+   document.activeElement 만 믿으면 그 순간 BODY 로 보인다. 그러면 morph 가 아니라
+   전체 재렌더가 돌아 드래그 중인 노드가 사라진다. 그래서 pointerdown 에서 직접 잡는다. */
+let pointerRange = null;
+
+/** 지금 사용자가 잡고 있거나 포커스한 슬라이더 */
+function currentRange() {
+  const main = $('#main');
+  if (pointerRange && main.contains(pointerRange)) return pointerRange;
+  const a = document.activeElement;
+  if (a instanceof HTMLInputElement && a.type === 'range' && main.contains(a)) return a;
+  return null;
+}
+
+/** node 가 보존 대상이거나 그것을 품고 있는가 */
+const holds = (node, skip) =>
+  !!skip && !!node && (node === skip || (node.nodeType === Node.ELEMENT_NODE && node.contains(skip)));
+
+function morph(from, to, skip) {
+  // 드래그 중인 슬라이더는 어떤 경우에도 손대지 않는다.
+  // (이 검사가 교체 분기보다 뒤에 있으면 자식 인덱스가 어긋난 순간 슬라이더가 통째로 교체된다)
+  if (skip && from === skip) return;
+
+  if (from.nodeType === Node.TEXT_NODE && to.nodeType === Node.TEXT_NODE) {
+    if (from.nodeValue !== to.nodeValue) from.nodeValue = to.nodeValue;
+    return;
+  }
+  if (from.nodeType !== Node.ELEMENT_NODE || to.nodeType !== Node.ELEMENT_NODE
+      || from.nodeName !== to.nodeName) {
+    // 보존 대상을 품고 있으면 통째로 교체할 수 없다. 자식만 맞춘다.
+    if (holds(from, skip)) { morphChildren(from, to, skip); return; }
+    from.replaceWith(to.cloneNode(true));
+    return;
+  }
+
+  for (const a of [...from.attributes]) {
+    if (!to.hasAttribute(a.name)) from.removeAttribute(a.name);
+  }
+  for (const a of [...to.attributes]) {
+    if (from.getAttribute(a.name) !== a.value) from.setAttribute(a.name, a.value);
+  }
+  // 사용자가 조작 중인 입력의 표시값은 상태로 되돌리지 않는다
+  if (from === document.activeElement && 'value' in from) return;
+
+  morphChildren(from, to, skip);
+}
+
+/**
+ * 화면 다시 그리기.
+ * 슬라이더를 끌고 있으면 morph 로 부분 갱신해 드래그가 이어지게 하고,
+ * 그 외에는 통째로 다시 그린다.
+ */
 function render() {
   const view = VIEWS[route] || Dashboard;
   const tab = subtab[route] || view.tabs?.[0]?.id;
@@ -53,7 +131,18 @@ function render() {
     : '';
   const main = $('#main');
   const y = main.scrollTop;
-  main.innerHTML = tabsHTML + view.render(tab);
+  const html = tabsHTML + view.render(tab);
+
+  const skip = currentRange();
+  if (skip) {
+    // 슬라이더를 조작하는 동안에는 그 노드를 건드리지 않고 나머지만 갱신한다
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    morphChildren(main, tmp, skip);
+  } else {
+    main.innerHTML = html;
+  }
+
   renderNav();
   renderBadge();
   main.scrollTop = y;
@@ -425,6 +514,12 @@ function addPreset(key, silent = false) {
 function bind() {
   const main = $('#main');
 
+  const isRange = (t) => t instanceof HTMLInputElement && t.type === 'range';
+  document.addEventListener('pointerdown', (e) => { pointerRange = isRange(e.target) ? e.target : null; }, true);
+  const releaseRange = () => { pointerRange = null; };
+  document.addEventListener('pointerup', releaseRange, true);
+  document.addEventListener('pointercancel', releaseRange, true);
+
   document.body.addEventListener('click', (e) => {
     const navBtn = e.target.closest('[data-nav]');
     if (navBtn) { go(navBtn.dataset.nav); return; }
@@ -466,9 +561,10 @@ function bind() {
     if (el.dataset.act === 'manual-total') {
       state.limits.total = n(el.value); state.limits.mode = 'manual'; commit();
     } else if (el.dataset.burn) {
-      // 드래그를 놓거나 숫자 입력을 확정한 시점에만 전체 화면을 다시 그린다
       tuneBurn(Number(el.value), el.dataset.burn);
       commit();
+    } else if (el instanceof HTMLInputElement && el.type === 'range') {
+      render();   // 드래그를 놓은 시점 — min/max 등 슬라이더 속성도 최신으로 맞춘다
     }
   });
 

@@ -222,8 +222,9 @@ export function ring({ ratio, size = 200, thickness = 14, tone = 'accent', top =
 }
 
 /* ---------- 스파크라인 (작은 경로 그래프) ---------- */
-export function spark(data, { height = 54, color = 'var(--accent)', target = null, markAt = null } = {}) {
+export function spark(data, { height = 54, color = 'var(--accent)', target = null, markAt = null, markLabel = '', targetLabel = '' } = {}) {
   const W = 320, H = height, P = 3;
+  const TOP = markLabel || targetLabel ? 12 : P;   // 라벨 자리
   const vals = data.filter(Number.isFinite);
   if (vals.length < 2) return '';
   // 목표 대비 성장이 보이도록 실제 구간을 쓴다 (0 기준으로 잡으면 선이 평평해진다)
@@ -231,7 +232,7 @@ export function spark(data, { height = 54, color = 'var(--accent)', target = nul
   const lo = Math.min(...vals);
   const min = lo - (max - lo) * 0.12;
   const X = (i) => P + (i / (data.length - 1)) * (W - P * 2);
-  const Y = (v) => P + (1 - (v - min) / Math.max(1, max - min)) * (H - P * 2);
+  const Y = (v) => TOP + (1 - (v - min) / Math.max(1, max - min)) * (H - TOP - P);
   const pts = data.map((v, i) => `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
   const gid = id();
   return `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px">
@@ -239,11 +240,15 @@ export function spark(data, { height = 54, color = 'var(--accent)', target = nul
       <stop offset="0%" stop-color="${color}" stop-opacity=".3"/>
       <stop offset="100%" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
     ${target !== null ? `<line x1="${P}" y1="${Y(target).toFixed(1)}" x2="${W - P}" y2="${Y(target).toFixed(1)}"
-      stroke="var(--ink3)" stroke-width="1" stroke-dasharray="4 3"/>` : ''}
+      stroke="var(--ink3)" stroke-width="1" stroke-dasharray="4 3"/>
+      ${targetLabel ? `<text x="${P + 2}" y="${Math.max(9, Y(target) - 4).toFixed(1)}" font-size="8.5"
+        font-weight="700" fill="var(--ink3)">${esc(targetLabel)}</text>` : ''}` : ''}
     <polygon points="${X(0).toFixed(1)},${H - P} ${pts} ${X(data.length - 1).toFixed(1)},${H - P}" fill="url(#${gid})"/>
     <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2"
       stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-    ${markAt !== null ? `<line x1="${X(markAt).toFixed(1)}" y1="${P}" x2="${X(markAt).toFixed(1)}" y2="${H - P}"
-      stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 3"/>` : ''}
+    ${markAt !== null ? `<line x1="${X(markAt).toFixed(1)}" y1="${TOP}" x2="${X(markAt).toFixed(1)}" y2="${H - P}"
+      stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 3"/>
+      ${markLabel ? `<text x="${clamp(X(markAt), 20, W - 20).toFixed(1)}" y="8.5" text-anchor="middle"
+        font-size="8.5" font-weight="750" fill="var(--warn)">${esc(markLabel)}</text>` : ''}` : ''}
   </svg>`;
 }
