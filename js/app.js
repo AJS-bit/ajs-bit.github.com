@@ -495,30 +495,12 @@ function bind() {
 /* ---------- 목표 소비율 조절 ----------
    슬라이더와 숫자 입력이 같은 값을 공유한다.
    드래그 중 전체 리렌더는 드래그를 끊고 입력 포커스를 뺏으므로,
-   여기서는 영향받는 숫자만 직접 갱신한다. */
+   값만 반영하고 화면 갱신은 홈 뷰의 부분 갱신에 맡긴다. */
 function tuneBurn(raw, source) {
   const v = clamp(Number.isFinite(raw) ? raw : 1.8, 0.05, 50);
   state.profile.targetBurn = Math.round(v * 100) / 100;
   commit({ silent: true });
-
-  const main = $('#main');
-  const range = main.querySelector('[data-burn="range"]');
-  const num = main.querySelector('[data-burn="num"]');
-  if (range && source !== 'range') range.value = String(clamp(v, 0.1, 8));
-  if (num && source !== 'num') num.value = v.toFixed(1);
-
-  const m = metrics(state);
-  const cap = (m.net * v) / 100;
-  const diff = m.projected - cap;
-  const set = (sel, text, cls) => {
-    const el = main.querySelector(sel);
-    if (!el) return;
-    el.textContent = text;
-    if (cls) { el.classList.remove('neg', 'pos'); el.classList.add(cls); }
-  };
-  set('#burn-annual', `연 ${(v * 12).toFixed(1)}%`);
-  set('#burn-cap', won(cap));
-  set('#burn-diff', `${diff > 0 ? '+' : ''}${won(diff)}`, diff > 0 ? 'neg' : 'pos');
+  Dashboard.liveBurn(source);
 }
 
 /* ---------- 테마 ---------- */

@@ -64,6 +64,22 @@ await p.waitForTimeout(400);
 const saved = await p.evaluate(() => JSON.parse(localStorage.getItem('asset-compass.v1') || '{}')?.profile?.targetBurn);
 t(saved === 3, '목표 소비율 영속화', `targetBurn=${saved}`);
 
+// --- 홈 소비율: 게이지가 슬라이더를 따라오는가
+// 홈은 슬라이더와 출력이 한 카드에 있어 카드째 다시 그릴 수 없다. 갱신 대상을
+// 손으로 짚는 방식이라 하나 빠뜨리기 쉽고, 실제로 게이지가 빠져 있었다.
+await p.click('.nav button:has-text("홈")'); await p.waitForTimeout(400);
+const gaugeArc = () => p.evaluate(() => {
+  const card = [...document.querySelectorAll('.card')].find((c) => c.querySelector('[data-burn=range]'));
+  return [...card.querySelectorAll('svg path')].map((x) => x.getAttribute('d')).join('|');
+});
+const arc0 = await gaugeArc();
+const cap0 = await p.locator('#burn-cap').textContent();
+await p.locator('[data-burn=range]').evaluate((n) => { n.value = '6'; n.dispatchEvent(new Event('input', { bubbles: true })); });
+await p.waitForTimeout(300);
+t((await p.locator('#burn-cap').textContent()) !== cap0, '홈 소비 상한 갱신');
+t((await p.locator('[data-burn=num]').inputValue()) === '6.0', '홈 숫자칸 동기화');
+t((await gaugeArc()) !== arc0, '홈 게이지가 슬라이더를 따라 갱신');
+
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');
 await b.close();

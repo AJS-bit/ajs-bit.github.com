@@ -6,6 +6,7 @@ import {
   compact, won, pct, pctSigned, months as fmtMonths, n, clamp,
 } from '../format.js';
 import { ring, spark, gauge, progress, esc } from '../charts.js';
+import { setHTML, setText } from '../ui.js';
 
 export const title = '홈';
 
@@ -159,14 +160,7 @@ function burnCard(m, s, lim) {
       <span class="chip chip--${chip}">연 ${pct(m.burnAnnual)} · ${esc(g.label)}</span>
     </div>
 
-    <div style="max-width:250px;margin:0 auto">
-      ${gauge({
-        value: m.burnProjected, max: Math.max(target * 3, 0.3),
-        label: m.burnProjected === null ? '—' : `${m.burnProjected.toFixed(2)}%`,
-        sub: '이번 달 예상',
-        tone, ticks: [{ at: target }],
-      })}
-    </div>
+    <div style="max-width:250px;margin:0 auto" id="burn-gauge">${burnGauge(m, target, tone)}</div>
 
     <div class="field" style="margin:6px 0 0">
       <label style="display:flex;justify-content:space-between;align-items:center">
@@ -187,6 +181,51 @@ function burnCard(m, s, lim) {
     <div class="kv"><span>이번 달 예상 (${compact(m.projected)})과의 차이</span>
       <b class="num ${diff > 0 ? 'neg' : 'pos'}" id="burn-diff">${diff > 0 ? '+' : ''}${won(diff)}</b></div>
   </section>`;
+}
+
+/* 목표 소비율에 따라 눈금 최대값이 다시 잡히므로 게이지도 슬라이더를 따라와야 한다.
+   max 가 target × 3 이라 같은 소비율이라도 목표를 바꾸면 호의 각도가 달라진다. */
+function burnGauge(m, target, tone) {
+  return gauge({
+    value: m.burnProjected, max: Math.max(target * 3, 0.3),
+    label: m.burnProjected === null ? '—' : `${m.burnProjected.toFixed(2)}%`,
+    sub: '이번 달 예상',
+    tone, ticks: [{ at: target }],
+  });
+}
+
+/* ---------- 드래그 중 부분 갱신 ----------
+   홈은 슬라이더와 출력이 한 카드에 섞여 있어 카드째 다시 그릴 수 없다.
+   그래서 값이 바뀌는 자리를 하나씩 짚어 갱신한다. 게이지가 여기서 빠져 있어
+   드래그 중에는 숫자만 움직이고 게이지는 놓아야 따라오던 문제가 있었다.
+   `source` 는 방금 조작한 입력(슬라이더/숫자칸)이라 되받아쓰지 않는다. */
+export function liveBurn(source) {
+  const s = state;
+  const m = metrics(s);
+  const target = n(s.profile.targetBurn);
+  const main = document.getElementById('main');
+  if (!main) return;
+
+  const range = main.querySelector('[data-burn="range"]');
+  const num = main.querySelector('[data-burn="num"]');
+  if (!range && !num) return;                       // 홈이 아닌 화면
+  if (range && source !== 'range') range.value = String(clamp(target, 0.1, 8));
+  if (num && source !== 'num') num.value = target.toFixed(1);
+
+  const cap = (m.net * target) / 100;
+  const diff = m.projected - cap;
+  setText('burn-annual', `연 ${(target * 12).toFixed(1)}%`);
+  setText('burn-cap', won(cap));
+  const d = document.getElementById('burn-diff');
+  if (d) {
+    d.textContent = `${diff > 0 ? '+' : ''}${won(diff)}`;
+    d.classList.remove('neg', 'pos');
+    d.classList.add(diff > 0 ? 'neg' : 'pos');
+  }
+
+  const g = m.grade;
+  const tone = g.tone === 'muted' ? 'accent' : g.tone;
+  setHTML('burn-gauge', burnGauge(m, target, tone));
 }
 
 /* ================= 3. 요약 3칸 ================= */
