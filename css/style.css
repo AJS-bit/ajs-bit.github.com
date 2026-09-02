@@ -1,42 +1,25 @@
-/* ========== NAVI design tokens ==========
-   포레스트 그린 + 형광 라임 2축. 라이트가 기본이고 다크에서는 라임이 프라이머리가 된다.
-   라임(#C8FF59)은 대비가 낮아 어두운 면 위에서만 쓴다. 밝은 면에서는 포레스트 계열을 쓴다. */
+/* ========== 자산 나침반 · design tokens ========== */
 :root{
-  --bg:#f4f7f4; --bg2:#edf2ee;
-  --surface:#ffffff; --surface2:#f1f5f1; --line:#dde5df;
-  --ink:#13231a; --ink2:#4a5b50; --ink3:#6d7b72;
-
-  /* 밝은 면 위의 강조 — 포레스트 */
-  --accent:#1d5437; --accent-soft:#e7f7ca; --accent-ink:#ffffff;
-  /* 어두운 면 위의 강조 — 라임 */
-  --lime:#c8ff59; --lime-dim:#a7d84b; --lime-soft:#dff0c1;
-  /* 짙은 면 */
-  --forest:#153b29; --forest-deep:#123522;
-
-  --pos:#3d7a1e; --pos-soft:#eaf8d1;
-  --neg:#c4462f; --neg-soft:#ffe9e3;
-  --warn:#b85b3d; --warn-soft:#fff3e8;
-
-  --shadow:0 10px 30px rgba(23,55,37,.05);
-  --shadow-sm:0 4px 14px rgba(23,55,37,.04);
-  --r:22px; --r-sm:13px;
+  --bg:#f4f6fb; --bg2:#e9edf6;
+  --surface:#ffffff; --surface2:#f7f9fd; --line:#e2e8f4;
+  --ink:#0f172a; --ink2:#475569; --ink3:#94a3b8;
+  --accent:#3b6fe0; --accent-soft:rgba(59,111,224,.12);
+  --pos:#15a34a; --pos-soft:rgba(21,163,74,.12);
+  --neg:#dc2626; --neg-soft:rgba(220,38,38,.12);
+  --warn:#d97706; --warn-soft:rgba(217,119,6,.14);
+  --shadow:0 1px 2px rgba(15,23,42,.05), 0 8px 24px -12px rgba(15,23,42,.18);
+  --r:16px; --r-sm:11px;
   --safe-b:env(safe-area-inset-bottom,0px);
 }
 [data-theme="dark"]{
-  --bg:#0c1711; --bg2:#101d16;
-  --surface:#12231a; --surface2:#1c3025; --line:#2a4032;
-  --ink:#edf7f0; --ink2:#c3d2c8; --ink3:#a9b8ae;
-
-  --accent:#c8ff59; --accent-soft:#29442d; --accent-ink:#13231a;
-  --lime:#c8ff59; --lime-dim:#a7d84b; --lime-soft:#29442d;
-  --forest:#16301f; --forest-deep:#0f2418;
-
-  --pos:#a3e635; --pos-soft:#24401d;
-  --neg:#ef7866; --neg-soft:#3d221d;
-  --warn:#f0a06e; --warn-soft:#3a2a1e;
-
-  --shadow:0 10px 30px rgba(0,0,0,.45);
-  --shadow-sm:0 4px 14px rgba(0,0,0,.3);
+  --bg:#0b0f19; --bg2:#070a12;
+  --surface:#141b2b; --surface2:#1b2436; --line:#26304a;
+  --ink:#eef2fb; --ink2:#a3b0c9; --ink3:#6b7997;
+  --accent:#5b8dff; --accent-soft:rgba(91,141,255,.16);
+  --pos:#34d17e; --pos-soft:rgba(52,209,126,.14);
+  --neg:#ff6b6b; --neg-soft:rgba(255,107,107,.14);
+  --warn:#fbbf3c; --warn-soft:rgba(251,191,60,.14);
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.7);
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -62,8 +45,8 @@ a{color:var(--accent)}
 }
 .topbar__brand{display:flex;align-items:center;gap:10px;min-width:0}
 .topbar__logo{
-  display:grid;place-items:center;width:34px;height:34px;border-radius:12px;
-  background:var(--lime);color:var(--forest-deep);flex:0 0 auto;transform:rotate(-8deg);
+  display:grid;place-items:center;width:34px;height:34px;border-radius:11px;
+  background:linear-gradient(140deg,var(--accent),#8b5cf6);color:#fff;flex:0 0 auto;
 }
 .topbar__brand strong{display:block;font-size:15px;line-height:1.15}
 .topbar__brand small{display:block;font-size:11px;color:var(--ink3)}
@@ -87,27 +70,18 @@ a{color:var(--accent)}
   background:none;color:var(--ink3);font-size:10.5px;font-weight:600;cursor:pointer;border-radius:12px;
 }
 .nav button.is-on{color:var(--accent)}
-[data-theme="dark"] .nav button.is-on{color:var(--lime)}
 .nav button.is-on svg{transform:translateY(-1px)}
-
-@media (max-width:720px){
-  .card,.hero{border-radius:18px;padding:20px}
-}
 
 @media (min-width:900px){
   .app{flex-direction:row;flex-wrap:wrap}
   .topbar{width:100%}
   .nav{
     position:sticky;top:63px;bottom:auto;left:auto;right:auto;height:calc(100dvh - 63px);
-    width:222px;grid-auto-flow:row;align-content:start;gap:6px;padding:22px 14px;
-    border-top:0;border-right:0;background:var(--forest-deep);backdrop-filter:none;
+    width:212px;grid-auto-flow:row;align-content:start;gap:2px;padding:14px 10px;
+    border-top:0;border-right:1px solid var(--line);background:transparent;backdrop-filter:none;
   }
-  .nav button{
-    flex-direction:row;gap:13px;justify-content:flex-start;padding:12px 14px;font-size:13.5px;
-    color:#aebdb4;border-radius:12px;
-  }
-  .nav button:hover{background:rgba(255,255,255,.1);color:#fff}
-  .nav button.is-on{background:rgba(255,255,255,.1);color:#fff;box-shadow:inset 3px 0 var(--lime)}
+  .nav button{flex-direction:row;gap:11px;justify-content:flex-start;padding:11px 13px;font-size:13.5px}
+  .nav button.is-on{background:var(--accent-soft)}
   .main{flex:1;max-width:none;padding:22px 28px 60px;min-width:0}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 }
@@ -118,16 +92,10 @@ a{color:var(--accent)}
   padding:16px;box-shadow:var(--shadow);margin-bottom:14px;
 }
 .card--flat{box-shadow:none;background:var(--surface2)}
-.card--pad-sm{padding:20px}
 .card__hd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
 .card__hd h3{font-size:14.5px}
 .card__hd .sub{font-size:11.5px;color:var(--ink3);font-weight:500}
 .sect-title{font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:.06em;margin:22px 2px 10px}
-.eyebrow{
-  display:block;margin:0 0 7px;color:var(--ink3);text-transform:uppercase;
-  letter-spacing:.1em;font-size:10px;font-weight:750;
-}
-.hero .eyebrow{color:#9ab0a2}
 .sect-title:first-child{margin-top:4px}
 
 .btn{
@@ -136,7 +104,7 @@ a{color:var(--accent)}
   font-size:13.5px;font-weight:600;cursor:pointer;white-space:nowrap;
 }
 .btn:hover{border-color:var(--accent)}
-.btn--primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn--primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn--primary:hover{filter:brightness(1.08)}
 .btn--ghost{background:transparent}
 .btn--sm{padding:6px 11px;font-size:12.5px;border-radius:9px}
@@ -305,29 +273,9 @@ table.tbl tr:last-child td{border-bottom:0}
 
 /* ===== 홈: 목표 히어로 ===== */
 .hero{
-  position:relative;overflow:hidden;
-  background:var(--forest);color:#fff;
-  border:1px solid transparent;border-radius:var(--r);padding:22px 20px 20px;margin-bottom:14px;
-  box-shadow:var(--shadow);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 13%,var(--surface)),var(--surface) 62%);
+  border:1px solid var(--line);border-radius:20px;padding:18px 16px 16px;margin-bottom:14px;box-shadow:var(--shadow);
 }
-.hero::after{
-  content:'';position:absolute;right:-90px;top:-130px;width:330px;height:330px;border-radius:50%;
-  background:radial-gradient(circle,rgba(201,255,100,.15),transparent 68%);pointer-events:none;
-}
-.hero>*{position:relative;z-index:1}
-/* 짙은 면 위에서는 텍스트 계열 토큰을 밝은 쪽으로 뒤집는다 */
-.hero .lbl,.hero .hint{color:#9ab0a2}
-.hero .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14);color:#d5e2da}
-.hero .btn:hover{border-color:var(--lime);color:#fff}
-.hero .hero__foot b{color:#fff}
-.hero .hero__foot b.pos{color:var(--lime)}
-.hero .hero__foot b.warn{color:#ffcf8a}
-.hero .alert{background:rgba(255,255,255,.08);border-left-color:var(--lime)}
-.hero .alert b{color:#fff}
-.hero .alert p{color:#c2d3c8}
-.hero .alert--warn{background:rgba(255,190,120,.12);border-left-color:#ffbe78}
-.hero .goal-pills button{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1);color:#a5b6ab}
-.hero .goal-pills button.is-on{background:var(--lime);border-color:transparent;color:var(--forest-deep)}
 .hero__top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
 .hero__name{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:750;min-width:0}
 .hero__name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -368,50 +316,3 @@ table.tbl tr:last-child td{border-bottom:0}
 }
 .tune .numbox input::-webkit-outer-spin-button,.tune .numbox input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .tune .numbox span{font-size:12px;color:var(--ink3);font-weight:600}
-
-/* ===== NAVI 시그니처 컴포넌트 ===== */
-
-/* 코치 배너 — 전체 폭을 써서 대시보드의 리듬을 한 번 끊는다 */
-.coach-banner{
-  grid-column:1/-1;
-  background:var(--lime-soft);border-radius:var(--r);padding:22px 24px;margin-bottom:14px;
-  display:flex;align-items:flex-start;gap:16px;position:relative;overflow:hidden;
-}
-.coach-banner__icon{
-  width:38px;height:38px;border-radius:12px;background:var(--forest);color:var(--lime);
-  display:grid;place-items:center;flex:none;font-size:19px;
-}
-.coach-banner__body{min-width:0;flex:1}
-.coach-banner .eyebrow{color:#54713c;margin-bottom:5px}
-[data-theme="dark"] .coach-banner .eyebrow{color:var(--lime-dim)}
-.coach-banner h3{font-size:15.5px;line-height:1.5;letter-spacing:-.02em;color:var(--ink)}
-.coach-banner em{font-style:normal;color:#39651a;font-weight:800}
-[data-theme="dark"] .coach-banner em{color:var(--lime)}
-.coach-banner p{font-size:12px;color:var(--ink2);margin-top:6px;line-height:1.55}
-
-/* 경고 카드 — 초록 상태에서 주황 경고 상태로의 전환 */
-.warn-banner{
-  background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 22%,transparent);
-  border-radius:var(--r);padding:20px 22px;margin-bottom:14px;
-  display:flex;align-items:center;gap:15px;
-}
-.warn-banner__icon{
-  width:40px;height:40px;display:grid;place-items:center;border-radius:13px;
-  background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn);flex:none;font-size:19px;
-}
-.warn-banner h3{font-size:15px;color:var(--ink)}
-.warn-banner em{font-style:normal;color:var(--warn)}
-.warn-banner p{font-size:11.5px;color:var(--ink2);margin-top:6px;line-height:1.55}
-@media (max-width:720px){ .warn-banner__icon{display:none} .warn-banner{padding:18px} }
-
-/* 데스크톱 대시보드 그리드 — NAVI 비율 */
-@media (min-width:900px){
-  .grid-navi{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.8fr);gap:16px;align-items:start}
-  .grid-navi__wide{grid-column:1/-1}
-}
-
-/* 요약 타일도 NAVI 카드 톤으로 */
-.summary a,.summary button{border-radius:var(--r-sm);box-shadow:var(--shadow-sm)}
-
-/* 슬라이더 트랙을 라임으로 */
-input[type=range]{accent-color:var(--accent)}

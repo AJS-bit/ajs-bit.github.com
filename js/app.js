@@ -524,14 +524,14 @@ function applyTheme(pref) {
   const resolved = pref === 'system' ? (prefersDark() ? 'dark' : 'light') : pref === 'light' ? 'light' : 'dark';
   document.documentElement.dataset.theme = resolved;
   document.querySelector('meta[name=theme-color]')
-    ?.setAttribute('content', resolved === 'dark' ? '#0c1711' : '#f4f7f4');
+    ?.setAttribute('content', resolved === 'dark' ? '#0b0f19' : '#f4f6fb');
   state.settings.theme = pref;
   commit({ silent: true });
 }
 
 /* ---------- 부팅 ---------- */
 function boot() {
-  applyTheme(state.settings.theme || 'light');
+  applyTheme(state.settings.theme || 'dark');
   if (typeof matchMedia === 'function') {
     matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => {
       if (state.settings.theme === 'system') { applyTheme('system'); render(); }

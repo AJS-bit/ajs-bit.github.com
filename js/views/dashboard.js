@@ -6,7 +6,6 @@ import {
   compact, won, pct, pctSigned, months as fmtMonths, n, clamp,
 } from '../format.js';
 import { ring, spark, gauge, progress, esc } from '../charts.js';
-import { insights } from '../coach.js';
 
 export const title = '홈';
 
@@ -30,12 +29,9 @@ export function render() {
 
   return `
     ${fg ? goalHero(fg, alloc, m) : goalEmpty()}
+    ${burnCard(m, s, lim)}
     ${summary(m, t)}
-    ${coachBanner(s)}
-    <div class="grid-navi">
-      ${burnCard(m, s, lim)}
-      ${todayCard(m, lim)}
-    </div>
+    ${todayCard(m, lim)}
     <button class="fab" data-act="quick-add" aria-label="지출 입력">＋</button>
   `;
 }
@@ -57,18 +53,13 @@ function goalHero(r, alloc, m) {
   for (let i = 0; i <= span; i += step) path.push(futureValue(n(g.saved), r.allocated, i, ret));
   const deadlineIdx = left > 0 && left <= span ? Math.round(left / step) : null;
 
-  // 짙은 포레스트 히어로 위에서는 포레스트 계열이 묻히므로 라임/주황을 쓴다
-  const heroColor = prog >= 100 ? '#c8ff59' : onTrack === false ? '#ffbe78' : '#c8ff59';
   const tone = prog >= 100 ? 'pos' : onTrack === false ? 'warn' : 'accent';
   const centerMid = prog >= 100 ? '달성' : eta === null ? '—' : fmtMonths(eta);
 
   return `
     <section class="hero">
       <div class="hero__top">
-        <div>
-          <span class="eyebrow">진행 중인 목표</span>
-          <div class="hero__name">${g.emoji || '🎯'} <span>${esc(g.name || '목표')}</span></div>
-        </div>
+        <div class="hero__name">${g.emoji || '🎯'} <span>${esc(g.name || '목표')}</span></div>
         <button class="btn btn--sm btn--ghost" data-nav="goals">전체 목표</button>
       </div>
 
@@ -79,9 +70,7 @@ function goalHero(r, alloc, m) {
 
       <div style="max-width:210px;margin:2px auto 0">
         ${ring({
-          ratio: prog, size: 210, thickness: 15,
-          color: heroColor, track: 'rgba(255,255,255,.13)',
-          ink: '#ffffff', sub: '#9ab0a2',
+          ratio: prog, size: 210, thickness: 15, tone,
           top: prog >= 100 ? '목표 달성' : '목표까지',
           mid: centerMid,
           bottom: prog >= 100 ? '' : `${pct(prog, 0)} 진행`,
@@ -89,7 +78,7 @@ function goalHero(r, alloc, m) {
       </div>
 
       ${path.length > 2 ? `<div style="margin:8px -2px 0">
-        ${spark(path, { height: 56, color: heroColor, target: n(g.target), markAt: deadlineIdx })}
+        ${spark(path, { height: 56, color: `var(--${tone})`, target: n(g.target), markAt: deadlineIdx })}
         <div class="row" style="margin-top:2px">
           <span class="hint">지금</span>
           <span class="hint">${g.targetDate ? `목표일 ${g.targetDate.slice(0, 7).replace('-', '.')}` : '기한 없음'}</span>
@@ -158,14 +147,12 @@ function burnCard(m, s, lim) {
   const g = m.grade;
   const tone = g.tone === 'muted' ? 'accent' : g.tone;
   const chip = tone === 'pos' ? 'pos' : tone === 'neg' ? 'neg' : tone === 'warn' ? 'warn' : 'accent';
-  // 안전 구간은 NAVI 라임, 경고로 넘어가면 주황으로 상태가 전환된다
-  const gaugeColor = tone === 'warn' ? 'var(--warn)' : tone === 'neg' ? 'var(--neg)' : 'var(--lime-dim)';
   const cap = (m.net * target) / 100;
   const diff = m.projected - cap;
 
   return `<section class="card">
     <div class="card__hd">
-      <div><span class="eyebrow">순자산 대비</span><h3>소비율</h3></div>
+      <h3>🧭 소비율 <span class="sub">순자산 대비</span></h3>
       <span class="chip chip--${chip}">연 ${pct(m.burnAnnual)} · ${esc(g.label)}</span>
     </div>
 
@@ -174,7 +161,7 @@ function burnCard(m, s, lim) {
         value: m.burnProjected, max: Math.max(target * 3, 0.3),
         label: m.burnProjected === null ? '—' : `${m.burnProjected.toFixed(2)}%`,
         sub: '이번 달 예상',
-        tone, color: gaugeColor, ticks: [{ at: target }],
+        tone, ticks: [{ at: target }],
       })}
     </div>
 
@@ -196,35 +183,6 @@ function burnCard(m, s, lim) {
     <div class="kv"><span>목표 월 소비 상한</span><b class="num" id="burn-cap">${won(cap)}</b></div>
     <div class="kv"><span>이번 달 예상 (${compact(m.projected)})과의 차이</span>
       <b class="num ${diff > 0 ? 'neg' : 'pos'}" id="burn-diff">${diff > 0 ? '+' : ''}${won(diff)}</b></div>
-  </section>`;
-}
-
-/* ================= 코치 · 경고 배너 =================
-   NAVI 패턴: 전체 폭 배너로 대시보드의 리듬을 한 번 끊는다.
-   가장 급한 조언 하나만 보여주고 나머지는 코치 탭으로 넘긴다. */
-function coachBanner(s) {
-  const top = insights(s)[0];
-  if (!top) return '';
-
-  if (top.tone === 'danger' || top.tone === 'warn') {
-    return `<section class="warn-banner">
-      <div class="warn-banner__icon">${top.icon}</div>
-      <div style="flex:1;min-width:0">
-        <span class="eyebrow">지금 확인이 필요합니다</span>
-        <h3><em>${esc(top.title)}</em></h3>
-        <p>${top.body}</p>
-      </div>
-      <button class="btn btn--sm" data-nav="coach">코치 열기</button>
-    </section>`;
-  }
-  return `<section class="coach-banner">
-    <div class="coach-banner__icon">${top.icon}</div>
-    <div class="coach-banner__body">
-      <span class="eyebrow">소비 코치</span>
-      <h3>${esc(top.title)}</h3>
-      <p>${top.body}</p>
-    </div>
-    <button class="btn btn--sm" data-nav="coach">더 보기</button>
   </section>`;
 }
 
@@ -271,7 +229,7 @@ function todayCard(m, lim) {
 
   return `<section class="card">
     <div class="card__hd">
-      <div><span class="eyebrow">맞춤 한도</span><h3>이번 달 쓸 수 있는 돈</h3></div>
+      <h3>🎚️ 이번 달 한도</h3>
       <button class="btn btn--sm btn--ghost" data-nav="spending">자세히</button>
     </div>
     <div class="row" style="align-items:flex-end;margin-bottom:9px">

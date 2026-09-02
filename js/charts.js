@@ -5,8 +5,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const id = () => 'g' + Math.random().toString(36).slice(2, 8);
 
 /* ---------- 소비율 게이지 (메인 지표) ---------- */
-export function gauge({ value, max = 100, label, sub, tone = 'accent', color = null, ticks = [] }) {
-  const C0 = color || `var(--${tone})`;
+export function gauge({ value, max = 100, label, sub, tone = 'accent', ticks = [] }) {
   // 원호 끝점이 viewBox 밖으로 나가면 아래 요소와 겹친다.
   // end=35° 기준 최하단 y = CY + R·sin35 + W/2 = 88 + 44.7 + 7.5 ≈ 140 이므로 높이 146으로 잡는다.
   const R = 78, CX = 100, CY = 88, W = 15, H = 146;
@@ -30,8 +29,8 @@ export function gauge({ value, max = 100, label, sub, tone = 'accent', color = n
 
   return `<svg class="chart" viewBox="0 0 200 ${H}" role="img" aria-label="${esc(label)} ${esc(sub || '')}">
     <defs><linearGradient id="${gid}" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0%" stop-color="${C0}" stop-opacity=".55"/>
-      <stop offset="100%" stop-color="${C0}"/>
+      <stop offset="0%" stop-color="var(--${tone})" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="var(--${tone})"/>
     </linearGradient></defs>
     <path d="${arc(start, end)}" fill="none" stroke="var(--surface2)" stroke-width="${W}" stroke-linecap="round"/>
     <path d="${arc(start, start + (v / 100) * span)}" fill="none" stroke="url(#${gid})"
@@ -189,11 +188,7 @@ export function progress(ratio, { tone = 'accent', markAt = null, height = 8 } =
 export { esc };
 
 /* ---------- 원형 진행 링 (목표 진척용) ---------- */
-export function ring({ ratio, size = 200, thickness = 14, tone = 'accent', color = null, track = null, ink = null, sub = null, top = '', mid = '', bottom = '', markAt = null }) {
-  const C0 = color || `var(--${tone})`;
-  const TRACK = track || 'var(--line)';
-  const INK = ink || 'var(--ink)';
-  const SUB = sub || 'var(--ink3)';
+export function ring({ ratio, size = 200, thickness = 14, tone = 'accent', top = '', mid = '', bottom = '', markAt = null }) {
   const R = size / 2 - thickness / 2 - 3;
   const C = size / 2;
   const circ = 2 * Math.PI * R;
@@ -206,23 +201,23 @@ export function ring({ ratio, size = 200, thickness = 14, tone = 'accent', color
         const x1 = C + (R - thickness / 2 - 1) * Math.cos(a), y1 = C + (R - thickness / 2 - 1) * Math.sin(a);
         const x2 = C + (R + thickness / 2 + 1) * Math.cos(a), y2 = C + (R + thickness / 2 + 1) * Math.sin(a);
         return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"
-          stroke="${SUB}" stroke-width="2.4" stroke-linecap="round"/>`;
+          stroke="var(--ink3)" stroke-width="2.4" stroke-linecap="round"/>`;
       })()
     : '';
   return `<svg class="chart" viewBox="0 0 ${size} ${size}" style="max-width:${size}px;margin:0 auto;display:block">
     <defs><linearGradient id="${gid}" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0%" stop-color="${C0}" stop-opacity=".5"/>
-      <stop offset="100%" stop-color="${C0}"/>
+      <stop offset="0%" stop-color="var(--${tone})" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="var(--${tone})"/>
     </linearGradient></defs>
-    <circle cx="${C}" cy="${C}" r="${R}" fill="none" stroke="${TRACK}" stroke-width="${thickness}" opacity=".85"/>
+    <circle cx="${C}" cy="${C}" r="${R}" fill="none" stroke="var(--line)" stroke-width="${thickness}" opacity=".85"/>
     <circle cx="${C}" cy="${C}" r="${R}" fill="none" stroke="url(#${gid})" stroke-width="${thickness}"
       stroke-linecap="round" transform="rotate(-90 ${C} ${C})"
       stroke-dasharray="${((v / 100) * circ).toFixed(2)} ${circ.toFixed(2)}"
       style="transition:stroke-dasharray .6s cubic-bezier(.3,.9,.3,1)"/>
     ${mk}
-    ${top ? `<text x="${C}" y="${C - 24}" text-anchor="middle" font-size="11.5" font-weight="700" fill="${SUB}">${esc(top)}</text>` : ''}
-    <text x="${C}" y="${C + 8}" text-anchor="middle" font-size="27" font-weight="800" fill="${INK}" style="letter-spacing:-1px">${esc(mid)}</text>
-    ${bottom ? `<text x="${C}" y="${C + 30}" text-anchor="middle" font-size="11.5" font-weight="600" fill="${SUB}">${esc(bottom)}</text>` : ''}
+    ${top ? `<text x="${C}" y="${C - 24}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink3)">${esc(top)}</text>` : ''}
+    <text x="${C}" y="${C + 8}" text-anchor="middle" font-size="27" font-weight="800" fill="var(--ink)" style="letter-spacing:-1px">${esc(mid)}</text>
+    ${bottom ? `<text x="${C}" y="${C + 30}" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--ink3)">${esc(bottom)}</text>` : ''}
   </svg>`;
 }
 
