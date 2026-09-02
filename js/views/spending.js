@@ -1,7 +1,7 @@
 /* 지출 — 기록 · 카테고리 한도 · 소비 페이스 · 경고 */
 import { state, CAT, SPEND_CATEGORIES } from '../store.js';
 import { metrics, spendingLimit, warnings, monthTx, spendOf } from '../finance.js';
-import { savingOpportunities } from '../coach.js';
+import { savingOpportunities, burnHistory } from '../coach.js';
 import { compact, won, pct, monthLabel, addMonths, monthKey, dateLabel, daysInMonth, elapsedDays, n } from '../format.js';
 import { hBars, lineChart, progress, vBars, esc } from '../charts.js';
 import { card, empty } from '../ui.js';
@@ -90,6 +90,7 @@ function monthTab() {
     </section>
 
     ${sp.count ? opportunityCard() : ''}
+    ${burnTrend(s)}
     ${monthCompare(s)}
     <button class="fab" data-act="quick-add" aria-label="지출 입력">＋</button>`;
 }
@@ -118,6 +119,16 @@ function dailyChart(s, key, lim, isCurrent) {
   }) + `<div class="legend">
     <span><i style="background:var(--accent)"></i>실제 누적 ${won(acc)}</span>
     ${lim.total > 0 ? `<span><i style="background:var(--ink3)"></i>한도 페이스</span>` : ''}</div>`;
+}
+
+function burnTrend(s) {
+  const hist = burnHistory(s, 6).filter((h) => h.hasData && h.burn !== null);
+  if (hist.length < 2) return '';
+  return card('소비율 추이',
+    lineChart([{ data: hist.map((h) => h.burn), color: 'var(--accent)', fill: true }], {
+      height: 150, labels: hist.map((h) => h.month.slice(5) + '월'), yFormat: (v) => v.toFixed(2) + '%',
+    }) + '<p class="hint" style="margin-top:6px">월별 순자산 대비 소비율(%). 아래로 내려갈수록 재산이 빨리 늘어납니다.</p>',
+    { sub: '최근 6개월' });
 }
 
 function monthCompare(s) {

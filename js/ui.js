@@ -75,7 +75,10 @@ export function modal({ title, fields = [], html = '', submit = '저장', onSubm
       e.preventDefault();
       const data = {};
       for (const f of fields) {
-        const el = box.querySelector(`[name="${f.key}"]`);
+        // seg 는 같은 name 을 공유하는 라디오 묶음이라 첫 요소가 아니라 선택된 것을 읽어야 한다
+        const el = f.type === 'seg'
+          ? box.querySelector(`[name="${f.key}"]:checked`)
+          : box.querySelector(`[name="${f.key}"]`);
         if (!el) continue;
         if (f.type === 'checkbox') data[f.key] = el.checked;
         else if (f.type === 'number' || f.money) data[f.key] = n(el.value);

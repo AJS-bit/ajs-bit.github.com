@@ -80,8 +80,42 @@ function assetsTab() {
             `<button class="btn btn--primary btn--sm" data-act="add-asset">첫 자산 추가</button>`)}
     </section>
 
+    ${netTrend(s)}
+    ${keyStats(m)}
     ${card('자산 구성 진단', diagnosis(t, m), { sub: '비중 점검' })}
   `;
+}
+
+function netTrend(s) {
+  const snaps = s.snapshots.slice(-12);
+  if (snaps.length < 2) return '';
+  return card('순자산 추이',
+    lineChart([{ data: snaps.map((x) => x.net), color: 'var(--pos)', fill: true }], {
+      height: 160, labels: snaps.map((x) => x.month.slice(5) + '월'),
+    }), { sub: `${snaps.length}개월 기록` });
+}
+
+function keyStats(m) {
+  return `<section class="card">
+    <div class="card__hd"><h3>핵심 지표</h3><span class="sub">이번 달 기준</span></div>
+    <div class="stats stats--3">
+      <div class="stat"><span class="lbl">저축여력</span>
+        <div class="v num ${m.capacity < 0 ? 'neg' : 'pos'}">${compact(m.capacity)}</div><div class="s">월</div></div>
+      <div class="stat"><span class="lbl">생존 개월수</span>
+        <div class="v num">${m.runway === null ? '—' : fmtMonths(m.runway)}</div><div class="s">유동자산 기준</div></div>
+      <div class="stat"><span class="lbl">비상금</span>
+        <div class="v num ${m.emergency !== null && m.emergency < 3 ? 'warn' : ''}">${m.emergency === null ? '—' : m.emergency.toFixed(1) + '개월'}</div>
+        <div class="s">목표 ${state.profile.emergencyMonths}개월</div></div>
+      <div class="stat"><span class="lbl">경제적 자유</span>
+        <div class="v num">${pct(m.fiProgress, 1)}</div><div class="s">연소비 25배</div></div>
+      <div class="stat"><span class="lbl">고정비</span>
+        <div class="v num">${compact(m.fixed)}</div>
+        <div class="s">소비의 ${m.spend > 0 ? pct((m.fixed / m.spend) * 100, 0) : '—'}</div></div>
+      <div class="stat"><span class="lbl">부채비율</span>
+        <div class="v num ${m.dti !== null && m.dti > 60 ? 'warn' : ''}">${pct(m.dti, 0)}</div>
+        <div class="s">부채 ÷ 자산</div></div>
+    </div>
+  </section>`;
 }
 
 function diagnosis(t, m) {

@@ -34,6 +34,16 @@ function renderNav() {
     </button>`).join('');
 }
 
+/* 상단 벨 배지 = 처리할 경고 건수 (info/good 은 세지 않는다) */
+function renderBadge() {
+  const badge = $('#bell-badge');
+  if (!badge) return;
+  const ws = warnings(state).filter((w) => w.level === 'danger' || w.level === 'warn');
+  badge.hidden = ws.length === 0;
+  badge.textContent = ws.length > 9 ? '9+' : String(ws.length);
+  badge.classList.toggle('badge--warn', !ws.some((w) => w.level === 'danger'));
+}
+
 function render() {
   const view = VIEWS[route] || Dashboard;
   const tab = subtab[route] || view.tabs?.[0]?.id;
@@ -45,6 +55,7 @@ function render() {
   const y = main.scrollTop;
   main.innerHTML = tabsHTML + view.render(tab);
   renderNav();
+  renderBadge();
   main.scrollTop = y;
 }
 
@@ -167,10 +178,13 @@ async function settingsModal() {
       { key: 'targetBurn', label: '목표 월 소비율 (순자산 대비)', type: 'number', unit: '%', step: '0.1',
         value: n(p.targetBurn), help: '연 4% 이하면 자산 수익만으로 생활 가능한 수준입니다 (월 0.33%)' },
       { key: 'emergencyMonths', label: '비상금 목표', type: 'number', unit: '개월', step: '1', value: p.emergencyMonths },
+      { key: 'theme', label: '화면 테마', type: 'seg', value: state.settings.theme || 'dark',
+        options: [{ value: 'dark', label: '다크' }, { value: 'light', label: '라이트' }, { value: 'system', label: '시스템 설정' }] },
     ],
     submit: '저장',
   });
   if (!r) return;
+  applyTheme(r.theme);
   Object.assign(state.profile, {
     monthlyIncome: r.monthlyIncome,
     extraIncome: r.extraIncome,
@@ -204,6 +218,23 @@ async function catLimitModal() {
       commit();
       toast('카테고리 한도를 저장했습니다');
     },
+  });
+}
+
+/* ---------- 알림 ---------- */
+async function notificationsModal() {
+  const ws = warnings(state);
+  const act = ws.filter((w) => w.level === 'danger' || w.level === 'warn');
+  await modal({
+    title: act.length ? `알림 ${act.length}건` : '알림',
+    fields: [], onSubmit: null,
+    html: `
+      ${act.length === 0 ? `<div class="alert alert--good">
+        <span class="alert__ico">✅</span><div><b>지금 조치할 일이 없습니다</b>
+        <p>현재 소비 구조에서 급한 경고가 없습니다.</p></div></div>` : ''}
+      ${ws.map((w) => `<div class="alert alert--${w.level}">
+        <span class="alert__ico">${w.icon}</span>
+        <div><b>${esc(w.title)}</b><p>${esc(w.body)}</p></div></div>`).join('')}`,
   });
 }
 
@@ -246,7 +277,7 @@ function syncSnapshot() {
 
 /* ---------- 액션 라우팅 ---------- */
 const ACTIONS = {
-  theme: () => toggleTheme(),
+  notifications: notificationsModal,
   settings: settingsModal,
   'add-asset': () => assetModal(),
   'add-debt': () => debtModal(),
@@ -297,14 +328,8 @@ const ACTIONS = {
     }
   },
 
-  'all-warnings': async () => {
-    const ws = warnings(state);
-    await modal({
-      title: `소비 경고 ${ws.length}건`, fields: [], onSubmit: null,
-      html: ws.map((w) => `<div class="alert alert--${w.level}">
-        <span class="alert__ico">${w.icon}</span><div><b>${esc(w.title)}</b><p>${esc(w.body)}</p></div></div>`).join(''),
-    });
-  },
+  'all-warnings': () => notificationsModal(),
+
 
   'edit-limit': async () => {
     const lim = spendingLimit(state);
@@ -333,6 +358,8 @@ const ACTIONS = {
     if (Spending.getMonth() >= monthKey()) return;
     Spending.setMonth(addMonths(Spending.getMonth(), 1)); render();
   },
+
+  'pick-goal': (el) => { state.settings.homeGoal = el.dataset.id; commit(); },
 
   'add-preset': (el) => addPreset(el.dataset.key),
   'add-all-presets': () => {
@@ -429,6 +456,8 @@ function bind() {
       state.settings.extraDebtPay = n(el.value); commit();
     } else if (el.dataset.act === 'target-burn') {
       state.profile.targetBurn = Number(el.value); commit();
+    } else if (el.dataset.burn) {
+      tuneBurn(Number(el.value), el.dataset.burn);
     }
   });
 
@@ -436,6 +465,10 @@ function bind() {
     const el = e.target;
     if (el.dataset.act === 'manual-total') {
       state.limits.total = n(el.value); state.limits.mode = 'manual'; commit();
+    } else if (el.dataset.burn) {
+      // 드래그를 놓거나 숫자 입력을 확정한 시점에만 전체 화면을 다시 그린다
+      tuneBurn(Number(el.value), el.dataset.burn);
+      commit();
     }
   });
 
@@ -453,20 +486,57 @@ function bind() {
   });
 }
 
+/* ---------- 목표 소비율 조절 ----------
+   슬라이더와 숫자 입력이 같은 값을 공유한다.
+   드래그 중 전체 리렌더는 드래그를 끊고 입력 포커스를 뺏으므로,
+   여기서는 영향받는 숫자만 직접 갱신한다. */
+function tuneBurn(raw, source) {
+  const v = clamp(Number.isFinite(raw) ? raw : 1.8, 0.05, 50);
+  state.profile.targetBurn = Math.round(v * 100) / 100;
+  commit({ silent: true });
+
+  const main = $('#main');
+  const range = main.querySelector('[data-burn="range"]');
+  const num = main.querySelector('[data-burn="num"]');
+  if (range && source !== 'range') range.value = String(clamp(v, 0.1, 8));
+  if (num && source !== 'num') num.value = v.toFixed(1);
+
+  const m = metrics(state);
+  const cap = (m.net * v) / 100;
+  const diff = m.projected - cap;
+  const set = (sel, text, cls) => {
+    const el = main.querySelector(sel);
+    if (!el) return;
+    el.textContent = text;
+    if (cls) { el.classList.remove('neg', 'pos'); el.classList.add(cls); }
+  };
+  set('#burn-annual', `연 ${(v * 12).toFixed(1)}%`);
+  set('#burn-cap', won(cap));
+  set('#burn-diff', `${diff > 0 ? '+' : ''}${won(diff)}`, diff > 0 ? 'neg' : 'pos');
+}
+
 /* ---------- 테마 ---------- */
-function toggleTheme() {
-  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
-  document.querySelector('meta[name=theme-color]')?.setAttribute('content', next === 'dark' ? '#0b0f19' : '#f4f6fb');
-  state.settings.theme = next;
+const prefersDark = () =>
+  typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches;
+
+/** 'dark' | 'light' | 'system' */
+function applyTheme(pref) {
+  const resolved = pref === 'system' ? (prefersDark() ? 'dark' : 'light') : pref === 'light' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = resolved;
+  document.querySelector('meta[name=theme-color]')
+    ?.setAttribute('content', resolved === 'dark' ? '#0b0f19' : '#f4f6fb');
+  state.settings.theme = pref;
   commit({ silent: true });
 }
 
 /* ---------- 부팅 ---------- */
 function boot() {
-  document.documentElement.dataset.theme = state.settings.theme || 'dark';
-  document.querySelector('meta[name=theme-color]')
-    ?.setAttribute('content', state.settings.theme === 'light' ? '#f4f6fb' : '#0b0f19');
+  applyTheme(state.settings.theme || 'dark');
+  if (typeof matchMedia === 'function') {
+    matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => {
+      if (state.settings.theme === 'system') { applyTheme('system'); render(); }
+    });
+  }
 
   const h = location.hash.slice(1);
   if (VIEWS[h]) route = h;

@@ -6,8 +6,10 @@ const id = () => 'g' + Math.random().toString(36).slice(2, 8);
 
 /* ---------- 소비율 게이지 (메인 지표) ---------- */
 export function gauge({ value, max = 100, label, sub, tone = 'accent', ticks = [] }) {
-  const R = 78, CX = 100, CY = 96, W = 15;
-  const start = -220, end = 40, span = end - start;
+  // 원호 끝점이 viewBox 밖으로 나가면 아래 요소와 겹친다.
+  // end=35° 기준 최하단 y = CY + R·sin35 + W/2 = 88 + 44.7 + 7.5 ≈ 140 이므로 높이 146으로 잡는다.
+  const R = 78, CX = 100, CY = 88, W = 15, H = 146;
+  const start = -215, end = 35, span = end - start;
   const v = value === null ? 0 : clamp((value / max) * 100, 0, 100);
   const pol = (deg, r = R) => {
     const a = (deg * Math.PI) / 180;
@@ -25,7 +27,7 @@ export function gauge({ value, max = 100, label, sub, tone = 'accent', ticks = [
       stroke="var(--ink3)" stroke-width="2" stroke-linecap="round" opacity=".85"/>`;
   }).join('');
 
-  return `<svg class="chart" viewBox="0 0 200 132" role="img" aria-label="${esc(label)} ${esc(sub || '')}">
+  return `<svg class="chart" viewBox="0 0 200 ${H}" role="img" aria-label="${esc(label)} ${esc(sub || '')}">
     <defs><linearGradient id="${gid}" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0%" stop-color="var(--${tone})" stop-opacity=".55"/>
       <stop offset="100%" stop-color="var(--${tone})"/>
@@ -34,9 +36,9 @@ export function gauge({ value, max = 100, label, sub, tone = 'accent', ticks = [
     <path d="${arc(start, start + (v / 100) * span)}" fill="none" stroke="url(#${gid})"
       stroke-width="${W}" stroke-linecap="round" style="transition:d .6s"/>
     ${tickMarks}
-    <text x="${CX}" y="${CY - 8}" text-anchor="middle" font-size="30" font-weight="800"
+    <text x="${CX}" y="${CY - 2}" text-anchor="middle" font-size="30" font-weight="800"
       fill="var(--ink)" style="letter-spacing:-1px">${esc(label)}</text>
-    <text x="${CX}" y="${CY + 14}" text-anchor="middle" font-size="11.5" font-weight="600"
+    <text x="${CX}" y="${CY + 19}" text-anchor="middle" font-size="11" font-weight="600"
       fill="var(--ink3)">${esc(sub || '')}</text>
   </svg>`;
 }
@@ -184,3 +186,64 @@ export function progress(ratio, { tone = 'accent', markAt = null, height = 8 } =
 }
 
 export { esc };
+
+/* ---------- 원형 진행 링 (목표 진척용) ---------- */
+export function ring({ ratio, size = 200, thickness = 14, tone = 'accent', top = '', mid = '', bottom = '', markAt = null }) {
+  const R = size / 2 - thickness / 2 - 3;
+  const C = size / 2;
+  const circ = 2 * Math.PI * R;
+  const v = clamp(n(ratio), 0, 100);
+  const gid = id();
+  const markDeg = markAt !== null ? (clamp(markAt, 0, 100) / 100) * 360 - 90 : null;
+  const mk = markDeg !== null
+    ? (() => {
+        const a = (markDeg * Math.PI) / 180;
+        const x1 = C + (R - thickness / 2 - 1) * Math.cos(a), y1 = C + (R - thickness / 2 - 1) * Math.sin(a);
+        const x2 = C + (R + thickness / 2 + 1) * Math.cos(a), y2 = C + (R + thickness / 2 + 1) * Math.sin(a);
+        return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"
+          stroke="var(--ink3)" stroke-width="2.4" stroke-linecap="round"/>`;
+      })()
+    : '';
+  return `<svg class="chart" viewBox="0 0 ${size} ${size}" style="max-width:${size}px;margin:0 auto;display:block">
+    <defs><linearGradient id="${gid}" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="var(--${tone})" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="var(--${tone})"/>
+    </linearGradient></defs>
+    <circle cx="${C}" cy="${C}" r="${R}" fill="none" stroke="var(--line)" stroke-width="${thickness}" opacity=".85"/>
+    <circle cx="${C}" cy="${C}" r="${R}" fill="none" stroke="url(#${gid})" stroke-width="${thickness}"
+      stroke-linecap="round" transform="rotate(-90 ${C} ${C})"
+      stroke-dasharray="${((v / 100) * circ).toFixed(2)} ${circ.toFixed(2)}"
+      style="transition:stroke-dasharray .6s cubic-bezier(.3,.9,.3,1)"/>
+    ${mk}
+    ${top ? `<text x="${C}" y="${C - 24}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink3)">${esc(top)}</text>` : ''}
+    <text x="${C}" y="${C + 8}" text-anchor="middle" font-size="27" font-weight="800" fill="var(--ink)" style="letter-spacing:-1px">${esc(mid)}</text>
+    ${bottom ? `<text x="${C}" y="${C + 30}" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--ink3)">${esc(bottom)}</text>` : ''}
+  </svg>`;
+}
+
+/* ---------- 스파크라인 (작은 경로 그래프) ---------- */
+export function spark(data, { height = 54, color = 'var(--accent)', target = null, markAt = null } = {}) {
+  const W = 320, H = height, P = 3;
+  const vals = data.filter(Number.isFinite);
+  if (vals.length < 2) return '';
+  // 목표 대비 성장이 보이도록 실제 구간을 쓴다 (0 기준으로 잡으면 선이 평평해진다)
+  const max = Math.max(...vals, target ?? -Infinity);
+  const lo = Math.min(...vals);
+  const min = lo - (max - lo) * 0.12;
+  const X = (i) => P + (i / (data.length - 1)) * (W - P * 2);
+  const Y = (v) => P + (1 - (v - min) / Math.max(1, max - min)) * (H - P * 2);
+  const pts = data.map((v, i) => `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
+  const gid = id();
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px">
+    <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${color}" stop-opacity=".3"/>
+      <stop offset="100%" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
+    ${target !== null ? `<line x1="${P}" y1="${Y(target).toFixed(1)}" x2="${W - P}" y2="${Y(target).toFixed(1)}"
+      stroke="var(--ink3)" stroke-width="1" stroke-dasharray="4 3"/>` : ''}
+    <polygon points="${X(0).toFixed(1)},${H - P} ${pts} ${X(data.length - 1).toFixed(1)},${H - P}" fill="url(#${gid})"/>
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    ${markAt !== null ? `<line x1="${X(markAt).toFixed(1)}" y1="${P}" x2="${X(markAt).toFixed(1)}" y2="${H - P}"
+      stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 3"/>` : ''}
+  </svg>`;
+}
