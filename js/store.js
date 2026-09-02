@@ -68,7 +68,7 @@ export function blankState() {
     goals: [],
     limits: { mode: 'auto', total: null, categories: {} },
     snapshots: [],            // [{ month:'2026-09', net, assets, debts }]
-    settings: { theme: 'dark', onboarded: false, debtStrategy: 'avalanche', extraDebtPay: 0 },
+    settings: { theme: 'light', onboarded: false, debtStrategy: 'avalanche', extraDebtPay: 0 },
   };
 }
 
