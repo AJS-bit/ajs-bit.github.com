@@ -221,9 +221,17 @@ export function ring({ ratio, size = 200, thickness = 14, tone = 'accent', top =
   </svg>`;
 }
 
-/* ---------- 스파크라인 (작은 경로 그래프) ---------- */
-export function spark(data, { height = 54, color = 'var(--accent)', target = null, markAt = null } = {}) {
+/* ---------- 스파크라인 (작은 경로 그래프) ----------
+   markLabel/targetLabel 을 주면 세로 마커선과 가로 목표선에 설명이 붙는다.
+   라벨 없이는 주황 점선이 무엇인지 알 수 없다.
+   라벨을 쓰면 위쪽 TOP 만큼을 글자 자리로 비우므로 그래프가 그만큼 낮아진다.
+   height 를 그대로 두면 선이 눌리니 호출부에서 높이를 함께 올릴 것. */
+export function spark(data, {
+  height = 54, color = 'var(--accent)', target = null, markAt = null,
+  markLabel = '', targetLabel = '',
+} = {}) {
   const W = 320, H = height, P = 3;
+  const TOP = markLabel ? 12 : P;               // 세로 마커 라벨이 앉는 위쪽 여백
   const vals = data.filter(Number.isFinite);
   if (vals.length < 2) return '';
   // 목표 대비 성장이 보이도록 실제 구간을 쓴다 (0 기준으로 잡으면 선이 평평해진다)
@@ -231,19 +239,28 @@ export function spark(data, { height = 54, color = 'var(--accent)', target = nul
   const lo = Math.min(...vals);
   const min = lo - (max - lo) * 0.12;
   const X = (i) => P + (i / (data.length - 1)) * (W - P * 2);
-  const Y = (v) => P + (1 - (v - min) / Math.max(1, max - min)) * (H - P * 2);
+  const Y = (v) => TOP + (1 - (v - min) / Math.max(1, max - min)) * (H - TOP - P);
   const pts = data.map((v, i) => `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
   const gid = id();
+
+  // 목표선 라벨은 선 아래에 붙인다. 목표가 최댓값이면 선이 맨 위에 걸리므로
+  // 위에 쓰면 마커 라벨과 겹친다. 바닥에 너무 가까울 때만 위로 올린다.
+  const ty = target === null ? 0 : (Y(target) + 10 > H - 2 ? Y(target) - 4 : Y(target) + 10);
+
   return `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="height:${H}px">
     <defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="${color}" stop-opacity=".3"/>
       <stop offset="100%" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
     ${target !== null ? `<line x1="${P}" y1="${Y(target).toFixed(1)}" x2="${W - P}" y2="${Y(target).toFixed(1)}"
-      stroke="var(--ink3)" stroke-width="1" stroke-dasharray="4 3"/>` : ''}
+      stroke="var(--ink3)" stroke-width="1" stroke-dasharray="4 3"/>
+      ${targetLabel ? `<text x="${P + 2}" y="${ty.toFixed(1)}" font-size="9" font-weight="700"
+        fill="var(--ink3)">${esc(targetLabel)}</text>` : ''}` : ''}
     <polygon points="${X(0).toFixed(1)},${H - P} ${pts} ${X(data.length - 1).toFixed(1)},${H - P}" fill="url(#${gid})"/>
     <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2"
       stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-    ${markAt !== null ? `<line x1="${X(markAt).toFixed(1)}" y1="${P}" x2="${X(markAt).toFixed(1)}" y2="${H - P}"
-      stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 3"/>` : ''}
+    ${markAt !== null ? `<line x1="${X(markAt).toFixed(1)}" y1="${TOP}" x2="${X(markAt).toFixed(1)}" y2="${H - P}"
+      stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 3"/>
+      ${markLabel ? `<text x="${clamp(X(markAt), 24, W - 24).toFixed(1)}" y="9" text-anchor="middle"
+        font-size="9" font-weight="700" fill="var(--warn)">${esc(markLabel)}</text>` : ''}` : ''}
   </svg>`;
 }
