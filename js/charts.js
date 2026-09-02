@@ -59,9 +59,9 @@ export function gauge({ value, max = 100, label, sub, tone = 'accent', ticks = [
     <path d="${arc(start, start + (v / 100) * span)}" fill="none" stroke="url(#${gid})"
       stroke-width="${W}" stroke-linecap="round" style="transition:d .6s"/>
     ${tickMarks}
-    <text x="${CX}" y="${CY - 2}" text-anchor="middle" font-size="30" font-weight="800"
+    <text class="gauge__v" x="${CX}" y="${CY - 2}" text-anchor="middle" font-size="30" font-weight="800"
       fill="var(--ink)" style="letter-spacing:-1px">${esc(label)}</text>
-    <text x="${CX}" y="${CY + 19}" text-anchor="middle" font-size="11" font-weight="600"
+    <text class="gauge__sub" x="${CX}" y="${CY + 19}" text-anchor="middle" font-size="11" font-weight="600"
       fill="var(--ink3)">${esc(sub || '')}</text>
   </svg>`;
 }

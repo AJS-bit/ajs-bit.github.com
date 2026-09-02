@@ -438,6 +438,8 @@ function bind() {
     if (strat) { state.settings.debtStrategy = strat.dataset.v; commit(); return; }
     const lm = e.target.closest('[data-act="limit-mode"]');
     if (lm) { state.limits.mode = lm.dataset.v; commit(); return; }
+    const reset = e.target.closest('[data-act="scenario-reset"]');
+    if (reset) { Dashboard.resetScenario(); render(); return; }
     const simSet = e.target.closest('[data-sim-set]');
     if (simSet) { Goals.sim[simSet.dataset.simSet] = n(simSet.dataset.v); render(); return; }
   });
@@ -456,8 +458,10 @@ function bind() {
       state.settings.extraDebtPay = n(el.value); commit({ silent: true }); Assets.liveExtraPay();
     } else if (el.dataset.act === 'target-burn') {
       state.profile.targetBurn = Number(el.value); commit({ silent: true }); Coach.liveTargetBurn();
-    } else if (el.dataset.burn) {
-      tuneBurn(Number(el.value), el.dataset.burn);
+    } else if (el.dataset.scenario === 'spend') {
+      // 가상 시나리오다. 저장하지 않는다.
+      Dashboard.setScenarioSpend(n(el.value), null);
+      Dashboard.liveBurn();
     }
   });
 
@@ -471,10 +475,9 @@ function bind() {
       render();
     } else if (el.dataset.act === 'extra-pay' || el.dataset.act === 'target-burn') {
       commit();
-    } else if (el.dataset.burn) {
-      // 드래그를 놓거나 숫자 입력을 확정한 시점에만 전체 화면을 다시 그린다
-      tuneBurn(Number(el.value), el.dataset.burn);
-      commit();
+    } else if (el.dataset.scenario === 'spend') {
+      // 드래그를 놓은 시점에만 전체를 다시 그린다. 저장은 하지 않는다.
+      render();
     }
   });
 
@@ -490,17 +493,6 @@ function bind() {
     if (i >= 0) go(NAV[i].id);
     if (e.key === 'n' || e.key === 'ㅜ') txModal();
   });
-}
-
-/* ---------- 목표 소비율 조절 ----------
-   슬라이더와 숫자 입력이 같은 값을 공유한다.
-   드래그 중 전체 리렌더는 드래그를 끊고 입력 포커스를 뺏으므로,
-   값만 반영하고 화면 갱신은 홈 뷰의 부분 갱신에 맡긴다. */
-function tuneBurn(raw, source) {
-  const v = clamp(Number.isFinite(raw) ? raw : 1.8, 0.05, 50);
-  state.profile.targetBurn = Math.round(v * 100) / 100;
-  commit({ silent: true });
-  Dashboard.liveBurn(source);
 }
 
 /* ---------- 테마 ---------- */

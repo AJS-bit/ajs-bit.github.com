@@ -1,7 +1,7 @@
 /* 홈 — 목표까지 남은 거리(히어로) · 소비율 조절 · 핵심 요약
    상세 지표는 자산/지출/목표 탭으로 넘기고 홈은 의도적으로 단순하게 유지한다. */
 import { state, commit } from '../store.js';
-import { metrics, spendingLimit, allocateGoals, futureValue, totals } from '../finance.js';
+import { metrics, spendingLimit, allocateGoals, futureValue, monthsToTarget, totals } from '../finance.js';
 import {
   compact, won, pct, pctSigned, months as fmtMonths, n, clamp,
 } from '../format.js';
@@ -30,7 +30,7 @@ export function render() {
 
   return `
     ${fg ? goalHero(fg, alloc, m) : goalEmpty()}
-    ${burnCard(m, s, lim)}
+    ${burnCard(m, s)}
     ${summary(m, t)}
     ${todayCard(m, lim)}
     <button class="fab" data-act="quick-add" aria-label="지출 입력">＋</button>
@@ -135,7 +135,58 @@ function goalEmpty() {
 }
 
 /* ================= 2. 소비율 (슬라이더 + 직접 입력) ================= */
-function burnCard(m, s, lim) {
+/* ---------- 이번 달 소비 시나리오 ----------
+   NAVI 에서 가져온 판단: **실제 값을 바꾸는 조작과 가상 시나리오를 구분한다.**
+   예전 홈 슬라이더는 목표 소비율(%)을 조절하면서 state.profile.targetBurn 을
+   실제로 저장했다. 둘러보다 실수로 목표가 바뀌었고, 코치 탭에도 같은 조작이
+   있어 어디서 뭘 바꿨는지 알기 어려웠다.
+
+   이제 홈 슬라이더는 **이번 달 소비액을 가정해보는 것**이고 아무것도 저장하지
+   않는다. 목표 소비율을 실제로 바꾸는 곳은 설정과 코치·가정해보기 두 곳이다.
+
+   단위도 바꿨다. 사람은 "%"가 아니라 "만원"으로 생각하고, 알고 싶은 것은
+   상한이 아니라 "그래서 목표가 언제 되냐"다. */
+let scenarioSpend = null;                 // null = 실제 월말 예상 그대로
+let scenarioBase = null;                  // 가정을 세운 시점의 실제 예상
+
+export function setScenarioSpend(v, baseline) { scenarioSpend = v; scenarioBase = baseline; }
+export function resetScenario() { scenarioSpend = null; scenarioBase = null; }
+
+/** 거래가 추가되는 등 실제 예상이 달라지면 가정을 자동으로 푼다.
+    안 그러면 새 지출을 넣은 뒤에도 옛 가정이 남아 헷갈린다. */
+function syncScenario(baseline) {
+  if (scenarioBase !== null && Math.abs(scenarioBase - baseline) > 1) resetScenario();
+  if (scenarioSpend !== null) scenarioBase = baseline;
+}
+
+const manwon = (v) => `${compact(v)}원`;
+
+/** 시나리오 슬라이더의 범위. 실제 예상의 50~150% 를 5만원 단위로 잡는다. */
+function scenarioRange(baseline) {
+  const min = Math.max(0, Math.floor((baseline * 0.5) / 50000) * 50000);
+  const max = Math.max(min + 100000, Math.ceil((baseline * 1.5) / 50000) * 50000);
+  return { min, max };
+}
+
+/**
+ * 아낀(또는 더 쓴) 금액이 대표 목표를 얼마나 앞당기는지.
+ *
+ * `allocateGoals(s, 조정된여력)` 으로 다시 배분하면 안 된다. 여력이 필요액 합계를
+ * 넘는 순간 각 목표가 '필요액만' 받도록 설계돼 있어서, 가중 배분으로 더 받던
+ * 최우선 목표의 몫이 오히려 줄어든다. 그러면 **덜 썼는데 목표가 늦어지는**
+ * 화면이 나온다 (실제로 1년 3개월 → 1년 6개월로 보였다).
+ * 배분 규칙은 엔진의 설계이므로 건드리지 않고, 여기서는 아낀 돈을 그 목표에
+ * 그대로 더 넣었을 때로 환산한다. 단조롭고 해석이 분명하다.
+ */
+function goalShift(s, row, delta) {
+  if (!row) return null;
+  const ret = n(s.profile.expectedReturn);
+  const now = row.etaMonths;
+  const next = monthsToTarget(row.goal.target, row.goal.saved, Math.max(0, row.allocated + delta), ret);
+  return { now, next, saved: now !== null && next !== null ? now - next : null };
+}
+
+function burnCard(m, s) {
   const target = n(s.profile.targetBurn);
 
   if (m.net <= 0) {
@@ -151,8 +202,10 @@ function burnCard(m, s, lim) {
   const g = m.grade;
   const tone = g.tone === 'muted' ? 'accent' : g.tone;
   const chip = tone === 'pos' ? 'pos' : tone === 'neg' ? 'neg' : tone === 'warn' ? 'warn' : 'accent';
-  const cap = (m.net * target) / 100;
-  const diff = m.projected - cap;
+  const baseline = Math.max(0, m.projected);
+  syncScenario(baseline);
+  const { min, max } = scenarioRange(baseline);
+  const spend = scenarioSpend === null ? baseline : clamp(scenarioSpend, min, max);
 
   return `<section class="card">
     <div class="card__hd">
@@ -160,27 +213,60 @@ function burnCard(m, s, lim) {
       <span class="chip chip--${chip}">연 ${pct(m.burnAnnual)} · ${esc(g.label)}</span>
     </div>
 
-    <div style="max-width:250px;margin:0 auto" id="burn-gauge">${burnGauge(m, target, tone)}</div>
-
-    <div class="field" style="margin:6px 0 0">
-      <label style="display:flex;justify-content:space-between;align-items:center">
-        <span>목표 월 소비율</span>
-        <span class="hint" id="burn-annual">연 ${(target * 12).toFixed(1)}%</span>
-      </label>
-      <div class="tune">
-        <input type="range" min="0.1" max="8" step="0.1" value="${clamp(target, 0.1, 8)}" data-burn="range" aria-label="목표 월 소비율">
-        <div class="numbox">
-          <input type="number" min="0.05" max="50" step="0.1" value="${target.toFixed(1)}" data-burn="num" aria-label="목표 월 소비율 직접 입력">
-          <span>%</span>
-        </div>
-      </div>
-    </div>
+    <div style="max-width:250px;margin:0 auto" id="burn-gauge">${burnGauge(m, s, tone)}</div>
 
     <div class="divider"></div>
-    <div class="kv"><span>목표 월 소비 상한</span><b class="num" id="burn-cap">${won(cap)}</b></div>
-    <div class="kv"><span>이번 달 예상 (${compact(m.projected)})과의 차이</span>
-      <b class="num ${diff > 0 ? 'neg' : 'pos'}" id="burn-diff">${diff > 0 ? '+' : ''}${won(diff)}</b></div>
+
+    <div class="field" style="margin:0">
+      <label style="display:flex;justify-content:space-between;align-items:baseline">
+        <span>이번 달 소비를 조정해보면</span>
+        <b class="num" style="font-size:19px;color:var(--accent)" id="burn-spend">${manwon(spend)}</b>
+      </label>
+      <input class="range" type="range" min="${min}" max="${max}" step="50000"
+        value="${spend}" data-scenario="spend" aria-label="이번 달 소비 시나리오">
+      <div class="row" style="margin-top:4px">
+        <span class="hint">${manwon(min)}</span>
+        <button class="btn btn--sm btn--ghost" data-act="scenario-reset" id="burn-reset"
+          ${scenarioSpend === null ? 'disabled' : ''}>현재 예상으로</button>
+        <span class="hint">${manwon(max)}</span>
+      </div>
+      <div class="help" id="burn-basis">${scenarioBasis(baseline, spend)}</div>
+    </div>
+
+    <div id="burn-out">${burnOut(m, s, target, spend)}</div>
   </section>`;
+}
+
+/** 슬라이더 아래 한 줄 — 지금 보고 있는 것이 실제인지 가정인지 밝힌다 */
+function scenarioBasis(baseline, spend) {
+  const d = baseline - spend;
+  if (Math.abs(d) < 1) return `월말 예상 소비입니다. 끌어서 가정해 보세요.`;
+  return `실제 예상에서 <b class="${d > 0 ? 'pos' : 'neg'}">${d > 0 ? '−' : '+'}${manwon(Math.abs(d))}</b> 가정 · 저장되지 않습니다.`;
+}
+
+/** 시나리오에 따라 바뀌는 결과. 슬라이더 바깥이라 통째로 갈아끼운다. */
+function burnOut(m, s, target, spend) {
+  const baseline = Math.max(0, m.projected);
+  const delta = baseline - spend;                     // 아낀 금액 (음수면 더 쓴 것)
+  const capacity = m.income - spend - m.debtPay;
+  const cap = (m.net * target) / 100;
+  const diff = spend - cap;
+  const row = featured(allocateGoals(s).rows);
+  const shift = goalShift(s, row, delta);
+  const shiftText = !shift || shift.next === null ? '도달 불가'
+    : `${fmtMonths(Math.round(shift.next))} 후`;
+  const shiftSub = !shift || shift.saved === null || Math.abs(shift.saved) < 0.05 ? ''
+    : `<small class="${shift.saved > 0 ? 'pos' : 'neg'}">${Math.abs(shift.saved).toFixed(1)}개월 ${shift.saved > 0 ? '단축' : '지연'}</small>`;
+
+  return `
+    <div class="divider"></div>
+    <div class="kv"><span>월 저축여력</span>
+      <b class="num ${capacity < 0 ? 'neg' : 'pos'}">${won(capacity)}</b></div>
+    ${row ? `<div class="kv"><span>${esc(row.goal.name || '목표')} 달성</span>
+      <b class="num">${shiftText} ${shiftSub}</b></div>` : ''}
+    <div class="kv"><span>목표 상한(월 ${target.toFixed(1)}%)과의 차이</span>
+      <b class="num ${diff > 0 ? 'neg' : 'pos'}">${diff > 0 ? '+' : ''}${won(diff)}</b></div>
+    <p class="hint" style="margin-top:8px">상한 ${won(cap)} · 목표 소비율은 설정에서 바꿉니다.</p>`;
 }
 
 /* 게이지 눈금은 **목표와 무관하게 고정**한다.
@@ -188,17 +274,23 @@ function burnCard(m, s, lim) {
    가운데 숫자는 그대로인데 호만 줄어들었다. 오른쪽으로 끌수록 호가 짧아지니
    방향이 거꾸로 느껴졌고(목표 0.7%→8% 에서 호가 100%→9.3%), 눈금자가 매번
    다시 그려지니 어제와 오늘을 비교할 수도 없었다.
-   이제 바늘은 실제 소비율, 눈금은 목표 위치다. 역할이 나뉜다.
+   이제 바늘은 소비율, 눈금은 목표 위치다. 역할이 나뉜다.
 
-   상한 월 6% = 연 72%. 완전자립(연 4%)부터 주의(연 100%) 직전까지 담기는 범위이고,
-   목표 슬라이더 상한(월 8%)을 넘겨 잡으면 목표 눈금이 끝에 붙는다. */
+   바늘은 **시나리오 소비율**을 가리킨다. 소비액 슬라이더를 왼쪽으로 끌면 호가
+   짧아지고 목표 눈금 안으로 들어온다 — 방향이 직관과 맞는다.
+
+   상한 월 6% = 연 72%. 완전자립(연 4%)부터 주의(연 100%) 직전까지 담기는 범위다. */
 const BURN_GAUGE_MAX = 6;
 
-function burnGauge(m, target, tone) {
+function burnGauge(m, s, tone) {
+  const target = n(s.profile.targetBurn);
+  const baseline = Math.max(0, m.projected);
+  const spend = scenarioSpend === null ? baseline : scenarioSpend;
+  const burn = m.net > 0 && baseline > 0 ? (spend / m.net) * 100 : null;
   return gauge({
-    value: m.burnProjected, max: BURN_GAUGE_MAX,
-    label: m.burnProjected === null ? '—' : `${m.burnProjected.toFixed(2)}%`,
-    sub: '이번 달 예상',
+    value: burn, max: BURN_GAUGE_MAX,
+    label: burn === null ? '—' : `${burn.toFixed(2)}%`,
+    sub: scenarioSpend === null ? '이번 달 예상' : '가정한 소비',
     tone, ticks: [{ at: target, tone: 'accent', label: '목표' }],
   });
 }
@@ -206,36 +298,27 @@ function burnGauge(m, target, tone) {
 /* ---------- 드래그 중 부분 갱신 ----------
    홈은 슬라이더와 출력이 한 카드에 섞여 있어 카드째 다시 그릴 수 없다.
    그래서 값이 바뀌는 자리를 하나씩 짚어 갱신한다. 게이지가 여기서 빠져 있어
-   드래그 중에는 숫자만 움직이고 게이지는 놓아야 따라오던 문제가 있었다.
-   `source` 는 방금 조작한 입력(슬라이더/숫자칸)이라 되받아쓰지 않는다. */
-export function liveBurn(source) {
+   드래그 중에는 숫자만 움직이고 게이지는 놓아야 따라오던 문제가 있었다. */
+export function liveBurn() {
   const s = state;
   const m = metrics(s);
-  const target = n(s.profile.targetBurn);
   const main = document.getElementById('main');
-  if (!main) return;
+  if (!main || !main.querySelector('[data-scenario="spend"]')) return;   // 홈이 아닌 화면
 
-  const range = main.querySelector('[data-burn="range"]');
-  const num = main.querySelector('[data-burn="num"]');
-  if (!range && !num) return;                       // 홈이 아닌 화면
-  if (range && source !== 'range') range.value = String(clamp(target, 0.1, 8));
-  if (num && source !== 'num') num.value = target.toFixed(1);
+  const baseline = Math.max(0, m.projected);
+  if (scenarioSpend !== null) scenarioBase = baseline;
+  const { min, max } = scenarioRange(baseline);
+  const spend = scenarioSpend === null ? baseline : clamp(scenarioSpend, min, max);
 
-  const cap = (m.net * target) / 100;
-  const diff = m.projected - cap;
-  setText('burn-annual', `연 ${(target * 12).toFixed(1)}%`);
-  setText('burn-cap', won(cap));
-  const d = document.getElementById('burn-diff');
-  if (d) {
-    d.textContent = `${diff > 0 ? '+' : ''}${won(diff)}`;
-    d.classList.remove('neg', 'pos');
-    d.classList.add(diff > 0 ? 'neg' : 'pos');
-  }
-
-  const g = m.grade;
-  const tone = g.tone === 'muted' ? 'accent' : g.tone;
-  setHTML('burn-gauge', burnGauge(m, target, tone));
+  setText('burn-spend', manwon(spend));
+  setHTML('burn-basis', scenarioBasis(baseline, spend));
+  setHTML('burn-gauge', burnGauge(m, s, gaugeTone(m)));
+  setHTML('burn-out', burnOut(m, s, n(s.profile.targetBurn), spend));
+  const reset = document.getElementById('burn-reset');
+  if (reset) reset.disabled = scenarioSpend === null;
 }
+
+const gaugeTone = (m) => (m.grade.tone === 'muted' ? 'accent' : m.grade.tone);
 
 /* ================= 3. 요약 3칸 ================= */
 function summary(m, t) {

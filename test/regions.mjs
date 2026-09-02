@@ -68,27 +68,48 @@ t(saved === 3, '목표 소비율 영속화', `targetBurn=${saved}`);
 // 홈은 슬라이더와 출력이 한 카드에 있어 카드째 다시 그릴 수 없다. 갱신 대상을
 // 손으로 짚는 방식이라 하나 빠뜨리기 쉽고, 실제로 게이지가 빠져 있었다.
 await p.click('.nav button:has-text("홈")'); await p.waitForTimeout(400);
-// 게이지 눈금은 목표와 무관하게 고정이다. 목표를 바꾸면 **호가 아니라 목표 눈금**이
-// 움직여야 한다. 예전에는 눈금 최대값이 목표×3 이라 호가 거꾸로 줄어들었다.
+// 홈 슬라이더는 **이번 달 소비액을 가정해보는 것**이고 아무것도 저장하지 않는다.
+// 게이지 바늘은 그 가정을 따라 움직이고, 목표 눈금은 제자리에 있어야 한다.
 const gaugeParts = () => p.evaluate(() => {
-  const card = [...document.querySelectorAll('.card')].find((c) => c.querySelector('[data-burn=range]'));
+  const card = [...document.querySelectorAll('.card')].find((c) => c.querySelector('[data-scenario=spend]'));
   const svg = card.querySelector('svg.chart');
   return {
     arc: [...svg.querySelectorAll('path')].map((x) => x.getAttribute('d')).join('|'),
     tick: [...svg.querySelectorAll('line')].map((x) => `${x.getAttribute('x1')},${x.getAttribute('y1')}`).join('|'),
-    label: [...svg.querySelectorAll('text')].map((x) => x.textContent).join('|'),
+    value: svg.querySelector('text.gauge__v')?.textContent,
+    sub: svg.querySelector('text.gauge__sub')?.textContent,
+    labels: [...svg.querySelectorAll('text')].map((x) => x.textContent).join('|'),
   };
 });
+
+const savedBefore = await p.evaluate(() => JSON.parse(localStorage.getItem('asset-compass.v1')).profile.targetBurn);
 const g0 = await gaugeParts();
-const cap0 = await p.locator('#burn-cap').textContent();
-t(g0.label.includes('목표'), '게이지에 목표 눈금 라벨이 있다');
-await p.locator('[data-burn=range]').evaluate((n) => { n.value = '6'; n.dispatchEvent(new Event('input', { bubbles: true })); });
+const spend0 = await p.locator('#burn-spend').textContent();
+t(g0.labels.includes('목표'), '게이지에 목표 눈금 라벨이 있다');
+t(g0.sub === '이번 달 예상', '기본값은 실제 예상임을 밝힌다', g0.sub);
+
+const sl = p.locator('[data-scenario=spend]');
+const lo = await sl.getAttribute('min');
+await sl.evaluate((n, v) => { n.value = v; n.dispatchEvent(new Event('input', { bubbles: true })); }, lo);
 await p.waitForTimeout(300);
 const g1 = await gaugeParts();
-t((await p.locator('#burn-cap').textContent()) !== cap0, '홈 소비 상한 갱신');
-t((await p.locator('[data-burn=num]').inputValue()) === '6.0', '홈 숫자칸 동기화');
-t(g1.tick !== g0.tick, '목표 눈금이 슬라이더를 따라 이동한다');
-t(g1.arc === g0.arc, '게이지 호는 목표와 무관하게 고정된다');
+t((await p.locator('#burn-spend').textContent()) !== spend0, '소비액 라벨이 갱신된다');
+t(g1.arc !== g0.arc, '게이지 바늘이 가정한 소비를 따라 움직인다');
+t(g1.tick === g0.tick, '목표 눈금은 제자리에 있다');
+t(g1.sub === '가정한 소비', '가정 중임을 밝힌다', g1.sub);
+t((await p.locator('#burn-basis').textContent()).includes('저장되지 않습니다'), '저장되지 않는다고 알린다');
+t(Number(await p.locator('#burn-out .kv').first().locator('b').textContent().then((x) => x.replace(/[^\d-]/g, '')))
+  > 0, '저축여력이 늘어난다');
+
+// 핵심: 시나리오는 실제 설정을 건드리면 안 된다
+await sl.evaluate((n) => n.dispatchEvent(new Event('change', { bubbles: true })));
+await p.waitForTimeout(400);
+const savedAfter = await p.evaluate(() => JSON.parse(localStorage.getItem('asset-compass.v1')).profile.targetBurn);
+t(savedAfter === savedBefore, '시나리오는 저장되지 않는다', `targetBurn ${savedBefore} → ${savedAfter}`);
+
+await p.click('[data-act="scenario-reset"]'); await p.waitForTimeout(400);
+t((await p.locator('#burn-spend').textContent()) === spend0, '초기화하면 실제 예상으로 돌아온다');
+t((await gaugeParts()).sub === '이번 달 예상', '초기화 후 라벨도 돌아온다');
 
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');

@@ -27,7 +27,7 @@ await p.fill('#f_amount', '45000');
 await p.selectOption('#f_category', '식비');
 await p.click('.modal button[type=submit]');
 await p.waitForTimeout(400);
-const burn = await p.locator('.card:has-text("소비율") svg text').first().textContent().catch(()=>'');
+const burn = await p.locator('.card:has-text("소비율") svg text.gauge__v').first().textContent().catch(()=>'');
 ok('지출 입력 후 소비율 계산됨', burn.includes('%'));
 console.log('        소비율 게이지:', burn);
 

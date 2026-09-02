@@ -35,7 +35,7 @@ async function realDrag(name, sliderSel, readSel, goTo) {
   console.log(`      ${before} → [${samples.join(' → ')}] → 놓은뒤 ${after}`);
 }
 
-await realDrag('홈 · 목표 소비율', '[data-burn=range]', '#burn-cap', 0.8);
+await realDrag('홈 · 소비 시나리오', '[data-scenario=spend]', '#burn-spend', 0.8);
 
 await p.click('.nav button:has-text("자산")'); await p.waitForTimeout(250);
 await p.click('.tabs button:has-text("상환 전략")'); await p.waitForTimeout(350);

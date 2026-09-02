@@ -38,25 +38,30 @@ await p.click('[data-act=settings]'); await p.waitForSelector('.modal__box');
 await p.click('.modal label:has-text("다크")');
 await p.click('.modal button[type=submit]'); await p.waitForTimeout(400);
 
-// 5) 소비율 슬라이더 -> 숫자 입력 동기화
-const capBefore = await p.locator('#burn-cap').textContent();
-await p.locator('[data-burn=range]').fill('3.5');
-await p.dispatchEvent('[data-burn=range]', 'input'); await p.waitForTimeout(250);
-const numAfter = await p.inputValue('[data-burn=num]');
-const capAfter = await p.locator('#burn-cap').textContent();
-ok('슬라이더 → 숫자입력 동기화', numAfter === '3.5', `숫자칸=${numAfter}`);
-ok('슬라이더 → 상한 재계산', capBefore !== capAfter, `${capBefore} → ${capAfter}`);
+// 5) 홈 소비 시나리오 — 실제 값을 바꾸지 않는 가정이어야 한다
+//    예전 홈 슬라이더는 목표 소비율(%)을 조절하며 targetBurn 을 실제로 저장했다.
+//    둘러보다 실수로 목표가 바뀌고, 코치 탭에도 같은 조작이 있어 헷갈렸다.
+const savedBefore = await p.evaluate(() => JSON.parse(localStorage.getItem('asset-compass.v1')).profile.targetBurn);
+const spendBefore = await p.locator('#burn-spend').textContent();
+const gaugeV = () => p.locator('.card:has([data-scenario=spend]) text.gauge__v').textContent();
+const vBefore = await gaugeV();
 
-// 6) 숫자 직접 입력 -> 슬라이더 동기화
-await p.locator('[data-burn=num]').fill('1.2');
-await p.dispatchEvent('[data-burn=num]', 'input'); await p.waitForTimeout(250);
-const rangeAfter = await p.inputValue('[data-burn=range]');
-ok('숫자입력 → 슬라이더 동기화', rangeAfter === '1.2', `슬라이더=${rangeAfter}`);
+const sl = p.locator('[data-scenario=spend]');
+const lo = await sl.getAttribute('min');
+await sl.fill(lo);
+await p.dispatchEvent('[data-scenario=spend]', 'input'); await p.waitForTimeout(300);
+ok('슬라이더 → 소비액 갱신', (await p.locator('#burn-spend').textContent()) !== spendBefore,
+  `${spendBefore} → ${await p.locator('#burn-spend').textContent()}`);
+ok('게이지 바늘도 함께 움직임', (await gaugeV()) !== vBefore, `${vBefore} → ${await gaugeV()}`);
 
-// 7) 저장 확인 (change 이벤트)
-await p.dispatchEvent('[data-burn=num]', 'change'); await p.waitForTimeout(400);
-const saved = await p.evaluate(() => JSON.parse(localStorage.getItem('asset-compass.v1')).profile.targetBurn);
-ok('목표 소비율 저장됨', saved === 1.2, 'targetBurn=' + saved);
+// 6) 놓아도 저장되지 않는다 (핵심)
+await p.dispatchEvent('[data-scenario=spend]', 'change'); await p.waitForTimeout(400);
+const savedAfter = await p.evaluate(() => JSON.parse(localStorage.getItem('asset-compass.v1')).profile.targetBurn);
+ok('시나리오는 저장되지 않음', savedAfter === savedBefore, `targetBurn ${savedBefore} → ${savedAfter}`);
+
+// 7) 초기화로 실제 예상 복귀
+await p.click('[data-act="scenario-reset"]'); await p.waitForTimeout(400);
+ok('현재 예상으로 초기화', (await p.locator('#burn-spend').textContent()) === spendBefore);
 
 // 8) 홈 목표 전환
 await p.click('.goal-pills button:nth-child(3)'); await p.waitForTimeout(500);
