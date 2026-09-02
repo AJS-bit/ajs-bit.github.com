@@ -150,19 +150,26 @@ export function lineChart(series, { height = 170, labels = [], yFormat = compact
     if (mk.label) lbls.push(centerLabel(mk.label, (x / W) * 100, 0, 'mark'));
   }
 
-  // 눈금 위치. 마지막 눈금은 늘 넣되, 직전 눈금과 너무 가까우면 그 자리를
-  // 대신 차지하게 한다. 둘 다 넣으면 글자가 겹친다 (실제로 '18년'과 '20년'이
-  // 8px 겹쳤다). 끝 값은 그래프의 기간을 알려주므로 버리지 않는다.
-  const step = Math.max(1, Math.ceil(len / 6));
-  const last = len - 1;
-  const idxs = [];
-  for (let i = 0; i < len; i += step) idxs.push(i);
-  if (idxs[idxs.length - 1] !== last) {
-    if (last - idxs[idxs.length - 1] < step * 0.6) idxs[idxs.length - 1] = last;
-    else idxs.push(last);
+  // 눈금은 **라벨이 실제로 채워진 위치 중에서만** 고른다.
+  // 호출부는 12개월마다 라벨을 채우고 나머지는 빈 문자열로 두는데, 여기서
+  // 데이터 길이 기준(len/6)으로 뽑으면 두 간격이 어긋나 대부분 빈 칸에 떨어진다.
+  // 실제로 '부채 잔액 경로'는 138칸을 23칸마다 뽑다가 '2년' 하나만 남았다.
+  const filled = [];
+  for (let i = 0; i < len; i++) if (labels[i]) filled.push(i);
+
+  const stride = Math.max(1, Math.ceil(filled.length / 6));
+  const ticks = [];
+  for (let k = 0; k < filled.length; k += stride) ticks.push(k);
+  // 마지막 라벨은 그래프가 다루는 기간을 알려주므로 늘 넣되, 직전 눈금과 너무
+  // 가까우면 그 자리를 대신 차지한다. 둘 다 그리면 겹친다 ('18년'과 '20년'이
+  // 8px 겹쳐 있었다).
+  const endK = filled.length - 1;
+  if (endK >= 0 && ticks[ticks.length - 1] !== endK) {
+    if (endK - ticks[ticks.length - 1] < stride * 0.6) ticks[ticks.length - 1] = endK;
+    else ticks.push(endK);
   }
-  for (const i of idxs) {
-    if (!labels[i]) continue;
+  for (const k of ticks) {
+    const i = filled[k];
     lbls.push(centerLabel(labels[i], (X(i) / W) * 100, H - PB + 5, 'axis'));
   }
 
