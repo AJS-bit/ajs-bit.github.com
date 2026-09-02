@@ -204,6 +204,23 @@ function burnCard(m, s) {
   const chip = tone === 'pos' ? 'pos' : tone === 'neg' ? 'neg' : tone === 'warn' ? 'warn' : 'accent';
   const baseline = Math.max(0, m.projected);
   syncScenario(baseline);
+
+  // 지출 기록이 없으면 조정할 대상 자체가 없다. 0원짜리 슬라이더를 띄우는 대신
+  // 무엇을 하면 되는지 알려준다. (소비율도 이때 '측정 불가'로 나온다)
+  if (baseline <= 0) {
+    return `<section class="card">
+      <div class="card__hd">
+        <h3>🧭 소비율 <span class="sub">순자산 대비</span></h3>
+        <span class="chip">측정 불가</span>
+      </div>
+      <div style="max-width:250px;margin:0 auto">${burnGauge(m, s, 'accent')}</div>
+      <p class="hint" style="margin-top:12px">이번 달 지출을 기록하면 순자산 대비 소비율과
+        이번 달 쓸 수 있는 금액을 계산합니다. 한 건만 넣어도 시작됩니다.</p>
+      <div class="btn-row" style="margin-top:12px">
+        <button class="btn btn--primary btn--sm" data-act="quick-add">지출 기록</button></div>
+    </section>`;
+  }
+
   const { min, max } = scenarioRange(baseline);
   const spend = scenarioSpend === null ? baseline : clamp(scenarioSpend, min, max);
 
