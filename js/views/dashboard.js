@@ -183,14 +183,23 @@ function burnCard(m, s, lim) {
   </section>`;
 }
 
-/* 목표 소비율에 따라 눈금 최대값이 다시 잡히므로 게이지도 슬라이더를 따라와야 한다.
-   max 가 target × 3 이라 같은 소비율이라도 목표를 바꾸면 호의 각도가 달라진다. */
+/* 게이지 눈금은 **목표와 무관하게 고정**한다.
+   예전에는 max 가 목표×3 이라, 목표 슬라이더를 끌면 분모만 커져서
+   가운데 숫자는 그대로인데 호만 줄어들었다. 오른쪽으로 끌수록 호가 짧아지니
+   방향이 거꾸로 느껴졌고(목표 0.7%→8% 에서 호가 100%→9.3%), 눈금자가 매번
+   다시 그려지니 어제와 오늘을 비교할 수도 없었다.
+   이제 바늘은 실제 소비율, 눈금은 목표 위치다. 역할이 나뉜다.
+
+   상한 월 6% = 연 72%. 완전자립(연 4%)부터 주의(연 100%) 직전까지 담기는 범위이고,
+   목표 슬라이더 상한(월 8%)을 넘겨 잡으면 목표 눈금이 끝에 붙는다. */
+const BURN_GAUGE_MAX = 6;
+
 function burnGauge(m, target, tone) {
   return gauge({
-    value: m.burnProjected, max: Math.max(target * 3, 0.3),
+    value: m.burnProjected, max: BURN_GAUGE_MAX,
     label: m.burnProjected === null ? '—' : `${m.burnProjected.toFixed(2)}%`,
     sub: '이번 달 예상',
-    tone, ticks: [{ at: target }],
+    tone, ticks: [{ at: target, tone: 'accent', label: '목표' }],
   });
 }
 

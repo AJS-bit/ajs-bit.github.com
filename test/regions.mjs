@@ -68,17 +68,27 @@ t(saved === 3, '목표 소비율 영속화', `targetBurn=${saved}`);
 // 홈은 슬라이더와 출력이 한 카드에 있어 카드째 다시 그릴 수 없다. 갱신 대상을
 // 손으로 짚는 방식이라 하나 빠뜨리기 쉽고, 실제로 게이지가 빠져 있었다.
 await p.click('.nav button:has-text("홈")'); await p.waitForTimeout(400);
-const gaugeArc = () => p.evaluate(() => {
+// 게이지 눈금은 목표와 무관하게 고정이다. 목표를 바꾸면 **호가 아니라 목표 눈금**이
+// 움직여야 한다. 예전에는 눈금 최대값이 목표×3 이라 호가 거꾸로 줄어들었다.
+const gaugeParts = () => p.evaluate(() => {
   const card = [...document.querySelectorAll('.card')].find((c) => c.querySelector('[data-burn=range]'));
-  return [...card.querySelectorAll('svg path')].map((x) => x.getAttribute('d')).join('|');
+  const svg = card.querySelector('svg.chart');
+  return {
+    arc: [...svg.querySelectorAll('path')].map((x) => x.getAttribute('d')).join('|'),
+    tick: [...svg.querySelectorAll('line')].map((x) => `${x.getAttribute('x1')},${x.getAttribute('y1')}`).join('|'),
+    label: [...svg.querySelectorAll('text')].map((x) => x.textContent).join('|'),
+  };
 });
-const arc0 = await gaugeArc();
+const g0 = await gaugeParts();
 const cap0 = await p.locator('#burn-cap').textContent();
+t(g0.label.includes('목표'), '게이지에 목표 눈금 라벨이 있다');
 await p.locator('[data-burn=range]').evaluate((n) => { n.value = '6'; n.dispatchEvent(new Event('input', { bubbles: true })); });
 await p.waitForTimeout(300);
+const g1 = await gaugeParts();
 t((await p.locator('#burn-cap').textContent()) !== cap0, '홈 소비 상한 갱신');
 t((await p.locator('[data-burn=num]').inputValue()) === '6.0', '홈 숫자칸 동기화');
-t((await gaugeArc()) !== arc0, '홈 게이지가 슬라이더를 따라 갱신');
+t(g1.tick !== g0.tick, '목표 눈금이 슬라이더를 따라 이동한다');
+t(g1.arc === g0.arc, '게이지 호는 목표와 무관하게 고정된다');
 
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');

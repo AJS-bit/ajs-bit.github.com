@@ -36,11 +36,18 @@ export function gauge({ value, max = 100, label, sub, tone = 'accent', ticks = [
     return `M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 ${a2 - a1 > 180 ? 1 : 0} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`;
   };
   const gid = id();
+  // 눈금. `tone` 으로 색을, `label` 로 설명을 줄 수 있다.
+  // 라벨은 원호 **안쪽**에 붙인다 — 바깥은 viewBox 위쪽 여유가 2.5px 뿐이라 잘린다.
+  // (게이지는 preserveAspectRatio 를 쓰지 않아 글자가 늘어나지 않으므로 <text> 를 쓴다)
   const tickMarks = ticks.map((t) => {
     const a = start + (clamp((t.at / max) * 100, 0, 100) / 100) * span;
     const [x1, y1] = pol(a, R - W / 2 - 2), [x2, y2] = pol(a, R + W / 2 + 2);
+    const color = t.tone ? `var(--${t.tone})` : 'var(--ink3)';
+    const [lx, ly] = pol(a, R - W / 2 - 12);
     return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"
-      stroke="var(--ink3)" stroke-width="2" stroke-linecap="round" opacity=".85"/>`;
+      stroke="${color}" stroke-width="${t.tone ? 2.6 : 2}" stroke-linecap="round" opacity="${t.tone ? 1 : 0.85}"/>
+      ${t.label ? `<text x="${lx.toFixed(1)}" y="${(ly + 3).toFixed(1)}" text-anchor="middle"
+        font-size="9" font-weight="700" fill="${color}">${esc(t.label)}</text>` : ''}`;
   }).join('');
 
   return `<svg class="chart" viewBox="0 0 200 ${H}" role="img" aria-label="${esc(label)} ${esc(sub || '')}">
