@@ -4,6 +4,22 @@ import { compact, clamp, n } from './format.js';
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const id = () => 'g' + Math.random().toString(36).slice(2, 8);
 
+/* ---------- 늘어나는 차트 위에 얹는 라벨 ----------
+   lineChart/spark 의 svg 는 `preserveAspectRatio="none"` + CSS `width:100%` +
+   `style="height:Npx"` 조합이라 **세로 배율은 늘 1인데 가로만** 컨테이너 폭에
+   맞춰 늘어난다. 그 안에 <text> 를 넣으면 글자가 가로로만 퍼진다.
+   실측하면 뷰포트 1100px 에서 2.5배까지 벌어졌다.
+   그래서 글자는 SVG 밖에 HTML 로 얹는다.
+     · 세로: 배율이 1이므로 viewBox 의 y 를 px 로 그대로 쓴다
+     · 가로: 컨테이너 대비 백분율. 양 끝에서 잘리지 않게 CSS clamp() 로
+             글자 절반 폭만큼 안쪽에 묶는다 (SVG 시절 x 를 clamp 하던 것과 같은 역할) */
+const halfW = (t) => Math.round(String(t).length * 5.6) + 3;
+
+/** 세로선/눈금처럼 x 좌표에 중앙 정렬되는 라벨 */
+const centerLabel = (text, xPct, topPx, kind) =>
+  `<span class="chartbox__lbl chartbox__lbl--${kind}" style="top:${topPx}px;` +
+  `left:clamp(${halfW(text)}px, ${xPct.toFixed(2)}%, calc(100% - ${halfW(text)}px))">${esc(text)}</span>`;
+
 /* ---------- 소비율 게이지 (메인 지표) ---------- */
 export function gauge({ value, max = 100, label, sub, tone = 'accent', ticks = [] }) {
   // 원호 끝점이 viewBox 밖으로 나가면 아래 요소와 겹친다.
@@ -127,16 +143,31 @@ export function lineChart(series, { height = 170, labels = [], yFormat = compact
     }
   }
 
+  const lbls = [];
   for (const mk of markers) {
     const x = X(mk.at);
-    out += `<line x1="${x.toFixed(1)}" y1="${PT}" x2="${x.toFixed(1)}" y2="${H - PB}" stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="4 3"/>
-      <text x="${clamp(x, 22, W - 22).toFixed(1)}" y="${PT - 4}" text-anchor="middle" font-size="9" fill="var(--warn)" font-weight="700">${esc(mk.label)}</text>`;
+    out += `<line x1="${x.toFixed(1)}" y1="${PT}" x2="${x.toFixed(1)}" y2="${H - PB}" stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="4 3"/>`;
+    if (mk.label) lbls.push(centerLabel(mk.label, (x / W) * 100, 0, 'mark'));
   }
 
+  // 눈금 위치. 마지막 눈금은 늘 넣되, 직전 눈금과 너무 가까우면 그 자리를
+  // 대신 차지하게 한다. 둘 다 넣으면 글자가 겹친다 (실제로 '18년'과 '20년'이
+  // 8px 겹쳤다). 끝 값은 그래프의 기간을 알려주므로 버리지 않는다.
   const step = Math.max(1, Math.ceil(len / 6));
-  out += labels.map((l, i) => (i % step === 0 || i === len - 1)
-    ? `<text x="${clamp(X(i), 14, W - 14).toFixed(1)}" y="${H - 6}" text-anchor="middle" font-size="9" fill="var(--ink3)">${esc(l)}</text>` : '').join('');
-  return out + '</svg>';
+  const last = len - 1;
+  const idxs = [];
+  for (let i = 0; i < len; i += step) idxs.push(i);
+  if (idxs[idxs.length - 1] !== last) {
+    if (last - idxs[idxs.length - 1] < step * 0.6) idxs[idxs.length - 1] = last;
+    else idxs.push(last);
+  }
+  for (const i of idxs) {
+    if (!labels[i]) continue;
+    lbls.push(centerLabel(labels[i], (X(i) / W) * 100, H - PB + 5, 'axis'));
+  }
+
+  out += '</svg>';
+  return lbls.length ? `<div class="chartbox">${out}${lbls.join('')}</div>` : out;
 }
 
 /* ---------- 가로 막대 리스트 ---------- */
@@ -260,17 +291,10 @@ export function spark(data, {
   const showMark = markAt !== null && markLabel;
   if (!showTarget && !showMark) return svg;
 
-  // 라벨은 SVG 안에 넣지 않는다.
-  // preserveAspectRatio="none" 이라 가로만 늘어나는데(높이는 style 로 못박혀 세로 배율이
-  // 항상 1) 글자를 안에 넣으면 글자까지 같이 납작해진다. 화면이 넓을수록 심해서
-  // 뷰포트 1100px 에서는 2.5배까지 퍼졌다. 그래서 HTML 로 얹는다.
-  //   · 세로: 세로 배율이 1이므로 viewBox 의 y 를 그대로 px 로 쓴다
-  //   · 가로: 컨테이너 대비 백분율. 마커는 선 위에 중앙 정렬하되 양 끝에서
-  //           잘리지 않게 CSS clamp() 로 글자 절반만큼 안쪽에 묶는다
+  // 라벨은 SVG 안에 넣지 않는다 — 파일 위쪽 centerLabel 주석 참고
   const ty = Y(target) + 10 > H - 2 ? Y(target) - 12 : Y(target) + 2;
-  const half = (t) => Math.round(t.length * 5.6) + 3;
-  return `<div class="spark">${svg}
-    ${showTarget ? `<span class="spark__lbl" style="top:${ty.toFixed(1)}px;left:${(P + 2) / W * 100}%">${esc(targetLabel)}</span>` : ''}
-    ${showMark ? `<span class="spark__lbl spark__lbl--mark" style="top:0;left:clamp(${half(markLabel)}px, ${(X(markAt) / W * 100).toFixed(2)}%, calc(100% - ${half(markLabel)}px))">${esc(markLabel)}</span>` : ''}
+  return `<div class="chartbox">${svg}
+    ${showTarget ? `<span class="chartbox__lbl chartbox__lbl--target" style="top:${ty.toFixed(1)}px;left:${((P + 2) / W * 100).toFixed(2)}%">${esc(targetLabel)}</span>` : ''}
+    ${showMark ? centerLabel(markLabel, (X(markAt) / W) * 100, 0, 'mark') : ''}
   </div>`;
 }
