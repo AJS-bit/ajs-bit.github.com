@@ -17,6 +17,7 @@ node test/screens.mjs    # 13개 화면이 콘솔 에러 없이 렌더되는지 
 node test/flows.mjs      # 자산/지출/목표 입력, 설정, 영속화, 단축키
 node test/home.mjs       # 홈 화면 — 알림, 테마, 슬라이더 동기화, 목표 전환
 node test/sliders.mjs    # 슬라이더 5종이 드래그 중 실시간으로 반응하는지
+node test/regions.mjs    # 부분 갱신한 자리의 버튼·라벨·저장값이 멀쩡한지
 ```
 
 환경변수: `URL`(기본 http://localhost:8000), `OUT`(스크린샷 폴더, 기본 ./test/out),
@@ -35,3 +36,8 @@ node test/sliders.mjs    # 슬라이더 5종이 드래그 중 실시간으로 �
 특히 `sliders.mjs` 는 `page.mouse.down()` → 여러 번 `move` → `up` 으로 **진짜 드래그를
 흉내내고, 아직 놓지 않은 상태에서** 화면 숫자를 읽는다. `fill()` 이나 `dispatchEvent`
 로는 이 부류의 버그가 잡히지 않는다.
+
+`regions.mjs` 는 반대쪽을 본다. 드래그 중에는 화면 전체가 아니라 출력 영역만
+`innerHTML` 로 갈아끼우는데, 그 자리에 있던 버튼(목표 금액 프리셋, 전략 선택,
+'필요액으로 맞추기')이 갈아끼운 뒤에도 동작하는지, 라벨과 실제 저장값이 어긋나지
+않는지 확인한다. 값이 따라오는 것과 자리가 멀쩡한 것은 별개 문제다.

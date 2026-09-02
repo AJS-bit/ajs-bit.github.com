@@ -447,15 +447,15 @@ function bind() {
     const el = e.target;
     if (el.dataset.sim) {
       Goals.sim[el.dataset.sim] = el.dataset.sim === 'returnRate' ? Number(el.value) : n(el.value);
-      render();
+      Goals.liveSim(el);
     } else if (el.dataset.fc) {
-      Goals.fc[el.dataset.fc] = n(el.value); render();
+      Goals.fc[el.dataset.fc] = n(el.value); Goals.liveFc();
     } else if (el.dataset.whatif) {
-      Coach.whatif[el.dataset.whatif] = n(el.value); render();
+      Coach.whatif[el.dataset.whatif] = n(el.value); Coach.liveWhatIf();
     } else if (el.dataset.act === 'extra-pay') {
-      state.settings.extraDebtPay = n(el.value); commit();
+      state.settings.extraDebtPay = n(el.value); commit({ silent: true }); Assets.liveExtraPay();
     } else if (el.dataset.act === 'target-burn') {
-      state.profile.targetBurn = Number(el.value); commit();
+      state.profile.targetBurn = Number(el.value); commit({ silent: true }); Coach.liveTargetBurn();
     } else if (el.dataset.burn) {
       tuneBurn(Number(el.value), el.dataset.burn);
     }
@@ -463,8 +463,14 @@ function bind() {
 
   main.addEventListener('change', (e) => {
     const el = e.target;
+    // 드래그를 놓은 시점에만 전체를 다시 그린다. 상단 알림 배지처럼
+    // 화면 밖 요소는 부분 갱신이 닿지 않으므로 여기서 맞춘다.
     if (el.dataset.act === 'manual-total') {
       state.limits.total = n(el.value); state.limits.mode = 'manual'; commit();
+    } else if (el.dataset.sim || el.dataset.fc || el.dataset.whatif) {
+      render();
+    } else if (el.dataset.act === 'extra-pay' || el.dataset.act === 'target-burn') {
+      commit();
     } else if (el.dataset.burn) {
       // 드래그를 놓거나 숫자 입력을 확정한 시점에만 전체 화면을 다시 그린다
       tuneBurn(Number(el.value), el.dataset.burn);

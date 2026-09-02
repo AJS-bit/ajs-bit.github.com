@@ -1,0 +1,7 @@
+# 스크린샷은 검증할 때마다 새로 찍는다 (test/out/.gitkeep 만 남긴다)
+test/out/*.png
+
+# playwright 는 검증용으로만 쓰고 앱 자체는 런타임 의존성이 없다
+node_modules/
+package.json
+package-lock.json

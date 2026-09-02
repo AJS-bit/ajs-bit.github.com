@@ -3,7 +3,7 @@ import { state, ASSET_TYPES, DEBT_TYPES } from '../store.js';
 import { metrics, totals, simulateDebt, assetRate } from '../finance.js';
 import { compact, won, pct, months as fmtMonths, n, clamp } from '../format.js';
 import { donut, legend, lineChart, esc } from '../charts.js';
-import { card, empty } from '../ui.js';
+import { card, empty, setHTML, setText } from '../ui.js';
 
 export const title = '자산';
 export const tabs = [
@@ -190,15 +190,20 @@ function debtsTab() {
 }
 
 /* ================= 상환 전략 ================= */
-function strategyTab() {
+/* 추가 상환 슬라이더의 상한.
+   m.capacity 는 추가 상환액을 이미 뺀 값이라, 상한을 capacity 로 잡으면
+   오른쪽으로 끌수록 상한도 같이 줄어드는 움직이는 과녁이 된다.
+   추가 상환을 하기 전의 여력(capacity + extra)을 기준으로 고정한다. */
+function payMax(m, extra) {
+  return Math.max(500000, Math.round(Math.max(0, m.capacity + extra) / 50000) * 50000);
+}
+
+/** 상환 전략 탭의 파생값. 최초 렌더와 드래그 중 부분 갱신이 같은 값을 쓴다. */
+function strategyData() {
   const s = state;
   const m = metrics(s);
   const debts = s.debts.filter((d) => n(d.balance) > 0);
-  if (!debts.length) {
-    return card('🏔️ 부채상환 전략',
-      empty('🎉', '상환할 부채가 없습니다.<br>저축여력 전액을 자산 증식에 쓸 수 있는 최고의 상태입니다.',
-        `<button class="btn btn--sm" data-nav="goals">목표 설정하러 가기</button>`));
-  }
+  if (!debts.length) return null;
 
   const extra = n(s.settings.extraDebtPay);
   const strategy = s.settings.debtStrategy || 'avalanche';
@@ -225,10 +230,25 @@ function strategyTab() {
     return a.slice(0, len);
   };
 
+  return { s, m, debts, extra, strategy, chosen, base, saveInterest, saveMonths,
+    worst, ret, payFirst, freedMonthly, maxLen, pad };
+}
+
+/* 슬라이더가 들어있는 카드는 드래그 중에 다시 그릴 수 없다.
+   그래서 값이 바뀌는 부분만 repay-* id 로 떼어 두고 liveExtraPay() 가 갈아끼운다. */
+function strategyTab() {
+  const d = strategyData();
+  if (!d) {
+    return card('🏔️ 부채상환 전략',
+      empty('🎉', '상환할 부채가 없습니다.<br>저축여력 전액을 자산 증식에 쓸 수 있는 최고의 상태입니다.',
+        `<button class="btn btn--sm" data-nav="goals">목표 설정하러 가기</button>`));
+  }
+  const { m, extra, strategy } = d;
+
   return `
     <section class="card">
       <div class="card__hd"><h3>🏔️ 상환 전략 비교</h3>
-        <span class="sub">추가 상환 ${won(extra)}/월</span></div>
+        <span class="sub" id="repay-sub">추가 상환 ${won(extra)}/월</span></div>
       <div class="seg" style="margin-bottom:14px">
         ${[['avalanche', '고금리 우선', '이자 최소'], ['snowball', '소액 우선', '심리적 동기'], ['current', '최소상환만', '기준선']]
           .map(([k, l, d]) => `<label class="${strategy === k ? 'is-on' : ''}" data-act="set-strategy" data-v="${k}"
@@ -236,14 +256,24 @@ function strategyTab() {
       </div>
 
       <div class="field">
-        <label>추가 상환액 (월) — 저축여력 ${won(Math.max(0, m.capacity))} 중</label>
+        <label>추가 상환액 (월) — 저축여력 <span id="repay-capacity">${won(Math.max(0, m.capacity))}</span> 중</label>
         <input class="range" type="range" min="0" step="50000"
-          max="${Math.max(500000, Math.round(Math.max(0, m.capacity) / 50000) * 50000)}"
-          value="${clamp(extra, 0, Math.max(500000, Math.max(0, m.capacity)))}" data-act="extra-pay">
+          max="${payMax(m, extra)}"
+          value="${clamp(extra, 0, payMax(m, extra))}" data-act="extra-pay">
         <div class="row" style="margin-top:4px"><span class="hint">0원</span>
-          <span class="hint num" style="color:var(--accent);font-weight:700">${won(extra)}</span></div>
+          <span class="hint num" style="color:var(--accent);font-weight:700" id="repay-extra">${won(extra)}</span></div>
       </div>
 
+      <div id="repay-stats">${repayStats(d)}</div>
+    </section>
+
+    <div id="repay-out">${repayOut(d)}</div>`;
+}
+
+/** 추가 상환액에 따라 바뀌는 요약 숫자 (슬라이더가 든 카드 안쪽) */
+function repayStats(d) {
+  const { m, chosen, saveInterest, saveMonths } = d;
+  return `
       <div class="stats stats--3">
         <div class="stat"><span class="lbl">상환 완료까지</span>
           <div class="v num">${chosen.months === null ? '불가' : fmtMonths(chosen.months)}</div>
@@ -257,9 +287,13 @@ function strategyTab() {
       </div>
       ${chosen.months === null ? `<div class="alert alert--danger" style="margin-top:12px">
         <span class="alert__ico">🛑</span><div><b>현재 상환액으로는 원금이 줄지 않습니다</b>
-        <p>이자가 상환액을 앞섭니다. 월 상환액을 늘리거나 금리 인하·채무조정을 알아봐야 합니다.</p></div></div>` : ''}
-    </section>
+        <p>이자가 상환액을 앞섭니다. 월 상환액을 늘리거나 금리 인하·채무조정을 알아봐야 합니다.</p></div></div>` : ''}`;
+}
 
+/** 추가 상환액에 따라 바뀌는 카드들 (슬라이더 바깥) */
+function repayOut(d) {
+  const { s, m, debts, strategy, chosen, base, worst, ret, payFirst, freedMonthly, maxLen, pad } = d;
+  return `
     <section class="card">
       <div class="card__hd"><h3>부채 잔액 경로</h3><span class="sub">최소상환 vs ${strategy === 'snowball' ? '소액 우선' : '고금리 우선'}</span></div>
       ${lineChart([
@@ -307,3 +341,15 @@ function strategyTab() {
         })())}</b></div>
     </section>`;
 }
+
+/* ---------- 드래그 중 부분 갱신 ---------- */
+export function liveExtraPay() {
+  const d = strategyData();
+  if (!d) return;
+  setText('repay-sub', `추가 상환 ${won(d.extra)}/월`);
+  setText('repay-extra', won(d.extra));
+  setText('repay-capacity', won(Math.max(0, d.m.capacity)));
+  setHTML('repay-stats', repayStats(d));
+  setHTML('repay-out', repayOut(d));
+}
+

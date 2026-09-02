@@ -149,3 +149,31 @@ export const card = (title, body, { sub = '', action = '' } = {}) => `
 
 export const empty = (emoji, text, btn = '') => `
   <div class="empty"><span class="e">${emoji}</span><p>${text}</p>${btn}</div>`;
+
+/* ---------- 부분 갱신 ----------
+   슬라이더를 드래그하는 동안에는 #main 을 통째로 다시 그릴 수 없다.
+   잡고 있던 노드가 사라지면 브라우저가 드래그를 놓아버리기 때문이다.
+   그래서 슬라이더가 들어있는 카드는 건드리지 않고 출력 영역만 갈아끼운다.
+   출력 HTML 은 최초 렌더와 같은 함수로 만들어야 둘이 어긋나지 않는다. */
+export function setHTML(id, html) {
+  const el = document.getElementById(id);
+  if (el && el.innerHTML !== html) el.innerHTML = html;
+}
+
+export function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el && el.textContent !== text) el.textContent = text;
+}
+
+/**
+ * 슬라이더의 min/max 처럼 다른 슬라이더 때문에 범위가 달라지는 속성을 고친다.
+ * 지금 드래그 중인 노드(`except`)는 값이 튀므로 반드시 건너뛴다.
+ * 크롬은 range 의 input 이벤트를 포커스 이동보다 먼저 쏘는 경우가 있어
+ * `document.activeElement` 로는 "지금 잡고 있는 슬라이더"를 알 수 없다.
+ * 그래서 판단하지 않고 이벤트 대상을 그대로 넘겨받는다.
+ */
+export function setAttr(sel, name, value, except) {
+  const el = document.querySelector(sel);
+  if (!el || el === except) return;
+  if (el.getAttribute(name) !== String(value)) el.setAttribute(name, String(value));
+}

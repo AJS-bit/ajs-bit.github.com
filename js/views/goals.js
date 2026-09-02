@@ -3,7 +3,7 @@ import { state } from '../store.js';
 import { metrics, allocateGoals, requiredSaving, monthsToTarget, futureValue, project, totals } from '../finance.js';
 import { compact, won, pct, months as fmtMonths, n, clamp } from '../format.js';
 import { lineChart, progress, legend, esc } from '../charts.js';
-import { card, empty } from '../ui.js';
+import { card, empty, setHTML, setText, setAttr } from '../ui.js';
 
 export const title = '목표';
 export const tabs = [
@@ -138,7 +138,11 @@ function goalCard(r, s) {
 }
 
 /* ================= 목표자산 시뮬레이션 ================= */
-function simTab() {
+/** 월 저축액 슬라이더의 상한. 목표·기간·수익률이 바뀌면 함께 움직인다. */
+const simMonthlyMax = (need) => Math.max(3_000_000, Math.round(need * 2 / 100000) * 100000);
+
+/** 시뮬레이션 탭의 파생값. 최초 렌더와 드래그 중 부분 갱신이 같은 값을 쓴다. */
+function simData() {
   const s = state;
   const m = metrics(s);
   const t = totals(s);
@@ -165,42 +169,68 @@ function simTab() {
   const principal = monthly * monthsN;
   const interest = Math.max(0, fvAtPlan - pv - principal);
 
+  return { s, m, ret, monthsN, pv, need, monthly, eta, fvAtPlan, gapSave,
+    path, pathNeed, labels, principal, interest };
+}
+
+/* 슬라이더가 든 카드는 드래그 중에 다시 그릴 수 없으므로
+   값이 바뀌는 부분만 sim-* id 로 떼어 두고 liveSim() 이 갈아끼운다. */
+function simTab() {
+  const d = simData();
+  const { s, m, ret, pv, need, monthly } = d;
+
   return `
     <section class="card">
       <div class="card__hd"><h3>🎯 목표자산 시뮬레이션</h3>
         <span class="sub">현재 순자산 ${compact(pv)}</span></div>
 
       <div class="field">
-        <label>목표 금액 <b class="num" style="color:var(--accent);float:right">${compact(sim.target)}</b></label>
+        <label>목표 금액 <b class="num" style="color:var(--accent);float:right" id="sim-v-target">${compact(sim.target)}</b></label>
         <input class="range" type="range" min="10000000" max="3000000000" step="10000000"
           value="${sim.target}" data-sim="target">
-        <div class="btn-row" style="margin-top:8px">
-          ${[50_000_000, 100_000_000, 300_000_000, 500_000_000, 1_000_000_000]
-            .map((v) => `<button class="btn btn--sm ${sim.target === v ? 'btn--primary' : ''}" data-sim-set="target" data-v="${v}">${compact(v)}</button>`).join('')}
-        </div>
+        <div class="btn-row" style="margin-top:8px" id="sim-presets">${simPresets()}</div>
       </div>
 
       <div class="field">
-        <label>목표 기간 <b class="num" style="color:var(--accent);float:right">${sim.years}년</b></label>
+        <label>목표 기간 <b class="num" style="color:var(--accent);float:right" id="sim-v-years">${sim.years}년</b></label>
         <input class="range" type="range" min="1" max="40" step="1" value="${sim.years}" data-sim="years">
       </div>
 
       <div class="field">
-        <label>연 기대수익률 <b class="num" style="color:var(--accent);float:right">${(ret * 100).toFixed(1)}%</b></label>
+        <label>연 기대수익률 <b class="num" style="color:var(--accent);float:right" id="sim-v-ret">${(ret * 100).toFixed(1)}%</b></label>
         <input class="range" type="range" min="0" max="0.15" step="0.005" value="${ret}" data-sim="returnRate">
         <div class="help">설정의 위험성향(${s.profile.riskProfile === 'conservative' ? '안정형' : s.profile.riskProfile === 'aggressive' ? '공격형' : '균형형'}) 기본값 ${(n(s.profile.expectedReturn) * 100).toFixed(1)}%</div>
       </div>
 
       <div class="field">
-        <label>월 저축액 <b class="num" style="color:var(--accent);float:right">${won(monthly)}</b></label>
-        <input class="range" type="range" min="0" max="${Math.max(3_000_000, Math.round(need * 2 / 100000) * 100000)}"
-          step="50000" value="${clamp(monthly, 0, Math.max(3_000_000, need * 2))}" data-sim="monthly">
-        <div class="help">현재 저축여력 ${won(Math.max(0, m.capacity))}
-          <button class="btn btn--sm btn--ghost" data-sim-set="monthly" data-v="${Math.max(0, Math.round(m.capacity))}" style="margin-left:6px">여력으로 맞추기</button>
-          <button class="btn btn--sm btn--ghost" data-sim-set="monthly" data-v="${Math.round(need)}">필요액으로 맞추기</button>
-        </div>
+        <label>월 저축액 <b class="num" style="color:var(--accent);float:right" id="sim-v-monthly">${won(monthly)}</b></label>
+        <input class="range" type="range" min="0" max="${simMonthlyMax(need)}"
+          step="50000" value="${clamp(monthly, 0, simMonthlyMax(need))}" data-sim="monthly">
+        <div class="help" id="sim-monthly-help">${simMonthlyHelp(d)}</div>
       </div>
     </section>
+
+    <div id="sim-out">${simOut(d)}</div>`;
+}
+
+/** 목표 금액 프리셋 버튼 — 선택 상태가 슬라이더를 따라 바뀐다 */
+function simPresets() {
+  return [50_000_000, 100_000_000, 300_000_000, 500_000_000, 1_000_000_000]
+    .map((v) => `<button class="btn btn--sm ${sim.target === v ? 'btn--primary' : ''}" data-sim-set="target" data-v="${v}">${compact(v)}</button>`).join('');
+}
+
+/** 월 저축액 슬라이더 아래 도움말 — '필요액으로 맞추기' 값이 목표를 따라 바뀐다 */
+function simMonthlyHelp(d) {
+  const { m, need } = d;
+  return `현재 저축여력 ${won(Math.max(0, m.capacity))}
+          <button class="btn btn--sm btn--ghost" data-sim-set="monthly" data-v="${Math.max(0, Math.round(m.capacity))}" style="margin-left:6px">여력으로 맞추기</button>
+          <button class="btn btn--sm btn--ghost" data-sim-set="monthly" data-v="${Math.round(need)}">필요액으로 맞추기</button>`;
+}
+
+/** 슬라이더 바깥의 결과 카드들 */
+function simOut(d) {
+  const { pv, need, monthly, eta, fvAtPlan, gapSave, path, pathNeed, labels, principal, interest } = d;
+  return `
 
     <section class="card">
       <div class="card__hd"><h3>결과</h3></div>
@@ -241,8 +271,23 @@ function simTab() {
     </section>`;
 }
 
+/* ---------- 드래그 중 부분 갱신 ----------
+   `except` 는 지금 잡고 있는 슬라이더다. 그 노드의 속성은 건드리면 안 된다. */
+export function liveSim(except) {
+  const d = simData();
+  setText('sim-v-target', compact(sim.target));
+  setText('sim-v-years', `${sim.years}년`);
+  setText('sim-v-ret', `${(d.ret * 100).toFixed(1)}%`);
+  setText('sim-v-monthly', won(d.monthly));
+  setHTML('sim-presets', simPresets());
+  setHTML('sim-monthly-help', simMonthlyHelp(d));
+  setAttr('[data-sim="monthly"]', 'max', simMonthlyMax(d.need), except);
+  setHTML('sim-out', simOut(d));
+}
+
 /* ================= 미래 자산 예측 ================= */
-function forecastTab() {
+/** 미래 예측 탭의 파생값. 최초 렌더와 드래그 중 부분 갱신이 같은 값을 쓴다. */
+function fcData() {
   const s = state;
   const m = metrics(s);
   const monthsN = fc.years * 12;
@@ -272,11 +317,38 @@ function forecastTab() {
   const debtFree = base.debt.months;
   const end = base.series[base.series.length - 1];
 
+  return { s, m, monthsN, base, stepN, netBase, netBad, netGood, labels, milestones, debtFree, end };
+}
+
+/* 슬라이더가 든 카드는 드래그 중에 다시 그릴 수 없으므로
+   값이 바뀌는 부분만 fc-* id 로 떼어 두고 liveFc() 가 갈아끼운다. */
+function forecastTab() {
+  const d = fcData();
+
   return `
     <section class="card">
       <div class="card__hd"><h3>🔮 미래 자산 예측</h3>
-        <span class="sub">${fc.years}년 후</span></div>
-      <div class="row" style="align-items:flex-start;gap:12px;flex-wrap:wrap">
+        <span class="sub" id="fc-sub">${fc.years}년 후</span></div>
+      <div class="row" style="align-items:flex-start;gap:12px;flex-wrap:wrap" id="fc-head">${fcHead(d)}</div>
+
+      <div class="field" style="margin-top:16px">
+        <label>예측 기간 <b class="num" style="color:var(--accent);float:right" id="fc-v-years">${fc.years}년</b></label>
+        <input class="range" type="range" min="1" max="40" step="1" value="${fc.years}" data-fc="years">
+      </div>
+      <div class="field" style="margin-bottom:4px">
+        <label>월 저축 추가 <b class="num" style="color:var(--accent);float:right" id="fc-v-extra">${won(fc.extraSave)}</b></label>
+        <input class="range" type="range" min="0" max="2000000" step="50000" value="${clamp(fc.extraSave, 0, 2000000)}" data-fc="extraSave">
+        <div class="help" id="fc-help">${fcHelp(d)}</div>
+      </div>
+    </section>
+
+    <div id="fc-out">${fcOut(d)}</div>`;
+}
+
+/** 슬라이더가 든 카드 안쪽의 요약 (예상 순자산 · 시나리오 범위) */
+function fcHead(d) {
+  const { m, netBad, netGood, end } = d;
+  return `
         <div style="flex:1;min-width:240px">
           <span class="lbl">${fc.years}년 뒤 예상 순자산</span>
           <div class="big num pos">${compact(end?.net ?? 0)}</div>
@@ -287,20 +359,20 @@ function forecastTab() {
             <div class="stat"><span class="lbl">비관 시나리오</span><div class="v num">${compact(netBad[netBad.length - 1] ?? 0)}</div></div>
             <div class="stat"><span class="lbl">낙관 시나리오</span><div class="v num pos">${compact(netGood[netGood.length - 1] ?? 0)}</div></div>
           </div>
-        </div>
-      </div>
+        </div>`;
+}
 
-      <div class="field" style="margin-top:16px">
-        <label>예측 기간 <b class="num" style="color:var(--accent);float:right">${fc.years}년</b></label>
-        <input class="range" type="range" min="1" max="40" step="1" value="${fc.years}" data-fc="years">
-      </div>
-      <div class="field" style="margin-bottom:4px">
-        <label>월 저축 추가 <b class="num" style="color:var(--accent);float:right">${won(fc.extraSave)}</b></label>
-        <input class="range" type="range" min="0" max="2000000" step="50000" value="${clamp(fc.extraSave, 0, 2000000)}" data-fc="extraSave">
-        <div class="help">지출을 줄여 저축을 늘렸을 때의 효과를 바로 확인할 수 있습니다.
-          ${fc.extraSave > 0 ? `<b class="pos">현재 설정으로 ${fc.years}년 뒤 ${compact((end?.net ?? 0) - (project(s, monthsN, { scenario: 'base' }).series.at(-1)?.net ?? 0))} 증가</b>` : ''}</div>
-      </div>
-    </section>
+/** 저축 추가 슬라이더 아래 도움말 */
+function fcHelp(d) {
+  const { s, monthsN, end } = d;
+  return `지출을 줄여 저축을 늘렸을 때의 효과를 바로 확인할 수 있습니다.
+          ${fc.extraSave > 0 ? `<b class="pos">현재 설정으로 ${fc.years}년 뒤 ${compact((end?.net ?? 0) - (project(s, monthsN, { scenario: 'base' }).series.at(-1)?.net ?? 0))} 증가</b>` : ''}`;
+}
+
+/** 슬라이더 바깥의 예측 카드들 */
+function fcOut(d) {
+  const { s, m, monthsN, base, stepN, netBase, netBad, netGood, labels, milestones, debtFree } = d;
+  return `
 
     <section class="card">
       <div class="card__hd"><h3>순자산 예측 경로</h3><span class="sub">비관 ~ 낙관 범위</span></div>
@@ -335,4 +407,15 @@ function forecastTab() {
     ${m.capacity < 0 ? `<div class="alert alert--danger">
       <span class="alert__ico">🔥</span><div><b>현재 저축여력이 마이너스입니다</b>
       <p>예측은 매달 ${won(-m.capacity)}씩 자산을 헐어 쓰는 것으로 계산됩니다. 지출 구조를 먼저 바꿔야 합니다.</p></div></div>` : ''}`;
+}
+
+/* ---------- 드래그 중 부분 갱신 ---------- */
+export function liveFc() {
+  const d = fcData();
+  setText('fc-sub', `${fc.years}년 후`);
+  setText('fc-v-years', `${fc.years}년`);
+  setText('fc-v-extra', won(fc.extraSave));
+  setHTML('fc-head', fcHead(d));
+  setHTML('fc-help', fcHelp(d));
+  setHTML('fc-out', fcOut(d));
 }
