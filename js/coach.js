@@ -63,6 +63,14 @@ export function insights(s) {
         ? `${g.desc} 목표선(${targetAnnual.toFixed(1)}%)까지 오려면 월 소비를 ${won(Math.max(0, m.projected - (m.net * n(s.profile.targetBurn)) / 100))} 줄이거나, 순자산을 ${compact(Math.max(0, (m.projected * 12) / (targetAnnual / 100) - m.net))} 더 쌓으면 됩니다.`
         : `${g.desc} 현재 월 소비 ${won(m.projected)}는 순자산의 ${m.burn.toFixed(2)}%입니다.`,
     });
+  } else if (m.net > 0 && m.projected <= 0) {
+    // 지출 기록이 없으면 소비율이 '측정 불가'라 위 카드가 나오지 않는다.
+    // 이 앱의 메인 지표가 비어 있는 상태이므로 무엇을 하면 되는지 알려준다.
+    add({
+      priority: 1, tone: 'info', icon: '🧾', title: '이번 달 지출을 기록해 주세요',
+      body: `자산 ${compact(t.assets)}는 입력됐습니다. 소비율·맞춤 한도·성장 점수는 지출 기록이 있어야 계산됩니다. 한 건만 넣어도 시작됩니다.`,
+      actions: [{ label: '지출 기록', act: 'quick-add' }],
+    });
   } else if (m.net <= 0) {
     add({
       priority: 0, tone: 'danger', icon: '🔻', title: '순자산이 아직 마이너스입니다',

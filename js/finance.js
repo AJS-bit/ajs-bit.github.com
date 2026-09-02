@@ -132,9 +132,13 @@ function computeMetrics(s, key) {
   }
 
   const net = t.net;
-  const burn = net > 0 ? (cur.spend / net) * 100 : null;              // 월 소비율
-  const burnProjected = net > 0 ? (projected / net) * 100 : null;
-  const burnAnnual = net > 0 ? ((projected * 12) / net) * 100 : null; // 연환산 소비율
+  // 지출 기록이 하나도 없으면 소비율은 0%가 아니라 '아직 모른다'가 맞다.
+  // 0%로 두면 gradeBurn 이 최고 등급(완전자립)을 돌려줘서, 아무것도 입력하지
+  // 않은 사용자에게 "자산 수익만으로 생활 가능"이라고 알리게 된다.
+  const hasSpendBasis = projected > 0;
+  const burn = net > 0 && hasSpendBasis ? (cur.spend / net) * 100 : null;              // 월 소비율
+  const burnProjected = net > 0 && hasSpendBasis ? (projected / net) * 100 : null;
+  const burnAnnual = net > 0 && hasSpendBasis ? ((projected * 12) / net) * 100 : null; // 연환산 소비율
 
   const incomeRatio = inc > 0 ? (cur.spend / inc) * 100 : null;
   const incomeRatioProjected = inc > 0 ? (projected / inc) * 100 : null;
@@ -195,42 +199,59 @@ export function gradeBurn(burnAnnual) {
 }
 
 /* ---------- 재산 성장 점수 (0~100) ---------- */
+/**
+ * 재산 성장 점수 (0~100).
+ *
+ * **입력이 없는 항목에 점수를 주지 않는다.** 예전에는 각 항목이 값을 못 구하면
+ * 넉넉한 기본값으로 대체했는데(소비 20점, 부채 15점, 비상금 8점), 그 결과
+ * 자산 하나만 입력한 사용자가 75점 '우수' 를 받았다. 배점 55점짜리 두 항목이
+ * '데이터 없음' 에 만점을 주고 있었던 셈이다. 기록을 시작할 이유를 앱이 스스로
+ * 없앨 뿐 아니라, 성실히 입력할수록 점수가 떨어지는 구조였다.
+ *
+ * 이제 못 재는 항목은 `measured: false` 로 0점 처리하고, 메인 지표(자산 대비
+ * 소비)를 잴 수 없으면 `ready: false` 로 알린다. UI 는 이때 숫자 대신
+ * 무엇을 입력해야 하는지 보여준다.
+ */
 export function growthScore({ burnAnnual, savingsRate, dti, fiProgress, net, cash, projected, s }) {
   const parts = [];
+  const add = (key, label, score, max, measured, need) =>
+    parts.push({ key, label, score: measured ? score : 0, max, measured, need });
 
   // 1) 자산 효율 = 연 소비율 (40점) — 로그 스케일
-  let eff;
-  if (net <= 0) eff = 0;
-  else if (burnAnnual === null) eff = 20;
-  else if (burnAnnual <= 4) eff = 40;
-  else eff = clamp(40 * (1 - Math.log10(burnAnnual / 4) / Math.log10(100)), 0, 40);
-  parts.push({ key: 'burn', label: '자산 대비 소비', score: eff, max: 40 });
+  //    순자산이 마이너스면 '측정 불가' 가 아니라 실제로 0점이다.
+  const burnMeasured = projected > 0;
+  const eff = !burnMeasured || net <= 0 || burnAnnual === null ? 0
+    : burnAnnual <= 4 ? 40
+    : clamp(40 * (1 - Math.log10(burnAnnual / 4) / Math.log10(100)), 0, 40);
+  add('burn', '자산 대비 소비', eff, 40, burnMeasured, '이번 달 지출 기록');
 
   // 2) 저축률 (30점) — 50%면 만점
-  const sav = savingsRate === null ? 12 : clamp((savingsRate / 50) * 30, 0, 30);
-  parts.push({ key: 'save', label: '저축률', score: sav, max: 30 });
+  add('save', '저축률', clamp((savingsRate / 50) * 30, 0, 30), 30,
+    savingsRate !== null, '월 실수령액');
 
-  // 3) 부채 건전성 (15점)
-  let debtScore;
-  if (dti === null) debtScore = 15;
-  else debtScore = clamp(15 * (1 - dti / 80), 0, 15);
+  // 3) 부채 건전성 (15점) — 부채가 없는 것은 만점이 맞지만, 자산 자체가 없어
+  //    부채비율을 못 구하는 것은 만점이 아니다.
+  let debtScore = dti === null ? 0 : clamp(15 * (1 - dti / 80), 0, 15);
   const highRate = (s?.debts || []).some((d) => n(d.rate) >= 10 && n(d.balance) > 0);
   if (highRate) debtScore = Math.min(debtScore, 7);
-  parts.push({ key: 'debt', label: '부채 건전성', score: debtScore, max: 15 });
+  add('debt', '부채 건전성', debtScore, 15, dti !== null, '보유 자산');
 
   // 4) 안전판 = 비상금 (15점)
   const need = projected * (s?.profile?.emergencyMonths || 6);
-  const safe = need > 0 ? clamp((cash / need) * 15, 0, 15) : 8;
-  parts.push({ key: 'safe', label: '비상금', score: safe, max: 15 });
+  add('safe', '비상금', need > 0 ? clamp((cash / need) * 15, 0, 15) : 0, 15,
+    need > 0, '이번 달 지출 기록');
 
   const total = Math.round(parts.reduce((t, p) => t + p.score, 0));
-  const tier =
+  const measuredMax = parts.reduce((t, p) => t + (p.measured ? p.max : 0), 0);
+  const missing = parts.filter((p) => !p.measured);
+  const ready = burnMeasured;                      // 메인 지표를 재야 점수가 의미를 갖는다
+  const tier = !ready ? { label: '측정 준비 중', tone: 'muted' } :
     total >= 85 ? { label: '탁월', tone: 'pos' } :
     total >= 70 ? { label: '우수', tone: 'pos' } :
     total >= 55 ? { label: '보통', tone: 'accent' } :
     total >= 35 ? { label: '개선 필요', tone: 'warn' } :
                   { label: '위험', tone: 'neg' };
-  return { total, parts, tier, fiProgress };
+  return { total, parts, tier, fiProgress, ready, measuredMax, missing };
 }
 
 /* ============================================================

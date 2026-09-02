@@ -248,8 +248,12 @@ function summary(m, t) {
     </button>
     <button data-nav="coach">
       <span class="lbl">성장 점수</span>
-      <span class="v">${sc.total}<span style="font-size:11px;color:var(--ink3)">/100</span></span>
-      <span class="s">${sc.tier.label}</span>
+      <span class="v">${sc.ready
+        ? `${sc.total}<span style="font-size:11px;color:var(--ink3)">/100</span>`
+        : '—'}</span>
+      <span class="s">${sc.ready
+        ? sc.tier.label
+        : `${esc(sc.missing[0]?.need || '지출 기록')} 입력 후 계산`}</span>
     </button>
   </div>`;
 }
