@@ -1,9 +1,9 @@
 /* 코치 — 온디바이스 규칙 기반 소비 코칭 */
 import { state, RISK } from '../store.js';
 import { metrics } from '../finance.js';
-import { insights, savingOpportunities, burnHistory, impactOfSaving } from '../coach.js';
+import { insights, savingOpportunities, impactOfSaving } from '../coach.js';
 import { compact, won, pct, monthLabel, n } from '../format.js';
-import { lineChart, esc } from '../charts.js';
+import { esc } from '../charts.js';
 import { card, empty, setHTML, setText } from '../ui.js';
 
 export const title = '코치';
@@ -26,7 +26,6 @@ function coachTab() {
   const s = state;
   const m = metrics(s);
   const cards = insights(s);
-  const hist = burnHistory(s, 6).filter((h) => h.hasData);
 
   return `
     <section class="card">
@@ -56,14 +55,7 @@ function coachTab() {
           ${c.actions.map((a) => `<button class="btn btn--sm ${i === 0 ? 'btn--primary' : ''}"
             ${a.route ? `data-nav="${a.route}"` : `data-act="${a.act}"`}>${esc(a.label)}</button>`).join('')}
         </div>` : ''}
-      </section>`).join('')}
-
-    ${hist.length >= 2 ? `<section class="card">
-      <div class="card__hd"><h3>소비율 추이</h3><span class="sub">낮을수록 좋음</span></div>
-      ${lineChart([{ data: hist.map((h) => h.burn), color: 'var(--accent)', fill: true }], {
-        height: 150, labels: hist.map((h) => h.month.slice(5) + '월'), yFormat: (v) => v.toFixed(2) + '%',
-      })}
-    </section>` : ''}`;
+      </section>`).join('')}`;
 }
 
 /* ================= 가정해보기 =================

@@ -111,6 +111,17 @@ await p.click('[data-act="scenario-reset"]'); await p.waitForTimeout(400);
 t((await p.locator('#burn-spend').textContent()) === spend0, '초기화하면 실제 예상으로 돌아온다');
 t((await gaugeParts()).sub === '이번 달 예상', '초기화 후 라벨도 돌아온다');
 
+// --- 소비율 추이 차트는 한 곳에만 ---
+// 지출과 코치가 데이터·높이·라벨·포맷까지 같은 차트를 각각 그리고 있었다.
+// 코치는 "무엇을 해야 하나"를 말하는 곳이고, 추이는 지출 탭에 맥락과 함께 있다.
+const hasTrend = async (nav, tab) => {
+  await p.click(`.nav button:has-text("${nav}")`); await p.waitForTimeout(250);
+  await p.click(`.tabs button:has-text("${tab}")`); await p.waitForTimeout(400);
+  return (await p.evaluate(() => document.getElementById('main').innerText)).includes('소비율 추이');
+};
+t(await hasTrend('지출', '이번 달'), '지출 탭에 소비율 추이가 있다');
+t(!(await hasTrend('코치', '코칭')), '코치 탭에는 중복해서 두지 않는다');
+
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');
 await b.close();
