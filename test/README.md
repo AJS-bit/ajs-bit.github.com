@@ -21,6 +21,9 @@ node test/regions.mjs    # 부분 갱신한 자리의 버튼·라벨·저장값�
 node test/coldstart.mjs  # 첫 사용자에게 근거 없는 점수·등급을 주지 않는지
 ```
 
+`regions.mjs` 는 뷰포트 폭을 바꿔가며 확인하는 검사도 들고 있다. 소비율 값이 갈라진
+문제는 **390~420px 에서만** 나타났고 360px 에서는 멀쩡했다. 한 폭만 보면 못 찾는다.
+
 환경변수: `URL`(기본 http://localhost:8000), `OUT`(스크린샷 폴더, 기본 ./test/out),
 `CHROMIUM`(크로미움 실행 파일 경로).
 
