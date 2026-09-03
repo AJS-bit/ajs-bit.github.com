@@ -48,13 +48,17 @@ function monthTab() {
   return `
     ${monthNav()}
     <section class="card">
+      <!-- min-width 가 작으면 좁은 화면에서 두 칸이 억지로 나란히 서고, 그 안의
+           .stats(2열)까지 겹쳐 칸 폭이 47px 까지 좁아진다. .stat .v 는
+           overflow-wrap:anywhere 라 '0.97' 과 '%' 가 갈라졌다. 200px 로 잡으면
+           그 구간에서 위아래로 떨어져 각자 전체 폭을 쓴다. -->
       <div class="row" style="align-items:flex-start;flex-wrap:wrap;gap:14px">
-        <div style="flex:1;min-width:150px">
+        <div style="flex:1;min-width:200px">
           <span class="lbl">소비 지출</span>
           <div class="big num">${compact(sp.spend)}</div>
           <span class="hint">${won(sp.spend)} · ${sp.count}건</span>
         </div>
-        <div style="flex:1;min-width:150px">
+        <div style="flex:1;min-width:200px">
           <div class="stats">
             <div class="stat"><span class="lbl">순자산 대비</span>
               <div class="v num">${m.net > 0 ? pct((sp.spend / m.net) * 100, 2) : '—'}</div>

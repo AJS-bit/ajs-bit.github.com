@@ -122,6 +122,22 @@ const hasTrend = async (nav, tab) => {
 t(await hasTrend('지출', '이번 달'), '지출 탭에 소비율 추이가 있다');
 t(!(await hasTrend('코치', '코칭')), '코치 탭에는 중복해서 두지 않는다');
 
+// --- 좁은 칸에서 숫자와 단위가 갈라지지 않는가 ---
+// 390~420px 구간에서만 두 칸이 나란히 서면서 .stats(2열)까지 겹쳐 칸 폭이 47px 로
+// 좁아졌고, .stat .v 의 overflow-wrap:anywhere 가 '0.97' 과 '%' 를 갈라놨다.
+await p.click('.nav button:has-text("지출")'); await p.waitForTimeout(400);
+for (const vw of [360, 390, 420, 480, 768]) {
+  await p.setViewportSize({ width: vw, height: 900 }); await p.waitForTimeout(300);
+  const r = await p.evaluate(() => {
+    const st = [...document.querySelectorAll('.stat')].find((x) => x.innerText.includes('순자산 대비'));
+    const v = st.querySelector('.v');
+    return { txt: v.innerText, w: Math.round(v.getBoundingClientRect().width),
+      lines: Math.round(v.getBoundingClientRect().height / parseFloat(getComputedStyle(v).lineHeight || '20')) };
+  });
+  t(r.lines === 1, `${vw}px 에서 소비율 값이 한 줄`, `"${r.txt.replace(/\n/g, '⏎')}" 칸폭 ${r.w}px`);
+}
+await p.setViewportSize({ width: 420, height: 1600 });
+
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');
 await b.close();
