@@ -177,3 +177,13 @@ export function setAttr(sel, name, value, except) {
   if (!el || el === except) return;
   if (el.getAttribute(name) !== String(value)) el.setAttribute(name, String(value));
 }
+
+/* 경고의 route 별칭 → 버튼 문구.
+   warnings() 가 내는 route 를 사람이 읽는 말로 옮긴다.
+   홈·알림 모달·지출 한도 세 곳이 같은 문구를 쓰도록 한 곳에 둔다. */
+export const WARN_ACTION = {
+  limit: '한도 보기',
+  tx: '내역 보기',
+  debt: '상환 전략 보기',
+  assets: '자산 보기',
+};

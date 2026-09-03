@@ -2,7 +2,7 @@
 import { state, commit, subscribe, ASSET_TYPES, DEBT_TYPES, CATEGORIES, SPEND_CATEGORIES, RISK, addAsset, addDebt, addTx, addGoal, remove, patch, snapshot, replaceAll, resetAll, exportJSON } from './store.js';
 import { totals, metrics, spendingLimit, warnings } from './finance.js';
 import { demoState } from './seed.js';
-import { $, modal, toast, confirmDialog } from './ui.js';
+import { $, modal, toast, confirmDialog, WARN_ACTION } from './ui.js';
 import { esc } from './charts.js';
 import { n, today, monthKey, addMonths, uid, clamp, won, compact } from './format.js';
 
@@ -63,6 +63,8 @@ function go(r, tab) {
   if (VIEWS[r]) { route = r; if (tab) subtab[r] = tab; }
   else if (r === 'debt') { route = 'assets'; subtab.assets = 'strategy'; }
   else if (r === 'forecast') { route = 'goals'; subtab.goals = 'forecast'; }
+  else if (r === 'limit') { route = 'spending'; subtab.spending = 'limit'; }
+  else if (r === 'tx') { route = 'spending'; subtab.spending = 'list'; }
   window.scrollTo({ top: 0 });
   $('#main').scrollTop = 0;
   render();
@@ -221,7 +223,13 @@ async function catLimitModal() {
   });
 }
 
-/* ---------- 알림 ---------- */
+/* ---------- 알림 ----------
+   경고를 읽고 나면 조치할 곳으로 갈 수 있어야 한다. 예전에는 홈·알림 모달·지출 한도
+   세 곳이 모두 경고를 보여주면서 링크가 하나도 없어 전부 막다른 길이었다.
+   모달 안의 버튼에는 data-nav 와 data-close 를 함께 준다. modal() 이 [data-close] 에
+   직접 리스너를 달고 document.body 위임 리스너가 data-nav 를 처리하므로,
+   한 번의 클릭으로 모달이 닫히면서 이동한다. modal() 은 고치지 않아도 된다. */
+
 async function notificationsModal() {
   const ws = warnings(state);
   const act = ws.filter((w) => w.level === 'danger' || w.level === 'warn');
@@ -234,7 +242,10 @@ async function notificationsModal() {
         <p>현재 소비 구조에서 급한 경고가 없습니다.</p></div></div>` : ''}
       ${ws.map((w) => `<div class="alert alert--${w.level}">
         <span class="alert__ico">${w.icon}</span>
-        <div><b>${esc(w.title)}</b><p>${esc(w.body)}</p></div></div>`).join('')}`,
+        <div><b>${esc(w.title)}</b><p>${esc(w.body)}</p>
+        ${w.route ? `<button class="btn btn--sm btn--ghost" style="margin-top:8px"
+          data-nav="${w.route}" data-close>${esc(WARN_ACTION[w.route] || '보러 가기')}</button>` : ''}
+        </div></div>`).join('')}`,
   });
 }
 

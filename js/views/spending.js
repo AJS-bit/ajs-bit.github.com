@@ -4,7 +4,7 @@ import { metrics, spendingLimit, warnings, monthTx, spendOf } from '../finance.j
 import { savingOpportunities, burnHistory } from '../coach.js';
 import { compact, won, pct, monthLabel, addMonths, monthKey, dateLabel, daysInMonth, elapsedDays, n } from '../format.js';
 import { hBars, lineChart, progress, vBars, esc } from '../charts.js';
-import { card, empty } from '../ui.js';
+import { card, empty, WARN_ACTION } from '../ui.js';
 
 export const title = '지출';
 export const tabs = [
@@ -263,6 +263,9 @@ function limitTab() {
     <section class="card">
       <div class="card__hd"><h3>⚠️ 소비 경고 전체</h3></div>
       ${warnings(s).map((w) => `<div class="alert alert--${w.level}">
-        <span class="alert__ico">${w.icon}</span><div><b>${esc(w.title)}</b><p>${esc(w.body)}</p></div></div>`).join('')}
+        <span class="alert__ico">${w.icon}</span><div><b>${esc(w.title)}</b><p>${esc(w.body)}</p>
+        ${w.route && w.route !== 'limit' ? `<button class="btn btn--sm btn--ghost" style="margin-top:8px"
+          data-nav="${w.route}">${esc(WARN_ACTION[w.route])}</button>` : ''}
+        </div></div>`).join('')}
     </section>`;
 }

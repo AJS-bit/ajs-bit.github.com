@@ -521,21 +521,24 @@ export function warnings(s) {
   const m = metrics(s);
   const lim = spendingLimit(s);
   const out = [];
-  const push = (level, icon, title, body) => out.push({ level, icon, title, body });
+  // route 는 '이 경고를 어디서 조치하는가'다. 홈·알림 모달·지출 한도 세 곳이
+  // 모두 경고를 보여주면서 조치할 곳으로 가는 링크가 없어 전부 막다른 길이었다.
+  // go() 의 별칭을 쓴다 — limit=지출·한도, tx=지출·내역, debt=자산·상환전략.
+  const push = (level, icon, title, body, route) => out.push({ level, icon, title, body, route });
 
   if (m.net < 0) {
     push('danger', '🔻', '순자산이 마이너스입니다',
-      `부채가 자산보다 ${Math.abs(m.net).toLocaleString('ko-KR')}원 많습니다. 소비율 대신 부채 상환 속도를 1순위 지표로 삼으세요.`);
+      `부채가 자산보다 ${Math.abs(m.net).toLocaleString('ko-KR')}원 많습니다. 소비율 대신 부채 상환 속도를 1순위 지표로 삼으세요.`, 'debt');
   }
 
   if (m.txCount > 0 && lim.total > 0) {
     if (m.spend > lim.total) {
       push('danger', '🚨', '이번 달 한도를 넘었습니다',
-        `한도 ${Math.round(lim.total).toLocaleString('ko-KR')}원 대비 ${Math.round(m.spend - lim.total).toLocaleString('ko-KR')}원 초과했습니다.`);
+        `한도 ${Math.round(lim.total).toLocaleString('ko-KR')}원 대비 ${Math.round(m.spend - lim.total).toLocaleString('ko-KR')}원 초과했습니다.`, 'limit');
     } else if (m.spend > lim.pace * 1.15 && m.done < m.days) {
       const over = Math.round(m.spend - lim.pace);
       push('warn', '⏱️', '지출 페이스가 빠릅니다',
-        `${m.done}일차 기준 적정 누적은 ${Math.round(lim.pace).toLocaleString('ko-KR')}원인데 ${over.toLocaleString('ko-KR')}원 앞서 있습니다. 이대로면 월말 ${Math.round(m.projected).toLocaleString('ko-KR')}원 예상.`);
+        `${m.done}일차 기준 적정 누적은 ${Math.round(lim.pace).toLocaleString('ko-KR')}원인데 ${over.toLocaleString('ko-KR')}원 앞서 있습니다. 이대로면 월말 ${Math.round(m.projected).toLocaleString('ko-KR')}원 예상.`, 'limit');
     }
   }
 
@@ -543,18 +546,18 @@ export function warnings(s) {
     const targetAnnual = n(s.profile.targetBurn) * 12;
     if (m.burnAnnual > targetAnnual * 1.2) {
       push('warn', '📉', '순자산 대비 소비율이 목표선을 넘었습니다',
-        `연환산 ${m.burnAnnual.toFixed(1)}% (목표 ${targetAnnual.toFixed(1)}%). 월 소비를 ${Math.round(Math.max(0, m.projected - (m.net * n(s.profile.targetBurn)) / 100)).toLocaleString('ko-KR')}원 줄이면 목표선에 맞습니다.`);
+        `연환산 ${m.burnAnnual.toFixed(1)}% (목표 ${targetAnnual.toFixed(1)}%). 월 소비를 ${Math.round(Math.max(0, m.projected - (m.net * n(s.profile.targetBurn)) / 100)).toLocaleString('ko-KR')}원 줄이면 목표선에 맞습니다.`, 'limit');
     }
   }
 
   if (m.incomeRatioProjected !== null && m.incomeRatioProjected > 70) {
     push(m.incomeRatioProjected > 90 ? 'danger' : 'warn', '💸', '월급 대비 소비가 높습니다',
-      `실수령의 ${m.incomeRatioProjected.toFixed(0)}%를 쓰고 있습니다. 부채상환까지 더하면 저축여력은 ${Math.round(m.capacity).toLocaleString('ko-KR')}원입니다.`);
+      `실수령의 ${m.incomeRatioProjected.toFixed(0)}%를 쓰고 있습니다. 부채상환까지 더하면 저축여력은 ${Math.round(m.capacity).toLocaleString('ko-KR')}원입니다.`, 'limit');
   }
 
   if (m.capacity < 0) {
     push('danger', '🔥', '이번 달 적자입니다',
-      `수입보다 ${Math.abs(Math.round(m.capacity)).toLocaleString('ko-KR')}원 더 나가는 구조입니다. 자산을 헐어야 유지됩니다.`);
+      `수입보다 ${Math.abs(Math.round(m.capacity)).toLocaleString('ko-KR')}원 더 나가는 구조입니다. 자산을 헐어야 유지됩니다.`, 'limit');
   }
 
   // 카테고리 초과 / 임박
@@ -566,16 +569,16 @@ export function warnings(s) {
     const r = (used / cap) * 100;
     if (r >= (isFixed ? 110 : 100)) push('warn', CAT[cid]?.emoji || '⚠️', `${cid} 한도 초과`,
       `${Math.round(used).toLocaleString('ko-KR')}원 사용 / 한도 ${Math.round(cap).toLocaleString('ko-KR')}원 (${r.toFixed(0)}%).` +
-      (isFixed ? ' 고정비가 예년보다 늘었습니다.' : ''));
+      (isFixed ? ' 고정비가 예년보다 늘었습니다.' : ''), 'limit');
     else if (!isFixed && r >= 85) push('info', CAT[cid]?.emoji || 'ℹ️', `${cid} 한도 임박`,
-      `한도의 ${r.toFixed(0)}%를 썼습니다. 남은 예산 ${Math.round(cap - used).toLocaleString('ko-KR')}원.`);
+      `한도의 ${r.toFixed(0)}%를 썼습니다. 남은 예산 ${Math.round(cap - used).toLocaleString('ko-KR')}원.`, 'limit');
   }
 
   // 고정비가 한도를 다 먹는 구조
   if (lim.total > 0 && lim.fixedCost > lim.total * 0.6) {
     push('warn', '🧱', '고정비가 한도의 대부분을 차지합니다',
       `한도 ${Math.round(lim.total).toLocaleString('ko-KR')}원 중 고정비가 ${Math.round(lim.fixedCost).toLocaleString('ko-KR')}원입니다. ` +
-      `변동비로 쓸 수 있는 돈은 ${Math.round(lim.variableBudget).toLocaleString('ko-KR')}원뿐이라 조절 여지가 적습니다.`);
+      `변동비로 쓸 수 있는 돈은 ${Math.round(lim.variableBudget).toLocaleString('ko-KR')}원뿐이라 조절 여지가 적습니다.`, 'limit');
   }
 
   // 큰 단일 지출
@@ -585,21 +588,21 @@ export function warnings(s) {
       .sort((a, b) => n(b.amount) - n(a.amount))[0];
     if (largest && n(largest.amount) > m.net * 0.01) {
       push('info', '🔍', '순자산 1%가 넘는 지출',
-        `${largest.category} ${Math.round(n(largest.amount)).toLocaleString('ko-KR')}원 — 순자산의 ${((n(largest.amount) / m.net) * 100).toFixed(1)}%입니다.`);
+        `${largest.category} ${Math.round(n(largest.amount)).toLocaleString('ko-KR')}원 — 순자산의 ${((n(largest.amount) / m.net) * 100).toFixed(1)}%입니다.`, 'tx');
     }
   }
 
   // 비상금
   if (m.emergency !== null && m.projected > 0 && m.emergency < 3) {
     push('warn', '🧯', '비상금이 부족합니다',
-      `현금성 자산이 ${m.emergency.toFixed(1)}개월치입니다. 목표 ${s.profile.emergencyMonths}개월까지 ${Math.round(Math.max(0, m.projected * s.profile.emergencyMonths - m.cash)).toLocaleString('ko-KR')}원 더 필요합니다.`);
+      `현금성 자산이 ${m.emergency.toFixed(1)}개월치입니다. 목표 ${s.profile.emergencyMonths}개월까지 ${Math.round(Math.max(0, m.projected * s.profile.emergencyMonths - m.cash)).toLocaleString('ko-KR')}원 더 필요합니다.`, 'assets');
   }
 
   // 고금리 부채
   const hi = s.debts.filter((d) => n(d.rate) >= 10 && n(d.balance) > 0);
   if (hi.length) {
     push('danger', '🧨', '고금리 부채가 있습니다',
-      `${hi.map((d) => `${d.name || '부채'} ${n(d.rate)}%`).join(', ')} — 어떤 투자보다 상환 수익률이 확실합니다.`);
+      `${hi.map((d) => `${d.name || '부채'} ${n(d.rate)}%`).join(', ')} — 어떤 투자보다 상환 수익률이 확실합니다.`, 'debt');
   }
 
   if (!out.length) {

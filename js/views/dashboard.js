@@ -6,7 +6,7 @@ import {
   compact, won, pct, pctSigned, months as fmtMonths, n, clamp,
 } from '../format.js';
 import { ring, spark, gauge, progress, esc } from '../charts.js';
-import { setHTML, setText } from '../ui.js';
+import { setHTML, setText, WARN_ACTION } from '../ui.js';
 
 export const title = '홈';
 
@@ -53,8 +53,10 @@ function alertCard() {
     <div style="flex:1;min-width:0">
       <b>${esc(top.title)}</b>
       <p>${esc(top.body)}</p>
-      ${ws.length > 1 ? `<button class="btn btn--sm btn--ghost" data-act="all-warnings"
-        style="margin-top:9px">나머지 ${ws.length - 1}건 보기</button>` : ''}
+      ${top.route || ws.length > 1 ? `<div class="btn-row" style="margin-top:9px">
+        ${top.route ? `<button class="btn btn--sm" data-nav="${top.route}">${esc(WARN_ACTION[top.route] || '보러 가기')}</button>` : ''}
+        ${ws.length > 1 ? `<button class="btn btn--sm btn--ghost" data-act="all-warnings">나머지 ${ws.length - 1}건</button>` : ''}
+      </div>` : ''}
     </div>
   </div>`;
 }

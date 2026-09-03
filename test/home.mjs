@@ -33,6 +33,37 @@ await homeAlert.locator('[data-act="all-warnings"]').click(); await p.waitForSel
 ok('더보기 → 알림 모달', (await p.locator('.modal .alert').count()) >= 3);
 await p.click('.modal__hd [data-close]'); await p.waitForTimeout(300);
 
+// 2-2) 경고에서 조치할 곳으로 갈 수 있어야 한다
+//      예전에는 홈·알림 모달·지출 한도 셋 다 링크가 없어 전부 막다른 길이었다.
+const where = () => p.evaluate(() => ({
+  tab: document.querySelector('.nav button.is-on')?.innerText.trim(),
+  sub: document.querySelector('#main .tabs button.is-on')?.innerText.trim(),
+}));
+const actBtn = p.locator('#main > .alert').first().locator('button[data-nav]');
+ok('홈 경고에 조치 버튼', await actBtn.count() === 1, await actBtn.innerText().catch(() => ''));
+await actBtn.click(); await p.waitForTimeout(600);
+const dest = await where();
+ok('조치 버튼이 해당 화면으로 이동', dest.tab === '자산' && dest.sub === '상환 전략',
+  `${dest.tab}·${dest.sub}`);
+
+// 알림 모달의 버튼은 한 번의 클릭으로 모달을 닫으며 이동해야 한다
+await p.click('[data-act=notifications]'); await p.waitForSelector('.modal__box');
+await p.locator('.modal .alert button[data-nav]').first().click(); await p.waitForTimeout(700);
+ok('모달 버튼 클릭 시 모달이 닫힘', (await p.locator('.modal__box').count()) === 0);
+ok('모달에서도 해당 화면으로 이동', (await where()).tab === '자산');
+
+// 지출·한도는 그 경고를 조치하는 자리다. 같은 곳으로 보내는 링크는 없어야 한다
+await p.click('.nav button:has-text("지출")'); await p.waitForTimeout(250);
+await p.click('.tabs button:has-text("한도")'); await p.waitForTimeout(500);
+const limitLinks = await p.evaluate(() => {
+  const c = [...document.querySelectorAll('.card')]
+    .find((x) => x.querySelector('h3')?.innerText.includes('소비 경고'));
+  return [...c.querySelectorAll('.alert')].map((a) => a.querySelector('button[data-nav]')?.dataset.nav || null);
+});
+ok('지출·한도에서 limit 경고엔 링크 없음', !limitLinks.includes('limit'), JSON.stringify(limitLinks));
+ok('다른 화면 경고엔 링크 있음', limitLinks.some((x) => x && x !== 'limit'));
+await p.click('.nav button:has-text("홈")'); await p.waitForTimeout(400);
+
 // 3) 테마 토글이 상단바에서 사라졌는지
 ok('상단바에 테마 버튼 없음', await p.locator('.topbar [data-act=theme]').count() === 0);
 
