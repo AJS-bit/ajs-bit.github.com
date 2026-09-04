@@ -390,10 +390,12 @@ function summary(m, t) {
         ? `${ch.abs >= 0 ? '▲' : '▼'} ${compact(Math.abs(ch.abs))} 전월비`
         : `자산 ${compact(t.assets)}`}</span>
     </button>
-    <button data-nav="spending">
+    <!-- 수입이 없으면 '수입 미입력'만 뜨고 어디에 넣는지는 알려주지 않았다.
+         지출 탭으로 보내봐야 거기에도 입력란이 없다. 설정을 바로 연다. -->
+    <button ${m.income > 0 ? 'data-nav="spending"' : 'data-act="settings"'}>
       <span class="lbl">월급 대비</span>
       <span class="v ${ir === null ? '' : ir > 90 ? 'neg' : ir > 70 ? 'warn' : 'pos'}">${pct(ir, 0)}</span>
-      <span class="s">${m.income > 0 ? `저축률 ${pct(m.savingsRate, 0)}` : '수입 미입력'}</span>
+      <span class="s">${m.income > 0 ? `저축률 ${pct(m.savingsRate, 0)}` : '눌러서 수입 입력'}</span>
     </button>
     <button data-nav="coach">
       <span class="lbl">성장 점수</span>

@@ -169,17 +169,22 @@ async function settingsModal() {
   const r = await modal({
     title: '설정',
     fields: [
+      // 12개 필드가 한 덩어리라 무엇이 '내 사실'이고 무엇이 '가정'인지 안 보였다
+      { type: 'group', label: '수입' },
       { key: 'monthlyIncome', label: '월 실수령액', money: true, value: p.monthlyIncome,
         help: '세금·4대보험을 뺀 실제 입금액' },
       { key: 'extraIncome', label: '월 부수입', money: true, value: p.extraIncome },
+      { type: 'group', label: '시장 가정' },
       { key: 'riskProfile', label: '투자 성향', type: 'seg', value: p.riskProfile,
         options: Object.entries(RISK).map(([k, v]) => ({ value: k, label: v.label })) },
       { key: 'expectedReturn', label: '연 기대수익률', type: 'number', unit: '%', step: '0.1',
         value: (n(p.expectedReturn) * 100).toFixed(1), help: '투자자산에 적용됩니다' },
       { key: 'inflation', label: '물가상승률', type: 'number', unit: '%', step: '0.1', value: (n(p.inflation) * 100).toFixed(1) },
+      { type: 'group', label: '목표' },
       { key: 'targetBurn', label: '목표 월 소비율 (순자산 대비)', type: 'number', unit: '%', step: '0.1',
         value: n(p.targetBurn), help: '연 4% 이하면 자산 수익만으로 생활 가능한 수준입니다 (월 0.33%)' },
       { key: 'emergencyMonths', label: '비상금 목표', type: 'number', unit: '개월', step: '1', value: p.emergencyMonths },
+      { type: 'group', label: '화면' },
       { key: 'theme', label: '화면 테마', type: 'seg', value: state.settings.theme || 'dark',
         options: [{ value: 'dark', label: '다크' }, { value: 'light', label: '라이트' }, { value: 'system', label: '시스템 설정' }] },
     ],

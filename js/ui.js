@@ -97,6 +97,10 @@ export function modal({ title, fields = [], html = '', submit = '저장', onSubm
 }
 
 function fieldHTML(f) {
+  // 소제목. 값을 읽지 않으므로 submit 루프에서는 el 이 없어 그대로 건너뛴다.
+  if (f.type === 'group') {
+    return `<div class="lbl" style="margin:16px 0 8px;padding-top:12px;border-top:1px solid var(--line)">${f.label}</div>`;
+  }
   const id = `f_${f.key}`;
   const common = `id="${id}" name="${f.key}" ${f.required ? 'required' : ''}`;
   let input;
