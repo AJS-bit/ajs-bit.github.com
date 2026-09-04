@@ -60,12 +60,15 @@ function monthTab() {
         </div>
         <div style="flex:1;min-width:200px">
           <div class="stats">
+            <!-- 기록이 0건이면 0.00% 가 아니라 '측정 불가'다. 0% 는 4% 룰에서
+                 최고 등급이라 "완벽하다"로 읽힌다. 홈은 이미 '측정 불가'인데
+                 여기만 0.00% 를 단정해 같은 앱이 다른 말을 하고 있었다. -->
             <div class="stat"><span class="lbl">순자산 대비</span>
-              <div class="v num">${m.net > 0 ? pct((sp.spend / m.net) * 100, 2) : '—'}</div>
-              <div class="s">연환산 ${m.net > 0 ? pct((sp.spend * 12 / m.net) * 100, 1) : '—'}</div></div>
+              <div class="v num">${sp.count > 0 && m.net > 0 ? pct((sp.spend / m.net) * 100, 2) : '—'}</div>
+              <div class="s">${sp.count === 0 ? '기록 후 계산' : m.net > 0 ? `연환산 ${pct((sp.spend * 12 / m.net) * 100, 1)}` : '순자산 미입력'}</div></div>
             <div class="stat"><span class="lbl">월급 대비</span>
-              <div class="v num">${m.income > 0 ? pct((sp.spend / m.income) * 100, 0) : '—'}</div>
-              <div class="s">실수령 ${compact(m.income)}</div></div>
+              <div class="v num">${sp.count > 0 && m.income > 0 ? pct((sp.spend / m.income) * 100, 0) : '—'}</div>
+              <div class="s">${m.income > 0 ? `실수령 ${compact(m.income)}` : '수입 미입력'}</div></div>
           </div>
         </div>
       </div>

@@ -86,7 +86,9 @@ const savedBefore = await p.evaluate(() => JSON.parse(localStorage.getItem('asse
 const g0 = await gaugeParts();
 const spend0 = await p.locator('#burn-spend').textContent();
 t(g0.labels.includes('목표'), '게이지에 목표 눈금 라벨이 있다');
-t(g0.sub === '이번 달 예상', '기본값은 실제 예상임을 밝힌다', g0.sub);
+t(g0.sub.startsWith('이번 달 예상'), '기본값은 실제 예상임을 밝힌다', g0.sub);
+// 가운데 숫자는 월 기준인데 칩은 연 기준이라, 목표값을 숫자 옆에서 읽을 수 있어야 한다
+t(/목표 \d+\.\d%/.test(g0.sub), '게이지가 목표 소비율을 함께 보여준다', g0.sub);
 
 const sl = p.locator('[data-scenario=spend]');
 const lo = await sl.getAttribute('min');
@@ -96,7 +98,7 @@ const g1 = await gaugeParts();
 t((await p.locator('#burn-spend').textContent()) !== spend0, '소비액 라벨이 갱신된다');
 t(g1.arc !== g0.arc, '게이지 바늘이 가정한 소비를 따라 움직인다');
 t(g1.tick === g0.tick, '목표 눈금은 제자리에 있다');
-t(g1.sub === '가정한 소비', '가정 중임을 밝힌다', g1.sub);
+t(g1.sub.startsWith('가정한 소비'), '가정 중임을 밝힌다', g1.sub);
 t((await p.locator('#burn-basis').textContent()).includes('저장되지 않습니다'), '저장되지 않는다고 알린다');
 t(Number(await p.locator('#burn-out .kv').first().locator('b').textContent().then((x) => x.replace(/[^\d-]/g, '')))
   > 0, '저축여력이 늘어난다');
@@ -109,7 +111,7 @@ t(savedAfter === savedBefore, '시나리오는 저장되지 않는다', `targetB
 
 await p.click('[data-act="scenario-reset"]'); await p.waitForTimeout(400);
 t((await p.locator('#burn-spend').textContent()) === spend0, '초기화하면 실제 예상으로 돌아온다');
-t((await gaugeParts()).sub === '이번 달 예상', '초기화 후 라벨도 돌아온다');
+t((await gaugeParts()).sub.startsWith('이번 달 예상'), '초기화 후 라벨도 돌아온다');
 
 // --- 소비율 추이 차트는 한 곳에만 ---
 // 지출과 코치가 데이터·높이·라벨·포맷까지 같은 차트를 각각 그리고 있었다.

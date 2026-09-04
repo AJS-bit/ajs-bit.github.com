@@ -33,7 +33,7 @@ export function render() {
     ${alertCard()}
     ${burnCard(m, s)}
     ${summary(m, t)}
-    ${todayCard(m, lim)}
+    ${todayCard(m, lim, s)}
     <button class="fab" data-act="quick-add" aria-label="지출 입력">＋</button>
   `;
 }
@@ -256,6 +256,15 @@ function burnCard(m, s) {
 
     <div style="max-width:250px;margin:0 auto" id="burn-gauge">${burnGauge(m, s, tone)}</div>
 
+    <!-- 등급(4% 룰 절대 기준)과 목표선(내가 정한 상대 기준)은 다른 자다.
+         같은 26.3% 를 홈은 '양호', 지출·벨은 '목표선 초과'라 불러 앱이
+         오락가락해 보였다. 두 기준이 다르다는 것을 여기서 밝힌다. -->
+    <p class="hint" style="text-align:center;margin-top:-2px">
+      ${esc(g.label)}는 4% 룰 기준 등급입니다 ·
+      내 목표선 연 ${pct(target * 12, 1)}${m.burnAnnual > target * 12
+        ? `<span class="neg"> 초과</span>` : `<span class="pos"> 이내</span>`}
+    </p>
+
     <div class="divider"></div>
 
     <div class="field" style="margin:0">
@@ -331,7 +340,10 @@ function burnGauge(m, s, tone) {
   return gauge({
     value: burn, max: BURN_GAUGE_MAX,
     label: burn === null ? '—' : `${burn.toFixed(2)}%`,
-    sub: scenarioSpend === null ? '이번 달 예상' : '가정한 소비',
+    // 가운데 숫자는 '월' 기준인데 칩은 '연' 기준이라 26.3 과 2.19 의 관계를
+    // 사용자가 암산해야 했다. 기준과 목표값을 숫자 바로 아래에 붙인다.
+    // (눈금 라벨로 넣으면 호가 그 위를 지나가며 가린다)
+    sub: `${scenarioSpend === null ? '이번 달 예상' : '가정한 소비'} · 목표 ${target.toFixed(1)}%`,
     tone, ticks: [{ at: target, tone: 'accent', label: '목표' }],
   });
 }
@@ -392,7 +404,7 @@ function summary(m, t) {
 }
 
 /* ================= 4. 오늘 쓸 수 있는 돈 ================= */
-function todayCard(m, lim) {
+function todayCard(m, lim, s) {
   if (!(lim.total > 0)) {
     return `<section class="card">
       <div class="card__hd"><h3>🎚️ 맞춤 한도</h3></div>
@@ -423,7 +435,18 @@ function todayCard(m, lim) {
       <span class="hint">회색선 = 오늘(${m.done}일차) 적정선</span>
       <span class="hint">${leftDays > 0 ? `남은 ${leftDays}일 · 하루 ${won(perDay)}` : '월말'}</span>
     </div>
+    <p class="hint" style="margin-top:7px">${limitBasis(m, lim, s)}</p>
   </section>`;
+}
+
+/* 한도 숫자만 던지면 "이 40만원은 어디서 나왔지" 가 된다. 근거는 지출·한도
+   탭까지 가야 보였고, 자산만 넣은 사용자는 바로 위 카드가 '측정 불가'인데
+   한도만 단정하는 화면을 본다. 어느 쪽 계산이 적용됐는지 여기서 밝힌다. */
+function limitBasis(m, lim, s) {
+  if (lim.basis === 'manual') return '직접 입력한 한도입니다.';
+  if (lim.basis === 'income') return '실수령 + 부수입 − 목표 저축 − 부채 상환 기준입니다.';
+  const line = `순자산 ${compact(m.net)} × 목표 소비율 ${pct(n(s.profile.targetBurn), 1)} 기준입니다.`;
+  return m.income > 0 ? line : `${line} 월 실수령액을 넣으면 더 정확해집니다.`;
 }
 
 /* ================= 온보딩 ================= */

@@ -46,6 +46,18 @@ t(cold.total < 35, '총점이 우수 구간에 들지 않는다', `${cold.total}
 t((await p.locator('.summary button:has-text("성장 점수") .v').innerText()).trim() === '—', '홈에 숫자 대신 —');
 t((await p.locator('.summary button:has-text("성장 점수") .s').innerText()).includes('입력'), '무엇을 넣어야 하는지 알려준다');
 
+// 홈 한도 카드가 근거를 밝히는가 — 40만원이 어디서 나온 숫자인지
+const homeText = await p.evaluate(() => document.getElementById('main').innerText);
+t(/목표 소비율 \d+\.\d% 기준입니다/.test(homeText), '홈 한도 카드가 계산 근거를 밝힌다');
+t(homeText.includes('월 실수령액을 넣으면'), '수입을 넣으면 정확해진다고 알린다');
+
+// 지출·이번 달이 0.00% 라고 단정하지 않는가 (0% 는 4% 룰 최고 등급으로 읽힌다)
+await p.click('.nav button:has-text("지출")'); await p.waitForTimeout(450);
+const spendText = await p.evaluate(() => document.getElementById('main').innerText);
+t(!spendText.includes('0.00%'), '기록 0건에서 소비율을 0.00% 로 단정하지 않는다');
+t(spendText.includes('기록 후 계산'), '지출 탭도 홈과 같이 측정 불가를 말한다');
+await p.click('.nav button:has-text("홈")'); await p.waitForTimeout(400);
+
 // 코치가 침묵하지 않고 다음 행동을 알려주는가
 await p.click('.nav button:has-text("코치")'); await p.waitForTimeout(500);
 const coachText = await p.evaluate(() => document.getElementById('main').innerText);

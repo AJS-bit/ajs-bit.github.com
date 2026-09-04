@@ -114,6 +114,12 @@ ok('홈 목표 전환', heroName.includes('순자산'), '히어로=' + heroName)
 await p.reload({ waitUntil: 'networkidle' }); await p.waitForTimeout(600);
 ok('선택한 목표 유지', (await p.locator('.hero__name span').innerText()).includes('순자산'));
 
+// 9-1) 등급(4% 룰)과 내 목표선은 다른 자다 — 같은 수치를 홈은 '양호',
+//       지출·벨은 '목표선 초과'라 불러 앱이 오락가락해 보였다
+const burnCard = await p.locator('#main .card').filter({ hasText: '소비율' }).first().innerText();
+ok('등급의 기준이 4% 룰임을 밝힌다', burnCard.includes('4% 룰 기준 등급'));
+ok('내 목표선과의 관계를 함께 말한다', /내 목표선 연 \d+\.\d%/.test(burnCard), burnCard.split('\n').find((l) => l.includes('목표선')) || '');
+
 // 10) 홈 단순화 확인 (카드 수)
 const cards = await p.locator('#main > section, #main > .summary').count();
 ok('홈 섹션 4개 이내', cards <= 5, cards + '개 섹션');

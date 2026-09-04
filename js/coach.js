@@ -60,7 +60,7 @@ export function insights(s) {
       tone: g.tone === 'pos' ? 'good' : g.tone === 'neg' ? 'danger' : g.tone === 'warn' ? 'warn' : 'info',
       icon: '🧭', title: `소비율 ${m.burnAnnual.toFixed(1)}%/년 — ${g.label}`,
       body: diff > 0
-        ? `${g.desc} 목표선(${targetAnnual.toFixed(1)}%)까지 오려면 월 소비를 ${won(Math.max(0, m.projected - (m.net * n(s.profile.targetBurn)) / 100))} 줄이거나, 순자산을 ${compact(Math.max(0, (m.projected * 12) / (targetAnnual / 100) - m.net))} 더 쌓으면 됩니다.`
+        ? `${g.desc} 목표선(연 ${targetAnnual.toFixed(1)}% · 월 ${n(s.profile.targetBurn).toFixed(1)}%)까지 오려면 월 소비를 ${won(Math.max(0, m.projected - (m.net * n(s.profile.targetBurn)) / 100))} 줄이거나, 순자산을 ${compact(Math.max(0, (m.projected * 12) / (targetAnnual / 100) - m.net))} 더 쌓으면 됩니다.`
         : `${g.desc} 현재 월 소비 ${won(m.projected)}는 순자산의 ${m.burn.toFixed(2)}%입니다.`,
     });
   } else if (m.net > 0 && m.projected <= 0) {
