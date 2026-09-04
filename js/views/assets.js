@@ -1,6 +1,6 @@
 /* 자산 — 자산/부채 관리 + 부채상환 전략 */
 import { state, ASSET_TYPES, DEBT_TYPES } from '../store.js';
-import { metrics, totals, simulateDebt, assetRate } from '../finance.js';
+import { metrics, totals, simulateDebt, assetRate, weightedReturn } from '../finance.js';
 import { compact, won, pct, months as fmtMonths, n, clamp } from '../format.js';
 import { donut, legend, lineChart, esc } from '../charts.js';
 import { card, empty, setHTML, setText } from '../ui.js';
@@ -27,9 +27,7 @@ function assetsTab() {
     label: v.label, color: v.color,
     value: s.assets.filter((a) => a.type === k).reduce((x, a) => x + n(a.value), 0),
   }));
-  const weighted = t.assets > 0
-    ? s.assets.reduce((x, a) => x + n(a.value) * assetRate(a, s), 0) / t.assets
-    : 0;
+  const weighted = weightedReturn(s);
 
   return `
     <section class="card">

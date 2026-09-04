@@ -12,6 +12,16 @@ export function won(v, { sign = false, unit = '원' } = {}) {
   return s + x.toLocaleString('ko-KR') + unit;
 }
 
+/** 추정치를 1원 단위까지 말하지 않는다.
+    과거 3개월 평균에서 나온 숫자를 "363,131원"이라 하면 실측처럼 읽힌다.
+    10만원 이상은 천원, 미만은 백원 단위로 접는다.
+    실제로 정확한 값(한도·잔액·이번 달 구독료)에는 쓰지 않는다. */
+export function approx(v, opt) {
+  const x = Math.round(n(v));
+  const unit = Math.abs(x) >= 100000 ? 1000 : 100;
+  return won(Math.round(x / unit) * unit, opt);
+}
+
 /** 123456789 -> "1억 2,346만" · 12340000 -> "1,234만" */
 export function compact(v) {
   const raw = Math.round(n(v));

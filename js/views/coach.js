@@ -27,6 +27,15 @@ function coachTab() {
   const m = metrics(s);
   const cards = insights(s);
 
+  /* 배지가 11장 중 6장에 '중요'로 붙으면 우선순위가 없는 것과 같다.
+     정렬은 이미 우선순위대로이므로, 강조는 위에서 3장까지만 준다.
+     '긴급'(priority 0)은 개수와 무관하게 항상 강조한다. */
+  const strong = new Set();
+  cards.forEach((c, i) => {
+    if (c.priority === 0) { strong.add(i); return; }
+    if (c.priority === 1 && strong.size < 3) strong.add(i);
+  });
+
   return `
     <section class="card">
       <div class="card__hd"><h3>🤖 소비 코치</h3><span class="sub">${monthLabel(m.key)} 진단</span></div>
@@ -47,8 +56,8 @@ function coachTab() {
         <div class="card__hd">
           <h3 style="display:flex;gap:8px;align-items:center;font-size:14.5px">
             <span style="font-size:17px">${c.icon}</span>${esc(c.title)}</h3>
-          <span class="chip ${c.priority <= 1 ? 'chip--warn' : ''}" style="font-size:10px;padding:2px 8px">
-            ${c.priority === 0 ? '긴급' : c.priority === 1 ? '중요' : c.priority === 2 ? '참고' : '정보'}</span>
+          <span class="chip ${strong.has(i) ? 'chip--warn' : ''}" style="font-size:10px;padding:2px 8px">
+            ${c.priority === 0 ? '긴급' : strong.has(i) ? '중요' : c.priority <= 2 ? '참고' : '정보'}</span>
         </div>
         <p style="font-size:13.2px;line-height:1.65;color:var(--ink2)">${c.body}</p>
         ${c.actions?.length ? `<div class="btn-row" style="margin-top:12px">

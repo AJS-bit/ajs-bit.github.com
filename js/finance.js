@@ -28,6 +28,16 @@ export const assetRate = (a, s) =>
       ? n(s.profile.expectedReturn)
       : (ASSET_TYPES[a.type]?.rate ?? 0);
 
+/* 실제 보유 자산의 가중 기대수익.
+   설정의 위험성향 기본값(profile.expectedReturn)은 '투자자산에 적용되는 가정'이지
+   내 포트폴리오의 수익률이 아니다. 현금만 가진 사람에게 6% 를 보여주면
+   목표·시뮬레이션(연 6%)과 목표·미래 예측(실제 0%)이 20년 뒤를 정반대로 말한다. */
+export function weightedReturn(s) {
+  const t = totals(s);
+  if (!(t.assets > 0)) return n(s.profile.expectedReturn);
+  return s.assets.reduce((x, a) => x + n(a.value) * assetRate(a, s), 0) / t.assets;
+}
+
 /* ---------- 월 지출 집계 ---------- */
 export function monthTx(s, key) {
   return s.transactions.filter((t) => String(t.date).slice(0, 7) === key);

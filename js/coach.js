@@ -5,7 +5,7 @@
    ============================================================ */
 import { CAT, RISK } from './store.js';
 import { metrics, spendingLimit, allocateGoals, monthsToTarget, simulateDebt, spendOf, avgSpend, totals } from './finance.js';
-import { n, compact, addMonths, monthKey } from './format.js';
+import { n, compact, addMonths, monthKey, approx } from './format.js';
 
 const won = (v) => Math.round(n(v)).toLocaleString('ko-KR') + '원';
 
@@ -60,7 +60,7 @@ export function insights(s) {
       tone: g.tone === 'pos' ? 'good' : g.tone === 'neg' ? 'danger' : g.tone === 'warn' ? 'warn' : 'info',
       icon: '🧭', title: `소비율 ${m.burnAnnual.toFixed(1)}%/년 — ${g.label}`,
       body: diff > 0
-        ? `${g.desc} 목표선(연 ${targetAnnual.toFixed(1)}% · 월 ${n(s.profile.targetBurn).toFixed(1)}%)까지 오려면 월 소비를 ${won(Math.max(0, m.projected - (m.net * n(s.profile.targetBurn)) / 100))} 줄이거나, 순자산을 ${compact(Math.max(0, (m.projected * 12) / (targetAnnual / 100) - m.net))} 더 쌓으면 됩니다.`
+        ? `${g.desc} 목표선(연 ${targetAnnual.toFixed(1)}% · 월 ${n(s.profile.targetBurn).toFixed(1)}%)까지 오려면 월 소비를 ${approx(Math.max(0, m.projected - (m.net * n(s.profile.targetBurn)) / 100))} 줄이거나, 순자산을 ${compact(Math.max(0, (m.projected * 12) / (targetAnnual / 100) - m.net))} 더 쌓으면 됩니다.`
         : `${g.desc} 현재 월 소비 ${won(m.projected)}는 순자산의 ${m.burn.toFixed(2)}%입니다.`,
     });
   } else if (m.net > 0 && m.projected <= 0) {
@@ -87,7 +87,7 @@ export function insights(s) {
         body: `수입 ${won(m.income)} − 소비 ${won(m.projected)} − 부채상환 ${won(m.debtPay)} = ${won(m.capacity)}. 매달 자산이 줄어듭니다.` });
     } else if (sr < 20) {
       add({ priority: 1, tone: 'warn', icon: '🪫', title: `저축률 ${sr.toFixed(0)}% — 축적 속도가 느립니다`,
-        body: `저축률 30%로 올리면 월 ${won(m.income * 0.3 - m.capacity)}을 더 모읍니다. 고정비 ${won(m.fixed)}(소비의 ${m.spend > 0 ? ((m.fixed / m.spend) * 100).toFixed(0) : 0}%)부터 점검해 보세요.` });
+        body: `저축률 30%로 올리면 월 ${approx(m.income * 0.3 - m.capacity)}을 더 모읍니다. 고정비 ${won(m.fixed)}(소비의 ${m.spend > 0 ? ((m.fixed / m.spend) * 100).toFixed(0) : 0}%)부터 점검해 보세요.` });
     } else if (sr >= 40) {
       add({ priority: 2, tone: 'good', icon: '💪', title: `저축률 ${sr.toFixed(0)}% — 상위권입니다`,
         body: `월 ${won(m.capacity)}을 모으고 있습니다. 이 페이스면 연 ${compact(m.capacity * 12)}씩 순자산이 늘어납니다.` });
@@ -107,7 +107,7 @@ export function insights(s) {
       tone: gap > lim.daily ? 'warn' : 'info', icon: '📅',
       title: gap > 0 ? `한도보다 ${won(gap)} 앞서 있습니다` : `한도보다 ${won(-gap)} 여유가 있습니다`,
       body: leftBudget > 0
-        ? `남은 ${leftDays}일 동안 하루 ${won(leftBudget / leftDays)}씩 쓰면 한도(${won(lim.total)})를 지킵니다.`
+        ? `남은 ${leftDays}일 동안 하루 ${approx(leftBudget / leftDays)}씩 쓰면 한도(${won(lim.total)})를 지킵니다.`
         : `이미 한도를 ${won(-leftBudget)} 넘겼습니다. 남은 ${leftDays}일은 필수 지출만 하는 게 좋습니다.`,
     });
   }
@@ -120,8 +120,8 @@ export function insights(s) {
     const cut = topAmt * 0.15;
     const imp = impactOfSaving(s, cut);
     const impText = imp.kind === 'goal' && imp.monthsSaved >= 0.5
-      ? `여기서 15%(${won(cut)})만 줄이면 '${imp.goal.name || '목표'}' 달성이 약 ${imp.monthsSaved.toFixed(1)}개월 앞당겨집니다.`
-      : `여기서 15%(${won(cut)})만 줄여 굴리면 10년 뒤 ${compact(imp.delta || 0)}이 더 쌓입니다.`;
+      ? `여기서 15%(${approx(cut)})만 줄이면 '${imp.goal.name || '목표'}' 달성이 약 ${imp.monthsSaved.toFixed(1)}개월 앞당겨집니다.`
+      : `여기서 15%(${approx(cut)})만 줄여 굴리면 10년 뒤 ${compact(imp.delta || 0)}이 더 쌓입니다.`;
     add({
       priority: share > 35 ? 1 : 2, tone: share > 40 ? 'warn' : 'info',
       icon: CAT[topCat]?.emoji || '📊',
@@ -155,7 +155,7 @@ export function insights(s) {
       add({ priority: d > 0 ? 1 : 2, tone: d > 0 ? 'warn' : 'good',
         icon: d > 0 ? '📈' : '📉',
         title: `최근 3개월 평균 대비 ${d > 0 ? '+' : ''}${d.toFixed(0)}%`,
-        body: `평균 ${won(prevAvg)} → 이번 달 예상 ${won(m.projected)}. ${d > 0 ? '일시적 지출인지, 새 고정비가 생긴 건지 확인하세요.' : '이 흐름을 유지하면 연 ' + won((prevAvg - m.projected) * 12) + '을 더 모읍니다.'}` });
+        body: `평균 ${won(prevAvg)} → 이번 달 예상 ${won(m.projected)}. ${d > 0 ? '일시적 지출인지, 새 고정비가 생긴 건지 확인하세요.' : '이 흐름을 유지하면 연 ' + approx((prevAvg - m.projected) * 12) + '을 더 모읍니다.'}` });
     }
   }
 
@@ -178,7 +178,7 @@ export function insights(s) {
     const investShare = (t.invested / t.assets) * 100;
     if (investShare < 20 && t.assets > 10_000_000) {
       add({ priority: 2, tone: 'info', icon: '🌱', title: `투자자산 비중 ${investShare.toFixed(0)}%`,
-        body: `자산 대부분이 수익을 거의 못 냅니다. ${RISK[s.profile.riskProfile].label} 기준 기대수익 ${(n(s.profile.expectedReturn) * 100).toFixed(1)}%를 적용하면 연 ${won(t.assets * 0.3 * n(s.profile.expectedReturn))} 차이가 납니다.` });
+        body: `자산 대부분이 수익을 거의 못 냅니다. ${RISK[s.profile.riskProfile].label} 기준 기대수익 ${(n(s.profile.expectedReturn) * 100).toFixed(1)}%를 적용하면 연 ${approx(t.assets * 0.3 * n(s.profile.expectedReturn))} 차이가 납니다.` });
     }
     void cashShare;
   }
@@ -192,12 +192,12 @@ export function insights(s) {
     const cu = simulateDebt(debts, 0, 'current');
     if (n(worst.rate) > ret) {
       add({ priority: 1, tone: 'warn', icon: '⚖️', title: `${worst.name || '부채'} ${n(worst.rate)}% > 기대수익 ${ret.toFixed(1)}%`,
-        body: `이 부채를 갚는 것이 투자보다 확실히 유리합니다. 여유자금은 상환에 먼저 쓰세요. 100만원을 상환하면 연 ${won(1_000_000 * (n(worst.rate) / 100 - n(s.profile.expectedReturn)))} 만큼 이득입니다.`,
+        body: `이 부채를 갚는 것이 투자보다 확실히 유리합니다. 여유자금은 상환에 먼저 쓰세요. 100만원을 상환하면 연 ${approx(1_000_000 * (n(worst.rate) / 100 - n(s.profile.expectedReturn)))} 만큼 이득입니다.`,
         actions: [{ label: '상환 전략', route: 'debt' }] });
     }
     if (cu.months && av.months && cu.totalInterest - av.totalInterest > 10000) {
       add({ priority: 2, tone: 'info', icon: '🏔️', title: '상환 전략만 바꿔도 이자가 줄어듭니다',
-        body: `최소상환 유지 시 ${cu.months}개월·이자 ${won(cu.totalInterest)} → 고금리 우선(아발란치) ${av.months}개월·이자 ${won(av.totalInterest)}. ${won(cu.totalInterest - av.totalInterest)} 절약.`,
+        body: `최소상환 유지 시 ${cu.months}개월·이자 ${approx(cu.totalInterest)} → 고금리 우선(아발란치) ${av.months}개월·이자 ${approx(av.totalInterest)}. ${approx(cu.totalInterest - av.totalInterest)} 절약.`,
         actions: [{ label: '상환 전략', route: 'debt' }] });
     }
   }
@@ -208,7 +208,7 @@ export function insights(s) {
     if (behind.length) {
       const b = behind[0];
       add({ priority: 1, tone: 'warn', icon: '🎯', title: `'${b.goal.name || '목표'}' 페이스가 부족합니다`,
-        body: `목표일까지 ${Math.round(b.monthsLeft)}개월, 필요 월 저축 ${won(b.required)}인데 배분 가능액은 ${won(b.allocated)}입니다. 매달 ${won(b.gap)}이 부족합니다.`,
+        body: `목표일까지 ${Math.round(b.monthsLeft)}개월, 필요 월 저축 ${approx(b.required)}인데 배분 가능액은 ${approx(b.allocated)}입니다. 매달 ${approx(b.gap)}이 부족합니다.`,
         actions: [{ label: '목표 조정', route: 'goals' }] });
     } else if (alloc.surplus > 0 && alloc.totalRequired > 0) {
       add({ priority: 2, tone: 'good', icon: '🎯', title: '모든 목표가 궤도에 있습니다',

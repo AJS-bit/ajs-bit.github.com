@@ -1,6 +1,6 @@
 /* 목표 — 여러 목표 관리 · 기본 목표 · 목표자산 시뮬레이션 · 미래 자산 예측 */
 import { state } from '../store.js';
-import { metrics, allocateGoals, requiredSaving, monthsToTarget, futureValue, project, totals } from '../finance.js';
+import { metrics, allocateGoals, requiredSaving, monthsToTarget, futureValue, project, totals, weightedReturn } from '../finance.js';
 import { compact, won, pct, months as fmtMonths, n, clamp } from '../format.js';
 import { lineChart, progress, legend, esc } from '../charts.js';
 import { card, empty, setHTML, setText, setAttr } from '../ui.js';
@@ -146,7 +146,9 @@ function simData() {
   const s = state;
   const m = metrics(s);
   const t = totals(s);
-  const ret = sim.returnRate === null ? n(s.profile.expectedReturn) : sim.returnRate;
+  // 기본값을 설정의 위험성향(투자자산 가정)으로 두면, 현금만 가진 사용자에게
+  // 이 탭은 연 6% 를, 옆 탭(미래 예측)은 연 0% 를 보여준다. 출발점은 실제 포트폴리오다.
+  const ret = sim.returnRate === null ? weightedReturn(s) : sim.returnRate;
   const monthsN = Math.round(sim.years * 12);
   const pv = t.net;
   const need = requiredSaving(sim.target, pv, monthsN, ret);
@@ -199,7 +201,8 @@ function simTab() {
       <div class="field">
         <label>연 기대수익률 <b class="num" style="color:var(--accent);float:right" id="sim-v-ret">${(ret * 100).toFixed(1)}%</b></label>
         <input class="range" type="range" min="0" max="0.15" step="0.005" value="${ret}" data-sim="returnRate">
-        <div class="help">설정의 위험성향(${s.profile.riskProfile === 'conservative' ? '안정형' : s.profile.riskProfile === 'aggressive' ? '공격형' : '균형형'}) 기본값 ${(n(s.profile.expectedReturn) * 100).toFixed(1)}%</div>
+        <div class="help">기본값은 지금 보유한 자산의 가중 기대수익 ${(weightedReturn(s) * 100).toFixed(1)}%입니다.
+          설정의 위험성향(${s.profile.riskProfile === 'conservative' ? '안정형' : s.profile.riskProfile === 'aggressive' ? '공격형' : '균형형'}) 기본값 ${(n(s.profile.expectedReturn) * 100).toFixed(1)}%는 투자자산에만 적용됩니다.</div>
       </div>
 
       <div class="field">
@@ -381,7 +384,7 @@ function fcOut(d) {
         markers: debtFree && debtFree <= monthsN ? [{ at: Math.round(debtFree / stepN), label: '부채완제' }] : [],
       })}
       <div class="legend">
-        <span><i style="background:var(--accent)"></i>기본 (연 ${(n(s.profile.expectedReturn) * 100).toFixed(1)}%)</span>
+        <span><i style="background:var(--accent)"></i>기본 (자산 가중 연 ${(weightedReturn(s) * 100).toFixed(1)}%)</span>
         <span><i style="background:var(--accent);opacity:.3"></i>시나리오 범위</span>
         ${debtFree ? `<span><i style="background:var(--warn)"></i>부채 완제 ${fmtMonths(debtFree)} 후</span>` : ''}
       </div>

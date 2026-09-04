@@ -274,13 +274,17 @@ function burnCard(m, s) {
       </label>
       <input class="range" type="range" min="${min}" max="${max}" step="50000"
         value="${spend}" data-scenario="spend" aria-label="이번 달 소비 시나리오">
+      <!-- 최소·최대 사이에 버튼이 끼어 있으면 한 줄에 숫자가 셋(값·최소·최대)이라
+           어느 것이 지금 값인지 안 잡힌다. 눈금은 눈금끼리, 조작은 아래 줄로. -->
       <div class="row" style="margin-top:4px">
         <span class="hint">${manwon(min)}</span>
-        <button class="btn btn--sm btn--ghost" data-act="scenario-reset" id="burn-reset"
-          ${scenarioSpend === null ? 'disabled' : ''}>현재 예상으로</button>
         <span class="hint">${manwon(max)}</span>
       </div>
-      <div class="help" id="burn-basis">${scenarioBasis(baseline, spend)}</div>
+      <div class="help" id="burn-basis" style="margin-top:8px">${scenarioBasis(baseline, spend)}</div>
+      <div style="text-align:right;margin-top:8px">
+        <button class="btn btn--sm btn--ghost" data-act="scenario-reset" id="burn-reset"
+          ${scenarioSpend === null ? 'disabled' : ''}>현재 예상으로</button>
+      </div>
     </div>
 
     <div id="burn-out">${burnOut(m, s, target, spend)}</div>
