@@ -140,6 +140,28 @@ for (const vw of [360, 390, 420, 480, 768]) {
 }
 await p.setViewportSize({ width: 420, height: 1600 });
 
+// --- 데이터 점이 동그란가 ---
+// lineChart 의 svg 는 preserveAspectRatio="none" 이라 가로로만 늘어난다.
+// 선 굵기는 vector-effect 로 막아뒀는데 <circle> 은 빠져 있어서 점만 타원이 됐다
+// (768px 에서 10.7×5.2px = 2.06배, 1100px 에서 2.35배).
+for (const vw of [360, 390, 768, 1100]) {
+  await p.setViewportSize({ width: vw, height: 900 }); await p.waitForTimeout(250);
+  await p.click('.nav button:has-text("자산")'); await p.waitForTimeout(250);
+  await p.click('.tabs button:has-text("자산")'); await p.waitForTimeout(400);
+  const r = await p.evaluate(() => {
+    const d = [...document.querySelectorAll('.chartbox__dot')];
+    const oval = [...document.querySelectorAll('svg.chart circle')]
+      .filter((c) => c.closest('svg').getAttribute('preserveAspectRatio') === 'none').length;
+    if (!d.length) return { n: 0, oval };
+    const bb = d[Math.floor(d.length / 2)].getBoundingClientRect();
+    return { n: d.length, oval, ratio: +(bb.width / bb.height).toFixed(2), tip: d[0].title };
+  });
+  t(r.n > 0 && Math.abs(r.ratio - 1) < 0.05, `${vw}px 에서 순자산 추이의 점이 동그랗다`, `${r.n}개 · 가로/세로 ${r.ratio}배`);
+  t(r.oval === 0, `${vw}px 에서 늘어나는 svg 안에 원이 남아 있지 않다`, `${r.oval}개`);
+  t(!!r.tip, '점에 값 툴팁이 남아 있다', r.tip || '없음');
+}
+await p.setViewportSize({ width: 420, height: 1600 });
+
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');
 await b.close();

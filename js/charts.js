@@ -16,6 +16,16 @@ const id = () => 'g' + Math.random().toString(36).slice(2, 8);
 const halfW = (t) => Math.round(String(t).length * 5.6) + 3;
 
 /** 세로선/눈금처럼 x 좌표에 중앙 정렬되는 라벨 */
+/* 점도 글자와 같은 이유로 SVG 밖으로 뺀다.
+   <circle> 은 가로로만 늘어나 타원이 된다 — 768px 에서 10.7×5.2px(2.06배),
+   1100px 에서 2.35배였다. 선 굵기는 vector-effect 로 막아뒀는데 점은 빠져 있었다.
+   길이 0 선 + stroke-linecap:round 로도 동그래지지만 그 방법은 히트 영역이
+   사라져 <title> 툴팁을 잃는다. HTML 로 얹으면 툴팁도 남는다.
+   세로 배율은 1이라 viewBox 의 y 를 그대로 px 로 쓰고 가로만 백분율로 준다. */
+const chartDot = (xPct, topPx, color, tip) =>
+  `<span class="chartbox__dot" title="${esc(tip)}" style="top:${topPx.toFixed(1)}px;` +
+  `left:${xPct.toFixed(2)}%;background:${color}"></span>`;
+
 const centerLabel = (text, xPct, topPx, kind) =>
   `<span class="chartbox__lbl chartbox__lbl--${kind}" style="top:${topPx}px;` +
   `left:clamp(${halfW(text)}px, ${xPct.toFixed(2)}%, calc(100% - ${halfW(text)}px))">${esc(text)}</span>`;
@@ -138,6 +148,7 @@ export function lineChart(series, { height = 170, labels = [], yFormat = compact
     out += `<polygon points="${up} ${dn}" fill="var(--accent)" opacity=".13"/>`;
   }
 
+  const dots = [];
   for (const s of series) {
     const pts = s.data.map((v, i) => `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
     if (s.fill) out += `<polygon points="${X(0).toFixed(1)},${Y(min).toFixed(1)} ${pts} ${X(s.data.length - 1).toFixed(1)},${Y(min).toFixed(1)}" fill="url(#${gid})"/>`;
@@ -145,15 +156,17 @@ export function lineChart(series, { height = 170, labels = [], yFormat = compact
       stroke-width="${s.width || 2.2}" stroke-linecap="round" stroke-linejoin="round"
       ${s.dash ? `stroke-dasharray="${s.dash}"` : ''} vector-effect="non-scaling-stroke"/>`;
     if (s.dot !== false && s.data.length <= 24) {
-      out += s.data.map((v, i) => `<circle cx="${X(i).toFixed(1)}" cy="${Y(v).toFixed(1)}" r="2.6"
-        fill="${s.color || 'var(--accent)'}"><title>${esc(labels[i] || i)} · ${yFormat(v)}</title></circle>`).join('');
+      dots.push(...s.data.map((v, i) => chartDot(
+        (X(i) / W) * 100, Y(v), s.color || 'var(--accent)', `${labels[i] || i} · ${yFormat(v)}`)));
     }
   }
 
   const lbls = [];
   for (const mk of markers) {
     const x = X(mk.at);
-    out += `<line x1="${x.toFixed(1)}" y1="${PT}" x2="${x.toFixed(1)}" y2="${H - PB}" stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="4 3"/>`;
+    // 세로선은 가로 배율을 그대로 받아 굵어지고 점선 간격도 늘어난다
+    out += `<line x1="${x.toFixed(1)}" y1="${PT}" x2="${x.toFixed(1)}" y2="${H - PB}" stroke="var(--warn)"
+      stroke-width="1.4" stroke-dasharray="4 3" vector-effect="non-scaling-stroke"/>`;
     if (mk.label) lbls.push(centerLabel(mk.label, (x / W) * 100, 0, 'mark'));
   }
 
@@ -181,7 +194,9 @@ export function lineChart(series, { height = 170, labels = [], yFormat = compact
   }
 
   out += '</svg>';
-  return lbls.length ? `<div class="chartbox">${out}${lbls.join('')}</div>` : out;
+  return lbls.length || dots.length
+    ? `<div class="chartbox">${out}${dots.join('')}${lbls.join('')}</div>`
+    : out;
 }
 
 /* ---------- 가로 막대 리스트 ---------- */
@@ -298,7 +313,7 @@ export function spark(data, {
     <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2"
       stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
     ${markAt !== null ? `<line x1="${X(markAt).toFixed(1)}" y1="${TOP}" x2="${X(markAt).toFixed(1)}" y2="${H - P}"
-      stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 3"/>` : ''}
+      stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"/>` : ''}
   </svg>`;
 
   const showTarget = target !== null && targetLabel;

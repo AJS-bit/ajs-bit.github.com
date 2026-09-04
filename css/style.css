@@ -247,6 +247,12 @@ a{color:var(--accent)}
 }
 .chartbox__lbl--mark{color:var(--warn);transform:translateX(-50%)}
 .chartbox__lbl--axis{font-size:9.5px;font-weight:500;transform:translateX(-50%)}
+/* 데이터 점. SVG 안의 <circle> 은 가로로만 늘어나 타원이 된다(768px 에서 2.06배).
+   글자와 같은 이유로 위에 얹는다. title 을 살리려 pointer-events 는 켜 둔다. */
+.chartbox__dot{
+  position:absolute;width:5.6px;height:5.6px;border-radius:50%;
+  transform:translate(-50%,-50%);
+}
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px}
 .legend span{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink2)}
 .legend i{width:9px;height:9px;border-radius:3px;flex:0 0 auto}
