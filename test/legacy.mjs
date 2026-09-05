@@ -51,6 +51,29 @@ const modern = await p2.evaluate(() => document.getElementById('main').innerText
 t(!modern.includes('브라우저가 오래되었습니다'), '최신 엔진에서는 안내가 뜨지 않는다');
 t(modern.includes('순자산 대비 소비율'), '최신 엔진에서는 평소 온보딩이 뜬다');
 
+// --- 하한을 넘는 문법이 새로 들어오지 않았는가 ---
+// 이 앱의 하한은 Chrome 80(옵셔널 체이닝 · 널 병합)이다. 그보다 높은 문법이
+// 한 줄이라도 섞이면 index.html 의 검사를 통과한 브라우저에서 여전히 빈 화면이
+// 된다. 실제로 `||=`(Chrome 85) 한 줄 때문에 안드로이드 11(WebView 83)에서
+// spending.js 가 통째로 죽었다.
+import { readFileSync, readdirSync, statSync } from 'fs';
+const walk = (d) => readdirSync(d).flatMap((f) => {
+  const p = `${d}/${f}`;
+  return statSync(p).isDirectory() ? walk(p) : p.endsWith('.js') ? [p] : [];
+});
+const strip = (src) => src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+const tooNew = [];
+for (const f of walk('./js')) {
+  const src = strip(readFileSync(f, 'utf8'));
+  src.split('\n').forEach((line, i) => {
+    if (/(\?\?=|\|\|=|&&=)/.test(line)) tooNew.push(`${f}:${i + 1} 논리 할당(Chrome 85)`);
+    if (/\.replaceAll\(/.test(line)) tooNew.push(`${f}:${i + 1} String.replaceAll(Chrome 85)`);
+    if (/\.at\(-?\d/.test(line)) tooNew.push(`${f}:${i + 1} Array.at(Chrome 92)`);
+    if (/Object\.hasOwn|structuredClone|toSorted\(|findLast\(/.test(line)) tooNew.push(`${f}:${i + 1} Chrome 93+ API`);
+  });
+}
+t(tooNew.length === 0, 'Chrome 80 을 넘는 문법이 없다', tooNew.join(' · ') || '0건');
+
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');
 await b.close();

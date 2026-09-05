@@ -8,8 +8,16 @@ const ASSETS = [
   './js/views/goals.js', './js/views/coach.js',
 ];
 
+/* addAll 은 **하나라도 실패하면 통째로 실패한다.** 그러면 서비스워커가 설치되지
+   않아 오프라인 캐시가 조용히 없는 상태가 된다. 안드로이드 웹뷰에서 실제로 그랬다 —
+   앱 안에 담긴 파일은 디렉터리 인덱스('./')를 줄 수 없어서 그 한 항목 때문에
+   나머지 17개도 캐시되지 않았다. 하나씩 담고 실패한 것만 건너뛴다. */
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE)
+      .then((c) => Promise.all(ASSETS.map((u) => c.add(u).catch(() => {}))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', (e) => {

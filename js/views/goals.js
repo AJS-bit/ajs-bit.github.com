@@ -368,8 +368,12 @@ function fcHead(d) {
 /** 저축 추가 슬라이더 아래 도움말 */
 function fcHelp(d) {
   const { s, monthsN, end } = d;
+  // Array.at 은 Chrome 92 다. 앱의 하한(옵셔널 체이닝 = Chrome 80)보다 훨씬 높아
+  // 안드로이드 11~12 의 기본 WebView 에서 이 화면이 통째로 죽는다.
+  const base = project(s, monthsN, { scenario: 'base' }).series;
+  const baseEnd = base.length ? base[base.length - 1] : null;
   return `지출을 줄여 저축을 늘렸을 때의 효과를 바로 확인할 수 있습니다.
-          ${fc.extraSave > 0 ? `<b class="pos">현재 설정으로 ${fc.years}년 뒤 ${compact((end?.net ?? 0) - (project(s, monthsN, { scenario: 'base' }).series.at(-1)?.net ?? 0))} 증가</b>` : ''}`;
+          ${fc.extraSave > 0 ? `<b class="pos">현재 설정으로 ${fc.years}년 뒤 ${compact((end?.net ?? 0) - (baseEnd?.net ?? 0))} 증가</b>` : ''}`;
 }
 
 /** 슬라이더 바깥의 예측 카드들 */

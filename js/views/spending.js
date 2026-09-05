@@ -171,7 +171,10 @@ function listTab() {
   const s = state;
   const tx = monthTx(s, viewMonth).slice().sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
   const byDate = {};
-  for (const t of tx) (byDate[t.date] ||= []).push(t);
+  // `||=` 는 Chrome 85 부터다. 앱의 나머지 문법은 Chrome 80(옵셔널 체이닝)이면
+  // 충분한데 이 한 줄 때문에 요구 버전이 5단계 올라간다. 안드로이드 11 의 기본
+  // WebView 가 83 이라 실제로 여기서 SyntaxError 가 났다.
+  for (const t of tx) { if (!byDate[t.date]) byDate[t.date] = []; byDate[t.date].push(t); }
   const m = metrics(s, viewMonth);
 
   return `
