@@ -162,6 +162,24 @@ for (const vw of [360, 390, 768, 1100]) {
 }
 await p.setViewportSize({ width: 420, height: 1600 });
 
+// --- 칩이 두 줄로 쪼개지지 않는가 ---
+// .chip 은 flex 안에서 찌그러지면 '중요' 가 '중'/'요' 로 갈라진다.
+// 코치 카드 헤더에서 360px 6개, 390px 4개가 그랬다. 넓은 화면만 보면 못 찾는다.
+for (const vw of [360, 390, 420]) {
+  await p.setViewportSize({ width: vw, height: 900 }); await p.waitForTimeout(250);
+  await p.click('.nav button:has-text("코치")'); await p.waitForTimeout(300);
+  await p.click('.tabs button:has-text("코칭")'); await p.waitForTimeout(400);
+  // 줄 수는 line-height 로 나누면 안 된다 — computed 가 'normal' 이면 NaN 이라
+  // 폴백값(16px)으로 나뉘어 정상 칩(25px)이 두 줄로 잡힌다. 실제 줄 상자를 센다.
+  const r = await p.evaluate(() => [...document.querySelectorAll('.chip')].map((c) => {
+    const range = document.createRange();
+    range.selectNodeContents(c);
+    return { t: c.innerText.trim(), lines: range.getClientRects().length };
+  }).filter((x) => x.lines > 1));
+  t(r.length === 0, `${vw}px 에서 칩이 한 줄`, r.map((x) => `"${x.t}"`).join(' ') || '0건');
+}
+await p.setViewportSize({ width: 420, height: 1600 });
+
 console.log(`\n  ${pass} PASS / ${fail} FAIL`);
 console.log('ERRORS:', errs.length ? errs.join('\n') : 'none');
 await b.close();
