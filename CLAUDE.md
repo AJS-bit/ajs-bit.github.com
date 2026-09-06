@@ -19,6 +19,14 @@
 - **데이터는 localStorage 에만.** 서버도 계정도 없고 네트워크로 나가는 데이터가 없다.
   코치 기능도 외부 API 없이 규칙 엔진으로 동작한다. 이건 금융 앱으로서의 핵심 약속이다.
 - ES 모듈을 쓰므로 `file://` 로 열면 동작하지 않는다. 로컬 서버가 필요하다.
+- **웹 코드의 하한은 Chrome 80** (옵셔널 체이닝 `?.` · 널 병합 `??`). 그보다 높은
+  문법을 한 줄이라도 쓰면 그 파일이 **파싱 단계에서** 죽어 화면이 통째로 빈다.
+  `type="module"` 은 Chrome 61부터 인식하므로 `nomodule` 대체도 걸리지 않는다.
+  `index.html` 의 고전 스크립트가 지원 여부를 직접 재서 안내를 띄우고,
+  `test/legacy.mjs` 가 하한을 넘는 문법이 새로 들어오는지 검사한다.
+  안드로이드 WebView 는 Play 스토어로 따로 업데이트되므로 OS 버전과 무관하게 낡을
+  수 있다 — 실제로 `||=`(Chrome 85)와 `.at(-1)`(Chrome 92)이 섞여 있어
+  안드로이드 11(WebView 83)에서 지출·내역과 목표·미래 예측이 죽었다.
 
 ## 구조
 
@@ -37,7 +45,12 @@ js/
   views/              dashboard · assets · spending · goals · coach
 sw.js                 오프라인 캐시 (네트워크 우선)
 test/                 브라우저 검증 스크립트 (test/README.md 참고)
+android/              APK 껍데기 (웹뷰). 웹 코드는 여기 없다 — android/README.md
 ```
+
+`android/` 는 웹 앱을 웹뷰에 담아 APK 로 만드는 껍데기다. 웹 파일을 복사해 두지
+않고 빌드할 때 루트에서 가져온다(`syncWebAssets`). 사본을 두면 반드시 어긋난다.
+웹 쪽 제약(빌드 도구 없음)은 그대로다 — Gradle 은 APK 를 만들 때만 쓴다.
 
 **렌더링 방식**: 각 뷰가 HTML 문자열을 반환하고 `app.js` 의 `render()` 가
 `main.innerHTML` 에 통째로 넣는다. 이벤트는 `document.body` 에 위임 등록하고
