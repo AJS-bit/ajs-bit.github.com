@@ -5,7 +5,7 @@ import pathlib
 OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
 
 PHONE = (390, 844)
-TALL = {'StorageStates': 1180, 'PeerStates': 1360, 'EmptyStates': 1400, 'Confirmations': 1300}
+TALL = {'StorageStates': 1264, 'PeerStates': 1552, 'EmptyStates': 1718, 'Confirmations': 1300}
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'Tokens': (1200, 1580), 'Components': (1200, 1400)}
 

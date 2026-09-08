@@ -77,7 +77,7 @@ w('StorageStates', state_sheet(
                 '샘플 기록은 모두 지워지고 빈 상태에서 시작합니다. 샘플은 백업되지 않아요.',
                 btn('내 데이터로 시작', 'primary', h=44).replace('width: 100%;', 'flex: 1;') +
                 btn('계속 둘러보기', 'secondary', h=44).replace('width: 100%;', 'flex: 1;')))],
-    h=1180))
+    h=1264))
 
 
 def kvrow(k, v, vcol, strong=False, last=False):
