@@ -6,7 +6,7 @@ OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
 
 PHONE = (390, 844)
 TALL = {'StorageStates': 1264, 'PeerStates': 1552, 'EmptyStates': 1718, 'Confirmations': 1300,
-        'ModalErrors': 2030}
+        'ModalErrors': 2030, 'GoalTypes': 1846}
 TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'DarkDesktopLedger': (1440, 900),
@@ -26,7 +26,9 @@ TITLES = {
     'AlertsPanel': '모달 · 알림', 'PeerDialog': '모달 · 또래 기준 등록',
     'StorageStates': '상태 · 저장소 로딩·복구', 'PeerStates': '상태 · 또래 카드 5종',
     'EmptyStates': '상태 · 미입력 5종', 'Confirmations': '상태 · 삭제·초기화 확인',
-    'ModalErrors': '상태 · 모달 오류·저장 6종',
+    'ModalErrors': '상태 · 모달 오류·저장 6종', 'GoalTypes': '상태 · 목적지 유형 5종',
+    'SpendingPast': '소비 · 지난 달(마감)', 'GoalContribute': '모달 · 적립액 추가',
+    'CoachEmpty': '모달 · 코칭 기록 없음',
     'DesktopHome': '데스크톱 · 홈', 'DesktopLedger': '데스크톱 · 소비 내역',
     'DarkDesktopHome': '데스크톱 · 홈 (다크)', 'DarkDesktopLedger': '데스크톱 · 소비 내역 (다크)',
     'Tokens': '토큰 · 색 · 타이포 · 간격', 'Components': '컴포넌트 · 상태',
@@ -38,28 +40,32 @@ TITLES.update({
     'DarkPeerStates': '상태 · 또래 카드 5종 (다크)',
     'DarkModalErrors': '상태 · 모달 오류·저장 6종 (다크)',
     'DarkConfirmations': '상태 · 삭제·초기화 확인 (다크)',
+    'DarkGoalTypes': '상태 · 목적지 유형 5종 (다크)',
 })
 
 PAGES = [
     ('page-1', '모바일 · 화면',
      ['Main', 'HomeScroll', 'Assets', 'Debts', 'Strategy', 'Spending',
-      'Ledger', 'Limits', 'Goals', 'GoalDesign', 'Future', 'Payoff', 'Onboarding']),
+      'Ledger', 'Limits', 'SpendingPast', 'Goals', 'GoalDesign', 'Future', 'Payoff', 'Onboarding']),
     ('page-2', '모바일 · 모달',
      ['ProfileDialog', 'TransactionAdd', 'LimitEditor', 'AssetDialog', 'DebtDialog', 'GoalDialog',
-      'RecurringDialog', 'MonthlyClose', 'ImportReview', 'CoachPanel', 'AlertsPanel', 'PeerDialog']),
+      'RecurringDialog', 'GoalContribute', 'MonthlyClose', 'ImportReview', 'CoachPanel', 'CoachEmpty',
+      'AlertsPanel', 'PeerDialog']),
     ('page-3', '상태 카탈로그',
-     ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations']),
+     ['StorageStates', 'EmptyStates', 'PeerStates', 'GoalTypes', 'ModalErrors', 'Confirmations']),
     ('page-4', '데스크톱',
      ['DesktopHome', 'DesktopLedger', 'DarkDesktopHome', 'DarkDesktopLedger']),
     ('page-5', '다크 · 화면',
      ['DarkHome', 'DarkHomeScroll', 'DarkAssets', 'DarkDebts', 'DarkStrategy', 'DarkSpending',
-      'DarkLedger', 'DarkLimits', 'DarkGoals', 'DarkGoalDesign', 'DarkFuture', 'DarkPayoff', 'DarkOnboarding']),
+      'DarkLedger', 'DarkLimits', 'DarkSpendingPast', 'DarkGoals', 'DarkGoalDesign', 'DarkFuture',
+      'DarkPayoff', 'DarkOnboarding']),
     ('page-6', '다크 · 모달',
      ['DarkProfileDialog', 'DarkTransactionAdd', 'DarkLimitEditor', 'DarkAssetDialog', 'DarkDebtDialog',
-      'DarkGoalDialog', 'DarkRecurringDialog', 'DarkMonthlyClose', 'DarkImportReview', 'DarkCoachPanel',
-      'DarkAlertsPanel', 'DarkPeerDialog']),
+      'DarkGoalDialog', 'DarkRecurringDialog', 'DarkGoalContribute', 'DarkMonthlyClose', 'DarkImportReview',
+      'DarkCoachPanel', 'DarkCoachEmpty', 'DarkAlertsPanel', 'DarkPeerDialog']),
     ('page-7', '다크 · 상태 카탈로그',
-     ['DarkStorageStates', 'DarkEmptyStates', 'DarkPeerStates', 'DarkModalErrors', 'DarkConfirmations']),
+     ['DarkStorageStates', 'DarkEmptyStates', 'DarkPeerStates', 'DarkGoalTypes', 'DarkModalErrors',
+      'DarkConfirmations']),
     ('page-8', '디자인 시스템', ['Tokens', 'Components', 'DarkComponents']),
 ]
 

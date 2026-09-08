@@ -104,11 +104,11 @@ def darken(text):
 
 
 SCREENS = ['Main', 'HomeScroll', 'Assets', 'Debts', 'Strategy', 'Spending', 'Ledger',
-           'Limits', 'Goals', 'GoalDesign', 'Future', 'Payoff', 'Onboarding']
+           'Limits', 'Goals', 'GoalDesign', 'Future', 'Payoff', 'Onboarding', 'SpendingPast']
 MODALS = ['LimitEditor', 'TransactionAdd', 'ProfileDialog', 'AssetDialog', 'DebtDialog',
           'GoalDialog', 'RecurringDialog', 'MonthlyClose', 'ImportReview', 'CoachPanel',
-          'AlertsPanel', 'PeerDialog']
-STATES = ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations']
+          'AlertsPanel', 'PeerDialog', 'GoalContribute', 'CoachEmpty']
+STATES = ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations', 'GoalTypes']
 SYSTEM = ['Components']
 DESKTOP = ['DesktopHome', 'DesktopLedger']
 

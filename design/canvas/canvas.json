@@ -107,9 +107,18 @@
       "title": "소비 · 한도"
     },
     {
-      "file": "Goals.dc.html",
+      "file": "SpendingPast.dc.html",
       "page": "page-1",
       "x": 940,
+      "y": 984,
+      "w": 390,
+      "h": 844,
+      "title": "소비 · 지난 달(마감)"
+    },
+    {
+      "file": "Goals.dc.html",
+      "page": "page-1",
+      "x": 1410,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -118,7 +127,7 @@
     {
       "file": "GoalDesign.dc.html",
       "page": "page-1",
-      "x": 1410,
+      "x": 1880,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -127,7 +136,7 @@
     {
       "file": "Future.dc.html",
       "page": "page-1",
-      "x": 1880,
+      "x": 2350,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -136,8 +145,8 @@
     {
       "file": "Payoff.dc.html",
       "page": "page-1",
-      "x": 2350,
-      "y": 984,
+      "x": 0,
+      "y": 1968,
       "w": 390,
       "h": 844,
       "title": "미래 · 상환 계획"
@@ -145,7 +154,7 @@
     {
       "file": "Onboarding.dc.html",
       "page": "page-1",
-      "x": 0,
+      "x": 470,
       "y": 1968,
       "w": 390,
       "h": 844,
@@ -215,9 +224,18 @@
       "title": "모달 · 반복 거래"
     },
     {
-      "file": "MonthlyClose.dc.html",
+      "file": "GoalContribute.dc.html",
       "page": "page-2",
       "x": 470,
+      "y": 984,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 적립액 추가"
+    },
+    {
+      "file": "MonthlyClose.dc.html",
+      "page": "page-2",
+      "x": 940,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -226,7 +244,7 @@
     {
       "file": "ImportReview.dc.html",
       "page": "page-2",
-      "x": 940,
+      "x": 1410,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -235,17 +253,26 @@
     {
       "file": "CoachPanel.dc.html",
       "page": "page-2",
-      "x": 1410,
+      "x": 1880,
       "y": 984,
       "w": 390,
       "h": 844,
       "title": "모달 · 코칭"
     },
     {
+      "file": "CoachEmpty.dc.html",
+      "page": "page-2",
+      "x": 2350,
+      "y": 984,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 코칭 기록 없음"
+    },
+    {
       "file": "AlertsPanel.dc.html",
       "page": "page-2",
-      "x": 1880,
-      "y": 984,
+      "x": 0,
+      "y": 1968,
       "w": 390,
       "h": 844,
       "title": "모달 · 알림"
@@ -253,8 +280,8 @@
     {
       "file": "PeerDialog.dc.html",
       "page": "page-2",
-      "x": 2350,
-      "y": 984,
+      "x": 470,
+      "y": 1968,
       "w": 390,
       "h": 844,
       "title": "모달 · 또래 기준 등록"
@@ -287,9 +314,18 @@
       "title": "상태 · 또래 카드 5종"
     },
     {
-      "file": "ModalErrors.dc.html",
+      "file": "GoalTypes.dc.html",
       "page": "page-3",
       "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 1846,
+      "title": "상태 · 목적지 유형 5종"
+    },
+    {
+      "file": "ModalErrors.dc.html",
+      "page": "page-3",
+      "x": 1880,
       "y": 0,
       "w": 390,
       "h": 2030,
@@ -298,7 +334,7 @@
     {
       "file": "Confirmations.dc.html",
       "page": "page-3",
-      "x": 1880,
+      "x": 2350,
       "y": 0,
       "w": 390,
       "h": 1300,
@@ -413,9 +449,18 @@
       "title": "소비 · 한도 (다크)"
     },
     {
-      "file": "DarkGoals.dc.html",
+      "file": "DarkSpendingPast.dc.html",
       "page": "page-5",
       "x": 940,
+      "y": 984,
+      "w": 390,
+      "h": 844,
+      "title": "소비 · 지난 달(마감) (다크)"
+    },
+    {
+      "file": "DarkGoals.dc.html",
+      "page": "page-5",
+      "x": 1410,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -424,7 +469,7 @@
     {
       "file": "DarkGoalDesign.dc.html",
       "page": "page-5",
-      "x": 1410,
+      "x": 1880,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -433,7 +478,7 @@
     {
       "file": "DarkFuture.dc.html",
       "page": "page-5",
-      "x": 1880,
+      "x": 2350,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -442,8 +487,8 @@
     {
       "file": "DarkPayoff.dc.html",
       "page": "page-5",
-      "x": 2350,
-      "y": 984,
+      "x": 0,
+      "y": 1968,
       "w": 390,
       "h": 844,
       "title": "미래 · 상환 계획 (다크)"
@@ -451,7 +496,7 @@
     {
       "file": "DarkOnboarding.dc.html",
       "page": "page-5",
-      "x": 0,
+      "x": 470,
       "y": 1968,
       "w": 390,
       "h": 844,
@@ -521,9 +566,18 @@
       "title": "모달 · 반복 거래 (다크)"
     },
     {
-      "file": "DarkMonthlyClose.dc.html",
+      "file": "DarkGoalContribute.dc.html",
       "page": "page-6",
       "x": 470,
+      "y": 984,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 적립액 추가 (다크)"
+    },
+    {
+      "file": "DarkMonthlyClose.dc.html",
+      "page": "page-6",
+      "x": 940,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -532,7 +586,7 @@
     {
       "file": "DarkImportReview.dc.html",
       "page": "page-6",
-      "x": 940,
+      "x": 1410,
       "y": 984,
       "w": 390,
       "h": 844,
@@ -541,17 +595,26 @@
     {
       "file": "DarkCoachPanel.dc.html",
       "page": "page-6",
-      "x": 1410,
+      "x": 1880,
       "y": 984,
       "w": 390,
       "h": 844,
       "title": "모달 · 코칭 (다크)"
     },
     {
+      "file": "DarkCoachEmpty.dc.html",
+      "page": "page-6",
+      "x": 2350,
+      "y": 984,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 코칭 기록 없음 (다크)"
+    },
+    {
       "file": "DarkAlertsPanel.dc.html",
       "page": "page-6",
-      "x": 1880,
-      "y": 984,
+      "x": 0,
+      "y": 1968,
       "w": 390,
       "h": 844,
       "title": "모달 · 알림 (다크)"
@@ -559,8 +622,8 @@
     {
       "file": "DarkPeerDialog.dc.html",
       "page": "page-6",
-      "x": 2350,
-      "y": 984,
+      "x": 470,
+      "y": 1968,
       "w": 390,
       "h": 844,
       "title": "모달 · 또래 기준 등록 (다크)"
@@ -593,9 +656,18 @@
       "title": "상태 · 또래 카드 5종 (다크)"
     },
     {
-      "file": "DarkModalErrors.dc.html",
+      "file": "DarkGoalTypes.dc.html",
       "page": "page-7",
       "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 1846,
+      "title": "상태 · 목적지 유형 5종 (다크)"
+    },
+    {
+      "file": "DarkModalErrors.dc.html",
+      "page": "page-7",
+      "x": 1880,
       "y": 0,
       "w": 390,
       "h": 2030,
@@ -604,7 +676,7 @@
     {
       "file": "DarkConfirmations.dc.html",
       "page": "page-7",
-      "x": 1880,
+      "x": 2350,
       "y": 0,
       "w": 390,
       "h": 1300,
