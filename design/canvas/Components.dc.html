@@ -105,6 +105,34 @@
           <div style="font-size: 11.5px; color: #6B7794; margin-top: 2px;">다음 안내·코칭·알림. 상태색으로 시급함을 표시합니다.</div>
         </div>
       </div>
+
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794; margin-top: 26px;">03b &middot; 그래프 규칙</div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 15px 16px 13px; margin-top: 14px;">
+        <div style="position: relative; height: 92px;">
+          <span style="position: absolute; left: 0; top: 0; font-size: 10.5px; font-weight: 600; color: #6B7794;">한도 216만</span>
+          <div style="position: absolute; left: 0; right: 0; top: 15px; border-top: 1px dashed #D7DEEA;"></div>
+          <svg width="100%" height="92" viewBox="0 0 292 92" preserveAspectRatio="none" style="position: absolute; inset: 0;">
+            <path d="M2 84 L36 78 L70 62 L104 55 L118 48" fill="none" stroke="#3556E6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M118 48 L180 34 L242 22 L288 16" fill="none" stroke="#3556E6" stroke-width="2.4" stroke-dasharray="5 5" stroke-linecap="round" opacity=".55"/>
+            <circle cx="118" cy="48" r="3.6" fill="#3556E6"/>
+            <circle cx="288" cy="16" r="3.6" fill="#3556E6"/>
+          </svg>
+          <span style="position: absolute; left: 96px; top: 24px; font-size: 11px; font-weight: 700; color: #101828;">112만</span>
+          <span style="position: absolute; right: 0; top: 31px; font-size: 11px; font-weight: 700; color: #101828;">208만</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; border-top: 1px solid #EFF2F8; padding-top: 8px; margin-top: 4px;">
+          <span style="font-size: 10.5px; color: #98A4BC;">1일</span>
+          <span style="font-size: 10.5px; font-weight: 600; color: #101828;">8일 오늘</span>
+          <span style="font-size: 10.5px; color: #98A4BC;">30일</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 12px;">
+        <div style="display: flex; gap: 8px;"><span style="flex-shrink: 0; width: 15px; font-size: 11.5px; font-weight: 700; color: #3556E6;">1</span><span style="font-size: 11.5px; line-height: 1.5; color: #475467;"><b style=font-weight:600>Y축 눈금을 없앱니다.</b> 기준선 위에 값을 직접 적으면 왼쪽 여백 40px이 그래프 폭으로 돌아옵니다.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="flex-shrink: 0; width: 15px; font-size: 11.5px; font-weight: 700; color: #3556E6;">2</span><span style="font-size: 11.5px; line-height: 1.5; color: #475467;"><b style=font-weight:600>오른쪽을 비워 두지 않습니다.</b> 오늘까지는 실선, 남은 기간은 같은 색 점선 예상으로 카드 폭을 끝까지 씁니다.</span></div>
+        <div style="display: flex; gap: 8px;"><span style="flex-shrink: 0; width: 15px; font-size: 11.5px; font-weight: 700; color: #3556E6;">3</span><span style="font-size: 11.5px; line-height: 1.5; color: #475467;"><b style=font-weight:600>값 라벨은 두 곳만.</b> 오늘 지점과 끝점. 라벨끼리 겹치면 선을 지우고 문구로 대신합니다.</span></div>
+      </div>
     </div>
 
     <div>
@@ -201,7 +229,7 @@
 
       <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794; margin-top: 26px;">06 · 저장 알림</div>
       <div style="display: flex; flex-direction: column; gap: 9px; margin-top: 13px;">
-        <div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 13px; background: #101828; box-shadow: 0 12px 30px -14px rgba(16,24,40,.5);">
+        <!--dc-keep--><div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 13px; background: #101828; box-shadow: 0 12px 30px -14px rgba(16,24,40,.5);">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3DD489" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"/></svg>
           <span style="flex: 1; font-size: 13.5px; font-weight: 500; color: #FFFFFF;">한도를 저장했어요</span>
           <span style="font-size: 12.5px; font-weight: 600; color: #7FA0FF;">되돌리기</span>
@@ -210,7 +238,7 @@
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FFC4C2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
           <span style="flex: 1; font-size: 13.5px; font-weight: 500; color: #FFFFFF;">저장하지 못했어요. 기기 저장 공간을 확인해 주세요</span>
           <span style="font-size: 12.5px; font-weight: 600; color: #FFC4C2;">다시 시도</span>
-        </div>
+        </div><!--/dc-keep-->
       </div>
     </div>
 

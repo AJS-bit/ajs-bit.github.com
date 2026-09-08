@@ -9,6 +9,7 @@ MAP = {
     '#EDF0F7': '#080C16',   # canvas
     '#FFFFFF': '#121A2B',   # surface
     '#F8FAFD': '#151D30',
+    '#FAFBFD': '#151D30',   # 강조 행
     '#E3E8F1': '#232D45',   # line
     '#EFF2F8': '#1E2739',   # line-soft
     '#F3F5FA': '#1E2739',   # line-row
@@ -70,7 +71,19 @@ BRAND_GRAD = 'linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%)'
 ARROW = 'M21.3 3.1 3.9 10.4c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L22.7 4.5c.3-.8-.6-1.7-1.4-1.4Z'
 
 
+KEEP = re.compile(r'<!--dc-keep-->(.*?)<!--/dc-keep-->', re.S)
+
+
 def darken(text):
+    # <!--dc-keep-->…<!--/dc-keep--> 구간은 라이트/다크가 같아야 하는 반전 요소
+    # (어두운 배경 위 흰 글자 토스트 등)이라 매핑에서 제외한다.
+    kept = []
+
+    def _stash(m):
+        kept.append(m.group(1))
+        return f'\x00KEEP{len(kept) - 1}\x00'
+
+    text = KEEP.sub(_stash, text)
     out = PAT.sub(lambda m: MAP[m.group(0).upper()], text)
     out = out.replace('rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)',
                       'rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7)')
@@ -85,6 +98,8 @@ def darken(text):
     out = re.sub(r'fill="#121A2B"(\s*><path d="' + re.escape(ARROW) + r')', r'fill="#FFFFFF"\1', out)
     # 부채 해치 패턴
     out = out.replace('#E0908C 0 4px, #F0BFBD 4px 8px', '#8E4C49 0 4px, #B36F6C 4px 8px')
+    for i, k in enumerate(kept):
+        out = out.replace(f'\x00KEEP{i}\x00', k)
     return out
 
 
@@ -93,11 +108,13 @@ SCREENS = ['Main', 'HomeScroll', 'Assets', 'Debts', 'Strategy', 'Spending', 'Led
 MODALS = ['LimitEditor', 'TransactionAdd', 'ProfileDialog', 'AssetDialog', 'DebtDialog',
           'GoalDialog', 'RecurringDialog', 'MonthlyClose', 'ImportReview', 'CoachPanel',
           'AlertsPanel', 'PeerDialog']
-DESKTOP = ['DesktopHome']
+STATES = ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations']
+SYSTEM = ['Components']
+DESKTOP = ['DesktopHome', 'DesktopLedger']
 
 if __name__ == '__main__':
     n = 0
-    for name in SCREENS + MODALS + DESKTOP:
+    for name in SCREENS + MODALS + STATES + SYSTEM + DESKTOP:
         src = SRC / f'{name}.dc.html'
         dst = SRC / ('DarkHome.dc.html' if name == 'Main' else f'Dark{name}.dc.html')
         dst.write_text(darken(src.read_text(encoding='utf-8')), encoding='utf-8')

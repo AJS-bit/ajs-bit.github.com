@@ -5,9 +5,12 @@ import pathlib
 OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
 
 PHONE = (390, 844)
-TALL = {'StorageStates': 1264, 'PeerStates': 1552, 'EmptyStates': 1718, 'Confirmations': 1300}
+TALL = {'StorageStates': 1264, 'PeerStates': 1552, 'EmptyStates': 1718, 'Confirmations': 1300,
+        'ModalErrors': 2030}
+TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
-        'Tokens': (1200, 1580), 'Components': (1200, 1400)}
+        'DarkDesktopLedger': (1440, 900),
+        'Tokens': (1200, 1580), 'Components': (1200, 1440), 'DarkComponents': (1200, 1440)}
 
 TITLES = {
     'Main': '홈 · 오늘의 내비게이션', 'HomeScroll': '홈 · 아래로 스크롤',
@@ -23,10 +26,19 @@ TITLES = {
     'AlertsPanel': '모달 · 알림', 'PeerDialog': '모달 · 또래 기준 등록',
     'StorageStates': '상태 · 저장소 로딩·복구', 'PeerStates': '상태 · 또래 카드 5종',
     'EmptyStates': '상태 · 미입력 5종', 'Confirmations': '상태 · 삭제·초기화 확인',
+    'ModalErrors': '상태 · 모달 오류·저장 6종',
     'DesktopHome': '데스크톱 · 홈', 'DesktopLedger': '데스크톱 · 소비 내역',
-    'DarkDesktopHome': '데스크톱 · 홈 (다크)',
+    'DarkDesktopHome': '데스크톱 · 홈 (다크)', 'DarkDesktopLedger': '데스크톱 · 소비 내역 (다크)',
     'Tokens': '토큰 · 색 · 타이포 · 간격', 'Components': '컴포넌트 · 상태',
+    'DarkComponents': '컴포넌트 · 상태 (다크)',
 }
+TITLES.update({
+    'DarkStorageStates': '상태 · 저장소 로딩·복구 (다크)',
+    'DarkEmptyStates': '상태 · 미입력 5종 (다크)',
+    'DarkPeerStates': '상태 · 또래 카드 5종 (다크)',
+    'DarkModalErrors': '상태 · 모달 오류·저장 6종 (다크)',
+    'DarkConfirmations': '상태 · 삭제·초기화 확인 (다크)',
+})
 
 PAGES = [
     ('page-1', '모바일 · 화면',
@@ -35,8 +47,10 @@ PAGES = [
     ('page-2', '모바일 · 모달',
      ['ProfileDialog', 'TransactionAdd', 'LimitEditor', 'AssetDialog', 'DebtDialog', 'GoalDialog',
       'RecurringDialog', 'MonthlyClose', 'ImportReview', 'CoachPanel', 'AlertsPanel', 'PeerDialog']),
-    ('page-3', '상태 카탈로그', ['StorageStates', 'EmptyStates', 'PeerStates', 'Confirmations']),
-    ('page-4', '데스크톱', ['DesktopHome', 'DesktopLedger', 'DarkDesktopHome']),
+    ('page-3', '상태 카탈로그',
+     ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations']),
+    ('page-4', '데스크톱',
+     ['DesktopHome', 'DesktopLedger', 'DarkDesktopHome', 'DarkDesktopLedger']),
     ('page-5', '다크 · 화면',
      ['DarkHome', 'DarkHomeScroll', 'DarkAssets', 'DarkDebts', 'DarkStrategy', 'DarkSpending',
       'DarkLedger', 'DarkLimits', 'DarkGoals', 'DarkGoalDesign', 'DarkFuture', 'DarkPayoff', 'DarkOnboarding']),
@@ -44,7 +58,9 @@ PAGES = [
      ['DarkProfileDialog', 'DarkTransactionAdd', 'DarkLimitEditor', 'DarkAssetDialog', 'DarkDebtDialog',
       'DarkGoalDialog', 'DarkRecurringDialog', 'DarkMonthlyClose', 'DarkImportReview', 'DarkCoachPanel',
       'DarkAlertsPanel', 'DarkPeerDialog']),
-    ('page-7', '디자인 시스템', ['Tokens', 'Components']),
+    ('page-7', '다크 · 상태 카탈로그',
+     ['DarkStorageStates', 'DarkEmptyStates', 'DarkPeerStates', 'DarkModalErrors', 'DarkConfirmations']),
+    ('page-8', '디자인 시스템', ['Tokens', 'Components', 'DarkComponents']),
 ]
 
 NOTES = {
@@ -62,7 +78,9 @@ NOTES = {
                '없는 값을 지어내지 않는다\n\n'
                '미입력은 회색 —로만 표시하고 0원·0%·좋은 성과로 바꾸지 않습니다. 급여가 0원이고 부수입만 있는 상태는 '
                '소비율을 —로 두고 총수입 대비 소비를 대안 지표로 제시합니다.\n\n'
-               '또래 카드는 5가지 상태 어디에서도 확인되지 않은 평균·백분위·상위 %를 만들지 않습니다.'),
+               '또래 카드는 5가지 상태 어디에서도 확인되지 않은 평균·백분위·상위 %를 만들지 않습니다.\n\n'
+               '모달 오류 6종도 같은 규칙을 씁니다. 오류는 무엇이 잘못됐고 어떻게 고치는지를 같이 말하고, '
+               '저장에 실패해도 입력한 값을 지우지 않습니다.'),
     'page-4': ('note-desktop', 640,
                '데스크톱은 넓이를 두 번째 열로 쓴다\n\n'
                '2.2의 데스크톱은 사이드바 224px + 가운데 한 열이라 히어로 카드 안이 텅 비어 보였습니다.\n\n'
@@ -77,11 +95,17 @@ NOTES = {
                '다크 모달\n\n'
                '시트 배경은 surface(#121A2B), 스크림은 #04070E입니다. 그림자는 더 깊고 불투명하게 바뀝니다.\n\n'
                '보라 가정 배지, 회색 — 미입력, 주황/빨강 경고의 의미는 라이트와 동일하게 유지됩니다.'),
-    'page-7': ('note-system', 640,
+    'page-7': ('note-dark-states', 640,
+               '다크에서도 상태 규칙은 같다\n\n'
+               '회색 — 미입력, 보라 = 저장되지 않은 가정, 주황 = 개인 목표 초과, 빨강 = 100% 초과. '
+               '네 가지 의미는 라이트와 다크에서 완전히 같은 자리에 쓰입니다.\n\n'
+               '오류 카드의 빨강만 다크에서 밝기를 올려(#C0342F → #E8635F) 어두운 표면 위에서 읽히게 했습니다.'),
+    'page-8': ('note-system', 640,
                '타이포 9단계 · 카테고리 색은 그대로\n\n'
                '2.2에는 17·18·20·21·23·26·32px가 섞여 있었습니다. v3는 display / metric-xl / metric / title / '
                'section / body / label / meta / eyebrow 9단계만 씁니다.\n\n'
-               '카테고리·자산 고정 팔레트는 거래와 차트의 정체성이라 2.2 값을 그대로 유지합니다.'),
+               '카테고리·자산 고정 팔레트는 거래와 차트의 정체성이라 2.2 값을 그대로 유지합니다.\n\n'
+               '토큰 시트는 01 LIGHT / 02 DARK 두 절로 라이트와 다크 값을 한 장에 나란히 적어 둔 명세라 다크 사본을 따로 두지 않습니다. 컴포넌트 시트는 실제 컴포넌트를 보여 주므로 다크 버전을 함께 둡니다.'),
 }
 
 PER_ROW = 6
