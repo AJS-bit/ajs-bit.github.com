@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #3556E6; text-decoration: none; }
+    a:hover { color: #2743C4; }
+  </style>
+</helmet>
+
+<div style="width: 1200px; height: 1580px; background: #FFFFFF; color: #101828; padding: 40px 44px; display: flex; flex-direction: column; gap: 30px; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 2px solid #101828;">
+    <div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M21.3 3.1 3.9 10.4c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L22.7 4.5c.3-.8-.6-1.7-1.4-1.4Z"/></svg>
+        </div>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #6B7794;">NAVI DESIGN SYSTEM v3</span>
+      </div>
+      <h1 style="margin: 10px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.15; color: #101828;">색 · 타이포 · 간격 토큰</h1>
+    </div>
+    <p style="margin: 0; max-width: 420px; font-size: 13px; line-height: 1.55; color: #475467;">2.2 구현에서 뽑아낸 값을 대체하는 새 토큰입니다. 카테고리·자산 고정 팔레트만 데이터 정체성으로 그대로 두고, 표면·잉크·상태색·타이포·간격은 전부 새로 정의했습니다.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px;">
+
+    <div>
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794;">01 · 표면과 잉크 — LIGHT</div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 12px;">
+        <div><div style="height: 52px; border-radius: 10px; background: #EDF0F7; border: 1px solid #E3E8F1;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">canvas</div><div style="font-size: 10.5px; color: #6B7794;">#EDF0F7</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #FFFFFF; border: 1px solid #E3E8F1;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">surface</div><div style="font-size: 10.5px; color: #6B7794;">#FFFFFF</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #F4F6FB; border: 1px solid #E3E8F1;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">inset</div><div style="font-size: 10.5px; color: #6B7794;">#F4F6FB</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #E8ECF5; border: 1px solid #E3E8F1;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">track</div><div style="font-size: 10.5px; color: #6B7794;">#E8ECF5</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #E3E8F1;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">line</div><div style="font-size: 10.5px; color: #6B7794;">#E3E8F1</div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 12px;">
+        <div><div style="height: 52px; border-radius: 10px; background: #101828;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">ink</div><div style="font-size: 10.5px; color: #6B7794;">#101828</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #475467;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">ink-2</div><div style="font-size: 10.5px; color: #6B7794;">#475467</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #6B7794;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">ink-3</div><div style="font-size: 10.5px; color: #6B7794;">#6B7794</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #98A4BC;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">ink-4</div><div style="font-size: 10.5px; color: #6B7794;">#98A4BC</div></div>
+        <div><div style="height: 52px; border-radius: 10px; background: #B4BECD;"></div><div style="font-size: 11px; font-weight: 600; color: #101828; margin-top: 6px;">disabled</div><div style="font-size: 10.5px; color: #6B7794;">#B4BECD</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794;">02 · 표면과 잉크 — DARK</div>
+      <div style="background: #080C16; border-radius: 14px; padding: 14px; margin-top: 12px;">
+        <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px;">
+          <div><div style="height: 44px; border-radius: 10px; background: #080C16; border: 1px solid #232D45;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">canvas</div><div style="font-size: 10.5px; color: #8494AD;">#080C16</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #121A2B; border: 1px solid #232D45;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">surface</div><div style="font-size: 10.5px; color: #8494AD;">#121A2B</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #1A2337; border: 1px solid #232D45;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">inset</div><div style="font-size: 10.5px; color: #8494AD;">#1A2337</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #232D45;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">track/line</div><div style="font-size: 10.5px; color: #8494AD;">#232D45</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #EAEFF8;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">ink</div><div style="font-size: 10.5px; color: #8494AD;">#EAEFF8</div></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 10px;">
+          <div><div style="height: 44px; border-radius: 10px; background: #A5B2C9;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">ink-2</div><div style="font-size: 10.5px; color: #8494AD;">#A5B2C9</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #8494AD;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">ink-3</div><div style="font-size: 10.5px; color: #8494AD;">#8494AD</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #7FA0FF;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">brand</div><div style="font-size: 10.5px; color: #8494AD;">#7FA0FF</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #3DD489;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">positive</div><div style="font-size: 10.5px; color: #8494AD;">#3DD489</div></div>
+          <div><div style="height: 44px; border-radius: 10px; background: #B79BFF;"></div><div style="font-size: 11px; font-weight: 600; color: #EAEFF8; margin-top: 6px;">violet</div><div style="font-size: 10.5px; color: #8494AD;">#B79BFF</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794;">03 · 브랜드와 상태색 — 의미가 고정된 색</div>
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 12px;">
+      <div style="border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="height: 62px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%);"></div>
+        <div style="padding: 10px 12px;">
+          <div style="font-size: 12.5px; font-weight: 600; color: #101828;">brand gradient</div>
+          <div style="font-size: 10.5px; color: #6B7794; margin-top: 2px;">140° #3556E6 → #7A3FE4</div>
+          <div style="font-size: 10.5px; color: #98A4BC; margin-top: 3px;">로고·마크 전용 · 라이트/다크 동일</div>
+        </div>
+      </div>
+      <div style="border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="height: 62px; background: #3556E6;"></div>
+        <div style="padding: 10px 12px;">
+          <div style="font-size: 12.5px; font-weight: 600; color: #101828;">brand</div>
+          <div style="font-size: 10.5px; color: #6B7794; margin-top: 2px;">#3556E6 · soft #E9EDFD</div>
+          <div style="font-size: 10.5px; color: #98A4BC; margin-top: 3px;">주 행동 · 현재 위치 · 링크</div>
+        </div>
+      </div>
+      <div style="border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="height: 62px; background: #0F7B47;"></div>
+        <div style="padding: 10px 12px;">
+          <div style="font-size: 12.5px; font-weight: 600; color: #101828;">positive</div>
+          <div style="font-size: 10.5px; color: #6B7794; margin-top: 2px;">#0F7B47 · soft #E4F4EA</div>
+          <div style="font-size: 10.5px; color: #98A4BC; margin-top: 3px;">목표 이내 · 순자산 성장</div>
+        </div>
+      </div>
+      <div style="border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="height: 62px; background: #B45309;"></div>
+        <div style="padding: 10px 12px;">
+          <div style="font-size: 12.5px; font-weight: 600; color: #101828;">warning</div>
+          <div style="font-size: 10.5px; color: #6B7794; margin-top: 2px;">#B45309 · soft #FDF1E0</div>
+          <div style="font-size: 10.5px; color: #98A4BC; margin-top: 3px;">개인 목표 초과 · 부채 경고</div>
+        </div>
+      </div>
+      <div style="border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="height: 62px; background: #C0342F;"></div>
+        <div style="padding: 10px 12px;">
+          <div style="font-size: 12.5px; font-weight: 600; color: #101828;">negative</div>
+          <div style="font-size: 10.5px; color: #6B7794; margin-top: 2px;">#C0342F · soft #FCEBEA</div>
+          <div style="font-size: 10.5px; color: #98A4BC; margin-top: 3px;">100% 초과 · 총부채 · 삭제</div>
+        </div>
+      </div>
+      <div style="border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="height: 62px; background: #7A3FE4;"></div>
+        <div style="padding: 10px 12px;">
+          <div style="font-size: 12.5px; font-weight: 600; color: #101828;">violet</div>
+          <div style="font-size: 10.5px; color: #6B7794; margin-top: 2px;">#7A3FE4 · soft #F1EAFD</div>
+          <div style="font-size: 10.5px; color: #98A4BC; margin-top: 3px;">목적지 · 저장 안 되는 가정</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 10px; margin-top: 12px; padding: 12px 14px; background: #F4F6FB; border-radius: 12px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7794" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <span style="font-size: 12px; line-height: 1.55; color: #475467;"><span style="font-weight: 600; color: #101828;">보라 = 확정되지 않은 값.</span> 홈 소비 가정, 미저장 상환 계획, 목표 계산기 결과처럼 저장 전 시뮬레이션은 모두 보라 + 점선 테두리 + “저장되지 않는 가정” 배지를 씁니다. 실제 저장된 기록에는 절대 쓰지 않습니다. <span style="font-weight: 600; color: #101828;">회색(ink-4) = 미측정·미입력</span>이며, 미입력을 초록(좋음)이나 빨강(나쁨)으로 칠하지 않습니다.</span>
+    </div>
+  </div>
+
+  <div>
+    <div style="display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794;">04 · 데이터 팔레트 — 2.2에서 그대로 유지</span>
+      <span style="font-size: 11.5px; color: #98A4BC;">거래·차트·범례가 이 색으로 식별되므로 변경하지 않습니다</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px;">
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #f97316;"></span><span style="font-size: 12px; color: #475467;">식비</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #d97706;"></span><span style="font-size: 12px; color: #475467;">카페/간식</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #0ea5e9;"></span><span style="font-size: 12px; color: #475467;">교통</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #8b5cf6;"></span><span style="font-size: 12px; color: #475467;">주거/관리</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #6366f1;"></span><span style="font-size: 12px; color: #475467;">통신</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #0d9488;"></span><span style="font-size: 12px; color: #475467;">보험</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #a855f7;"></span><span style="font-size: 12px; color: #475467;">구독</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #ec4899;"></span><span style="font-size: 12px; color: #475467;">쇼핑</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #14b8a6;"></span><span style="font-size: 12px; color: #475467;">문화/여가</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #22c55e;"></span><span style="font-size: 12px; color: #475467;">의료/건강</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #3b82f6;"></span><span style="font-size: 12px; color: #475467;">교육</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #f43f5e;"></span><span style="font-size: 12px; color: #475467;">경조사</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #64748b;"></span><span style="font-size: 12px; color: #475467;">기타</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px dashed #CFD7E6;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #34d17e;"></span><span style="font-size: 12px; color: #475467;">저축/투자 · 소비 제외</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px dashed #CFD7E6;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #94a3b8;"></span><span style="font-size: 12px; color: #475467;">대출상환 · 소비 제외</span></div>
+      <div style="width: 1px; height: 30px; background: #E3E8F1; margin: 0 4px;"></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #38bdf8;"></span><span style="font-size: 12px; color: #475467;">현금성</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #5b8dff;"></span><span style="font-size: 12px; color: #475467;">투자</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #8b5cf6;"></span><span style="font-size: 12px; color: #475467;">연금</span></div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 11px; border-radius: 99px; border: 1px solid #E3E8F1;"><span style="width: 10px; height: 10px; border-radius: 3px; background: #f59e0b;"></span><span style="font-size: 12px; color: #475467;">부동산</span></div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 30px;">
+
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794;">05 · 타이포 위계</span>
+        <span style="font-size: 11.5px; color: #98A4BC;">IBM Plex Sans KR · 숫자는 항상 tabular-nums</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; margin-top: 12px; border-top: 1px solid #E3E8F1;">
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">display</div>
+            <div style="font-size: 11px; color: #6B7794;">54 / 62px · 700 · −0.045em</div>
+          </div>
+          <div style="font-size: 54px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; color: #101828;">57.9%</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">화면당 딱 하나<br>주지표 결과값</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">metric-xl</div>
+            <div style="font-size: 11px; color: #6B7794;">30 / 38px · 700 · −0.035em</div>
+          </div>
+          <div style="font-size: 34px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; color: #101828;">9,350만원</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">화면별 대표 금액<br>순자산 · 총한도</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">metric</div>
+            <div style="font-size: 11px; color: #6B7794;">18 / 21px · 600 · −0.02em</div>
+          </div>
+          <div style="font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #101828;">360<span style="font-size: 14px; font-weight: 500; color: #475467;">만원</span></div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">보조 지표 3연속<br>단위는 한 단계 작게</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">title</div>
+            <div style="font-size: 11px; color: #6B7794;">21 / 26px · 700 · −0.03em</div>
+          </div>
+          <div style="font-size: 21px; font-weight: 700; letter-spacing: -0.03em; color: #101828;">오늘의 내비게이션</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">화면 제목</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">section</div>
+            <div style="font-size: 11px; color: #6B7794;">14 / 15px · 600</div>
+          </div>
+          <div style="font-size: 15px; font-weight: 600; color: #101828;">카테고리별 소비</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">카드 제목</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">body</div>
+            <div style="font-size: 11px; color: #6B7794;">12.5 / 13px · 400 · 1.5</div>
+          </div>
+          <div style="font-size: 13px; line-height: 1.5; color: #475467;">고정비 결제일에는 실제 선이 먼저 올라가요.</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">설명문</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">label</div>
+            <div style="font-size: 11px; color: #6B7794;">11.5 / 12px · 500</div>
+          </div>
+          <div style="font-size: 12px; font-weight: 500; color: #6B7794;">월말 예상</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">값 위 라벨</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">meta</div>
+            <div style="font-size: 11px; color: #6B7794;">11px · 400 · 1.45</div>
+          </div>
+          <div style="font-size: 11px; color: #6B7794;">출처 · 2025년 · 표본 1,200명</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">근거 · 출처 · 축</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid #EFF2F8;">
+          <div style="width: 168px; flex-shrink: 0;">
+            <div style="font-size: 12.5px; font-weight: 600; color: #101828;">eyebrow</div>
+            <div style="font-size: 11px; color: #6B7794;">11px · 600 · +0.07em</div>
+          </div>
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: #6B7794;">현재 위치</div>
+          <div style="margin-left: auto; font-size: 11px; color: #98A4BC; text-align: right;">카드 상단 분류</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 12px; padding: 12px 14px; background: #F4F6FB; border-radius: 12px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7794" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span style="font-size: 12px; line-height: 1.55; color: #475467;">2.2에는 17·18·20·21·23·26·32px가 뒤섞여 있었습니다. v3는 <span style="font-weight: 600; color: #101828;">9단계</span>만 씁니다. 모바일과 데스크톱은 display·metric-xl·title 세 단계만 커지고 나머지는 같은 크기를 유지해 화면 간 인상이 달라지지 않게 합니다. 금액 뒤 단위(만원·원·%)는 값보다 한 단계 작고 ink-2로 낮춥니다.</span>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794;">06 · 간격 · 모서리 · 그림자</div>
+
+      <div style="margin-top: 12px; border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 14px; padding: 11px 14px; border-bottom: 1px solid #EFF2F8;">
+          <span style="font-size: 12px; font-weight: 600; color: #101828; width: 92px; flex-shrink: 0;">간격 스케일</span>
+          <div style="display: flex; align-items: flex-end; gap: 6px;">
+            <div style="width: 4px; height: 16px; background: #3556E6; border-radius: 2px;"></div>
+            <div style="width: 6px; height: 20px; background: #3556E6; border-radius: 2px;"></div>
+            <div style="width: 8px; height: 24px; background: #3556E6; border-radius: 2px;"></div>
+            <div style="width: 10px; height: 28px; background: #3556E6; border-radius: 2px;"></div>
+            <div style="width: 12px; height: 32px; background: #3556E6; border-radius: 2px;"></div>
+            <div style="width: 14px; height: 36px; background: #3556E6; border-radius: 2px;"></div>
+            <div style="width: 16px; height: 40px; background: #3556E6; border-radius: 2px;"></div>
+          </div>
+          <span style="font-size: 11px; color: #6B7794; margin-left: auto; text-align: right;">4 · 6 · 8 · 10 · 12<br>14 · 16 · 20 · 24 · 28</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; padding: 11px 14px; border-bottom: 1px solid #EFF2F8;">
+          <span style="font-size: 12px; font-weight: 600; color: #101828; width: 92px; flex-shrink: 0;">모서리</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 34px; height: 34px; border: 1.5px solid #3556E6; border-radius: 8px;"></div>
+            <div style="width: 34px; height: 34px; border: 1.5px solid #3556E6; border-radius: 11px;"></div>
+            <div style="width: 34px; height: 34px; border: 1.5px solid #3556E6; border-radius: 14px;"></div>
+            <div style="width: 34px; height: 34px; border: 1.5px solid #3556E6; border-radius: 18px;"></div>
+            <div style="width: 34px; height: 34px; border: 1.5px solid #3556E6; border-radius: 22px;"></div>
+            <div style="width: 34px; height: 34px; border: 1.5px solid #3556E6; border-radius: 99px;"></div>
+          </div>
+          <span style="font-size: 11px; color: #6B7794; margin-left: auto; text-align: right;">칩8 · 입력11 · 타일14<br>카드18 · 히어로22 · 알약99</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; padding: 14px; background: #EDF0F7;">
+          <span style="font-size: 12px; font-weight: 600; color: #101828; width: 92px; flex-shrink: 0;">그림자</span>
+          <div style="display: flex; gap: 10px;">
+            <div style="width: 74px; height: 46px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E3E8F1; display: flex; align-items: center; justify-content: center; font-size: 10.5px; color: #6B7794;">flat</div>
+            <div style="width: 74px; height: 46px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E3E8F1; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24); display: flex; align-items: center; justify-content: center; font-size: 10.5px; color: #6B7794;">hero</div>
+            <div style="width: 74px; height: 46px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E3E8F1; box-shadow: 0 20px 48px -24px rgba(16,24,40,.4); display: flex; align-items: center; justify-content: center; font-size: 10.5px; color: #6B7794;">modal</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #6B7794; margin-top: 24px;">07 · 그래프 규칙</div>
+      <div style="margin-top: 12px; border: 1px solid #E3E8F1; border-radius: 14px; padding: 14px;">
+        <div style="display: flex; gap: 9px; padding-bottom: 11px; border-bottom: 1px solid #EFF2F8;">
+          <span style="width: 18px; height: 18px; border-radius: 6px; background: #E4F4EA; color: #0F7B47; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+          <span style="font-size: 12px; line-height: 1.5; color: #475467;"><span style="font-weight: 600; color: #101828;">Y축 눈금을 없앤다.</span> 왼쪽 여백을 잡아먹던 “140만 / 105만 / 70만” 대신 값이 필요한 지점에만 옅은 기준선과 인라인 라벨(1억 · 한도 216만)을 놓습니다.</span>
+        </div>
+        <div style="display: flex; gap: 9px; padding: 11px 0; border-bottom: 1px solid #EFF2F8;">
+          <span style="width: 18px; height: 18px; border-radius: 6px; background: #E4F4EA; color: #0F7B47; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
+          <span style="font-size: 12px; line-height: 1.5; color: #475467;"><span style="font-weight: 600; color: #101828;">가로 폭을 끝까지 쓴다.</span> 그래프는 카드 안쪽 폭 전체를 차지하고, 좌우 12px만 여유를 둡니다. 점·라벨이 잘리지 않도록 도메인 위쪽에 10% 여유를 둡니다.</span>
+        </div>
+        <div style="display: flex; gap: 9px; padding: 11px 0; border-bottom: 1px solid #EFF2F8;">
+          <span style="width: 18px; height: 18px; border-radius: 6px; background: #E4F4EA; color: #0F7B47; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>
+          <span style="font-size: 12px; line-height: 1.5; color: #475467;"><span style="font-weight: 600; color: #101828;">빈 오른쪽을 예상선으로 채운다.</span> 월 중간의 누적 소비 그래프는 오늘까지 실선, 월말까지 점선 예상으로 이어 그립니다. 실측과 예측은 선 스타일로만 구분합니다.</span>
+        </div>
+        <div style="display: flex; gap: 9px; padding: 11px 0; border-bottom: 1px solid #EFF2F8;">
+          <span style="width: 18px; height: 18px; border-radius: 6px; background: #E4F4EA; color: #0F7B47; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</span>
+          <span style="font-size: 12px; line-height: 1.5; color: #475467;"><span style="font-weight: 600; color: #101828;">끝점에 값을 쓴다.</span> 툴팁 없이도 읽히도록 마지막 점과 오늘 점에 값 라벨을 붙입니다. X축 눈금은 최대 5개.</span>
+        </div>
+        <div style="display: flex; gap: 9px; padding-top: 11px;">
+          <span style="width: 18px; height: 18px; border-radius: 6px; background: #E4F4EA; color: #0F7B47; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">5</span>
+          <span style="font-size: 12px; line-height: 1.5; color: #475467;"><span style="font-weight: 600; color: #101828;">높이를 고정한다.</span> 소비 추이 150px · 미래 150px · 스파크라인 58px(모바일), 데스크톱은 컨테이너에 맞춰 늘립니다. 부모 CSS 높이와 내부 minHeight가 어긋나던 문제를 없앱니다.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

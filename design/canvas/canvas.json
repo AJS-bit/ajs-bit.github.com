@@ -1,0 +1,65 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "모바일 주요 화면" },
+    { "id": "page-2", "name": "상태 · 모달 · 다크" },
+    { "id": "page-3", "name": "데스크톱" },
+    { "id": "page-4", "name": "디자인 시스템" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html",        "page": "page-1", "x": 0,    "y": 0, "w": 390, "h": 844, "title": "홈 · 오늘의 내비게이션" },
+    { "file": "HomeScroll.dc.html",  "page": "page-1", "x": 470,  "y": 0, "w": 390, "h": 844, "title": "홈 · 아래로 스크롤" },
+    { "file": "Assets.dc.html",      "page": "page-1", "x": 940,  "y": 0, "w": 390, "h": 844, "title": "자산 · 구성" },
+    { "file": "Spending.dc.html",    "page": "page-1", "x": 1410, "y": 0, "w": 390, "h": 844, "title": "소비 · 이번 달" },
+    { "file": "Limits.dc.html",      "page": "page-1", "x": 1880, "y": 0, "w": 390, "h": 844, "title": "소비 · 한도" },
+    { "file": "Goals.dc.html",       "page": "page-1", "x": 2350, "y": 0, "w": 390, "h": 844, "title": "목적지 · 내 목적지" },
+    { "file": "Future.dc.html",      "page": "page-1", "x": 2820, "y": 0, "w": 390, "h": 844, "title": "미래 · 자산 경로" },
+
+    { "file": "LimitEditor.dc.html",     "page": "page-2", "x": 0,    "y": 0,   "w": 390, "h": 844,  "title": "모달 · 한도 조정" },
+    { "file": "TransactionAdd.dc.html",  "page": "page-2", "x": 470,  "y": 0,   "w": 390, "h": 844,  "title": "모달 · 거래 추가" },
+    { "file": "DarkHome.dc.html",        "page": "page-2", "x": 940,  "y": 0,   "w": 390, "h": 844,  "title": "다크 · 홈" },
+    { "file": "DarkLimitEditor.dc.html", "page": "page-2", "x": 1410, "y": 0,   "w": 390, "h": 844,  "title": "다크 · 한도 조정" },
+    { "file": "PeerStates.dc.html",      "page": "page-2", "x": 0,    "y": 990, "w": 390, "h": 1360, "title": "또래 카드 · 상태 5종" },
+    { "file": "EmptyStates.dc.html",     "page": "page-2", "x": 470,  "y": 990, "w": 390, "h": 1400, "title": "미입력 · 빈 상태" },
+
+    { "file": "DesktopHome.dc.html",   "page": "page-3", "x": 0,    "y": 0, "w": 1440, "h": 900, "title": "데스크톱 · 홈" },
+    { "file": "DesktopLedger.dc.html", "page": "page-3", "x": 1560, "y": 0, "w": 1440, "h": 900, "title": "데스크톱 · 소비 내역" },
+
+    { "file": "Tokens.dc.html",     "page": "page-4", "x": 0,    "y": 0, "w": 1200, "h": 1580, "title": "토큰 · 색 · 타이포 · 간격" },
+    { "file": "Components.dc.html", "page": "page-4", "x": 1320, "y": 0, "w": 1200, "h": 1400, "title": "컴포넌트 · 상태" }
+  ],
+  "annotations": [
+    {
+      "id": "note-flow",
+      "page": "page-1",
+      "x": 0,
+      "y": -200,
+      "w": 640,
+      "text": "읽는 순서: 결과 → 근거 → 행동\n\n화면마다 display 크기 숫자는 딱 하나입니다. 홈은 월급 대비 소비율 57.9%, 자산은 순자산, 소비는 계획 대비 속도, 목적지는 월 배분, 미래는 10년 뒤 순자산.\n\n그 아래로 근거(금액·기간·가정)가 이어지고, 그 값을 바꾸는 버튼은 값 바로 옆이나 아래에 놓입니다. 탭 위에 떠 있던 CTA는 모두 없앴습니다."
+    },
+    {
+      "id": "note-states",
+      "page": "page-2",
+      "x": 0,
+      "y": -200,
+      "w": 640,
+      "text": "저장된 값과 가정을 색으로 가른다\n\n보라 + 점선 테두리 + \"저장되지 않는 가정\" 배지는 홈 소비 시나리오, 미저장 상환 계획, 목표 계산기에만 씁니다.\n\n미입력은 회색 — 로만 표시하고 0원·0%로 바꾸지 않습니다. 또래 카드는 5가지 상태 모두 \"확인되지 않은 평균·순위\"를 만들지 않습니다."
+    },
+    {
+      "id": "note-desktop",
+      "page": "page-3",
+      "x": 0,
+      "y": -200,
+      "w": 640,
+      "text": "데스크톱은 넓이를 두 번째 열로 쓴다\n\n2.2의 데스크톱은 사이드바 224px + 가운데 한 열이라 히어로 카드 안이 텅 비어 보였습니다.\n\nv3는 본문을 1.6fr / 1fr로 나눕니다. 왼쪽은 주지표와 그래프, 오른쪽은 다음 안내·대표 목적지·또래처럼 \"곁눈질로 보는\" 정보. 사이드바에도 각 탭의 현재 수치를 넣어 이동 전에 상태를 읽게 했습니다."
+    },
+    {
+      "id": "note-system",
+      "page": "page-4",
+      "x": 0,
+      "y": -200,
+      "w": 640,
+      "text": "타이포 9단계 · 카테고리 색은 그대로\n\n2.2에는 17·18·20·21·23·26·32px가 섞여 있었습니다. v3는 display / metric-xl / metric / title / section / body / label / meta / eyebrow 9단계만 씁니다.\n\n카테고리·자산 고정 팔레트는 거래와 차트의 정체성이라 2.2 값을 그대로 유지합니다."
+    }
+  ],
+  "launch": { "view": "canvas", "page": "page-1" }
+}

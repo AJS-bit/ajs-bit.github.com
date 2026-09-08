@@ -1,0 +1,232 @@
+{
+  "$meta": {
+    "name": "NAVI design tokens v3",
+    "date": "2026-09-08",
+    "replaces": "DESIGN-TOKENS.md (NAVI 2.2 구현 스냅샷)",
+    "note": "카테고리·자산 고정 팔레트는 2.2 값 그대로 유지합니다. 나머지는 새 제안입니다.",
+    "unverified": ["WCAG 색 대비 측정", "Android 실기기 렌더", "실제 데이터 볼륨에서의 줄바꿈"]
+  },
+
+  "color": {
+    "light": {
+      "canvas": "#EDF0F7",
+      "surface": "#FFFFFF",
+      "inset": "#F4F6FB",
+      "track": "#E8ECF5",
+      "line": "#E3E8F1",
+      "line-soft": "#EFF2F8",
+      "line-row": "#F3F5FA",
+      "ink": "#101828",
+      "ink-2": "#475467",
+      "ink-3": "#6B7794",
+      "ink-4": "#98A4BC",
+      "disabled": "#B4BECD",
+      "input-line": "#CFD7E6",
+      "border-strong": "#D7DEEA",
+      "brand": "#3556E6",
+      "brand-strong": "#2743C4",
+      "brand-soft": "#E9EDFD",
+      "brand-ink-on-soft": "#3B4E8F",
+      "positive": "#0F7B47",
+      "positive-soft": "#E4F4EA",
+      "warning": "#B45309",
+      "warning-soft": "#FDF1E0",
+      "warning-ink": "#7A3E0A",
+      "warning-rule": "#DE8A2A",
+      "negative": "#C0342F",
+      "negative-soft": "#FCEBEA",
+      "violet": "#7A3FE4",
+      "violet-strong": "#6B32D6",
+      "violet-soft": "#F1EAFD",
+      "violet-line": "#B79BFF",
+      "sky": "#0B7FBF",
+      "sky-soft": "#E4F2FB",
+      "sky-ink": "#0A5F8F"
+    },
+    "dark": {
+      "canvas": "#080C16",
+      "surface": "#121A2B",
+      "inset": "#1A2337",
+      "track": "#232D45",
+      "line": "#232D45",
+      "line-soft": "#1E2739",
+      "line-row": "#1E2739",
+      "ink": "#EAEFF8",
+      "ink-2": "#A5B2C9",
+      "ink-3": "#8494AD",
+      "ink-4": "#6E7C96",
+      "disabled": "#5D6B85",
+      "input-line": "#39455F",
+      "border-strong": "#2E3A54",
+      "brand": "#7FA0FF",
+      "brand-strong": "#A8BCF5",
+      "brand-soft": "#1B2748",
+      "brand-ink-on-soft": "#A8BCF5",
+      "positive": "#3DD489",
+      "positive-soft": "#0F2C22",
+      "warning": "#F5B544",
+      "warning-soft": "#2E2617",
+      "warning-ink": "#F0C88A",
+      "warning-rule": "#A9772C",
+      "negative": "#E8635F",
+      "negative-soft": "#331C1F",
+      "violet": "#B79BFF",
+      "violet-strong": "#C4A9FF",
+      "violet-soft": "#241D3D",
+      "violet-line": "#B79BFF",
+      "sky": "#5CC3F5",
+      "sky-soft": "#12293C",
+      "sky-ink": "#9CD8F5"
+    },
+    "brandGradient": {
+      "value": "linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%)",
+      "sameInDark": true,
+      "usage": "로고 마크 전용. 카드 배경에는 쓰지 않습니다."
+    },
+    "semantics": {
+      "violet": "저장되지 않는 가정(시뮬레이션) 전용. 저장된 기록에는 쓰지 않음",
+      "disabled": "미입력·미측정. — 로만 표시하고 0원/0%로 바꾸지 않음",
+      "warning": "사용자가 정한 목표를 넘은 상태",
+      "negative": "급여 자체를 넘은 상태(100% 초과) · 총부채 · 파괴적 행동"
+    }
+  },
+
+  "dataPalette": {
+    "$note": "2.2 lib/engine/constants.ts 값 그대로. 변경 금지.",
+    "category": {
+      "식비": "#f97316", "카페/간식": "#d97706", "교통": "#0ea5e9",
+      "주거/관리": "#8b5cf6", "통신": "#6366f1", "보험": "#0d9488",
+      "구독": "#a855f7", "쇼핑": "#ec4899", "문화/여가": "#14b8a6",
+      "의료/건강": "#22c55e", "교육": "#3b82f6", "경조사": "#f43f5e",
+      "기타": "#64748b", "저축/투자": "#34d17e", "대출상환": "#94a3b8"
+    },
+    "asset": {
+      "cash": "#38bdf8", "investment": "#5b8dff", "pension": "#8b5cf6",
+      "realestate": "#f59e0b", "other": "#64748b"
+    },
+    "iconBackgroundAlpha": "18 (hex alpha ≈ 9.4%)"
+  },
+
+  "typography": {
+    "family": {
+      "recommended": "'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif",
+      "alternative": "Pretendard 자체 호스팅",
+      "requirement": "서체 파일을 실제로 번들해야 웹과 Android가 같아집니다",
+      "numerals": "font-variant-numeric: tabular-nums"
+    },
+    "scale": {
+      "display":   { "mobile": 54,   "desktop": 62,   "weight": 700, "tracking": "-0.045em", "lineHeight": 1.0,  "usage": "화면당 하나 · 주지표 결과" },
+      "metric-xl": { "mobile": 30,   "desktop": 34,   "weight": 700, "tracking": "-0.035em", "lineHeight": 1.05, "usage": "화면 대표 금액", "range": [30, 38] },
+      "metric":    { "mobile": 18,   "desktop": 21,   "weight": 600, "tracking": "-0.02em",  "usage": "보조 지표 3연속" },
+      "title":     { "mobile": 21,   "desktop": 26,   "weight": 700, "tracking": "-0.03em",  "lineHeight": 1.2,  "usage": "화면 제목" },
+      "section":   { "mobile": 14,   "desktop": 15,   "weight": 600, "tracking": "-0.015em", "usage": "카드 제목" },
+      "body":      { "mobile": 12.5, "desktop": 13,   "weight": 400, "lineHeight": 1.5,      "usage": "설명문" },
+      "label":     { "mobile": 11.5, "desktop": 12,   "weight": 500, "usage": "값 위 라벨" },
+      "meta":      { "mobile": 11,   "desktop": 11,   "weight": 400, "lineHeight": 1.45,     "usage": "근거 · 출처 · 축" },
+      "eyebrow":   { "mobile": 11,   "desktop": 11.5, "weight": 600, "tracking": "0.07em",   "usage": "카드 상단 분류" }
+    },
+    "rules": {
+      "unitSuffix": "값보다 한 단계 작게, ink-2 색",
+      "responsive": "display / metric-xl / metric / title 만 데스크톱에서 커짐",
+      "financialInput": "16px 이상 (모바일 자동 확대 방지)"
+    }
+  },
+
+  "space": {
+    "scale": [4, 6, 8, 10, 12, 14, 16, 20, 24, 28],
+    "screenPadding": { "mobile": 14, "desktop": 28 },
+    "cardGap": { "mobile": 9, "desktop": 16 },
+    "cardPadding": { "hero": { "mobile": 16, "desktop": 20 }, "standard": { "mobile": 13, "desktop": 16 }, "inset": { "mobile": 13, "desktop": 14 } },
+    "rowHeight": { "compact": 44, "default": 46, "comfortable": 52 }
+  },
+
+  "radius": { "chip": 8, "control": 11, "button": 13, "tile": 14, "card": 18, "hero": 22, "sheet": 26, "pill": 99 },
+
+  "shadow": {
+    "flat": { "light": "none", "dark": "none", "note": "1px 테두리로만 구분" },
+    "hero": {
+      "light": "0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)",
+      "dark": "0 1px 2px rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7)"
+    },
+    "modal": {
+      "light": "0 20px 48px -24px rgba(16,24,40,.4)",
+      "dark": "0 24px 56px -24px rgba(0,0,0,.8)"
+    }
+  },
+
+  "component": {
+    "button": {
+      "minHeight": 44,
+      "rule": "한 화면에 채운 버튼은 하나",
+      "variants": {
+        "primary": "brand 배경 / surface 대비 글자 / radius 12-13",
+        "secondary": "surface 배경 + border-strong 테두리",
+        "outline-accent": "surface 배경 + brand 1.5px 테두리 + brand 글자 — 값을 바꾸는 버튼",
+        "soft": "brand-soft 배경 + brand 글자 — 섹션 내 보조 조작",
+        "destructive": "negative-soft 배경 + negative 글자",
+        "ghost-link": "텍스트 + ›",
+        "dashed-add": "점선 테두리 + brand 글자 — 목록 끝의 새 항목 추가 전용"
+      },
+      "states": {
+        "disabled": "track 배경 + disabled 글자",
+        "saving": "#6B85EC 배경 + 스피너 + '저장 중'",
+        "done": "positive 배경 + 체크 + '저장됨'"
+      }
+    },
+    "input": {
+      "height": 46,
+      "radius": 11,
+      "border": "1px input-line",
+      "focus": "1.5px brand + 0 0 0 3px rgba(53,86,230,.16)",
+      "error": "1.5px negative + 11.5px 오류문",
+      "readonly": "inset 배경 + 자물쇠 아이콘",
+      "unitPosition": "칸 오른쪽 안쪽 고정",
+      "emptyVsZero": "비우면 자동 계산(연한 회색 자동값), 0은 '0원으로 지정'",
+      "required": "라벨 옆 * (negative)",
+      "optional": "라벨 옆 회색 '선택'",
+      "unit": { "만원": "자산·부채·목표액·카테고리 한도", "원": "개별 거래·월 마감 확정값" }
+    },
+    "card": {
+      "hero": { "radius": 22, "shadow": "hero", "rule": "화면당 하나" },
+      "standard": { "radius": 18, "shadow": "flat" },
+      "inset": { "radius": 14, "background": "inset", "border": "none" },
+      "guidance": { "radius": 18, "borderLeft": "3px 상태색" }
+    },
+    "form": {
+      "structure": "헤더 / 스크롤 본문 / 고정 하단 행동",
+      "mobile": "바텀시트 · 상단 radius 26 · 그랩 핸들 38x4",
+      "addVsEdit": "제목 · 저장 버튼 문구 · 삭제 버튼 유무로만 구분. 필드 순서는 동일"
+    },
+    "toast": {
+      "success": "ink 배경 + positive 체크 + 되돌리기",
+      "error": "#7A1F1B 배경 + 다시 시도"
+    }
+  },
+
+  "chart": {
+    "rules": [
+      "Y축 눈금 제거 — 값이 필요한 지점에만 옅은 기준선 + 인라인 라벨",
+      "가로 폭 전체 사용 · 좌우 12px 여유 · 도메인 위 10% 헤드룸",
+      "빈 오른쪽을 예상선으로 채움 — 실측 실선, 예측 점선, 색은 같은 계열",
+      "끝점과 오늘 지점에 값 라벨 · X축 눈금 최대 5개",
+      "높이 고정 — 부모 CSS와 내부 minHeight 충돌 제거"
+    ],
+    "height": { "spendingTrend": 150, "future": 150, "sparkline": 58, "desktop": "컨테이너에 맞춤" },
+    "stroke": {
+      "actual": 2.6,
+      "projection": { "width": 2.2, "dash": "5 4" },
+      "planLine": { "width": 1.4, "dash": "4 4", "color": "#B9C3D6" }
+    },
+    "area": { "topOpacity": 0.22, "bottomOpacity": 0 },
+    "rangeBand": { "color": "violet", "opacity": 0.13 },
+    "axisLabel": { "size": 10.5, "color": "ink-4" }
+  },
+
+  "accessibility": {
+    "focusVisible": "ring 3px / offset 3px",
+    "reducedMotion": "전역 animation·transition none, scroll-behavior auto",
+    "minTouchTarget": 44,
+    "minFinancialInputSize": 16,
+    "colorNotAlone": "진행률·상태는 숫자·문구를 항상 함께 표시"
+  }
+}

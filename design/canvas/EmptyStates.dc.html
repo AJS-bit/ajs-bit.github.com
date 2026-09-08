@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #3556E6; text-decoration: none; }
+    a:hover { color: #2743C4; }
+  </style>
+</helmet>
+
+<div style="width: 390px; height: 1400px; background: #EDF0F7; color: #101828; padding: 18px 14px 20px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="padding: 0 2px 6px;">
+    <h2 style="margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: #101828;">미입력 · 빈 상태</h2>
+    <p style="margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: #6B7794;">미입력은 <span style="font-weight: 600; color: #475467;">—</span>로만 표시하고, 0원·0%·좋은 성과로 바꾸지 않습니다. 자산이 없어도 급여와 소비 기록만으로 시작할 수 있어야 합니다.</p>
+  </div>
+
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #8593AD; padding: 6px 2px 0;">A · 첫 시작 · 홈</div>
+  <div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 20px; padding: 16px;">
+    <div style="display: flex; align-items: center; gap: 9px;">
+      <div style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M21.3 3.1 3.9 10.4c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L22.7 4.5c.3-.8-.6-1.7-1.4-1.4Z"/></svg>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #6B7794;">출발 준비</div>
+        <div style="font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: #101828;">실수령 급여 하나면 시작돼요</div>
+      </div>
+    </div>
+    <p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.5; color: #475467;">자산을 입력하지 않아도 급여와 소비 기록만으로 소비율·한도·목적지를 계산합니다. 자산 분석은 나중에 채워도 괜찮아요.</p>
+
+    <div style="display: flex; flex-direction: column; margin-top: 13px;">
+      <div style="display: flex; align-items: center; gap: 10px; height: 50px; border-top: 1px solid #EFF2F8;">
+        <span style="width: 22px; height: 22px; border-radius: 99px; background: #3556E6; color: #FFFFFF; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+        <span style="flex: 1; font-size: 13.5px; font-weight: 600; color: #101828;">월 실수령 급여 입력</span>
+        <div style="height: 34px; padding: 0 14px; border-radius: 10px; background: #3556E6; color: #FFFFFF; font-size: 13px; font-weight: 600; display: flex; align-items: center;">입력하기</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; height: 50px; border-top: 1px solid #EFF2F8;">
+        <span style="width: 22px; height: 22px; border-radius: 99px; background: #E8ECF5; color: #8593AD; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
+        <span style="flex: 1; font-size: 13.5px; font-weight: 500; color: #8593AD;">이번 달 소비 기록</span>
+        <span style="font-size: 12px; color: #98A4BC;">급여 입력 후</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; height: 50px; border-top: 1px solid #EFF2F8;">
+        <span style="width: 22px; height: 22px; border-radius: 99px; background: #E8ECF5; color: #8593AD; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>
+        <span style="flex: 1; font-size: 13.5px; font-weight: 500; color: #8593AD;">목적지 추가 <span style="font-size: 11.5px; color: #98A4BC;">선택</span></span>
+        <span style="font-size: 12px; color: #98A4BC;">언제든지</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #8593AD; padding: 6px 2px 0;">B · 급여 미입력 · 소비 기록만 있음</div>
+  <div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 20px; padding: 16px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: #6B7794;">현재 위치</span>
+      <span style="background: #F0F2F7; color: #5B6880; font-size: 11.5px; font-weight: 600; border-radius: 99px; padding: 4px 9px;">기준 없음</span>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 8px;">
+      <span style="font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: #B4BECD;">—</span>
+      <span style="font-size: 13px; font-weight: 500; color: #475467;">월급 대비 이번 달 예상 소비</span>
+    </div>
+    <div style="height: 10px; border-radius: 99px; background: #EFF2F8; border: 1px dashed #CFD7E6; margin-top: 14px;"></div>
+    <p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.5; color: #475467;">실수령 급여를 입력하면 이 비율을 계산할 수 있어요. <span style="font-weight: 600; color: #101828;">미입력은 0%가 아닙니다.</span></p>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 13px; padding-top: 12px; border-top: 1px solid #EFF2F8;">
+      <div style="padding-right: 10px;">
+        <div style="font-size: 11.5px; font-weight: 500; color: #6B7794;">월 실수령</div>
+        <div style="font-size: 18px; font-weight: 600; color: #B4BECD; margin-top: 3px;">—</div>
+      </div>
+      <div style="padding: 0 10px; border-left: 1px solid #EFF2F8;">
+        <div style="font-size: 11.5px; font-weight: 500; color: #6B7794;">월말 예상</div>
+        <div style="font-size: 18px; font-weight: 600; color: #101828; margin-top: 3px;">208<span style="font-size: 13px; font-weight: 500; color: #475467;">만원</span></div>
+      </div>
+      <div style="padding-left: 10px; border-left: 1px solid #EFF2F8;">
+        <div style="font-size: 11.5px; font-weight: 500; color: #6B7794;">남은 여유</div>
+        <div style="font-size: 18px; font-weight: 600; color: #B4BECD; margin-top: 3px;">—</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; height: 46px; margin-top: 12px; border-radius: 13px; background: #3556E6; color: #FFFFFF; font-size: 15px; font-weight: 600;">실수령 급여 입력하기</div>
+  </div>
+
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #8593AD; padding: 6px 2px 0;">C · 급여 0원 · 부수입만 있음</div>
+  <div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 20px; padding: 16px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: #6B7794;">현재 위치</span>
+      <span style="background: #F0F2F7; color: #5B6880; font-size: 11.5px; font-weight: 600; border-radius: 99px; padding: 4px 9px;">급여 기준 없음</span>
+    </div>
+    <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 8px;">
+      <span style="font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: #B4BECD;">—</span>
+      <span style="font-size: 13px; font-weight: 500; color: #475467;">월급 대비 소비율</span>
+    </div>
+    <p style="margin: 11px 0 0; font-size: 12.5px; line-height: 1.5; color: #475467;">이번 달 실수령 급여가 <span style="font-weight: 600; color: #101828;">0원</span>이에요. 부수입 120만원은 총수입에는 들어가지만, 급여 대비 소비율의 기준으로는 쓰지 않습니다.</p>
+
+    <div style="margin-top: 12px; padding: 12px; background: #FDF1E0; border-radius: 14px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #7A3E0A;">대신 볼 수 있는 지표</div>
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; margin-top: 6px;">
+        <div style="display: flex; align-items: baseline; gap: 2px;">
+          <span style="font-size: 27px; font-weight: 700; letter-spacing: -0.035em; color: #B45309;">173</span>
+          <span style="font-size: 15px; font-weight: 600; color: #B45309;">%</span>
+        </div>
+        <span style="font-size: 12px; font-weight: 600; color: #7A3E0A;">총수입 대비 예상 소비</span>
+      </div>
+      <div style="font-size: 11.5px; color: #7A3E0A; margin-top: 5px;">총수입 120만원 · 월말 예상 소비 208만원 · 총수입을 넘고 있어요</div>
+    </div>
+
+    <div style="display: flex; gap: 8px; margin-top: 12px;">
+      <div style="flex: 1; height: 44px; border-radius: 12px; background: #3556E6; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #FFFFFF;">급여 입력</div>
+      <div style="flex: 1; height: 44px; border-radius: 12px; background: #FFFFFF; border: 1px solid #D7DEEA; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #475467;">총수입 기준으로 보기</div>
+    </div>
+  </div>
+
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #8593AD; padding: 6px 2px 0;">D · 자산 미입력</div>
+  <div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 20px; padding: 16px;">
+    <div style="display: flex; gap: 11px;">
+      <div style="width: 36px; height: 36px; border-radius: 12px; background: #F4F6FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6B7794" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v3"/><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M18 12a2 2 0 0 0 0 4h3v-4Z"/></svg>
+      </div>
+      <div>
+        <div style="font-size: 15px; font-weight: 600; letter-spacing: -0.015em; color: #101828;">아직 자산을 입력하지 않았어요</div>
+        <p style="margin: 5px 0 0; font-size: 12.5px; line-height: 1.5; color: #475467;">순자산·자산 점수·미래 예측은 자산을 입력한 뒤 계산됩니다. 홈의 소비율과 한도는 지금도 그대로 작동해요.</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 14px; padding: 12px 0; border-top: 1px solid #EFF2F8; border-bottom: 1px solid #EFF2F8;">
+      <div style="padding-right: 10px;">
+        <div style="font-size: 11.5px; font-weight: 500; color: #6B7794;">순자산</div>
+        <div style="font-size: 18px; font-weight: 600; color: #B4BECD; margin-top: 2px;">—</div>
+      </div>
+      <div style="padding: 0 10px; border-left: 1px solid #EFF2F8;">
+        <div style="font-size: 11.5px; font-weight: 500; color: #6B7794;">총자산</div>
+        <div style="font-size: 18px; font-weight: 600; color: #B4BECD; margin-top: 2px;">—</div>
+      </div>
+      <div style="padding-left: 10px; border-left: 1px solid #EFF2F8;">
+        <div style="font-size: 11.5px; font-weight: 500; color: #6B7794;">총부채</div>
+        <div style="font-size: 18px; font-weight: 600; color: #B4BECD; margin-top: 2px;">—</div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px; margin-top: 12px;">
+      <div style="flex: 1; height: 44px; border-radius: 12px; background: #3556E6; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 14px; font-weight: 600; color: #FFFFFF;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        자산 추가
+      </div>
+      <div style="flex: 1; height: 44px; border-radius: 12px; background: #FFFFFF; border: 1px solid #D7DEEA; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 14px; font-weight: 600; color: #475467;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#475467" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        부채 추가
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #8593AD; padding: 6px 2px 0;">E · 거래 없음 vs 검색 결과 없음</div>
+  <div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 20px; padding: 16px;">
+    <div style="display: flex; align-items: center; gap: 11px;">
+      <div style="width: 34px; height: 34px; border-radius: 11px; background: #F4F6FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6B7794" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      </div>
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-size: 13.5px; font-weight: 600; color: #101828;">9월에 기록한 거래가 없어요</div>
+        <div style="font-size: 11.5px; color: #6B7794; margin-top: 1px;">거래를 추가하면 한도·소비율이 함께 갱신됩니다</div>
+      </div>
+      <div style="height: 34px; padding: 0 13px; border-radius: 10px; background: #3556E6; color: #FFFFFF; font-size: 13px; font-weight: 600; display: flex; align-items: center; flex-shrink: 0;">거래 추가</div>
+    </div>
+    <div style="height: 1px; background: #EFF2F8; margin: 13px 0;"></div>
+    <div style="display: flex; align-items: center; gap: 11px;">
+      <div style="width: 34px; height: 34px; border-radius: 11px; background: #F4F6FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6B7794" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </div>
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-size: 13.5px; font-weight: 600; color: #101828;">‘커피’와 일치하는 거래가 없어요</div>
+        <div style="font-size: 11.5px; color: #6B7794; margin-top: 1px;">9월에는 32건의 거래가 있어요</div>
+      </div>
+      <div style="height: 34px; padding: 0 13px; border-radius: 10px; background: #FFFFFF; border: 1px solid #D7DEEA; color: #475467; font-size: 13px; font-weight: 600; display: flex; align-items: center; flex-shrink: 0;">검색 지우기</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
