@@ -10,6 +10,7 @@
 | `gen_errors.py` | 모달 오류·저장 상태 6종 시트 (`python3 gen_errors.py <높이>`) |
 | `gen_rest.py` | 적립 모달 · 목적지 유형 5종 · 소비 지난 달 · 코칭 기록 없음 (`python3 gen_rest.py <유형 시트 높이>`) |
 | `gen_canvas.py` | `canvas.json`(페이지·좌표·주석) 생성 |
+| `mkcompare.py` | 라이트/다크를 한 장에 나란히 놓은 비교 시트 HTML 생성 (아트보드가 아니라 검토용) |
 | `darken.py` | 라이트 아트보드 37종을 다크 토큰으로 변환. `<!--dc-keep-->…<!--/dc-keep-->` 구간은 변환하지 않는다(라이트에서도 반전된 토스트 등) |
 
 ```bash
@@ -24,3 +25,8 @@ python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2030 \
 아트보드 높이는 `gen_canvas.py`의 `TALL` / `WIDE`와 각 `.dc.html` 루트 div의 `height`가 **같아야** 합니다.
 루트에 `overflow: hidden`이 걸려 있어 어긋나면 소리 없이 잘립니다. 새 시트를 만들거나 내용을 늘렸으면
 헤드리스로 `scrollHeight`를 재고 그 값을 두 곳에 함께 넣으세요.
+
+## 라이트/다크 비교 시트
+
+`python3 mkcompare.py`를 돌리면 스크래치 폴더에 비교용 HTML이 생깁니다. 브라우저로 열거나 헤드리스로 캡처해서 봅니다.
+아트보드가 아니라 검토용 파생물이라 `canvas.json`에는 등록하지 않습니다.

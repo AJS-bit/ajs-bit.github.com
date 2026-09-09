@@ -10,7 +10,7 @@ TALL = {'StorageStates': 1264, 'PeerStates': 1552, 'EmptyStates': 1718, 'Confirm
 TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'DarkDesktopLedger': (1440, 900),
-        'Tokens': (1200, 1580), 'Components': (1200, 1440), 'DarkComponents': (1200, 1440)}
+        'Tokens': (1200, 1590), 'Components': (1200, 1440), 'DarkComponents': (1200, 1440)}
 
 TITLES = {
     'Main': '홈 · 오늘의 내비게이션', 'HomeScroll': '홈 · 아래로 스크롤',
