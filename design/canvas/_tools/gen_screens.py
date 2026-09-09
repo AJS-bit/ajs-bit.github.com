@@ -26,7 +26,7 @@ w('Onboarding', frame(
     f'<div style="height: 92px; flex-shrink: 0;"></div>'
     f'<div style="width: 62px; height: 62px; border-radius: 20px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%); '
     f'display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
-    f'<svg width="33" height="33" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M21.3 3.1 3.9 10.4c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L22.7 4.5c.3-.8-.6-1.7-1.4-1.4Z"/></svg></div>'
+    f'<svg width="33" height="33" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></div>'
     f'<div style="display: flex; align-items: baseline; gap: 9px; margin-top: 18px;">'
     f'<span style="font-size: 27px; font-weight: 700; letter-spacing: 0.06em; color: {C["INK"]};">NAVI</span>'
     f'<span style="font-size: 13px; font-weight: 500; color: {C["INK3"]};">자산 성장 내비게이션</span></div>'

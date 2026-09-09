@@ -68,7 +68,7 @@ PAT = re.compile('|'.join(re.escape(k) for k in KEYS), re.IGNORECASE)
 
 BRAND_GRAD_DARK = 'linear-gradient(140deg, #7FA0FF 0%, #B79BFF 100%)'
 BRAND_GRAD = 'linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%)'
-ARROW = 'M21.3 3.1 3.9 10.4c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L22.7 4.5c.3-.8-.6-1.7-1.4-1.4Z'
+ARROW = 'M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z'
 
 
 KEEP = re.compile(r'<!--dc-keep-->(.*?)<!--/dc-keep-->', re.S)
