@@ -9,10 +9,19 @@
 NAVI(자산 성장 내비게이션)의 UI를 v3 디자인으로 바꿉니다. **계산 로직·저장 형식은 바꾸지 않습니다.**
 디자인은 `design/canvas/`에 **아트보드 75장**으로 그려져 있고, 모든 수치는 실제 계산으로 검증돼 있습니다.
 
-작업 대상은 원본 앱(`wealth-navigator`)이고, 이 문서가 든 폴더는 **디자인 산출물만** 담고 있습니다.
+작업 대상은 **여러분 저장소에 있는 원본 앱**입니다. 디자인 자료는 아래 공개 저장소에 있습니다.
 
-> 이 폴더가 앱 저장소 안에 `navi-design/`으로 복사돼 있다면, 아래 경로들은 모두 그 폴더 기준입니다.
-> 구현이 끝나면 이 폴더는 저장소에서 빼도 됩니다 — 앱 코드가 이 폴더를 참조하면 안 됩니다.
+```
+https://github.com/AJS-bit/ajs-bit.github.com/tree/claude/navi-ui-ux-redesign-nzxoxz/design
+```
+
+개별 파일은 raw로 바로 읽힙니다.
+
+```
+https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-redesign-nzxoxz/design/<파일>
+```
+
+**이 저장소에 커밋하지 마세요.** 읽기 전용 참고 자료입니다. 구현 결과물은 앱 저장소에만 넣습니다.
 
 ---
 
@@ -25,8 +34,22 @@ NAVI(자산 성장 내비게이션)의 UI를 v3 디자인으로 바꿉니다. **
 | 3 | [`DESIGN-TOKENS-v3.md`](DESIGN-TOKENS-v3.md) · [`tokens.v3.json`](tokens.v3.json) | 색·타이포·간격·컴포넌트 규칙 |
 | 4 | [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) | 파일별 작업 내용 (4단계) |
 | 5 | [`CHANGES-FROM-2.2.md`](CHANGES-FROM-2.2.md) | 2.2에서 무엇이 어떻게 달라졌는지 |
-| 6 | [`screens.json`](screens.json) | 아트보드 75장 ↔ 소스 파일 매핑 (기계 판독용) |
+| 6 | [`screens.json`](screens.json) | 아트보드 75장 ↔ 소스 파일 매핑 (기계 판독용) — **화면 작업마다 여기서 대상 아트보드를 찾으세요** |
 | 7 | [`sample-data.json`](sample-data.json) | 시안이 그리는 가상 사용자 — 개발 픽스처로 그대로 사용 |
+
+### 읽지 않아도 되는 것
+
+토큰이 많으니 아래는 건너뛰세요. 필요해지면 그때 열면 됩니다.
+
+| 경로 | 왜 안 읽어도 되나 |
+|---|---|
+| `canvas/navi-redesign.md` · `canvas/navi-redesign.html` | 사람이 눈으로 보는 3.6MB 캔버스 뭉치. 개별 `.dc.html`을 읽는 편이 낫습니다 |
+| `canvas/canvas.json` | 캔버스 배치 좌표. 구현에 쓸 정보는 `screens.json`에 다 옮겨져 있습니다 |
+| `canvas/_tools/**` | 아트보드를 찍어낸 생성기. **다시 돌리지 마세요.** 시안은 이미 확정본입니다 |
+| `canvas/_tools/calc/**` | 상각·복리 계산기. 결과는 `sample-data.json`의 `derived`에 들어 있습니다. 숫자를 직접 검산할 때만 |
+| `README.md` | 왜 이렇게 바꿨는지에 대한 설계 배경. 판단이 필요할 때만 |
+
+`.dc.html`도 **75장을 다 읽지 마세요.** 지금 만드는 화면에 해당하는 것만 `screens.json`에서 찾아 여세요.
 
 ---
 
