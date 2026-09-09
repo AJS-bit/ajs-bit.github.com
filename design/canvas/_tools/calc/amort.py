@@ -18,6 +18,7 @@ def simulate(debts, extra=0.0, order='avalanche', start=(2026, 9), cap_months=60
     """상환 시뮬레이션. 완제 순서/월/총이자를 돌려준다."""
     ds = [Debt(d.name, d.bal, d.apr, d.minimum, d.fixed_term) for d in debts]
     key = (lambda d: -d.apr) if order == 'avalanche' else (lambda d: d.bal)
+    budget = sum(d.minimum for d in ds) + extra
     interest = 0.0
     payoff = {}
     m = 0
@@ -29,13 +30,15 @@ def simulate(debts, extra=0.0, order='avalanche', start=(2026, 9), cap_months=60
                 it = d.bal * d.i
                 d.bal += it
                 interest += it
-        # 2) 최소 상환
-        pool = extra
+        # 2) 최소 상환 — 예산은 "모든 최소 상환의 합 + 추가분"으로 고정한다.
+        #    부채를 다 갚아도 그 최소 상환액은 사라지지 않고 눈덩이로 굴러간다.
+        #    (원본 engine/finance.ts의 simulateDebt와 같은 규칙)
+        pool = budget
         for d in ds:
             if d.bal <= 0: continue
-            pay = min(d.minimum, d.bal)
+            pay = min(d.minimum, d.bal, pool)
             d.bal -= pay
-            pool += d.minimum - pay          # 다 갚고 남은 최소분은 눈덩이로
+            pool -= pay
         # 3) 눈덩이 + 추가분을 우선순위 1위에 몰아준다
         while pool > 1e-9:
             live = sorted([d for d in ds if d.bal > 1e-9], key=key)
