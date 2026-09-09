@@ -20,7 +20,7 @@
 
 | | 2.2 | v3 |
 |---|---|---|
-| 단계 수 | 17·18·20·21·23·26·32px 등이 혼재, 후반 CSS 재정의로 위계 역전 | **9단계 고정** (display / metric-xl / metric / title / section / body / label / meta / eyebrow) |
+| 단계 수 | 17·18·20·21·23·26·32px 등이 혼재, 후반 CSS 재정의로 위계 역전 | 본문 역할 **9단계 고정** (display / metric-xl / metric / title / section / body / label / meta / eyebrow) + 단위 접미사와 그래프 라벨 |
 | 화면당 큰 숫자 | 32px 숫자가 4~5개 (자산 5타일, 목표 4타일, 미래 4타일) | `display` 54–62px는 **화면당 하나**, 나머지는 metric 18–21px 이하 |
 | 단위 표기 | 값과 같은 크기인 경우 존재 | 항상 값보다 한 단계 작고 `ink-2` |
 | 모바일↔데스크톱 | 화면마다 다른 축소 규칙(20/21/23/26px 예외) | display·metric-xl·metric·title 넷만 커짐 |
