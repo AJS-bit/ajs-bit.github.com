@@ -16,12 +16,12 @@
     "daysDone": 8,
     "daysLeft": 22,
     "spendSoFar": 1120000,
-    "spendProjected": 2080000,
+    "spendProjected": 2084000,
     "limitTotal": 2160000,
     "transferToSavings": 630000,
     "debtRepayment": 920000,
     "leftover": 270000,
-    "_note": "소비율 = spendProjected / netSalary = 57.9%. 저축 이체와 대출상환은 소비율에서 제외합니다."
+    "_note": "소비율 = spendProjected / netSalary = 57.9%. 208만원은 반올림 표시이므로 정밀값을 그대로 쓰세요 — 2,080,000이면 57.8%가 나옵니다. 저축 이체와 대출상환은 소비율에서 제외합니다."
   },
   "assets": [
     { "name": "전세 보증금",  "type": "부동산", "value": 95000000, "rate": 0.0 },
@@ -36,7 +36,7 @@
     { "name": "학자금대출",   "type": "student",  "balance":  2800000, "apr": 2.5,  "minimum":  50000 },
     { "name": "카드 할부",    "type": "card",     "balance":  1800000, "apr": 14.5, "minimum": 200000,
       "installmentsLeft": 9,
-      "_note": "할부 수수료는 회차 금액에 포함된 것으로 보고 별도 이자를 붙이지 않습니다. 180만 ÷ 9회 = 20만원." }
+      "_note": "180만 ÷ 9회 = 20만원. 엔진(simulateDebt)은 다른 부채와 똑같이 연 14.5%를 월할로 적용합니다." }
   ],
   "repayment": { "strategy": "avalanche", "extraMonthly": 150000, "extraMax": 270000 },
   "goals": [
@@ -55,16 +55,17 @@
     "monthlyRepayment": 920000,
     "assetWeightedReturn": 2.40,
     "payoff": {
-      "avalanche": { "end": "2043-08", "totalInterest": 27620000,
-        "order": [["카드 할부","2027-02"],["학자금대출","2031-08"],["신용대출","2033-05"],["주택담보대출","2043-08"]] },
-      "snowball":  { "end": "2043-12", "totalInterest": 29030000 },
-      "minimumOnly": { "end": "2050-02", "totalInterest": 40740000 }
+      "_": "engine/finance.ts의 simulateDebt와 같은 규칙. 예산 = 모든 최소 상환의 합 + 추가분으로 고정되며, 다 갚은 부채의 최소 상환액도 계속 굴러갑니다.",
+      "avalanche": { "end": "2036-04", "months": 116, "totalInterest": 17340000,
+        "order": [["카드 할부","2027-02"],["신용대출","2030-10"],["학자금대출","2031-08"],["주택담보대출","2036-04"]] },
+      "snowball":  { "end": "2036-04", "months": 116, "totalInterest": 17640000 },
+      "minimumOnly": { "end": "2038-09", "months": 145, "totalInterest": 22480000 }
     },
     "goalEta": { "비상금 6개월": "2027-11", "투자 계좌 5,000만원": "2032-06",
-                 "신용대출 완제": "2033-05", "순자산 2억원": "2032-06" },
+                 "신용대출 완제": "2030-10", "순자산 2억원": "2031-10" },
     "allocationNeeded": 1460000,
-    "netWorthIn10y": { "conservative_1.0": 245670000, "base_2.4": 281740000, "optimistic_5.0": 362700000 },
-    "netWorthMilestones": { "100000000": "2027-02", "150000000": "2029-11", "200000000": "2032-06" }
+    "netWorthIn10y": { "conservative_1.0": 285000000, "base_2.4": 321260000, "optimistic_5.0": 402000000 },
+    "netWorthMilestones": { "100000000": "2027-02", "150000000": "2029-07", "200000000": "2031-10" }
   },
   "peer": {
     "_": "앱에는 세부 또래 통계가 내장돼 있지 않습니다. 확인되지 않은 평균·백분위·상위 %를 만들어 보여주면 안 됩니다.",

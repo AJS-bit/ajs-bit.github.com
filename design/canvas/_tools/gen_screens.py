@@ -142,9 +142,9 @@ w('Debts', frame(
 # ══════════════ 4. 자산 › 상환 전략 ══════════════
 order = []
 for i, (name, eta, saved) in enumerate([("카드 할부", "2027년 2월 완제", "1순위"),
-                                        ("학자금대출", "2031년 8월 완제", "2순위"),
-                                        ("신용대출", "2033년 5월 완제", "3순위"),
-                                        ("주택담보대출", "2043년 8월 완제", "4순위")]):
+                                        ("신용대출", "2030년 10월 완제", "2순위"),
+                                        ("학자금대출", "2031년 8월 완제", "3순위"),
+                                        ("주택담보대출", "2036년 4월 완제", "4순위")]):
     order.append(
         f'<div style="display: flex; align-items: center; gap: 11px; min-height: 46px; '
         f'{"border-bottom: 1px solid " + C["LINE_SOFT"] + ";" if i < 3 else ""}">'
@@ -174,12 +174,12 @@ w('Strategy', frame(
         card(f'<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0;">'
              f'<div style="padding-right: 12px;">'
              f'<div style="font-size: 11.5px; font-weight: 500; color: {C["INK3"]};">예상 완제</div>'
-             f'<div style="font-size: 21px; font-weight: 600; letter-spacing: -0.025em; color: {C["INK"]}; margin-top: 3px;">2043년 8월</div>'
-             f'<div style="font-size: 11px; color: {C["INK3"]}; margin-top: 2px;">17년 뒤</div></div>'
+             f'<div style="font-size: 21px; font-weight: 600; letter-spacing: -0.025em; color: {C["INK"]}; margin-top: 3px;">2036년 4월</div>'
+             f'<div style="font-size: 11px; color: {C["INK3"]}; margin-top: 2px;">9년 8개월 뒤</div></div>'
              f'<div style="padding-left: 12px; border-left: 1px solid {C["LINE_SOFT"]};">'
              f'<div style="font-size: 11.5px; font-weight: 500; color: {C["INK3"]};">총이자</div>'
-             f'<div style="font-size: 21px; font-weight: 600; letter-spacing: -0.025em; color: {C["INK"]}; margin-top: 3px;">2,762만원</div>'
-             f'<div style="font-size: 11px; font-weight: 600; color: {C["POS"]}; margin-top: 2px;">소액 우선보다 140만원 절약</div></div></div>'),
+             f'<div style="font-size: 21px; font-weight: 600; letter-spacing: -0.025em; color: {C["INK"]}; margin-top: 3px;">1,734만원</div>'
+             f'<div style="font-size: 11px; font-weight: 600; color: {C["POS"]}; margin-top: 2px;">소액 우선보다 30만원 절약</div></div></div>'),
         card(section_head('완제 순서', '고금리 우선') +
              f'<div style="display: flex; flex-direction: column; margin-top: 6px;">{"".join(order)}</div>'),
     ]) + bottomnav(1)))
@@ -322,9 +322,9 @@ w('Payoff', frame(
              f'<span style="font-size: 11px; color: {C["INK4"]};">월 27만원</span></div>'
              f'<div style="margin-top: 11px;">{note("최소 상환(월 77만원)은 줄일 수 없어 슬라이더에 포함되지 않습니다.", "mute")}</div>',
              extra=f'border: 1px dashed {C["VIO_LINE"]};'),
-        card(f'<div style="display: flex; gap: 8px;">{compare("고금리 우선", "2043년 8월", "17년 뒤", "2,762만원", best=True)}'
-             f'{compare("소액 우선", "2043년 12월", "17년 4개월 뒤", "2,903만원")}</div>'
-             f'<div style="margin-top: 11px;">{note("고금리 우선이 이자를 <b style=font-weight:600>140만원</b> 적게 냅니다. 추가 상환 없이 두면 완제 2050년 2월 · 총이자 4,074만원.", "mute")}</div>',
+        card(f'<div style="display: flex; gap: 8px;">{compare("고금리 우선", "2036년 4월", "9년 8개월 뒤", "1,734만원", best=True)}'
+             f'{compare("소액 우선", "2036년 4월", "9년 8개월 뒤", "1,764만원")}</div>'
+             f'<div style="margin-top: 11px;">{note("고금리 우선이 이자를 <b style=font-weight:600>30만원</b> 적게 냅니다. 완제는 같은 달이고 이자만 차이 납니다. 추가 상환 없이 두면 완제 2038년 9월 · 총이자 2,248만원.", "mute")}</div>',
              pad="13px 14px"),
         card(f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">'
              f'<div style="min-width: 0;"><div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">이 계획을 저장할까요?</div>'
