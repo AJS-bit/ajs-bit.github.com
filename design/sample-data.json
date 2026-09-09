@@ -1,0 +1,75 @@
+{
+  "_": "시안 75장이 그리고 있는 단 하나의 가상 사용자입니다. 개발 픽스처로 그대로 쓰면 화면과 숫자가 일치합니다. 단위는 원이고, 화면에서는 만원으로 반올림해 표시합니다.",
+  "asOf": "2026-09-08",
+  "profile": {
+    "age": 28,
+    "netSalary": 3600000,
+    "sideIncome": 300000,
+    "totalIncome": 3900000,
+    "spendTargetPct": 60,
+    "fixedCostMonthly": 2500000,
+    "expectedReturn": 5.0,
+    "_note": "spendTargetPct는 통계가 아니라 수정 가능한 계획 시작값입니다. 0%도 유효한 값이라 미입력으로 취급하면 안 됩니다."
+  },
+  "month": {
+    "key": "2026-09",
+    "daysDone": 8,
+    "daysLeft": 22,
+    "spendSoFar": 1120000,
+    "spendProjected": 2080000,
+    "limitTotal": 2160000,
+    "transferToSavings": 630000,
+    "debtRepayment": 920000,
+    "leftover": 270000,
+    "_note": "소비율 = spendProjected / netSalary = 57.9%. 저축 이체와 대출상환은 소비율에서 제외합니다."
+  },
+  "assets": [
+    { "name": "전세 보증금",  "type": "부동산", "value": 95000000, "rate": 0.0 },
+    { "name": "ETF 계좌",    "type": "투자",   "value": 48900000, "rate": 6.5 },
+    { "name": "퇴직연금 DC", "type": "연금",   "value": 18600000, "rate": 4.0 },
+    { "name": "생활비 통장",  "type": "현금성", "value": 14600000, "rate": 2.5 },
+    { "name": "청약저축",     "type": "기타",   "value":  5000000, "rate": 1.8 }
+  ],
+  "debts": [
+    { "name": "주택담보대출", "type": "mortgage", "balance": 62000000, "apr": 3.4,  "minimum": 320000 },
+    { "name": "신용대출",     "type": "credit",   "balance": 22000000, "apr": 6.8,  "minimum": 200000 },
+    { "name": "학자금대출",   "type": "student",  "balance":  2800000, "apr": 2.5,  "minimum":  50000 },
+    { "name": "카드 할부",    "type": "card",     "balance":  1800000, "apr": 14.5, "minimum": 200000,
+      "installmentsLeft": 9,
+      "_note": "할부 수수료는 회차 금액에 포함된 것으로 보고 별도 이자를 붙이지 않습니다. 180만 ÷ 9회 = 20만원." }
+  ],
+  "repayment": { "strategy": "avalanche", "extraMonthly": 150000, "extraMax": 270000 },
+  "goals": [
+    { "name": "비상금 6개월",        "kind": "emergency",   "target": 15000000, "saved": 10200000, "monthly": 350000, "homeGoal": true },
+    { "name": "투자 계좌 5,000만원", "kind": "investment",  "target": 50000000, "saved": 21000000, "monthly": 280000, "annualReturn": 5.0 },
+    { "name": "신용대출 완제",       "kind": "debt-payoff", "debts": ["신용대출"], "originalPrincipal": 32000000 },
+    { "name": "순자산 2억원",        "kind": "net-worth",   "target": 200000000 }
+  ],
+  "derived": {
+    "_": "아래는 design/canvas/_tools/calc 의 스크립트가 계산한 값입니다. 구현 엔진이 같은 값을 내야 합니다.",
+    "totalAssets": 182100000,
+    "totalDebt": 88600000,
+    "netWorth": 93500000,
+    "debtWeightedApr": 4.44,
+    "debtMinimumTotal": 770000,
+    "monthlyRepayment": 920000,
+    "assetWeightedReturn": 2.40,
+    "payoff": {
+      "avalanche": { "end": "2043-08", "totalInterest": 27620000,
+        "order": [["카드 할부","2027-02"],["학자금대출","2031-08"],["신용대출","2033-05"],["주택담보대출","2043-08"]] },
+      "snowball":  { "end": "2043-12", "totalInterest": 29030000 },
+      "minimumOnly": { "end": "2050-02", "totalInterest": 40740000 }
+    },
+    "goalEta": { "비상금 6개월": "2027-11", "투자 계좌 5,000만원": "2032-06",
+                 "신용대출 완제": "2033-05", "순자산 2억원": "2032-06" },
+    "allocationNeeded": 1460000,
+    "netWorthIn10y": { "conservative_1.0": 245670000, "base_2.4": 281740000, "optimistic_5.0": 362700000 },
+    "netWorthMilestones": { "100000000": "2027-02", "150000000": "2029-11", "200000000": "2032-06" }
+  },
+  "peer": {
+    "_": "앱에는 세부 또래 통계가 내장돼 있지 않습니다. 확인되지 않은 평균·백분위·상위 %를 만들어 보여주면 안 됩니다.",
+    "ageBand": "20대 후반 (만 27~29세)",
+    "userRegisteredBaseline": 62.0,
+    "baselineSource": "사용자가 직접 등록한 기준 · 앱 내장 통계가 아님"
+  }
+}

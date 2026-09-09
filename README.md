@@ -10,6 +10,8 @@ NAVI(자산 성장 내비게이션) 앱의 UI/UX 재설계 산출물입니다. �
 | **새 디자인 토큰** | [`design/DESIGN-TOKENS-v3.md`](design/DESIGN-TOKENS-v3.md) · [`design/tokens.v3.json`](design/tokens.v3.json) |
 | **원본과 달라진 점** | [`design/CHANGES-FROM-2.2.md`](design/CHANGES-FROM-2.2.md) |
 | **소스 적용 계획** | [`design/IMPLEMENTATION-PLAN.md`](design/IMPLEMENTATION-PLAN.md) |
+| **코덱스 인계 지시서** | [`design/CODEX-BRIEF.md`](design/CODEX-BRIEF.md) — 구현을 맡길 때 이 문서부터 |
+| **화면 ↔ 소스 매핑** | [`design/screens.json`](design/screens.json) · [`design/sample-data.json`](design/sample-data.json) |
 | **화면 시안 75개** | [`design/canvas/`](design/canvas) — 모바일 화면·모달, 상태 카탈로그, 데스크톱, 전체 다크 모드, 디자인 시스템 8페이지. `navi-redesign.html`을 브라우저에서 열면 한 캔버스에서 모두 볼 수 있습니다 |
 
 화면에 표시된 이름과 금액은 전부 **가상 샘플**입니다.

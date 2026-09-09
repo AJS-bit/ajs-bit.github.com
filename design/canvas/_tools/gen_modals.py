@@ -107,7 +107,8 @@ for i, (name, ic, col) in enumerate(TYPES):
         f'<div style="font-size: 11px; font-weight: {700 if sel else 500}; color: {col if sel else C["INK2"]}; margin-top: 5px; white-space: nowrap;">{name}</div></div>')
 
 debtpick = []
-for i, (name, bal, on) in enumerate([("카드 할부", "180만원 · 연 14.5%", True), ("신용대출", "2,480만원 · 연 6.8%", True),
+for i, (name, bal, on) in enumerate([("카드 할부", "180만원 · 연 14.5%", True), ("신용대출", "2,200만원 · 연 6.8%", True),
+                                     ("학자금대출", "280만원 · 연 2.5%", False),
                                      ("주택담보대출", "6,200만원 · 연 3.4%", False)]):
     box = (f'<span style="width: 20px; height: 20px; border-radius: 6px; background: {C["BRAND"]}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">{icon("check", 13, "#FFFFFF", 3)}</span>'
            if on else f'<span style="width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid {C["INPUT"]}; flex-shrink: 0;"></span>')

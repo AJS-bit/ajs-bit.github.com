@@ -64,31 +64,32 @@ def show(tag, r):
         print(f'                 {n:10} {yy}년 {mm:2}월 완제 ({r["payoff_m"][n]}개월)')
 
 
-# ── 지금 시안의 수치 ─────────────────────────────────────────
-NOW = [Debt('주택담보대출', 6200, 3.4, 32),
-       Debt('신용대출', 2480, 6.8, 21),
-       Debt('카드 할부', 180, 14.5, 20, fixed_term=9)]
-print('=== 현재 시안 수치로 실제 계산하면')
-show('최소만', simulate(NOW))
-show('추가 20만', simulate(NOW, 20))
-show('소액 우선 20만', simulate(NOW, 20, order='snowball'))
-print('\n  → 고금리 우선과 소액 우선이 완전히 같습니다.')
-print('     카드 할부가 잔액도 가장 작고 금리도 가장 높아 두 전략의 순서가 동일하기 때문입니다.')
-print('     "고금리 우선이 120만원 절약"은 이 데이터에서 성립할 수 없습니다.')
+if __name__ == '__main__':
+    # ── 지금 시안의 수치 ─────────────────────────────────────────
+    NOW = [Debt('주택담보대출', 6200, 3.4, 32),
+           Debt('신용대출', 2480, 6.8, 21),
+           Debt('카드 할부', 180, 14.5, 20, fixed_term=9)]
+    print('=== 현재 시안 수치로 실제 계산하면')
+    show('최소만', simulate(NOW))
+    show('추가 20만', simulate(NOW, 20))
+    show('소액 우선 20만', simulate(NOW, 20, order='snowball'))
+    print('\n  → 고금리 우선과 소액 우선이 완전히 같습니다.')
+    print('     카드 할부가 잔액도 가장 작고 금리도 가장 높아 두 전략의 순서가 동일하기 때문입니다.')
+    print('     "고금리 우선이 120만원 절약"은 이 데이터에서 성립할 수 없습니다.')
 
-# ── 새 구성: 총부채 8,860만 유지, 학자금(작지만 저금리)을 넣어 두 전략을 가른다 ──
-NEW = [Debt('주택담보대출', 6200, 3.4, 32),
-       Debt('신용대출',   2200, 6.8, 20),
-       Debt('학자금대출',   280, 2.5, 5),
-       Debt('카드 할부',    180, 14.5, 20, fixed_term=9)]
-print('\n=== 새 구성 (총부채 %d만 · 월 최소 %d만)' % (sum(d.bal for d in NEW), sum(d.minimum for d in NEW)))
-w = sum(d.bal*d.apr for d in NEW)/sum(d.bal for d in NEW)
-print(f'    가중 평균 연 {w:.2f}%  ·  구성: ' + ' · '.join(f'{d.name[:2]} {d.bal/sum(x.bal for x in NEW)*100:.0f}%' for d in NEW))
-for ex in (0, 15):
-    print()
-    show(f'최소만' if ex == 0 else f'고금리+추가{ex}만', simulate(NEW, ex))
-    if ex:
-        show(f'소액+추가{ex}만', simulate(NEW, ex, order='snowball'))
-        a = simulate(NEW, ex); b = simulate(NEW, ex, order='snowball')
-        print(f'                 → 고금리 우선이 이자 {b["interest"]-a["interest"]:,.0f}만원 적고, '
-              f'완제가 {b["months"]-a["months"]}개월 빠릅니다')
+    # ── 새 구성: 총부채 8,860만 유지, 학자금(작지만 저금리)을 넣어 두 전략을 가른다 ──
+    NEW = [Debt('주택담보대출', 6200, 3.4, 32),
+           Debt('신용대출',   2200, 6.8, 20),
+           Debt('학자금대출',   280, 2.5, 5),
+           Debt('카드 할부',    180, 14.5, 20, fixed_term=9)]
+    print('\n=== 새 구성 (총부채 %d만 · 월 최소 %d만)' % (sum(d.bal for d in NEW), sum(d.minimum for d in NEW)))
+    w = sum(d.bal*d.apr for d in NEW)/sum(d.bal for d in NEW)
+    print(f'    가중 평균 연 {w:.2f}%  ·  구성: ' + ' · '.join(f'{d.name[:2]} {d.bal/sum(x.bal for x in NEW)*100:.0f}%' for d in NEW))
+    for ex in (0, 15):
+        print()
+        show(f'최소만' if ex == 0 else f'고금리+추가{ex}만', simulate(NEW, ex))
+        if ex:
+            show(f'소액+추가{ex}만', simulate(NEW, ex, order='snowball'))
+            a = simulate(NEW, ex); b = simulate(NEW, ex, order='snowball')
+            print(f'                 → 고금리 우선이 이자 {b["interest"]-a["interest"]:,.0f}만원 적고, '
+                  f'완제가 {b["months"]-a["months"]}개월 빠릅니다')
