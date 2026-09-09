@@ -90,7 +90,7 @@ def kvrow(k, v, vcol, strong=False, last=False):
 # ══════════════ 3. 자산 › 부채 ══════════════
 DEBTS = [("주택담보대출", "담보 · 원리금균등", 6200, "3.4", 32, C["INK"]),
          ("신용대출", "신용 · 원리금균등", 2480, "6.8", 21, C["INK"]),
-         ("카드 할부", "할부 · 잔여 9회", 180, "14.5", 2, C["NEG"])]
+         ("카드 할부", "할부 · 잔여 9회", 180, "14.5", 20, C["NEG"])]
 rows = []
 for i, (name, meta, bal, rate, minpay, col) in enumerate(DEBTS):
     hi = badge('고금리', 'neg') if col == C["NEG"] else ''
@@ -115,7 +115,7 @@ w('Debts', frame(
              f'<span style="font-size: 19px; font-weight: 600; color: {C["INK2"]};">만원</span></div>'
              f'<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px; padding-bottom: 3px;">'
              f'<span style="font-size: 11px; font-weight: 500; color: {C["INK3"]};">월 최소 상환</span>'
-             f'<span style="font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK"]};">55만원</span></div></div>'
+             f'<span style="font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK"]};">73만원</span></div></div>'
              f'<div style="display: flex; height: 10px; border-radius: 99px; overflow: hidden; margin-top: 14px; gap: 2px;">'
              f'<div style="width: 70%; background: #94a3b8;"></div>'
              f'<div style="width: 28%; background: #f59e0b;"></div>'
@@ -130,9 +130,9 @@ w('Debts', frame(
         card(f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">'
              f'<span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">이번 달 상환 예정 '
              f'<span style="font-weight: 500; color: {C["INK3"]};">9월 25일</span></span>'
-             f'<span style="font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK"]};">75만원</span></div>'
+             f'<span style="font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK"]};">93만원</span></div>'
              f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px;">'
-             f'<span style="font-size: 11.5px; color: {C["INK3"]};">최소 55만원 + 추가 20만원</span>'
+             f'<span style="font-size: 11.5px; color: {C["INK3"]};">최소 73만원 + 추가 20만원</span>'
              f'<span style="font-size: 11.5px; color: {C["INK3"]};">소비율에는 포함되지 않아요</span></div>', pad="13px 14px"),
     ]) + bottomnav(1)))
 
@@ -146,7 +146,7 @@ for i, (name, eta, saved) in enumerate([("카드 할부", "2027년 3월 완제",
         f'<div style="display: flex; align-items: center; gap: 11px; min-height: 46px; '
         f'{"border-bottom: 1px solid " + C["LINE_SOFT"] + ";" if i < 2 else ""}">'
         f'<span style="width: 22px; height: 22px; border-radius: 99px; background: {C["BRAND_SOFT"] if i == 0 else C["TRACK"]}; '
-        f'color: {C["BRAND"] if i == 0 else "#8593AD"}; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">{i+1}</span>'
+        f'color: {C["BRAND"] if i == 0 else "#606B7D"}; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">{i+1}</span>'
         f'<span style="flex: 1; font-size: 13.5px; font-weight: 600; color: {C["INK"]};">{name}</span>'
         f'<span style="font-size: 12px; color: {C["INK3"]};">{eta}</span></div>')
 
@@ -165,8 +165,8 @@ w('Strategy', frame(
              f'<div style="display: flex; align-items: flex-end; gap: 10px;">'
              f'{field("월 추가 상환액", "20", "만원", w=132)}'
              f'<div style="flex: 1; padding-bottom: 4px;">'
-             f'<div style="font-size: 11.5px; color: {C["INK3"]};">최소 상환 55만원에 더해서</div>'
-             f'<div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]}; margin-top: 2px;">매월 75만원 상환</div></div></div>'
+             f'<div style="font-size: 11.5px; color: {C["INK3"]};">최소 상환 73만원에 더해서</div>'
+             f'<div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]}; margin-top: 2px;">매월 93만원 상환</div></div></div>'
              f'<div style="margin-top: 9px;">{note("입력 후 다른 곳을 누르면 저장됩니다. 방식 선택은 누르는 즉시 반영돼요.", "mute")}</div></div>'),
         card(f'<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0;">'
              f'<div style="padding-right: 12px;">'
@@ -210,7 +210,7 @@ w('Ledger', frame(
     content([
         card(f'<div style="display: flex; align-items: center; gap: 8px;">'
              f'<div style="flex: 1; display: flex; align-items: center; gap: 9px; height: 40px; padding: 0 12px; border-radius: 11px; background: {C["INSET"]};">'
-             f'{icon("search", 16, "#8593AD", 1.9)}<span style="font-size: 13.5px; color: {C["INK4"]};">메모·카테고리 검색</span></div>'
+             f'{icon("search", 16, "#606B7D", 1.9)}<span style="font-size: 13.5px; color: {C["INK4"]};">메모·카테고리 검색</span></div>'
              f'<div style="width: 40px; height: 40px; border-radius: 11px; border: 1px solid {C["LINE"]}; display: flex; align-items: center; justify-content: center;">{icon("repeat", 17, C["INK2"], 1.9)}</div></div>'
              f'<div style="display: flex; gap: 6px; margin-top: 10px; overflow: hidden;">'
              f'<div style="display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 12px; border-radius: 99px; background: {C["BRAND_SOFT"]}; color: {C["BRAND"]}; font-size: 12.5px; font-weight: 600; flex-shrink: 0;">전체 32건{icon("down", 13, C["BRAND"], 2)}</div>'
@@ -312,12 +312,12 @@ w('Payoff', frame(
              f'<span style="font-size: 14px; font-weight: 500; color: {C["INK4"]}; text-decoration: line-through;">0원</span>'
              f'<span style="align-self: center;">{icon("arrowr", 13, C["VIO_STRONG"], 2.4)}</span>'
              f'<span style="font-size: 25px; font-weight: 700; letter-spacing: -0.03em; color: {C["VIO_STRONG"]};">20<span style="font-size: 15px; font-weight: 600;">만원</span></span>'
-             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-left: auto;">매월 75만원 상환</span></div>'
+             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-left: auto;">매월 93만원 상환</span></div>'
              f'<div style="margin-top: 8px;">{slider(40, C["VIO"])}</div>'
              f'<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 5px;">'
              f'<span style="font-size: 11px; color: {C["INK4"]};">최소 상환만</span>'
              f'<span style="font-size: 11px; color: {C["INK4"]};">월 50만원</span></div>'
-             f'<div style="margin-top: 11px;">{note("최소 상환(월 55만원)은 줄일 수 없어 슬라이더에 포함되지 않습니다.", "mute")}</div>',
+             f'<div style="margin-top: 11px;">{note("최소 상환(월 73만원)은 줄일 수 없어 슬라이더에 포함되지 않습니다.", "mute")}</div>',
              extra=f'border: 1px dashed {C["VIO_LINE"]};'),
         card(f'<div style="display: flex; gap: 8px;">{compare("고금리 우선", "2038년 2월", "11년 5개월 뒤", "1,840만원", best=True)}'
              f'{compare("소액 우선", "2038년 5월", "11년 8개월 뒤", "1,960만원")}</div>'

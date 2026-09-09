@@ -4,14 +4,14 @@
 C = dict(
     BG="#EDF0F7", SURF="#FFFFFF", INSET="#F4F6FB", TRACK="#E8ECF5",
     LINE="#E3E8F1", LINE_SOFT="#EFF2F8", LINE_ROW="#F3F5FA",
-    INK="#101828", INK2="#475467", INK3="#6B7794", INK4="#98A4BC",
+    INK="#101828", INK2="#475467", INK3="#626D88", INK4="#697182",
     DIS="#B4BECD", INPUT="#CFD7E6", BORDER="#D7DEEA", TAB_INK="#5B6880",
     BRAND="#3556E6", BRAND_SOFT="#E9EDFD", BRAND_BANNER="#3B4E8F",
     POS="#0F7B47", POS_SOFT="#E4F4EA",
     WARN="#B45309", WARN_SOFT="#FDF1E0", WARN_INK="#7A3E0A", WARN_RULE="#DE8A2A",
     NEG="#C0342F", NEG_SOFT="#FCEBEA",
     VIO="#7A3FE4", VIO_STRONG="#6B32D6", VIO_SOFT="#F1EAFD", VIO_LINE="#B79BFF",
-    SKY="#0B7FBF", SKY_SOFT="#E4F2FB", SKY_INK="#0A5F8F",
+    SKY="#0A72AC", SKY_SOFT="#E4F2FB", SKY_INK="#0A5F8F",
 )
 
 CAT = {
@@ -59,9 +59,9 @@ _P = {
     "sliders": '<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',
     "repeat": '<path d="m17 2 4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
     "loader": '<path d="M12 3a9 9 0 1 0 9 9"/>',
-    "rice": '<path d="M3 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2"/><path d="M6 2v20"/><path d="M18 2c-1.7 1-3 3.5-3 6.5 0 2 1 3.5 3 3.5v10"/>',
+    "rice": '<path d="M4.5 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7.5 2v20"/><path d="M19.5 2c-1.7 1-3 3.5-3 6.5 0 2 1 3.5 3 3.5v10"/>',
     "bag": '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
-    "bus": '<path d="M8 6v6M16 6v6M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2v-4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6c0 1 .8 2 2 2h1"/><circle cx="7" cy="18" r="2"/><circle cx="16" cy="18" r="2"/>',
+    "bus": '<path d="M8 5v6M16 5v6M2 11h19.6"/><path d="M18 17h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2v-4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6c0 1 .8 2 2 2h1"/><circle cx="7" cy="17" r="2"/><circle cx="16" cy="17" r="2"/>',
     "house": '<path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>',
     "phone": '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>',
     "leaf": '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.7 4.5-7"/>',
@@ -171,8 +171,8 @@ def bottomnav(active):
         else:
             cells.append(
                 f'<div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;">'
-                f'<div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;">{icon(ic, 18, "#8593AD", 1.9)}</div>'
-                f'<span style="font-size: 11px; font-weight: 500; color: #8593AD;">{label}</span></div>')
+                f'<div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;">{icon(ic, 18, "#606B7D", 1.9)}</div>'
+                f'<span style="font-size: 11px; font-weight: 500; color: #606B7D;">{label}</span></div>')
     return (f'<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; height: 66px; '
             f'padding: 8px 10px 0; background: {C["SURF"]}; border-top: 1px solid {C["LINE"]}; flex-shrink: 0;">{"".join(cells)}</div>')
 
@@ -416,7 +416,7 @@ def sheet(title, desc, body, footer, scrim_h=60, sticky=None, header_right=None)
     st = sticky or ''
     return frame(
         f'<div style="height: {scrim_h}px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 12px; flex-shrink: 0;">'
-        f'<span style="font-size: 11.5px; font-weight: 500; color: rgba(255,255,255,.5);">배경을 눌러 닫기</span></div>'
+        f'<span style="font-size: 11.5px; font-weight: 500; color: rgba(255,255,255,.62);">배경을 눌러 닫기</span></div>'
         f'<div style="flex: 1; min-height: 0; background: {C["SURF"]}; border-radius: 26px 26px 0 0; display: flex; flex-direction: column; overflow: hidden; color: {C["INK"]};">'
         f'<div style="display: flex; justify-content: center; padding: 9px 0 0; flex-shrink: 0;">'
         f'<span style="width: 38px; height: 4px; border-radius: 99px; background: {C["BORDER"]};"></span></div>'
@@ -441,7 +441,7 @@ def state_sheet(title, desc, blocks, h=1360):
            f'<h2 style="margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {C["INK"]};">{title}</h2>'
            f'<p style="margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: {C["INK3"]};">{desc}</p></div>']
     for label, block in blocks:
-        out.append(f'<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #8593AD; padding: 6px 2px 0;">{label}</div>')
+        out.append(f'<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #606B7D; padding: 6px 2px 0;">{label}</div>')
         out.append(block)
     return (f'<div style="width: 390px; height: {h}px; background: {C["BG"]}; color: {C["INK"]}; padding: 18px 14px 20px; '
             f'display: flex; flex-direction: column; gap: 8px; overflow: hidden; font-variant-numeric: tabular-nums;">{"".join(out)}</div>')

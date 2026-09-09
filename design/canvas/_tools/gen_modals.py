@@ -226,7 +226,7 @@ w('CoachPanel', sheet(
     f'<div style="display: flex; flex-direction: column; gap: 9px;">'
     f'{advice("neg", "카드 할부 금리 14.5%를 먼저 정리하세요", "남은 180만원이지만 이자 비중은 신용대출의 절반에 가까워요. 고금리 우선 전략에서 1순위입니다.", "상환 전략 열기", 1)}'
     f'{advice("warn", "주거/관리가 한도의 94%예요", "9월 8일인데 벌써 47만원을 썼어요. 관리비 결제일이 지난 뒤라면 정상 속도입니다.", "카테고리 한도 보기", 2)}'
-    f'{advice("pos", "비상금이 생활비 7개월치까지 왔어요", "목표 6개월을 넘겼습니다. 초과분을 투자 목적지로 돌리는 것도 방법이에요.", "목적지 배분 조정", 3)}</div>'
+    f'{advice("pos", "비상금이 생활비 5.8개월치까지 왔어요", "목표 6개월(1,500만원)까지 40만원 남았습니다. 월 35만원이면 다음 달에 닿아요.", "목적지 배분 조정", 3)}</div>'
     f'{foldrow("다른 안내 4개 더 보기", "낮은 우선순위")}'
     + group('카테고리 절감 가정',
             f'<div style="padding: 13px; background: {C["VIO_SOFT"]}; border-radius: 14px; border: 1px dashed {C["VIO_LINE"]};">'
@@ -264,7 +264,7 @@ w('AlertsPanel', sheet(
     f'<div style="display: flex; flex-direction: column;">'
     f'{alert("warn", "warn", "주거/관리 한도의 94%를 썼어요", "47만원 / 50만원 · 이번 달 22일 남음", "카테고리 한도")}'
     f'{alert("neg", "bank", "카드 할부 금리가 14.5%예요", "보유 부채 중 가장 높습니다", "상환 전략")}'
-    f'{alert("sky", "shield", "비상금이 6개월 목표를 넘었어요", "현재 7.0개월 · 1,460만원", "목적지 배분")}</div>'
+    f'{alert("sky", "shield", "비상금이 목표까지 40만원 남았어요", "현재 5.8개월 · 1,460만원", "목적지 배분")}</div>'
     f'{note("자산을 <b style=font-weight:600>3개월</b> 넘게 갱신하지 않으면 여기에 알려드려요. 지금은 갱신이 필요한 자산이 없습니다.", "mute")}'
     + group('알림이 없을 때',
             f'<div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 10px; '
