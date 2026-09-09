@@ -49,7 +49,7 @@ w('GoalContribute', sheet(
         f'<div style="font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: {C["INK"]};">비상금 6개월</div>'
         f'<div style="font-size: 12.5px; color: {C["INK3"]}; margin-top: 3px;">'
         f'<b style=font-weight:600>1,020</b> / 1,500만원 · 남은 480만원</div>'
-        f'<div style="font-size: 11.5px; color: {C["INK4"]}; margin-top: 2px;">월 35만원 배분 · 도착 예상 2027년 4월</div>'
+        f'<div style="font-size: 11.5px; color: {C["INK4"]}; margin-top: 2px;">월 35만원 배분 · 도착 예상 2027년 11월</div>'
         f'</div></div>', pad='14px 15px') +
 
     '<div>' +
@@ -65,7 +65,7 @@ w('GoalContribute', sheet(
         f'<div style="margin-top: 4px;">'
         f'{delta("1,020만원", "1,070만원", "적립액")}'
         f'{delta("68%", "71%", "진행률")}'
-        f'{delta("2027년 4월", "2027년 3월", "도착 예상")}'
+        f'{delta("2027년 11월", "2027년 10월", "도착 예상")}'
         f'</div>',
         pad='13px 15px') +
 
@@ -144,8 +144,8 @@ BLOCKS = [
         fieldchip('목표액 *') + fieldchip('현재 평가액') + fieldchip('목표일') + fieldchip('연 기대수익률 5.0%', 'vio'),
         '복리로 계산합니다. 수익률은 <b style=font-weight:600>확정값이 아니므로 보라색</b>으로 표시하고, '
         '도착 예상 옆에 “가정”을 붙입니다.',
-        goalrow(42, '#6B85EC', '투자 계좌 5,000만원', '2,100 / 5,000만원 · 월 22만원',
-                '2029년 8월 도착 · 연 5.0% 가정', smallbtn('적립')),
+        goalrow(42, '#6B85EC', '투자 계좌 5,000만원', '2,100 / 5,000만원 · 월 28만원',
+                '2032년 6월 도착 · 연 5.0% 가정', smallbtn('적립')),
         badge('가정 포함', 'vio'))),
 
     ('C · 순자산 — 값을 직접 넣지 않음', type_block(
@@ -154,7 +154,7 @@ BLOCKS = [
         '현재값은 자산 화면에서 자동으로 옵니다. 그래서 <b style=font-weight:600>적립 버튼이 없습니다</b> — '
         '순자산은 자산·부채를 고치면 따라 움직입니다.',
         goalrow(47, C["VIO"], '순자산 2억원', '순자산 9,350 / 20,000만원 · 자동 계산',
-                '도착 예상 2036년 6월 · 미래 경로 기준',
+                '도착 예상 2032년 6월 · 미래 경로 기준',
                 f'<span style="font-size: 11px; color: {C["INK4"]}; flex-shrink: 0;">적립 없음</span>'))),
 
     ('D · 부채 상환 — 상환 계획에서 계산', type_block(
@@ -162,8 +162,8 @@ BLOCKS = [
         fieldchip('연결할 부채 *') + fieldchip('신용대출 ✓', 'brand') + fieldchip('목표액', 'off') + fieldchip('적립액', 'off'),
         '목표액을 묻지 않습니다. 연결한 부채의 원금이 목표이고, 완제일은 '
         '<b style=font-weight:600>상환 전략 화면의 계획</b>에서 옵니다. 두 화면이 다른 답을 내지 않게 하기 위해서입니다.',
-        goalrow(31, C["NEG"], '신용대출 완제', '남은 원금 2,480만원 · 연 6.8%',
-                '완제 예상 2028년 11월 · 상환 계획 반영',
+        goalrow(31, C["NEG"], '신용대출 완제', '남은 원금 2,200만원 · 연 6.8%',
+                '완제 예상 2033년 5월 · 상환 계획 반영',
                 f'<span style="font-size: 11px; color: {C["INK4"]}; flex-shrink: 0;">적립 없음</span>'))),
 
     ('E · 비상금 — 저축과 같되 수익률 0% 고정', type_block(

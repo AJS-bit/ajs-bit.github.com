@@ -122,7 +122,7 @@ w('GoalDialog', sheet(
     group('유형', f'<div style="display: flex; gap: 6px;">{"".join(types)}</div>') +
     f'{field("이름", "신용대출 완제", required=True)}'
     + group('갚을 부채 선택', f'<div style="padding: 0 13px; background: {C["INSET"]}; border-radius: 14px;">{"".join(debtpick)}</div>',
-            meta='2건 선택 · 2,660만원')
+            meta='2건 선택 · 2,380만원')
     + f'<div style="display: flex; gap: 10px;">{select_field("우선순위", "1순위 · 가장 먼저")}{field("목표 기한", "2029.06", optional=True, w=124)}</div>'
     + note('부채 상환 목적지는 적립 대신 <span style="font-weight:600">상환 계획</span>을 따릅니다. 목표액·적립액 입력란이 없고 홈 대표로도 지정할 수 있어요.', 'mute'),
     sheet_footer('취소', '목적지 추가'), scrim_h=40))
@@ -160,12 +160,12 @@ w('MonthlyClose', sheet(
     note('이미 <span style="font-weight:600">2026년 9월 2일</span>에 마감한 달입니다. 다시 저장하면 기존 마감값을 덮어씁니다.', 'warn', 'warn') +
     group('그 달의 실제 수치', f'<div style="display: flex; gap: 10px;">{field("총수입", "3,900,000", "원", required=True)}'
                                 f'{field("그중 실수령 급여", "3,600,000", "원", required=True)}</div>'
-                                f'<div style="display: flex; gap: 10px; margin-top: 12px;">{field("대출상환", "550,000", "원")}'
-                                f'{field("저축·투자 이체", "900,000", "원")}</div>', meta='원 단위') +
+                                f'<div style="display: flex; gap: 10px; margin-top: 12px;">{field("대출상환", "920,000", "원")}'
+                                f'{field("저축·투자 이체", "630,000", "원")}</div>', meta='원 단위') +
     group('자동으로 채워진 값',
           f'<div style="padding: 2px 13px; background: {C["INSET"]}; border-radius: 14px;">'
           f'{kv("일반 소비 합계", "2,043,800원")}{kv("급여 대비 소비율", "56.8%", C["POS"])}'
-          f'{kv("월말 자산 총액", "180,400,000원")}{kv("월말 부채 총액", "89,800,000원", last=True)}</div>') +
+          f'{kv("월말 자산 총액", "180,400,000원")}{kv("월말 부채 총액", "89,200,000원", last=True)}</div>') +
     note('급여를 비워 두면 그 달은 <span style="font-weight:600">—</span>로 남습니다. 지금 급여로 과거를 채우지 않아요.', 'mute'),
     sheet_footer('취소', '마감 저장'),
     sticky=f'<div style="padding: 12px 18px; background: {C["INSET"]}; border-top: 1px solid {C["LINE"]}; flex-shrink: 0;">'
@@ -224,7 +224,7 @@ def advice(tone, title, body, action, num):
 w('CoachPanel', sheet(
     '코칭', '저장된 기록만 보고 드리는 조언이에요. 우선순위가 높은 순서입니다.',
     f'<div style="display: flex; flex-direction: column; gap: 9px;">'
-    f'{advice("neg", "카드 할부 금리 14.5%를 먼저 정리하세요", "남은 180만원이지만 이자 비중은 신용대출의 절반에 가까워요. 고금리 우선 전략에서 1순위입니다.", "상환 전략 열기", 1)}'
+    f'{advice("neg", "카드 할부 금리 14.5%를 먼저 정리하세요", "잔액은 전체의 2%뿐이지만 금리가 신용대출의 2.1배예요. 고금리 우선 전략에서 1순위입니다.", "상환 전략 열기", 1)}'
     f'{advice("warn", "주거/관리가 한도의 94%예요", "9월 8일인데 벌써 47만원을 썼어요. 관리비 결제일이 지난 뒤라면 정상 속도입니다.", "카테고리 한도 보기", 2)}'
     f'{advice("pos", "비상금이 생활비 5.8개월치까지 왔어요", "목표 6개월(1,500만원)까지 40만원 남았습니다. 월 35만원이면 다음 달에 닿아요.", "목적지 배분 조정", 3)}</div>'
     f'{foldrow("다른 안내 4개 더 보기", "낮은 우선순위")}'
@@ -236,15 +236,15 @@ w('CoachPanel', sheet(
             f'<div style="margin-top: 10px;">{slider(37, C["VIO"])}</div>'
             f'<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">'
             f'<span style="font-size: 11px; color: {C["INK4"]};">0%</span>'
-            f'<span style="font-size: 11.5px; font-weight: 600; color: {C["VIO_STRONG"]};">월 18만원 절감 가정</span>'
+            f'<span style="font-size: 11.5px; font-weight: 600; color: {C["VIO_STRONG"]};">월 31만원 절감 가정</span>'
             f'<span style="font-size: 11px; color: {C["INK4"]};">40%</span></div>'
             f'<div style="display: flex; gap: 8px; margin-top: 11px;">'
             f'<div style="flex: 1; padding: 10px 11px; background: {C["SURF"]}; border-radius: 11px;">'
             f'<div style="font-size: 11.5px; color: {C["INK3"]};">비상금 도착</div>'
-            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">2개월 빨라짐</div></div>'
+            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">7개월 빨라짐</div></div>'
             f'<div style="flex: 1; padding: 10px 11px; background: {C["SURF"]}; border-radius: 11px;">'
             f'<div style="font-size: 11.5px; color: {C["INK3"]};">10년 적립 효과</div>'
-            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">+2,690만원</div></div></div></div>'),
+            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">+4,227만원</div></div></div></div>'),
     btn('닫기', 'secondary', h=48), scrim_h=40))
 
 
@@ -322,7 +322,7 @@ w('Confirmations', state_sheet(
               '취소', '규칙만 삭제', 'primary')),
      ('E · 전체 초기화',
       confirm('warn', 'neg', '모두 지우고 새로 시작할까요?',
-              '거래 132건 · 자산 5건 · 부채 3건 · 목적지 4건 · 월 마감 6건이 <span style="font-weight:600">되돌릴 수 없이</span> 사라집니다.',
+              '거래 132건 · 자산 5건 · 부채 4건 · 목적지 4건 · 월 마감 6건이 <span style="font-weight:600">되돌릴 수 없이</span> 사라집니다.',
               '취소', '모두 삭제',
               extra=f'<div style="margin-top: 12px;">{note("먼저 백업을 내보내면 나중에 그대로 복구할 수 있어요.", "warn", "download")}</div>'
                     f'<div style="margin-top: 9px;">{checkbox("백업을 내보냈거나, 지워도 괜찮습니다.", False)}</div>'))],
