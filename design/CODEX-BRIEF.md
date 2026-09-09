@@ -30,12 +30,23 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 | 순서 | 파일 | 무엇이 있나 |
 |---|---|---|
 | 1 | 이 문서 | 작업 순서·제약·완료 기준 |
-| 2 | [`README.md`](README.md) | 왜 이렇게 바꿨는지 — 문제 진단과 5가지 원칙 |
-| 3 | [`DESIGN-TOKENS-v3.md`](DESIGN-TOKENS-v3.md) · [`tokens.v3.json`](tokens.v3.json) | 색·타이포·간격·컴포넌트 규칙 |
-| 4 | [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) | 파일별 작업 내용 (4단계) |
-| 5 | [`CHANGES-FROM-2.2.md`](CHANGES-FROM-2.2.md) | 2.2에서 무엇이 어떻게 달라졌는지 |
-| 6 | [`screens.json`](screens.json) | 아트보드 75장 ↔ 소스 파일 매핑 (기계 판독용) — **화면 작업마다 여기서 대상 아트보드를 찾으세요** |
-| 7 | [`sample-data.json`](sample-data.json) | 시안이 그리는 가상 사용자 — 개발 픽스처로 그대로 사용 |
+| 2 | **[`SPEC-COMPONENTS.md`](SPEC-COMPONENTS.md)** | **컴포넌트 24개의 실측 CSS. 화면보다 이것을 먼저 만듭니다** |
+| 3 | **[`SPEC-SCREENS.md`](SPEC-SCREENS.md)** | **화면 38개의 블록 체크리스트. 조립하면서 하나씩 지웁니다** |
+| 4 | [`DESIGN-TOKENS-v3.md`](DESIGN-TOKENS-v3.md) · [`tokens.v3.json`](tokens.v3.json) | 색·타이포·간격 값의 출처 |
+| 5 | [`screens.json`](screens.json) | 아트보드 75장 ↔ 소스 파일 매핑 (기계 판독용) |
+| 6 | [`sample-data.json`](sample-data.json) | 시안이 그리는 가상 사용자 — 개발 픽스처로 그대로 사용 |
+| 7 | [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) | 파일별 작업 내용 (4단계) |
+| 8 | [`README.md`](README.md) | 왜 이렇게 바꿨는지 — 문제 진단과 5가지 원칙 |
+| 9 | [`CHANGES-FROM-2.2.md`](CHANGES-FROM-2.2.md) | 2.2에서 무엇이 어떻게 달라졌는지 |
+
+화면 하나를 만들 때 실제로 여는 파일은 **네 개**입니다.
+
+```
+SPEC-SCREENS.md 의 해당 절     ← 블록 순서
+canvas/<이름>.dc.html          ← 정확한 값 (최종 기준)
+spec/<이름>.outline.md         ← 위 파일의 구조 요약. 먼저 읽으면 빠릅니다
+preview/<이름>.png             ← 결과가 어떻게 보여야 하는지
+```
 
 ### 읽지 않아도 되는 것
 
@@ -45,11 +56,13 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 |---|---|
 | `canvas/navi-redesign.md` · `canvas/navi-redesign.html` | 사람이 눈으로 보는 3.6MB 캔버스 뭉치. 개별 `.dc.html`을 읽는 편이 낫습니다 |
 | `canvas/canvas.json` | 캔버스 배치 좌표. 구현에 쓸 정보는 `screens.json`에 다 옮겨져 있습니다 |
-| `canvas/_tools/**` | 아트보드를 찍어낸 생성기. **다시 돌리지 마세요.** 시안은 이미 확정본입니다 |
+| `canvas/_tools/**` | 아트보드를 찍어낸 생성기. **다시 돌리지 마세요.** 시안은 이미 확정본입니다. 단 `darken.py`의 `MAP`은 다크 색 대응표라서 다크 모드 작업 때 읽습니다 |
 | `canvas/_tools/calc/**` | 상각·복리 계산기. 결과는 `sample-data.json`의 `derived`에 들어 있습니다. 숫자를 직접 검산할 때만 |
 | `README.md` | 왜 이렇게 바꿨는지에 대한 설계 배경. 판단이 필요할 때만 |
+| `preview/index.html` | 75장 렌더를 한눈에 보는 색인. 사람이 볼 때만 |
 
-`.dc.html`도 **75장을 다 읽지 마세요.** 지금 만드는 화면에 해당하는 것만 `screens.json`에서 찾아 여세요.
+`.dc.html`도 75장을 한 번에 다 읽지는 마세요. 다만 **지금 만드는 화면의 아트보드는 처음부터 끝까지 다 읽으세요.**
+훑어보고 감으로 만들면 반드시 달라집니다. 한 장은 300~400줄이라 통째로 읽어도 부담되지 않습니다.
 
 ---
 
@@ -66,8 +79,11 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 - 브라우저로 파일을 직접 열면 그대로 보입니다
 - `design/canvas/navi-redesign.html` 하나를 열면 75장을 한 캔버스에서 봅니다
 - 모바일 390×844 · 데스크톱 1440×900 · 카탈로그 시트는 세로로 긴 프레임
-- 인라인 스타일의 픽셀 값을 **그대로 베끼지 말고**, `tokens.v3.json`의 토큰으로 옮기세요.
-  아트보드는 토큰을 눈으로 확인하려고 펼쳐 쓴 것입니다
+- **인라인 스타일의 값을 그대로 가져오세요.** 이전 판에서는 "토큰으로 옮기라"고 적었는데,
+  그 말 때문에 `13.5px`가 `text-sm`(14px)이 되고 `border-radius: 18px`가 `rounded-2xl`(16px)이 되어
+  시안과 다른 화면이 나왔습니다. 토큰은 **값에 이름을 붙이는 용도**이지 값을 반올림하라는 뜻이 아닙니다.
+  `tokens.v3.json`에 없는 값이 아트보드에 있으면, 아트보드가 맞습니다
+- 아트보드 픽셀 값과 이 문서·토큰 문서가 어긋나면 **아트보드가 기준**입니다
 
 `screens.json`에 아트보드마다 `source` 필드가 있어 어느 파일에 해당하는지 바로 알 수 있습니다.
 
@@ -78,11 +94,61 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 `IMPLEMENTATION-PLAN.md`의 4단계를 그대로 따르세요. 각 단계는 독립적으로 되돌릴 수 있습니다.
 
 1. **토큰 교체** — `globals.css` 변수와 서체. 레이아웃은 2.2 그대로. 이것만으로 색이 v3가 됩니다
-2. **공통 컴포넌트** — `DataRow` · `HeroCard` · `AssumptionCard` · `RouteBar` 신규. `MetricTile`은 히어로 안 3연속 지표 전용으로 축소
-3. **화면별 레이아웃** — 홈 → 자산 → 소비 → 목적지 → 미래 순서 권장. 각 화면마다 라이트/다크 아트보드가 짝으로 있습니다
-4. **그래프** — Recharts. Y축 눈금 제거, 카드 폭 전체 사용, 오른쪽을 점선 예상으로 채움
+2. **공통 컴포넌트** — `SPEC-COMPONENTS.md`의 24개를 **먼저 전부** 만듭니다.
+   화면부터 손대면 화면마다 조금씩 다른 카드가 생기고, 그게 "시안과 다르다"의 대부분입니다
+3. **화면별 레이아웃** — 홈 → 자산 → 소비 → 목적지 → 미래 순서. 각 화면마다 라이트/다크가 짝으로 있습니다
+4. **그래프** — Y축 눈금 제거, 카드 폭 전체 사용, 오른쪽을 점선 예상으로 채움
 
 **3단계를 화면 하나씩 끝내고 다음으로 가세요.** 여러 화면을 동시에 열면 공통 컴포넌트가 어긋납니다.
+
+### 화면 하나를 만드는 절차
+
+1. `SPEC-SCREENS.md`에서 그 화면 절을 찾아 블록 목록을 복사한다
+2. `spec/<이름>.outline.md`로 구조를 파악한다
+3. `canvas/<이름>.dc.html`을 **처음부터 끝까지** 읽는다 — 값은 여기가 최종 기준
+4. `preview/<이름>.png`로 결과가 어떻게 보여야 하는지 확인한다
+5. 만든다. 새 컴포넌트를 만들지 않고 2단계에서 만든 것만 조립한다
+6. 아래 §3-1 자가 점검을 돌린다
+7. 통과하면 다음 화면으로
+
+---
+
+## 3-1. 자가 점검 — 이 단계를 건너뛰면 반드시 달라집니다
+
+만든 화면을 눈으로 보고 "비슷하네" 하고 넘어가면 어긋납니다. 숫자로 확인하세요.
+
+**A. 값 대조 (필수)**
+
+만든 화면과 아트보드에서 아래를 뽑아 표로 비교합니다. 하나라도 다르면 아트보드가 맞습니다.
+
+| 항목 | 확인 방법 |
+|---|---|
+| 폰트 크기 | 화면에 쓴 `font-size` 전부를 모아 `SPEC-COMPONENTS.md` 마지막 절의 목록과 대조. 목록에 없는 크기가 있으면 잘못 만든 것 |
+| 모서리 | `border-radius` 값 목록 대조. `SPEC-COMPONENTS.md` 마지막 절의 표에 없는 값이 있으면 잘못 |
+| 색 | 쓴 색 전부가 `tokens.v3.json` 또는 아트보드에 있는 값인지 |
+| 세로 순서 | `SPEC-SCREENS.md`의 블록 순서와 일치하는지 |
+| 여백 | 카드 사이 `gap`, 카드 안 `padding` |
+
+**B. 렌더 대조 (권장)**
+
+아트보드 렌더는 `preview/<이름>.png`에 있습니다. 같은 뷰포트(390×844)로 앱을 캡처해
+나란히 놓고 비교하세요. 실제로 자주 걸리는 것:
+
+- 카드가 시안보다 두껍다 → `padding`을 14가 아니라 16으로 썼거나 `gap`이 9가 아니라 12
+- 숫자가 흔들린다 → 루트에 `font-variant-numeric: tabular-nums`가 없다
+- 그래프가 잘린다 → 부모 `min-height: 0`이 없거나 차트 높이를 CSS와 컴포넌트에서 이중으로 지정했다
+- 깃발(목표 마커)이 안 보인다 → RouteBar 트랙에 `overflow: hidden`을 걸었다. `visible`이어야 한다
+- 다크에서 토스트가 안 보인다 → 토스트는 다크 변환 대상이 아니다 (`SPEC-COMPONENTS.md` §19)
+
+**C. 렌더 스크립트**
+
+`preview/`의 PNG를 다시 만들거나, 같은 방식으로 앱을 캡처하려면:
+
+```bash
+python3 design/canvas/_tools/render_png.py       # 아트보드 → preview/*.png
+```
+
+`--help`로 옵션을 봅니다. 폰트는 자체 호스팅본을 쓰세요(네트워크 없이 동작해야 합니다).
 
 ---
 
@@ -138,6 +204,9 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 
 아래를 전부 만족해야 끝입니다.
 
+- [ ] `SPEC-SCREENS.md`의 체크박스가 38개 화면 모두 채워짐
+- [ ] 새로 만든 컴포넌트가 `SPEC-COMPONENTS.md`의 24개 밖에 없음 (있다면 왜 필요했는지 기록)
+- [ ] 화면에 쓴 `font-size` · `border-radius` 값이 전부 `SPEC-COMPONENTS.md` 마지막 절의 목록 안에 있음
 - [ ] `sample-data.json`을 픽스처로 넣었을 때 화면 숫자가 아트보드와 **한 자리도 다르지 않음**
 - [ ] 라이트/다크 두 모드에서 레이아웃이 동일 (색만 다름)
 - [ ] 5개 탭 · 모달 14종 · 상태 카탈로그 6종이 모두 도달 가능

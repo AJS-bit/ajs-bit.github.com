@@ -5,12 +5,14 @@ import pathlib
 OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
 
 PHONE = (390, 844)
-TALL = {'StorageStates': 1264, 'PeerStates': 1552, 'EmptyStates': 1718, 'Confirmations': 1300,
-        'ModalErrors': 2030, 'GoalTypes': 1846}
+# 프레임 높이는 "실제 웹폰트로 렌더한 자연 높이 + 아래 여백 24px"이다.
+# 폴백 폰트로 재면 한글 줄 높이가 짧게 나와 실제보다 작은 값이 나온다. 반드시 IBM Plex Sans KR로 재라.
+TALL = {'StorageStates': 1309, 'PeerStates': 1595, 'EmptyStates': 1718, 'Confirmations': 1228,
+        'ModalErrors': 2061, 'GoalTypes': 1767}
 TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'DarkDesktopLedger': (1440, 900),
-        'Tokens': (1200, 1590), 'Components': (1200, 1440), 'DarkComponents': (1200, 1440)}
+        'Tokens': (1200, 1684), 'Components': (1200, 1471), 'DarkComponents': (1200, 1471)}
 
 TITLES = {
     'Main': '홈 · 오늘의 내비게이션', 'HomeScroll': '홈 · 아래로 스크롤',

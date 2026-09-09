@@ -109,7 +109,11 @@ NAVI는 자산 성장 **내비게이션**입니다. 그래서 내비게이션 �
 | [`DESIGN-TOKENS-v3.md`](DESIGN-TOKENS-v3.md) · [`tokens.v3.json`](tokens.v3.json) | 새 색·타이포·간격·반경·그림자·그래프 토큰 |
 | [`CHANGES-FROM-2.2.md`](CHANGES-FROM-2.2.md) | 정렬·글자 크기·정보 순서·버튼 위치 기준 변경점, 이동한 기능의 새 위치 |
 | [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) | 적용 대상 파일·컴포넌트 계획, 검증이 필요한 항목 |
-| [`canvas/`](canvas) | 59개 아트보드의 `.dc.html` 원본과 `canvas.json` |
+| [`canvas/`](canvas) | 75개 아트보드의 `.dc.html` 원본과 `canvas.json` |
+| [`SPEC-COMPONENTS.md`](SPEC-COMPONENTS.md) | 컴포넌트 24개의 실측 CSS (라이트·다크). 구현은 여기서 시작 |
+| [`SPEC-SCREENS.md`](SPEC-SCREENS.md) | 화면 38개의 블록 조립 체크리스트 |
+| [`spec/`](spec) | 아트보드별 블록 개요 38장 |
+| [`preview/`](preview) | 아트보드 75장 렌더 PNG + `index.html` 색인 |
 | `canvas/navi-redesign.html` | 브라우저에서 바로 여는 단일 파일 캔버스 |
 
 ### 아트보드 75개 · 5페이지

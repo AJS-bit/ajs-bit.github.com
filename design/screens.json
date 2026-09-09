@@ -624,7 +624,7 @@
       "title": "상태 · 저장소 로딩·복구",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1264,
+      "h": 1309,
       "source": "app/page.tsx"
     },
     {
@@ -646,7 +646,7 @@
       "title": "상태 · 또래 카드 5종",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1552,
+      "h": 1595,
       "source": "components/navi/peer-card.tsx"
     },
     {
@@ -657,7 +657,7 @@
       "title": "상태 · 목적지 유형 5종",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1846,
+      "h": 1767,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -668,7 +668,7 @@
       "title": "상태 · 모달 오류·저장 6종",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 2030,
+      "h": 2061,
       "source": "모달 공통 (폼 검증·저장 경로)"
     },
     {
@@ -679,7 +679,7 @@
       "title": "상태 · 삭제·초기화 확인",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1300,
+      "h": 1228,
       "source": "components/ui/alert-dialog.tsx 사용처"
     },
     {
@@ -690,7 +690,7 @@
       "title": "상태 · 저장소 로딩·복구 (다크)",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1264,
+      "h": 1309,
       "source": "app/page.tsx"
     },
     {
@@ -712,7 +712,7 @@
       "title": "상태 · 또래 카드 5종 (다크)",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1552,
+      "h": 1595,
       "source": "components/navi/peer-card.tsx"
     },
     {
@@ -723,7 +723,7 @@
       "title": "상태 · 목적지 유형 5종 (다크)",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1846,
+      "h": 1767,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -734,7 +734,7 @@
       "title": "상태 · 모달 오류·저장 6종 (다크)",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 2030,
+      "h": 2061,
       "source": "모달 공통 (폼 검증·저장 경로)"
     },
     {
@@ -745,7 +745,7 @@
       "title": "상태 · 삭제·초기화 확인 (다크)",
       "page": "상태 카탈로그",
       "w": 390,
-      "h": 1300,
+      "h": 1228,
       "source": "components/ui/alert-dialog.tsx 사용처"
     },
     {
@@ -800,7 +800,7 @@
       "title": "토큰 · 색 · 타이포 · 간격",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 1590,
+      "h": 1684,
       "source": "app/globals.css · lib/engine/constants.ts"
     },
     {
@@ -811,7 +811,7 @@
       "title": "컴포넌트 · 상태",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 1440,
+      "h": 1471,
       "source": "components/navi/shared.tsx · components/ui/button.tsx"
     },
     {
@@ -822,7 +822,7 @@
       "title": "컴포넌트 · 상태 (다크)",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 1440,
+      "h": 1471,
       "source": "components/navi/shared.tsx · components/ui/button.tsx"
     }
   ],

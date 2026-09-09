@@ -15,17 +15,42 @@
 | `darken.py` | 라이트 아트보드 37종을 다크 토큰으로 변환. `<!--dc-keep-->…<!--/dc-keep-->` 구간은 변환하지 않는다(라이트에서도 반전된 토스트 등) |
 
 ```bash
-python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2030 \
-  && python3 gen_rest.py 1846 && python3 darken.py && python3 gen_canvas.py
+python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2061 \
+  && python3 gen_rest.py 1767 && python3 darken.py && python3 gen_canvas.py
 ```
 
 `Main` · `Assets` · `Spending` · `Limits` · `Goals` · `Future` · `HomeScroll` · `PeerStates` · `EmptyStates` · `Desktop*` · `Tokens` · `Components`는 손으로 쓴 파일이라 생성 대상이 아닙니다. **캔버스 편집기에서 직접 고친 내용은 스크립트를 다시 돌리면 덮어써집니다.** 한 번 손으로 고치기 시작했다면 `.dc.html`을 원본으로 삼고 스크립트는 `darken.py`만 쓰세요.
 
+## 인계용 산출물 도구
+
+인계용 산출물을 만드는 도구는 따로입니다. 아트보드를 바꾸지 않고 읽기만 합니다.
+
+| 파일 | 역할 |
+|---|---|
+| `outline.py` | 아트보드 → `design/spec/<이름>.outline.md` 블록 개요. 400줄짜리 마크업을 150줄 구조로 줄인다 |
+| `gen_spec_screens.py` | 아트보드 → `design/SPEC-SCREENS.md` 화면별 조립 체크리스트 |
+| `render_png.py` | 아트보드 → `design/preview/*.png`. 만든 앱을 같은 방식으로 캡처해 비교할 때도 쓴다 |
+
+```bash
+python3 outline.py && python3 gen_spec_screens.py && python3 render_png.py
+```
+
+`SPEC-COMPONENTS.md`는 손으로 쓴 문서라 생성 대상이 아닙니다.
+
+
 ## 프레임 높이
 
-아트보드 높이는 `gen_canvas.py`의 `TALL` / `WIDE`와 각 `.dc.html` 루트 div의 `height`가 **같아야** 합니다.
-루트에 `overflow: hidden`이 걸려 있어 어긋나면 소리 없이 잘립니다. 새 시트를 만들거나 내용을 늘렸으면
-헤드리스로 `scrollHeight`를 재고 그 값을 두 곳에 함께 넣으세요.
+아트보드 높이는 `gen_canvas.py`의 `TALL` / `WIDE`, `screens.json`, 각 `.dc.html` 루트 div의 `height`
+**세 곳이 같아야** 합니다. 루트에 `overflow: hidden`이 걸려 있어 어긋나면 소리 없이 잘립니다.
+
+높이를 잴 때 주의할 것이 두 가지 있습니다. 둘 다 실제로 걸려서 카탈로그 시트 5장이 잘린 채로 있었습니다.
+
+1. **반드시 실제 웹폰트(IBM Plex Sans KR)를 띄운 채로 재세요.** 네트워크가 막힌 환경에서 폴백 폰트로 재면
+   한글 줄 높이가 짧게 나와 실제보다 20~70px 작은 값이 나옵니다. 웹폰트 CSS를 자체 호스팅해서 재는 것이 안전합니다.
+2. **루트의 `scrollHeight`만 믿지 마세요.** 안쪽에 `overflow: hidden` 컨테이너가 있으면 잘린 만큼이
+   `scrollHeight`에 안 잡힙니다. 루트 높이를 `auto`로 풀고 잰 **자연 높이**를 쓰세요.
+
+현재 값은 전부 `자연 높이 + 아래 여백 24px`입니다.
 
 ## 라이트/다크 비교 시트
 
