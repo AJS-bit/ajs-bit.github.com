@@ -30,3 +30,9 @@ python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2030 \
 
 `python3 mkcompare.py`를 돌리면 스크래치 폴더에 비교용 HTML이 생깁니다. 브라우저로 열거나 헤드리스로 캡처해서 봅니다.
 아트보드가 아니라 검토용 파생물이라 `canvas.json`에는 등록하지 않습니다.
+
+## 페이지 배치
+
+`gen_canvas.py`의 `PAGES`에는 **라이트 아트보드만** 적습니다. 다크 짝(`Dark<이름>`, 홈만 `DarkHome`)은
+파일이 있으면 자동으로 **같은 x, 바로 아래 줄**에 놓입니다. 다크 파일이 없는 아트보드(토큰 시트)는
+아래 줄을 비웁니다. 줄 간격은 `PAIR_GAP`(라이트→다크 52px)과 `GROUP_GAP`(다음 묶음까지 168px)입니다.
