@@ -240,10 +240,13 @@ past_chart = card(
     f'<circle cx="328" cy="26" r="4" fill="{C["BRAND"]}"/></svg>'
     f'<span style="position: absolute; right: 0; top: 36px; font-size: 12px; font-weight: 700; color: {C["INK"]};">191만</span></div>'
 
-    f'<div style="display: flex; justify-content: space-between; border-top: 1px solid {C["LINE_SOFT"]}; padding-top: 8px; margin-top: 6px;">'
-    f'<span style="font-size: 11px; color: {C["INK4"]};">1일</span>'
-    f'<span style="font-size: 11px; color: {C["INK4"]};">15일</span>'
-    f'<span style="font-size: 11px; font-weight: 600; color: {C["INK"]};">31일 마감</span></div>')
+    # 눈금은 축 좌표에 맞춘다. 그림 영역 x 2~328이 1일~31일이므로
+    # x(15) = 2 + 14/30 * 326 = 154.13 → viewBox 폭 330의 46.7%.
+    # space-between으로 두면 가운데 라벨이 양끝 폭 차이만큼 밀려 여기서 3.5px 어긋났다.
+    f'<div style="position: relative; height: 26px; border-top: 1px solid {C["LINE_SOFT"]}; padding-top: 8px; margin-top: 6px;">'
+    f'<span style="position: absolute; left: 0; top: 8px; font-size: 11px; color: {C["INK4"]};">1일</span>'
+    f'<span style="position: absolute; left: 46.7%; transform: translateX(-50%); top: 8px; font-size: 11px; color: {C["INK4"]}; white-space: nowrap;">15일</span>'
+    f'<span style="position: absolute; right: 0; top: 8px; font-size: 11px; font-weight: 600; color: {C["INK"]};">31일 마감</span></div>')
 
 past_cats = card(
     section_head('카테고리', '13개', link('내역 보기')) +

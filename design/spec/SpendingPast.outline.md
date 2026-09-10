@@ -83,13 +83,13 @@
         - `span` **text 12px/700** — “191만”
           `position:absolute right:0 top:36px font-size:12px font-weight:700 color:#101828`
       - `div`
-        `display:flex justify-content:space-between border-top:1px solid #EFF2F8 margin-top:6px`
+        `position:relative height:26px border-top:1px solid #EFF2F8 margin-top:6px`
         - `span` **text 11px/400** — “1일”
-          `font-size:11px color:#697182`
+          `position:absolute left:0 top:8px font-size:11px color:#697182`
         - `span` **text 11px/400** — “15일”
-          `font-size:11px color:#697182`
+          `position:absolute left:46.7% transform:translateX(-50%) top:8px font-size:11px color:#697182 white-space:nowrap`
         - `span` **text 11px/600** — “31일 마감”
-          `font-size:11px font-weight:600 color:#101828`
+          `position:absolute right:0 top:8px font-size:11px font-weight:600 color:#101828`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
       - `div`

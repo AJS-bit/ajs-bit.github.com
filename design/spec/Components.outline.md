@@ -95,7 +95,7 @@
         - `div`
           `position:relative height:92px`
         - `div`
-          `position:relative height:15px border-top:1px solid #EFF2F8 margin-top:4px`
+          `position:relative height:24px border-top:1px solid #EFF2F8 margin-top:4px`
       - `div`
         `display:flex flex-direction:column gap:7px margin-top:12px`
         - `div`
