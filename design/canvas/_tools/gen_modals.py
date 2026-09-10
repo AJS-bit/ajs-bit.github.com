@@ -51,10 +51,10 @@ w('ProfileDialog', sheet(
           f'<span style="font-size: 13px; color: {C["INK2"]};">급여의 얼마까지 쓸까요?</span>'
           f'<span style="font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: {C["INK"]};">60<span style="font-size: 14px; font-weight: 600; color: {C["INK2"]};">%</span></span></div>'
           f'<div style="margin-top: 9px;">{slider(60)}</div>'
-          f'<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">'
-          f'<span style="font-size: 11px; color: {C["INK4"]};">0%</span>'
-          f'<span style="font-size: 11.5px; font-weight: 600; color: {C["INK"]};">월 216만원까지</span>'
-          f'<span style="font-size: 11px; color: {C["INK4"]};">100%</span></div>'
+          f'<div style="display: flex; align-items: center; margin-top: 4px;">'
+          f'<span style="flex: 1; font-size: 11px; color: {C["INK4"]};">0%</span>'
+          f'<span style="font-size: 11.5px; font-weight: 600; color: {C["INK"]}; white-space: nowrap;">월 216만원까지</span>'
+          f'<span style="flex: 1; text-align: right; font-size: 11px; color: {C["INK4"]};">100%</span></div>'
           f'<div style="margin-top: 11px;">{note("60%는 통계 평균이나 정답이 아니라 <b style=font-weight:600>바꿔도 되는 계획 시작값</b>입니다. 0%로 두어도 그대로 유지돼요.", "mute")}</div></div>') +
     group('추가 설정',
           f'<div style="display: flex; gap: 10px;">{field("부수입", "30", "만원", optional=True)}'
@@ -235,10 +235,10 @@ w('CoachPanel', sheet(
             f'{badge("저장되지 않는 가정", "vio", "spark")}'
             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["VIO_STRONG"]};">−15%</span></div>'
             f'<div style="margin-top: 10px;">{slider(37, C["VIO"])}</div>'
-            f'<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 4px;">'
-            f'<span style="font-size: 11px; color: {C["INK4"]};">0%</span>'
-            f'<span style="font-size: 11.5px; font-weight: 600; color: {C["VIO_STRONG"]};">월 31만원 절감 가정</span>'
-            f'<span style="font-size: 11px; color: {C["INK4"]};">40%</span></div>'
+            f'<div style="display: flex; align-items: center; margin-top: 4px;">'
+            f'<span style="flex: 1; font-size: 11px; color: {C["INK4"]};">0%</span>'
+            f'<span style="font-size: 11.5px; font-weight: 600; color: {C["VIO_STRONG"]}; white-space: nowrap;">월 31만원 절감 가정</span>'
+            f'<span style="flex: 1; text-align: right; font-size: 11px; color: {C["INK4"]};">40%</span></div>'
             f'<div style="display: flex; gap: 8px; margin-top: 11px;">'
             f'<div style="flex: 1; padding: 10px 11px; background: {C["SURF"]}; border-radius: 11px;">'
             f'<div style="font-size: 11.5px; color: {C["INK3"]};">비상금 도착</div>'
@@ -327,4 +327,4 @@ w('Confirmations', state_sheet(
               '취소', '모두 삭제',
               extra=f'<div style="margin-top: 12px;">{note("먼저 백업을 내보내면 나중에 그대로 복구할 수 있어요.", "warn", "download")}</div>'
                     f'<div style="margin-top: 9px;">{checkbox("백업을 내보냈거나, 지워도 괜찮습니다.", False)}</div>'))],
-    h=1300))
+    h=1228))

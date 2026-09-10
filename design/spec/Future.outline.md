@@ -98,13 +98,13 @@
         - `div`
           `position:absolute left:33% top:0 width:20px height:20px border-radius:99px background:#FFFFFF border:2.5px solid #0F7B47 box-shadow:0 2px 6px rgba(15,123,71,.28)`
       - `div`
-        `display:flex align-items:center justify-content:space-between margin-top:5px`
+        `display:flex align-items:center margin-top:5px`
         - `span` **text 11px/400** — “0원”
-          `font-size:11px color:#697182`
+          `flex:1 font-size:11px color:#697182`
         - `span` **text 11.5px/600** — “월 15만원 절감”
-          `font-size:11.5px font-weight:600 color:#101828`
+          `font-size:11.5px font-weight:600 color:#101828 white-space:nowrap`
         - `span` **text 11px/400** — “45만원”
-          `font-size:11px color:#697182`
+          `flex:1 text-align:right font-size:11px color:#697182`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div`
