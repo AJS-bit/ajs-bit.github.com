@@ -1,7 +1,7 @@
 """plan/v4-stocks.md → 검토용 HTML 한 장. NAVI v3 토큰을 그대로 쓴다."""
 import re, html, pathlib, sys
 
-SRC = pathlib.Path('/home/user/ajs-bit.github.com/plan/v4-stocks.md')
+SRC = pathlib.Path(__file__).resolve().parent.parent / 'v4-stocks.md'
 OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else SRC.parent / 'v4-stocks.html'
 
 def inline(s):

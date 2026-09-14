@@ -93,7 +93,7 @@ def capacity_band():
             f'{icon("arrowu", 16, C["BRAND"], 2.2)}'
             f'<div style="display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0;">'
             f'<span style="font-size: 12px; font-weight: 500; color: {C["BRAND_BANNER"]};">이번 달 저축·투자 여력</span>'
-            f'<span style="font-size: 11px; color: {C["BRAND_BANNER"]};">실수령 360만원 기준 · 홈과 같은 값</span></div>'
+            f'<span style="font-size: 11px; color: {C["BRAND_BANNER"]};">실수령 360만원 기준</span></div>'
             f'<span style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: {C["BRAND"]};">+20<span style="font-size: 12.5px; font-weight: 600;">만원</span></span></div>')
 
 
@@ -107,7 +107,7 @@ def guardrail(text, link='목적지 보기'):
 
 def asof_footer(extra=''):
     return (f'<p style="margin: 2px 2px 0; font-size: 11px; line-height: 1.5; color: {C["INK3"]};">'
-            f'데이터 기준일 {ASOF} 종가 · 설정에서 갱신{extra}<br>기준에 해당하는 종목을 보여줄 뿐 투자 권유가 아닙니다. 수치는 디자인 검증용 가상값입니다.</p>')
+            f'데이터 기준일 {ASOF} 종가 · 설정에서 갱신{extra}<br>기준에 맞는 종목을 보여주는 것이지 투자 권유가 아니에요. 수치는 디자인 검증용 가상값입니다.</p>')
 
 
 def won(n):
@@ -174,7 +174,7 @@ def mine_content(empty=False):
         quiet = card(
             f'<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: {C["INK3"]};">이 화면에 없는 것</span>'
             f'<p style="margin: 6px 0 0; font-size: 12.5px; line-height: 1.55; color: {C["INK2"]};">실시간 시세 · 주문 · 호가 · 뉴스 · 커뮤니티 · 시세 알림.<br>'
-            f'결정을 돕는 화면이고 주문은 증권앱에서 합니다. 그래서 조용합니다.</p>')
+            f'결정을 돕는 화면이라 주문은 증권앱에서 하세요. 그래서 조용해요.</p>')
         return content([capacity_band(), empty_card, quiet])
 
     hold_rows = ''.join(
@@ -189,16 +189,16 @@ def mine_content(empty=False):
         f'<span style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: {C["INK"]};">1,244<span style="font-size: 12.5px; font-weight: 600; color: {C["INK2"]};">만원</span></span></div>'
         + f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0 2px;">'
         f'<div style="display: flex; flex-direction: column; gap: 1px;"><span style="font-size: 12.5px; font-weight: 500; color: {C["INK2"]};">ETF 계좌 평가액에 반영</span>'
-        f'<span style="font-size: 11px; color: {C["INK3"]};">끄면 자산·순자산은 계좌에 적은 4,890만원 그대로</span></div>{toggle(False)}</div>',
+        f'<span style="font-size: 11px; color: {C["INK3"]};">꺼 두면 자산·순자산은 계좌에 적은 4,890만원 그대로예요</span></div>{toggle(False)}</div>',
         pad='12px 14px 8px')
     watch_rows = ''.join(
-        stock_row(n, m, price_col(p, f'{ASOF_S} 직접 입력' if p else '종가 미입력'), memo or '메모 없음', last=(i == len(WATCH) - 1), pad='6px 0')
+        stock_row(n, m, price_col(p, f'{ASOF_S} 직접 입력' if p else '종가 미입력'), memo or '&nbsp;', last=(i == len(WATCH) - 1), pad='6px 0')
         for i, (n, m, p, memo) in enumerate(WATCH))
     watch_card = card(section_head('관심', f'{len(WATCH)}종목', link('관심 추가')) + f'<div style="margin-top: 2px;">{watch_rows}</div>', pad='12px 14px 6px')
     return content([capacity_band(), hold_card, watch_card])
 
 
-stocks_header3 = screen_header('주식', f'내 종목 · 직접 입력', trailing=topicons())
+stocks_header3 = screen_header('주식', '보유 3 · 관심 5', trailing=topicons())
 w('StocksMine', frame(stocks_header3 + mine_content() + nav_v4(3)))
 w('StocksEmpty', frame(stocks_header3 + mine_content(empty=True) + nav_v4(3)))
 
@@ -208,11 +208,11 @@ w('HoldingAdd', sheet(
     f'{field("종목", "삼성전자 · 005930 · KOSPI", required=True)}'
     f'<div style="display: flex; gap: 10px;">{field("수량", "60", "주", required=True)}{field("평단", "68,400", "원", required=True)}</div>'
     f'<div style="display: flex; gap: 10px;">{field("종가", "71,200", "원", optional=True)}{field("기준일", ASOF, optional=True, w=142)}</div>'
-    f'{note("종가는 직접 넣는 값이고 실시간이 아닙니다. 화면 어디서든 가격 옆에 이 기준일이 붙어요.", "mute")}'
+    f'{note("종가는 직접 넣는 값이라 실시간 시세가 아니에요. 가격 옆에는 늘 이 기준일이 붙습니다.", "mute")}'
     f'{select_field("연결 계좌", "ETF 계좌 · 4,890만원", optional=True)}'
     f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 13px; background: {C["INSET"]}; border-radius: 14px;">'
     f'<div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">계좌 평가액에 반영</span>'
-    f'<span style="font-size: 11.5px; line-height: 1.45; color: {C["INK3"]};">켜면 수량 × 종가가 ETF 계좌 평가액에 더해져<br>자산·순자산·미래 경로에 흐릅니다. 기본은 꺼짐.</span></div>{toggle(False)}</div>',
+    f'<span style="font-size: 11.5px; line-height: 1.45; color: {C["INK3"]};">켜면 수량 × 종가가 ETF 계좌 평가액에 더해져<br>자산·순자산·미래 경로에 반영돼요. 기본은 꺼짐이에요.</span></div>{toggle(False)}</div>',
     sheet_footer('취소', '저장')))
 
 # 홈 · 주식 요약 카드 (구성에서 주식을 켠 사용자)
@@ -234,20 +234,20 @@ w('HomeStocksCard', frame(
 # ══════════════ 4단계 · 카테고리 탐색 (내장 스냅숏) ══════════════
 # 스냅숏 표본. 이름은 실재 종목이지만 수치는 전부 디자인 검증용 가상값이다 (샘플 JSON의 _ 참고).
 GROWTH = [  # (이름, 시장, 종가, 이유 한 줄, 충족, 분모)
-    ('삼성전자', 'KOSPI', 71200, '3년 영업이익 연 18% 증가', 3, 3),
-    ('SK하이닉스', 'KOSPI', 182500, '3년 매출 연 24% 증가', 3, 3),
-    ('삼양식품', 'KOSPI', 1020000, '3년 매출 연 32% 증가', 3, 3),
-    ('알테오젠', 'KOSDAQ', 312000, '3년 영업이익 연 41% 증가 · 꾸준함 2/3년', 2, 3),
-    ('리노공업', 'KOSDAQ', 198000, '3년 중 3년 이익 증가 · 매출 연 8%', 2, 3),
-    ('레인보우로보틱스', 'KOSDAQ', 148000, '매출 연 33% · 이익 이력 2년뿐, 속도·꾸준함 —', 1, 1),
+    ('삼성전자', 'KOSPI', 71200, '영업이익 3년간 연 18% 증가', 3, 3),
+    ('SK하이닉스', 'KOSPI', 182500, '매출 3년간 연 24% 증가', 3, 3),
+    ('삼양식품', 'KOSPI', 1020000, '매출 3년간 연 32% 증가', 3, 3),
+    ('알테오젠', 'KOSDAQ', 312000, '영업이익 3년간 연 41% 증가 · 3년 중 2년만 증가', 2, 3),
+    ('리노공업', 'KOSDAQ', 198000, '3년 내내 이익 증가 · 매출 성장은 연 8%', 2, 3),
+    ('레인보우로보틱스', 'KOSDAQ', 148000, '매출 성장 연 33% · 이익 기록이 2년뿐이라 나머지 —', 1, 1),
 ]
 DIVIDEND = [
     ('KT&amp;G', 'KOSPI', 118500, '배당수익률 5.1% · 12년 연속', 3, 3),
     ('하나금융지주', 'KOSPI', 68900, '배당수익률 4.8% · 9년 연속', 3, 3),
-    ('삼성화재', 'KOSPI', 372000, '배당수익률 3.9% · 성향 44%', 3, 3),
-    ('맥쿼리인프라', 'KOSPI', 12850, '배당수익률 5.6% · 성향 —', 2, 2),
+    ('삼성화재', 'KOSPI', 372000, '배당수익률 3.9% · 배당성향 44%', 3, 3),
+    ('맥쿼리인프라', 'KOSPI', 12850, '배당수익률 5.6% · 배당성향 —', 2, 2),
     ('현대차', 'KOSPI', 242000, '배당수익률 4.2% · 3년 연속', 2, 3),
-    ('신한지주', 'KOSPI', 61400, '배당수익률 3.4% · 성향 26%', 3, 3),
+    ('신한지주', 'KOSPI', 61400, '배당수익률 3.4% · 배당성향 26%', 3, 3),
 ]
 
 
@@ -279,7 +279,7 @@ def crit_chips(labels, on=(True, True, True)):
 
 def sort_row(count):
     return (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 2px;">'
-            f'<span style="font-size: 12px; color: {C["INK3"]};">{count}종목 · 기준을 끄면 목록이 바뀝니다</span>'
+            f'<span style="font-size: 12px; color: {C["INK3"]};">{count}종목 · 기준을 끄면 목록이 달라져요</span>'
             f'<span style="display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 600; color: {C["INK2"]};">충족 기준 수 {icon("down", 13, C["INK2"], 2.2)}</span></div>')
 
 
@@ -296,9 +296,9 @@ def list_screen(title, sub, chips, rows, count):
 
 
 w('StockListGrowth', list_screen('성장주', '기준 3개',
-                                 crit_chips(['성장 가능성', '이익 증가 속도', '꾸준함']), GROWTH, 12))
+                                 crit_chips(['매출 성장', '이익 성장 속도', '꾸준한 이익 증가']), GROWTH, 12))
 w('StockListDividend', list_screen('배당주', '기준 3개',
-                                   crit_chips(['배당을 많이 준다', '끊기지 않았다', '무리하지 않는다'], (True, True, False)), DIVIDEND, 27))
+                                   crit_chips(['높은 배당수익률', '연속 배당', '무리 없는 배당'], (True, True, False)), DIVIDEND, 27))
 
 
 # 주식 홈 (S1)
@@ -314,9 +314,9 @@ def cat_card(ic, name, count, chips, col):
 
 
 cats = (f'<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">'
-        + cat_card('arrowur', '성장', '12종목 · 기준 3개', ['성장 가능성', '이익 속도', '꾸준함'], C["BRAND"])
-        + cat_card('search', '저평가', '19종목 · 기준 4개', ['순자산 대비', '고수익 저평가', '탈출 중', '이익률'], C["SKY"])
-        + cat_card('leaf', '배당', '27종목 · 기준 3개', ['많이', '끊김 없이', '무리 없이'], C["POS"])
+        + cat_card('arrowur', '성장', '12종목 · 기준 3개', ['매출 성장', '이익 성장 속도', '꾸준함'], C["BRAND"])
+        + cat_card('search', '저평가', '19종목 · 기준 4개', ['순자산 대비 저평가', '높은 수익성', '저평가 탈출 중', '높은 이익률'], C["SKY"])
+        + cat_card('leaf', '배당', '27종목 · 기준 3개', ['높은 배당수익률', '연속 배당', '무리 없는 배당'], C["POS"])
         + cat_card('tag', '테마', '14개 태그', ['반도체', '2차전지', '바이오', 'AI'], C["VIO"])
         + '</div>')
 mine_summary = card(
@@ -329,7 +329,7 @@ mine_summary = card(
 w('StocksHome', frame(
     screen_header('주식', f'기준일 {ASOF_S}', tabs=['둘러보기', '내 종목'], active=0)
     + content([capacity_band(),
-               guardrail('비상금 68% · 항로에서는 투자보다 앞입니다. 막지는 않아요.'),
+               guardrail('비상금이 68%예요. 항로에서는 비상금이 투자보다 먼저입니다.'),
                mine_summary, cats, asof_footer()], gap=10)
     + nav_v4(3)))
 
@@ -374,24 +374,24 @@ price_card = hero(
     f'<div style="display: flex; align-items: baseline; gap: 3px;"><span style="font-size: 34px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: {C["INK"]};">71,200</span>'
     f'<span style="font-size: 16px; font-weight: 600; color: {C["INK2"]};">원</span></div>{asof_badge()}</div>'
     f'<div style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">{badge("성장", "brand")}{badge("배당", "pos")}'
-    f'<span style="font-size: 11.5px; color: {C["INK3"]};">두 목록에 해당 · 정상입니다</span></div>'
+    f'<span style="font-size: 11.5px; color: {C["INK3"]};">성장·배당 두 목록에 있어요</span></div>'
     f'<div style="margin-top: 14px;"><div style="display: flex; justify-content: space-between; font-size: 11px; color: {C["INK3"]};"><span>52주 저 {won(LOW)}</span><span>52주 고 {won(HIGH)}</span></div>'
     f'<div style="position: relative; height: 8px; border-radius: 99px; background: {C["TRACK"]}; margin-top: 5px;">'
     f'<div style="position: absolute; left: {POS_PCT}%; top: -4px; width: 16px; height: 16px; margin-left: -8px; border-radius: 99px; background: {C["SURF"]}; border: 2.5px solid {C["INK"]};"></div></div>'
-    f'<div style="font-size: 11px; color: {C["INK3"]}; margin-top: 7px; text-align: center;">52주 범위의 {POS_PCT:.0f}% 지점 · 위치일 뿐 판단이 아닙니다</div></div>', pad=14)
+    f'<div style="font-size: 11px; color: {C["INK3"]}; margin-top: 7px; text-align: center;">52주 저점과 고점 사이 {POS_PCT:.0f}% 지점</div></div>', pad=14)
 reason_card = card(
-    section_head('왜 성장주 목록에 있나', '3 / 3 충족')
+    section_head('성장주 목록에 있는 이유', '3 / 3 충족')
     + f'<div style="margin-top: 2px;">'
-    + reason_row(True, '앞으로의 성장 가능성', '매출 3년 연평균 ≥ 10%', '연 12%')
-    + reason_row(True, '이익이 늘어나는 속도', '영업이익 3년 연평균 ≥ 15%', '연 18%')
-    + reason_row(True, '꾸준하게 이익이 늘어나는지', '최근 3년 매년 증가', '3 / 3년', last=True) + '</div>',
+    + reason_row(True, '매출 성장', '매출 3년 연평균 증가율 10% 이상', '연 12%')
+    + reason_row(True, '이익 성장 속도', '영업이익 3년 연평균 증가율 15% 이상', '연 18%')
+    + reason_row(True, '꾸준한 이익 증가', '최근 3년 동안 해마다 영업이익 증가', '3 / 3년', last=True) + '</div>',
     pad='12px 14px 4px')
 metrics_card = card(
     f'<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0;">'
     + ''.join(f'<div style="display: flex; flex-direction: column; gap: 3px; {"padding-left: 10px; border-left: 1px solid " + C["LINE_SOFT"] + ";" if i else "padding-right: 10px;"}">'
               f'<span style="font-size: 11.5px; font-weight: 500; color: {C["INK3"]};">{k}</span>'
               f'<span style="font-size: 16px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK"]};">{v}</span></div>'
-              for i, (k, v) in enumerate([('매출(최근 연)', '300.9조'), ('영업이익', '32.7조'), ('시가총액', '425조')]))
+              for i, (k, v) in enumerate([('연 매출', '300.9조'), ('영업이익', '32.7조'), ('시가총액', '425조')]))
     + '</div>', pad='13px 14px')
 sim_card = (
     f'<div style="background: {C["SURF"]}; border: 1px dashed {C["VIO_LINE"]}; border-radius: 18px; padding: 14px; flex-shrink: 0;">'
@@ -405,8 +405,8 @@ sim_card = (
     f'<div style="display: flex; align-items: center; gap: 7px; margin-top: 8px; font-size: 13px; color: {C["INK2"]};">투자 계좌 5,000만원 도착'
     f'<span style="font-weight: 500; color: {C["INK4"]}; text-decoration: line-through;">2032년 6월</span>{icon("arrowr", 13, C["VIO_STRONG"], 2.4)}'
     f'<span style="font-weight: 700; color: {C["VIO_STRONG"]};">{SIM_Y}년 {SIM_M}월</span>'
-    f'<span style="margin-left: auto; font-size: 12px; font-weight: 600; color: {C["VIO_STRONG"]};">{AHEAD // 12}년 {AHEAD % 12}개월 앞</span></div>'
-    f'<p style="margin: 9px 0 0; font-size: 11px; line-height: 1.45; color: {C["INK3"]};">여력 +20만원 안에서 · 수익률은 목적지의 연 5.0% 가정 그대로, 이 종목의 수익률이 아닙니다. 저장되지 않아요.</p></div>')
+    f'<span style="margin-left: auto; font-size: 12px; font-weight: 600; color: {C["VIO_STRONG"]};">{AHEAD // 12}년 {AHEAD % 12}개월 빨라짐</span></div>'
+    f'<p style="margin: 9px 0 0; font-size: 11px; line-height: 1.45; color: {C["INK3"]};">여력 20만원 안에서 넣어본 가정이에요. 수익률은 투자 계좌 목적지의 연 5.0% 가정을 그대로 쓰고, 이 종목의 수익률이 아닙니다. 저장되지 않아요.</p></div>')
 detail_actions = (f'<div style="display: flex; gap: 8px; padding: 10px 14px 20px; background: {C["SURF"]}; border-top: 1px solid {C["LINE"]}; flex-shrink: 0;">'
                   f'{btn("관심 추가", "secondary", "star", h=48).replace("width: 100%;", "flex: 1;")}'
                   f'{btn("보유 기록", "primary", "plus", h=48).replace("width: 100%;", "flex: 1.3;")}</div>')
@@ -435,15 +435,15 @@ w('StockThemes', frame(
 # 상태 카탈로그 (4단계) — 가드레일 3종 · 데이터 없음 · 여러 목록 해당
 STATE_H = 800
 w('StockStates', state_sheet(
-    '주식 · 상태 5종', '가드레일은 막지 않고 말만 합니다. 없는 값은 —이고 충족 수의 분모가 줄어듭니다(0으로 세지 않음).',
-    [('가드레일 · 비상금 미달', guardrail('비상금 68% · 항로에서는 투자보다 앞입니다. 막지는 않아요.')),
-     ('가드레일 · 소비율 목표 초과', guardrail('이번 달 소비 63.2% · 목표 60%를 넘었어요. 여력이 −11만원입니다.', '한도 보기')),
-     ('가드레일 · 정상', f'<div style="padding: 9px 12px; border: 1px dashed {C["INPUT"]}; border-radius: 12px; font-size: 12px; color: {C["INK3"]};">비상금 100% · 소비율 목표 안 → 띠가 아예 나타나지 않습니다. 빈 자리를 채우지 않아요.</div>'),
-     ('데이터 없음 · 상장 2년째', card(list_rows([('레인보우로보틱스', 'KOSDAQ', 148000, '매출 연 33% · 이익 이력 2년뿐, 속도·꾸준함 —', 1, 1)]), pad='2px 14px')),
-     ('데이터 없음 · 배당 이력 없음', card(list_rows([('맥쿼리인프라', 'KOSPI', 12850, '배당수익률 5.6% · 성향 —', 2, 2)]), pad='2px 14px')),
+    '주식 · 상태 5종', '가드레일은 막지 않고 알려주기만 해요. 없는 값은 —로 두고 충족 수의 분모에서 뺍니다(0으로 세지 않아요).',
+    [('가드레일 · 비상금 미달', guardrail('비상금이 68%예요. 항로에서는 비상금이 투자보다 먼저입니다.')),
+     ('가드레일 · 소비율 목표 초과', guardrail('이번 달 소비율 63.2%, 목표 60%를 넘었어요. 이번 달 여력은 −11만원이에요.', '한도 보기')),
+     ('가드레일 · 정상', f'<div style="padding: 9px 12px; border: 1px dashed {C["INPUT"]}; border-radius: 12px; font-size: 12px; color: {C["INK3"]};">비상금 100% · 소비율이 목표 안이면 띠가 아예 나타나지 않아요. 빈 자리를 다른 것으로 채우지 않습니다.</div>'),
+     ('데이터 없음 · 상장 2년째', card(list_rows([('레인보우로보틱스', 'KOSDAQ', 148000, '매출 성장 연 33% · 이익 기록이 2년뿐이라 나머지 —', 1, 1)]), pad='2px 14px')),
+     ('데이터 없음 · 배당 이력 없음', card(list_rows([('맥쿼리인프라', 'KOSPI', 12850, '배당수익률 5.6% · 배당성향 —', 2, 2)]), pad='2px 14px')),
      ('한 종목 · 여러 목록', card(
          f'<div style="display: flex; align-items: center; gap: 8px; height: 44px;">{badge("성장", "brand")}{badge("배당", "pos")}'
-         f'<span style="font-size: 12.5px; color: {C["INK2"]};">삼성전자는 두 목록에 있습니다. 정상이고 배지로만 알립니다.</span></div>', pad='2px 14px')),
+         f'<span style="font-size: 12.5px; color: {C["INK2"]};">삼성전자는 성장·배당 두 목록에 있어요. 흔한 일이라 배지로만 알립니다.</span></div>', pad='2px 14px')),
      ], h=STATE_H))
 
 
@@ -524,18 +524,18 @@ def thr_row(word, rule, val, last=False):
 
 
 growth_open = (f'<div style="padding: 0 13px 4px; background: {C["INSET"]}; border-radius: 0 0 12px 12px; margin-top: -8px; padding-top: 4px;">'
-               + thr_row('앞으로의 성장 가능성', '매출 3년 연평균 증가율', '≥ 10%')
-               + thr_row('이익이 늘어나는 속도', '영업이익 3년 연평균 증가율', '≥ 15%')
-               + thr_row('꾸준하게 이익이 늘어나는지', '최근 3년 중 매년 증가한 해', '3 / 3년', last=True) + '</div>')
+               + thr_row('매출 성장', '매출 3년 연평균 증가율', '≥ 10%')
+               + thr_row('이익 성장 속도', '영업이익 3년 연평균 증가율', '≥ 15%')
+               + thr_row('꾸준한 이익 증가', '최근 3년 중 영업이익이 늘어난 해', '3 / 3년', last=True) + '</div>')
 w('StockSettings', sheet(
-    '주식', '기준값은 통계가 아니라 시작값입니다. 바꿔도 앱이 좋다·나쁘다를 말하지 않아요.',
+    '주식', '기준값은 통계가 아니라 시작값이에요. 바꿔도 앱이 좋다·나쁘다를 판단하지 않습니다.',
     group('스냅숏',
           f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 13px; background: {C["INSET"]}; border-radius: 14px;">'
           f'<div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">기준일 {ASOF}</span>'
-          f'<span style="font-size: 11.5px; line-height: 1.45; color: {C["INK3"]};">2,614종목 · 앱에 내장 · 백업에 안 들어감<br>갱신은 파일 하나를 받는 것 · 실패해도 지금 스냅숏으로 동작</span></div>{smallbtn("갱신", "soft", "refresh", h=32)}</div>') +
+          f'<span style="font-size: 11.5px; line-height: 1.45; color: {C["INK3"]};">2,614종목 · 앱에 내장 · 백업에는 안 들어가요<br>갱신은 파일 하나를 받아요. 실패해도 지금 스냅숏으로 그대로 동작해요</span></div>{smallbtn("갱신", "soft", "refresh", h=32)}</div>') +
     group('기준값', foldrow('성장주', '3개 · 기본값', open_=True) + growth_open
           + f'<div style="margin-top: 8px;">{foldrow("저평가주", "4개 · 기본값")}</div>'
-          + f'<div style="margin-top: 8px;">{foldrow("배당주", "3개 · 1개 바꿈")}</div>', '설정에서만 보입니다') +
+          + f'<div style="margin-top: 8px;">{foldrow("배당주", "3개 · 하나 바꿈")}</div>', '설정에서만 보입니다') +
     group('기능', f'{btn("주식 기능 끄기", "danger", h=44)}'
                   f'<p style="margin: 7px 0 0; font-size: 11.5px; line-height: 1.5; color: {C["INK3"]};">탭·홈 카드·설정 항목이 사라지고 보유·관심 기록은 남아요.</p>'),
     sheet_footer('취소', '저장')))
@@ -551,13 +551,13 @@ def upd_card(title, body, ic, icol, ibg, right=''):
 
 
 w('SnapshotUpdate', state_sheet(
-    '스냅숏 갱신 · 4단계', '설정 › 주식 › 갱신을 눌렀을 때. 어느 단계에서도 실시간 시세는 없고, 실패해도 기존 스냅숏으로 전부 동작합니다.',
-    [('1 · 확인', upd_card('스냅숏을 갱신할까요?', f'지금 기준일 {ASOF} → 받은 파일의 기준일로 바뀝니다. 파일 하나(약 수백 KB)를 한 번 받습니다.', 'file', C["BRAND"], C["BRAND_SOFT"],
+    '스냅숏 갱신 · 4단계', '설정 › 주식 › 갱신을 눌렀을 때. 어느 단계에서도 실시간 시세는 없고, 실패해도 지금 스냅숏으로 전부 동작해요.',
+    [('1 · 확인', upd_card('스냅숏을 갱신할까요?', f'파일 하나(수백 KB)를 한 번 받아 기준일 {ASOF} 스냅숏을 새것으로 바꿔요.', 'file', C["BRAND"], C["BRAND_SOFT"],
                           f'<div style="display: flex; gap: 8px; margin-top: 10px;">{smallbtn("취소", "secondary", h=34)}{smallbtn("받기", "primary", "download", h=34)}</div>')),
-     ('2 · 받는 중', upd_card('받는 중 · 312 / 640 KB', '이 사이에도 기존 스냅숏으로 화면이 동작합니다.', 'loader', C["INK3"], C["INSET"],
+     ('2 · 받는 중', upd_card('받는 중 · 312 / 640 KB', '받는 동안에도 지금 스냅숏으로 화면이 그대로 동작해요.', 'loader', C["INK3"], C["INSET"],
                             f'<div style="margin-top: 10px;">{bar(48.75, C["BRAND"], 6)}</div>')),
-     ('3a · 성공', upd_card('갱신됐어요 · 기준일 2026-09-12', '2,631종목 · 가격 옆 기준일이 모두 9/12로 바뀝니다. 내 보유·관심·기준값은 그대로예요.', 'check', C["POS"], C["POS_SOFT"])),
-     ('3b · 실패 (오프라인·파일 없음)', upd_card('받지 못했어요', f'네트워크가 없거나 파일이 없습니다. 기준일 {ASOF} 스냅숏을 그대로 씁니다 — 아무것도 지워지지 않았어요.', 'warn', C["NEG"], C["NEG_SOFT"],
+     ('3a · 성공', upd_card('갱신됐어요 · 기준일 2026-09-12', '2,631종목 · 가격 옆 기준일이 모두 9/12로 바뀌어요. 내 보유·관심·기준값은 그대로예요.', 'check', C["POS"], C["POS_SOFT"])),
+     ('3b · 실패 (오프라인·파일 없음)', upd_card('받지 못했어요', f'인터넷이 없거나 파일을 찾지 못했어요. 기준일 {ASOF} 스냅숏을 그대로 쓰고, 아무것도 지워지지 않았어요.', 'warn', C["NEG"], C["NEG_SOFT"],
                                           f'<div style="display: flex; gap: 8px; margin-top: 10px;">{smallbtn("나중에", "secondary", h=34)}{smallbtn("다시 시도", "soft", "refresh", h=34)}</div>')),
      ('4 · 저장 알림', '<!--dc-keep--><div style="display: flex; align-items: center; gap: 9px; padding: 11px 14px; background: #101828; border-radius: 14px; color: #FFFFFF; font-size: 13px; font-weight: 500;">'
                      '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3DD489" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>'

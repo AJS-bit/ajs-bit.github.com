@@ -1,0 +1,233 @@
+<title>NAVI v4 계획</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --canvas:#EDF0F7;--surface:#FFFFFF;--inset:#F4F6FB;--line:#E3E8F1;--line-soft:#EFF2F8;
+  --ink:#101828;--ink2:#475467;--ink3:#626D88;--ink4:#697182;
+  --brand:#3556E6;--brand-soft:#E9EDFD;--violet:#7A3FE4;--violet-soft:#F1EAFD;
+  --pos:#0F7B47;--warn:#B45309;--warn-soft:#FDF1E0;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 6px 20px -14px rgba(16,24,40,.24);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --canvas:#080C16;--surface:#121A2B;--inset:#1A2337;--line:#232D45;--line-soft:#1E2739;
+  --ink:#EAEFF8;--ink2:#A5B2C9;--ink3:#8595AE;--ink4:#7E8AA2;
+  --brand:#7FA0FF;--brand-soft:#1B2748;--violet:#B79BFF;--violet-soft:#241D3D;
+  --pos:#3DD489;--warn:#F5B544;--warn-soft:#2E2617;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px -14px rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --canvas:#080C16;--surface:#121A2B;--inset:#1A2337;--line:#232D45;--line-soft:#1E2739;
+  --ink:#EAEFF8;--ink2:#A5B2C9;--ink3:#8595AE;--ink4:#7E8AA2;
+  --brand:#7FA0FF;--brand-soft:#1B2748;--violet:#B79BFF;--violet-soft:#241D3D;
+  --pos:#3DD489;--warn:#F5B544;--warn-soft:#2E2617;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px -14px rgba(0,0,0,.6);color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);
+  font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;
+  font-size:14.5px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;padding:0 16px}
+main{max-width:720px;margin:0 auto;padding-block:40px 96px}
+.mark{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
+.mark i{width:26px;height:26px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,#3556E6 0%,#7A3FE4 100%)}
+.mark span{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+.mark em{font-style:normal;font-size:12px;color:var(--ink3);font-weight:500}
+h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.25;margin:0 0 6px;text-wrap:balance}
+.meta{font-size:12.5px;color:var(--ink3);margin:0 0 8px}
+h2{font-size:19px;font-weight:700;letter-spacing:-.025em;line-height:1.3;margin:44px 0 12px;
+  display:flex;align-items:baseline;gap:10px;text-wrap:balance}
+h2 .num{font-size:11px;font-weight:600;letter-spacing:.07em;color:var(--brand);
+  background:var(--brand-soft);border-radius:99px;padding:3px 9px;flex-shrink:0;transform:translateY(-3px)}
+h3{font-size:15px;font-weight:600;letter-spacing:-.015em;margin:26px 0 8px;color:var(--ink)}
+p{margin:0 0 12px;color:var(--ink2);max-width:66ch}
+p strong{color:var(--ink);font-weight:600}
+ul,ol{margin:0 0 14px;padding-left:18px;color:var(--ink2)}
+ol li::marker{color:var(--brand);font-weight:600}
+li{margin:3px 0}
+li strong{color:var(--ink);font-weight:600}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+  background:var(--inset);border-radius:5px;padding:1px 5px;color:var(--ink)}
+pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.6;
+  background:var(--inset);border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  margin:10px 0 16px;overflow-x:auto;color:var(--ink)}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0 0}
+.tw{overflow-x:auto;margin:10px 0 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink3);
+  padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--ink2);line-height:1.55}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--ink);font-weight:500;white-space:nowrap}
+td strong{color:var(--ink);font-weight:600}
+.box{display:inline-block;width:13px;height:13px;border:1.5px solid var(--ink4);border-radius:4px;
+  vertical-align:-2px;margin-right:6px}
+/* 결정 절만 띄운다 */
+#s9{margin-top:52px}
+#s9 + p, #s9 ~ .decide{}
+.decide{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:6px 16px 4px;
+  box-shadow:var(--shadow);margin:12px 0 18px}
+.decide .tw{border:0;margin:0;background:transparent}
+.decide td:first-child{color:var(--brand);font-weight:700}
+.decide td:nth-child(3){color:var(--ink);font-weight:500}
+.foot{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3)}
+.foot a{color:var(--brand);text-decoration:none}
+@media (max-width:480px){h1{font-size:24px}h2{font-size:17px}td:first-child{white-space:normal}}
+</style>
+<main>
+<div class="mark"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></i><span>NAVI</span><em>· v4 계획 초안</em></div>
+<h1>NAVI v4 계획 — 첫 실행 · 홈 구성 · 주식탭</h1>
+<p class="meta">작성 2026-09-14 · 검토용 초안 · 아직 시안 없음</p>
+<hr>
+<h2 id="s0"><span class="num">§0</span>한 줄로</h2>
+<p><strong>주식탭은 "또 하나의 증권앱"이 아니라 "내 항로에 연결된 주식 화면"으로 만듭니다.</strong> 증권앱은 내 월급·소비율·목적지를 모릅니다. NAVI는 압니다. 그게 유일하게 남들이 못 하는 차별점입니다.</p>
+<p>요청하신 세 가지를 이 순서로 합니다.</p>
+<ol>
+<li>첫 실행 소개 — 앱의 목적</li>
+<li>홈 구성 선택 — 홈이 복잡해지지 않게</li>
+<li>주식탭 — 의도(성장·저평가·배당·테마)로 고르는 화면</li>
+</ol>
+<p>한 번에 다 하지 않습니다. §8의 5단계로 나눴고 각 단계는 따로 출시할 수 있습니다.</p>
+<hr>
+<h2 id="s1"><span class="num">§1</span>지금 앱이 가진 것 (계획의 출발점)</h2>
+<div class="tw"><table><thead><tr><th>있는 것</th><th>상태</th></tr></thead><tbody><tr><td>첫 실행 화면</td><td>있음. 다만 <strong>시작 화면</strong>이지 <strong>소개</strong>는 아님 — "기기에만 저장 · 급여 하나면 시작 · 백업" + <code>내 데이터로 시작 / 샘플로 둘러보기</code>. 앱이 무엇을 하는지(현재 위치→항로→목적지)는 안 나옴</td></tr><tr><td>홈 블록</td><td>7개 — 히어로(소비율) · 다음 안내 · 대표 목적지 · 이번 달 한도 · 저장되지 않는 가정 · 또래와 내 페이스 · 순자산 대비 소비</td></tr><tr><td>자산</td><td><strong>계좌 단위</strong>(ETF 계좌 4,890만원 등). 종목 단위 기록은 없음</td></tr><tr><td>목적지</td><td>비상금 6개월 · 투자 계좌 5,000만원 · 신용대출 완제 · 순자산 2억원</td></tr><tr><td>이미 계산하는 값</td><td>저축·투자 여력(+20만원) · 목적지 도착 예상일 · 순자산 · 미래 경로</td></tr><tr><td>탭</td><td>홈 · 자산 · 소비 · 목표 · 미래 (5개, 바텀 네비 상한)</td></tr></tbody></table></div>
+<p>주식탭은 이 위에 얹습니다. 계산식·거래 ID·백업 형식·기존 기록은 건드리지 않습니다.</p>
+<hr>
+<h2 id="s2"><span class="num">§2</span>원칙 — 기존 것 그대로 + 주식에서 새로 필요한 것</h2>
+<p>기존 원칙은 그대로입니다. 외부 서비스 없이 동작 · 로그인 없음 · 계산식 불변 · 미입력을 0으로 보이지 않기 · 시뮬레이션과 저장 기록 구분.</p>
+<p>주식에서 새로 필요한 원칙 세 개:</p>
+<ul>
+<li><strong>하루치 스냅숏을 숨기지 않는다.</strong> 앱에 내장된 데이터는 어느 날짜의 것입니다. 가격 옆에 항상 "9/5 종가"처럼 <strong>기준일</strong>을 씁니다. 실시간인 척하지 않습니다.</li>
+<li><strong>추천하지 않는다.</strong> "이 기준에 해당하는 종목"을 보여주는 것이지 투자 권유가 아닙니다. 매수·매도·추천이라는 말을 화면에 쓰지 않습니다. (유사투자자문 문제도 이 한 줄로 피합니다)</li>
+<li><strong>기준값은 사용자 것.</strong> "이익 증가율 15%"는 통계가 아니라 <strong>시작값</strong>입니다. 소비 목표 60%와 같은 철학 — 설정에서 바꿀 수 있고, 바꿔도 앱이 판단하지 않습니다.</li>
+</ul>
+<hr>
+<h2 id="s3"><span class="num">§3</span>첫 실행 흐름</h2>
+<pre>[소개 1] 현재 위치     →  [소개 2] 항로와 다음 안내  →  [소개 3] 목적지
+      ↓ (건너뛰기는 언제든 → 바로 [구성]으로)
+[구성] 홈에 무엇을 둘까요? + 주식도 볼까요?
+      ↓
+[시작] 기존 첫 실행 화면 (내 데이터로 시작 / 샘플로 둘러보기)
+      ↓
+홈</pre>
+<p>다섯 장, 30초 안에 홈. 건너뛰면 기본값(지금 v3 홈, 주식 꺼짐)으로 갑니다.</p>
+<h3>소개 3장 — 앱의 목적</h3>
+<p>한 장에 한 문장. 내비게이션 은유를 그대로 씁니다. 그림은 각 화면의 실제 컴포넌트 축소판(히어로·항로 바·목적지 링)이라 새 일러스트가 필요 없습니다.</p>
+<div class="tw"><table><thead><tr><th></th><th>제목</th><th>한 문장</th><th>그림</th></tr></thead><tbody><tr><td>1</td><td>현재 위치</td><td>이번 달 소비가 월급의 몇 %인지, 숫자 하나로 봅니다.</td><td>57.9% 히어로 축소판</td></tr><tr><td>2</td><td>항로</td><td>목표까지 얼마나 남았고, 지금 무엇을 하면 되는지 알려줍니다.</td><td>항로 바 + 다음 안내 카드</td></tr><tr><td>3</td><td>목적지</td><td>비상금·투자·상환. 언제 도착하는지 날짜로 말합니다.</td><td>목적지 링 3개</td></tr></tbody></table></div>
+<p>기존 시작 화면의 "기기에만 저장 · 로그인 없음 · 오프라인"은 그대로 그 화면에 남깁니다. 소개에서 반복하지 않습니다.</p>
+<h3>구성 1장 — 홈에 무엇을 둘까요?</h3>
+<ul>
+<li>히어로(소비율)는 <strong>고정</strong>입니다. 이 앱의 주장이라 빼면 NAVI가 아닙니다. (§10-3에서 대안 제시)</li>
+<li>그 아래 카드는 <strong>최대 5개</strong>를 고릅니다. 각 항목에 축소 미리보기가 붙어서 무엇인지 보고 고릅니다.</li>
+<li>기본 선택 = 지금 v3 홈 그대로(다음 안내 · 대표 목적지 · 이번 달 한도 · 또래 · 순자산 대비). 아무것도 안 건드리면 지금 홈이 나옵니다.</li>
+<li>같은 화면 아래에 <strong>"주식도 볼까요?"</strong> 토글. 기본 꺼짐. 켜면 "주식 요약" 카드가 목록에 추가되고 주식탭이 생깁니다.</li>
+<li>언제든 설정 › 홈 구성에서 다시 바꿉니다. 홈 맨 아래에도 "홈 구성 바꾸기 ›"를 둡니다.</li>
+</ul>
+<p>고를 수 있는 카드:</p>
+<div class="tw"><table><thead><tr><th>카드</th><th>출처</th><th>비고</th></tr></thead><tbody><tr><td>다음 안내</td><td>지금 있음</td><td></td></tr><tr><td>대표 목적지</td><td>지금 있음</td><td></td></tr><tr><td>이번 달 한도</td><td>지금 있음</td><td></td></tr><tr><td>또래와 내 페이스</td><td>지금 있음</td><td>또래 기준 없으면 "기준 없음" 상태로</td></tr><tr><td>순자산 대비 소비</td><td>지금 있음</td><td></td></tr><tr><td>저장되지 않는 가정</td><td>지금 있음</td><td>시뮬레이션 켰을 때만 나타나는 카드라 선택 대상에서 뺄 수도</td></tr><tr><td>순자산 한 줄</td><td>새로</td><td>자산 탭 히어로의 축소판</td></tr><tr><td>상환 계획 한 줄</td><td>새로</td><td>완제 예정일 + 이번 달 상환액</td></tr><tr><td><strong>주식 요약</strong></td><td>새로</td><td>주식 켰을 때만. 보유 평가액 · 관심 n개 · 기준일</td></tr></tbody></table></div>
+<hr>
+<h2 id="s4"><span class="num">§4</span>내비 구조 — 결정이 필요합니다</h2>
+<p>주식을 넣으면 6탭인데, 바텀 네비는 5개가 상한입니다(라벨이 잘리고 엄지가 못 닿습니다).</p>
+<p><strong>권장: 목표 + 미래 → "목적지" 한 탭으로 합치고, 주식이 그 자리를 씁니다.</strong></p>
+<pre>지금   홈 · 자산 · 소비 · 목표 · 미래
+권장   홈 · 자산 · 소비 · 주식 · 목적지
+주식 꺼짐   홈 · 자산 · 소비 · 목적지       (4탭)</pre>
+<p>합치는 근거: 목표 탭의 화면 제목이 이미 "목적지"이고, 미래 탭(자산 경로·상환 계획)은 "목적지까지의 항로"입니다. 둘 다 "어디로, 언제 도착하나"에 답합니다. 합친 탭은 세그먼트 3개 — <code>내 목적지 / 자산 경로 / 상환 계획</code>.</p>
+<p>대안 두 개와 왜 안 고르는지:</p>
+<div class="tw"><table><thead><tr><th>대안</th><th>문제</th></tr></thead><tbody><tr><td>6탭</td><td>상한 초과. 390px에서 라벨 11px이 잘림</td></tr><tr><td>주식을 자산 탭 세그먼트로</td><td>두 탭 깊이. "주식앱이 불편하다"를 그대로 재현</td></tr></tbody></table></div>
+<hr>
+<h2 id="s5"><span class="num">§5</span>주식탭</h2>
+<h3>5-1. 다른 주식앱과 무엇이 다른가</h3>
+<p>증권앱이 불편한 이유는 <strong>매매하려고 만든 화면에서 결정을 내리려 하기 때문</strong>입니다. 호가·뉴스·커뮤니티·지표 30개가 한 화면에 있고, 정작 "내가 얼마를 넣을 수 있는지"는 없습니다.</p>
+<div class="tw"><table><thead><tr><th>#</th><th>차별점</th><th>무슨 뜻</th></tr></thead><tbody><tr><td>1</td><td><strong>의도로 고른다</strong></td><td>PER·PBR을 아는 사람만 쓸 수 있는 스크리너가 아니라, "성장 / 저평가 / 배당 / 테마"로 들어갑니다. 기준은 말로 씁니다 (§5-3). 말씀하신 아이디어 그대로입니다</td></tr><tr><td>2</td><td><strong>모든 종목에 "왜"가 붙는다</strong></td><td>목록의 각 행에 이유 한 줄 — "3년 이익 연 18% 증가". 홈의 다음 안내 카드와 같은 문법. 숫자 30개 대신 문장 하나</td></tr><tr><td>3</td><td><strong>내 항로에 연결된다</strong></td><td>투자 여력(+20만원)이 맨 위. 종목 상세에서 "월 10만원씩 사면 투자 계좌 목적지에 언제 도착하나". 비상금이 덜 찼으면 한 줄 알림. <strong>증권앱은 이걸 못 합니다 — 내 월급을 모르니까</strong></td></tr><tr><td>4</td><td><strong>하루치라고 말한다</strong></td><td>기준일을 늘 표시. 대신 오프라인 · 계정 없음 · 광고 없음 · 조용함</td></tr><tr><td>5</td><td><strong>매매가 없다</strong></td><td>결정을 돕는 화면. 주문은 증권앱에서. 그래서 호가창·뉴스·커뮤니티가 없고, 그래서 조용합니다</td></tr><tr><td>6</td><td><strong>모르면 "—"</strong></td><td>상장 2년째라 3년 이익 증가율이 없으면 0이 아니라 —. 미입력 원칙 그대로</td></tr><tr><td>7</td><td><strong>기준값은 내 것</strong></td><td>성장률 15%는 시작값. 설정에서 조정. 앱이 "좋다/나쁘다"를 말하지 않음</td></tr></tbody></table></div>
+<h3>5-2. 화면 (5개 + 설정)</h3>
+<p><strong>S1 주식 홈</strong></p>
+<pre>[투자 여력 띠]     이번 달 저축·투자 여력 +20만원 · 기준: 실수령 360만원   (기존 계산값)
+[가드레일 한 줄]   비상금 68% · 항로상 투자보다 앞입니다 ›            (조건부, 막지 않음)
+[내 종목 요약]     보유 3 · 관심 5 · 평가액 1,240만원 (9/5 종가)      (없으면 빈 상태)
+[카테고리 4장]     성장 · 저평가 · 배당 · 테마  — 각 카드에 기준 칩 2~4개
+[기준일 각주]      데이터 기준일 2026-09-05 · 설정에서 갱신</pre>
+<p><strong>S2 카테고리 목록</strong> (성장/저평가/배당 공통)</p>
+<pre>[기준 토글 칩]     ☑ 매출 성장  ☑ 이익 성장 속도  ☑ 꾸준한 이익 증가        (끄면 목록이 바뀜)
+[정렬]            충족 기준 수 ▾ · 시가총액 · 이름
+[DataRow × n]     삼성전자 · KOSPI        71,200원 (9/5)
+                  3년 이익 연 18% 증가 · 3/3 충족</pre>
+<p>행마다 <strong>이유 한 줄 + 충족 수</strong>. 색으로 좋다/나쁘다를 칠하지 않습니다.</p>
+<p><strong>S3 종목 상세</strong></p>
+<pre>[머리]            이름 · 코드 · 시장 · 기준일 종가
+[이유 카드]       기준 3개 각각 ✓/✗ + 실제 숫자   ← 이 종목이 왜 이 목록에 있나
+[가격 위치 바]    52주 저 ───●─── 52주 고   (항로 바 컴포넌트 재사용)
+[핵심 숫자 3칸]   카테고리별로 다름 — 성장: 매출·영업이익·증가율 / 저평가: PER·PBR·ROE / 배당: 수익률·연속연수·성향
+[내 항로에 넣어보기]  월 [15만원] 슬라이더 → &quot;투자 계좌 5,000만원&quot; 도착 2032년 6월 → 2031년 11월
+                  보라 점선 · 저장되지 않는 가정 배지  (기존 시뮬레이션 문법)
+[행동]            관심 추가 · 보유 기록</pre>
+<p><strong>S4 테마</strong> — 테마 목록(2차전지·반도체·바이오·AI·방산·조선·로봇…) → 누르면 S2와 같은 목록.</p>
+<p><strong>S5 내 종목</strong> — 보유(수량·평단·기준일 평가액·연결 계좌) / 관심(메모). 보유 합계는 자산 탭 연결 계좌로 흐릅니다(§5-5).</p>
+<p><strong>설정 › 주식</strong> — 기준값 조정 · 스냅숏 기준일과 갱신 · 주식 기능 끄기.</p>
+<h3>5-3. 카테고리와 기준 — 말 → 규칙 → 시작값</h3>
+<p>말씀하신 기준을 계산 가능한 규칙으로 옮겼습니다. <strong>화면에는 왼쪽 열(말)만 보이고</strong>, 규칙과 숫자는 설정에서 봅니다. (기준 이름은 2026-09-14 시안 검토에서 "배당을 많이 준다" 같은 서술문 조각이 번역체로 읽힌다는 의견에 따라 명사구로 바꿨습니다.)</p>
+<p><strong>성장주</strong></p>
+<div class="tw"><table><thead><tr><th>말</th><th>규칙</th><th>시작값</th><th>필요한 데이터</th></tr></thead><tbody><tr><td>매출 성장</td><td>매출 3년 연평균 증가율</td><td>≥ 10%</td><td>매출 4개년</td></tr><tr><td>이익 성장 속도</td><td>영업이익 3년 연평균 증가율</td><td>≥ 15%</td><td>영업이익 4개년</td></tr><tr><td>꾸준한 이익 증가</td><td>최근 3년 매년 영업이익 증가</td><td>3년 중 3년</td><td>같음</td></tr></tbody></table></div>
+<p><strong>저평가주</strong></p>
+<div class="tw"><table><thead><tr><th>말</th><th>규칙</th><th>시작값</th><th>필요한 데이터</th></tr></thead><tbody><tr><td>순자산 대비 저평가</td><td>시가총액 ÷ 순자산 (PBR)</td><td>≤ 1.0</td><td>시총 · 순자산</td></tr><tr><td>높은 수익성</td><td>ROE 높고 PER 낮음</td><td>ROE ≥ 10% 그리고 PER ≤ 10</td><td>ROE · PER</td></tr><tr><td>저평가 탈출 중</td><td>52주 저점 대비 반등하면서 이익은 늘어남</td><td>저점 대비 +20% 이상 · 최근 이익 증가</td><td>52주 저 · 종가 · 이익</td></tr><tr><td>높은 이익률</td><td>영업이익률</td><td>≥ 15%</td><td>매출 · 영업이익</td></tr></tbody></table></div>
+<p>"저평가 탈출 중"은 넷 중 정의가 제일 약합니다. 다른 정의를 원하시면 여기가 바뀔 자리입니다.</p>
+<p><strong>배당주</strong></p>
+<div class="tw"><table><thead><tr><th>말</th><th>규칙</th><th>시작값</th><th>필요한 데이터</th></tr></thead><tbody><tr><td>높은 배당수익률</td><td>배당수익률</td><td>≥ 3%</td><td>주당배당금 · 종가</td></tr><tr><td>연속 배당</td><td>연속 배당 연수</td><td>≥ 5년</td><td>배당 이력</td></tr><tr><td>무리 없는 배당</td><td>배당성향</td><td>20 ~ 70%</td><td>배당 · 순이익</td></tr></tbody></table></div>
+<p><strong>테마</strong> — 규칙이 아니라 태그입니다. 스냅숏을 만들 때 종목에 태그를 붙입니다.</p>
+<p>세 가지를 못박습니다:</p>
+<ul>
+<li>시작값은 <strong>우리가 정한 문턱</strong>이지 시장 평균·업종 비교가 아닙니다. 그런 통계는 앱에 없고, 만들어 보여주지 않습니다.</li>
+<li>한 종목이 여러 카테고리에 들어갈 수 있습니다. 그게 정상입니다.</li>
+<li>데이터가 없는 항목은 "—"이고 충족 수에서 분모가 줄어듭니다(2/2). 0으로 세지 않습니다.</li>
+</ul>
+<h3>5-4. 데이터 — 외부 서비스 없이 어떻게</h3>
+<p>이게 주식탭의 진짜 난관입니다. 정직하게 세 층으로 나눕니다.</p>
+<div class="tw"><table><thead><tr><th>층</th><th>무엇</th><th>언제</th></tr></thead><tbody><tr><td><strong>내장 스냅숏</strong></td><td>앱 안에 든 JSON 하나. 종목당 20개쯤의 필드. 앱을 빌드할 때 개발자가 공개 자료(전자공시·거래소)로 만들어 넣음</td><td>4단계</td></tr><tr><td><strong>사용자 입력</strong></td><td>보유 종목의 수량·평단. 종가도 손으로 넣을 수 있음(자산 평가액 입력과 같은 방식)</td><td>3단계</td></tr><tr><td><strong>선택적 갱신</strong></td><td>설정에서 누르면 개발자가 올려 둔 정적 파일 하나를 받아 스냅숏을 바꿈. 실패해도 기존 스냅숏으로 전부 동작. 자동 갱신 없음</td><td>5단계</td></tr></tbody></table></div>
+<p>스냅숏 필드(종목당): 코드 · 이름 · 시장 · 기준일 · 종가 · 52주 고/저 · 시가총액 · 순자산 · 매출 4개년 · 영업이익 4개년 · 순이익 · ROE · PER · PBR · 주당배당금 · 연속 배당 연수 · 배당성향 · 테마 태그.</p>
+<p>크기 가늠: 코스피+코스닥 약 2,600종목 × 20필드 → 원본 1~2MB, 압축하면 수백 KB 수준일 것으로 봅니다. <strong>추정치입니다.</strong> 실제로 만들어 봐야 압니다. 크면 시가총액 상위 N종목으로 자릅니다(§10-4).</p>
+<p>기준일은 스냅숏에 한 번 들어 있고, 화면 어디서든 가격 옆에 붙습니다. 실시간 시세는 어느 단계에도 없습니다.</p>
+<p>해외 주식은 데이터 출처가 달라 1차 범위 밖입니다(§10-5).</p>
+<h3>5-5. 내 항로와 연결 — 기존 계산을 재사용</h3>
+<p>새 계산식을 만들지 않습니다. 있는 값을 주식 화면에 가져오고, 있는 시뮬레이션 문법을 씁니다.</p>
+<div class="tw"><table><thead><tr><th>연결</th><th>어디서 오나</th><th>어떻게 보이나</th></tr></thead><tbody><tr><td>투자 여력</td><td>홈의 "저축·투자 여력"(+20만원)</td><td>주식 홈 맨 위 띠</td></tr><tr><td>목적지 도착 변화</td><td>기존 목적지 도착일 계산에 "월 X만원 추가"를 넣음</td><td>종목 상세의 슬라이더. 보라 점선 · 저장 안 됨</td></tr><tr><td>수익률 가정</td><td>자산 탭의 기대수익률(2.4%) 그대로. 종목별로 바꾸면 그것도 가정</td><td>바꾸면 "저장되지 않는 가정" 배지</td></tr><tr><td>가드레일</td><td>비상금 목적지 달성률 · 소비율 vs 목표</td><td>100% 미만 / 목표 초과면 주식 홈에 한 줄. 막지 않고 말만</td></tr><tr><td>보유 → 자산</td><td>보유 평가액(수량 × 기준일 종가)을 연결 계좌 평가액에 반영할지 토글</td><td>거래의 "잔액에도 반영하기"와 같은 문법. <strong>기본 꺼짐</strong>. 켜면 자산·순자산·미래 경로에 흐름</td></tr></tbody></table></div>
+<h3>5-6. 하지 않는 것</h3>
+<p>실시간 시세 · 매매/주문 · 호가창 · 뉴스 · 커뮤니티 · 추천/매수/매도 표현 · 시세 알림 · 로그인 · 광고.</p>
+<p>이 목록이 곧 "조용한 주식 화면"의 정의입니다. 빼는 것이 차별점입니다.</p>
+<hr>
+<h2 id="s6"><span class="num">§6</span>데이터 모델 — 추가만, 변경 없음</h2>
+<p>새 컬렉션만 붙입니다. 거래·계좌·목적지·반복 거래·백업 키는 그대로입니다.</p>
+<pre>settings.onboarding   { introSeen, homeLayoutChosen }
+settings.features     { stocks: false }
+homeLayout            { cards: [&quot;nextGuide&quot;,&quot;primaryGoal&quot;,&quot;limit&quot;,&quot;peer&quot;,&quot;netWorthRatio&quot;] }   ← 순서 = 배열 순서
+stocks.watchlist      [{ code, addedAt, memo }]
+stocks.holdings       [{ code, qty, avgPrice, accountId?, syncToAccount: false }]
+stocks.thresholds     { growth: {...}, value: {...}, dividend: {...} }   ← 없으면 기본값
+stocks.snapshot       앱에 내장. 사용자 데이터 아님. 백업에 안 들어감</pre>
+<p>백업: 새 키는 있으면 넣고, 옛 백업에 없으면 기본값. <strong>옛 백업 불러오기가 그대로 되어야 합니다.</strong> 백업 형식 버전을 올릴지는 원본 코드의 버전 처리를 보고 정합니다.</p>
+<hr>
+<h2 id="s7"><span class="num">§7</span>단계 — 각각 따로 출시 가능</h2>
+<div class="tw"><table><thead><tr><th>단계</th><th>내용</th><th>주식 데이터</th><th>검토물</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>첫 실행 소개 3장 · 홈 구성 선택 · 주식 켜기/끄기 · 홈이 구성값을 읽음</td><td>필요 없음</td><td>시안 5장</td></tr><tr><td><strong>2</strong></td><td>내비 재편 — 목표+미래 → 목적지(세그먼트 3개) · 주식 슬롯(꺼져 있으면 4탭)</td><td>필요 없음</td><td>시안 3장</td></tr><tr><td><strong>3</strong></td><td>주식탭 뼈대 — 내 종목(보유·관심, 사용자 입력만) · 보유→계좌 토글 · 홈 주식 요약 카드</td><td>사용자 입력</td><td>시안 4장</td></tr><tr><td><strong>4</strong></td><td>카테고리 탐색 — 스냅숏 내장 · 성장/저평가/배당/테마 · 종목 상세 · 내 항로에 넣어보기</td><td>내장 스냅숏</td><td>시안 6장 + 스냅숏 샘플</td></tr><tr><td><strong>5</strong></td><td>스냅숏 갱신(선택) · 기준값 설정 화면</td><td>선택적 파일 하나</td><td>시안 2장</td></tr></tbody></table></div>
+<p>1·2단계는 주식 없이도 앱을 좋게 만듭니다. 3단계까지 하면 "내 종목 기록"이 됩니다. 4단계가 말씀하신 카테고리 화면입니다.</p>
+<p>각 단계는 <strong>시안 → 검토 → 구현</strong> 순서입니다. 지금까지처럼 검토 전에 원본에 손대지 않습니다.</p>
+<p>v3 구현(코덱스)과는 별개입니다. 시안은 지금 만들 수 있고, 구현은 v3가 끝난 뒤 그 위에 얹습니다.</p>
+<hr>
+<h2 id="s8"><span class="num">§8</span>완료 기준</h2>
+<ul>
+<li><span class="box"></span> 첫 실행 → 홈까지 30초 · 5장 이내 · 어느 장에서든 건너뛰기</li>
+<li><span class="box"></span> 홈 카드 상한 5 (히어로 제외) · 아무것도 안 고르면 v3 홈 그대로</li>
+<li><span class="box"></span> 주식 끈 사용자에게 주식 흔적 0 — 탭·카드·설정 항목 어디에도 없음</li>
+<li><span class="box"></span> 종목 목록 각 행에 이유 한 줄 · 충족 수</li>
+<li><span class="box"></span> 가격이 보이는 모든 곳에 기준일</li>
+<li><span class="box"></span> 비행기 모드에서 갱신 빼고 전부 동작</li>
+<li><span class="box"></span> 화면 어디에도 추천·매수·매도라는 말 없음</li>
+<li><span class="box"></span> 기존 계산 결과 변화 0 · 옛 백업 불러오기 그대로</li>
+<li><span class="box"></span> 데이터 없는 항목은 "—", 0이 아님</li>
+</ul>
+<hr>
+<h2 id="s9"><span class="num">§9</span>결정해 주실 것</h2>
+<p>&gt; <strong>결정됨 (2026-09-14)</strong> — 아래 7개 전부 <strong>권장안으로 갑니다.</strong> 내비는 목표+미래 → 목적지, 주식이 그 자리. 홈 구성은 첫 실행에서. 히어로는 소비율 고정. 스냅숏은 만들어 보고 크기로. 해외 주식 1차 제외. 보유→계좌 반영 기본 꺼짐. "저평가 탈출 중"은 52주 저점 대비 +20% · 이익 증가.</p>
+<div class="tw"><table><thead><tr><th>#</th><th>질문</th><th>권장</th><th>대안</th></tr></thead><tbody><tr><td>1</td><td>내비 구조</td><td>목표+미래 → 목적지, 주식이 그 자리</td><td>주식을 자산 탭 아래로</td></tr><tr><td>2</td><td>홈 구성 시점</td><td>첫 실행에서 (말씀하신 대로), 미리보기 붙여서</td><td>기본 홈을 먼저 보여주고 상단 카드로 "홈 구성하기" 유도</td></tr><tr><td>3</td><td>히어로</td><td>소비율 고정, 아래 카드만 선택</td><td>주 지표도 선택(소비율 / 순자산 / 투자 여력)</td></tr><tr><td>4</td><td>스냅숏 범위</td><td>만들어 보고 크기로 결정</td><td>처음부터 시총 상위 500</td></tr><tr><td>5</td><td>해외 주식</td><td>1차 제외</td><td>미국만 포함 (출처 별도)</td></tr><tr><td>6</td><td>보유→계좌 반영 기본값</td><td>꺼짐</td><td>켜짐</td></tr><tr><td>7</td><td>"저평가 탈출 중" 정의</td><td>52주 저점 대비 +20% · 이익 증가</td><td>다른 정의</td></tr></tbody></table></div>
+<hr>
+<h2 id="s10"><span class="num">§10</span>다음</h2>
+<p>계획이 통과됐으니 <strong>1단계 시안</strong>부터 그립니다 — 소개 3장, 구성 1장, 그리고 구성값에 따라 달라진 홈 1장. 라이트·다크 짝으로. 그 다음 내비, 그 다음 주식 홈입니다.</p>
+<div class="foot">원본 <a href="https://github.com/AJS-bit/ajs-bit.github.com/blob/claude/navi-ui-ux-redesign-nzxoxz/plan/v4-stocks.md">plan/v4-stocks.md</a> · 커밋 e190fd9 · 이 페이지는 그 파일을 그대로 옮긴 것이라 두 곳이 다르면 파일이 기준입니다.</div>
+</main>
