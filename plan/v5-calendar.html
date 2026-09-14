@@ -1,0 +1,371 @@
+<title>NAVI v5 계획</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --canvas:#EDF0F7;--surface:#FFFFFF;--inset:#F4F6FB;--line:#E3E8F1;--line-soft:#EFF2F8;
+  --ink:#101828;--ink2:#475467;--ink3:#626D88;--ink4:#697182;
+  --brand:#3556E6;--brand-soft:#E9EDFD;--violet:#7A3FE4;--violet-soft:#F1EAFD;
+  --pos:#0F7B47;--warn:#B45309;--warn-soft:#FDF1E0;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 6px 20px -14px rgba(16,24,40,.24);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --canvas:#080C16;--surface:#121A2B;--inset:#1A2337;--line:#232D45;--line-soft:#1E2739;
+  --ink:#EAEFF8;--ink2:#A5B2C9;--ink3:#8595AE;--ink4:#7E8AA2;
+  --brand:#7FA0FF;--brand-soft:#1B2748;--violet:#B79BFF;--violet-soft:#241D3D;
+  --pos:#3DD489;--warn:#F5B544;--warn-soft:#2E2617;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px -14px rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --canvas:#080C16;--surface:#121A2B;--inset:#1A2337;--line:#232D45;--line-soft:#1E2739;
+  --ink:#EAEFF8;--ink2:#A5B2C9;--ink3:#8595AE;--ink4:#7E8AA2;
+  --brand:#7FA0FF;--brand-soft:#1B2748;--violet:#B79BFF;--violet-soft:#241D3D;
+  --pos:#3DD489;--warn:#F5B544;--warn-soft:#2E2617;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px -14px rgba(0,0,0,.6);color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);
+  font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;
+  font-size:14.5px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;padding:0 16px}
+main{max-width:720px;margin:0 auto;padding-block:40px 96px}
+.mark{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
+.mark i{width:26px;height:26px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,#3556E6 0%,#7A3FE4 100%)}
+.mark span{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+.mark em{font-style:normal;font-size:12px;color:var(--ink3);font-weight:500}
+h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.25;margin:0 0 6px;text-wrap:balance}
+.meta{font-size:12.5px;color:var(--ink3);margin:0 0 8px}
+h2{font-size:19px;font-weight:700;letter-spacing:-.025em;line-height:1.3;margin:44px 0 12px;
+  display:flex;align-items:baseline;gap:10px;text-wrap:balance}
+h2 .num{font-size:11px;font-weight:600;letter-spacing:.07em;color:var(--brand);
+  background:var(--brand-soft);border-radius:99px;padding:3px 9px;flex-shrink:0;transform:translateY(-3px)}
+h3{font-size:15px;font-weight:600;letter-spacing:-.015em;margin:26px 0 8px;color:var(--ink)}
+p{margin:0 0 12px;color:var(--ink2);max-width:66ch}
+p strong{color:var(--ink);font-weight:600}
+ul,ol{margin:0 0 14px;padding-left:18px;color:var(--ink2)}
+ol li::marker{color:var(--brand);font-weight:600}
+li{margin:3px 0}
+li strong{color:var(--ink);font-weight:600}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+  background:var(--inset);border-radius:5px;padding:1px 5px;color:var(--ink)}
+pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.6;
+  background:var(--inset);border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  margin:10px 0 16px;overflow-x:auto;color:var(--ink)}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0 0}
+.tw{overflow-x:auto;margin:10px 0 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink3);
+  padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--ink2);line-height:1.55}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--ink);font-weight:500;white-space:nowrap}
+td strong{color:var(--ink);font-weight:600}
+.box{display:inline-block;width:13px;height:13px;border:1.5px solid var(--ink4);border-radius:4px;
+  vertical-align:-2px;margin-right:6px}
+/* 결정 절만 띄운다 */
+#s12{margin-top:52px}
+.decide{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:6px 16px 4px;
+  box-shadow:var(--shadow);margin:12px 0 18px}
+.decide .tw{border:0;margin:0;background:transparent}
+.decide td:first-child{color:var(--brand);font-weight:700}
+.decide td:nth-child(3){color:var(--ink);font-weight:500}
+.foot{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3)}
+.foot a{color:var(--brand);text-decoration:none}
+@media (max-width:480px){h1{font-size:24px}h2{font-size:17px}td:first-child{white-space:normal}}
+</style>
+<main>
+<div class="mark"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></i><span>NAVI</span><em>· v5 계획 초안</em></div>
+<h1>NAVI v5 계획 — 홈 달력과 빠른 소비 입력</h1>
+<p class="meta">작성 2026-09-14 · 검토 반영 완성본 · 아직 시안 없음</p>
+<hr>
+<h2 id="s0"><span class="num">§0</span>한 줄로</h2>
+<p><strong>홈 히어로 바로 아래에 이 달의 달력을 띄우고, 오늘 칸을 누르고 숫자만 치면 저장되게 만듭니다. 달력은 "이 달의 하루하루"를 보여 주는 카드이지, 새 계산이 아닙니다.</strong></p>
+<p>소비율 57.9%라는 숫자는 기록이 쌓여야 의미가 있는데, 지금은 기록 한 건에 탭 전환과 4탭이 듭니다. 이 계획은 그 거리를 홈 안에서 2탭 + 숫자로 줄이고, 그러면서도 계산식·저장 형식·보호 파일은 건드리지 않습니다.</p>
+<p>달력은 v4 홈 구성(<code>homeLayout.cards</code>)의 카드 하나입니다. 다만 요청하신 것이 "홈 화면에 달력을 띄워"이므로 <strong>기본 구성에 들어가 첫 실행부터 히어로 아래 첫 카드로 보입니다.</strong> 기본 5카드는 <code>달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스</code>이고, <code>순자산 대비 소비</code>는 기본에서 빠집니다(HomeSetup에서 언제든 다시 켤 수 있음). 이것은 v4 결정 2(기본 = v3 홈 그대로)를 바꾸는 일이라 v4 계획 §9에 새 결정 8번으로 올려 승인을 받습니다(§12-1). 달력을 끈 사용자도 히어로 <code>소비 기록하기</code>로 같은 하루 시트를 엽니다.</p>
+<p>세 가지를 이 순서로 합니다.</p>
+<ol>
+<li>하루 시트 — 홈 위에 뜨는 빠른 입력</li>
+<li>홈 달력 카드 — 주 스트립과 이번 달 그리드, 하루 기준선</li>
+<li>나중에 분류 — 색을 고르지 않고 저장하고, 주말에 한 번에 정리</li>
+</ol>
+<p>§10의 4단계로 나눴고 각 단계는 따로 출시할 수 있습니다. 순서는 v4 1단계(홈 구성) 뒤입니다.</p>
+<hr>
+<h2 id="s1"><span class="num">§1</span>지금 앱의 소비 입력 — 사실과 불편의 원인</h2>
+<div class="tw"><table><thead><tr><th>사실</th><th>어디서 확인</th></tr></thead><tbody><tr><td>소비 기록은 소비 탭의 <code>거래 추가</code> 시트 하나뿐. 홈 히어로의 <code>소비 기록하기</code>는 <code>navigate('spending','record')</code>로 <strong>탭을 옮긴 뒤</strong> 시트를 연다</td><td><code>app/page.tsx:1041</code>, <code>home-hero.tsx:110</code></td></tr><tr><td>시트 순서: 거래 종류 세그먼트 → 날짜/금액 → 카테고리 칩 13개 → 메모 → 잔액 반영 토글. 기본 카테고리는 <code>식비</code>, 기본 날짜는 오늘(지난 달 보기 중이면 1일)</td><td><code>spending-view.tsx:225-227</code> · v3 아트보드 <code>TransactionAdd</code></td></tr><tr><td>저장은 <code>saveTransaction</code>(금액 &gt; 0 필수) → <code>changeState</code> → <code>materializeRecurringTransactions</code> → <code>saveGate.run</code> → <code>saveNaviData</code>. 성공하면 토스트 <code>이 기기에 저장했습니다.</code> + 되돌리기(닫기 또는 다음 저장 전까지 유지)</td><td><code>navi-state.ts:65</code>, <code>app/page.tsx:208-232, 2351-2381</code></td></tr><tr><td>하루 단위로 보는 화면이 없다. 내역은 날짜 그룹 목록, 이번 달 탭은 일별 누적 그래프뿐</td><td><code>spending-ledger.tsx</code>, <code>navi-analysis.ts:6</code></td></tr><tr><td>월말 예상은 <code>metrics()</code>가 직전 3개월 평균으로 만든다: <code>projected = max(cur.fixed, hist.fixed) + cur.variable + remain × hist.variable</code>. 3개월이 비어 있으면 <code>spend ÷ done × days</code> 선형 외삽</td><td><code>lib/engine/finance.ts:66-76, 113-122</code></td></tr><tr><td>반복 거래는 결제일이 지나면 focus·15분 타이머에서 자동 생성되고, 그 저장도 같은 commit을 타서 토스트와 되돌리기를 갈아치운다</td><td><code>navi-recurring.ts:138-192</code>, <code>app/page.tsx:296-311</code></td></tr></tbody></table></div>
+<p>불편의 원인은 취향이 아니라 <strong>거리</strong>입니다.</p>
+<ul>
+<li>오늘 커피 한 잔에 <strong>탭 전환 1 + 탭 4</strong>(CTA → 금액 → 카테고리 → 저장) + 숫자 타이핑. 카테고리를 안 고르면 <code>식비</code>로 저장되는데 그 사실이 화면에 없다.</li>
+<li>어제 것을 넣으려면 날짜 필드를 열어 피커를 조작해야 한다.</li>
+<li>저장하고 나면 소비 탭에 남아서, 히어로 숫자가 어떻게 바뀌었는지 보려면 홈으로 돌아가야 한다.</li>
+<li>"이번 달 어느 날을 안 적었나"를 볼 곳이 없다. 미입력 날은 그래프에서 0으로 보이는 것과 구분되지 않는다.</li>
+</ul>
+<hr>
+<h2 id="s2"><span class="num">§2</span>원칙 — 기존 것 그대로 + 새로 필요한 것</h2>
+<p>기존 원칙은 그대로입니다. 화면당 display 숫자 하나(홈 = 소비율) · 미입력은 0이 아니라 회색 <code>—</code> · 시뮬레이션(보라 점선 <code>저장되지 않는 가정</code>)과 저장 기록의 구분 · 계산식·거래 ID·백업 형식·반복 거래·계좌 연결·기존 기록 불변 · 로그인·클라우드·실시간 외부 API 없음 · 고정비(주거·통신·보험·구독)는 실제 청구액을 인정하고 변동비만 조절, 월말 예상은 고정비/변동비를 나눠 추정 · 저축 이체·대출상환은 소비율에서 제외 · 카테고리 15색 고정 팔레트는 거래·차트를 구분하는 기준색.</p>
+<p>이 계획에서 새로 필요한 원칙 여섯 개:</p>
+<ul>
+<li><strong>하루의 표시는 규칙 한 문장으로 정한다.</strong> 달력 칸 = 변동비 합계 + 막대, 고정비·이체는 배지 <code>고정</code>·<code>이체</code>. 내역 날짜 그룹 헤더 = <code>변동 3.2만 · 고정 55만 · 이체 30만</code>. 같은 날을 두 숫자로 보여 주지 않는다. (§3-3)</li>
+<li><strong><code>안 썼어요</code>는 기록이 아니라 표시다.</strong> 거래를 만들지 않고 <code>dayLog</code>에만 남는다. 소비율·월 비교·코치·경고는 그것을 보지 못하며, 화면은 그 사실을 숨기지 않는다. (§8)</li>
+<li><strong>화면 문구가 계산과 어긋나지 않는다.</strong> <code>나중에 분류</code>는 계산에서 <code>기타</code>(변동비)다. 지난달 기록은 이번 달 예상의 3개월 평균에 들어간다. 문구는 이 사실을 그대로 쓴다. <code>이번 달에는 안 들어가요</code> 같은 약속을 하지 않는다. (§5-3, §8)</li>
+<li><strong>기록에 평가를 붙이지 않는다.</strong> 완료 카드는 초과 여부와 무관하게 사실만(오늘 N건 · 합계 · 소비율 변화), 색 없음. 연속 카운터 없음. 주황은 사용자가 정한 월 목표 초과(히어로)에만. 요청에서 말씀하신 "중압감"은 히어로 소비율 하나가 주고, 달력 칸과 완료 카드는 기록을 가볍게 하는 쪽에 섭니다 — 둘이 부딪히는 지점이라 §12-19에서 결정합니다. (§3-3, §4-4)</li>
+<li><strong>계산은 한 곳에서만.</strong> 시트와 완료 카드가 보여 주는 소비율은 전부 <code>naviMetrics</code>의 결과다. UI에서 따로 더하지 않는다. (§4-5)</li>
+<li><strong>보호 파일은 읽기만 한다.</strong> <code>lib/engine/**</code> · <code>navi-current</code> · <code>navi-storage</code> · <code>navi-recurring</code> 등 IMPLEMENTATION-PLAN §2의 파일은 수정하지 않는다. 하루 기준선·하루 합계·분류 전 정리는 새 모듈 <code>lib/navi-quick-entry.ts</code>가 그 파일들의 반환값을 받아 계산한다. (§6, §10)</li>
+</ul>
+<hr>
+<h2 id="s3"><span class="num">§3</span>홈 화면</h2>
+<h3>3-1. 달력의 자리 — homeLayout의 첫 카드</h3>
+<p>달력은 v4 §3·§6의 <code>homeLayout.cards</code>에 들어가는 <strong>카드 <code>calendar</code></strong>(이름 <code>이번 달 달력</code>)입니다. 히어로 아래 고정 슬롯이 아니라 카드 하나이고, 히어로만 고정이라는 v4 결정 3은 그대로입니다. 다만 요청("홈 화면에 달력을 띄워, 날짜를 터치해서 바로 입력")에 맞춰 <strong>기본 구성에 들어가고, 히어로 바로 아래 첫 카드</strong>입니다.</p>
+<ul>
+<li>기본 5카드 = <code>달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스</code>(<code>homeLayout.cards</code> 기본 배열 <code>["calendar","nextGuide","limit","primaryGoal","peer"]</code>). 카드 상한 5를 지키느라 <code>순자산 대비 소비</code>가 기본에서 빠지고, HomeSetup 목록에는 남아 언제든 다시 켤 수 있습니다.</li>
+<li>이 변경은 v4 결정 2("기본 = v3 홈 그대로")와 v4 완료 기준 "아무것도 안 고르면 v3 홈 그대로"를 바꾸는 일이라 v4 계획 §9에 <strong>새 결정 8번</strong>으로 올려 별도 승인을 받습니다(§12-1). 이 문서의 표 한 줄로 승인된 결정을 뒤집지 않습니다.</li>
+<li>기본 배열만 바뀝니다. 이미 <code>homeLayout.cards</code>를 저장한 사용자의 구성은 건드리지 않고, HomeSetup 첫 행에서 켜면 들어갑니다.</li>
+<li>HomeSetup 목록에서 <code>이번 달 달력</code> 행은 기본 켜짐 상태로 첫 행에 있고 축소 미리보기(주 스트립)가 붙습니다.</li>
+<li>달력을 끈 사용자에게도 히어로 <code>소비 기록하기</code>는 오늘 하루 시트를 엽니다(§3-4). 상태 줄 전용 안내는 소비 탭 알림 줄이 대신합니다(§8, §12-29).</li>
+</ul>
+<h3>3-2. 배치와 높이 예산</h3>
+<pre>┌ 이번 달 달력                                  펼치기 ▾ ┐   카드 제목 14/600 · 토글 버튼(펼치면 `접기 ▴`)
+│   일     월     화     수     목     금     토          │   요일 11/500 ink-3
+│   6      7      8      9     10     11     12          │   날짜 11/500 · 오늘 칸 배경 brand-soft · 미래 날짜 disabled
+│  0.5만  1.2만  3.7만                                    │   합계 11/600 tabular · 미래 칸은 숫자 자리가 빈 칸(`—` 아님)
+│  ▂▂     ▃▃    ▇▇▇▇                                     │   막대 3px · track 위 ink-3 채움
+│  ✓      고정                                           │   수식어 11px ink-2
+│ 오늘 4건 3.7만원 · 이번 달 기록한 날 7일                  │   상태 줄 11/400 ink-2 · 한 문장
+└──────────────────────────────────────────────────────────┘</pre>
+<div class="tw"><table><thead><tr><th>항목</th><th>390px</th><th>360px(390 미만 예외)</th></tr></thead><tbody><tr><td>화면 패딩</td><td>14</td><td>14</td></tr><tr><td>카드 좌우 패딩</td><td>14</td><td><strong>10</strong></td></tr><tr><td>칸 폭(7열, 간격 0)</td><td>(390−28−28)÷7 = <strong>47.7</strong></td><td>(360−28−20)÷7 = <strong>44.6</strong></td></tr><tr><td>칸 높이</td><td>56</td><td>56</td></tr><tr><td>접힌 카드 높이</td><td>13 + 20 + 8 + 14 + 4 + 56 + 8 + 18 + 13 = <strong>154</strong></td><td>154</td></tr><tr><td>펼침(월 그리드)</td><td>스트립 행이 그리드 안 자기 자리로 들어가고 나머지 4~5행이 더해짐: 154 + (4~5) × 56 = <strong>378~434</strong></td><td>같음</td></tr></tbody></table></div>
+<ul>
+<li><strong>주 스트립은 오늘이 속한 일~토</strong>(그리드와 같은 행). 오늘이 일요일이면 미래 칸 6개가 빈 칸으로 남습니다(§12-14).</li>
+<li><strong>펼침 토글</strong>은 제목 오른쪽 <code>펼치기 ▾</code>/<code>접기 ▴</code> 버튼 하나입니다. 링크 모양이 아니라 토글이고, 펼치면 이번 주 행이 그리드 안 자기 자리에 놓여 두 번 그려지지 않습니다. 펼침은 카드 안에서 아래로 늘어나 홈 스크롤에 얹힙니다.</li>
+<li>펼침 상태는 세션 안에서만 기억합니다(홈을 떠났다 돌아와도 유지, 앱을 다시 열면 접힘 · §12-27).</li>
+<li>칸 터치 표적은 두 폭 모두 44 이상입니다(<code>accessibility.minTouchTarget</code> 44). 상태 줄은 접힘·펼침 어디서나 마지막 한 줄입니다.</li>
+<li>시스템 글자 크기를 키우면 칸 글자를 줄이지 않습니다. 칸 높이가 자동으로 늘고, 44.6px 폭에서 합계·배지가 넘치면 1단계로 소수를 버리고(<code>3.7만</code> → <code>4만</code>), 그래도 넘치면 숫자를 숨기고 막대·배지만 남깁니다(숫자는 aria·시트·상태 줄에 있음 · §12-28).</li>
+</ul>
+<h3>3-3. 날짜 칸이 보여주는 것</h3>
+<p><strong>하루 표시 규칙(한 문장):</strong> 칸의 숫자와 막대는 그날 <strong>변동비 합계</strong>(분류 전 포함)이고, 고정비와 이체는 숫자에 넣지 않고 배지 <code>고정</code>·<code>이체</code>로만 표시한다. 내역 날짜 그룹 헤더는 <code>변동 3.2만 · 고정 55만 · 이체 30만</code>으로 셋을 나눠 쓴다(0인 항목은 생략).</p>
+<p><strong>칸 숫자 형식(한 형식):</strong> 만 단위 소수 한 자리. <code>0.5만</code> · <code>3.7만</code> · <code>12.5만</code>. 1만 미만도 같은 단위(<code>0.9만</code>). 100만 이상은 소수 없이 <code>120만</code>, 1,000만 이상 <code>1,200만</code>, 1억 이상 <code>1.2억</code>. 개별 거래는 시트·내역에서 원 단위 그대로(<code>8,900원</code>). 이 예외를 SPEC <code>typography.rules</code>에 <code>달력 칸 합계</code> 항목으로 등록합니다.</p>
+<p><strong>반올림(한 규칙, §12-23):</strong> 만 단위 소수 한 자리는 500원에서 올립니다(11,500 → <code>1.2만</code>, 11,499 → <code>1.1만</code>). 원 단위로 보여 주는 계산값(하루 기준선 · 앞으로 하루 · 코치)은 10원 반올림(47,272.7 → 47,270), 개별 거래 금액과 남은/초과 금액은 원 단위 그대로(<code>11,500원 남았어요</code>).</p>
+<p><strong>기본 상태 4 × 수식어 5.</strong> 조합은 표의 규칙대로만 생기고, 아트보드는 기본 상태 4장 + 수식어 5장 + 대표 조합 3장(라이트·다크 짝)으로 끝냅니다.</p>
+<div class="tw"><table><thead><tr><th>기본 상태</th><th>칸</th><th>뜻</th></tr></thead><tbody><tr><td><code>—</code></td><td>날짜 + <code>—</code>(disabled)</td><td>미입력. 변동비 거래도 표시도 없음. <strong>고정비·이체만 있는 날도 <code>—</code></strong>에 배지가 붙은 상태</td></tr><tr><td><code>0</code></td><td>날짜 + <code>0</code>(ink-2)</td><td><code>안 썼어요</code>로 표시한 날. 변동비 거래 없음. <strong>저장된 0원이 아니라 안 씀 표시.</strong> 고정비·이체 배지는 함께 붙을 수 있음</td></tr><tr><td>금액</td><td>날짜 + 합계 + 막대</td><td>변동비 거래가 1건 이상</td></tr><tr><td>금액 + <code>✓</code></td><td>위 + 체크(ink-2)</td><td>그 날짜를 <code>다 적었어요</code>로 닫음</td></tr></tbody></table></div>
+<div class="tw"><table><thead><tr><th>수식어</th><th>표시</th><th>규칙</th></tr></thead><tbody><tr><td>고정</td><td>텍스트 배지 <code>고정</code>(ink-2, 11px)</td><td>고정비 카테고리 거래가 있는 날. <strong>카테고리색 점을 쓰지 않는다</strong> — 주거 <code>#8b5cf6</code>·구독 <code>#a855f7</code>은 가정 보라 <code>#7A3FE4</code>와 같은 계열이라 8px 점에서 구분되지 않는다</td></tr><tr><td>이체</td><td>텍스트 배지 <code>이체</code></td><td>저축/투자·대출상환만 있는 날은 숫자 없이 배지만, 변동비도 있으면 숫자 + 배지</td></tr><tr><td>초과</td><td>막대가 트랙을 꽉 채우고 합계가 600 굵기</td><td>변동비 합계 &gt; 하루 기준선. <strong>주황 없음.</strong> 초과분 <code>+500원</code>은 시트 둘째 줄과 aria에만</td></tr><tr><td>시점</td><td>오늘 = 배경 brand-soft · 미래 = 날짜 disabled, 숫자 자리 빈 칸, 눌러도 열리지 않음 · 지난달(스트립 앞 칸) = 요일 자리에 <code>8월</code> · 다음 달(스트립 뒤 칸, 9/27~10/3 주) = 요일 자리에 <code>10월</code>, 미래와 같이 disabled · 시작일 이전 = 옅은 빈 칸(<code>—</code> 없음)</td><td>시작일(<code>quickEntry.since</code> = 새 앱 첫 실행일, 복원이면 복원일 · §12-24) 이전 칸은 <code>빈 날</code>로 세지 않는다. 소급 입력해도 시작일은 앞으로 가지 않는다</td></tr><tr><td>분류 전</td><td>칸에는 표시 없음</td><td>시트 목록·상태 줄·펼침 요약에서만 <code>카테고리 안 고른 N건</code></td></tr></tbody></table></div>
+<p>aria 문장 템플릿 하나: <code>{M}월 {D}일 {요일}, {기본 상태 문장}{, 고정비 있음}{, 이체 있음}{, 하루 기준선까지 {X}원 남음 | 하루 기준선보다 {X}원 많음}{, 오늘}</code>. 예: <code>9월 8일 화요일, 4건 37,000원, 다 적었다고 표시함, 하루 기준선까지 11,500원 남음, 오늘</code>.</p>
+<p><strong>하루 기준선 — 출처를 한 줄로:</strong> <code>limit.variableBudget ÷ daysInMonth</code> (<code>naviSpendingLimit</code>의 반환값, 수동 카테고리 한도는 반영되지 않음). 샘플: 총한도 216만 − 고정비 배분 70.5만(주거 55만 · 통신 5.5만 · 보험 8.5만 · 구독 1.5만) = 145.5만 ÷ 30 = <strong>48,500원</strong>. <code>variableBudget === 0</code>이면 기준선 <code>—</code>, 막대 없음. 직전 3개월 기록이 없는 달(<code>limit.personalized === false</code>)은 고정비 배분이 실제 청구액이 아니라 표준 비중 추정(총한도 × 0.33)이라 <strong>기준선 <code>—</code>, 막대 없음</strong>, 칸은 금액만(§12-5). 기준선은 저장하지 않으므로 고정비 청구액·한도·월급이 바뀌면 이번 달 모든 칸이 새 기준선으로 다시 그려집니다(§8 '기준선이 바뀜').</p>
+<p>같은 홈에 세 가지 <code>하루</code>가 있습니다. 라벨을 고정합니다.</p>
+<div class="tw"><table><thead><tr><th>숫자</th><th>식</th><th>샘플</th><th>어디</th><th>라벨</th></tr></thead><tbody><tr><td>하루 기준선</td><td><code>variableBudget ÷ 일수</code> — 이번 달 내내 상수</td><td>48,500원</td><td>달력 칸 막대 · 시트 둘째 줄 · 한도 화면 설명</td><td><code>하루 기준선 48,500원</code></td></tr><tr><td>앞으로 하루</td><td><code>remain ÷ 남은 일수</code> — 매일 변함</td><td>47,270원(104만 ÷ 22, 10원 반올림)</td><td>홈 <code>이번 달 한도</code> 카드</td><td><code>앞으로 하루 47,270원</code></td></tr><tr><td>코치</td><td><code>limit.remain ÷ leftDays</code> — 위와 같은 값</td><td>47,270원</td><td>코치 카드 본문</td><td>문장 안에서도 <code>앞으로 하루 47,270원씩</code></td></tr></tbody></table></div>
+<p><strong>상태 줄 규칙:</strong> 항상 한 문장, meta 11px ink-2, 평가어·감탄 없음. 우선순위: 저장 실패·충돌 &gt; <code>8월 다시 마감 필요 ›</code> &gt; 반복 중복 의심 &gt; 기준선 변경 1회 안내 &gt; 분류 전 강조 표시 &gt; 오늘 요약(<code>오늘 4건 3.7만원 · 이번 달 기록한 날 7일</code>). 18시 이후 오늘에 변동비 거래가 1건 이상 있고 아직 닫지 않았으면 오늘 요약 뒤에 <code>· 9월 8일 다 적었어요 ›</code>를 <strong>한 문장으로 합쳐</strong> 1탭 경로가 실제로 보이게 합니다(<code>오늘 4건 3.7만원 · 9월 8일 다 적었어요 ›</code>). 강조 표시는 주황이 아니라 <strong>600 굵기 + brand-soft 배경 필</strong>입니다. <code>이번 달 빈 날 N일</code>은 펼침에서만, 시작일 이후만 셉니다. 달력 카드가 없는 홈(끈 사용자 · 1단계)에서는 같은 문구·같은 우선순위를 소비 탭 알림 줄이 보여 줍니다(§9-17).</p>
+<h3>3-4. 히어로와의 관계</h3>
+<ul>
+<li>히어로는 <strong>자리·모양·문구 1px 불변.</strong> <code>소비 기록하기</code>는 동작만 바뀌어 오늘 하루 시트를 홈 위에 엽니다(record intent = 하루 시트). 각주 <code>실수령 급여 기준 · 부수입·저축 이체·대출상환 제외</code>는 소비율의 근거 문장이라 조건부로 바꾸지 않습니다. <code>기록이 적어 예상 폭이 커요</code>는 완료 카드와 상태 줄에 둡니다.</li>
+<li>월급 미입력이면 히어로 버튼은 지금처럼 <code>월급 입력하고 시작</code> 문구이되 동작은 하루 시트 열기(§12-4). 저장 뒤 완료 카드의 주 행동이 <code>월급 넣기 ›</code>라 다음 저장부터 히어로가 켜집니다.</li>
+<li>소비율은 히어로에서만 display 크기입니다. 달력·시트·완료 카드에서는 body 크기 문장 안의 숫자로만 나옵니다.</li>
+</ul>
+<h3>3-5. v4 홈 구성과의 관계</h3>
+<div class="tw"><table><thead><tr><th>v4 결정</th><th>이 계획</th></tr></thead><tbody><tr><td>히어로 고정, 아래 카드 최대 5개 선택</td><td>유지. <code>calendar</code>는 카드 하나이고 상한 5에 포함</td></tr><tr><td>기본 = v3 홈 그대로</td><td><strong>바뀜.</strong> 기본 = <code>달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스</code>. <code>순자산 대비 소비</code>는 기본에서 빠지고 목록에는 남음. v4 §9 결정 8로 승인(§12-1)</td></tr><tr><td>HomeSetup 축소 미리보기</td><td><code>calendar</code> 행에 주 스트립 축소판. 목록 첫 행, 기본 켜짐</td></tr><tr><td>카드 목록 9종</td><td><code>이번 달 달력</code> 1종 추가 → 10종. 일별 누적 차트 카드는 v4 목록에 없으므로 언급하지 않음</td></tr><tr><td><code>homeLayout.cards</code> 형식</td><td>형식 그대로, 값 <code>"calendar"</code>만 추가. 기본 배열만 바뀌고 저장된 구성은 건드리지 않음</td></tr></tbody></table></div>
+<hr>
+<h2 id="s4"><span class="num">§4</span>빠른 입력 흐름</h2>
+<h3>4-1. 탭 수의 정의</h3>
+<p><strong>시작 화면(홈)부터 저장 완료까지, 숫자·문자 타이핑 제외, 자동 포커스는 0탭.</strong> 아래 표의 수는 전부 이 정의로 셉니다.</p>
+<div class="tw"><table><thead><tr><th>상황</th><th>경로</th><th>탭</th></tr></thead><tbody><tr><td>오늘 커피(직접 입력)</td><td>오늘 칸 → [금액 자동 포커스] → 저장</td><td><strong>2</strong></td></tr><tr><td>오늘 커피(최근 기록 칩)</td><td>오늘 칸 → 칩 → 저장</td><td>3 · 타이핑 0</td></tr><tr><td>어제 택시(어제 기록 없음)</td><td>어제 칸 → [금액] → 저장</td><td>2</td></tr><tr><td>어제 추가(어제 기록 있음, 목록 우선)</td><td>어제 칸 → <code>+ 추가</code> → [금액] → 저장</td><td>3</td></tr><tr><td>퇴근길 3건</td><td>오늘 칸 → 저장 → 한 건 더 → 저장 → 한 건 더 → 저장</td><td>6 (건당 2)</td></tr><tr><td>월세(주거/관리 색)</td><td>오늘 칸 → [금액] → 주거/관리 칩 → 저장</td><td>3</td></tr><tr><td>적금 이체</td><td>오늘 칸 → [금액] → <code>저축·상환 ›</code> → 저장(기존 시트)</td><td>3 (+계좌 연결 시 추가)</td></tr><tr><td>지난주 오타 수정</td><td><code>펼치기 ▾</code> → 칸 → 행(금액 전체 선택) → 저장</td><td>4</td></tr><tr><td>안 썼어요</td><td>오늘 칸 → <code>오늘은 안 썼어요</code></td><td>2</td></tr><tr><td>다 적었어요</td><td>상태 줄 <code>오늘 4건 3.7만원 · 9월 8일 다 적었어요 ›</code>(18시 이후)</td><td>1 · 그 전엔 오늘 칸 → 시트 안 버튼 2</td></tr></tbody></table></div>
+<h3>4-2. 하루 시트</h3>
+<p><code>BottomSheet</code>(SPEC §18) 변형. <code>app/page.tsx</code>의 다이얼로그 층에 마운트해 <strong>탭 전환 없이 홈 위에</strong> 뜹니다. 시트 이름은 <code>하루 시트</code>, 기존 소비 탭 시트는 그대로 <code>거래 추가</code>라고 부릅니다.</p>
+<pre>┌──────────────────────── 손잡이 ─────────────────────────┐
+│ ‹   9월 8일 화요일 · 오늘   ›                       닫기 │  헤더 날짜 탭 → 주 선택기
+│ 오늘 4건 3.7만원 · 하루 기준선 48,500원까지 11,500원 남았어요 │  둘째 줄 · 초과면 &#x27;하루 기준선보다 500원 많아요&#x27;
+│                                                          │
+│ 금액                                        [ 12,000 ]원 │  자동 포커스 · inputmode=numeric · 17px 우측 정렬
+│ 1.2만원                                                  │  콤마 + 만원 읽기 병기
+│ 최근 기록  [커피 4,500 ·카페/간식] [편의점 6,500 ·분류 전] [점심… │  가로 스크롤 · 8자 + … · 0개면 줄 숨김
+│ 메모       [ 저녁                         ]        2/60   │
+│ 카테고리                     나중에 분류   ·   저축·상환 › │  칩 줄 밖 고정 위치
+│ [·식비][·카페/간식][·교통] │ [·식비][·카페/간식][·교통][·주거… │  앞 3칸 최근·빈도 슬롯 │ 고정 순서 13개
+│ 수입·환불은 거래 추가에서 ›                                │  meta 링크 · 종류 미선택으로 인계
+│                                                          │
+│ 오늘 기록                                                 │  오늘·기록 없는 날 = 입력 우선(목록 아래)
+│  ·카페/간식   커피                          4,500원       │  기록 있는 과거 날 = 목록 우선(3행) + &#x27;+ 추가&#x27; 점선 행
+│  ·식비        점심                          9,000원       │
+│   분류 전     편의점                        6,500원       │
+│  + 1건 더 보기                                            │
+│                       9월 8일 다 적었어요 (변동비 1건 이상) │
+│ [                     저장                     ]          │  채운 Primary는 시트 안에서 이것 하나
+│                        오늘은 안 썼어요 (변동비 0건일 때만) │
+└──────────────────────────────────────────────────────────┘</pre>
+<p>규칙:</p>
+<ul>
+<li><strong>기본 날짜 = 오늘.</strong> <code>한 건 더</code>로 이어지는 연속 입력 안에서만 날짜를 기억하고, 시트가 닫히면 오늘로 돌아옵니다. 날짜가 오늘이 아니면 헤더 날짜를 굵게(600) 보여 줍니다.</li>
+<li><strong>날짜 이동:</strong> <code>‹ ›</code>는 하루씩(<code>›</code>는 오늘에서 멈춤). 헤더 날짜를 탭하면 <strong>주 단위 선택기</strong>(이번 달 + 지난달 전체)가 열립니다. 그 이전 달은 소비 탭 <code>거래 추가</code>로 안내합니다. 홈 시트의 범위는 이번 달 + 지난달입니다.</li>
+<li><strong>입력 우선 vs 목록 우선:</strong> 오늘과 기록 없는 날은 금액에 자동 포커스. 기록이 있는 과거 날은 목록(스크롤 없이 3행)이 위, 금액 필드는 접혀 있고 <code>+ 추가</code> 점선 행을 누르면 펼쳐지며 포커스.</li>
+<li><strong>금액 입력은 네이티브 숫자 키보드</strong>(<code>inputmode=numeric</code>, 기존 NumberInput 규칙 17px 우측 정렬·16px 이상). 커스텀 키패드(<code>000</code>·<code>만</code> 키)는 1단계에서 빼고 실기기 측정 뒤 별도 단계로(§12-16). 입력값 아래 <code>1.2만원</code> 읽기를 병기해 자릿수 오입력을 잡습니다.</li>
+<li><strong>메모 포커스 시</strong> 저장 버튼을 네이티브 키보드 위 고정 행으로 옮기고, 포커스 해제 시 푸터로 복귀합니다. 60자 상한, 50자부터 카운터. 기존 60자 초과 메모는 그대로 열리고 저장도 되며 추가 입력만 막습니다(두 시트·반복 규칙 이름 공통).</li>
+<li><strong>기본 카테고리 = <code>분류 전</code>.</strong> 색 칩 줄은 CATEGORIES 순서 고정 13개(저축/투자·대출상환 제외) 앞에 <code>최근·빈도 슬롯 3칸</code>을 둡니다. 슬롯은 최근 30일 수동 소비 거래(자동 생성·분류 전·이체 제외)의 카테고리별 건수 상위 3, 고정비 카테고리 포함, 동률은 최근 사용일 순, 부족하면 채워진 만큼만(0칸이면 구분선 없이 고정 13개부터 · §12-25). 슬롯 3칸만 바뀌고 나머지 위치는 고정입니다. <code>나중에 분류</code>와 <code>저축·상환 ›</code>는 칩 줄 밖, 카테고리 라벨 오른쪽 고정 위치라 360px 가로 스크롤에서도 밀려나지 않습니다.</li>
+<li><strong>최근 기록 칩</strong>은 최근 30일 거래에서 메모+금액+카테고리가 같은 묶음을 빈도순 5개까지. 자동 생성 거래는 빼고, <strong>분류 전 건은 <code>분류 전</code> 라벨을 달고 포함</strong>합니다 — 메모만 적는 사용자도 칩을 쓸 수 있게(§12-22). 탭하면 금액·메모·카테고리를 채우고(분류 전 칩은 금액·메모만, 카테고리는 분류 전 유지) 저장은 사용자가 누릅니다. 칩이 0개면 줄 자체를 숨깁니다(첫 사용).</li>
+<li><strong><code>저축·상환 ›</code></strong>는 날짜·금액·메모를 <code>initialDraft</code>로 들고 소비 탭의 <code>거래 추가</code>를 종류 <code>저축/투자</code> 미리 고른 채 엽니다(탭 전환 불가피, <code>record</code> intent에 <code>initialDraft</code>·<code>returnTo:'home'</code> 추가). 저장 뒤 홈으로 돌아와 완료 카드가 뜹니다(§12-18). <strong><code>수입·환불은 거래 추가에서 ›</code></strong>도 같은 인계이되 종류를 미리 고르지 않습니다(§9-5). 하루 시트는 일반 소비 전용입니다.</li>
+<li><strong><code>다 적었어요</code>·<code>안 썼어요</code>(2단계):</strong> 시트 안 <code>9월 8일 다 적었어요</code>는 시간과 무관하게 그 날짜에 변동비 거래가 1건 이상이면 보입니다(과거 날 시트도 같음). 18시 조건은 상태 줄에만 있습니다. <code>오늘은 안 썼어요</code>는 그 날짜에 <strong>변동비 거래가 0건</strong>이면 보입니다 — 통신비만 자동 생성된 25일에도 누를 수 있습니다.</li>
+<li><strong>닫기:</strong> 스크림·<code>닫기</code>·손잡이·Android 뒤로가기(<code>navi-back</code> → Escape)·웹 뒤로가기 전부 <strong>닫기</strong>입니다(하루 시트만 해시 복원 규칙의 예외). 확인 대화는 없고, 같은 날짜 시트를 다시 열면 세션 안에서 초안이 복원됩니다. 스크림 상단 문구 <code>배경을 눌러 닫기 · 입력값은 남아요</code>.</li>
+<li><strong>샘플 모드:</strong> <code>나중에 분류</code> 칩과 <code>다 적었어요</code>·<code>안 썼어요</code>를 숨기고, 기본 카테고리는 <code>거래 추가</code>와 같은 <code>식비</code>(칩 선택 상태로 표시)입니다. 헤더 <code>샘플 데이터에 저장돼요 · 내 데이터로 시작하면 사라져요 · 내 데이터로 시작 ›</code>, 첫 저장 전에 한 번 확인합니다.</li>
+</ul>
+<h3>4-3. 저장 직전 확인 — 고정비·이체인가요?</h3>
+<p><code>저장</code>을 눌렀을 때 아래 조건이면 저장 대신 인라인 안내 한 줄이 뜹니다(한 번 더 <code>저장</code>을 누르면 그대로 저장).</p>
+<ul>
+<li>분류 전 또는 변동비 색인데 금액이 <strong>활성 반복 규칙의 금액 ±5%</strong> 또는 메모가 규칙 이름과 같음 — 색 선택과 무관하게</li>
+<li>또는 금액이 <strong>월급의 10% 이상</strong>(실수령 360만 → 36만원 이상)</li>
+</ul>
+<pre>고정비나 이체인가요?  [·주거/관리][·통신][·보험][·구독][저축·상환 ›]   그대로 저장
+이 달 휴대폰 요금 55,000원은 25일에 자동으로 생겨요 · [이번 달 자동 생성 건너뛰기] [그대로 저장]</pre>
+<p>반복 규칙과 겹치는 경우의 선택지 <code>이번 달 자동 생성 건너뛰기</code>는 <code>settings.recurringExclusions</code>에 생성 예정 id <code>recurring:&lt;ruleId&gt;:&lt;YYYY-MM&gt;</code>를 <strong>기존 형식 그대로</strong> 미리 넣습니다. 같은 날 이미 자동 생성 건이 있으면 <code>같은 날 통신 55,000원(반복)이 이미 있어요 · [그래도 저장] [취소]</code>.</p>
+<h3>4-4. 완료 카드</h3>
+<p>저장이 끝나면 시트가 닫히고 홈 위에 완료 카드가 뜹니다. <strong>전역 저장 토스트의 자리와 역할을 그대로 이어받는 Toast 변형</strong>(SPEC §19)이며, <code>commit</code>에 <code>notice: 'quick'</code> 옵션을 넘겨 <code>이 기기에 저장했습니다.</code> 토스트를 생략합니다. 저장 확인 UI는 하나입니다.</p>
+<pre>┌ 저장했어요 · 9월 8일                                  닫기 ┐
+│ 오늘 5건 4.9만원 · 소비율 57.9% → 58.2%                     │
+│ [한 건 더]   [되돌리기]                                      │
+└────────────────────────────────────────────────────────────┘</pre>
+<ul>
+<li><strong>자동으로 닫히지 않습니다.</strong> <code>닫기</code>·다음 저장·다른 탭 이동까지 유지 — 현행 되돌리기 수명과 같습니다. 되돌리기는 이 카드 하나뿐이고 대상은 전역 <code>undoState</code>(직전 1회분 전체 상태)입니다.</li>
+<li><strong>제목 3종, 카드는 하나:</strong> 하루 시트 저장 <code>저장했어요</code> · 수정 모드 저장 <code>고쳤어요</code> · 분류하기 저장 <code>분류했어요 · 7건</code>. 뒤의 둘은 행동이 <code>되돌리기</code>뿐입니다(§12-2).</li>
+<li><strong>행동 슬롯 2개 = 주 행동 + <code>되돌리기</code>.</strong> 주 행동은 기본 <code>한 건 더</code>이고, 월급 미입력이면 <code>월급 넣기 ›</code>가 그 자리를 대신합니다(다음 건은 오늘 칸으로). 그 밖의 링크는 셋째 줄 문장 안에 둡니다(§12-30).</li>
+<li>반복 거래 자동 생성(focus·15분 타이머)과 <code>dataMode</code> 감지 저장은 <code>notice: 'silent'</code>로 commit해 <strong>undoState와 문구를 갱신하지 않습니다.</strong> <code>한 건 더</code> 중에 앱을 전환해도 되돌리기 대상은 사용자의 저장입니다.</li>
+<li>사실만 씁니다. 초과·미달 평가어 없음, 색 없음. 둘째 줄의 소비율은 저장 전·후 <code>naviMetrics</code> 값입니다(편의점 12,000원 저장 → 4건 3.7만원이 5건 4.9만원, 57.9%가 58.2%). 월급 미입력이면 <code>소비율 —</code> 대신 주 행동이 <code>월급 넣기 ›</code>가 됩니다.</li>
+<li>조건부 셋째 줄은 한 줄만, 우선순위는 이 순서: 마감된 달 <code>8월 다시 마감 ›</code> &gt; 지난달 <code>8월 합계와 최근 3개월 평균이 바뀌어 이번 달 예상도 달라질 수 있어요</code> &gt; 지난달 첫 입력 <code>기록이 적어 예상 방식이 바뀌어요</code> &gt; 0~5시에 오늘로 저장 <code>어제로 옮기기 ›</code> &gt; 분류 전 저장 <code>고정비면 분류해야 예상이 맞아요</code> &gt; 고정비 색으로 저장 <code>매달 반복으로 만들기 ›</code> &gt; 첫 달 <code>기록이 적어 예상 폭이 커요</code>.</li>
+<li><code>한 건 더</code>는 같은 날짜로 비워진 시트를 엽니다.</li>
+<li><code>dayLog</code> 저장(닫기·안 썼어요)은 카드 없이 <strong>체크 표시 자체가 확인</strong>입니다(<code>notice: 'silent'</code>). 실패·충돌일 때만 상태 줄에 문구가 뜹니다.</li>
+</ul>
+<h3>4-5. 소비율 미리보기 — 저장 전에는 보여 주지 않는다</h3>
+<p>시트 안에서 저장 전 소비율을 보여 주는 값은 정의상 <code>저장되지 않는 값</code>이라 원칙 5에서는 보라입니다. 원칙을 고치지 않고, <strong>미리보기를 두지 않습니다.</strong> 히어로 변화는 저장 뒤 완료 카드의 <code>57.9% → 58.2%</code>로만 봅니다. 대안(§12-9)으로 조건 문구 <code>저장하면 58.2%가 돼요</code>를 두는 경우에도 값은 가상 <code>AppState</code>(<code>saveTransaction(state, draft)</code> 결과)에 <code>naviMetrics</code>를 호출해 얻고 150ms 디바운스합니다. 단순 산술로 따로 계산하는 안은 없습니다 — 고정비 <code>max</code> 규칙과 첫 달 선형 외삽 때문에 저장 후 값과 어긋납니다.</p>
+<h3>4-6. 수정 모드</h3>
+<p>시트 목록의 행을 탭하면 같은 시트가 수정 모드로 바뀝니다.</p>
+<ul>
+<li>금액 필드가 <strong>전체 선택된 채 포커스</strong>되어 타이핑이 값을 덮어씁니다(오타 수정 4탭).</li>
+<li>헤더에 <code>‹ 어제로 · 다음 날로 ›</code> 날짜 이동. 잔액 연결이 없는 거래는 제한 없이, 연결 거래는 날짜 잠금.</li>
+<li>잔액 연결이 있는 거래는 금액·메모·색만 바꿉니다. <code>saveTransaction</code>이 기존 링크로 잔액을 재계산하고 부족 예외가 나면 <code>연결된 계좌 잔액이 부족해요 · 거래 추가에서 확인</code>. 링크 추가·해제는 <code>거래 추가</code>에서만.</li>
+<li>저장하면 완료 카드 <code>고쳤어요 · 9월 3일</code>, 행동은 <code>되돌리기</code>만(§4-4).</li>
+<li>삭제는 기존 확인 대화. 반복 거래면 <code>recurringExclusions</code>에 등록됩니다.</li>
+<li>분류 전 행의 <code>⋯</code> 메뉴에는 <code>매달 반복으로 만들기</code>가 없습니다.</li>
+</ul>
+<hr>
+<h2 id="s5"><span class="num">§5</span>카테고리 — 색으로 지정 · 나중 분류</h2>
+<h3>5-1. 색 ↔ 카테고리 매핑 규칙</h3>
+<p>요청하신 "카테고리는 색상으로 지정"은 하루 시트의 색 칩(색 점 8px + 이름)으로 구현합니다 — 색을 고르는 것이 곧 카테고리를 고르는 것이고, 이름을 붙여 색만으로 뜻을 전하지 않습니다. 달력 칸에는 카테고리색을 쓰지 않는데, 주거 <code>#8b5cf6</code>·구독 <code>#a855f7</code>이 가정 보라 <code>#7A3FE4</code>와 같은 계열이라 44px 칸의 8px 점으로는 구분되지 않고, 칸이 전할 정보는 변동비 합계 + 막대 하나로 끝나기 때문입니다.</p>
+<div class="tw"><table><thead><tr><th>규칙</th><th>내용</th></tr></thead><tbody><tr><td>팔레트</td><td><code>lib/engine/constants.ts</code> 15색 그대로. 새 색 없음</td></tr><tr><td>칩</td><td>색 점 8px + 카테고리 이름. 색만으로 전달하지 않음(<code>colorNotAlone</code>)</td></tr><tr><td>색이 쓰이는 곳</td><td>시트 칩 · 시트 목록 행 · 내역 · 차트. <strong>달력 칸에서는 쓰지 않음</strong></td></tr><tr><td>고정비 4개(주거/관리 · 통신 · 보험 · 구독)</td><td>칩 줄에서 구분선 뒤에 모아 두고 칩 아래 <code>고정비예요 · 실제 청구액으로 저장돼요 · 막대에는 안 넣어요</code></td></tr><tr><td>이체 2개(저축/투자 · 대출상환)</td><td>칩 줄에 없음. <code>저축·상환 ›</code>로 <code>거래 추가</code>에 인계</td></tr><tr><td>문구</td><td><code>색 안 고른</code>이 아니라 <strong><code>카테고리 안 고른 N건</code></strong> — 색을 구분하기 어려운 사용자도 쓸 수 있게</td></tr></tbody></table></div>
+<h3>5-2. 분류 대기 — settings.quickEntry.uncategorized</h3>
+<p><code>나중에 분류</code>로 저장한 거래는 <strong>카테고리 <code>기타</code></strong>로 저장되고 id가 <code>settings.quickEntry.uncategorized</code> 배열에 들어갑니다. Transaction 형식은 다섯 필드 그대로입니다(<code>lib/engine/types.ts</code> 불변).</p>
+<p>불변식 세 개(전부 <code>lib/navi-quick-entry.ts</code>에서):</p>
+<ol>
+<li><strong>카테고리가 <code>기타</code>가 아니면 표식을 제거한다.</strong> 하루 시트 수정 모드·분류하기·소비 탭 <code>거래 추가</code> 어느 경로로 바꿔도 같은 함수(<code>reconcileUncategorized</code>)가 <code>changeState</code> 직전에 돕니다.</li>
+<li><strong>저장 직전 존재하는 id로 걸러 낸다.</strong> 삭제·되돌리기·가져오기 충돌로 남은 유령 id는 저장할 때마다 빠집니다.</li>
+<li><strong>표시는 실시간 교집합만.</strong> <code>uncategorized ∩ transactions(category === '기타')</code>.</li>
+</ol>
+<p><code>골라서 가져오기</code>는 settings 네 키만 합치므로(<code>mergeNaviImport</code>) 가져온 분류 전 건은 영구 <code>기타</code>가 됩니다. 가져오기 화면에 그 사실을 씁니다(§8).</p>
+<h3>5-3. 계산 처리 — 사실 그대로</h3>
+<div class="tw"><table><thead><tr><th>항목</th><th>계산에서</th><th>화면에 표시하는 것</th></tr></thead><tbody><tr><td>소비 합계 · 한도 총액 · 하루 합계</td><td><code>기타</code>도 소비라 <strong>즉시 정확</strong></td><td><code>저장했어요</code></td></tr><tr><td>월말 예상 · 소비율</td><td><code>기타</code>는 변동비 → <code>cur.variable</code>에 들어감. 월세를 분류 전으로 두면 <code>hist.fixed</code>가 이미 월세를 예약하고 있어 예상이 최대 그 금액만큼 과대. 나중에 주거/관리로 바꾸면 <code>cur.fixed↑ · cur.variable↓</code>로 예상이 내려감</td><td>완료 카드·상태 줄 <code>고정비면 분류해야 예상이 맞아요</code> · 재분류 안내 <code>고정비 색으로 바꾸면 월말 예상과 하루 기준선이 다시 계산돼요</code></td></tr><tr><td>카테고리 한도</td><td><code>기타</code> 소진율에 들어감(엔진). 고정비 한도는 <code>max(3개월 평균, 이번 달 실제)</code>라 분류 전 금액은 거기 잡히지 않음</td><td>카테고리 화면 <code>기타</code> 아래 <code>분류 전 4건 3.2만원</code> 서브라인</td></tr><tr><td><code>기타 한도 초과</code> 경고 · 코치 <code>최대 카테고리 비중</code></td><td>엔진·어댑터는 그대로 <code>기타</code>로 판정</td><td>표시 계층에서 분류 전 금액을 뺀 사용량으로 다시 판정해 보여 줌(<code>navi-insights</code>는 보호 파일 아님 · 경고는 AlertsPanel에서 재판정). 크면 <code>분류 전 정리</code> 카드</td></tr><tr><td>다음 달 자동 배분</td><td><code>avgByCat</code>이 3개월 <code>기타</code> 평균을 그대로 써서 분류 전이 남은 채 달을 넘기면 다음 달 <code>기타</code> 배분이 커지고 식비 등이 줄어듦. <code>lib/engine</code>·<code>navi-current</code>가 보호 파일이라 <strong>UI만으로는 못 빼냄</strong></td><td>마감 모달 한 줄 <code>분류 전 4건 · 3.2만원이 기타로 들어가요 · 다음 달 한도 배분에도 기타로 들어가요 · 지금 분류 ›</code>. 근본 처리는 §12-8 결정</td></tr><tr><td>마감된 달의 분류 변경</td><td><code>close.spend</code>는 같아 재마감 경고 없음(비교 기준은 <strong>spend 총액만</strong>, <code>spending-analysis.tsx:695</code> 확인). 이번 달 <code>hist</code>는 바뀜</td><td>완료 카드 <code>마감값 구성이 달라졌어요 · 이번 달 예상이 다시 계산될 수 있어요</code></td></tr></tbody></table></div>
+<h3>5-4. 분류하기 시트(3단계)</h3>
+<p>상태 줄 <code>카테고리 안 고른 7건 · 분류하기 ›</code>로 엽니다(달력 카드가 없으면 내역 필터 칩 <code>분류 전 7건</code>이 진입점). 같은 메모의 건은 묶음 행(<code>커피 ×4 · 18,000원</code>)으로, 오른쪽에 추천 칩 하나(최근 같은 메모의 카테고리). 추천은 <strong>탭 없이는 채워지지 않습니다.</strong> 하단 <code>7건 저장</code>은 <code>changeState</code> 한 번, id·date·amount·memo 보존, category만 바뀝니다. 저장 뒤 완료 카드 <code>분류했어요 · 7건</code>, 행동은 <code>되돌리기</code>만(§4-4, §12-2).</p>
+<hr>
+<h2 id="s6"><span class="num">§6</span>데이터 모델 — 추가만, 백업 호환</h2>
+<pre>settings.quickEntry {
+  version: 1,
+  since: &quot;2026-09-01&quot;,                   ← 시작일. 새 앱 첫 실행일(복원이면 복원일). 이전 칸은 빈 날로 세지 않는다
+  dayLog: {                              ← 날짜 키. 거래를 만들지 않는다
+    &quot;2026-09-06&quot;: { closed: true, noSpend: false, at: &quot;2026-09-06T21:10:00+09:00&quot; },   ← 스트립 6일 &#x27;0.5만 ✓&#x27;
+    &quot;2026-09-05&quot;: { closed: true, noSpend: true,  at: &quot;…&quot; }                            ← 그리드 5일 &#x27;0&#x27;
+  },
+  uncategorized: [&quot;tx_…&quot;, &quot;tx_…&quot;]        ← 카테고리 &#x27;기타&#x27;인 거래 id. §5-2 불변식
+}
+homeLayout.cards   [&quot;calendar&quot;, &quot;nextGuide&quot;, &quot;limit&quot;, &quot;primaryGoal&quot;, &quot;peer&quot;]   ← v4 §6 형식 그대로, 값 &quot;calendar&quot;만 추가. 기본 배열이 이것으로 바뀜(§3-1)
+settings.recurringExclusions             ← 기존 키·형식 그대로. &#x27;이번 달 자동 생성 건너뛰기&#x27;가 예정 id를 넣는다</pre>
+<ul>
+<li><strong>Transaction · 반복 규칙 · 마감 · 잔액 연결 형식 불변.</strong> 거래 id는 지금 생성 방식 그대로.</li>
+<li><strong>검증기 불변.</strong> <code>isStoredState</code>는 모르는 settings 키를 보지 않으므로(<code>navi-storage.ts:174-246</code>) <code>quickEntry</code>를 검증기에 넣지 않습니다. 넣으면 항목 하나가 어긋날 때 상태 전체가 거부돼 복원이 실패합니다. 대신 <code>getQuickEntry(state)</code>가 <code>getRecurringRules</code>와 같은 방식으로 <strong>느슨하게 읽어 잘못된 항목만 걸러 냅니다</strong> — 날짜 키·boolean·string id가 아닌 항목은 빼고, <code>since</code>가 없거나 날짜가 아니면 오늘로 보정하며, 통째로 깨져 있으면 기본값.</li>
+<li>백업 호환:</li>
+</ul>
+<div class="tw"><table><thead><tr><th>방향</th><th>결과</th></tr></thead><tbody><tr><td>옛 백업 → 새 앱</td><td><code>quickEntry</code> 기본값(<code>since</code> = 복원일). 칸은 거래만. 닫은 표시·<code>0</code>·분류 전 없음</td></tr><tr><td>새 백업 → 옛 앱</td><td>모르는 settings 키 무시 → 통과. 분류 전은 <code>기타</code>로 보이고 <code>0</code> 표시만 사라짐</td></tr><tr><td>골라서 가져오기</td><td><code>quickEntry</code>는 안 따라옴. 가져온 분류 전 건은 <code>기타</code></td></tr><tr><td><code>quickEntry</code>가 깨진 백업</td><td>검증기 통과 → getter가 그 키만 기본값. 거래는 그대로</td></tr></tbody></table></div>
+<ul>
+<li>저장 경로는 전부 <code>changeState → materializeRecurringTransactions(withDetectedDataMode) → saveGate.run → saveNaviData</code>. <code>commit</code>에 <code>notice</code> 옵션(<code>'default' | 'quick' | 'silent'</code>)만 추가하고 되돌리기는 직전 1회분 전체 상태(닫기·분류도 함께 되돌려짐). Android 암호화 파일도 같은 JSON.</li>
+<li><strong>토큰:</strong> 새 hex 없음. 칸은 <code>track</code> · <code>brand-soft</code> · <code>ink-2</code> · <code>ink-3</code> · <code>disabled</code>만 조합합니다. <code>dataPalette</code>는 엔진 색 거울이라 손대지 않습니다. 키가 필요하면 <code>component.calendar</code> 블록에 두고, 새 hex가 하나라도 생기면 <code>darken.py MAP</code>에 짝을 추가합니다(§9-13).</li>
+<li><strong>SPEC-COMPONENTS 신규 등록(치수는 허용 목록 값만):</strong></li>
+</ul>
+<div class="tw"><table><thead><tr><th>컴포넌트</th><th>기반</th><th>치수</th></tr></thead><tbody><tr><td>CalendarCell</td><td>button</td><td>47.7×56(360: 44.6×56) · 날짜 11/500 · 합계 11/600 · 막대 3px radius 2 · 배지 11/500 · focus ring 3px</td></tr><tr><td>WeekStrip / MonthGrid</td><td>Card 안 7열 grid</td><td>간격 0 · 요일 줄 14px · 제목 오른쪽 토글 <code>펼치기 ▾</code>/<code>접기 ▴</code></td></tr><tr><td>StatusLine</td><td>meta 11/400 ink-2</td><td>한 줄 말줄임 · 강조 표시 시 600 + brand-soft 필 radius 8</td></tr><tr><td>DaySheet</td><td>BottomSheet §18</td><td>radius 26 · 헤더 44 · 푸터 버튼 52</td></tr><tr><td>ColorChipRow</td><td>Chip radius 8</td><td>높이 32 · 점 8px + 이름 12.5/500 · 가로 스크롤</td></tr><tr><td>RecentEntryChip</td><td>Chip</td><td>높이 32 · 메모 8자 + … · 금액 tabular · <code>분류 전</code> 라벨</td></tr><tr><td>DoneCard</td><td>Toast §19 변형</td><td>dc-keep(라이트·다크 동일) · 제목 3종 · 행동 2 + 닫기</td></tr><tr><td>ClassifyGroupRow</td><td>DataRow §10 변형</td><td>높이 46 · 왼쪽 묶음 라벨 · 오른쪽 추천 칩</td></tr></tbody></table></div>
+<hr>
+<h2 id="s7"><span class="num">§7</span>사용자 흐름과 유저 스토리</h2>
+<h3>7-1. 흐름</h3>
+<p>앱의 주기는 한 줄입니다: <strong>첫 실행 · 월급 · 홈 구성(달력이 기본 켜짐) → 매일 하루 시트 → 주말 분류하기 → 월말 마감 → 다음 달 하루 기준선(<code>personalized</code>).</strong> 아래는 그 안의 기록 한 건입니다.</p>
+<pre>홈 (히어로 57.9% · 달력 카드 주 스트립 · 오늘 칸 &#x27;3.7만&#x27;)
+  │ 오늘 칸 / 히어로 &#x27;소비 기록하기&#x27; / 어제 칸
+  ▼
+하루 시트 (홈 위 · 오늘은 금액 자동 포커스 · 기록 있는 과거 날은 목록 우선)
+  │ 숫자 12,000 → (최근 기록 칩 · 메모 · 색 칩 · 기본은 분류 전) → 저장
+  │ (규칙 금액 일치 · 월급 10% 이상) → &#x27;고정비나 이체인가요?&#x27; 한 줄
+  ▼
+완료 카드 (닫기·다음 저장까지 유지) ── &#x27;한 건 더&#x27; ──▶ 하루 시트 (같은 날짜 · 비워짐)
+  │ &#x27;오늘 5건 4.9만원 · 소비율 57.9% → 58.2%&#x27;  ·  &#x27;되돌리기&#x27;
+  ▼
+홈 — 칸 &#x27;3.7만&#x27; → &#x27;4.9만&#x27;(막대 꽉 참 · 기준선보다 500원 많음, 주황 없음) · 히어로 58.2% · 상태 줄 &#x27;오늘 5건 4.9만원 · 이번 달 기록한 날 7일&#x27;
+  │ (18시 이후) 상태 줄 &#x27;오늘 5건 4.9만원 · 9월 8일 다 적었어요 ›&#x27;
+  ▼
+칸에 체크
+  │ (분류 전이 쌓이면) 상태 줄 &#x27;카테고리 안 고른 7건 · 분류하기 ›&#x27;
+  ▼
+분류하기 시트 — 묶음 · 추천 칩 · &#x27;7건 저장&#x27; → 완료 카드 &#x27;분류했어요 · 7건&#x27;
+  │ (다음 달 초) 소비 탭 › 월 마감 — &#x27;분류 전 4건 · 3.2만원이 기타로 들어가요 · 다음 달 배분에도 기타로 들어가요&#x27;
+  ▼
+마감</pre>
+<h3>7-2. 상황별 유저 스토리</h3>
+<div class="tw"><table><thead><tr><th>언제</th><th>하고 싶은 것</th><th>앱에서</th></tr></thead><tbody><tr><td>첫 실행, 월급 미입력</td><td>설정보다 오늘 산 커피값부터 적고 싶다</td><td>오늘 칸을 누르면 기준선 없이도 시트가 열리고 저장된다. 완료 카드 <code>저장했어요 · 오늘 1건 0.5만원</code> + 주 행동 <code>월급 넣기 ›</code>. 히어로는 <code>—</code> 그대로이고, 월급을 넣으면 다음 저장부터 소비율이 켜진다</td></tr><tr><td>첫 실행, 홈 구성(v4)</td><td>홈에 달력이 들어가는지 보고 고르고 싶다</td><td>HomeSetup 목록 첫 행 <code>이번 달 달력</code>이 켜진 채 주 스트립 축소판이 보인다. 그대로 두면 히어로 아래 첫 카드로 나오고, 싫으면 여기서 끈다</td></tr><tr><td>첫 달 둘째 주</td><td>한 건 넣었더니 월말 예상이 튀어 놀라고 싶지 않다</td><td>이력이 없으면 선형 외삽이라 실제로 튄다. 완료 카드 셋째 줄 <code>기록이 적어 예상 폭이 커요</code>. 칸은 기준선 <code>—</code>라 막대 없이 금액만</td></tr><tr><td>매일 아침</td><td>어젯밤 택시비를 적고 싶다</td><td>어제 칸 → 숫자 → 저장. 어제 칸의 <code>—</code>가 <code>0.9만</code>으로 바뀐다</td></tr><tr><td>새벽 1시</td><td>방금 낸 술값이 오늘로 찍히는 걸 막고 싶다</td><td>오늘 시트 둘째 줄 <code>어젯밤 소비면 ‹ 로 어제로 바꿔요</code>. 그냥 저장했으면 완료 카드 <code>어제로 옮기기 ›</code> 한 번</td></tr><tr><td>매일 커피</td><td>매번 치기 싫다</td><td>오늘 칸 → 최근 기록 칩 <code>커피 4,500 ·카페/간식</code> → 저장. 3탭, 숫자 0</td></tr><tr><td>메모만 적는 사람</td><td>색은 안 고르고 메모로만 남기고 싶다</td><td><code>편의점</code> 메모 + 금액 → 저장. 다음부터 최근 기록 칩에 <code>편의점 6,500 ·분류 전</code>이 올라와 한 번에 채워지고, 카테고리는 분류 전 그대로다</td></tr><tr><td>계산대 앞</td><td>금액만 적고 싶다</td><td>색을 안 고르고 저장. <code>분류 전</code>으로 남고 소비 합계·한도 총액은 그 자리에서 정확하다. 월말 예상은 변동비 가정이라 완료 카드에 <code>고정비면 분류해야 예상이 맞아요</code></td></tr><tr><td>계산대 앞, 큰 금액</td><td>36만원짜리를 급히 넣는다</td><td>저장을 누르면 <code>고정비나 이체인가요?</code> 한 줄. <code>그대로 저장</code>이면 그대로</td></tr><tr><td>저녁</td><td>오늘 얼마나 넘었는지 알고 싶다</td><td>다섯 건째 편의점 12,000원을 넣으니 합계 49,000원. 오늘 칸 막대가 꽉 차고 시트 둘째 줄 <code>하루 기준선보다 500원 많아요</code>. 주황 없음</td></tr><tr><td>퇴근길</td><td>커피·점심·편의점을 한 번에 넣고 싶다</td><td>저장 → 완료 카드 <code>한 건 더</code> → 같은 날짜로 비워진 시트. 카드는 사라지지 않으니 천천히 눌러도 된다</td></tr><tr><td>밤</td><td>오늘 기록이 끝났다고 표시하고 싶다</td><td>18시 이후 상태 줄 <code>오늘 5건 4.9만원 · 9월 8일 다 적었어요 ›</code> 1탭 → 칸에 체크. 시트 안 버튼은 시간과 무관. 토스트 없음</td></tr><tr><td>안 쓴 날</td><td>빈칸으로 남기고 싶지 않다</td><td>오늘 칸 → <code>오늘은 안 썼어요</code>(변동비 0건일 때만) → 칸에 <code>—</code>가 아닌 <code>0</code>. 상태 줄 <code>오늘은 안 썼다고 표시했어요</code>. 소비율에는 영향 없음</td></tr><tr><td>25일, 통신비만 자동 생성된 날</td><td>변동비는 안 썼다고 표시하고 싶다</td><td>변동비 0건이라 <code>오늘은 안 썼어요</code>가 보인다 → 칸 <code>0</code> + <code>고정</code> 배지. 안 누르면 <code>—</code> + <code>고정</code></td></tr><tr><td>여행 뒤</td><td>5일이 비어 있는데 부담 없이 채우고 싶다</td><td>펼침에만 <code>이번 달 빈 날 5일 · 빈 날은 —로 남아요</code>. 기억나는 날은 적고 나머지는 <code>—</code>로 둔다. 연속 카운터가 없어 잃을 것도 없다</td></tr><tr><td>20일에 설치</td><td>첫날부터 밀린 숙제를 보고 싶지 않다</td><td>시작일(첫 실행일) 이전 칸은 옅은 빈 칸. <code>빈 날</code>은 그 뒤부터만 세고, 8월 20일을 소급 입력해도 시작일은 앞으로 가지 않는다</td></tr><tr><td>월세 낸 날</td><td>이 돈이 하루 막대를 터뜨리지 않길 바란다</td><td>주거/관리 색을 고르면 <code>고정비예요 · 실제 청구액으로 저장돼요 · 막대에는 안 넣어요</code>. 칸은 <code>고정</code> 배지 하나. 청구액이 3개월 평균보다 크면 상태 줄 1회 <code>고정비가 바뀌어 하루 기준선이 48,500 → 46,800원이 됐어요</code></td></tr><tr><td>월세 낸 날, 다음 달부터</td><td>매달 자동이면 좋겠다</td><td>완료 카드 셋째 줄 <code>매달 반복으로 만들기 ›</code> → 규칙 다이얼로그가 이름·금액·카테고리·결제일로 채워지고 시작 월은 다음 달. 이름이 비면 저장 불가</td></tr><tr><td>통신비를 20일에 손으로</td><td>25일에 두 번 잡히지 않길 바란다</td><td>색을 안 골라도 금액이 규칙과 같아 <code>이 달 휴대폰 요금 55,000원은 25일에 자동으로 생겨요 · [이번 달 자동 생성 건너뛰기]</code>. 놓쳤으면 25일 이후 상태 줄 <code>통신 반복 건이 두 번 잡혔을 수 있어요 · 확인 ›</code></td></tr><tr><td>적금 이체한 날</td><td>소비로 잡히지 않길 바란다</td><td><code>저축·상환 ›</code> → 금액·메모를 들고 <code>거래 추가</code>가 저축/투자로 열린다 → 저장 → 홈으로 돌아오고 칸에는 <code>이체</code>만</td></tr><tr><td>환불받은 날</td><td>카드 취소액을 적고 싶다</td><td>하루 시트에는 없다. <code>수입·환불은 거래 추가에서 ›</code>로 날짜·금액·메모를 들고 넘어가고, 저장 뒤 홈으로 돌아온다</td></tr><tr><td>지난주 오타</td><td>45,000원을 4,500원으로 고치고 싶다</td><td><code>펼치기 ▾</code> → 그 칸 → 행(금액 전체 선택) → 타이핑 → 저장. 4탭. 완료 카드 <code>고쳤어요</code></td></tr><tr><td>방금 오타</td><td>바로 물리고 싶다</td><td>완료 카드 <code>되돌리기</code>. 카드는 닫기 전까지 남는다</td></tr><tr><td>잘못된 날</td><td>지우고 싶다</td><td>칸 → 행 → <code>삭제</code> → 확인. 반복 거래면 제외 목록에 남는다</td></tr><tr><td>어제인데 오늘로 저장</td><td>옮기고 싶다</td><td>행 → 수정 모드 헤더 <code>‹ 어제로</code> → 저장. 재타이핑 없음</td></tr><tr><td>주말</td><td>카테고리 안 고른 7건을 한 번에 치우고 싶다</td><td>분류하기 시트에서 <code>커피 ×4</code>는 추천 칩 한 번, 나머지 3건은 개별 → <code>7건 저장</code> → 완료 카드 <code>분류했어요 · 7건</code></td></tr><tr><td>28일</td><td>마감 전에 정리하고 싶다</td><td>상태 줄이 굵게 <code>카테고리 안 고른 4건 · 월말 전에 정리 ›</code>. 주황 아님</td></tr><tr><td>10월 2일</td><td>9월 것이 남았다</td><td>상태 줄 <code>9월 분류 전 4건 · 마감 전에 정리 ›</code> → 9월 분류하기 시트</td></tr><tr><td>다음 달 초, 마감</td><td>분류 전이 기타로 들어가는 걸 알고 마감하고 싶다</td><td>마감 모달 위 한 줄 <code>분류 전 4건 · 3.2만원이 기타로 들어가요 · 다음 달 한도 배분에도 기타로 들어가요 · 지금 분류 ›</code></td></tr><tr><td>8월 마감 뒤</td><td>빠뜨린 8월 거래를 넣고 싶다</td><td>시트 헤더 날짜 탭 → 주 선택기에서 8월 20일 → 헤더 <code>8월 기록이에요 · 마감한 달이라 저장하면 다시 마감해 주세요</code> → 저장 → 완료 카드 <code>8월 합계와 최근 3개월 평균이 바뀌어 이번 달 예상도 달라질 수 있어요 · 8월 다시 마감 ›</code>. 홈 상태 줄에 <code>8월 다시 마감 필요 ›</code>가 재마감 전까지 남는다</td></tr><tr><td>폰 교체</td><td>백업을 복원하면 닫은 표시·분류 전이 살아 있길 바란다</td><td>전체 복원은 그대로 돌아온다. 백업 안내 <code>닫은 날 표시와 분류 전 표시도 함께 저장돼요</code></td></tr><tr><td>360px 폰</td><td>칸 숫자와 시트가 잘리지 않길 바란다</td><td>칸 44.6×56에 <code>4.7만</code>, 시트는 목록 3행 + 저장 버튼까지 보이고 메모 포커스 시 저장 버튼이 키보드 위로 온다</td></tr><tr><td>글자를 크게 쓰는 사람</td><td>시스템 글자 확대에서도 칸이 깨지지 않길 바란다</td><td>칸 글자는 줄이지 않는다. 칸 높이가 늘고, 넘치면 <code>4만</code>처럼 소수를 버리고, 그래도 넘치면 숫자 대신 막대·배지만. 숫자는 시트와 aria에 있다</td></tr><tr><td>달력이 싫은 사용자</td><td>홈에서 빼고 싶다</td><td>설정 › 홈 구성에서 끄면 카드만 사라지고 <code>소비 기록하기</code>는 여전히 오늘 시트를 연다. <code>8월 다시 마감 필요 ›</code> 같은 안내는 소비 탭 알림 줄에서 본다</td></tr></tbody></table></div>
+<hr>
+<h2 id="s8"><span class="num">§8</span>예외 케이스</h2>
+<div class="tw"><table><thead><tr><th>상황</th><th>처리</th><th>화면 문구</th></tr></thead><tbody><tr><td>과거 날짜(이번 달)</td><td>칸 터치 → 그 날짜로 시트, 피커 없음. 저장하면 spend·월말 예상·히어로 즉시 재계산</td><td>헤더 <code>9월 3일 목요일</code>(어제까지만 <code>어제</code>)</td></tr><tr><td>지난달 날짜(스트립 앞 칸 · 주 선택기)</td><td>요일 자리에 <code>8월</code>. 그 달 기준선이 없으므로 막대 없이 금액만. 저장하면 8월 합계와 <code>hist</code>(직전 3개월 평균)가 바뀌어 <strong>이번 달 월말 예상·히어로·카테고리 한도가 다시 계산될 수 있음.</strong> 직전 3개월이 비어 있던 사용자는 <code>hist null → 값</code>으로 예상 공식 자체가 바뀜</td><td>헤더 <code>8월 기록이에요 · 8월 소비에 들어가요</code> · 완료 카드 <code>8월 30일에 저장했어요 · 8월 합계와 최근 3개월 평균이 바뀌어 이번 달 예상도 달라질 수 있어요</code>(히어로가 바뀌면 <code>57.9% → 58.4%</code> 그대로 표시) · 첫 입력이면 <code>기록이 적어 예상 방식이 바뀌어요</code></td></tr><tr><td>다음 달 날짜(스트립 뒤 칸, 9/27~10/3 주)</td><td>요일 자리에 <code>10월</code>. 미래 날짜와 같이 disabled, 눌러도 열리지 않음. 그리드에는 나오지 않음(이번 달만)</td><td>—</td></tr><tr><td>마감된 달</td><td>저장은 막지 않음. 마감 수입·잔액·스냅숏은 그대로라 재마감 안내. 재마감 경고는 <code>closed.spend !== spendOf().spend</code>(총액 비교)일 때만이라 분류만 바꾸면 경고 없음. 분류로 고정/변동 분할이 바뀌면 약한 안내. 이번 달 <code>hist</code>는 바뀜</td><td>헤더 <code>마감한 달이에요 · 저장하면 마감값과 달라지니 다시 마감해 주세요</code> · 완료 카드 <code>8월 다시 마감 ›</code> · 홈 상태 줄 <code>8월 다시 마감 필요 ›</code>(재마감 전까지) · 분류만 바꾸면 <code>마감값 구성이 달라졌어요 · 이번 달 예상이 다시 계산될 수 있어요</code></td></tr><tr><td>미래 날짜</td><td>월 그리드에서만 보임. 날짜 disabled, 숫자 자리 빈 칸, 눌러도 열리지 않음. 시트 <code>›</code>는 오늘에서 멈춤. 구버전 데이터의 미래 거래는 금액이 보이고 수정·삭제만 허용</td><td>상태 줄 3초 <code>아직 오지 않은 날은 적을 수 없어요</code></td></tr><tr><td>자정 넘김</td><td>시트는 열 때의 날짜를 헤더에 고정하고 그 날짜로 저장(23:58에 연 시트를 00:02에 저장해도 8일). <code>dayLog</code>도 헤더 날짜 기준. 홈은 렌더·focus·visibilitychange·15분 타이머에서 오늘을 다시 잡음</td><td>헤더 날짜가 항상 보임</td></tr><tr><td>새벽 0~5시</td><td>오늘 시트 둘째 줄 안내. 닫기 버튼 옆에도 안내. 강제하지 않음. 오늘로 저장했으면 완료 카드에 옮기기 링크</td><td><code>어젯밤 소비면 ‹ 로 어제로 바꿔요</code> · 닫기 버튼 아래 <code>어젯밤 기준이면 ‹ 로 어제를 닫아요</code> · 완료 카드 <code>어제로 옮기기 ›</code></td></tr><tr><td>금액 0 · 빈 금액</td><td><code>저장</code> 비활성. 0원 거래는 만들지 않음(<code>saveTransaction</code>이 amount&gt;0 요구). <code>안 썼어요</code>는 <code>dayLog.noSpend</code> → 칸 <code>0</code>. <strong>소비율·월 비교·코치·경고에 영향 없음</strong>(<code>hasExpenseBasis</code>는 거래 기준 그대로). 그 달 거래가 0건이면 상태 줄에 병기</td><td><code>금액을 넣거나, 안 썼으면 「오늘은 안 썼어요」로 닫아요</code> · <code>오늘은 안 썼다고 표시했어요 · 거래는 만들지 않아요</code> · <code>표시만 있고 기록은 없어 소비율은 —예요</code></td></tr><tr><td>고정비·이체만 있는 날</td><td>기본 상태는 <code>—</code> + 배지(<code>고정</code>·<code>이체</code>). 변동비 거래가 0건이므로 <code>오늘은 안 썼어요</code>를 누를 수 있고, 누르면 <code>0</code> + 배지. <code>이번 달 기록한 날</code>에는 세지 않음(§12-15)</td><td>시트 둘째 줄 <code>오늘 변동비 기록 없음 · 통신 55,000원(고정)</code></td></tr><tr><td><code>안 썼어요</code> 뒤 거래 저장</td><td><code>noSpend</code> 해제, <code>closed</code>도 해제. 칸은 <code>0</code> → 금액. 다시 닫으려면 버튼 한 번</td><td>상태 줄 <code>9월 8일 표시가 풀렸어요 · 다시 닫기</code></td></tr><tr><td>닫은 날에 추가·삭제</td><td>닫기는 잠금이 아님. 추가 저장 시 <strong>체크 자동 해제</strong>. 마지막 거래를 삭제하면 닫기 해제 → <code>—</code>(자동으로 <code>0</code>을 만들지 않음). 사용자가 원하면 <code>안 썼어요</code>를 다시 누름. 시트 안 <code>다 적었어요</code>는 시간 무관·변동비 1건 이상이면 항상 보임</td><td>헤더 <code>닫은 날 · 닫기 풀기</code> · 삭제 뒤 <code>표시를 풀었어요 · 안 썼으면 「오늘은 안 썼어요」</code></td></tr><tr><td>같은 날 여러 건</td><td>완료 카드 <code>한 건 더</code>로 같은 날짜 유지. 칸은 합계. 되돌리기는 직전 1건이라 특정 건은 행 → 삭제. 저장 중 연타는 busy로 무시</td><td>헤더 <code>오늘 4건 3.7만원</code></td></tr><tr><td>반복 거래와 겹침 — 결제일 전</td><td>활성 규칙과 금액 ±5% 또는 메모 일치면 <strong>색 선택과 무관하게</strong> 안내. <code>건너뛰기</code>는 <code>recurringExclusions</code>에 <code>recurring:&lt;ruleId&gt;:&lt;YYYY-MM&gt;</code> 미리 등록</td><td><code>이 달 휴대폰 요금 55,000원은 25일에 자동으로 생겨요 · [이번 달 자동 생성 건너뛰기] [그대로 저장]</code></td></tr><tr><td>반복 거래와 겹침 — 같은 날 이미 있음</td><td>인라인 안내 + 두 선택지. 막지 않음</td><td><code>같은 날 통신 55,000원(반복)이 이미 있어요 · [그래도 저장] [취소]</code></td></tr><tr><td>반복 거래와 겹침 — 자동 생성 뒤 발견</td><td>focus·타이머 뒤 새 모듈이 같은 달 같은 카테고리 ±5%(또는 메모 = 규칙 이름)의 수동 건과 자동 건 쌍을 찾으면 상태 줄. 탭하면 그 날짜 시트에 두 행</td><td><code>통신 반복 건이 두 번 잡혔을 수 있어요 · 확인 ›</code></td></tr><tr><td>고정비를 여기서 넣을 때</td><td>허용. 실제 청구액으로 저장. 칸 숫자·막대에서 제외, <code>고정</code> 배지. <code>fixedCost = max(3개월 평균, 이번 달 실제)</code>라 청구액이 평균보다 크면 <strong>기준선이 내려가고 이미 지난 칸의 막대도 새 기준으로 다시 그려짐.</strong> 반복 미리 채움은 시작 월 = 다음 달</td><td><code>고정비예요 · 실제 청구액으로 저장돼요 · 막대에는 안 넣어요</code> · 상태 줄 1회 <code>고정비가 바뀌어 하루 기준선이 48,500 → 46,800원이 됐어요 · 지난 칸 표시도 바뀌어요</code> · 규칙 다이얼로그 <code>이번 달 건은 방금 저장한 거래로 이미 있어요</code></td></tr><tr><td>저축 이체 · 대출상환</td><td>하루 시트는 일반 소비 전용. <code>저축·상환 ›</code>가 <code>initialDraft</code>·<code>returnTo:'home'</code>을 들고 <code>거래 추가</code>를 종류 미리 고른 채 연다(탭 전환). 저장 뒤 홈 복귀. 시트 목록에 <code>소비율 제외</code> 배지·회색 금액, 칸에 <code>이체</code></td><td><code>저축·투자와 대출상환은 거래 추가에서 남겨요 · 소비율에는 안 들어가요</code></td></tr><tr><td>수입 · 환불</td><td>하루 시트 불가. 시트 안 링크가 날짜·금액·메모를 <code>initialDraft</code>로 들고 <code>거래 추가</code>를 종류 미선택으로 연다(§9-5). 저장 뒤 홈 복귀</td><td><code>수입·환불은 거래 추가에서 ›</code></td></tr><tr><td>분류 전인 채 월말</td><td>강조 표시 조건이면 상태 줄 굵게(주황 아님). 달이 바뀌면 문구에 달 이름. 마감 모달 한 줄. 마감을 막지 않음. 분류 전이 남은 채 넘어가면 다음 달 <code>기타</code> 배분이 커짐</td><td><code>카테고리 안 고른 4건 · 월말 전에 정리 ›</code> · 다음 달 <code>9월 분류 전 4건 · 마감 전에 정리 ›</code> · 마감 모달 <code>분류 전 4건 · 3.2만원이 기타로 들어가요 · 다음 달 한도 배분에도 기타로 들어가요 · 지금 분류 ›</code></td></tr><tr><td>마감 모달에서 <code>지금 분류 ›</code></td><td>마감 모달은 값·체크박스를 유지한 채 대기, 분류하기 시트가 위에 뜨고 닫히면 모달로 복귀</td><td>—</td></tr><tr><td>색을 잘못 찍음</td><td>수정 모드 또는 내역에서 바꿈. 변동↔고정이면 <code>cur.fixed/variable</code>이 이동해 <strong>월말 예상·히어로·하루 기준선이 바뀔 수 있음</strong></td><td><code>고정비 색으로 바꾸면 월말 예상과 하루 기준선이 다시 계산돼요</code></td></tr><tr><td>하루 시트 → 거래 추가 인계</td><td>확인 없이 교체. 인계 값은 <code>initialDraft</code>로만</td><td>—</td></tr><tr><td>잔액 연결이 있는 거래를 수정 모드로 고침</td><td>금액·메모·색만. 날짜 이동 잠금. 부족 예외면 안내</td><td><code>연결된 계좌 잔액이 부족해요 · 거래 추가에서 확인</code></td></tr><tr><td>반복 거래를 수정 모드에서 삭제</td><td>기존 확인 → <code>recurringExclusions</code> 등록 → 재생성 안 됨</td><td><code>이 거래를 삭제할까요?</code></td></tr><tr><td>최근 기록 칩 0개 · 슬롯 0칸(첫 사용)</td><td>최근 기록 줄은 라벨째 숨김. 슬롯은 채워진 만큼만, 0칸이면 구분선 없이 고정 순서 13개부터. 첫 저장 뒤 다음 시트부터 채워짐</td><td>—</td></tr><tr><td>달력 카드를 끈 사용자 · 1단계(상태 줄 없음)</td><td>상태 줄 전용 안내(<code>8월 다시 마감 필요 ›</code> · 반복 중복 의심 · 기준선 변경 · 분류 전 강조 표시)는 소비 탭 알림 줄(AlertsPanel)이 같은 문구·같은 우선순위로 표시. <code>8월 다시 마감 필요 ›</code>는 월 마감 카드에도. <code>분류하기 ›</code>는 내역 필터 칩 <code>분류 전 N건</code>(§9-6·§9-9·§9-17, §12-29)</td><td>문구 동일</td></tr><tr><td>백업 복원 옛 → 새</td><td><code>quickEntry</code> 기본값(<code>since</code> = 복원일). 칸은 거래만. <code>기록한 날</code>은 거래 기준</td><td>—</td></tr><tr><td>백업 복원 새 → 옛</td><td>모르는 settings 키 무시 → 통과. 분류 전은 <code>기타</code>, <code>0</code> 표시만 사라짐</td><td>—</td></tr><tr><td>골라서 가져오기</td><td><code>quickEntry</code>는 안 따라옴. 가져온 분류 전 건은 <code>기타</code></td><td>가져오기 화면 <code>닫은 날 표시와 분류 전 표시는 전체 복원에서만 돌아와요</code></td></tr><tr><td><code>quickEntry</code>가 깨진 백업</td><td>검증기는 그대로 통과(모르는 키를 보지 않음). <code>getQuickEntry</code>가 그 키만 기본값. 거래는 살림</td><td>—</td></tr><tr><td>좁은 화면 360×640</td><td>카드 좌우 패딩 10 → 칸 44.6×56, 합계 11px 유지. 시트는 목록 3행 + <code>N건 더 보기</code>, 상단 영역만 스크롤, 푸터 고정. 메모 포커스 시 저장 버튼이 키보드 위 고정 행. 본문 가로 스크롤 없음</td><td>—</td></tr><tr><td>시스템 글자 크기 확대</td><td>칸 글자를 줄이지 않음(접근성 설정 존중). 칸 높이 자동. 합계·배지가 칸 폭을 넘치면 1단계 소수 버림(<code>3.7만</code> → <code>4만</code>) → 2단계 숫자 숨기고 막대·배지만. 숫자는 aria·시트·상태 줄에 그대로(§12-28)</td><td>—</td></tr><tr><td>긴 메모</td><td>60자 상한, 50자부터 카운터. 기존 60자 초과 메모는 열리고 저장되며 추가 입력만 막음. 목록·내역 1줄 말줄임, 최근 기록 칩 8자 + …. 칸에는 메모를 안 씀</td><td><code>52/60</code> · 초과 시 <code>64/60 · 더 못 넣어요</code></td></tr><tr><td>월급·한도 미입력</td><td>기록은 막지 않음. 기준선 <code>—</code>, 칸은 금액만, 히어로 <code>—</code>. 완료 카드 주 행동 <code>월급 넣기 ›</code></td><td>시트 둘째 줄 <code>월급을 아직 안 넣었어요 · 기준선 없이 기록만 쌓여요</code></td></tr><tr><td><code>variableBudget === 0</code>(고정비 배분 ≥ 총한도)</td><td>기준선 <code>—</code>, 막대 없음</td><td>시트 둘째 줄 <code>하루 기준선 — · 고정비가 한도를 넘었어요 ›</code></td></tr><tr><td>첫 달(직전 3개월 이력 없음)</td><td><code>personalized === false</code> → 고정비 배분이 표준 비중 추정이라 기준선 <code>—</code>, 막대 없음. 월말 예상은 선형 외삽. 공식 불변</td><td>상태 줄 <code>지난 3개월 기록이 없어 하루 기준선은 다음 달부터 보여요</code> · 완료 카드 <code>기록이 적어 예상 폭이 커요</code></td></tr><tr><td>기준선이 바뀜(한도·월급·고정비 청구액)</td><td>기준선을 저장하지 않으므로 이번 달 모든 칸이 새 기준선으로 다시 그려짐. 원인별 1회 상태 줄</td><td>한도 화면 <code>하루 기준선은 자동 배분 기준이에요 · 직접 정한 고정비 한도는 반영되지 않아요 · 기준선이 바뀌면 이번 달 달력도 새 기준으로 보여요</code> · 상태 줄 <code>기준선이 52,000 → 48,500원으로 바뀌었어요</code></td></tr><tr><td>샘플 모드</td><td>샘플 거래로 그림. <code>나중에 분류</code> 칩·닫기 버튼 숨김. 기본 카테고리는 <code>거래 추가</code>와 같은 <code>식비</code>(칩 선택 상태로 표시). 저장은 샘플 상태에 들어가고 <code>내 데이터로 시작</code>이면 사라짐(첫 저장 전 한 번 확인)</td><td>헤더 <code>샘플 데이터에 저장돼요 · 내 데이터로 시작하면 사라져요 · 내 데이터로 시작 ›</code> · 상태 줄 <code>샘플에서는 닫기 표시를 세지 않아요 · 카테고리는 지금 골라요</code></td></tr><tr><td>저장 실패</td><td>입력값 유지, 시트 유지</td><td><code>기기에 저장하지 못했어요 · 입력한 값은 그대로 있어요 · 다시 시도</code></td></tr><tr><td>동시 저장(반복 거래 15분 타이머와 겹침)</td><td>saveGate expected 불일치면 초안 유지. 다음 저장은 최신 상태 위에 적용. 자동 저장은 <code>silent</code>라 토스트·되돌리기를 건드리지 않음</td><td><code>다른 변경이 먼저 저장됐어요 · 다시 저장</code></td></tr><tr><td>되돌리기 뒤</td><td>거래·닫기·분류 모두 직전 전체 상태로. 칸의 금액·체크·<code>0</code>도 함께. 자동 생성분은 다음 focus에서 다시 생김</td><td><code>마지막 변경을 되돌렸어요</code></td></tr><tr><td>시트가 열린 채 뒤로가기</td><td>웹 popstate·Android <code>navi-back</code>(Escape) 모두 <strong>닫기</strong>. 초안은 세션 안에서 복원</td><td>스크림 <code>배경을 눌러 닫기 · 입력값은 남아요</code></td></tr><tr><td>다크 테마</td><td>칸·막대·체크는 토큰 다크 값. 완료 카드는 라이트·다크 동일(dc-keep)</td><td>—</td></tr></tbody></table></div>
+<hr>
+<h2 id="s9"><span class="num">§9</span>함께 고칠 것</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>어디</th><th>무엇</th></tr></thead><tbody><tr><td>1</td><td>히어로 CTA · 코치 <code>지출 기록</code> · 다음 안내 <code>첫 소비 기록</code> · PeerCard</td><td>record intent = 오늘 하루 시트. 소비 탭 이동 없음. intent 형식을 <code>'record'</code>(+<code>initialDraft</code>·<code>returnTo</code>)와 <code>'close:&lt;YYYY-MM&gt;'</code>으로 확장</td></tr><tr><td>2</td><td>홈 <code>이번 달 한도</code> 카드</td><td><code>하루 47,270원</code> 라벨을 <code>앞으로 하루 47,270원</code>으로(§3-3 표). 값은 10원 반올림</td></tr><tr><td>3</td><td>소비 › 한도 <code>이 한도는 어떻게 계산했나요?</code></td><td>하루 기준선 = 변동비 예산 ÷ 일수 설명 + <code>직접 정한 고정비 한도는 반영되지 않아요</code> + <code>기준선이 바뀌면 이번 달 달력도 새 기준으로 보여요</code></td></tr><tr><td>4</td><td>코치 본문 <code>하루 X씩</code></td><td><code>앞으로 하루 47,270원씩</code>으로 라벨 통일(<code>navi-insights</code>, 보호 파일 아님)</td></tr><tr><td>5</td><td>소비 탭 <code>거래 추가</code> 저장 후</td><td><code>한 건 더</code> 지원. 날짜 기억은 <code>한 건 더</code> 연속 안에서만, 시트가 닫히면 오늘. 지난 달 보기 중 기본 날짜를 1일 → 그 달 마지막 날. <code>initialDraft</code>로 열렸을 때 종류 미선택(수입·환불 인계) 허용</td></tr><tr><td>6</td><td>내역 탭</td><td>필터 칩 <code>분류 전 N건</code>(달력을 끈 사용자·1단계의 <code>분류하기 ›</code> 진입점). 분류 전 행 = 부제 <code>분류 전</code>(메모 없으면 제목 <code>분류 전 기록</code>, 점선 없음). 날짜 그룹 헤더 = <code>변동 3.2만 · 고정 55만 · 이체 30만</code> + 닫은 날 체크. 행 <code>⋯</code>에 <code>매달 반복으로 만들기</code>(분류 전 행 제외)</td></tr><tr><td>7</td><td>카테고리별 소비 · 한도 화면</td><td><code>기타</code> 아래 <code>분류 전 N건 N원</code> 서브라인. <code>기타 한도</code> 경고와 코치 <code>최대 카테고리 비중</code>은 표시 계층에서 분류 전 금액을 뺀 값으로 재판정(엔진·<code>navi-current</code> 불변)</td></tr><tr><td>8</td><td>코치 <code>소비 기록이 필요합니다</code></td><td><code>hasExpenseBasis</code> 판정은 유지. 본문에 <code>이번 달 안 썼다고 표시한 날 n일</code>을 병기해 명시 입력이 미입력처럼 보이지 않게</td></tr><tr><td>9</td><td>월 마감 모달 · 월 마감 카드</td><td>자동 채움 위 <code>분류 전 N건 · 기타로 들어가요 · 다음 달 한도 배분에도 기타로 들어가요 · 지금 분류 ›</code> 한 줄(1단계). 마감 카드에 <code>8월 다시 마감 필요 ›</code>(상태 줄 대체 자리). 재마감 경고 조건은 <strong>현행 유지</strong>(총액 변화 시만)</td></tr><tr><td>10</td><td>반복 규칙 다이얼로그</td><td>거래에서 미리 채움로 열기(이름·금액·카테고리·결제일, 시작 월 = 다음 달) + 이번 달 중복을 막는 이유 한 줄. 이름이 비면 저장 불가(현행). 규칙 형식 불변</td></tr><tr><td>11</td><td>오늘 갱신</td><td><code>localDateKey</code> 재계산을 visibilitychange에도 건다(반복 거래 materialize와 같은 자리)</td></tr><tr><td>12</td><td>홈 구성(HomeSetup · 설정 › 홈 구성)</td><td><code>이번 달 달력</code> 카드 추가, 목록 첫 행 · 기본 켜짐, 축소 미리보기 = 주 스트립. 기본 배열을 <code>["calendar","nextGuide","limit","primaryGoal","peer"]</code>로 바꾸고 <code>순자산 대비 소비</code>는 목록에 남긴 채 기본에서만 뺌. 저장된 구성은 건드리지 않음. 기본 변경은 v4 §9 결정 8로 승인(§12-1) — v4 계획 §3·§8의 "기본 = v3 홈 그대로"·"아무것도 안 고르면 v3 홈 그대로" 문장도 그때 고침</td></tr><tr><td>13</td><td>설계 저장소</td><td>· 오류 F 규칙에 <code>하루 시트 예외(확인 없음 · 세션 내 초안 복원)</code> · 오류 A 문구를 dayLog 방식으로(<code>안 썼어요로 닫으면 0으로 표시되고 거래는 만들지 않아요</code>) · README 5원칙 <strong>불변</strong> · <code>tokens.v3.json</code> 새 hex 없음(필요 시 <code>component.calendar</code> 블록, 새 hex가 생기면 <code>darken.py MAP</code> 짝 추가) · SPEC-COMPONENTS 신규 8종(§6 표) · SPEC <code>typography.rules</code>에 <code>달력 칸 합계</code> 형식 + 반올림(500원 올림 · 10원 반올림) · <code>gen_v4.py</code>에 <code>M_CAL</code> 마커 컷 추가 후 HomeConfigured 재생성 — 기본 구성 홈에 달력이 첫 카드로 들어감(달력 카드는 <code>Main.dc.html</code>에 넣기 전 별도 아트보드 <code>HomeCalendar</code>로 먼저 승인) · 360 프레임을 <code>gen_canvas.py</code> 크기 사전(<code>PHONE_S = (360, 640)</code>)과 <code>screens.json</code>에 등록, darken 대상 포함 · 용어 표: <strong>하루 = <code>닫기</code>/<code>닫기 풀기</code>, 월 = <code>마감</code>/<code>다시 마감</code></strong>, 시트 이름 = <code>하루 시트</code>/<code>거래 추가</code>, 달력 토글 = <code>펼치기</code>/<code>접기</code></td></tr><tr><td>14</td><td>백업 안내</td><td><code>닫은 날 표시와 분류 전 표시도 함께 저장돼요 · 골라서 가져오기에서는 안 돌아와요</code></td></tr><tr><td>15</td><td><code>lib/navi-quick-entry.ts</code>(새)</td><td><code>getQuickEntry</code>(느슨한 읽기 · <code>since</code> 보정) · <code>reconcileUncategorized</code> · <code>dailyTotals(state, month) → { [date]: { variable, fixed, transfer, count, uncategorizedCount, closed, noSpend } }</code> · <code>dailyBaseline(limit, month) → number | null</code> · <code>formatSum(amount)</code>(만 단위 · 500원 올림) · <code>roundWon(amount)</code>(10원 반올림) · <code>recentEntries(state, { days: 30, max: 5 })</code>(분류 전 포함 · 자동 생성 제외) · <code>categorySlots(state, { days: 30, max: 3 })</code> · <code>recurringMatch(draft, rules)</code> · <code>suspectedRecurringDuplicates</code> · <code>recordedDays(month)</code>(수동 변동비 거래 1건 이상인 날) · <code>emptyDaysSince(since, month)</code> · <code>canMarkNoSpend(date)</code>(변동비 0건)</td></tr><tr><td>16</td><td>테스트(기존 전부 통과, 추가만)</td><td><code>quickEntry</code> 기본값 채움 · 깨진 <code>quickEntry</code>는 검증기 통과 + getter 정화 · <code>since</code> 없으면 오늘로 보정 · <code>uncategorized</code> 정리 불변식 3개 · 분류 일괄 저장이 id/date/amount/memo 보존 · <code>기타</code> 경고 재판정에서 분류 전 제외 · <code>dailyTotals</code> 분리 · <code>dailyBaseline</code> null 조건(변동비 예산 0 · 첫 달) · 반복 겹침 판정 표본 데이터(결제일 전·같은 날·사후) · 사전 제외 id 형식 · 새벽 안내 시간대 · <code>silent</code> commit이 undoState를 갱신하지 않음 · 닫은 날 추가 저장 시 체크 해제 · 칸 숫자 형식(<code>0.9만</code>·<code>12.5만</code>·<code>1,200만</code>·<code>1.2억</code>) · 반올림(11,500 → <code>1.2만</code> · 11,499 → <code>1.1만</code> · 47,272.7 → 47,270) · 최근 기록 칩이 분류 전 건을 라벨과 함께 포함하고 자동 생성은 제외 · 슬롯 3칸 빈도·동률 규칙 · <code>canMarkNoSpend</code>가 고정비·자동 생성만 있는 날에 true · <code>since</code> 이전 칸을 빈 날에서 제외 · <code>homeLayout.cards</code> 기본값이 <code>calendar</code>를 첫 값으로 갖고 저장된 구성은 바뀌지 않음</td></tr><tr><td>17</td><td>소비 탭 알림 줄(AlertsPanel)</td><td>상태 줄 전용 안내(<code>8월 다시 마감 필요 ›</code> · 반복 중복 의심 · 기준선 변경 · 분류 전 강조 표시)를 달력 카드가 없거나 1단계일 때 같은 문구·같은 우선순위로 표시(§3-1, §12-29)</td></tr></tbody></table></div>
+<hr>
+<h2 id="s10"><span class="num">§10</span>단계 — 각각 따로 출시 가능</h2>
+<p><strong>순서:</strong> v4-1(홈 구성) → <strong>이 계획 1</strong>(하루 시트) → <strong>이 계획 2</strong>(달력 카드 — homeLayout 안, 이때 홈 기본 구성이 바뀜) → v4-2(내비) → <strong>이 계획 3 · 4</strong> → v4-3~5. v4 1단계보다 먼저 홈을 만지지 않고, 달력을 고정 슬롯으로 넣었다가 카드로 다시 바꾸는 일도 없습니다. 2단계가 나가기 전까지 기본 홈은 v3 그대로이고, 2단계와 함께 기본 배열이 <code>달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스</code>로 바뀝니다(v4 §9 결정 8 승인 뒤 · §12-1).</p>
+<div class="tw"><table><thead><tr><th>단계</th><th>내용</th><th>수정 파일</th><th>검토물</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>하루 시트 — 다이얼로그 층 마운트 · record intent → 시트 · 네이티브 숫자 입력 + 자동 포커스 · 최근 기록 칩(<code>분류 전</code> 라벨 포함) · 색 칩(고정 순서 + 슬롯 3) · <code>나중에 분류</code>(<code>기타</code> + <code>uncategorized</code>) · 저장 직전 확인(고정비·이체 · 반복 겹침 · 사전 제외) · 완료 카드(전역 토스트 대체 · <code>notice</code> 옵션 · 제목 3종 · 행동 슬롯) · 수정 모드(날짜 이동) · <code>저축·상환 ›</code>·<code>수입·환불 ›</code> 인계와 홈 복귀 · 새벽 안내 · <strong>최소 분리</strong>: 내역 <code>분류 전</code> 배지·필터 칩 · <code>기타 한도</code> 경고와 코치 최대 카테고리 재판정 · 마감 모달 한 줄 · <strong>상태 줄이 없으므로</strong> <code>8월 다시 마감 필요 ›</code> 등 상태 줄 전용 안내는 소비 탭 알림 줄과 월 마감 카드에(§9-9·§9-17). <strong><code>다 적었어요</code>·<code>안 썼어요</code> 두 버튼은 1단계 시안·구현에서 제외</strong>(dayLog와 함께 2단계)</td><td><code>components/navi/day-sheet.tsx</code>(새) · <code>lib/navi-quick-entry.ts</code>(새) · <code>app/page.tsx</code>(마운트 · intent · commit 옵션) · <code>navi-insights.ts</code> · AlertsPanel · <code>spending-ledger.tsx</code>(배지·필터) · MonthlyClose(한 줄·마감 카드). <strong>보호 파일 0</strong></td><td>시안 5장(시트 기본 — 두 버튼 없음 · 목록 우선 · 수정 모드 · 완료 카드 · 확인/겹침) + 360px 1장, 라이트·다크</td></tr><tr><td><strong>2</strong></td><td>홈 달력 카드 — <code>homeLayout.cards</code>의 <code>calendar</code> · <strong>기본 배열 변경</strong>(달력이 첫 카드, <code>순자산 대비 소비</code>는 기본에서 제외, 저장된 구성 불변) · 주 스트립(오늘이 속한 일~토) · 펼침 토글과 그리드 · 하루 기준선 · 상태 줄(우선순위·18시 합침 문장) · <code>다 적었어요</code>/<code>안 썼어요</code>(dayLog, 시트 안 버튼 추가) · <code>since</code> · 칸 기본 4 + 수식어 5 · 글자 확대 넘침 규칙 · 접근성 · HomeSetup 첫 행(기본 켜짐 · 축소 미리보기)</td><td>홈 카드 렌더러(v4-1이 만든 <code>homeLayout</code> 안) · <code>homeLayout</code> 기본값 · <code>day-sheet.tsx</code>(두 버튼) · <code>lib/navi-quick-entry.ts</code>(<code>dailyTotals</code> · <code>dailyBaseline</code> · <code>emptyDaysSince</code>) · HomeSetup · <code>gen_v4.py</code> <code>M_CAL</code></td><td>별도 아트보드 <code>HomeCalendar</code> 승인 → <code>Main</code> 이식 여부 결정 · 시안 5장(홈 접힘 · 펼침 · 360px · 다크 · HomeSetup 첫 행) + 기본 구성 홈 before/after 렌더</td></tr><tr><td><strong>3</strong></td><td>분류 — 분류하기 시트(묶음 · 추천 · 일괄 저장 · 완료 카드 <code>분류했어요</code>) · 카테고리/한도 화면 서브라인 · 코치 <code>분류 전 정리</code> 카드 · 상태 줄 강조 표시 규칙(달 이름 포함) · 반복 중복 의심 상태 줄</td><td><code>spending-ledger</code> · <code>spending-analysis</code>(표시) · <code>navi-insights</code> · <code>lib/navi-quick-entry.ts</code></td><td>시안 3장(분류하기 · 내역 · 마감 모달)</td></tr><tr><td><strong>4</strong></td><td>함께 고칠 것 — <code>거래 추가</code> <code>한 건 더</code>·날짜 기억 규칙 · 반복 미리 채움 · 한도 화면 설명 · 한도 카드·코치 라벨 · 백업 안내 · 설계 저장소 규칙 갱신(§9-13)</td><td><code>spending-view</code> · limits · RecurringDialog · 설계 저장소</td><td>시안 3장</td></tr></tbody></table></div>
+<p>1단계만으로 "홈에서 2탭 + 숫자로 기록하고, 완료 카드에서 히어로가 바뀌는 걸 본다"가 됩니다. 2단계가 달력이고 홈 기본 구성이 이때 바뀌며, 3단계가 <code>나중에 분류</code>를 마무리합니다. 각 단계는 <strong>시안 → 검토 → 구현</strong> 순서이고 검토 전에 원본에 손대지 않습니다. 소비 탭 <code>거래 추가</code> 시트의 필드 재정렬은 어느 단계에도 없습니다(§12-17).</p>
+<p>권장안이 통과되면 1단계 시안부터 그립니다 — 기존 캔버스 URL에 페이지로 추가하고 before/after 렌더로 승인받은 뒤 원본에 손댑니다.</p>
+<hr>
+<h2 id="s11"><span class="num">§11</span>완료 기준</h2>
+<ul>
+<li><span class="box"></span> 아무것도 안 고르면 홈에 <code>이번 달 달력</code> 카드가 히어로 바로 아래 첫 카드로 보이고, 기본 5카드가 §3-1과 같다(<code>순자산 대비 소비</code>는 HomeSetup에서 다시 켤 수 있음). 이미 저장된 홈 구성은 바뀌지 않는다. 끄면 카드만 사라지고 히어로 <code>소비 기록하기</code>는 오늘 시트를 연다</li>
+<li><span class="box"></span> 월급 입력 상태에서, 홈에서 오늘 커피 저장까지 2탭 + 숫자, 탭 전환 0, 저장 후 홈에 그대로 있고 완료 카드에 소비율 전·후가 보인다(탭 수 정의는 §4-1)</li>
+<li><span class="box"></span> 월급 미입력 상태에서는 저장이 되고 완료 카드 주 행동이 <code>월급 넣기 ›</code>다</li>
+<li><span class="box"></span> 최근 기록 칩으로 3탭, 숫자 0. 분류 전 건도 <code>분류 전</code> 라벨 칩으로 쓸 수 있다</li>
+<li><span class="box"></span> 어제·그저께 기록에 날짜 피커 없음. 지난달은 헤더 날짜 탭의 주 선택기로</li>
+<li><span class="box"></span> 시트에 거래 종류·잔액 반영·계좌 선택이 없고, 저축·상환·수입·환불은 <code>거래 추가</code>로 값을 들고 넘어갔다가 홈으로 돌아온다</li>
+<li><span class="box"></span> 미입력 칸은 <code>—</code>, <code>안 썼어요</code>는 <code>0</code>, 둘은 끝까지 다른 상태. 고정비·이체만 있는 날은 <code>—</code> + 배지. <code>안 썼어요</code>는 변동비 0건이면 누를 수 있다. 0원 거래는 만들지 않는다. <code>안 썼어요</code>는 소비율·월 비교·코치·경고에 영향이 없고 화면에 그 사실을 표시한다</li>
+<li><span class="box"></span> 칸 숫자·막대는 변동비만. 고정비는 <code>고정</code>, 이체는 <code>이체</code> 텍스트 배지. <strong>셀에 카테고리 색 사용 없음</strong></li>
+<li><span class="box"></span> 칸 숫자는 한 형식(<code>0.9만</code> · <code>3.7만</code> · <code>12.5만</code> · <code>120만</code> · <code>1,200만</code> · <code>1.2억</code>), 반올림은 500원 올림·10원 반올림 한 규칙, 기본 글자 크기에서 7자리 금액도 44px 안에 들어간다. 글자 확대 시 글자를 줄이지 않고 §8 넘침 규칙을 따른다</li>
+<li><span class="box"></span> 주 스트립은 오늘이 속한 일~토, 펼침 토글은 <code>펼치기 ▾</code>/<code>접기 ▴</code>이고 이번 주가 두 번 그려지지 않는다. 미래 칸과 다음 달 칸은 disabled에 숫자 자리가 빈 칸이다</li>
+<li><span class="box"></span> 화면당 display 숫자 하나(히어로), 그림자 카드 하나, 채운 Primary 하나(<code>소비 기록하기</code> · 시트 안은 <code>저장</code>)</li>
+<li><span class="box"></span> 달력·시트·완료 카드 어디에도 보라·점선 없음. 보라는 <code>저장되지 않는 가정</code> 카드에서만. 저장 전 소비율 미리보기 없음</li>
+<li><span class="box"></span> 주황은 히어로의 월 목표 초과에만. 칸의 기준선 초과는 막대 꽉 참 + 숫자, 분류 전 강조 표시는 굵기 + brand-soft</li>
+<li><span class="box"></span> 색만으로 전달하는 상태 없음 — 칩은 점 + 이름, 칸은 막대 + 숫자, 빨강 없음</li>
+<li><span class="box"></span> 상태 줄은 항상 한 문장, 평가어·알림 없음. 18시 이후 <code>다 적었어요</code>는 오늘 요약 문장에 합쳐 1탭으로 보인다. 연속 카운터 없음, <code>이번 달 기록한 날 N일</code>은 수동 변동비 거래 1건 이상인 날만. 달력 카드가 없으면 같은 안내가 소비 탭 알림 줄에 뜬다</li>
+<li><span class="box"></span> 완료 카드는 사실만(N건 · 합계 · 소비율 전후), 색 없음, 자동 닫힘 없음. 제목 3종(저장·고침·분류)에 카드는 하나, 행동 슬롯은 주 행동 + <code>되돌리기</code>. 되돌리기 진입점은 하나이고 수명은 현행(닫기·다음 저장까지). 자동 생성 저장은 undoState를 갱신하지 않는다</li>
+<li><span class="box"></span> <code>나중에 분류</code>는 <code>기타</code>로 저장되고 소비 합계·한도 총액이 즉시 정확하다. 월말 예상은 변동비 가정이며 화면에 그 사실을 표시한다. 분류 전 비율(이번 달 소비 거래 대비)은 로컬 계산값으로 §12-10 강조 표시 조건에만 쓴다 — 서버·분석이 없어 완료 지표로 삼지 않는다</li>
+<li><span class="box"></span> 고정비 색으로 바꾸거나 지난달에 저장하면 히어로가 바뀔 수 있고, 완료 카드가 그 변화를 숨기지 않는다</li>
+<li><span class="box"></span> 분류하기에서 같은 메모 4건이 한 탭에 정해지고, 추천은 탭 없이는 채워지지 않는다</li>
+<li><span class="box"></span> 저장·닫기·분류 전부 <code>changeState → saveGate</code> 경로, 저장 중 inert</li>
+<li><span class="box"></span> 옛 백업이 그대로 열리고, 새 백업을 옛 앱이 열어도 거래가 그대로다. <code>quickEntry</code>가 깨져도 검증기를 통과하고 getter가 정화한다</li>
+<li><span class="box"></span> <code>lib/engine</code> 변경 0 · IMPLEMENTATION-PLAN §2 보호 파일 변경 0(SHA-256 동일) · 계산 결과 변화 0 · 거래 id·백업 형식·반복 규칙 형식 불변</li>
+<li><span class="box"></span> 기존 테스트 전부 통과 + 새 케이스 추가. pnpm typecheck / test / build 통과</li>
+<li><span class="box"></span> 360×640에서 본문 가로 스크롤 없음, 칸 터치 44 이상(44.6), 메모 포커스 시 저장 버튼이 키보드 위에 보인다</li>
+<li><span class="box"></span> 메모 60자 상한은 편집에만 적용. 기존 초과 메모는 저장 가능, 두 시트와 반복 규칙 이름 공통</li>
+<li><span class="box"></span> 칸은 button, 화살표 이동, focus ring 3px, aria 문장 템플릿 하나. 하루 시트는 Android 뒤로가기·Escape로 닫힌다</li>
+<li><span class="box"></span> 라이트·다크 모두 토큰 값으로 렌더, 새 hex 0, darken.py 산출과 어긋나지 않음</li>
+<li><span class="box"></span> 비행기 모드에서 전부 동작. 로그인·서버·외부 API 없음</li>
+</ul>
+<hr>
+<h2 id="s12"><span class="num">§12</span>결정해 주실 것</h2>
+<p>1~9번이 방향을 정하는 결정이고 10번부터는 값과 세부 규칙입니다. 권장안 그대로 가도 되면 답 없이 넘어가셔도 됩니다 — 그 경우 본문의 권장값으로 시안을 그립니다.</p>
+<div class="decide"><div class="tw"><table><thead><tr><th>#</th><th>질문</th><th>권장</th><th>대안</th></tr></thead><tbody><tr><td>1</td><td>기본 홈 구성 — <strong>요청하신 것이 "홈 화면에 달력을 띄워, 날짜를 터치해서 바로 입력"임.</strong> v4 결정 2(기본 = v3 홈)를 바꾸는 일</td><td>요청대로 <strong>달력을 기본 구성에 넣고 히어로 바로 아래 첫 카드로.</strong> 기본 5카드 = <code>달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스</code>, <code>순자산 대비 소비</code>는 기본에서 빠지고 HomeSetup에서 언제든 다시 켬. 저장된 구성은 건드리지 않음. <strong>v4 계획 §9 결정 8번</strong>으로 올려 승인 후 2단계에서 반영</td><td>기본은 v3 홈 그대로 두고 달력은 선택 카드로, HomeSetup에 <code>추천</code> 표시만 — 첫 실행 기본 홈에는 달력이 안 보임</td></tr><tr><td>2</td><td>저장 후 UI</td><td>시트 닫힘 + 완료 카드(전역 토스트 대체 · 자동 닫힘 없음 · 주 행동 + <code>되돌리기</code> · 되돌리기 수명 현행). 수정 모드·분류하기 저장도 같은 카드(제목 <code>고쳤어요</code>/<code>분류했어요</code>, <code>되돌리기</code>만)</td><td>시트를 열어 두고 목록에 쌓기(연속 입력 0탭, 히어로 변화는 닫은 뒤에) / 수정·분류는 기존 토스트</td></tr><tr><td>3</td><td>히어로 <code>소비 기록하기</code></td><td>자리·모양·문구 그대로, 동작만 하루 시트(1px 불변)</td><td>버튼을 달력 카드로 옮기고 히어로 축소(생성기·<code>Main.dc.html</code> 수정, 렌더 승인 뒤 2차)</td></tr><tr><td>4</td><td>월급 미입력 시 히어로 CTA</td><td>하루 시트를 열고, 완료 카드 주 행동이 <code>월급 넣기 ›</code></td><td>지금처럼 설정으로</td></tr><tr><td>5</td><td>하루 기준선 출처</td><td><code>limit.variableBudget ÷ 일수</code>(수동 카테고리 한도 미반영 · 0이면 <code>—</code>). 첫 달(<code>personalized === false</code>)은 <code>—</code>, 막대 없음</td><td>첫 달에도 표준 비중 추정으로 막대를 그리고 <code>추정</code> 라벨 / 총한도 ÷ 일수(고정비를 빼지 않아 기준선이 후해지고 월세 날은 어차피 배지라 주황·초과가 드물게 보임)</td></tr><tr><td>6</td><td>기준선 소급</td><td>저장하지 않음. 바뀌면 이번 달 모든 칸이 새 기준으로, 상태 줄 1회 안내</td><td>날짜별 기준선을 <code>quickEntry</code>에 저장해 지난 칸을 고정(새 키 · 한도 변경 시 두 기준이 섞임)</td></tr><tr><td>7</td><td>수동 고정비 한도를 <code>fixedCost</code>에 반영</td><td>반영하지 않음(<code>navi-current</code> 보호). 한도 화면에 그 사실을 문장으로</td><td>보호 목록 해제(§12-21 절차) 후 <code>fixedCost</code>에 수동값 우선</td></tr><tr><td>8</td><td>분류 전과 다음 달 배분</td><td>엔진·<code>navi-current</code> 불변. 마감 모달·완료 카드·§8 문구로 마감 전 분류를 유도하고 왜곡을 문서화</td><td><code>navi-current</code> 보호 해제 후 <code>history</code>에서 분류 전 거래를 빼거나 분류 전 잔량이 있는 달은 <code>personalized</code> 배분 제외</td></tr><tr><td>9</td><td>저장 전 소비율 미리보기</td><td>없음. 저장 후 완료 카드 <code>57.9% → 58.2%</code>만</td><td>시트 둘째 줄에 조건 문구 <code>저장하면 58.2%가 돼요</code>(가상 AppState + <code>naviMetrics</code>, 150ms 디바운스, 보라·점선 없음)</td></tr><tr><td>10</td><td>상태 줄 강조 표시 조건</td><td>28일~다음 달 3일 · 분류 전 20% 이상(로컬 계산) · 30일 경과, 셋 중 하나. 표현은 600 굵기 + brand-soft</td><td>월말만</td></tr><tr><td>11</td><td>메모 상한</td><td>60자, 50자부터 카운터, 기존 초과분 저장 허용</td><td>40자</td></tr><tr><td>12</td><td>하루 시트 닫기 확인</td><td>확인 없음 + 세션 내 초안 복원(F 규칙에 예외 추가)</td><td>메모를 타이핑했을 때만 확인</td></tr><tr><td>13</td><td>홈 달력의 월 이동</td><td>이번 달 고정. 시트 범위는 이번 달 + 지난달(주 선택기), 그 이전은 소비 탭</td><td>펼침에서 <code>‹ ›</code> 월 이동 허용</td></tr><tr><td>14</td><td>월 그리드 주 시작 · 주 스트립 범위</td><td>일요일 시작 · 스트립은 오늘이 속한 일~토(일요일이면 미래 칸 6개가 빈 칸, 그리드와 같은 행)</td><td>월요일 시작 / 스트립을 오늘 기준 최근 7일로(항상 7일이 차지만 요일 줄이 매일 돌고 그리드 행과 어긋남)</td></tr><tr><td>15</td><td><code>이번 달 기록한 날</code> 집계</td><td>수동 저장한 변동비 거래(skip 아님) 1건 이상인 날. 자동 생성 거래·닫기·<code>안 썼어요</code>·고정비·이체만 있는 날 제외</td><td>이체·자동 생성 포함(무엇이든 있는 날)</td></tr><tr><td>16</td><td>커스텀 금액 키패드</td><td>1단계는 네이티브 숫자 키보드 + 자동 포커스 + 만원 읽기. 실기기 측정 뒤 필요하면 별도 단계(<code>000</code>·<code>만</code> 키)</td><td>1단계부터 커스텀 키패드</td></tr><tr><td>17</td><td>소비 탭 <code>거래 추가</code> 필드 재정렬</td><td>하지 않음. 하루 시트가 있으면 기존 시트는 자세히 입력 전용이라 바꿀 이유가 약함</td><td>재정렬(잔액 반영 토글은 접지 않고 위치 유지 · <code>TransactionAdd</code> before/after 렌더 먼저 승인)</td></tr><tr><td>18</td><td>저축·상환 저장 뒤</td><td><code>returnTo:'home'</code>이면 홈으로 자동 복귀 + 완료 카드</td><td>소비 탭에 남고 토스트만(현행)</td></tr><tr><td>19</td><td>칸 초과 표시색 — <strong>요청의 목적은 "중압감"</strong>, 원칙 4는 기록에 평가를 붙이지 않음</td><td>주황 없음. 막대 꽉 참 + 숫자. 압박은 히어로 소비율 하나가 주고, 칸은 기록을 가볍게 하는 쪽(§2 원칙 4)</td><td>그날 초과이면서 월 누적 페이스도 초과일 때만 주황 — <code>tokens.v3.json semantics.warning</code> 정의 갱신을 §9-13에 추가해야 함</td></tr><tr><td>20</td><td>다크 값 출처</td><td>새 hex 없음 → <code>darken.py MAP</code> 그대로. 결정 불필요</td><td>새 hex가 필요해지면 <code>component.calendar</code> 블록 + MAP 짝 추가</td></tr><tr><td>21</td><td>보호 목록 해제(7·8에서 대안을 고를 때만)</td><td>해제하지 않음</td><td>해제 시 절차: IMPLEMENTATION-PLAN §2에서 파일 제거 → 변경 사유 커밋 → <code>NAVI-V3.md</code>의 보호 파일 SHA-256 기준 갱신 → 기존 테스트 전부 + 회귀 테스트 추가</td></tr><tr><td>22</td><td>최근 기록 칩의 분류 전 건</td><td>포함. 칩에 <code>분류 전</code> 라벨, 탭하면 금액·메모만 채우고 카테고리는 분류 전 유지(메모만 적는 사용자도 칩을 씀). 칩 0개면 줄 숨김</td><td>제외(분류한 건만 칩이 됨 — 분류 전 사용자는 칩을 영영 못 씀)</td></tr><tr><td>23</td><td>금액 반올림</td><td>만 단위 소수 한 자리는 500원에서 올림(11,500 → <code>1.2만</code>), 원 단위 계산값은 10원 반올림(47,272.7 → 47,270). 남은/초과 금액·기준선·개별 거래는 원 단위 그대로</td><td>만 단위는 버림(11,500 → <code>1.1만</code>, 합계가 실제보다 작아 보임) / 원 단위는 1원까지</td></tr><tr><td>24</td><td>시작일(첫 기록일) 정의</td><td><code>quickEntry.since</code> = 새 앱 첫 실행일(복원이면 복원일). 소급 입력해도 시작일이 앞으로 가지 않아 <code>빈 날</code>이 번지지 않음</td><td>최초 수동 소비 거래 날짜(20일에 설치하고 3일을 소급하면 4~19일이 빈 날로 세짐) / 첫 실행 안내 완료일 값이 이미 있으면 그것을 재사용(있는지 코드에서 확인 필요)</td></tr><tr><td>25</td><td>카테고리 슬롯 3칸</td><td>최근 30일 수동 소비 거래(자동 생성·분류 전·이체 제외) 카테고리별 건수 상위 3, 고정비 카테고리 포함(빈도로 자연히 밀림), 동률은 최근 사용일 순, 부족하면 채워진 만큼만(0칸이면 구분선 없이 고정 13개부터)</td><td>금액 합계 상위 3 / 고정비 카테고리 제외 / 이번 달만</td></tr><tr><td>26</td><td>임계값 묶음</td><td>상태 줄 <code>다 적었어요</code> 18시(시트 안은 시간 무관) · 새벽 안내 0~5시 · 반복 겹침 ±5% · 최근 기록 30일·5개 · 슬롯 30일·3칸 · 시트 목록 3행 · 강조 표시 28일~3일·20%·30일(12-10과 같은 값)</td><td>20시 · 0~4시 · ±10% · 60일·8개 · 5행 — 어느 값이든 <code>lib/navi-quick-entry.ts</code> 상수 한 곳에서 바꿈</td></tr><tr><td>27</td><td>펼침 상태 기억</td><td>세션 안에서만(홈을 떠났다 돌아와도 유지, 앱을 다시 열면 접힘). 저장하지 않음</td><td>localStorage에 기억 / 항상 접힘</td></tr><tr><td>28</td><td>칸 넘침(시스템 글자 확대)</td><td>글자를 줄이지 않음. 칸 높이 자동, 1단계 소수 버림 → 2단계 숫자 숨기고 막대·배지만(숫자는 aria·시트·상태 줄)</td><td>칸 글자만 확대 배율을 무시하고 11px 고정(접근성 설정과 충돌) / 확대 시 스트립을 가로 스크롤</td></tr><tr><td>29</td><td>상태 줄이 없을 때(달력 끔 · 1단계)의 안내 자리</td><td>소비 탭 알림 줄(AlertsPanel) 한 줄 + 월 마감 카드에 <code>8월 다시 마감 필요 ›</code>. <code>분류하기 ›</code>는 내역 필터 칩</td><td>홈 히어로 아래 한 줄(히어로 1px 불변 원칙과 충돌) / 안내 생략</td></tr><tr><td>30</td><td>완료 카드 행동 슬롯과 셋째 줄</td><td>행동 슬롯 2개 = 주 행동 + <code>되돌리기</code>. 주 행동은 <code>한 건 더</code>, 월급 미입력이면 <code>월급 넣기 ›</code>가 대체. 링크가 붙는 안내(<code>8월 다시 마감 ›</code> · <code>어제로 옮기기 ›</code> · <code>매달 반복으로 만들기 ›</code>)는 셋째 줄 문장 안에 두고, 셋째 줄은 §4-4 우선순위로 한 줄만</td><td>행동 3개(주 행동 · 조건부 링크 · <code>되돌리기</code>)로 늘림 — 카드 높이가 조건마다 달라짐 / 조건부 안내를 카드 대신 상태 줄로(1단계엔 상태 줄이 없음)</td></tr></tbody></table></div></div>
+<h3>검토에서 나온 이견 — 반영하지 않은 것</h3>
+<ul>
+<li><strong>칸 숫자를 1만 미만은 원 단위(<code>8,900</code>), 1만 이상은 만 단위로 섞는 안(ux):</strong> 한 그리드 안에 단위가 둘이면 자릿수 비교가 흔들려 만 단위 소수 한 자리 한 형식으로 고정했습니다(feasibility 지적과 같은 결론). 합계 문장도 같은 형식이라 <code>오늘 1건 0.5만원</code>처럼 읽힙니다.</li>
+<li><strong>하루 막대 주황을 "그날 초과 + 월 페이스 초과"로 좁혀 쓰는 안(ux):</strong> 좁혀도 <code>semantics.warning</code>(사용자가 정한 목표를 넘은 상태) 정의를 바꿔야 해서 권장에서 뺐고 §12-19 대안으로만 남겼습니다.</li>
+<li><strong>분류 전 금액을 막대에서 빼고 <code>분류 전</code> 표시로 두는 안(ux):</strong> 44px 칸에 여섯 번째 수식어를 넣으면 읽히지 않고, 월세를 색 없이 넣는 경우는 저장 직전 확인 칩(§4-3)이 먼저 잡습니다. 칸 숫자는 사실(변동비 합계)대로 두고 분류 전은 시트·상태 줄에서만 표시합니다.</li>
+<li><strong><code>다 적었어요</code>를 상태 줄에서 완전히 빼는 안(ux):</strong> 날짜를 문구에 노출(<code>9월 8일 다 적었어요</code>)하고 18시 이후 오늘 요약 문장에 합치면 오전 닫기와 날짜 혼동이 해소되고 1탭 경로가 실제로 보입니다. <code>안 썼어요</code>는 지적대로 시트 안에서만 제공합니다.</li>
+<li><strong>시트 안 <code>다 적었어요</code>도 18시 이후로 제한하는 안(초안 자신):</strong> 과거 날 시트에서는 시간 조건이 뜻이 없어, 시트 안은 시간 무관·변동비 1건 이상으로 통일하고 18시는 상태 줄에만 남겼습니다.</li>
+<li><strong>칸 글자를 시스템 확대에서 11px로 고정하는 안(초안 자신):</strong> 접근성 확대를 무력화하므로 소수 버림 → 숫자 숨김 두 단계로 바꿨습니다(§12-28 대안으로만).</li>
+<li><strong>달력을 선택 카드로 두고 <code>추천</code> 표시만 붙이는 안(초안 자신):</strong> 요청이 홈에 달력을 띄우는 것이라 권장을 기본 켜짐으로 뒤집고, 승인된 v4 결정 2와 부딪히는 부분은 v4 §9 결정 8로 올렸습니다(§12-1 대안으로만).</li>
+<li><strong>용어 표를 §13에 두는 안(ux):</strong> 이 문서는 §12까지라 용어 표는 §9-13 설계 저장소 항목에 넣었습니다.</li>
+<li><strong><code>quickEntry</code> 검증을 <code>navi-storage</code>에 추가(초안 자신):</strong> 세 검토가 같은 이유로 반대해 삭제했습니다. 여기 적는 것은 초안의 항목이 사라진 이유를 남기기 위해서입니다.</li>
+<li><strong>테스트 수 140개(초안 자신):</strong> 실행 환경이 없어 숫자를 확정하지 않고 <code>기존 테스트 전부 통과</code>로 적었습니다. 저장소 CLAUDE.md의 36개·grep 126개 어느 쪽도 이 문서에서 확정하지 않습니다.</li>
+</ul>
+<div class="foot">원본 <a href="https://github.com/AJS-bit/ajs-bit.github.com/blob/claude/navi-ui-ux-redesign-nzxoxz/plan/v5-calendar.md">plan/v5-calendar.md</a> · 이 페이지는 그 파일을 그대로 옮긴 것이라 두 곳이 다르면 파일이 기준입니다.</div>
+</main>

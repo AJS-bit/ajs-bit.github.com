@@ -18,6 +18,7 @@
 | `design/canvas/_tools/` | 생성기·다크 변환·렌더·계산기. 먼저 `_tools/README.md`를 읽을 것 |
 | `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 컴포넌트 24개 실측 CSS · 화면별 조립 체크리스트 |
 | `plan/v4-stocks.md` | **v4 계획.** §9에 결정 사항. 페이지판은 `plan/_tools/md2page.py`로 생성 |
+| `plan/v5-calendar.md` | **v5 계획 — 홈 달력과 빠른 소비 입력.** §12에 결정 30개(1~9가 방향). 페이지판은 `md2page.py v5-calendar.md` |
 
 ## 지금 상태 (2026-09-14)
 
@@ -29,6 +30,10 @@
   `design/stocks-snapshot.sample.json`(종목명만 실재, 수치는 전부 가상). 고칠 것이 있으면 생성기를 고쳐 다시 돌린다.
   각 페이지 위 노트에 가정을 적어 두었다. **다음 할 일 = 단계별 구현** (v3 코덱스 구현이 끝난 뒤 그 위에, 1단계부터).
   `preview/*.png`는 이 맥에 크로미움이 없어 v4 40장 모두 아직 못 찍었다.
+- **v5 계획 초판 (2026-09-14) · 사용자 검토 대기.** 사용자 피드백 "소비 입력이 불편하다"에서 출발한 홈 달력 + 하루 시트(날짜 터치 → 숫자만 → 저장) +
+  나중에 분류 계획. `plan/v5-calendar.md`. 현재 앱 소스(`~/Desktop/NAVI-agent-review-2026-09-10/project`)의 입력 경로·엔진 규칙을 읽고
+  4방향 설계·심사·적대 검토를 거쳐 썼다. 권장안은 요청대로 **달력을 기본 홈에(히어로 아래 첫 카드)** — v4 결정 2를 바꾸는 일이라
+  v4 §9 결정 8번으로 올려야 한다. §12 결정이 나면 1단계(하루 시트) 시안부터 캔버스에 페이지로 추가한다. **아직 시안 없음.**
 
 ## 사용자가 정한 작업 규칙 — 반드시
 
@@ -58,8 +63,9 @@ cd design/canvas/_tools && python3 outline.py && python3 gen_spec_screens.py && 
 python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2061 && python3 gen_rest.py 1767 && python3 darken.py && python3 gen_canvas.py
 # 계산 검산
 cd calc && python3 crosscheck.py
-# v4 계획 페이지
-python3 plan/_tools/md2page.py
+# v4 · v5 계획 페이지
+python3 plan/_tools/md2page.py                  # v4-stocks.md → v4-stocks.html
+python3 plan/_tools/md2page.py v5-calendar.md   # v5-calendar.md → v5-calendar.html
 ```
 
 ## 아트팩트 (같은 claude.ai 계정이면 `/artifacts`에 보입니다)
@@ -68,3 +74,5 @@ python3 plan/_tools/md2page.py
   contract `0.1.31` 고정. 갱신은 `design/canvas/`를 design 스킬의 `seed-canvas.mjs`로 `navi-redesign.html`에 시드한 뒤 **이 URL을 `url`로 넘겨** publish. 새 캔버스를 만들지 마세요. v4 시안도 이 캔버스에 페이지를 추가합니다.
 - **v4 계획 페이지** — https://claude.ai/code/artifact/26eb99d3-9719-407e-bd5d-345b1ab54fe1
   `plan/v4-stocks.md`가 원본. 고치면 `md2page.py`로 다시 만들어 이 URL로 publish.
+- **v5 계획 페이지** — https://claude.ai/code/artifact/7000d83c-1af3-458a-a0e9-e4b82b461ef1
+  `plan/v5-calendar.md`가 원본. 고치면 `md2page.py v5-calendar.md`로 다시 만들어 이 URL로 publish.

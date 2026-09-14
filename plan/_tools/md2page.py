@@ -1,8 +1,19 @@
-"""plan/v4-stocks.md → 검토용 HTML 한 장. NAVI v3 토큰을 그대로 쓴다."""
+"""plan/<계획>.md → 검토용 HTML 한 장. NAVI v3 토큰을 그대로 쓴다.
+
+    python3 md2page.py                 # v4-stocks.md → v4-stocks.html
+    python3 md2page.py v5-calendar.md  # plan/ 아래 다른 계획서 (출력은 같은 이름 .html)
+    python3 md2page.py <src.md> <out.html> [제목 꼬리표]
+"""
 import re, html, pathlib, sys
 
-SRC = pathlib.Path(__file__).resolve().parent.parent / 'v4-stocks.md'
-OUT = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else SRC.parent / 'v4-stocks.html'
+PLAN = pathlib.Path(__file__).resolve().parent.parent
+SRC = (PLAN / sys.argv[1]) if len(sys.argv) > 1 and not sys.argv[1].endswith('.html') else PLAN / 'v4-stocks.md'
+if len(sys.argv) > 1 and sys.argv[1].endswith('.html'):   # 옛 호출 형식: 출력 경로만
+    OUT = pathlib.Path(sys.argv[1])
+else:
+    OUT = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else SRC.with_suffix('.html')
+TAG = sys.argv[3] if len(sys.argv) > 3 else ('v4 계획 초안' if SRC.stem == 'v4-stocks' else SRC.stem.split('-')[0] + ' 계획 초안')
+VER = SRC.stem.split('-')[0]
 
 def inline(s):
     s = html.escape(s, quote=False)
@@ -33,7 +44,7 @@ while i < len(lines):
         rows = []
         while i < len(lines) and lines[i].startswith('|'):
             rows.append(lines[i]); i += 1
-        cells = lambda r: [c.strip() for c in r.strip().strip('|').split('|')]
+        cells = lambda r: [c.strip().replace('\x00', '|') for c in r.strip().strip('|').replace('\\|', '\x00').split('|')]
         head = cells(rows[0]); body = [cells(r) for r in rows[2:]]
         t = ['<div class="tw"><table><thead><tr>' + ''.join(f'<th>{inline(c)}</th>' for c in head) + '</tr></thead><tbody>']
         for r in body:
@@ -142,8 +153,7 @@ td strong{color:var(--ink);font-weight:600}
 .box{display:inline-block;width:13px;height:13px;border:1.5px solid var(--ink4);border-radius:4px;
   vertical-align:-2px;margin-right:6px}
 /* 결정 절만 띄운다 */
-#s9{margin-top:52px}
-#s9 + p, #s9 ~ .decide{}
+#DECIDE_ID{margin-top:52px}
 .decide{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:6px 16px 4px;
   box-shadow:var(--shadow);margin:12px 0 18px}
 .decide .tw{border:0;margin:0;background:transparent}
@@ -155,16 +165,20 @@ td strong{color:var(--ink);font-weight:600}
 """
 
 # 결정 표만 카드로 감싼다 (§9 바로 뒤의 첫 표)
-body = re.sub(r'(<h2 id="s9">.*?</h2>\s*)(<div class="tw">.*?</table></div>)',
-              r'\1<div class="decide">\2</div>', body, count=1, flags=re.S)
+# "결정해 주실 것" 절의 첫 표를 띄운다 — v4는 §9, v5는 §12처럼 절 번호가 달라도 제목으로 찾는다
+body = re.sub(r'(<h2 id="s(\d+)"><span class="num">§\d+</span>[^<]*결정해 주실 것</h2>.*?)(<div class="tw">.*?</table></div>)',
+              r'\1<div class="decide">\3</div>', body, count=1, flags=re.S)
+m_dec = re.search(r'<h2 id="(s\d+)"><span class="num">§\d+</span>[^<]*결정해 주실 것</h2>', body)
+DECIDE_ID = m_dec.group(1) if m_dec else 's9'
 
-page = f'''<title>NAVI v4 계획</title>
+CSS = CSS.replace('#DECIDE_ID', '#' + DECIDE_ID)
+page = f'''<title>NAVI {VER} 계획</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <style>{CSS}</style>
 <main>
-<div class="mark"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></i><span>NAVI</span><em>· v4 계획 초안</em></div>
+<div class="mark"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></i><span>NAVI</span><em>· {TAG}</em></div>
 {body}
-<div class="foot">원본 <a href="https://github.com/AJS-bit/ajs-bit.github.com/blob/claude/navi-ui-ux-redesign-nzxoxz/plan/v4-stocks.md">plan/v4-stocks.md</a> · 커밋 e190fd9 · 이 페이지는 그 파일을 그대로 옮긴 것이라 두 곳이 다르면 파일이 기준입니다.</div>
+<div class="foot">원본 <a href="https://github.com/AJS-bit/ajs-bit.github.com/blob/claude/navi-ui-ux-redesign-nzxoxz/plan/{SRC.name}">plan/{SRC.name}</a> · 이 페이지는 그 파일을 그대로 옮긴 것이라 두 곳이 다르면 파일이 기준입니다.</div>
 </main>'''
 OUT.write_text(page)
 print('wrote', OUT, len(page), 'bytes')
