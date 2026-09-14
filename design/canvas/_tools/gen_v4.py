@@ -166,7 +166,7 @@ def thumb(kind):
 
 def pick_row(kind, name, desc, on, last=False):
     bb = '' if last else f'border-bottom: 1px solid {C["LINE_ROW"]};'
-    return (f'<div style="display: flex; align-items: center; gap: 12px; height: 54px; {bb}">'
+    return (f'<div style="display: flex; align-items: center; gap: 12px; height: 52px; {bb}">'
             f'{checkbox(on)}{thumb(kind)}'
             f'<div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0;">'
             f'<span style="font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: {C["INK"]};">{name}</span>'
@@ -203,10 +203,10 @@ stock_card = card(
 w('HomeSetup', frame(
     f'<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 20px; overflow: hidden;">'
     f'{topline("홈 구성")}'
-    f'<h1 style="margin: 14px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.35; color: {C["INK"]};">홈에 무엇을 둘까요?</h1>'
+    f'<h1 style="margin: 10px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.35; color: {C["INK"]};">홈에 무엇을 둘까요?</h1>'
     f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 고르세요.</p>'
-    f'<div style="margin-top: 16px;">{fixed_row}</div>'
-    f'<div style="margin-top: 14px;">{section_head("홈 카드", right=count_lbl)}</div>'
+    f'<div style="margin-top: 12px;">{fixed_row}</div>'
+    f'<div style="margin-top: 12px;">{section_head("홈 카드", right=count_lbl)}</div>'
     f'<div style="margin-top: 8px;">{card(pick_rows, pad="0 14px")}</div>'
     f'<div style="margin-top: 10px;">{stock_card}</div>'
     f'<div style="margin-top: auto; padding-bottom: 24px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;">'

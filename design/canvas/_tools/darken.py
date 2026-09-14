@@ -112,6 +112,7 @@ STATES = ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirma
 SYSTEM = ['Components']
 DESKTOP = ['DesktopHome', 'DesktopLedger']
 V4 = ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeConfigured']   # gen_v4.py
+V4 += ['DestGoals', 'DestFuture', 'HomeStocksOff', 'StocksMine', 'HoldingAdd', 'StocksEmpty', 'HomeStocksCard', 'StocksHome', 'StockListGrowth', 'StockListDividend', 'StockDetail', 'StockThemes', 'StockStates', 'StockSettings', 'SnapshotUpdate']   # gen_v4_stocks.py
 
 if __name__ == '__main__':
     n = 0

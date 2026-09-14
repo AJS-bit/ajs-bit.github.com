@@ -9,6 +9,7 @@ PHONE = (390, 844)
 # 폴백 폰트로 재면 한글 줄 높이가 짧게 나와 실제보다 작은 값이 나온다. 반드시 IBM Plex Sans KR로 재라.
 TALL = {'StorageStates': 1309, 'PeerStates': 1595, 'EmptyStates': 1718, 'Confirmations': 1228,
         'ModalErrors': 2061, 'GoalTypes': 1767}
+TALL.update({'StockStates': 800, 'SnapshotUpdate': 860})   # v4 상태 시트 (gen_v4_stocks.py)
 TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'DarkDesktopLedger': (1440, 900),
@@ -37,6 +38,12 @@ TITLES = {
     'IntroPosition': '첫 실행 · 소개 1 현재 위치', 'IntroRoute': '첫 실행 · 소개 2 항로',
     'IntroDestination': '첫 실행 · 소개 3 목적지', 'HomeSetup': '첫 실행 · 홈 구성',
     'HomeConfigured': '홈 · 구성 반영',
+    # v4 · 2~5단계 (gen_v4_stocks.py)
+    'DestGoals': '목적지 · 내 목적지 (5탭)', 'DestFuture': '목적지 · 자산 경로 (5탭)', 'HomeStocksOff': '홈 · 주식 꺼짐 (4탭)',
+    'StocksMine': '주식 · 내 종목', 'HoldingAdd': '모달 · 보유 기록', 'StocksEmpty': '주식 · 빈 상태', 'HomeStocksCard': '홈 · 주식 요약 카드',
+    'StocksHome': '주식 · 둘러보기', 'StockListGrowth': '주식 · 성장주 목록', 'StockListDividend': '주식 · 배당주 목록',
+    'StockDetail': '주식 · 종목 상세', 'StockThemes': '주식 · 테마', 'StockStates': '상태 · 주식 5종',
+    'StockSettings': '모달 · 설정 › 주식', 'SnapshotUpdate': '상태 · 스냅숏 갱신',
 }
 
 PAGES = [
@@ -53,6 +60,10 @@ PAGES = [
     ('page-5', '디자인 시스템', 2, ['Tokens', 'Components']),
     ('page-6', 'v4 · 1단계 첫 실행', 5,
      ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeConfigured']),
+    ('page-7', 'v4 · 2단계 내비', 3, ['DestGoals', 'DestFuture', 'HomeStocksOff']),
+    ('page-8', 'v4 · 3단계 주식 뼈대', 4, ['StocksMine', 'HoldingAdd', 'StocksEmpty', 'HomeStocksCard']),
+    ('page-9', 'v4 · 4단계 카테고리', 6, ['StocksHome', 'StockListGrowth', 'StockListDividend', 'StockDetail', 'StockThemes', 'StockStates']),
+    ('page-10', 'v4 · 5단계 설정', 2, ['StockSettings', 'SnapshotUpdate']),
 ]
 
 
@@ -113,6 +124,32 @@ NOTES = {
                '구성 다음 장은 기존 첫 실행 화면(모바일 · 화면 페이지의 "첫 실행": 내 데이터로 시작 / 샘플로 둘러보기)이라 '
                '여기 다시 두지 않았습니다.\n\n'
                '── 아래 줄은 다크입니다. darken.py로 만든 토큰 매핑 사본입니다.'),
+    'page-7': ('note-v4-stage2', 640,
+               'v4 · 2단계 — 내비 재편 (계획 §4 권장안)\n\n'
+               '목표 + 미래 → "목적지" 한 탭. 세그먼트 3개(내 목적지 · 자산 경로 · 상환 계획)이고 본문은 v3 목적지·미래 화면을 그대로 잘라 왔습니다 — 바뀌는 것은 내비뿐입니다. '
+               '"새 목적지 설계"는 내 목적지 목록 끝의 점선 버튼으로 들어갑니다(v3 원칙 4).\n\n'
+               '주식을 켠 사용자: 홈 · 자산 · 소비 · 주식 · 목적지 (5탭). 주식을 끈 사용자: 홈 · 자산 · 소비 · 목적지 (4탭) — 셋째 장. 주식 흔적은 탭·카드·설정 어디에도 없습니다.\n\n'
+               '── 아래 줄은 다크입니다.'),
+    'page-8': ('note-v4-stage3', 640,
+               'v4 · 3단계 — 주식탭 뼈대 (사용자 입력만, 스냅숏 없음)\n\n'
+               '보유는 수량·평단, 관심은 이름과 메모. 종가는 직접 넣는 값이라 가격 옆에 늘 "9/5 종가 · 직접 입력"이 붙고, 비워 두면 —입니다. '
+               '보유 평가액 1,244만원 = 수량 × 종가 (삼성전자 60주 · SK하이닉스 20주 · KODEX 200 120주, 매입 대비 +36만원).\n\n'
+               '"계좌 평가액에 반영" 토글은 기본 꺼짐(§9-6). 켜면 ETF 계좌 평가액에 더해져 자산·순자산·미래 경로로 흐릅니다.\n\n'
+               '넷째 장은 홈 구성에서 주식을 켠 사용자의 홈 — 주식 요약 카드 한 줄이 들어갑니다.\n\n'
+               '── 아래 줄은 다크입니다.'),
+    'page-9': ('note-v4-stage4', 640,
+               'v4 · 4단계 — 카테고리 탐색 (내장 스냅숏)\n\n'
+               '주식 홈: 투자 여력 띠(홈과 같은 +20만원) → 가드레일 한 줄(막지 않음) → 내 종목 → 성장 · 저평가 · 배당 · 테마. '
+               '목록의 모든 행에 이유 한 줄과 충족 수가 붙고 색으로 좋다·나쁘다를 칠하지 않습니다. 없는 값은 —이고 분모가 줄어듭니다(2/2).\n\n'
+               '종목 상세: 왜 이 목록에 있나(기준 3개 ✓·실제 숫자) → 52주 위치 바 → 핵심 숫자 → "내 항로에 넣어보기"(보라 점선 · 저장되지 않는 가정). '
+               '월 15만원을 더 넣으면 투자 계좌 5,000만원 도착이 2032년 6월 → 2030년 12월(calc/goals.py의 months_to와 같은 식).\n\n'
+               '종목명은 실재하지만 수치는 전부 디자인 검증용 가상값입니다 — design/stocks-snapshot.sample.json 참고. 추천·매수·매도라는 말은 어디에도 없습니다.\n\n'
+               '── 아래 줄은 다크입니다.'),
+    'page-10': ('note-v4-stage5', 640,
+               'v4 · 5단계 — 스냅숏 갱신(선택) · 기준값 설정\n\n'
+               '설정 › 주식: 스냅숏 기준일과 갱신 버튼, 기준값(말 → 규칙 → 시작값, 스텝퍼), 주식 기능 끄기. 기준값은 통계가 아니라 시작값이라 바꿔도 앱이 판단하지 않습니다.\n\n'
+               '갱신은 파일 하나를 한 번 받는 것이고 자동 갱신은 없습니다. 실패해도 기존 스냅숏으로 전부 동작합니다 — 둘째 장의 4단계 상태.\n\n'
+               '── 아래 줄은 다크입니다.'),
 }
 
 GAP_X = 80
@@ -178,7 +215,7 @@ canvas = {
     'pages': [{'id': p, 'name': n} for p, n, _, _ in PAGES],
     'artboards': artboards,
     'annotations': annotations,
-    'launch': {'view': 'canvas', 'page': 'page-6'},   # 검토 중인 페이지를 먼저 연다
+    'launch': {'view': 'canvas', 'page': 'page-7'},   # 검토 중인 페이지를 먼저 연다
 }
 
 (OUT / 'canvas.json').write_text(json.dumps(canvas, ensure_ascii=False, indent=2), encoding='utf-8')
