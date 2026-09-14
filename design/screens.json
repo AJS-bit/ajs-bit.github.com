@@ -824,6 +824,116 @@
       "w": 1200,
       "h": 1471,
       "source": "components/navi/shared.tsx · components/ui/button.tsx"
+    },
+    {
+      "file": "IntroPosition.dc.html",
+      "name": "IntroPosition",
+      "base": "IntroPosition",
+      "theme": "light",
+      "title": "첫 실행 · 소개 1 현재 위치",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "DarkIntroPosition.dc.html",
+      "name": "DarkIntroPosition",
+      "base": "IntroPosition",
+      "theme": "dark",
+      "title": "첫 실행 · 소개 1 현재 위치 (다크)",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "IntroRoute.dc.html",
+      "name": "IntroRoute",
+      "base": "IntroRoute",
+      "theme": "light",
+      "title": "첫 실행 · 소개 2 항로",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "DarkIntroRoute.dc.html",
+      "name": "DarkIntroRoute",
+      "base": "IntroRoute",
+      "theme": "dark",
+      "title": "첫 실행 · 소개 2 항로 (다크)",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "IntroDestination.dc.html",
+      "name": "IntroDestination",
+      "base": "IntroDestination",
+      "theme": "light",
+      "title": "첫 실행 · 소개 3 목적지",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "DarkIntroDestination.dc.html",
+      "name": "DarkIntroDestination",
+      "base": "IntroDestination",
+      "theme": "dark",
+      "title": "첫 실행 · 소개 3 목적지 (다크)",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "HomeSetup.dc.html",
+      "name": "HomeSetup",
+      "base": "HomeSetup",
+      "theme": "light",
+      "title": "첫 실행 · 홈 구성",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "DarkHomeSetup.dc.html",
+      "name": "DarkHomeSetup",
+      "base": "HomeSetup",
+      "theme": "dark",
+      "title": "첫 실행 · 홈 구성 (다크)",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "HomeConfigured.dc.html",
+      "name": "HomeConfigured",
+      "base": "HomeConfigured",
+      "theme": "light",
+      "title": "홈 · 구성 반영",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
+    },
+    {
+      "file": "DarkHomeConfigured.dc.html",
+      "name": "DarkHomeConfigured",
+      "base": "HomeConfigured",
+      "theme": "dark",
+      "title": "홈 · 구성 반영 (다크)",
+      "page": "v4 · 1단계 첫 실행",
+      "w": 390,
+      "h": 844,
+      "source": "v4 미구현 · plan/v4-stocks.md §3"
     }
   ],
   "note": ".dc.html은 정적 HTML + 인라인 스타일입니다. <helmet> 안의 폰트/기본 CSS를 걷어내고 그 뒤의 최상위 div가 화면 하나입니다."

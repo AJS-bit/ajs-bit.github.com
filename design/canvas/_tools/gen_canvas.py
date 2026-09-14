@@ -2,7 +2,7 @@
 import json
 import pathlib
 
-OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
+OUT = pathlib.Path(__file__).resolve().parent.parent
 
 PHONE = (390, 844)
 # 프레임 높이는 "실제 웹폰트로 렌더한 자연 높이 + 아래 여백 24px"이다.
@@ -33,6 +33,10 @@ TITLES = {
     'CoachEmpty': '모달 · 코칭 기록 없음',
     'DesktopHome': '데스크톱 · 홈', 'DesktopLedger': '데스크톱 · 소비 내역',
     'Tokens': '토큰 · 색 · 타이포 · 간격', 'Components': '컴포넌트 · 상태',
+    # v4 · 1단계 (gen_v4.py)
+    'IntroPosition': '첫 실행 · 소개 1 현재 위치', 'IntroRoute': '첫 실행 · 소개 2 항로',
+    'IntroDestination': '첫 실행 · 소개 3 목적지', 'HomeSetup': '첫 실행 · 홈 구성',
+    'HomeConfigured': '홈 · 구성 반영',
 }
 
 PAGES = [
@@ -47,6 +51,8 @@ PAGES = [
      ['StorageStates', 'EmptyStates', 'PeerStates', 'GoalTypes', 'ModalErrors', 'Confirmations']),
     ('page-4', '데스크톱', 2, ['DesktopHome', 'DesktopLedger']),
     ('page-5', '디자인 시스템', 2, ['Tokens', 'Components']),
+    ('page-6', 'v4 · 1단계 첫 실행', 5,
+     ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeConfigured']),
 ]
 
 
@@ -93,6 +99,20 @@ NOTES = {
                '카테고리·자산 고정 팔레트는 거래와 차트의 정체성이라 2.2 값을 그대로 유지합니다.\n\n'
                '토큰 시트는 01 LIGHT / 02 DARK 두 절과 상태색 카드의 DARK 줄로 두 모드 값을 한 장에 다 적어 둔 '
                '명세라 다크 사본을 따로 두지 않습니다. 컴포넌트 시트는 실제 컴포넌트를 보여 주므로 아래 줄에 다크를 둡니다.'),
+    'page-6': ('note-v4-stage1', 640,
+               'v4 · 1단계 — 첫 실행 소개 3장 · 홈 구성 1장 · 구성값을 반영한 홈 1장\n\n'
+               '소개 3장은 한 장에 한 문장이고, 그림은 새 일러스트가 아니라 홈·목적지의 실제 컴포넌트입니다. '
+               '어느 장에서든 건너뛰기 → 바로 구성 화면으로 갑니다.\n\n'
+               '구성 화면: 소비율 히어로는 고정, 아래 카드는 최대 5개. 기본 선택은 지금 v3 홈과 같습니다'
+               '(다음 안내 · 대표 목적지 · 이번 달 한도 · 또래 · 순자산 대비). 이 시안은 사용자가 대표 목적지·또래·순자산 대비를 빼고 '
+               '새 카드 둘(순자산 한 줄 · 상환 계획 한 줄)을 넣은 상태라 4 / 5입니다. "주식도 볼까요?"는 기본 꺼짐 — '
+               '켜면 주식 요약 카드와 주식 탭이 생기지만 그 화면은 2·3단계 시안입니다.\n\n'
+               '다섯째 장 "홈 · 구성 반영"은 그 선택대로 홈이 그려진 결과입니다. 헤더·히어로·다음 안내·이번 달 한도는 '
+               'v3 홈(Main)에서 그대로 잘라 왔고, 카드 순서는 구성 화면의 목록 순서를 따릅니다. '
+               '화면 맨 아래(스크롤 밖)에 "홈 구성 바꾸기 ›"가 있고, 설정 › 홈 구성에서도 바꿉니다.\n\n'
+               '구성 다음 장은 기존 첫 실행 화면(모바일 · 화면 페이지의 "첫 실행": 내 데이터로 시작 / 샘플로 둘러보기)이라 '
+               '여기 다시 두지 않았습니다.\n\n'
+               '── 아래 줄은 다크입니다. darken.py로 만든 토큰 매핑 사본입니다.'),
 }
 
 GAP_X = 80
@@ -145,12 +165,20 @@ for pid, pname, per_row, files in PAGES:
         y = dy + dark_h + GROUP_GAP if dark_h else y + light_h + GROUP_GAP
     nid, nw, ntext = NOTES[pid]
     annotations.append({'id': nid, 'page': pid, 'x': 0, 'y': -210, 'w': nw, 'text': ntext})
+    if pid == 'page-6':
+        annotations.append({'id': 'note-v4-stage1-ask', 'page': pid, 'x': 700, 'y': -210, 'w': 420, 'text': (
+            '검토 부탁드릴 것\n\n'
+            '1. 카드 순서 — 구성 화면의 목록 순서 그대로인지, 끌어서 바꿀 수 있어야 하는지.\n'
+            '2. "저장되지 않는 가정" 카드는 시뮬레이션을 켰을 때만 나타나므로 선택 목록에서 뺐습니다.\n'
+            '3. 소개 문장 셋은 계획서 §3의 문장 그대로입니다.\n'
+            '4. 소개 3장의 목적지 세 곳은 v3 샘플(비상금 68% · 투자 계좌 42% · 신용대출 31%)이고 도착일은 calc 확정값입니다.\n'
+            '5. 구성 반영 홈의 순자산 한 줄(9,350만원 · 1억까지 650만원 · 2027년 2월)과 상환 계획 한 줄(완제 2036년 4월 · 월 92만원)도 같은 샘플입니다.')})
 
 canvas = {
     'pages': [{'id': p, 'name': n} for p, n, _, _ in PAGES],
     'artboards': artboards,
     'annotations': annotations,
-    'launch': {'view': 'canvas', 'page': 'page-1'},
+    'launch': {'view': 'canvas', 'page': 'page-6'},   # 검토 중인 페이지를 먼저 연다
 }
 
 (OUT / 'canvas.json').write_text(json.dumps(canvas, ensure_ascii=False, indent=2), encoding='utf-8')

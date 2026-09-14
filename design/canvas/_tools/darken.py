@@ -3,7 +3,7 @@
 import re
 import pathlib
 
-SRC = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
+SRC = pathlib.Path(__file__).resolve().parent.parent
 
 MAP = {
     '#EDF0F7': '#080C16',   # canvas
@@ -111,10 +111,11 @@ MODALS = ['LimitEditor', 'TransactionAdd', 'ProfileDialog', 'AssetDialog', 'Debt
 STATES = ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations', 'GoalTypes']
 SYSTEM = ['Components']
 DESKTOP = ['DesktopHome', 'DesktopLedger']
+V4 = ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeConfigured']   # gen_v4.py
 
 if __name__ == '__main__':
     n = 0
-    for name in SCREENS + MODALS + STATES + SYSTEM + DESKTOP:
+    for name in SCREENS + MODALS + STATES + SYSTEM + DESKTOP + V4:
         src = SRC / f'{name}.dc.html'
         dst = SRC / ('DarkHome.dc.html' if name == 'Main' else f'Dark{name}.dc.html')
         dst.write_text(darken(src.read_text(encoding='utf-8')), encoding='utf-8')

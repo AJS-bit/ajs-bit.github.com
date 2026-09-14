@@ -9,6 +9,7 @@
 | `gen_modals.py` | 모달 11종 |
 | `gen_errors.py` | 모달 오류·저장 상태 6종 시트 (`python3 gen_errors.py <높이>`) |
 | `gen_rest.py` | 적립 모달 · 목적지 유형 5종 · 소비 지난 달 · 코칭 기록 없음 (`python3 gen_rest.py <유형 시트 높이>`) |
+| `gen_v4.py` | **v4 · 1단계** 아트보드 5종(소개 3장·홈 구성·구성 반영 홈)과 다크 짝. 홈은 `Main.dc.html`을 잘라 쓴다 |
 | `gen_canvas.py` | `canvas.json`(페이지·좌표·주석) 생성 |
 | `mkcompare.py` | 라이트/다크를 한 장에 나란히 놓은 비교 시트 HTML 생성 (아트보드가 아니라 검토용) |
 | `calc/` | 시안에 적힌 완제일·도착일·총이자를 만들어 낸 상각·복리 계산기 |
