@@ -36,7 +36,12 @@
   코덱스 쪽 `~/Documents/Codex/2026-09-07/navi-handoff/outputs/NAVI-v5-*.md`. 핵심 합의: 분류 안 한 금액은 이번 달 예상에서 일할로
   늘리지 않음(`finance.ts` `unconfirmed` 옵션) · 예상 소비율 히어로는 '과거 마감 기록 기준' 규칙 통과 시에만(그 전엔 이번 달 기록한
   소비 합계) · 대상 지정 되돌리기 · 달력 칸 = 그날 소비 합계, 하루 기준선 제외 · 초안은 메모리만 · 보호 파일 변경 4건(`finance`·
-  `navi-current`·`navi-import`·`navi-goals`)을 §12 절차로. 다음 = 사용자가 §12(37개, 1~18이 방향) 결정 → 1단계 시안. **아직 시안 없음.**
+  `navi-current`·`navi-import`·`navi-goals`)을 §12 절차로.
+- **v5 6판 · 1단계 시안 · 앱 구현 (2026-09-16~18).** §12-2 결정(첫 실행 홈 구성은 처음 설치·첫 실행에만). 사용자 확인으로 **달력을 1단계로
+  앞당김**(월 그리드가 홈에 보이고 날짜 터치 → 하루 시트, §10 6판 메모). 1단계 시안 12장(`gen_v5.py`, `HomeCalendar`·`DaySheet`·`DoneCard` 등)은
+  그려졌으나 **커밋·캔버스 반영 대기**(캔버스 시드 도구는 `/design`을 사용자가 다시 실행해야 함; 정적 미리보기 https://claude.ai/artifact/5hi9f3odMHjqxTRXrmkv26).
+  앱 구현은 `~/Documents/Codex/2026-09-01/ai/work/wealth-navigator` 브랜치 `v5-stage1`(계약서 `docs/v5-stage1-contract.md`, 조각 A~E 병렬 작업 트리),
+  코덱스(herdr 패널 `w9:p3`) 코드 리뷰 1·2차 반영, 3차 확인 예정. 진행 상태는 그 저장소 `CLAUDE.md`·`NAVI-V3.md`가 원본.
 
 ## 사용자가 정한 작업 규칙 — 반드시
 
