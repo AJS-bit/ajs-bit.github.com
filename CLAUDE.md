@@ -38,10 +38,15 @@
   소비 합계) · 대상 지정 되돌리기 · 달력 칸 = 그날 소비 합계, 하루 기준선 제외 · 초안은 메모리만 · 보호 파일 변경 4건(`finance`·
   `navi-current`·`navi-import`·`navi-goals`)을 §12 절차로.
 - **v5 6판 · 1단계 시안 · 앱 구현 (2026-09-16~18).** §12-2 결정(첫 실행 홈 구성은 처음 설치·첫 실행에만). 사용자 확인으로 **달력을 1단계로
-  앞당김**(월 그리드가 홈에 보이고 날짜 터치 → 하루 시트, §10 6판 메모). 1단계 시안 12장(`gen_v5.py`, `HomeCalendar`·`DaySheet`·`DoneCard` 등)은
+  앞당김**(월 그리드가 홈에 보이고 날짜 터치 → 하루 시트, §10 6판 메모). 1단계 시안 12장(7판에서 15장 · `gen_v5.py`, `HomeCalendar`·`DaySheet`·`DoneCard` 등)은
   그려졌으나 **커밋·캔버스 반영 대기**(캔버스 시드 도구는 `/design`을 사용자가 다시 실행해야 함; 정적 미리보기 https://claude.ai/artifact/5hi9f3odMHjqxTRXrmkv26).
   앱 구현은 `~/Documents/Codex/2026-09-01/ai/work/wealth-navigator` 브랜치 `v5-stage1`(계약서 `docs/v5-stage1-contract.md`, 조각 A~E 병렬 작업 트리),
-  코덱스(herdr 패널 `w9:p3`) 코드 리뷰 1·2차 반영, 3차 확인 예정. 진행 상태는 그 저장소 `CLAUDE.md`·`NAVI-V3.md`가 원본.
+  코덱스(herdr 패널 `w9:p3`) 코드 리뷰 1~3차 반영(3차는 코덱스가 직접 · `v5-stage1` `d9bf8a7` · APK 빌드됨). 진행 상태는 그 저장소 `CLAUDE.md`·`NAVI-V3.md`가 원본.
+- **v5 7판 (2026-09-19~20) · 펼침은 어디서나 월 달력.** 사용자 확인 "달력을 펼치면 세로로 일자가 아니라 캘린더처럼 나와야 한다". 6판의 "320px · 큰 글자 펼침 = 날짜 목록"을 없앴다 —
+  앱의 `calendar-card.tsx`가 칸 44 × 7 = 308px 기준으로 목록에 떨어뜨렸고 360dp 폰(카드 안쪽 304px)이 거기 걸렸다. 7판: 머리줄 `‹ 2026년 9월 ›`(지난달까지) · 요일 줄 · 주마다 가는 선의 7열 월 달력,
+  칸 폭은 카드 안쪽 7등분(320px = 39.4 × 56), 큰 글자는 칸 높이 72 + 선택 행 `목록으로 보기 ›`(자동 대체 없음). 시안 15장(`HomeCalendar360` · `HomeCalendarPrev` · `CalendarGridSizes` 추가, `HomeCalendar` · `CalendarCells` 고침),
+  독립 검토 3관점 반영. **시안·등록부는 아직 미커밋(사용자 검사 대기)**, 계획서만 커밋. 앱에서 고칠 곳과 다시 쓸 테스트 기대값은 계획 §10 7판 메모. 앞으로 앱 빌드·구현은 코덱스가 맡는다.
+  이 맥에서는 Brave로 렌더가 된다 — `render_png.py --chrome "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"`(가끔 멈추므로 장마다 시간 제한을 둘 것).
 
 ## 사용자가 정한 작업 규칙 — 반드시
 
