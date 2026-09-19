@@ -1556,10 +1556,10 @@
       "name": "CalendarCells",
       "base": "CalendarCells",
       "theme": "light",
-      "title": "상태 · 달력 칸",
+      "title": "참고 · 달력 칸 읽는 법",
       "page": "v5 · 1단계 달력과 하루 시트",
-      "w": 390,
-      "h": 1060,
+      "w": 940,
+      "h": 730,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
     },
     {
@@ -1567,10 +1567,10 @@
       "name": "CalendarGridSizes",
       "base": "CalendarGridSizes",
       "theme": "light",
-      "title": "상태 · 달력 펼침 폭과 글자 크기",
+      "title": "참고 · 달력을 펼치면 어디서나 월 달력",
       "page": "v5 · 1단계 달력과 하루 시트",
-      "w": 390,
-      "h": 2280,
+      "w": 1150,
+      "h": 1300,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
     },
     {
@@ -1578,10 +1578,10 @@
       "name": "DarkCalendarCells",
       "base": "CalendarCells",
       "theme": "dark",
-      "title": "상태 · 달력 칸 (다크)",
+      "title": "참고 · 달력 칸 읽는 법 (다크)",
       "page": "v5 · 1단계 달력과 하루 시트",
-      "w": 390,
-      "h": 1060,
+      "w": 940,
+      "h": 730,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
     },
     {
@@ -1589,10 +1589,10 @@
       "name": "DarkCalendarGridSizes",
       "base": "CalendarGridSizes",
       "theme": "dark",
-      "title": "상태 · 달력 펼침 폭과 글자 크기 (다크)",
+      "title": "참고 · 달력을 펼치면 어디서나 월 달력 (다크)",
       "page": "v5 · 1단계 달력과 하루 시트",
-      "w": 390,
-      "h": 2280,
+      "w": 1150,
+      "h": 1300,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
     }
   ],

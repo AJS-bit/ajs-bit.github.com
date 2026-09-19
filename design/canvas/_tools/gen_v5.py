@@ -466,7 +466,7 @@ def cell(day, wd=None, w_=44, pressed=False, prev=False, future=False):
             f'{wdl}{"".join(parts)}</div>')
 
 
-def gcell(day, month='sep', kind='in', today=False, future=False, pressed=False, large=False, tight=False, only_transfer=False):
+def gcell(day, month='sep', kind='in', today=False, future=False, pressed=False, large=False, tight=False):
     """월 달력 칸. 폭은 7등분(1fr) · 높이 56(큰 글자 72). 위에서부터 날짜 · 합계 · 수식어.
     kind: 'in' 이번에 보는 달 · 'adj' 이웃 달(옅은 숫자, 기록은 옅게 보이고 누르면 그 날짜 시트) · 'out' 홈 범위 밖이나 미래(숫자만, 누를 수 없음)."""
     h = 72 if large else 56
@@ -480,10 +480,7 @@ def gcell(day, month='sep', kind='in', today=False, future=False, pressed=False,
     else:
         date_col, weight = (C["INK"], 700) if today else (C["INK2"], 500)
     parts = [f'<span style="font-size: {fs_date}px; font-weight: {weight}; color: {date_col}; line-height: 1.2;">{day}</span>']
-    if only_transfer:      # 소비 없이 이체만 있는 날 — 숫자 없이 배지만
-        parts.append(f'<span style="height: {fs_sum + 2}px; flex-shrink: 0;"></span>')
-        parts.append(_mods(False, True, size=mod, fs=mod - 1))
-    elif blank:
+    if blank:
         parts.append(f'<span style="height: {fs_sum + 2}px;"></span><span style="height: {mod + 1}px;"></span>')
     else:
         s, chk, tr, zero = day_state(month, day)
@@ -610,47 +607,85 @@ w('HomeCalendar360', home_expanded(width=360, pad=10))
 w('HomeCalendarPrev', home_expanded(month='aug', limit=False))
 
 
-# 칸 상태 카탈로그 — 기본 4 × 수식어
-def legend(items):
-    out = []
-    for lab, html in items:
-        out.append(f'<div style="display: flex; align-items: center; gap: 14px; padding: 6px 0; border-bottom: 1px solid {C["LINE_ROW"]};">'
-                   f'<div style="width: 56px; display: flex; justify-content: center; flex-shrink: 0;"><div style="width: 48px;">{html}</div></div>'
-                   f'<span style="font-size: 12.5px; line-height: 1.45; color: {C["INK2"]};">{lab}</span></div>')
-    return card(''.join(out), pad='4px 14px')
+# ══════════════ 10. 구현 참고 장 — 달력 칸 읽는 법 · 폭과 글자 크기 ══════════════
+# 앱 화면이 아니라 구현하는 사람이 보는 설명 장이다. 폰 프레임을 쓰지 않고 가로로 넓게 펴서, 실제 달력 옆에 짧은 설명을 둔다.
+# 맨 위 알약 `구현 참고 · 앱 화면이 아닙니다`로 앱 화면과 구분한다. 설명은 "무엇을 뜻하는지" 한 줄 + "누르면 어떻게 되는지(또는 알아 둘 점)" 한 줄.
+def mark(n, floating=False):
+    """번호 표시. floating = 달력 칸의 오른쪽 위에 얹는다."""
+    pos = 'position: absolute; top: -4px; right: 0;' if floating else 'flex-shrink: 0; margin-top: 1px;'
+    return (f'<span style="{pos} width: 17px; height: 17px; border-radius: 99px; background: {C["INK"]}; color: #FFFFFF; '
+            f'font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; '
+            f'box-shadow: 0 0 0 2px {C["SURF"]};">{n}</span>')
 
 
-def b(t):
-    return f'<b style="font-weight:600">{t}</b>'
+def spec_frame(w_, h_, title, sub, body):
+    chip = (f'<span style="align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: {C["INK2"]}; '
+            f'border: 1px solid {C["LINE"]}; background: {C["SURF"]}; border-radius: 99px; padding: 4px 10px;">구현 참고 · 앱 화면이 아닙니다</span>')
+    return (f'<div style="width: {w_}px; height: {h_}px; background: {C["BG"]}; color: {C["INK"]}; padding: 28px 30px 30px; display: flex; '
+            f'flex-direction: column; gap: 10px; overflow: hidden; font-variant-numeric: tabular-nums;">{chip}'
+            f'<h2 style="margin: 2px 0 0; font-size: 20px; font-weight: 700; letter-spacing: -0.025em; color: {C["INK"]};">{title}</h2>'
+            f'<p style="margin: 0 0 8px; font-size: 13px; line-height: 1.55; color: {C["INK3"]}; max-width: 640px;">{sub}</p>{body}</div>')
 
 
-w('CalendarCells', state_sheet(
-    '달력 칸 · 상태', '칸의 숫자는 그날 소비 합계(고정비 포함 · 이체 제외). 1만 미만은 원 단위, 1만 이상은 만 단위 한 자리. 회색 —도 누를 수 있고, 누를 수 없는 것은 미래와 홈 범위 밖뿐.',
-    [('기본 상태 4', legend([
-        (f'{b("—")} 아직 기록이 없어요 · 소비 거래도 표시도 없음 · 누르면 그 날짜 시트가 열려요', gcell(7)),
-        (f'{b("0")} 소비 없음 확인 · 안 썼어요로 표시한 날 · 저장된 0원이 아니라 표시 · ✓는 붙이지 않아요(0이 이미 확인)', gcell(9, month='aug')),
-        (f'{b("금액")} 소비 거래 1건 이상 · 4,500 / 1.2만 / 5.9만 형식', gcell(3)),
-        (f'{b("금액 + ✓")} 다 적었어요로 표시한 날(확인한 날)', gcell(5))])),
-     ('수식어', legend([
-        (f'{b("이체")} 저축·투자·대출상환이 있는 날 · 이체만 있으면 숫자 없이 배지만', gcell(16, only_transfer=True)),
-        (f'{b("0 + 이체")} 안 썼어요로 표시했고 이체가 있는 날', gcell(6)),
-        (f'{b("오늘")} 배경 brand-soft · 날짜 굵게', gcell(8, today=True)),
-        (f'{b("미래")} 날짜 옅게 · 숫자 자리 빈 칸 · 눌러도 열리지 않아요', gcell(12, future=True)),
-        (f'{b("이웃 달 칸(월 달력)")} 첫 주·마지막 주의 지난달·이번 달 날짜 · 70%로 옅게 · 합계만 보이고 ✓·이체 배지는 생략 · 누르면 그 날짜 시트', gcell(31, month='aug', kind='adj')),
-        (f'{b("범위 밖 칸(월 달력)")} 다음 달 · 지지난달 날짜 · 45% · 숫자만 있고 누를 수 없어요', gcell(2, kind='out')),
-        (f'{b("지난달 칸(스트립)")} 달 제목이 없는 최근 7일 줄에서는 8/31처럼 달을 붙여요', cell(31, '월', w_=48, prev=True)),
-        (f'{b("누른 순간")} 안쪽 링 · 손을 떼면 그 날짜 시트', gcell(3, pressed=True))])),
-     ], h=1060))
+# 달력 위에 찍는 번호: (자료가 속한 달, 날짜) → 번호
+MARKS = {('sep', 7): 1, ('sep', 3): 2, ('sep', 4): 3, ('sep', 6): 4, ('sep', 8): 5, ('sep', 12): 6, ('aug', 31): 7, ('oct', 2): 8}
+CELL_GUIDE = [   # (번호, 이름, 무엇을 뜻하는지, 누르면 어떻게 되는지 또는 알아 둘 점)
+    (1, '—', '아직 기록이 없는 날', '누르면 그 날짜 기록 창이 열려요'),
+    (2, '금액', '그날 쓴 돈의 합계 · 4,500이나 5.9만처럼 짧게', '누르면 그날 기록 목록이 먼저 보여요'),
+    (3, '금액 아래 ✓', '다 적었어요로 표시한 날', '그날 기록을 고치면 ✓가 풀려요'),
+    (4, '0 · 이체', '0은 안 썼어요 표시, 이체는 저축·상환이 있던 날', '이체는 소비 합계에 넣지 않아요'),
+    (5, '오늘', '옅은 파란 칸에 굵은 날짜', '누르면 금액 입력부터 시작해요'),
+    (6, '아직 오지 않은 날', '날짜만 옅게 보여요', '눌러도 열리지 않아요'),
+    (7, '지난달 날짜', '첫 주의 8월 30·31일 · 기록이 옅게 보여요', '누르면 그 날짜 기록 창이 열려요'),
+    (8, '다음 달 날짜', '마지막 주의 10월 1~3일 · 더 옅게, 숫자만', '누를 수 없어요'),
+]
+
+
+def marked_calendar():
+    """HomeCalendar와 같은 9월 달력 — 설명할 칸에 번호만 얹는다."""
+    wd = ''.join(f'<span style="text-align: center; font-size: 11px; font-weight: 500; color: {C["INK3"]};">{d}</span>' for d in WD)
+    rows = []
+    for wk in WEEKS['sep']:
+        cs = []
+        for kind, d, m in wk:
+            is_sep = m == 'sep'
+            c_ = gcell(d, month=m if m in MONTHS else 'sep', kind=kind,
+                       today=(is_sep and d == TODAY and kind != 'out'), future=(is_sep and d > TODAY))
+            n = MARKS.get((m, d))
+            cs.append(f'<div style="position: relative; min-width: 0;">{c_}{mark(n, True) if n else ""}</div>')
+        rows.append(f'<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid {C["LINE_SOFT"]}; padding: 2px 0;">{"".join(cs)}</div>')
+    grid = (f'<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin-top: 8px; padding-bottom: 5px;">{wd}</div>'
+            f'<div style="display: flex; flex-direction: column; border-bottom: 1px solid {C["LINE_SOFT"]};">{"".join(rows)}</div>')
+    return card(month_bar('2026년 9월', prev_on=True, next_on=False) + grid
+                + status_rows(text=f'9월 기록한 소비 {SEP_TOTAL:,}원 · 오늘 4건 37,000원'), pad='13px 14px 13px')
+
+
+def guide_row(n, name, meaning, tap, last=False):
+    border = '' if last else f'border-bottom: 1px solid {C["LINE_ROW"]};'
+    return (f'<div style="display: flex; gap: 11px; padding: 10px 0; {border}">{mark(n)}'
+            f'<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">'
+            f'<div style="font-size: 13.5px; line-height: 1.4; color: {C["INK2"]};"><b style="font-weight: 600; color: {C["INK"]};">{name}</b>&nbsp;&nbsp;{meaning}</div>'
+            f'<div style="font-size: 12px; line-height: 1.4; color: {C["INK3"]};">{tap}</div></div></div>')
+
+
+cell_guide = card(''.join(guide_row(*r, last=(i == len(CELL_GUIDE) - 1)) for i, r in enumerate(CELL_GUIDE)), pad='4px 16px')
+cell_foot = (f'<p style="margin: 10px 2px 0; font-size: 12px; line-height: 1.6; color: {C["INK3"]};">'
+             f'접힌 최근 7일 줄에는 달 제목이 없어서 지난달 날짜를 <b style="font-weight: 600; color: {C["INK2"]};">8/31</b>처럼 달을 붙여 씁니다. '
+             f'이체만 있고 소비가 없는 날은 숫자 없이 이체만 보입니다. 칸을 누르는 순간에는 파란 테두리가 생깁니다(홈 · 달력 펼침 장).</p>')
+
+w('CalendarCells', spec_frame(
+    940, 730, '달력 칸 읽는 법', '칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 오른쪽에서 찾으세요.',
+    f'<div style="display: flex; gap: 28px; align-items: flex-start;">'
+    f'<div style="width: 362px; flex-shrink: 0;">{marked_calendar()}</div>'
+    f'<div style="flex: 1; min-width: 0;">{cell_guide}{cell_foot}</div></div>'))
 
 
 # 폭과 글자 크기 — 어디서나 월 달력. 320px은 칸 39.4 × 56, 큰 글자는 칸 높이 72. 날짜 목록은 자동 대체가 아니라 큰 글자에서 고르는 보기.
-def narrow(px, inner):
-    return f'<div style="width: {px - 28}px;">{inner}</div>'
-
-
 LIST_ROWS = [('9월 8일 화 · 오늘', '37,000원', False), ('9월 7일 월', '—', False), ('9월 6일 일', '0원 · 이체', False),
              ('9월 5일 토', '12,000원', True), ('9월 4일 금', '4,500원', True)]
 EMPTY13 = '<span style="width: 13px;"></span>'
+
+
 def list_amount(a):
     if a == '—':
         return f'<span style="font-size: 16px; font-weight: 500; color: {C["INK3"]};">{a}</span>'
@@ -668,17 +703,29 @@ list_view = card(
     pad='13px 14px 4px')
 
 
-def bar_sample(px, inner):
-    return f'<div style="width: {px - 28}px;">{card(inner, pad="13px 8px 13px" if px <= 320 else "13px 14px 13px")}</div>'
+def sample(width, title, line, inner):
+    """견본 하나 — 상황을 말하는 제목 + 한 줄 설명 + 그림."""
+    return (f'<div style="width: {width}px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;">'
+            f'<div><div style="font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: {C["INK"]};">{title}</div>'
+            f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; margin-top: 2px;">{line}</div></div>{inner}</div>')
 
 
-w('CalendarGridSizes', state_sheet(
-    '달력 펼침 · 폭과 글자 크기', '펼치면 어느 폭·어느 글자 크기에서도 월 달력입니다. 날짜를 세로로 늘어놓은 목록으로 저절로 바뀌지 않아요. 칸 폭은 카드 안쪽을 7등분하고 높이는 56 그대로라, 가장 좁은 320px에서도 칸 넓이(39.4 × 56)가 44 × 44보다 넓습니다.',
-    [('320px · 카드 좌우 패딩 8 · 칸 39.4 × 56 — 머리줄은 연도를 빼고 9월', narrow(320, calendar_card(True, pad=8).replace('2026년 9월', '9월').replace('min-width: 94px', 'min-width: 44px'))),
-     ('320px · 지난달을 볼 때 — 이번 달로는 머리줄 아래 줄로', bar_sample(320, month_bar('8월', prev_on=False, next_on=True, back_pill=True, pill_below=True, label_w=44))),
-     ('큰 글자(시스템 배율 1.3 이상) · 칸 높이 72 · 날짜 14.5 · 합계 13 고정 — 정확한 금액은 상태 줄과 하루 시트에서 배율 그대로', calendar_card(True, large=True, with_list_link=True)),
-     ('큰 글자 · 320px · 8월 첫 3주 — 칸이 47px보다 좁으면 합계 12 (71.2만 · 11.8만이 잘리지 않음) · 이번 달로는 아래 줄', narrow(320, card(
-         month_bar('8월', prev_on=False, next_on=True, back_pill=True, large=True, label_w=52)
-         + month_grid('aug', large=True, tight=True, weeks=slice(0, 3)), pad='13px 8px 13px'))),
-     ('목록으로 보기를 고른 사람에게만 — 최근 날짜가 위 · 미래 날짜 없음 · 원 단위 그대로 · 기기에 기억 · 달력으로 보기로 복귀', list_view),
-     ], h=2280))
+cal320 = calendar_card(True, pad=8).replace('2026년 9월', '9월').replace('min-width: 94px', 'min-width: 44px')
+cal_large = calendar_card(True, large=True, with_list_link=True)
+bar_prev320 = card(month_bar('8월', prev_on=False, next_on=True, back_pill=True, pill_below=True, label_w=44), pad='13px 8px 13px')
+cal_large320 = card(month_bar('8월', prev_on=False, next_on=True, back_pill=True, large=True, label_w=52)
+                    + month_grid('aug', large=True, tight=True, weeks=slice(0, 3)), pad='13px 8px 13px')
+
+sizes_row1 = ('<div style="display: flex; gap: 36px; align-items: flex-start;">'
+              + sample(292, '가장 좁은 폰(320px)', '달력 그대로. 칸 39 × 56, 머리줄은 9월만', cal320)
+              + sample(362, '글자를 크게 쓰는 사람', '달력 그대로. 칸이 72로 높아지고 글자가 커져요', cal_large)
+              + sample(362, '목록으로 보기를 고르면', '스스로 고른 사람에게만. 저절로 바뀌지 않아요', list_view)
+              + '</div>')
+sizes_row2 = ('<div style="display: flex; gap: 36px; align-items: flex-start; margin-top: 26px;">'
+              + sample(292, '320px에서 지난달을 볼 때', '이번 달로 버튼은 머리줄 아래 줄로', bar_prev320)
+              + sample(292, '320px + 큰 글자', '칸이 좁으면 합계 글자를 12로 · 71.2만이 잘리지 않아요', cal_large320)
+              + '</div>')
+
+w('CalendarGridSizes', spec_frame(
+    1150, 1300, '달력을 펼치면 어디서나 월 달력', '화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다.',
+    sizes_row1 + sizes_row2))
