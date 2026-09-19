@@ -10,10 +10,13 @@ PHONE = (390, 844)
 TALL = {'StorageStates': 1309, 'PeerStates': 1595, 'EmptyStates': 1718, 'Confirmations': 1228,
         'ModalErrors': 2061, 'GoalTypes': 1767}
 TALL.update({'StockStates': 800, 'SnapshotUpdate': 860})   # v4 상태 시트 (gen_v4_stocks.py)
+TALL.update({'DaySheetConfirm': 1200, 'HeroFootnotes': 1800, 'CalendarCells': 1060, 'CalendarGridSizes': 2280})   # v5 상태 시트 (gen_v5.py)
 TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'DarkDesktopLedger': (1440, 900),
-        'Tokens': (1200, 1684), 'Components': (1200, 1471), 'DarkComponents': (1200, 1471)}
+        'Tokens': (1200, 1684), 'Components': (1200, 1471), 'DarkComponents': (1200, 1471),
+        'DaySheet360': (360, 844), 'DarkDaySheet360': (360, 844),
+        'HomeCalendar360': (360, 844), 'DarkHomeCalendar360': (360, 844)}   # v5 좁은 폰
 
 TITLES = {
     'Main': '홈 · 오늘의 내비게이션', 'HomeScroll': '홈 · 아래로 스크롤',
@@ -44,6 +47,14 @@ TITLES = {
     'StocksHome': '주식 · 둘러보기', 'StockListGrowth': '주식 · 성장주 목록', 'StockListDividend': '주식 · 배당주 목록',
     'StockDetail': '주식 · 종목 상세', 'StockThemes': '주식 · 테마', 'StockStates': '상태 · 주식 5종',
     'StockSettings': '모달 · 설정 › 주식', 'SnapshotUpdate': '상태 · 스냅숏 갱신',
+    # v5 · 1단계 (gen_v5.py)
+    'DaySheet': '하루 시트 · 오늘 (키보드 열림)', 'DaySheetList': '하루 시트 · 기록 있는 과거 날 (목록 우선)',
+    'DaySheetEdit': '하루 시트 · 수정 모드', 'DoneCard': '홈 · 저장 뒤 완료 카드', 'DaySheetConfirm': '상태 · 저장 직전 확인 4종',
+    'ClassifySheet': '분류하기 시트', 'HeroInsufficient': '홈 · 히어로 이력 부족', 'DaySheet360': '하루 시트 · 360px',
+    'HeroFootnotes': '상태 · 히어로 조건부 각주 4종',
+    'HomeCalendarStrip': '홈 · 달력 접힘 (최근 7일)', 'HomeCalendar': '홈 · 달력 펼침 (월 달력) · 3일 칸 누름',
+    'HomeCalendar360': '홈 · 달력 펼침 · 360px (월 달력 그대로)', 'HomeCalendarPrev': '홈 · 달력 펼침 · ‹ 지난달 8월 보기',
+    'CalendarCells': '상태 · 달력 칸', 'CalendarGridSizes': '상태 · 달력 펼침 폭과 글자 크기',
 }
 
 PAGES = [
@@ -64,6 +75,9 @@ PAGES = [
     ('page-8', 'v4 · 3단계 주식 뼈대', 4, ['StocksMine', 'HoldingAdd', 'StocksEmpty', 'HomeStocksCard']),
     ('page-9', 'v4 · 4단계 카테고리', 6, ['StocksHome', 'StockListGrowth', 'StockListDividend', 'StockDetail', 'StockThemes', 'StockStates']),
     ('page-10', 'v4 · 5단계 설정', 2, ['StockSettings', 'SnapshotUpdate']),
+    ('page-11', 'v5 · 1단계 달력과 하루 시트', 5, ['HomeCalendarStrip', 'HomeCalendar', 'DaySheetList', 'DaySheet', 'DoneCard',
+                                                 'HomeCalendar360', 'HomeCalendarPrev', 'HeroInsufficient', 'DaySheetEdit', 'ClassifySheet',
+                                                 'DaySheet360', 'CalendarCells', 'CalendarGridSizes', 'DaySheetConfirm', 'HeroFootnotes']),
 ]
 
 
@@ -149,6 +163,18 @@ NOTES = {
                'v4 · 5단계 — 스냅숏 갱신(선택) · 기준값 설정\n\n'
                '설정 › 주식: 스냅숏 기준일과 갱신 버튼, 기준값(말 → 규칙 → 시작값, 스텝퍼), 주식 기능 끄기. 기준값은 통계가 아니라 시작값이라 바꿔도 앱이 판단하지 않습니다.\n\n'
                '갱신은 파일 하나를 한 번 받는 것이고 자동 갱신은 없습니다. 실패해도 기존 스냅숏으로 전부 동작합니다 — 둘째 장의 4단계 상태.\n\n'
+               '── 아래 줄은 다크입니다.'),
+    'page-11': ('note-v5-stage1', 640,
+               'v5 · 1단계 — 홈 달력과 하루 시트 (plan/v5-calendar.md 7판)\n\n'
+               '첫째 장은 홈 그대로에 달력 카드가 히어로 바로 아래 첫 카드로 들어간 모습(접힘 = 최근 7일, 오늘이 오른쪽 끝). 둘째 장은 펼친 월 달력 — 머리줄 ‹ 2026년 9월 ›, 요일 줄, 주마다 가는 선, 이번 달 전체가 한 번에 보이는 상태. '
+               '펼침은 어느 폭·어느 글자 크기에서도 월 달력이고 날짜를 세로로 늘어놓은 목록으로 저절로 바뀌지 않습니다(7판 · 둘째 줄 360px 장과 폭·글자 크기 상태표). ‹ 는 지난달까지만 갑니다(하루 시트 범위와 같음). '
+               '칸마다 그날 소비 합계(1만 미만은 원 단위, 1만 이상은 1.2만 형식), —는 아직 기록 없음, 0은 안 썼어요로 표시한 날, ✓는 다 적었어요, 이체 배지. '
+               '3일 칸을 누른 순간이라 링이 그려져 있고, 손을 떼면 셋째 장(9월 3일 하루 시트)이 홈 위에 뜹니다. 그 날의 기록 3건이 먼저 보이고 + 추가로 바로 넣습니다.\n\n'
+               '넷째 장은 오늘 칸을 눌렀을 때 — 기록이 없는 날은 금액에 자동 포커스라 시스템 숫자 키보드가 올라온 상태가 기본입니다(키보드는 기기가 그리므로 자리만 빈 판). '
+               '숫자만 치고 저장하면 시트가 닫히고 다섯째 장의 완료 카드: 날짜 · 정확 금액 · 오늘 합계, 소비율 변화는 예상 기준이 확인된 달에만, 취소는 방금 기록한 건만.\n\n'
+               '둘째 줄: 달력 펼침 360px, ‹ 로 지난달(8월)을 보는 상태, 지난달 기록이 없는 달의 홈(큰 숫자가 예상 소비율 대신 이번 달 기록한 소비), 수정 모드, 분류하기. '
+               '셋째 줄: 하루 시트 360px, 달력 칸 상태표, 달력 펼침 폭과 글자 크기(320px · 큰 글자 · 선택 보기인 목록), 저장 직전 확인 4종, 히어로 조건부 각주 조합.\n\n'
+               '수치는 v3 샘플(오늘 4건 37,000원 + 편의점 12,000원 → 5건 49,000원 · 57.9% → 58.2%). 수입·환불 링크는 없고(앱에 그 흐름이 없음), 하루 기준선 막대도 없습니다(계획 §12-18).\n\n'
                '── 아래 줄은 다크입니다.'),
 }
 
