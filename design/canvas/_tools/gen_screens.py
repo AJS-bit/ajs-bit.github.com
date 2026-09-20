@@ -291,9 +291,8 @@ V5_TRANSFER = sum(r[4] for _, rows in LEDGER_V5 for r in rows if r[5] == 'transf
 
 
 def head_sum(n):
-    """날짜 헤더의 금액 — 달력 칸과 같은 formatSum. 계획서 표기(`이체 30만`)대로 `.0`은 떼어 쓴다."""
-    s = fmt_sum(n)
-    return s.replace('.0만', '만')
+    """날짜 헤더의 금액 — 달력 칸과 같은 formatSum 하나(`.0`은 fmt_sum 이 뗀다 — 300,000 → `30만`. 머리글만의 예외 없음)."""
+    return fmt_sum(n)
 
 
 def row_menu(items):

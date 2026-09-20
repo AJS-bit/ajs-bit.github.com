@@ -180,7 +180,7 @@
       `font-size:13.5px font-weight:500 margin-top:7px color:#FFFFFF`
       - `span` — “12,000원”
         `font-weight:700`
-    - `div` **text 12.5px/400** — “소비율 57.9% → 58.2%”
+    - `div` **text 12.5px/400** — “소비에는 이미 포함됐어요 · 분류하면 예상을 다시 계산해요”
       `font-size:12.5px margin-top:3px color:rgba(255,255,255,.72)`
     - `div`
       `display:flex gap:8px margin-top:11px`

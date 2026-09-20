@@ -73,8 +73,56 @@ ARROW = 'M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.
 
 KEEP = re.compile(r'<!--dc-keep-->(.*?)<!--/dc-keep-->', re.S)
 
+# ── 다크에서도 '떠 있어야' 하는 두 요소 ────────────────────────────────────────────────
+# 라이트의 꺼진 토글 손잡이와 세그먼트 선택 칸은 흰색(#FFFFFF)이 트랙보다 밝아서 떠 보인다.
+# MAP 대로 #FFFFFF → surface(#121A2B)로 바꾸면 다크에서는 트랙(#232D45 · #1A2337)보다 어두워져
+# 손잡이는 구멍처럼, 선택 칸은 파인 자리처럼 보인다. 그래서 이 둘만 MAP 보다 먼저 집어 따로 칠한다.
+# 켜진 토글(브랜드 트랙 #7FA0FF 위 surface 손잡이 · 6.9:1)은 잘 읽히므로 그대로 둔다.
+KNOB_OFF_DARK = '#8595AE'   # 꺼진 토글 손잡이 = ink-3 · 트랙 #232D45 위 4.5:1
+# 세그먼트 선택 칸 = 트랙보다 밝은 표면. 열쇠는 라이트 트랙 색 — 화면 탭(#E3E8F1 → 다크 트랙 #232D45 · 그 위 1.21:1, 라이트는 1.23:1)과
+# 모달(#F4F6FB → 다크 트랙 #1A2337 · 그 위 1.38:1). 지금은 두 곳이 같은 값이다
+SEG_ON_DARK = {'#E3E8F1': '#2E3A54', '#F4F6FB': '#2E3A54'}
 
-def darken(text):
+# 꺼진 토글 = 알약 트랙(#E3E8F1 · flex-start) 바로 안의 둥근 흰 손잡이. 46 × 27(모바일) · 34 × 20(데스크톱) 둘 다 잡는다
+TOGGLE_OFF = re.compile(
+    r'(<(?:div|span)\s+style="[^"]*?border-radius:\s*99px;\s*background:\s*#E3E8F1;[^"]*?justify-content:\s*flex-start;[^"]*"\s*>\s*'
+    r'<span\s+style="[^"]*?border-radius:\s*99px;\s*background:\s*)#FFFFFF(\s*;?\s*"\s*>\s*</span>)', re.I)
+# 세그먼트 = 트랙(#E3E8F1 화면 탭 · #F4F6FB 모달) 바로 안에 글자만 든 칸이 늘어선 것. 그 안에서 흰 칸(선택)만 바꾼다
+SEG_TRACK = re.compile(
+    r'<div\s+style="display:\s*flex;\s*gap:\s*\d+px;\s*background:\s*(#E3E8F1|#F4F6FB);\s*border-radius:\s*\d+px;\s*padding:\s*\d+px;?\s*"\s*>'
+    r'(?:\s*<div\s+style="[^"]*"\s*>[^<]*</div>)+\s*</div>', re.I)
+SEG_CELL_ON = re.compile(r'(<div\s+style="[^"]*?background:\s*)#FFFFFF(\s*;[^"]*"\s*>)', re.I)
+# 검산용 — 위 정규식이 놓친 토글 · 세그먼트가 있으면(마크업이 달라졌으면) 조용히 넘어가지 않고 멈춘다
+_STYLE = re.compile(r'style="([^"]*)"')
+_SEG_SHADOW = re.compile(r'box-shadow:\s*0 1px 2px rgba\(16,24,40,\.0[68]\)\s*;?\s*$')
+_PILL = re.compile(r'border-radius:\s*99px', re.I)
+_TRACK_OFF = re.compile(r'background:\s*#E3E8F1', re.I)
+_KNOB_LEFT = re.compile(r'justify-content:\s*flex-start', re.I)
+_KNOB, _SEG = '\x00KNOB\x00', '\x00SEG{}\x00'   # _SEG 의 {} = 라이트 트랙 색에서 # 을 뗀 것(# 이 붙어 있으면 MAP 이 표시까지 바꿔 버린다)
+
+
+def _lift(text, name=''):
+    """꺼진 토글 손잡이 · 세그먼트 선택 칸의 #FFFFFF 를 표시로 바꿔 둔다(MAP 치환 뒤에 다크 값으로 채운다)."""
+    styles = _STYLE.findall(text)
+    want_knob = sum(1 for s in styles if _PILL.search(s) and _TRACK_OFF.search(s) and _KNOB_LEFT.search(s))
+    want_seg = sum(1 for s in styles if '#FFFFFF' in s.upper() and _SEG_SHADOW.search(s.strip()))
+    text, got_knob = TOGGLE_OFF.subn(lambda m: m.group(1) + _KNOB + m.group(2), text)
+    got_seg = 0
+
+    def _track(m):
+        nonlocal got_seg
+        mark = _SEG.format(m.group(1).upper().lstrip('#'))
+        block, n = SEG_CELL_ON.subn(lambda c: c.group(1) + mark + c.group(2), m.group(0))
+        got_seg += n
+        return block
+
+    text = SEG_TRACK.sub(_track, text)
+    assert got_knob == want_knob, f'{name}: 꺼진 토글 {want_knob}개 중 {got_knob}개만 잡혔다 — TOGGLE_OFF 를 마크업에 맞출 것'
+    assert got_seg == want_seg, f'{name}: 세그먼트 선택 칸 {want_seg}개 중 {got_seg}개만 잡혔다 — SEG_TRACK 을 마크업에 맞출 것'
+    return text
+
+
+def darken(text, name='', knob=KNOB_OFF_DARK, seg=None):
     # <!--dc-keep-->…<!--/dc-keep--> 구간은 라이트/다크가 같아야 하는 반전 요소
     # (어두운 배경 위 흰 글자 토스트 등)이라 매핑에서 제외한다.
     kept = []
@@ -84,7 +132,11 @@ def darken(text):
         return f'\x00KEEP{len(kept) - 1}\x00'
 
     text = KEEP.sub(_stash, text)
+    text = _lift(text, name)
     out = PAT.sub(lambda m: MAP[m.group(0).upper()], text)
+    out = out.replace(_KNOB, knob)
+    for track, on in (seg or SEG_ON_DARK).items():
+        out = out.replace(_SEG.format(track.upper().lstrip('#')), on)
     out = out.replace('rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)',
                       'rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7)')
     out = out.replace('rgba(16,24,40,.04), 0 8px 24px -16px rgba(16,24,40,.28)',
@@ -105,6 +157,7 @@ def darken(text):
     out = out.replace('#E0908C 0 4px, #F0BFBD 4px 8px', '#8E4C49 0 4px, #B36F6C 4px 8px')
     # 한도 초과 구간 빗금(ModalErrors B) — 빨강은 MAP이 바꾸고 옅은 줄만 여기서
     out = out.replace('#E8635F 0 4px, #E0908C 4px 8px', '#E8635F 0 4px, #8E4C49 4px 8px')
+    assert '\x00SEG' not in out, f'{name}: SEG_ON_DARK 에 없는 트랙 색의 세그먼트가 있다'
     for i, k in enumerate(kept):
         out = out.replace(f'\x00KEEP{i}\x00', k)
     return out
@@ -134,6 +187,6 @@ if __name__ == '__main__':
     for name in SCREENS + MODALS + STATES + SYSTEM + DESKTOP + V4 + V5X:
         src = SRC / f'{name}.dc.html'
         dst = SRC / ('DarkHome.dc.html' if name == 'Main' else f'Dark{name}.dc.html')
-        dst.write_text(darken(src.read_text(encoding='utf-8')), encoding='utf-8')
+        dst.write_text(darken(src.read_text(encoding='utf-8'), name), encoding='utf-8')
         n += 1
     print(f'{n} dark artboards written')

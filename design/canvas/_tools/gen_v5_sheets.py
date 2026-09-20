@@ -242,8 +242,10 @@ def b7(text):
 
 
 MAIN_BASE = f'9월 8일 · {b7("12,000원")} 저장 · 오늘 5건 49,000원'
-done_base = done_card('저장했어요', MAIN_BASE, '소비율 57.9% → 58.2%', [('한 건 더', 'main'), ('방금 기록한 12,000원 취소', 'cancel')])
-assert v5.DONE_CARD.count('소비율 57.9% → 58.2%') == 1 and v5.DONE_CARD.count('방금 기록한 12,000원 취소') == 1      # DoneCard 장과 같은 문구
+# 왼쪽 큰 카드 = DoneCard 장과 같은 저장(분류를 고르지 않은 편의점 12,000원) — 셋째 줄은 §4-4 의 4순위 문장
+done_base = done_card('저장했어요', MAIN_BASE, v5.DONE_THIRD, [('한 건 더', 'main'), ('방금 기록한 12,000원 취소', 'cancel')])
+assert v5.DONE_CARD.count(v5.DONE_THIRD) == 1 and v5.DONE_CARD.count('방금 기록한 12,000원 취소') == 1      # DoneCard 장과 같은 문구
+assert '소비율 57.9%' not in v5.DONE_CARD
 
 THIRD = [('마감한 달에 저장', '8월 다시 마감 ›'),
          ('지난달 날짜로 저장', '8월 합계와 최근 3개월 평균이 바뀌어 이번 달 예상도 달라질 수 있어요'),
@@ -251,10 +253,14 @@ THIRD = [('마감한 달에 저장', '8월 다시 마감 ›'),
          ('분류 안 함으로 저장', '소비에는 이미 포함됐어요 · 분류하면 예상을 다시 계산해요'),
          ('고정비 카테고리로 저장', '매달 반복으로 만들기 ›'),
          ('그 밖에 · 예상 기준이 확인된 달', '소비율 57.9% → 58.2%')]
+PICTURED = 3      # 왼쪽 큰 카드(= DoneCard 장)가 걸린 순위 — 분류 안 함으로 저장
+assert THIRD[PICTURED][1] == v5.DONE_THIRD
 
 
-def third_row(i, when, text, last=False):
+def third_row(i, when, text, last=False, pictured=False):
     bb = '' if last else f'border-bottom: 1px solid {C["LINE_ROW"]};'
+    if pictured:      # 제안 — 위 큰 카드가 이 순위의 경우임을 글로만 알린다(색 · 배지 없음)
+        when += f'<span style="color: {C["INK3"]};"> · 위 그림</span>'
     strip = ('<!--dc-keep--><div style="background: #101828; border-radius: 8px; padding: 6px 10px; font-size: 12.5px; line-height: 1.45; color: rgba(255,255,255,.72);">'
              f'{text}</div><!--/dc-keep-->')
     return (f'<div style="display: flex; flex-direction: column; gap: 5px; padding: 9px 0; {bb}">'
@@ -264,7 +270,7 @@ def third_row(i, when, text, last=False):
 third_table = card(
     f'<div style="display: flex; align-items: center; gap: 7px; padding-bottom: 2px;">{mark(2, pos="flex-shrink: 0;")}'
     f'<span style="font-size: 13.5px; font-weight: 700; color: {C["INK"]};">셋째 줄 · 한 줄만, 위에 있는 것이 먼저</span></div>'
-    + ''.join(third_row(i + 1, a, b, last=(i == len(THIRD) - 1)) for i, (a, b) in enumerate(THIRD)), pad='12px 16px 4px')
+    + ''.join(third_row(i + 1, a, b, last=(i == len(THIRD) - 1), pictured=(i == PICTURED)) for i, (a, b) in enumerate(THIRD)), pad='12px 16px 4px')
 
 done_left = (
     f'<div style="width: 362px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px;">'
@@ -273,13 +279,14 @@ done_left = (
     + mark(3, pos='position: absolute; left: -8px; top: 102px;') + '</div>'
     f'<p style="margin: 0 2px; font-size: 12px; line-height: 1.6; color: {C["INK3"]};">'
     f'<b style="font-weight: 600; color: {C["INK2"]};">1</b> 제목 · <b style="font-weight: 600; color: {C["INK2"]};">2</b> 셋째 줄 · '
-    f'<b style="font-weight: 600; color: {C["INK2"]};">3</b> 행동 두 칸(주 행동 + 취소). 둘째 줄은 언제나 날짜 · 정확한 금액 · 그날 합계입니다. 그림은 홈 · 저장 뒤 완료 카드 장과 같습니다.</p>'
+    f'<b style="font-weight: 600; color: {C["INK2"]};">3</b> 행동 두 칸(주 행동 + 취소). 둘째 줄은 언제나 날짜 · 정확한 금액 · 그날 합계입니다. 그림은 홈 · 저장 뒤 완료 카드 장과 같습니다 — 분류를 고르지 않고 저장해서 셋째 줄이 아래 표의 4순위 문장입니다.</p>'
     f'{third_table}</div>')
 
 DONE_CASES = [
     (1, '기록을 고쳐서 저장했을 때', '제목이 바뀌고 행동은 취소 하나뿐입니다.',
      done_card('고쳤어요', f'9월 3일 · {b7("42,000원")}으로 고침 · 3건 55,500원', None, [('방금 고친 것 취소', 'cancel')])),
     (1, '분류하기에서 저장했을 때', '제목에 건수가 붙고 행동은 취소 하나뿐입니다.',
+     # 둘째 줄은 계획 §10 「9판 (b) 시안에서 정해 승인된 것」 표 원문 그대로 — ClassifySheet(gen_v5.CLS_*)의 7건을 다 정했을 때와 맞는다: 커피 3 + 메모 없는 3,000원 = 카페/간식 4건 · 간식 + 편의점 = 식비 2건 · 버스 = 교통 1건
      done_card('분류했어요 · 7건', '카페/간식 4건 · 식비 2건 · 교통 1건', None, [('7건 분류 취소', 'cancel')])),
     (2, '예상 기준이 확인되기 전인 달', '소비율 줄이 없습니다. 다른 셋째 줄 조건도 없으면 두 줄로 끝납니다.',
      done_card('저장했어요', f'9월 8일 · {b7("12,000원")} 저장 · 오늘 2건 17,000원', None, [('한 건 더', 'main'), ('방금 기록한 12,000원 취소', 'cancel')])),
@@ -288,11 +295,11 @@ DONE_CASES = [
     (3, '취소를 눌러 기록이 지워졌을 때', '같은 카드가 결과를 알립니다. 그 날짜의 확인 표시는 풀립니다.',
      done_card('12,000원 기록을 취소했어요')),
     (3, '그 기록이 이미 바뀌어 취소할 수 없을 때', '취소 자리가 눌리지 않는 글로 바뀝니다.',
-     done_card('저장했어요', MAIN_BASE, '소비율 57.9% → 58.2%', [('한 건 더', 'main'), ('이미 바뀌어 취소할 수 없어요', 'off')])),
+     done_card('저장했어요', MAIN_BASE, v5.DONE_THIRD, [('한 건 더', 'main'), ('이미 바뀌어 취소할 수 없어요', 'off')])),      # 왼쪽 큰 카드와 같은 저장
 ]
 DONE_MEMO = [
     (1, '제목은 세 가지입니다 — 기록 창 저장은 저장했어요, 수정 저장은 고쳤어요, 분류하기 저장은 분류했어요 · 7건. 뒤의 둘은 행동이 취소 버튼뿐입니다. 카드는 하나이고 새 저장이 생기면 자리를 바꿉니다.'),
-    (2, '셋째 줄은 한 줄만 씁니다. 왼쪽 표에서 위에 있는 조건이 먼저입니다. 소비율 줄은 예상 기준이 확인된 달에만 나오고 월급 미입력 · 이력 부족에는 없습니다.'),
+    (2, '셋째 줄은 한 줄만 씁니다. 왼쪽 표에서 위에 있는 조건이 먼저입니다. 소비율 줄은 앞선 조건이 하나도 없고 예상 기준이 확인된 달에만 나오며 월급 미입력 · 이력 부족에는 없습니다. 분류를 고르지 않고 저장하면 예상 기준이 확인된 달에도 4순위 문장이 먼저입니다.'),
     (3, '취소는 누르는 순간 방금 그 기록만 검사합니다. 금액 · 날짜 · 분류 · 계좌 연결이 저장 직후와 하나라도 다르면 취소하지 않습니다. '
         '카드는 자동으로 닫히지 않습니다(닫기 · 다음 저장 · 다른 탭 이동까지). 색으로 평가하지 않고 사실만 씁니다. 다 적었어요 · 안 썼어요는 카드 없이 달력 칸의 표시가 확인입니다.'),
 ]

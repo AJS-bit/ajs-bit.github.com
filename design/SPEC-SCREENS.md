@@ -1414,11 +1414,13 @@
           `background:#F4F6FB border-radius:0 0 12px 12px padding:0 10px 2px`
     - [ ] **div** — “간식”
           `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
+    - [ ] **div** — “버스”
+          `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
     - [ ] **div** — “편의점”
           `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
-    - [ ] **div** — “택시”
+    - [ ] **div** — “분류 안 함 기록”
           `display:flex align-items:center gap:10px height:52px`
-  - [ ] **div** — “3건 저장”
+  - [ ] **div** — “2건 저장”
         `padding:12px 18px 20px border-top:1px solid #EFF2F8 display:flex flex-direction:column gap:8px`
 
 ## HeroInsufficient — 홈 · 히어로 이력 부족
@@ -1577,9 +1579,9 @@
 - [ ] **div** — “구현 메모”
       `margin-top:24px display:flex flex-direction:column gap:4px`
 
-## DesktopHomeV5 — 데스크톱 홈 · 달력 포함 (제안)
+## DesktopHomeV5 — 데스크톱 홈 · 달력 포함 (v5 뒤)
 
-`canvas/DesktopHomeV5.dc.html` · 1440×1000 · 원본 `v5 제안 · 데스크톱 달력 배치는 계획에 결정 없음` · 렌더 `preview/DesktopHomeV5.png`
+`canvas/DesktopHomeV5.dc.html` · 1440×1000 · 원본 `v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)` · 렌더 `preview/DesktopHomeV5.png`
 
 - [ ] **div** — “NAVI”
       `width:232px background:#FFFFFF display:flex flex-direction:column padding:22px 16px 18px`

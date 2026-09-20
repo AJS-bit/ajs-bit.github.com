@@ -22,7 +22,7 @@ SOURCE = {   # 새 장의 출처 — 기존 장은 screens.json에 이미 있는
     'InsufficientElsewhere': 'v5 · plan/v5-calendar.md §3-4 · §9-22', 'FutureProvisional': 'v5 · plan/v5-calendar.md §3-4',
     'EtcSubline': 'v5 · plan/v5-calendar.md §5-3 · §9', 'LimitCardCases': 'v5 · plan/v5-calendar.md §10 3단계',
     'RecurringPrefill': 'v5 · plan/v5-calendar.md §10 3단계', 'ImportBackupNotes': 'v5 · plan/v5-calendar.md §10 3단계',
-    'DesktopHomeV5': 'v5 제안 · 데스크톱 달력 배치는 계획에 결정 없음',
+    'DesktopHomeV5': 'v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)',
 }
 
 canvas = json.loads((CANVAS / 'canvas.json').read_text(encoding='utf-8'))

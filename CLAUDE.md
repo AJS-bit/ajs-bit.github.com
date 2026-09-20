@@ -62,6 +62,18 @@
   11 `v5 · 달력과 하루 시트 (1 · 2단계)` · 12 `v5 · 구현 참고 장` · 13 `v5 · 다른 화면에 닿는 곳` · 14 `v5 · 3단계 한도 라벨 · 반복 거래 · 백업`, 4 데스크톱에 제안 `DesktopHomeV5`. v5 계획은 9판. v3 장(`Components` · `Tokens` 08절 · `EmptyStates` B · F · `ModalErrors` A · F · `GoalTypes` C)도
   바뀌었으므로 코덱스는 `CHANGES-2026-09-21.md`도 본다.
 
+- **열린 결정 여섯 가지 (2026-09-21).** 37건을 반영한 뒤에도 `CHANGES-2026-09-21.md`의 '확인할 것'에 남아 있던 결정 가운데 여섯 가지를 안별 전·후 그림으로 보여 주고
+  (https://claude.ai/artifact/GWB8ybMwustwhnWMVdyNmt) "훑어봤는데 다 반영해" 승인을 받아 모두 권한 안으로 반영했다. 계산식 · 숫자 기준값 · 장 수(193) · 장 크기는 그대로다.
+  1. **한도 라벨 = 단계 규칙대로.** v5 · 1 · 2단계 홈 여섯 장(`HomeCalendarStrip` · `HomeCalendar` · `HomeCalendar360` · `HomeDefaultScroll` · `DoneCard` · `HeroInsufficient`)을 `하루 …`로 되돌렸다. `앞으로 하루`는 3단계 뒤의 `HomeStocksCard` · `DesktopHomeV5` · `LimitCardCases`에만 남는다(`gen_v5.py` `limit_stage12()` / `limit_forward()`).
+  2. **완료 카드 셋째 줄 = 계획 §4-4 우선순위대로.** `DoneCard` · `DoneCardStates`의 카드 둘(왼쪽 큰 카드 · 취소할 수 없을 때 견본) · `Components` 08 조각이 `소비에는 이미 포함됐어요 · 분류하면 예상을 다시 계산해요`다(분류를 고르지 않고 저장한 장면이라서 — 소비율 줄은 앞선 조건이 없고 예상 기준이 확인된 달에만).
+  3. **예시 자료.** `ClassifySheet`를 `LedgerV5`의 분류 안 함 7건(합 32,000원 · `2건 저장`)으로 다시 그렸고, `RecurringPrefill`의 등록 목록만 `휴대폰 요금` · `매월 25일 · 통신` · `5.5만원`으로 바꿨다(v3 `RecurringDialog` · `Ledger` · `DesktopLedger`의 5일 · 2만원은 v3 샘플 그대로).
+  4. **금액 쓰는 법.** 만 단위 소수 한 자리 구간에서 소수 첫 자리가 0이면 뗀다(`3만` · `30만` — `12.5만`은 그대로). 달력 칸과 내역 날짜 머리글이 `gen_calendar.fmt_sum` 하나를 쓴다. 시안에서 바뀐 칸은 `HomeCalendarPrev` 8월 27일 하나이고, 앱 `formatSum`과 테스트 기대값은 코덱스가 고친다.
+  5. **데스크톱 홈의 달력 자리 = `DesktopHomeV5` 그림 그대로.** 히어로 아래 왼쪽 열 첫 자리에 펼친 월 달력(폭 348) + 그래프를 그 오른쪽 · 1440 × 1000. 캔버스 제목에서 `(제안)`을 뗐다.
+  6. **다크의 꺼진 토글 손잡이 `#8595AE` · 세그먼트 선택 칸 `#2E3A54`.** `darken.py`가 이 둘만 따로 칠한다. 다크 33장(v3 17장 포함)이 바뀌었고 라이트 장은 그대로다.
+
+  억 단위도 같은 날 확인으로 `.0`을 뗀다(`1.0억` → `1억`). 아직 열린 것: '확인할 것' 3 · 4 · 6 · 7 · 9 · 10 · 11번 · 예시 자료의 남은 어긋남(같은 32,000원을 `분류 안 함 4건`과 `7건`으로 세는 것 · 휴대폰 요금 25일 · 5.5만원과 8월 25일 칸 `1.3만` 등) · 데스크톱에서 달력을 접었을 때의 모습(v5 계획 10판 메모 15번).
+  기록은 `CHANGES-2026-09-21.md`의 「열려 있던 결정 여섯 가지 — 결정과 반영」 절과 v5 계획 10판(§10 10판 메모). v3 다크 장도 바뀌었으므로 코덱스는 그 절도 본다.
+
 ## 사용자가 정한 작업 규칙 — 반드시
 
 1. **시안을 바꾸기 전에 before/after 렌더를 보여주고 검사받습니다.** 승인 전에 원본을 고치지 않습니다. 새 시안도 그려서 보여준 뒤 반영합니다.
@@ -76,7 +88,7 @@
 
 - **아트보드 대부분(라이트 97장 중 81장)은 생성기 산물입니다.** `.dc.html`만 고치면 생성기를 다시 돌릴 때 되돌아갑니다. 생성기와 파일을 **둘 다** 고치세요. 손으로 쓴 파일 목록은 `_tools/README.md`에 있습니다.
 - **홈이 나오는 장은 `Main.dc.html`을 잘라 만듭니다.** `Main`에 없는 카드(달력)는 자동으로 따라오지 않습니다 — 달력은 `gen_calendar.py` 하나에서 가져오고, 계획의 결정을 바꾸면 그 결정이 닿는 장을 찾아 같이 고치세요(2026-09-21에 37건이 이렇게 밀려 있었습니다).
-- 다크 아트보드는 `darken.py`가 라이트에서 만듭니다. 라이트를 고친 뒤 `darken.py`를 다시 돌리세요. `<!--dc-keep-->` 구간은 변환에서 제외됩니다(토스트).
+- 다크 아트보드는 `darken.py`가 라이트에서 만듭니다. 라이트를 고친 뒤 `darken.py`를 다시 돌리세요. `<!--dc-keep-->` 구간은 변환에서 제외됩니다(토스트). 꺼진 토글 손잡이(`#8595AE`)와 세그먼트 선택 칸(`#2E3A54`)은 토큰 표대로 `surface`가 되지 않고 `darken.py`가 따로 칠합니다 — 토글 · 세그먼트 마크업을 바꿔 정규식이 못 잡으면 `assert`가 장 이름과 함께 멈춥니다.
 - 아트보드 높이는 **세 곳**이 같아야 합니다 — `.dc.html` 루트 `height` · `gen_canvas.py`의 `TALL/WIDE` · `screens.json`. 어긋나면 소리 없이 잘립니다. `gen_canvas.py` 뒤에 `sync_screens.py`를 돌리면 `screens.json`을 맞추고 어긋난 장을 알려 줍니다(내용이 넘치는지는 못 봅니다).
 - 높이·위치 측정은 **실제 웹폰트(IBM Plex Sans KR)를 띄운 채로** 하세요. 폴백 폰트로 재면 한글 줄 높이가 짧아 20~70px 작게 나옵니다. 루트 `scrollHeight`만 믿지 말고 자연 높이를 재세요.
 - 아트보드는 `* { box-sizing: border-box }`입니다. `height`에 글자 높이만 넣으면 `padding`·`border`만큼 줄이 짧아집니다.
@@ -105,7 +117,7 @@ python3 plan/_tools/md2page.py v5-calendar.md   # v5-calendar.md → v5-calendar
 ## 아트팩트 (같은 claude.ai 계정이면 `/artifacts`에 보입니다)
 
 - **디자인 캔버스 (v3 · v4 · v5, 저장소 기준 193장 · 14페이지)** — https://claude.ai/code/artifact/986cf3e1-d0c7-4c28-94cb-c12c50ca7b46
-  contract `0.1.31` 고정. 갱신은 `design/canvas/`를 `navi-redesign.html`에 시드한 뒤 **이 URL을 `url`로 넘겨** publish. 시드는 design 스킬의 `seed-canvas.mjs` 또는 그것이 없을 때 `_tools/seed_doc.py`(페이지 안 `appifact-doc` JSON 블록만 다시 채움 · `gen_canvas.py` 뒤에 실행). publish 전에 Artifact read로 게시본을 한 번 열람해야 거절되지 않는다. 2026-09-20에 이 방법으로 v5 1단계 달력 12장 + 하루 시트 갱신분을 올렸다(24번째 판 · 145장 · 페이지 `v5 · 1단계 달력과 하루 시트`). 2026-09-21 최신화 반영분도 같은 방법으로 올렸다(27번째 판 · 193장 · 14페이지 · 그 페이지 이름은 `v5 · 달력과 하루 시트 (1 · 2단계)`로 바뀌고 뒤에 12~14페이지 추가). 새 캔버스를 만들지 마세요. v4 시안도 이 캔버스에 페이지를 추가합니다.
+  contract `0.1.31` 고정. 갱신은 `design/canvas/`를 `navi-redesign.html`에 시드한 뒤 **이 URL을 `url`로 넘겨** publish. 시드는 design 스킬의 `seed-canvas.mjs` 또는 그것이 없을 때 `_tools/seed_doc.py`(페이지 안 `appifact-doc` JSON 블록만 다시 채움 · `gen_canvas.py` 뒤에 실행). publish 전에 Artifact read로 게시본을 한 번 열람해야 거절되지 않는다. 2026-09-20에 이 방법으로 v5 1단계 달력 12장 + 하루 시트 갱신분을 올렸다(24번째 판 · 145장 · 페이지 `v5 · 1단계 달력과 하루 시트`). 2026-09-21 최신화 반영분과 열린 결정 여섯 가지 반영분도 같은 방법으로 올렸다(27 ~ 29번째 판 · 193장 · 14페이지 · 그 페이지 이름은 `v5 · 달력과 하루 시트 (1 · 2단계)`로 바뀌고 뒤에 12~14페이지 추가). 새 캔버스를 만들지 마세요. v4 시안도 이 캔버스에 페이지를 추가합니다.
 - **v4 계획 페이지** — https://claude.ai/code/artifact/26eb99d3-9719-407e-bd5d-345b1ab54fe1
   `plan/v4-stocks.md`가 원본. 고치면 `md2page.py`로 다시 만들어 이 URL로 publish.
 - **v5 계획 페이지** — https://claude.ai/code/artifact/7000d83c-1af3-458a-a0e9-e4b82b461ef1

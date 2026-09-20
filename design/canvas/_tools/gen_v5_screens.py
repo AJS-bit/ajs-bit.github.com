@@ -507,9 +507,10 @@ w('LimitCardCases', spec_frame(
 # 5. RecurringPrefill — 반복 거래 다이얼로그 미리 채움 (rank 31 · v5-3 · 앱 화면 390 × 844)
 # ══════════════════════════════════════════════════════════════
 # 하루 시트에서 9월 8일 월세 700,000원을 주거/관리로 저장 → 완료 카드 `매달 반복으로 만들기 ›` → 이 창. RecurringDialog(gen_modals)와 같은 틀.
+# 등록된 목록의 `휴대폰 요금`만 v5 자료(55,000원 · 25일)로 둔다 — 9월 8일 기준 LedgerV5 에 통신 자동 기록이 아직 없는 것과도 맞는다(25일 전).
 rules = []
 for i, (name, meta, amt, on) in enumerate([("ETF 자동이체", "매월 5일 · 저축/투자", "30만원", True),
-                                           ("휴대폰 요금", "매월 5일 · 통신", "2만원", True),
+                                           ("휴대폰 요금", "매월 25일 · 통신", "5.5만원", True),      # v5 장의 반복 규칙과 같은 값 — DaySheetConfirm `이번 달 휴대폰 요금 55,000원은 25일에 자동으로 기록돼요`(계획 §4-3 · §8). v3 RecurringDialog 는 `매월 5일 · 2만원` 그대로
                                            ("헬스장", "일시정지됨 · 문화/여가", "5만원", False)]):
     c_ = C["INK"] if on else C["INK4"]
     bb = f'border-bottom: 1px solid {C["LINE_ROW"]};' if i < 2 else ''

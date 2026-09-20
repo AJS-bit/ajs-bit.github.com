@@ -36,7 +36,7 @@ SCRIM_H = 60
 def w(name, body, keep_all=False):
     light = doc(body, keep_all=keep_all)
     (OUT / f'{name}.dc.html').write_text(light, encoding='utf-8')
-    (OUT / f'Dark{name}.dc.html').write_text(darken(light), encoding='utf-8')
+    (OUT / f'Dark{name}.dc.html').write_text(darken(light, name), encoding='utf-8')
     print('wrote', name, '+ Dark' + name)
 
 
@@ -324,15 +324,18 @@ for a, b in [('>57.9<', '>58.2<'), ('2.1%p 여유', '1.8%p 여유'), ('inset: 0 
     assert hero_after.count(a) == 1, a
     hero_after = hero_after.replace(a, b)
 limit_after = (s1.limit_block.replace('남은 한도 104만원', '남은 한도 103만원').replace('inset: 0 48.1% 0 0', 'inset: 0 47.6% 0 0')
-               .replace('하루 47,270원', '앞으로 하루 46,730원'))
-assert limit_after.count('앞으로 하루 46,730원') == 1 and limit_after.count('남은 한도 103만원') == 1 and limit_after.count('inset: 0 47.6% 0 0') == 1
+               .replace('하루 47,270원', '하루 46,730원'))      # 1단계 장 — 라벨은 v3 그대로 `하루 …`(`앞으로 하루`는 v5 · 3단계부터 · 계획 §9-3 · §10)
+assert limit_after.count('하루 46,730원') == 1 and '앞으로 하루' not in limit_after and limit_after.count('남은 한도 103만원') == 1 and limit_after.count('inset: 0 47.6% 0 0') == 1
 
+# 셋째 줄 — 이 장의 저장은 DaySheet 에서 분류를 고르지 않은(`나중에 분류`) 편의점 12,000원이라 계획 §4-4 우선순위의 4순위 문장이 온다.
+# 소비율 줄 `소비율 57.9% → 58.2%`는 앞선 조건이 하나도 없을 때만(6순위) — 히어로의 58.2% 등 값은 그대로다.
+DONE_THIRD = '소비에는 이미 포함됐어요 · 분류하면 예상을 다시 계산해요'      # 계획 §4-4 원문
 DONE_CARD = ('<!--dc-keep--><div style="position: absolute; left: 14px; right: 14px; bottom: 78px; background: #101828; border-radius: 16px; padding: 13px 14px 12px; color: #FFFFFF; box-shadow: 0 8px 24px rgba(0,0,0,.28);">'
              '<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
              '<span style="display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3DD489" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>저장했어요</span>'
              '<span style="font-size: 12px; font-weight: 600; color: rgba(255,255,255,.72);">닫기</span></div>'
              '<div style="font-size: 13.5px; font-weight: 500; margin-top: 7px; color: #FFFFFF;">9월 8일 · <span style="font-weight: 700;">12,000원</span> 저장 · 오늘 5건 49,000원</div>'
-             '<div style="font-size: 12.5px; margin-top: 3px; color: rgba(255,255,255,.72);">소비율 57.9% → 58.2%</div>'
+             f'<div style="font-size: 12.5px; margin-top: 3px; color: rgba(255,255,255,.72);">{DONE_THIRD}</div>'
              '<div style="display: flex; gap: 8px; margin-top: 11px;">'
              '<span style="display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,.55); color: #FFFFFF; font-size: 13px; font-weight: 700;">한 건 더</span>'
              '<span style="display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.28); color: #FFFFFF; font-size: 13px; font-weight: 600;">방금 기록한 12,000원 취소</span></div>'
@@ -440,7 +443,7 @@ def check(on):
 
 
 def group_row(memo, count, amount, reco, chosen, expanded=False, picked=None):
-    """picked = 묶음에서 고른 건수(일부를 제외했을 때). 금액 줄에 `4건 중 3건 · 합계`로 보여 준다."""
+    """picked = 묶음에서 고른 건수(일부를 제외했을 때). 금액 줄에 `3건 중 2건 · 합계`로 보여 준다."""
     total = f'{count}건 중 {picked}건 · {won(amount)}' if picked is not None else won(amount)
     chip = (f'<span style="display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 10px; border-radius: 8px; '
             f'{"background: " + C["BRAND_SOFT"] + "; border: 1.5px solid " + C["BRAND"] + ";" if chosen else "background: " + C["SURF"] + "; border: 1px solid " + C["BORDER"] + ";"} '
@@ -475,24 +478,31 @@ def single_row(memo, amount, reco=None, chosen=False, last=False):
             f'<span style="font-size: 12px; color: {C["INK2"]};">{won(amount)}</span></div>{chip}</div>')
 
 
+# 분류 안 함 7건 = 내역 장 LedgerV5(gen_screens.LEDGER_V5)의 분류 안 함 행과 같은 자료다 — 합 32,000원(히어로 각주 NOTE_A · EtcSubline · MonthlyCloseV5 와 같은 값).
+# 9/1 커피 · 9/3 간식 · 9/4 커피 · 9/5 커피 · 9/5 버스 · 9/5 메모 없음(제목 `분류 안 함 기록`) 3,000 · 9/8 편의점 6,500. 오늘(9/8) 커피는 카페/간식으로 분류된 기록이라 여기 없다.
+# gen_screens 는 import 하면 장을 다시 쓰므로 글자로 둔다 — 그쪽 분류 안 함 행이 바뀌면 여기도 맞춘다(아래 assert 가 건수 · 합계를 지킨다).
+CLS_COFFEE = [(1, 4500, True), (4, 4500, True), (5, 4500, False)]            # (날짜, 금액, 고름) — 같은 메모 `커피` 묶음 · 5일은 `제외` 본보기
+CLS_SINGLE = [('간식', 4500, '식비'), ('버스', 4500, None), ('편의점', 6500, None), ('', 3000, None)]      # (메모 · 없으면 `분류 안 함 기록`, 금액, 추천 | None = `분류 고르기 ›`)
+CLS_COUNT = len(CLS_COFFEE) + len(CLS_SINGLE)
+CLS_PICKED = sum(1 for _, _, on in CLS_COFFEE if on)                         # 추천을 눌러 정한 것은 커피 묶음뿐(간식의 `식비 추천`은 아직 안 누름)
+assert CLS_COUNT == 7 and sum(a for _, a, _ in CLS_COFFEE) + sum(a for _, a, _ in CLS_SINGLE) == 32_000      # `분류 안 함 7건` · `분류 안 한 32,000원`
+
 classify_body = (
     f'<div style="display: flex; justify-content: center; padding: 9px 0 0; flex-shrink: 0;"><span style="width: 38px; height: 4px; border-radius: 99px; background: {C["BORDER"]};"></span></div>'
     f'<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 12px 18px 14px; border-bottom: 1px solid {C["LINE_SOFT"]}; flex-shrink: 0;"><div style="min-width: 0;">'
-    f'<h2 style="margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {C["INK"]};">분류하기 · 7건</h2>'
+    f'<h2 style="margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {C["INK"]};">분류하기 · {CLS_COUNT}건</h2>'
     f'<p style="margin: 4px 0 0; font-size: 12.5px; line-height: 1.45; color: {C["INK3"]};">같은 메모끼리 묶었어요. 추천은 눌러야 정해지고, 정한 것만 저장돼요.</p></div>'
     f'<span style="font-size: 13px; font-weight: 600; color: {C["INK2"]}; padding-top: 4px; flex-shrink: 0; white-space: nowrap;">닫기</span></div>'
     f'<div style="flex: 1; min-height: 0; overflow: hidden; padding: 6px 18px 0; display: flex; flex-direction: column;">'
-    + group_row('커피', 4, 4500 * 3, '카페/간식', chosen=True, expanded=True, picked=3)      # 달력 칸과 같은 날짜(1 · 4 · 5 · 8일) — 5일은 제외
+    + group_row('커피', len(CLS_COFFEE), sum(a for _, a, on in CLS_COFFEE if on), '카페/간식', chosen=True, expanded=True, picked=CLS_PICKED)
     + f'<div style="background: {C["INSET"]}; border-radius: 0 0 12px 12px; padding: 0 10px 2px; margin-bottom: 2px;">'
-    + sub_row('9월 1일', 4500, True) + sub_row('9월 4일', 4500, True) + sub_row('9월 5일 · 제외', 4500, False) + sub_row('9월 8일', 4500, True, last=True)
+    + ''.join(sub_row(f'9월 {d}일' + ('' if on else ' · 제외'), a, on, last=(i == len(CLS_COFFEE) - 1)) for i, (d, a, on) in enumerate(CLS_COFFEE))
     + '</div>'
-    + single_row('간식', 6500, '식비', chosen=False)
-    + single_row('편의점', 12000)
-    + single_row('택시', 9000, last=True)
+    + ''.join(single_row(m or '분류 안 함 기록', a, reco, chosen=False, last=(i == len(CLS_SINGLE) - 1)) for i, (m, a, reco) in enumerate(CLS_SINGLE))
     + '</div>'
     f'<div style="padding: 12px 18px 20px; border-top: 1px solid {C["LINE_SOFT"]}; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;">'
-    + btn('3건 저장', 'primary', h=52, radius=14, size=16)
-    + f'<p style="margin: 0; text-align: center; font-size: 11.5px; line-height: 1.5; color: {C["INK3"]};">나머지 4건은 분류 안 함으로 남아요</p></div>')
+    + btn(f'{CLS_PICKED}건 저장', 'primary', h=52, radius=14, size=16)
+    + f'<p style="margin: 0; text-align: center; font-size: 11.5px; line-height: 1.5; color: {C["INK3"]};">나머지 {CLS_COUNT - CLS_PICKED}건은 분류 안 함으로 남아요</p></div>')
 w('ClassifySheet', sheet_frame(classify_body, scrim_text='배경을 눌러 닫기'))
 
 
@@ -530,8 +540,8 @@ calendar_first = calendar_card(False, since=FIRST_SINCE, review=0, status='오�
                                states={5: NO_RECORD, 6: NO_RECORD, 7: NO_RECORD, TODAY: (fmt_sum(5_000), False, False, False)})
 assert calendar_first.count('>—<') == 3 and calendar_first.count('>5,000<') == 1 and '확인할 내용' not in calendar_first
 limit_first = (s1.limit_block.replace('남은 한도 104만원', '남은 한도 216만원').replace('inset: 0 48.1% 0 0', 'inset: 0 99.8% 0 0')
-               .replace('하루 47,270원', '앞으로 하루 97,950원'))
-assert limit_first.count('앞으로 하루 97,950원') == 1 and limit_first.count('남은 한도 216만원') == 1
+               .replace('하루 47,270원', '하루 97,950원'))      # 1단계 장 — 라벨은 v3 그대로 `하루 …`
+assert limit_first.count('하루 97,950원') == 1 and '앞으로 하루' not in limit_first and limit_first.count('남은 한도 216만원') == 1
 # 머리줄 종 배지 — 이 사람(9월 5일 첫 실행 · 커피 5,000원 한 건)의 알림은 2건이다(InsufficientElsewhere ⑦ `알림 2건 · 머리줄 종의 숫자도 같은 2`).
 # 다른 홈 장(Main 의 사람)은 3 그대로 — 이 장에서만 바꾼다.
 BELL_3 = 'border: 2px solid #EDF0F7;">3</span>'
@@ -603,27 +613,42 @@ w('HeroFootnotes', spec_frame(
 # ══════════════ 9. 홈 달력 — 접힘(최근 7일 스트립) · 펼침(월 달력) · 칸 상태 · 폭/글자 크기 ══════════════
 # 펼침은 어느 폭·어느 글자 크기에서도 **월 달력(7열 그리드)** 이다 — 날짜를 세로로 늘어놓은 목록으로 자동 대체하지 않는다(7판).
 # 2026년 9월: 1일 화요일 · 30일 · 5주. 오늘 8일(화). 2026년 8월: 1일 토요일 · 31일 · 6주.
-# 칸 숫자 = 그날 소비 합계(고정비 포함 · 이체 제외). 표기는 앱 formatSum과 같다(1만 미만 원 단위 · 1만 이상 만 단위 한 자리).
+# 칸 숫자 = 그날 소비 합계(고정비 포함 · 이체 제외). 표기는 앱 formatSum과 같다(1만 미만 원 단위 · 1만 이상 만 단위 한 자리 · 소수 첫 자리 0은 뗀다).
 # 자료 · 칸 · 접힘/펼침 카드 · 상태 줄은 gen_calendar.py 로 옮겼다(gen_v4 · gen_v4_stocks 도 쓰도록). 여기는 홈에 얹는 틀과 장만 남는다.
 
 
-def limit_forward(two_lines=False):
-    """`이번 달 한도  앞으로 하루 47,270원` · 오른쪽 `남은 한도 104만원`. 첫 줄 왼쪽 덩어리는 nowrap.
-    two_lines = 360 폭처럼 한 줄에 안 들어갈 때 — 라벨을 줄이지 않고 `남은 한도`를 둘째 줄로 내린다(첫 줄 오른쪽에는 › 만 남는다)."""
+def limit_card(forward, two_lines=False):
+    """홈 한도 카드. forward=True 면 v5 · 3단계 라벨 `앞으로 하루 47,270원`, False 면 그 전 단계의 v3 라벨 `하루 47,270원` 그대로
+    (계획 §9-3 · §10 — 출시 순서 v3 → v4-1 → v5-1 → v5-2 → v4-2 → v5-3). 오른쪽 `남은 한도 104만원`. 첫 줄 왼쪽 덩어리는 nowrap.
+    two_lines = 360 폭에서 `앞으로 하루 …`가 한 줄에 안 들어갈 때 — 라벨을 줄이지 않고 `남은 한도`를 둘째 줄로 내린다(첫 줄 오른쪽에는 › 만 남는다)."""
     lim_left = '<span style="font-size: 13.5px; font-weight: 600; color: #101828;">이번 달 한도 '
     remain = '<span style="font-size: 13.5px; font-weight: 600; color: #0F7B47; white-space: nowrap; flex-shrink: 0;">남은 한도 104만원</span>'
     bar_open = '<div style="position: relative; height: 8px; border-radius: 99px; background: #E8ECF5; margin-top: 9px; overflow: hidden;">'
     src = s1.limit_block
     assert src.count(lim_left) == 1 and src.count('하루 47,270원') == 1 and src.count(remain) == 1 and src.count(bar_open) == 1
-    html = src.replace(lim_left, lim_left.replace('color: #101828;', 'color: #101828; white-space: nowrap;')).replace('하루 47,270원', '앞으로 하루 47,270원')
+    html = src.replace(lim_left, lim_left.replace('color: #101828;', 'color: #101828; white-space: nowrap;'))
+    if forward:
+        html = html.replace('하루 47,270원', '앞으로 하루 47,270원')
+    assert html.count('앞으로 하루') == (1 if forward else 0) and html.count('하루 47,270원') == 1
     if two_lines:
         html = html.replace(remain, '').replace(bar_open, f'<div style="margin-top: 3px;">{remain}</div>\n      ' + bar_open)
     return html
 
 
+def limit_forward(two_lines=False):
+    """v5 · 3단계 뒤의 한도 카드 `앞으로 하루 47,270원` — LimitCardCases(gen_v5_screens)가 쓴다. 이 파일의 1 · 2단계 장은 쓰지 않는다."""
+    return limit_card(True, two_lines)
+
+
+def limit_stage12():
+    """v5 · 1 · 2단계 홈의 한도 카드 — 라벨은 v3 그대로 `하루 47,270원`(HomeConfigured · HomeStocksOff · InsufficientElsewhere 와 같다).
+    `하루 47,270원`은 360 폭에서도 `남은 한도 104만원`과 한 줄에 들어가므로 둘째 줄로 내리지 않는다."""
+    return limit_card(False)
+
+
 def home_expanded(width=390, pad=14, month='sep', pressed=None, limit=True):
     peek = f'<div style="height: 22px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-top: none; border-radius: 0 0 20px 20px; flex-shrink: 0; opacity: .55;"></div>'
-    lim = ('\n\n    ' + limit_forward(two_lines=(width < 390))) if limit else ''
+    lim = ('\n\n    ' + limit_stage12()) if limit else ''
     return frame(
         f'\n  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 9px; padding: 0 14px; overflow: hidden;">\n\n'
         f'    {peek}\n\n    {calendar_card(True, pressed=pressed, pad=pad, month=month)}\n\n    {s1.guide_block}{lim}\n\n  </div>\n\n'
@@ -644,16 +669,16 @@ assert peer_block.count('또래와 내 페이스') == 1 and peer_block.count('<d
 w('HomeCalendarStrip', frame(
     f'\n  {s1.header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 9px; padding: 0 14px; overflow: hidden;">\n\n'
-    f'    {s1.hero_block}\n\n    {calendar_card(False)}\n\n    {s1.guide_block}\n\n    {limit_forward()}\n\n    {goal_block}\n\n  </div>\n\n'
+    f'    {s1.hero_block}\n\n    {calendar_card(False)}\n\n    {s1.guide_block}\n\n    {limit_stage12()}\n\n    {goal_block}\n\n  </div>\n\n'
     f'  {bottomnav(0)}\n'))
 
 # 홈 · 기본 5카드 전체(2단계 검토물 '기본 구성 홈 before/after'의 after) — 스크롤 전체 길이를 한 장에.
-# 달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스(`순자산 대비 소비`는 기본에서 빠짐). v4-2 전이라 옛 5탭. 한도 라벨은 같은 홈의 접힘 장 HomeCalendarStrip 과 같은 `앞으로 하루 47,270원`(limit_forward · 같은 페이지에서 같은 카드는 같게).
+# 달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스(`순자산 대비 소비`는 기본에서 빠짐). v4-2 전이라 옛 5탭. 한도 라벨은 3단계 전이라 v3 그대로 `하루 47,270원`(limit_stage12 · 같은 페이지의 다른 홈 장과 같다).
 HOME_DEFAULT_H = 1330
 w('HomeDefaultScroll', frame(
     f'\n  {s1.header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 9px; padding: 0 14px 14px; overflow: hidden;">\n\n'
-    f'    {s1.hero_block}\n\n    {calendar_card(False)}\n\n    {s1.guide_block}\n\n    {limit_forward()}\n\n    {goal_block}\n\n    {peer_block}\n\n  </div>\n\n'
+    f'    {s1.hero_block}\n\n    {calendar_card(False)}\n\n    {s1.guide_block}\n\n    {limit_stage12()}\n\n    {goal_block}\n\n    {peer_block}\n\n  </div>\n\n'
     f'  {bottomnav(0)}\n', h=HOME_DEFAULT_H))
 
 # 홈 · 펼침 — 월 달력. 아래로 조금 스크롤한 상태(히어로 아랫단이 위에 남음). 3일 칸을 누른 순간(눌림 링) → 다음 장 하루 시트.
@@ -738,6 +763,7 @@ fmt_card = card(
     f'<div style="font-size: 13.5px; font-weight: 700; color: {C["INK"]}; padding-bottom: 4px;">칸에 금액을 쓰는 법</div>'
     + fmt_row(['4,500', '900'], '1만 미만은 원 단위 그대로')
     + fmt_row(['1.2만', '12.5만'], '1만 이상은 만 단위 소수 한 자리 · 500원에서 올려요(11,500 → 1.2만)')
+    + fmt_row(['3만', '30만'], '소수 첫 자리가 0이면 떼요<br>(29,500 → 3만 · 300,000 → 30만)')      # 제안 — 계획 §3-3의 예시 `이체 30만`에 맞춘 규칙
     + fmt_row(['120만', '1,200만'], '100만 이상은 소수 없이')
     + fmt_row(['1.2억'], '1억 이상', last=True)
     + f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; padding-top: 8px; border-top: 1px solid {C["LINE_ROW"]};">'

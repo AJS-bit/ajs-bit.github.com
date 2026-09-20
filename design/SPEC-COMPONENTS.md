@@ -269,7 +269,7 @@ display flex · gap 8 · padding 10px 11px · border-radius 12
 
 ```
 컨테이너: display flex · gap 4 · padding 3 · border-radius 12 · background #E3E8F1 (dark #232D45)
-활성:   flex 1 · height 36 · border-radius 9 · background #FFFFFF (dark #121A2B) · 13.5px/600 #101828
+활성:   flex 1 · height 36 · border-radius 9 · background #FFFFFF (dark #2E3A54 — surface #121A2B 가 아니다. 트랙보다 밝아야 떠 보인다) · 13.5px/600 #101828
         box-shadow 0 1px 2px rgba(16,24,40,.06)
 비활성: flex 1 · height 36 · border-radius 9 · 13.5px/500 #5B6880 (dark #8595AE) · background 없음
 ```
@@ -572,7 +572,7 @@ r = 한도 ÷ 배분 합 × 100                      // 216 ÷ 236 = 91.5%
 | 이웃 달 | 지난달 · 이번 달 이웃 칸 opacity .7(합계만) · 범위 밖 opacity .45(숫자만 · 버튼 아님) |
 | 포커스 | focus ring 3px (`accessibility.focusVisible`) |
 
-칸 숫자 형식은 `tokens.v3.json` `typography.rules.calendarCellSum` — `4,500` · `1.2만` · `12.5만` · `120만` · `1,200만` · `1.2억`. `100.0만`은 없습니다.
+칸 숫자 형식은 `tokens.v3.json` `typography.rules.calendarCellSum` — `4,500` · `1.2만` · `12.5만` · `120만` · `1,200만` · `1.2억`. 소수 첫 자리가 0이면 뗍니다(`3만` · `30만`) — `3.0만` · `100.0만`은 없습니다. 내역 날짜 머리글(`이체 30만`)도 같은 함수입니다.
 
 ### 27-2. RecentStrip · MonthCalendar · DayList
 
@@ -622,7 +622,7 @@ MonthCalendar 는 **모든 폭 · 글자 크기의 펼침 기본**입니다. Day
 background #101828 · border-radius 16 · padding 13px 14px 12px · box-shadow 0 8px 24px rgba(0,0,0,.28)
 위치: left 14 · right 14 · bottom 78 (하단 탭 위) — dc-keep, 라이트 · 다크 동일
 제목 14px/700 #FFFFFF + 체크 15×15 stroke #3DD489 · 오른쪽 "닫기" 12px/600 rgba(255,255,255,.72)
-둘째 줄 13.5px/500 margin-top 7 · 셋째 줄(규칙 통과 시에만) 12.5px rgba(255,255,255,.72) margin-top 3
+둘째 줄 13.5px/500 margin-top 7 · 셋째 줄(조건부 · 계획 §4-4 우선순위로 하나만 — 시안은 분류 안 함 저장의 4순위 문장, 소비율 줄은 6순위) 12.5px rgba(255,255,255,.72) margin-top 3
 버튼 줄 margin-top 11 · gap 8 · height 36 · radius 10
   주 행동 "한 건 더" padding 0 14 · border 1px rgba(255,255,255,.55) · 13px/700
   "방금 기록한 12,000원 취소" padding 0 12 · border 1px rgba(255,255,255,.28) · 13px/600
@@ -632,11 +632,11 @@ background #101828 · border-radius 16 · padding 13px 14px 12px · box-shadow 0
 
 ```
 묶음 행: height 52 · gap 10 · border-bottom 1px solid #F3F5FA
-         제목 14px/600 + "×4" 500 #626D88 · 둘째 줄 12px #475467 · 오른쪽 추천 칩(27-6 선택형) · 셰브론 16×16 #697182
+         제목 14px/600 + "×3" 500 #626D88 · 둘째 줄 12px #475467 · 오른쪽 추천 칩(27-6 선택형) · 셰브론 16×16 #697182
 건별 행: 묶음 아래 background #F4F6FB · radius 0 0 12px 12px · padding 0 10px 2px
          height 40 · padding-left 8 · 체크 22×22 radius 7 (#3556E6 / 빈 칸 border 1.5px #CFD7E6)
          날짜 13px #475467 · 금액 13px/600 · 제외한 건은 금액 #B4BECD + "· 제외"
-푸터:    "3건 저장" height 52 radius 14 · 아래 11.5px #626D88 "나머지 4건은 분류 안 함으로 남아요"
+푸터:    "2건 저장" height 52 radius 14 · 아래 11.5px #626D88 "나머지 5건은 분류 안 함으로 남아요"
 ```
 
 계획 표의 높이 46 과 달리 아트보드 실측은 52 입니다 — 아트보드가 기준입니다.

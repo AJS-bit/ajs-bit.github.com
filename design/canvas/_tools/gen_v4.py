@@ -35,7 +35,7 @@ def w(name, body, keep_all=True):
         assert light.count(KEEP_ALL_FROM) == 1
         light = light.replace(KEEP_ALL_FROM, KEEP_ALL_TO)
     (OUT / f'{name}.dc.html').write_text(light, encoding='utf-8')
-    (OUT / f'Dark{name}.dc.html').write_text(darken(light), encoding='utf-8')
+    (OUT / f'Dark{name}.dc.html').write_text(darken(light, name), encoding='utf-8')
     print('wrote', name, '+ Dark' + name)
 
 

@@ -38,8 +38,6 @@
         - `div`
           `display:flex align-items:center gap:10px height:40px border-bottom:1px solid #F3F5FA`
         - `div`
-          `display:flex align-items:center gap:10px height:40px border-bottom:1px solid #F3F5FA`
-        - `div`
           `display:flex align-items:center gap:10px height:40px`
       - `div`
         `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
@@ -54,6 +52,12 @@
         - `span` **text 12.5px/600** — “분류 고르기 ›”
           `font-size:12.5px font-weight:600 color:#3556E6 white-space:nowrap`
       - `div`
+        `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
+        - `div`
+          `display:flex flex-direction:column gap:2px flex:1`
+        - `span` **text 12.5px/600** — “분류 고르기 ›”
+          `font-size:12.5px font-weight:600 color:#3556E6 white-space:nowrap`
+      - `div`
         `display:flex align-items:center gap:10px height:52px`
         - `div`
           `display:flex flex-direction:column gap:2px flex:1`
@@ -61,7 +65,7 @@
           `font-size:12.5px font-weight:600 color:#3556E6 white-space:nowrap`
     - `div`
       `padding:12px 18px 20px border-top:1px solid #EFF2F8 display:flex flex-direction:column gap:8px`
-      - `div` **text 16px/600** — “3건 저장”
+      - `div` **text 16px/600** — “2건 저장”
         `display:flex align-items:center justify-content:center gap:6px height:52px width:100% border-radius:14px background:#3556E6 border:none color:#FFFFFF font-size:16px font-weight:600`
-      - `p` **text 11.5px/400** — “나머지 4건은 분류 안 함으로 남아요”
+      - `p` **text 11.5px/400** — “나머지 5건은 분류 안 함으로 남아요”
         `text-align:center font-size:11.5px line-height:1.5 color:#626D88`

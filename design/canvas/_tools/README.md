@@ -21,7 +21,7 @@
 | `seed_doc.py` | 캔버스 페이지 `navi-redesign.html` 안의 `appifact-doc` JSON 블록을 디스크의 아트보드 · `canvas.json`으로 다시 채운다(`gen_canvas.py` 뒤 · publish 앞). design 스킬의 `seed-canvas.mjs`가 없을 때 쓴다 |
 | `mkcompare.py` | 라이트/다크를 한 장에 나란히 놓은 비교 시트 HTML 생성 (아트보드가 아니라 검토용) |
 | `calc/` | 시안에 적힌 완제일·도착일·총이자를 만들어 낸 상각·복리 계산기 |
-| `darken.py` | 라이트 아트보드 96종(`Tokens` 제외 전부)을 다크 토큰으로 변환. v4 · v5 생성기는 다크 짝을 스스로 쓰지만, v3 생성기와 손편집 산물(`LedgerV5` · `MonthlyCloseV5` · `AlertsReview` · `TransactionAddFromDaySheet` · `DesktopHomeV5` 포함)은 여기서만 다크가 만들어진다. 새 장을 더하면 이 파일의 목록에도 넣는다. `<!--dc-keep-->…<!--/dc-keep-->` 구간은 변환하지 않는다(라이트에서도 반전된 토스트 등) |
+| `darken.py` | 라이트 아트보드 96종(`Tokens` 제외 전부)을 다크 토큰으로 변환. v4 · v5 생성기는 다크 짝을 스스로 쓰지만, v3 생성기와 손편집 산물(`LedgerV5` · `MonthlyCloseV5` · `AlertsReview` · `TransactionAddFromDaySheet` · `DesktopHomeV5` 포함)은 여기서만 다크가 만들어진다. 새 장을 더하면 이 파일의 목록에도 넣는다. `<!--dc-keep-->…<!--/dc-keep-->` 구간은 변환하지 않는다(라이트에서도 반전된 토스트 등). **꺼진 토글 손잡이와 세그먼트 선택 칸만은 토큰 표대로 `surface`로 바꾸지 않고** `KNOB_OFF_DARK`(`#8595AE`) · `SEG_ON_DARK`(`#2E3A54`)로 칠한다 — 트랙보다 어두우면 구멍 · 파인 자리처럼 보여서다. 토글 · 세그먼트 마크업을 바꿔 정규식이 못 잡으면 `assert`가 장 이름과 함께 멈춘다 |
 
 ```bash
 # 순서대로 — gen_v4_stocks가 gen_screens의 Payoff를 잘라 쓰므로 v3 생성기가 먼저

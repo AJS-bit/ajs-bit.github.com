@@ -1622,22 +1622,22 @@
       "name": "DesktopHomeV5",
       "base": "DesktopHomeV5",
       "theme": "light",
-      "title": "데스크톱 홈 · 달력 포함 (제안)",
+      "title": "데스크톱 홈 · 달력 포함 (v5 뒤)",
       "page": "데스크톱",
       "w": 1440,
       "h": 1000,
-      "source": "v5 제안 · 데스크톱 달력 배치는 계획에 결정 없음"
+      "source": "v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)"
     },
     {
       "file": "DarkDesktopHomeV5.dc.html",
       "name": "DarkDesktopHomeV5",
       "base": "DesktopHomeV5",
       "theme": "dark",
-      "title": "데스크톱 홈 · 달력 포함 (제안) (다크)",
+      "title": "데스크톱 홈 · 달력 포함 (v5 뒤) (다크)",
       "page": "데스크톱",
       "w": 1440,
       "h": 1000,
-      "source": "v5 제안 · 데스크톱 달력 배치는 계획에 결정 없음"
+      "source": "v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)"
     },
     {
       "file": "HomeSetupStocksOn.dc.html",

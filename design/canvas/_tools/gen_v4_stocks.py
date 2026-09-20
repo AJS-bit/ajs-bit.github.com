@@ -41,7 +41,7 @@ def w(name, body, keep_all=False):
     """keep_all — 한국어가 낱말 중간에서 꺾이지 않게 body 에 word-break: keep-all 을 넣는다."""
     light = doc(body, keep_all=keep_all)
     (OUT / f'{name}.dc.html').write_text(light, encoding='utf-8')
-    (OUT / f'Dark{name}.dc.html').write_text(darken(light), encoding='utf-8')
+    (OUT / f'Dark{name}.dc.html').write_text(darken(light, name), encoding='utf-8')
     print('wrote', name, '+ Dark' + name)
 
 

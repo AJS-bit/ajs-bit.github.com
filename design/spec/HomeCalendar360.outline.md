@@ -73,10 +73,6 @@
         - `div`
           `display:flex align-items:center gap:4px`
       - `div`
-        `margin-top:3px`
-        - `span` **text 13.5px/600** — “남은 한도 104만원”
-          `font-size:13.5px font-weight:600 color:#0F7B47 white-space:nowrap`
-      - `div`
         `position:relative height:8px border-radius:99px background:#E8ECF5 margin-top:9px`
         - `div`
           `position:absolute inset:0 48.1% 0 0 border-radius:99px background:linear-gradient(90deg, #6E6BEE 0%, #7A3FE4 100%)`

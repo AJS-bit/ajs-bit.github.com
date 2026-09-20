@@ -70,6 +70,8 @@
         - `div`
           `display:flex align-items:center gap:12px padding:9px 0 border-bottom:1px solid #F3F5FA`
         - `div`
+          `display:flex align-items:center gap:12px padding:9px 0 border-bottom:1px solid #F3F5FA`
+        - `div`
           `display:flex align-items:center gap:12px padding:9px 0`
         - `div` **text 12px/400** — “상태 줄 · 기록 창 · 저장 완료 카드의 합계는 줄이지 않고 원 단위 그대로 씁니다(오늘 4건 37,000원).”
           `font-size:12px line-height:1.5 color:#626D88 border-top:1px solid #F3F5FA`
