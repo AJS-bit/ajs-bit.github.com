@@ -89,6 +89,11 @@ def darken(text):
                       'rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7)')
     out = out.replace('rgba(16,24,40,.04), 0 8px 24px -16px rgba(16,24,40,.28)',
                       'rgba(0,0,0,.3), 0 12px 32px -18px rgba(0,0,0,.75)')
+    # 팝오버 메뉴(내역 ⋯) 그림자 — 아래 .04 치환보다 먼저
+    out = out.replace('rgba(16,24,40,.04), 0 12px 28px -12px rgba(16,24,40,.32)',
+                      'rgba(0,0,0,.3), 0 14px 32px -14px rgba(0,0,0,.8)')
+    # 점선 추가 버튼의 반투명 흰 바탕 — 그대로 두면 다크에서 회색 덩어리가 되어 글자가 안 읽힌다
+    out = out.replace('background: rgba(255,255,255,.55)', 'background: rgba(255,255,255,.03)')
     out = out.replace('rgba(16,24,40,.06)', 'rgba(0,0,0,.45)')
     out = out.replace('rgba(16,24,40,.08)', 'rgba(0,0,0,.5)')
     out = out.replace('rgba(16,24,40,.2)', 'rgba(0,0,0,.6)')
@@ -98,6 +103,8 @@ def darken(text):
     out = re.sub(r'fill="#121A2B"(\s*><path d="' + re.escape(ARROW) + r')', r'fill="#FFFFFF"\1', out)
     # 부채 해치 패턴
     out = out.replace('#E0908C 0 4px, #F0BFBD 4px 8px', '#8E4C49 0 4px, #B36F6C 4px 8px')
+    # 한도 초과 구간 빗금(ModalErrors B) — 빨강은 MAP이 바꾸고 옅은 줄만 여기서
+    out = out.replace('#E8635F 0 4px, #E0908C 4px 8px', '#E8635F 0 4px, #8E4C49 4px 8px')
     for i, k in enumerate(kept):
         out = out.replace(f'\x00KEEP{i}\x00', k)
     return out
@@ -114,10 +121,17 @@ DESKTOP = ['DesktopHome', 'DesktopLedger']
 V4 = ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeConfigured']   # gen_v4.py
 V4 += ['DestGoals', 'DestFuture', 'HomeStocksOff', 'StocksMine', 'HoldingAdd', 'StocksEmpty', 'HomeStocksCard', 'StocksHome', 'StockListGrowth', 'StockListDividend', 'StockDetail', 'StockThemes', 'StockStates', 'StockSettings', 'SnapshotUpdate']   # gen_v4_stocks.py
 V4 += ['HomeCalendarStrip', 'HomeCalendar', 'DaySheet', 'DaySheetList', 'DaySheetEdit', 'DoneCard', 'DaySheetConfirm', 'ClassifySheet', 'HeroInsufficient', 'DaySheet360', 'HeroFootnotes', 'CalendarCells', 'HomeCalendar360', 'HomeCalendarPrev', 'CalendarGridSizes']   # gen_v5.py (v5 1단계)
+# 최신화 반영(2026-09-21) — 새 장. v3 생성기·손편집 산물은 여기서만 다크가 만들어진다
+V5X = ['LedgerV5', 'MonthlyCloseV5', 'AlertsReview', 'TransactionAddFromDaySheet', 'DesktopHomeV5']   # gen_screens · gen_modals · 손편집
+V5X += ['HomeSetupStocksOn', 'SettingsHomeEntry', 'HomeLayoutEdit']   # gen_v4.py
+V5X += ['DestPayoff']   # gen_v4_stocks.py
+V5X += ['DaySheetScrolled', 'HomeDefaultScroll']   # gen_v5.py
+V5X += ['DaySheetNoSpend', 'DaySheetNoSpendStates', 'ReviewListSheet', 'DoneCardStates', 'DaySheetStates', 'CalendarStatusLines']   # gen_v5_sheets.py
+V5X += ['InsufficientElsewhere', 'FutureProvisional', 'EtcSubline', 'LimitCardCases', 'RecurringPrefill', 'ImportBackupNotes']   # gen_v5_screens.py
 
 if __name__ == '__main__':
     n = 0
-    for name in SCREENS + MODALS + STATES + SYSTEM + DESKTOP + V4:
+    for name in SCREENS + MODALS + STATES + SYSTEM + DESKTOP + V4 + V5X:
         src = SRC / f'{name}.dc.html'
         dst = SRC / ('DarkHome.dc.html' if name == 'Main' else f'Dark{name}.dc.html')
         dst.write_text(darken(src.read_text(encoding='utf-8')), encoding='utf-8')

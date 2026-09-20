@@ -7,7 +7,10 @@
 ## 0. 무엇을 하는 작업인가
 
 NAVI(자산 성장 내비게이션)의 UI를 v3 디자인으로 바꿉니다. **계산 로직·저장 형식은 바꾸지 않습니다.**
-디자인은 `design/canvas/`에 **아트보드 75장**으로 그려져 있고, 모든 수치는 실제 계산으로 검증돼 있습니다.
+디자인은 `design/canvas/`에 **v3 아트보드 77장**(라이트 39 · 다크 38)으로 그려져 있고, 모든 수치는 실제 계산으로 검증돼 있습니다.
+
+> **2026-09-21 덧붙임.** `canvas/`에는 이제 v3 아트보드 77장(알림이 없을 때 장이 추가됨) 말고도 v4 · v5 시안이 함께 들어 있습니다(전체 193장 · 캔버스 14페이지 — v3는 1~5페이지 `모바일 · 화면`~`디자인 시스템`, 6~10이 v4, 11~14가 v5). **v4 · v5 장은 이 지시서의 구현 범위가 아닙니다** — 기준은 `plan/v4-stocks.md` · `plan/v5-calendar.md`이고, v5는 컴포넌트 11종을 새로 등록합니다(`SPEC-COMPONENTS.md` §27). `SPEC-SCREENS.md` · `spec/` · `screens.json`에도 v4 · v5 장이 함께 들어 있으니 `screens.json`의 `page`로 가려 읽으세요. 4페이지 데스크톱의 셋째 장 `DesktopHomeV5`는 v5 제안이라 역시 범위 밖입니다. v3 장에서 인계 뒤에 바뀐 것은 `CHANGES-2026-09-20.md` · `CHANGES-2026-09-21.md`에 있습니다.
+
 
 작업 대상은 **여러분 저장소에 있는 원본 앱**입니다. 디자인 자료는 아래 공개 저장소에 있습니다.
 
@@ -31,9 +34,9 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 |---|---|---|
 | 1 | 이 문서 | 작업 순서·제약·완료 기준 |
 | 2 | **[`SPEC-COMPONENTS.md`](SPEC-COMPONENTS.md)** | **컴포넌트 24개의 실측 CSS. 화면보다 이것을 먼저 만듭니다** |
-| 3 | **[`SPEC-SCREENS.md`](SPEC-SCREENS.md)** | **화면 38개의 블록 체크리스트. 조립하면서 하나씩 지웁니다** |
+| 3 | **[`SPEC-SCREENS.md`](SPEC-SCREENS.md)** | **v3 화면 39개의 블록 체크리스트(`Main`부터 `Components`까지 — 그 뒤는 v4 · v5 장). 조립하면서 하나씩 지웁니다** |
 | 4 | [`DESIGN-TOKENS-v3.md`](DESIGN-TOKENS-v3.md) · [`tokens.v3.json`](tokens.v3.json) | 색·타이포·간격 값의 출처 |
-| 5 | [`screens.json`](screens.json) | 아트보드 75장 ↔ 소스 파일 매핑 (기계 판독용) |
+| 5 | [`screens.json`](screens.json) | 아트보드 ↔ 소스 파일 매핑 (기계 판독용 · 193장 전부 — v3 77장은 `page`가 `모바일 · 화면`~`디자인 시스템`인 장) |
 | 6 | [`sample-data.json`](sample-data.json) | 시안이 그리는 가상 사용자 — 개발 픽스처로 그대로 사용 |
 | 7 | [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) | 파일별 작업 내용 (4단계) |
 | 8 | [`README.md`](README.md) | 왜 이렇게 바꿨는지 — 문제 진단과 5가지 원칙 |
@@ -59,9 +62,9 @@ preview/<이름>.png             ← 결과가 어떻게 보여야 하는지
 | `canvas/_tools/**` | 아트보드를 찍어낸 생성기. **다시 돌리지 마세요.** 시안은 이미 확정본입니다. 단 `darken.py`의 `MAP`은 다크 색 대응표라서 다크 모드 작업 때 읽습니다 |
 | `canvas/_tools/calc/**` | 상각·복리 계산기. 결과는 `sample-data.json`의 `derived`에 들어 있습니다. 숫자를 직접 검산할 때만 |
 | `README.md` | 왜 이렇게 바꿨는지에 대한 설계 배경. 판단이 필요할 때만 |
-| `preview/index.html` | 75장 렌더를 한눈에 보는 색인. 사람이 볼 때만 |
+| `preview/index.html` | v3 75장 렌더를 한눈에 보는 색인(`AlertsEmpty`와 v4 · v5 장은 없음). 사람이 볼 때만 |
 
-`.dc.html`도 75장을 한 번에 다 읽지는 마세요. 다만 **지금 만드는 화면의 아트보드는 처음부터 끝까지 다 읽으세요.**
+`.dc.html`도 77장을 한 번에 다 읽지는 마세요. 다만 **지금 만드는 화면의 아트보드는 처음부터 끝까지 다 읽으세요.**
 훑어보고 감으로 만들면 반드시 달라집니다. 한 장은 300~400줄이라 통째로 읽어도 부담되지 않습니다.
 
 ---
@@ -77,7 +80,7 @@ preview/<이름>.png             ← 결과가 어떻게 보여야 하는지
 ```
 
 - 브라우저로 파일을 직접 열면 그대로 보입니다
-- `design/canvas/navi-redesign.html` 하나를 열면 75장을 한 캔버스에서 봅니다
+- `design/canvas/navi-redesign.html` 하나를 열면 모든 장을 한 캔버스에서 봅니다(v3는 1~5페이지)
 - 모바일 390×844 · 데스크톱 1440×900 · 카탈로그 시트는 세로로 긴 프레임
 - **인라인 스타일의 값을 그대로 가져오세요.** 이전 판에서는 "토큰으로 옮기라"고 적었는데,
   그 말 때문에 `13.5px`가 `text-sm`(14px)이 되고 `border-radius: 18px`가 `rounded-2xl`(16px)이 되어
@@ -187,7 +190,7 @@ python3 design/canvas/_tools/render_png.py       # 아트보드 → preview/*.pn
 
 | 아트보드 | 상태 |
 |---|---|
-| `EmptyStates` | 첫 시작 · 급여 미입력 · 급여 0원+부수입만 · 자산 미입력 · 거래 없음 vs 검색 결과 없음 |
+| `EmptyStates` | 첫 시작 · 급여 미입력 · 급여 0원+부수입만 · 자산 미입력 · 거래 없음 vs 검색 결과 없음 (여섯째 `F · 히어로 이력 부족`은 v5 · 1단계 몫 — v3 범위 밖. B는 2026-09-21에 바뀜 — `CHANGES-2026-09-21.md` 14번) |
 | `StorageStates` | 불러오는 중 · 불러오기 실패 · 복구 파일 오류 · 샘플→내 데이터 전환 |
 | `PeerStates` | 또래 카드 5종 |
 | `ModalErrors` | 필수 값 미입력 · 규칙 위반 · 저장 중 · 저장 실패 · 저장 완료 · 저장 없이 닫기 |
@@ -204,12 +207,12 @@ python3 design/canvas/_tools/render_png.py       # 아트보드 → preview/*.pn
 
 아래를 전부 만족해야 끝입니다.
 
-- [ ] `SPEC-SCREENS.md`의 체크박스가 38개 화면 모두 채워짐
+- [ ] `SPEC-SCREENS.md`의 체크박스가 v3 화면 39개(`Main`~`Components`) 모두 채워짐
 - [ ] 새로 만든 컴포넌트가 `SPEC-COMPONENTS.md`의 24개 밖에 없음 (있다면 왜 필요했는지 기록)
 - [ ] 화면에 쓴 `font-size` · `border-radius` 값이 전부 `SPEC-COMPONENTS.md` 마지막 절의 목록 안에 있음
 - [ ] `sample-data.json`을 픽스처로 넣었을 때 화면 숫자가 아트보드와 **한 자리도 다르지 않음**
 - [ ] 라이트/다크 두 모드에서 레이아웃이 동일 (색만 다름)
-- [ ] 5개 탭 · 모달 14종 · 상태 카탈로그 6종이 모두 도달 가능
+- [ ] 5개 탭 · 모달 15종(알림 없음 포함) · 상태 카탈로그 6종이 모두 도달 가능
 - [ ] 390px 폭에서 가로 스크롤 없음, 1440px에서 오른쪽 열이 비지 않음
 - [ ] 본문 텍스트 대비 WCAG AA(4.5:1) 통과 — 비활성 상태는 예외
 - [ ] 미입력이 어디에서도 0으로 표시되지 않음

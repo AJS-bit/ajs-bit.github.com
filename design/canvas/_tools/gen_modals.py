@@ -176,6 +176,34 @@ w('MonthlyClose', sheet(
            f'{checkbox("위 수치가 실제와 같음을 확인했습니다.", True)}</div>', scrim_h=40))
 
 
+# ══════════════ 6-2. 월 마감 확정 — v5-1 이후 (MonthlyCloseV5) ══════════════
+# plan/v5-calendar.md §9-9 · §9-23 · §5-3: 체크박스 새 문구 + `자동으로 채워진 값` 위 분류 안 함 한 줄. v3 기준 그림 `MonthlyClose` 는 그대로 둔다.
+# 한 줄이 늘어난 만큼 시트 본문이 길어져, 맨 아래 급여 안내(`급여를 비워 두면 …`)는 이 장에서 스크롤 아래로 내려간 것으로 보고 그리지 않는다.
+UNCAT_LINE = (
+    f'<div style="flex-shrink: 0; padding: 10px 12px; border: 1px solid {C["LINE"]}; border-radius: 12px; font-size: 12px; line-height: 1.5; color: {C["INK2"]};">'
+    f'<span style="font-weight: 600; color: {C["INK"]};">분류 안 함 4건 · 32,000원이 기타로 들어가요</span> · 다음 달 한도 배분에도 기타로 들어가요 · '
+    f'<span style="font-weight: 600; color: {C["BRAND"]}; white-space: nowrap;">지금 분류 &rsaquo;</span></div>')
+
+w('MonthlyCloseV5', sheet(
+    '2026년 8월 마감', '그 달의 실제 수치를 확정합니다. 저장한 값으로만 과거 소비율을 계산해요.',
+    note('이미 <span style="font-weight:600">2026년 9월 2일</span>에 마감한 달입니다. 다시 저장하면 기존 마감값을 덮어씁니다.', 'warn', 'warn') +
+    group('그 달의 실제 수치', f'<div style="display: flex; gap: 10px;">{field("총수입", "3,900,000", "원", required=True)}'
+                                f'{field("그중 실수령 급여", "3,600,000", "원", required=True)}</div>'
+                                f'<div style="display: flex; gap: 10px; margin-top: 12px;">{field("대출상환", "920,000", "원")}'
+                                f'{field("저축·투자 이체", "630,000", "원")}</div>', meta='원 단위') +
+    UNCAT_LINE +
+    group('자동으로 채워진 값',
+          f'<div style="padding: 2px 13px; background: {C["INSET"]}; border-radius: 14px;">'
+          f'{kv("일반 소비 합계", "2,043,800원")}{kv("급여 대비 소비율", "56.8%", C["POS"])}'
+          f'{kv("월말 자산 총액", "180,400,000원")}{kv("월말 부채 총액", "89,200,000원", last=True)}</div>'),
+    sheet_footer('취소', '마감 저장'),
+    sticky=f'<div style="padding: 12px 18px; background: {C["INSET"]}; border-top: 1px solid {C["LINE"]}; flex-shrink: 0;">'
+           f'{checkbox("이 달의 수입·상환·잔액을 확인했고, 빠진 소비 기록이 없는지 살펴봤어요", True)}</div>', scrim_h=40,
+    # 급여 안내를 뺀 뒤 `자동으로 채워진 값` 회색 상자가 같은 회색의 확인 줄에 3.75px 로 붙었다 — 구역 간격 15 → 12(3곳 = 9px)로 상자 아래 약 12.75px 를 낸다.
+    # body_pb 는 글꼴 차이로 본문이 조금 길어져도 상자가 확인 줄에 닿지 않게 하는 아래 여백. v3 `MonthlyClose` 는 기본값 그대로.
+    body_gap=12, body_pb=12))
+
+
 # ══════════════ 7. 백업 가져오기 미리보기 ══════════════
 def diffrow(label, count, tone, desc, last=False):
     m = {"new": (C["POS"], C["POS_SOFT"]), "dup": (C["TAB_INK"], C["LINE_SOFT"]),
@@ -339,3 +367,139 @@ w('Confirmations', state_sheet(
               extra=f'<div style="margin-top: 12px;">{note("먼저 백업을 내보내면 나중에 그대로 복구할 수 있어요.", "warn", "download")}</div>'
                     f'<div style="margin-top: 9px;">{checkbox("백업을 내보냈거나, 지워도 괜찮습니다.", False)}</div>'))],
     h=1245, pill='구현 참고 · 앱 화면이 아닙니다'), keep_all=True)
+
+
+# ══════════════ 12. 구현 참고 장 틀 — gen_v5.spec_frame 과 같은 모양 ══════════════
+# gen_v5 를 import 하면 v4 · v5 장 전체를 다시 쓰는 부작용이 있어, 승인된 틀(알약 · 제목 · 부제 · 번호 mark · 번호별 설명 줄)만 같은 값으로 옮겨 둔다.
+def spec_frame(w_, h_, title, sub, body, sub_w=640):
+    chip = (f'<span style="align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: {C["INK2"]}; '
+            f'border: 1px solid {C["LINE"]}; background: {C["SURF"]}; border-radius: 99px; padding: 4px 10px; white-space: nowrap;">구현 참고 · 앱 화면이 아닙니다</span>')
+    return (f'<div style="width: {w_}px; height: {h_}px; background: {C["BG"]}; color: {C["INK"]}; padding: 28px 30px 30px; display: flex; '
+            f'flex-direction: column; gap: 10px; overflow: hidden; font-variant-numeric: tabular-nums;">{chip}'
+            f'<h2 style="margin: 2px 0 0; font-size: 20px; font-weight: 700; letter-spacing: -0.025em; color: {C["INK"]};">{title}</h2>'
+            f'<p style="margin: 0 0 8px; font-size: 13px; line-height: 1.55; color: {C["INK3"]}; max-width: {sub_w}px;">{sub}</p>{body}</div>')
+
+
+def mark(n, pos='flex-shrink: 0; margin-top: 1px;'):
+    return (f'<span style="{pos} width: 17px; height: 17px; border-radius: 99px; background: {C["INK"]}; color: #FFFFFF; '
+            f'font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; '
+            f'box-shadow: 0 0 0 2px {C["SURF"]};">{n}</span>')
+
+
+def guide_row(n, name, meaning, second, last=False):
+    border = '' if last else f'border-bottom: 1px solid {C["LINE_ROW"]};'
+    lead = mark(n) if n is not None else '<span style="width: 17px; flex-shrink: 0;"></span>'      # n=None: 번호 없는 딸린 줄(들여쓰기만)
+    return (f'<div style="display: flex; gap: 11px; padding: 10px 0; {border}">{lead}'
+            f'<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">'
+            f'<div style="font-size: 13.5px; line-height: 1.4; color: {C["INK2"]};"><b style="font-weight: 600; color: {C["INK"]};">{name}</b>&nbsp;&nbsp;{meaning}</div>'
+            f'<div style="font-size: 12px; line-height: 1.45; color: {C["INK3"]};">{second}</div></div></div>')
+
+
+def case_cap(n, title, desc):
+    return (f'<div><div style="display: flex; align-items: center; gap: 7px;">{mark(n, pos="flex-shrink: 0;")}'
+            f'<span style="font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: {C["INK"]};">{title}</span></div>'
+            f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; margin-top: 3px;">{desc}</div></div>')
+
+
+# ══════════════ 13. 거래 추가 — 하루 시트에서 넘어온 초안 (TransactionAddFromDaySheet) ══════════════
+# plan/v5-calendar.md §4-2 · §9-5 · §12-28 · §12-29: 하루 시트의 `저축·투자로 기록 ›`가 그 종류를 미리 고르고 날짜 · 금액 · 메모를 채운 채
+# 소비 탭 `거래 추가`를 연다. 필드 순서는 그대로. 손으로 쓴 TransactionAdd.dc.html 을 읽어 값만 바꾼다(그 파일은 고치지 않는다).
+def _swap(src, old, new, count=1):
+    assert src.count(old) == count, (old[:60], src.count(old))
+    return src.replace(old, new)
+
+
+def tx_add_from_day_sheet():
+    src = (OUT / 'TransactionAdd.dc.html').read_text(encoding='utf-8')
+    start = src.index('  <div style="flex: 1; min-height: 0; background: #FFFFFF; border-radius: 26px 26px 0 0;')
+    end = src.index('</x-dc>')
+    sheet_html = src[start:end].rstrip()
+    assert sheet_html.endswith('</div>')
+    sheet_html = sheet_html[:-len('</div>')].rstrip()            # 바깥 390 × 844 틀의 닫는 태그는 뺀다
+    # 폰 틀 없이 창만 — 높이는 내용만큼(가운데 본문의 flex: 1 을 푼다)
+    sheet_html = _swap(sheet_html, 'flex: 1; min-height: 0; background: #FFFFFF; border-radius: 26px 26px 0 0;',
+                       f'background: #FFFFFF; border: 1px solid {C["LINE"]}; border-radius: 26px 26px 18px 18px;')
+    sheet_html = _swap(sheet_html, 'flex: 1; min-height: 0; overflow: hidden; padding: 14px 18px 0;', 'padding: 14px 18px 14px;')
+    m = lambda n: mark(n, pos='margin-left: 6px; vertical-align: -3px; flex-shrink: 0;')       # 버튼 안(이미 flex 가운데 맞춤)
+
+    # 라벨 옆 번호: 17px inline-flex 배지를 글줄에 그대로 넣으면 그 라벨 줄만 18 → 21px 로 커져 옆 칸(날짜 ↔ 금액)과 3px 어긋난다.
+    # 라벨을 flex 가운데 맞춤으로 바꾸고 배지의 위아래 margin 을 -2px 로 눌러(차지하는 높이 13px < 글줄 18px) 줄 높이는 글자가 정하게 한다.
+    # 원래 글자는 <span> 하나로 감싼다 — flex 안에서 `메모 ` 뒤 빈칸이 사라지지 않게.
+    def label_mark(html, inner, n):
+        old = f'margin-bottom: 7px;">{inner}</div>'
+        new = (f'margin-bottom: 7px; display: flex; align-items: center;"><span>{inner}</span>'
+               f'{mark(n, pos="margin: -2px 0 -2px 6px; flex-shrink: 0;")}</div>')
+        return _swap(html, old, new)
+    # ① 거래 종류 — 저축·투자가 미리 선택됨
+    on = 'background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #101828; box-shadow: 0 1px 2px rgba(16,24,40,.08);">'
+    off = 'display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #5B6880;">'
+    sheet_html = _swap(sheet_html, on + '일반 소비', off + '일반 소비')
+    sheet_html = _swap(sheet_html, off + '저축·투자', on + '저축·투자')
+    sheet_html = label_mark(sheet_html, '거래 종류', 1)
+    # ② 날짜 9월 8일 · 금액 12,000
+    assert sheet_html.count('2026. 09. 08') == 1
+    sheet_html = label_mark(sheet_html, '날짜', 2)
+    sheet_html = _swap(sheet_html, '>32,000</span>', '>12,000</span>')
+    # 카테고리 — 저축·투자는 종류가 곧 카테고리라 고르는 칩 대신 잠긴 칸
+    c0 = sheet_html.index('<div style="display: flex; gap: 7px; overflow: hidden;">')
+    c1 = sheet_html.index('더보기</div>', c0) + len('더보기</div>')
+    c1 = sheet_html.index('</div>', c1) + len('</div>')
+    locked = (f'<div style="display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 12px; border-radius: 11px; border: 1px solid {C["LINE"]}; background: {C["INSET"]};">'
+              f'{catdot("저축/투자", 8)}<span style="flex: 1; font-size: 15px; font-weight: 500; color: {C["INK2"]};">저축/투자</span>{icon("lock", 15, C["INK4"], 1.9)}</div>')
+    sheet_html = sheet_html[:c0] + locked + sheet_html[c1:]
+    sheet_html = _swap(sheet_html, '카테고리 <span style="color: #C0342F;">*</span></span>', '카테고리</span>')
+    sheet_html = _swap(sheet_html, '13개 중 선택', '거래 종류에 따라 정해져요')
+    # ③ 메모
+    sheet_html = _swap(sheet_html, '점심 · 팀 회식', '적금 추가 납입')
+    sheet_html = label_mark(sheet_html, '메모 <span style="font-weight: 500; color: #697182;">선택 사항</span>', 3)
+    # 잔액 반영 — 하루 시트는 계좌를 넘기지 않으므로 꺼진 채, 계좌 고르는 줄은 없다
+    sheet_html = _swap(sheet_html, 'background: #3556E6; padding: 3px; display: flex; justify-content: flex-end; flex-shrink: 0;">',
+                       f'background: {C["LINE"]}; padding: 3px; display: flex; justify-content: flex-start; flex-shrink: 0;">')
+    a0 = sheet_html.index('<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 44px; margin-top: 10px;')
+    a1 = sheet_html.index('</svg>', a0)
+    a1 = sheet_html.index('</div>', a1) + len('</div>')
+    a1 = sheet_html.index('</div>', a1) + len('</div>')
+    sheet_html = sheet_html[:a0].rstrip() + '\n' + sheet_html[a1:]
+    # 맨 아래 안내 — 창에 1px 테두리가 생겨 안쪽 폭이 2px 줄면서 `저축` / `·투자 이체와…`로 꺾였다. 한 용어는 한 줄에 묶는다(원본 파일은 그대로)
+    sheet_html = _swap(sheet_html, '저축·투자 이체와 대출상환은', '<span style="white-space: nowrap;">저축·투자</span> 이체와 대출상환은')
+    # ④ 거래 저장
+    sheet_html = _swap(sheet_html, 'font-weight: 600; color: #FFFFFF;">거래 저장</div>',
+                       f'font-weight: 600; color: #FFFFFF;">거래 저장{m(4)}</div>')
+    return sheet_html
+
+
+TXADD_GUIDE = [
+    (1, '거래 종류', '<b style="font-weight: 600;">저축·투자</b>가 미리 선택된 채 열립니다.',
+     '하루 시트의 <b style="font-weight: 600;">저축·투자로 기록 &rsaquo;</b>를 눌렀을 때입니다. <b style="font-weight: 600;">대출상환으로 기록 &rsaquo;</b>를 눌렀으면 대출상환이 선택됩니다.'),
+    (2, '날짜 · 금액', '하루 시트에 적어 둔 값 그대로 채워집니다.', '9월 8일 시트에서 12,000원을 적고 넘어온 그림입니다. 여기서 고칠 수 있습니다.'),
+    (3, '메모', '하루 시트에 적은 메모도 함께 넘어옵니다.', '칸 순서는 기존 거래 추가와 같습니다(거래 종류 → 날짜 · 금액 → 카테고리 → 메모 → 잔액 반영). 순서를 바꾸지 않습니다.'),
+    (4, '거래 저장', '저장하면 소비 탭에 머물지 않고 <b style="font-weight: 600;">홈으로 돌아와 완료 카드</b>가 뜹니다.',
+     '저장에 성공하면 출발한 하루 시트의 9월 8일 초안을 비웁니다. 취소하거나 저장에 실패하면 초안은 남습니다.'),
+]
+
+
+def flow_step(text, strong=False):
+    return (f'<span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; '
+            f'font-size: 12.5px; font-weight: 600; ' +
+            (f'background: {C["BRAND_SOFT"]}; color: {C["BRAND"]};' if strong else f'background: {C["INSET"]}; color: {C["INK2"]};') + f'">{text}</span>')
+
+
+txadd_flow = card(
+    f'<div style="font-size: 12px; font-weight: 700; color: {C["INK"]};">어디서 와서 어디로 가나</div>'
+    f'<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 9px;">'
+    + flow_step('홈 · 하루 시트') + icon("arrowr", 14, C["INK4"], 2.2)
+    + flow_step('저축·투자로 기록 &rsaquo;') + icon("arrowr", 14, C["INK4"], 2.2)
+    + flow_step('소비 탭 · 거래 추가', strong=True) + icon("arrowr", 14, C["INK4"], 2.2)
+    + flow_step('거래 저장') + icon("arrowr", 14, C["INK4"], 2.2)
+    + flow_step('홈 · 완료 카드') + '</div>'
+    f'<p style="margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: {C["INK3"]};">하루 시트에는 거래 종류 · 잔액 반영 · 계좌 선택이 없어서, 저축·투자와 대출상환은 이 창에서 남깁니다. '
+    f'소비율에는 들어가지 않습니다. 수입 · 환불은 어디에서도 안내하지 않습니다.</p>', pad='13px 16px')
+
+txadd_guide = card(''.join(guide_row(*r, last=(i == len(TXADD_GUIDE) - 1)) for i, r in enumerate(TXADD_GUIDE)), pad='4px 16px')
+
+w('TransactionAddFromDaySheet', spec_frame(
+    960, 850, '거래 추가 — 하루 시트에서 넘어왔을 때',
+    '하루 시트 아래의 링크 「저축·투자로 기록 ›」를 누르면 소비 탭의 거래 추가 창이 이 모습으로 열립니다. 왼쪽 창의 번호를 오른쪽에서 찾으세요.',
+    f'<div style="display: flex; gap: 28px; align-items: flex-start;">'
+    f'<div style="width: 390px; flex-shrink: 0;">{tx_add_from_day_sheet()}</div>'
+    f'<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px;">{txadd_guide}{txadd_flow}</div></div>', sub_w=760))

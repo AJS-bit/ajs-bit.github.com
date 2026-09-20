@@ -88,8 +88,10 @@
           `width:44px height:44px border-radius:99px background:conic-gradient(#3556E6 0% 47%, #E8ECF5 47% 100%) display:flex align-items:center justify-content:center`
         - `div`
           `flex:1`
-    - `div` — “목적지 추가”
+    - `div`
       `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
+      - `span` — “새 목적지 설계”
+        `white-space:nowrap`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div`

@@ -3,10 +3,10 @@
 원본 `canvas/DaySheet360.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:360px height:844px background:#2A3245 color:#101828 display:flex flex-direction:column position:relative`
+  `width:360px height:640px background:#2A3245 color:#101828 display:flex flex-direction:column position:relative`
   - `div`
     `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
-    - `span` **text 11px/500** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+    - `span` **text 11px/500** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `font-size:11px line-height:1.4 font-weight:500 color:rgba(255,255,255,.62)`
   - `div` **BottomSheet**
     `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
@@ -27,41 +27,27 @@
     - `div`
       `flex:1 min-height:0 padding:12px 14px 0 display:flex flex-direction:column gap:10px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:10px height:48px padding:0 14px border-radius:12px background:#FFFFFF border:1.5px solid #3556E6 box-shadow:0 0 0 3px rgba(53,86,230,.16)`
-        - `span` **text 12px/600** — “금액”
-          `font-size:12px font-weight:600 color:#475467`
-        - `span`
-          `display:inline-flex align-items:baseline gap:4px`
-      - `div` — “· 저장을 눌러야 기록돼요”
-        `font-size:11.5px line-height:1.45 color:#626D88 padding:0 2px`
-        - `span` — “1.2만원”
-          `font-weight:600 color:#475467`
-      - `div`
-        `display:flex align-items:center justify-content:space-between gap:10px height:44px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
-        - `span`
-          `display:inline-flex align-items:center gap:12px`
-      - `div`
-        `display:flex flex-direction:column gap:8px`
         - `div`
-          `display:flex align-items:center gap:8px`
-        - `div`
-          `display:flex align-items:center gap:6px`
-      - `div`
-        `display:flex flex-direction:column gap:8px`
-        - `span` **text 12px/600** — “최근 기록”
-          `font-size:12px font-weight:600 color:#475467`
-        - `div`
-          `display:flex gap:6px padding:0 14px`
-      - `div`
-        `margin-top:2px`
-        - `div` **text 16px/600** — “저장”
-          `display:flex align-items:center justify-content:center gap:6px height:52px width:100% border-radius:14px background:#3556E6 border:none color:#FFFFFF font-size:16px font-weight:600`
+          `display:flex flex-direction:column gap:8px`
       - `div`
         - `div`
-          `display:flex align-items:center gap:14px`
-  - `div`
-    `position:absolute left:0 right:0 bottom:0 height:280px background:#E8ECF5 border-top:1px solid #D7DEEA display:flex align-items:center justify-content:center flex-direction:column gap:4px`
-    - `span` **text 12px/600** — “시스템 숫자 키보드 자리”
-      `font-size:12px font-weight:600 color:#626D88`
-    - `span` **text 11px/400** — “기기가 그립니다 · 약 280px · 이 위로 날짜·금액·저장이 보여야 해요”
-      `font-size:11px color:#697182`
+          `display:flex flex-direction:column gap:5px`
+      - `div`
+        `display:flex flex-direction:column`
+        - `div`
+          `height:18px display:flex align-items:center`
+        - `div`
+          `display:flex align-items:center gap:10px height:44px border-bottom:1px solid #F3F5FA`
+        - `div`
+          `display:flex align-items:center gap:10px height:44px border-bottom:1px solid #F3F5FA`
+        - `div`
+          `display:flex align-items:center gap:10px height:44px`
+        - `div` — “1건 더 보기”
+          `display:flex align-items:center gap:5px height:32px font-size:12.5px font-weight:600 color:#3556E6 white-space:nowrap`
+      - `div`
+        - `div` **SecondaryButton(44)** — “9월 8일 다 적었어요”
+          `display:flex align-items:center justify-content:center gap:6px height:44px width:100% border-radius:12px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:14.5px font-weight:600 white-space:nowrap`
+    - `div`
+      `padding:10px 14px 14px border-top:1px solid #EFF2F8 background:#FFFFFF`
+      - `div` **text 16px/600** — “저장”
+        `display:flex align-items:center justify-content:center gap:6px height:52px width:100% border-radius:14px background:#3556E6 border:none color:#FFFFFF font-size:16px font-weight:600`

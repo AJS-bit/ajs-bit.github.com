@@ -59,8 +59,8 @@ a = card(
     field('카테고리', '식비', w=None) +
     '</div>' +
     '<div style="margin-top: 13px;">' +
-    note('<b style=font-weight:600>0원과 미입력은 다릅니다.</b> 0원을 저장하면 그날 소비가 0원으로 기록되고, '
-         '비워 두면 아무것도 기록되지 않습니다.', 'mute') +
+    # v5(§9-13): 0원 거래는 만들지 않는다 — 돈을 안 쓴 날은 하루 시트의 `안 썼어요`로 표시한다. 금액 0 · 빈 값이면 저장 비활성은 그대로.
+    note('안 썼어요로 표시하면 0으로 보이고 거래는 만들지 않아요', 'mute') +
     '</div>' +
     footer(btn('취소', 'secondary'), btn('저장', 'disabled')),
     pad='16px')
@@ -139,6 +139,9 @@ f = card(
     f'{btn("계속 입력", "secondary").replace("width: 100%;", "flex: 1;")}'
     f'{btn("저장하지 않고 닫기", "danger").replace("width: 100%;", "flex: 1.3;")}</div>',
     pad='16px')
+# v5(§9-13 · §12-24): 하루 시트만은 이 확인 창을 띄우지 않는다 — 규칙 한 줄을 창 아래에 적는다(앱 문구가 아니라 구현 규칙).
+f = (f'<div style="display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;">{f}'
+     + note('하루 시트 예외(확인 없음 · 초안은 메모리에만, 앱 재시작 시 사라짐)', 'mute') + '</div>')
 
 REF_PILL = (f'<span style="display: inline-block; margin-bottom: 8px; font-size: 11px; font-weight: 600; '
             f'letter-spacing: 0.02em; color: {C["INK2"]}; border: 1px solid {C["LINE"]}; background: {C["SURF"]}; '
@@ -156,7 +159,7 @@ BLOCKS = [
 
 if __name__ == '__main__':
     import sys
-    h = int(sys.argv[1]) if len(sys.argv) > 1 else 1800
+    h = int(sys.argv[1]) if len(sys.argv) > 1 else 2100
     body = state_sheet(
         '모달 오류 · 저장 상태 6종',
         '저장이 막히거나 실패했을 때 보이는 창 여섯 가지입니다. 실제로는 한 번에 하나만 보입니다.',

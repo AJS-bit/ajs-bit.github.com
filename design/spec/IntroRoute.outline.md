@@ -32,7 +32,7 @@
           `display:flex flex-direction:column gap:3px`
     - `span` **text 11px/600** — “항로”
       `display:block margin-top:30px font-size:11px font-weight:600 letter-spacing:0.07em color:#3556E6`
-    - `h1` — “목표까지 얼마나 남았는지, 지금 무엇을 할지 알려줍니다.”
+    - `h1` — “목표까지 얼마나 남았는지, 지금 무엇을 하면 되는지 알려줍니다.”
       `font-size:23px font-weight:700 letter-spacing:-0.03em line-height:1.4 color:#101828`
       - `br`
     - `div`

@@ -14,11 +14,11 @@
 | 경로 | 무엇 |
 |---|---|
 | `design/` | **v3 디자인 인계 묶음(확정본).** 코덱스가 GitHub raw로 읽습니다. 입구 `design/여기부터.md`, 지시서 `design/CODEX-BRIEF.md` |
-| `design/canvas/*.dc.html` | 아트보드 147장(라이트 74 · 다크 73 — v3 77장(`AlertsEmpty` 추가) + v4 40 + v5 30). **값의 최종 기준** |
+| `design/canvas/*.dc.html` | 아트보드 193장(라이트 97 · 다크 96 · `Tokens`만 다크 없음 — v3 77장 + v4 48 + v5 68, 캔버스 14페이지). **값의 최종 기준** |
 | `design/canvas/_tools/` | 생성기·다크 변환·렌더·계산기. 먼저 `_tools/README.md`를 읽을 것 |
-| `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 컴포넌트 24개 실측 CSS · 화면별 조립 체크리스트 |
+| `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 컴포넌트 24개(+ v5 11종 — §27) 실측 CSS · 화면별 조립 체크리스트(라이트 97장) |
 | `plan/v4-stocks.md` | **v4 계획.** §9에 결정 사항. 페이지판은 `plan/_tools/md2page.py`로 생성 |
-| `plan/v5-calendar.md` | **v5 계획 — 홈 달력과 빠른 소비 입력.** §12에 결정 30개(1~9가 방향). 페이지판은 `md2page.py v5-calendar.md` |
+| `plan/v5-calendar.md` | **v5 계획 — 홈 달력과 빠른 소비 입력.** §12에 결정 37개(1~18이 방향). 페이지판은 `md2page.py v5-calendar.md` |
 
 ## 지금 상태 (2026-09-14)
 
@@ -54,6 +54,14 @@
   저축·투자 여력 27만원 · 주식 기준일 9/4 · 상환 9년 8개월). v3 확정본도 바뀌었으므로 코덱스는 `CHANGES-2026-09-20.md`를 보고 맞춘다. v5 계획은 8판(앱 문구 7개 교체). 새 장 `AlertsEmpty`. 장 수 147(라이트 74 · 다크 73).
   점검 방법: `_tools`의 생성기는 이제 이 맥에서 전부 돈다(상대 경로). 렌더는 Brave 헤드리스를 장마다 시간 제한을 두고 3개까지 병렬로.
 
+- **최신화 점검과 반영 (2026-09-21).** 사용자 질문 "홈 구성 화면에 왜 달력이 안 보이냐"에서 출발해 계획(v4 · v5)과 캔버스 노트 · 직전 변경 기록에 적힌 결정 209개를 라이트 시안 74장과 대조했고, 결정은 바뀌었는데 시안이 따라오지 않은 37건을 고쳤다(기각 6 · 전·후를 먼저 보여 주고
+  "다 반영해" 승인). 기록은 `design/CHANGES-2026-09-21.md` — 계획에 원문이 없어 시안에서 정한 것도 거기 있다. 원인 셋: 홈 장은 전부 `Main.dc.html`을 잘라 만드는데 달력은 `Main`에도 생성기의 컷에도 없어 **자동으로 안 들어갔다**(`HomeSetup` ·
+  `HomeConfigured` 등 6장이 달력 없는 홈으로 남음) · 출시 순서가 v3 → v4-1 → v5-1 → v5-2 → v4-2로 바뀐 뒤 먼저 그린 v4 장과 페이지 노트를 다시 안 그렸다 · v5 시안이 하루 시트 기본 흐름만 그려, 계획이 문구까지 정해 둔 나머지 상태(소비 0건인 날 ·
+  `확인할 내용` 목록 · 내역 · 월 마감 · `잠정` · 완료 카드 변형)의 장이 없었다. 재발 방지: 달력 조각은 **`gen_calendar.py` 공용 모듈 하나**(`gen_v4` · `gen_v4_stocks` · `gen_v5`가 함께 씀) ·
+  **계획의 결정을 바꾸면 그 결정이 닿는 장을 CHANGES에 적고 같이 고친다** · `gen_canvas.py` 뒤에 `sync_screens.py`(`screens.json`을 맞추고 크기 어긋남을 알려 줌). 새 장 23개 · 장 수 193(라이트 97 · 다크 96) · 캔버스 14페이지 — 6 · 7에 v4 새 장(홈 구성 주식 켬 · 설정 › 홈 구성 · `DestPayoff`),
+  11 `v5 · 달력과 하루 시트 (1 · 2단계)` · 12 `v5 · 구현 참고 장` · 13 `v5 · 다른 화면에 닿는 곳` · 14 `v5 · 3단계 한도 라벨 · 반복 거래 · 백업`, 4 데스크톱에 제안 `DesktopHomeV5`. v5 계획은 9판. v3 장(`Components` · `Tokens` 08절 · `EmptyStates` B · F · `ModalErrors` A · F · `GoalTypes` C)도
+  바뀌었으므로 코덱스는 `CHANGES-2026-09-21.md`도 본다.
+
 ## 사용자가 정한 작업 규칙 — 반드시
 
 1. **시안을 바꾸기 전에 before/after 렌더를 보여주고 검사받습니다.** 승인 전에 원본을 고치지 않습니다. 새 시안도 그려서 보여준 뒤 반영합니다.
@@ -66,9 +74,10 @@
 
 ## 도구와 함정 — 지난 작업에서 실제로 걸린 것
 
-- **아트보드 절반은 생성기 산물입니다.** `.dc.html`만 고치면 생성기를 다시 돌릴 때 되돌아갑니다. 생성기와 파일을 **둘 다** 고치세요. 손으로 쓴 파일 목록은 `_tools/README.md`에 있습니다.
+- **아트보드 대부분(라이트 97장 중 81장)은 생성기 산물입니다.** `.dc.html`만 고치면 생성기를 다시 돌릴 때 되돌아갑니다. 생성기와 파일을 **둘 다** 고치세요. 손으로 쓴 파일 목록은 `_tools/README.md`에 있습니다.
+- **홈이 나오는 장은 `Main.dc.html`을 잘라 만듭니다.** `Main`에 없는 카드(달력)는 자동으로 따라오지 않습니다 — 달력은 `gen_calendar.py` 하나에서 가져오고, 계획의 결정을 바꾸면 그 결정이 닿는 장을 찾아 같이 고치세요(2026-09-21에 37건이 이렇게 밀려 있었습니다).
 - 다크 아트보드는 `darken.py`가 라이트에서 만듭니다. 라이트를 고친 뒤 `darken.py`를 다시 돌리세요. `<!--dc-keep-->` 구간은 변환에서 제외됩니다(토스트).
-- 아트보드 높이는 **세 곳**이 같아야 합니다 — `.dc.html` 루트 `height` · `gen_canvas.py`의 `TALL/WIDE` · `screens.json`. 어긋나면 소리 없이 잘립니다.
+- 아트보드 높이는 **세 곳**이 같아야 합니다 — `.dc.html` 루트 `height` · `gen_canvas.py`의 `TALL/WIDE` · `screens.json`. 어긋나면 소리 없이 잘립니다. `gen_canvas.py` 뒤에 `sync_screens.py`를 돌리면 `screens.json`을 맞추고 어긋난 장을 알려 줍니다(내용이 넘치는지는 못 봅니다).
 - 높이·위치 측정은 **실제 웹폰트(IBM Plex Sans KR)를 띄운 채로** 하세요. 폴백 폰트로 재면 한글 줄 높이가 짧아 20~70px 작게 나옵니다. 루트 `scrollHeight`만 믿지 말고 자연 높이를 재세요.
 - 아트보드는 `* { box-sizing: border-box }`입니다. `height`에 글자 높이만 넣으면 `padding`·`border`만큼 줄이 짧아집니다.
 - 헤드리스 크로미움 `--window-size`는 창 크롬 높이를 포함해 **아래 87px이 잘립니다.** `render_png.py`는 이미 넉넉히 찍고 잘라냅니다. 직접 찍을 땐 같은 처리를 하세요.
@@ -78,8 +87,14 @@
 ```bash
 # 렌더 · 개요 · 체크리스트 재생성
 cd design/canvas/_tools && python3 outline.py && python3 gen_spec_screens.py && python3 render_png.py
-# 생성기 전체 (손편집 파일은 건드리지 않음)
-python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2061 && python3 gen_rest.py 1767 && python3 darken.py && python3 gen_canvas.py
+# 생성기 전체 (손편집 파일은 건드리지 않음) — 순서대로. gen_v4_stocks가 gen_screens의 Payoff를 잘라 쓰므로 v3 생성기가 먼저
+python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2100 && python3 gen_rest.py 1920
+# v4 · v5 — gen_v5.py가 gen_v4 · gen_v4_stocks를 import해서 v4 장도 같이 다시 쓴다(멱등 · 달력은 gen_calendar.py). 뒤의 둘은 gen_v5의 조각을 쓴다
+python3 gen_v5.py && python3 gen_v5_sheets.py && python3 gen_v5_screens.py
+# Components 08절은 v5 장의 조각을 옮겨 온 것 — v5 장을 고쳤으면 다시 잘라 온다(높이가 달라지면 직접 재서 루트 · WIDE를 고친다)
+python3 refresh_components_v5.py
+# 다크 96장 → 캔버스 등록부 → screens.json 맞춤(크기가 어긋난 장이 있으면 알려 주고 1로 끝남)
+python3 darken.py && python3 gen_canvas.py && python3 sync_screens.py
 # 계산 검산
 cd calc && python3 crosscheck.py
 # v4 · v5 계획 페이지
@@ -89,8 +104,8 @@ python3 plan/_tools/md2page.py v5-calendar.md   # v5-calendar.md → v5-calendar
 
 ## 아트팩트 (같은 claude.ai 계정이면 `/artifacts`에 보입니다)
 
-- **디자인 캔버스 (v3, 75장)** — https://claude.ai/code/artifact/986cf3e1-d0c7-4c28-94cb-c12c50ca7b46
-  contract `0.1.31` 고정. 갱신은 `design/canvas/`를 `navi-redesign.html`에 시드한 뒤 **이 URL을 `url`로 넘겨** publish. 시드는 design 스킬의 `seed-canvas.mjs` 또는 그것이 없을 때 `_tools/seed_doc.py`(페이지 안 `appifact-doc` JSON 블록만 다시 채움 · `gen_canvas.py` 뒤에 실행). publish 전에 Artifact read로 게시본을 한 번 열람해야 거절되지 않는다. 2026-09-20에 이 방법으로 v5 1단계 달력 12장 + 하루 시트 갱신분을 올렸다(24번째 판 · 145장 · 페이지 `v5 · 1단계 달력과 하루 시트`). 새 캔버스를 만들지 마세요. v4 시안도 이 캔버스에 페이지를 추가합니다.
+- **디자인 캔버스 (v3 · v4 · v5, 저장소 기준 193장 · 14페이지)** — https://claude.ai/code/artifact/986cf3e1-d0c7-4c28-94cb-c12c50ca7b46
+  contract `0.1.31` 고정. 갱신은 `design/canvas/`를 `navi-redesign.html`에 시드한 뒤 **이 URL을 `url`로 넘겨** publish. 시드는 design 스킬의 `seed-canvas.mjs` 또는 그것이 없을 때 `_tools/seed_doc.py`(페이지 안 `appifact-doc` JSON 블록만 다시 채움 · `gen_canvas.py` 뒤에 실행). publish 전에 Artifact read로 게시본을 한 번 열람해야 거절되지 않는다. 2026-09-20에 이 방법으로 v5 1단계 달력 12장 + 하루 시트 갱신분을 올렸다(24번째 판 · 145장 · 페이지 `v5 · 1단계 달력과 하루 시트`). 2026-09-21 최신화 반영분도 같은 방법으로 올렸다(27번째 판 · 193장 · 14페이지 · 그 페이지 이름은 `v5 · 달력과 하루 시트 (1 · 2단계)`로 바뀌고 뒤에 12~14페이지 추가). 새 캔버스를 만들지 마세요. v4 시안도 이 캔버스에 페이지를 추가합니다.
 - **v4 계획 페이지** — https://claude.ai/code/artifact/26eb99d3-9719-407e-bd5d-345b1ab54fe1
   `plan/v4-stocks.md`가 원본. 고치면 `md2page.py`로 다시 만들어 이 URL로 publish.
 - **v5 계획 페이지** — https://claude.ai/code/artifact/7000d83c-1af3-458a-a0e9-e4b82b461ef1

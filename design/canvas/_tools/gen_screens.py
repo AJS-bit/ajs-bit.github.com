@@ -255,6 +255,124 @@ w('Ledger', frame(
     ]) + bottomnav(2)))
 
 
+# ══════════════ 5-2. 소비 › 내역 — v5-1 이후 (LedgerV5) ══════════════
+# plan/v5-calendar.md §9-6 · §3-3: 필터 칩 `분류 안 함 7건` · 분류 안 함 행(부제 `분류 안 함`, 메모 없으면 제목 `분류 안 함 기록`, 점선 없음) ·
+# 날짜 그룹 헤더 `소비 8.7만 · 이체 30만`(0인 항목 생략) + 확인한 날 체크 · 행 ⋯ 에 `매달 반복으로 만들기`(분류 안 함 행 제외).
+# 날짜별 합계는 달력 시안(gen_calendar.SEP)과 같은 값이어야 한다 — 아래 assert 가 지킨다. v3 기준 그림 `Ledger` 는 그대로 둔다.
+# 9월 8일(오늘) 행은 하루 시트의 `오늘 기록`(계획 §4-2 도면 · gen_v5.RECENT)과 같은 자료다 — 커피 4,500 = 카페/간식 · 편의점 6,500 = 분류 안 함.
+# 9월 6일 이체는 손으로 적은 이체다 — 등록된 반복 거래 `ETF 자동이체`는 매월 5일(RecurringPrefill)이라 이 행에 `반복` 배지를 달지 않는다.
+from gen_calendar import SEP, SEP_CHECK, SEP_TOTAL, fmt_sum
+
+WEEKDAY = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+
+# (날짜, [(카테고리 | None = 분류 안 함, 아이콘, 메모, 계좌 글, 금액, 종류)]) — 종류 'spend' | 'transfer'
+LEDGER_V5 = [
+    (8, [('카페/간식', 'coffee', '커피', '계좌 미지정', 4_500, 'spend'),
+         ('식비', 'rice', '점심', '계좌 미지정', 9_000, 'spend'),
+         ('쇼핑', 'bag', '생필품', '계좌 미지정', 17_000, 'spend'),
+         (None, None, '편의점', None, 6_500, 'spend')]),
+    (6, [('저축/투자', 'leaf', 'ETF 계좌로 이체', '생활비 → ETF 계좌', 300_000, 'transfer')]),
+    (5, [(None, None, '버스', None, 4_500, 'spend'),
+         (None, None, '', None, 3_000, 'spend'),
+         (None, None, '커피', None, 4_500, 'spend')]),
+    (4, [(None, None, '커피', None, 4_500, 'spend')]),
+    (3, [('교통', 'bus', '택시', '계좌 미지정', 45_000, 'spend'),
+         ('식비', 'rice', '점심', '계좌 미지정', 9_000, 'spend'),
+         (None, None, '간식', None, 4_500, 'spend')]),
+    (1, [(None, None, '커피', None, 4_500, 'spend'),
+         ('식비', 'rice', '점심', '계좌 미지정', 7_500, 'spend')]),
+]
+for _d, _rows in LEDGER_V5:       # 칸 숫자 = 내역 날짜 헤더와 같은 숫자(§12-22)
+    assert sum(r[4] for r in _rows if r[5] == 'spend') == (SEP[_d] or 0), _d
+V5_COUNT = sum(len(rows) for _, rows in LEDGER_V5)
+V5_UNCAT = [r for _, rows in LEDGER_V5 for r in rows if r[0] is None]
+assert len(V5_UNCAT) == 7 and sum(r[4] for r in V5_UNCAT) == 32_000      # `분류 안 함 7건` · 히어로 각주 `분류 안 한 32,000원`
+V5_TRANSFER = sum(r[4] for _, rows in LEDGER_V5 for r in rows if r[5] == 'transfer')
+
+
+def head_sum(n):
+    """날짜 헤더의 금액 — 달력 칸과 같은 formatSum. 계획서 표기(`이체 30만`)대로 `.0`은 떼어 쓴다."""
+    s = fmt_sum(n)
+    return s.replace('.0만', '만')
+
+
+def row_menu(items):
+    """행 ⋯ 를 눌렀을 때 뜨는 메뉴. 색 없이 잉크 단계만."""
+    cells = ''.join(
+        f'<div style="display: flex; align-items: center; height: 40px; padding: 0 14px; font-size: 13.5px; font-weight: {600 if strong else 500}; '
+        f'color: {C["NEG"] if danger else C["INK"]}; white-space: nowrap;{"" if i == 0 else " border-top: 1px solid " + C["LINE_ROW"] + ";"}">{t}</div>'
+        for i, (t, strong, danger) in enumerate(items))
+    return (f'<div style="position: absolute; right: 0; top: 40px; z-index: 2; min-width: 176px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; '
+            f'border-radius: 13px; padding: 4px 0; box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 28px -12px rgba(16,24,40,.32);">{cells}</div>')
+
+
+def tx5(cat, ic, memo, link_txt, amt, kind, menu=''):
+    """v5 내역 행. cat 이 None 이면 분류 안 함 행 — 부제 `분류 안 함`, 메모가 없으면 제목 `분류 안 함 기록`, 점선 없음."""
+    if cat is None:
+        tile = (f'<div style="width: 34px; height: 34px; border-radius: 10px; background: {C["INSET"]}; display: flex; align-items: center; '
+                f'justify-content: center; flex-shrink: 0;">{icon("help", 17, C["INK3"], 1.9)}</div>')
+        title, sub = (memo or '분류 안 함 기록'), '분류 안 함'
+    else:
+        tile, title, sub = caticon(cat, ic, 34), memo, f'{cat} · {link_txt}'
+    muted = kind == 'transfer'
+    badges = minib('소비율 제외', 'mute') if muted else ''      # 손으로 적은 이체 — `반복` 배지는 자동 기록된 반복 거래에만 단다(이 장에는 없음)
+    b = f'<span style="display: inline-flex; gap: 5px; margin-left: 6px;">{badges}</span>' if badges else ''
+    return (f'<div style="position: relative; display: flex; align-items: center; gap: 11px; min-height: 54px; border-top: 1px solid {C["LINE_ROW"]};">'
+            f'{tile}<div style="flex: 1; min-width: 0;">'
+            f'<div style="font-size: 13.5px; font-weight: 500; color: {C["INK"]}; white-space: nowrap;">{title}{b}</div>'
+            f'<div style="font-size: 11px; color: {C["INK3"]}; margin-top: 2px;">{sub}</div></div>'
+            f'<span style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK2"] if muted else C["INK"]}; white-space: nowrap; flex-shrink: 0;">&minus;{amt:,}</span>'
+            f'<span style="flex-shrink: 0; display: inline-flex;">{icon("more", 16, C["INK2"] if menu else C["INK4"], 2.2)}</span>{menu}</div>')
+
+
+def daygroup5(day, rows):
+    spend = sum(r[4] for r in rows if r[5] == 'spend')
+    transfer = sum(r[4] for r in rows if r[5] == 'transfer')
+    parts = ([f'소비 {head_sum(spend)}'] if spend else []) + ([f'이체 {head_sum(transfer)}'] if transfer else [])     # 0인 항목은 생략
+    chk = (f'<span style="display: inline-flex; flex-shrink: 0;">{icon("check", 12, C["INK2"], 2.8)}</span>') if day in SEP_CHECK else ''
+    wd = WEEKDAY[(1 + day) % 7] + (' · 오늘' if day == 8 else '')           # 2026-09-01 = 화요일
+    return (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0 6px;">'
+            f'<span style="font-size: 13px; font-weight: 600; color: {C["INK"]}; white-space: nowrap;">9월 {day}일 '
+            f'<span style="font-weight: 500; color: {C["INK3"]};">{wd}</span></span>'
+            f'<span style="display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: {C["INK2"]}; white-space: nowrap; flex-shrink: 0;">'
+            f'{" · ".join(parts)}{chk}</span></div>')
+
+
+MENU_ROW = (8, 1)      # ⋯ 메뉴를 펼쳐 보이는 행 — 9월 8일 둘째 행(식비 · 점심). 분류 안 함 행의 메뉴에는 `매달 반복으로 만들기`가 없다.
+ledger5_rows = ''
+for _d, _rows in LEDGER_V5:
+    ledger5_rows += daygroup5(_d, _rows)
+    for _i, _r in enumerate(_rows):
+        _menu = row_menu([('수정', False, False), ('매달 반복으로 만들기', True, False), ('삭제', False, True)]) if (_d, _i) == MENU_ROW else ''
+        ledger5_rows += tx5(*_r, menu=_menu)
+
+chip5 = lambda inner, on=False, strong=False: (
+    f'<div style="display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 10px; border-radius: 99px; '
+    + (f'background: {C["BRAND_SOFT"]}; color: {C["BRAND"]}; font-weight: 600;' if on else
+       f'border: 1px solid {C["LINE"]}; color: {C["INK"] if strong else C["INK2"]}; font-weight: {600 if strong else 500};')
+    + f' font-size: 12.5px; white-space: nowrap; flex-shrink: 0;">{inner}</div>')
+
+w('LedgerV5', frame(
+    screen_header('소비', tabs=['이번 달', '내역', '한도'], active=1,
+                  trailing=f'<div style="display: flex; align-items: center; gap: 8px;">{month_stepper()}{add_tx_button()}</div>') +
+    content([
+        card(f'<div style="display: flex; align-items: center; gap: 8px;">'
+             f'<div style="flex: 1; display: flex; align-items: center; gap: 9px; height: 40px; padding: 0 12px; border-radius: 11px; background: {C["INSET"]};">'
+             f'{icon("search", 16, "#606B7D", 1.9)}<span style="font-size: 13.5px; color: {C["INK4"]};">메모·카테고리 검색</span></div>'
+             f'<div style="width: 40px; height: 40px; border-radius: 11px; border: 1px solid {C["LINE"]}; display: flex; align-items: center; justify-content: center;">{icon("repeat", 17, C["INK2"], 1.9)}</div></div>'
+             f'<div style="display: flex; gap: 5px; margin-top: 10px; overflow: hidden;">'
+             + chip5(f'전체 {V5_COUNT}건{icon("down", 13, C["BRAND"], 2)}', on=True)
+             + chip5(f'분류 안 함 {len(V5_UNCAT)}건', strong=True)          # 주황 없이 굵기만 — 누르면 분류하기 시트
+             + chip5(f'{catdot("식비", 8)}식비')
+             + chip5('더보기') +
+             f'</div>'
+             f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 11px; padding-top: 10px; border-top: 1px solid {C["LINE_SOFT"]};">'
+             f'<span style="font-size: 12px; color: {C["INK2"]};">일반 소비 <span style="font-weight: 600; color: {C["INK"]};">{SEP_TOTAL:,}원</span></span>'
+             f'<span style="font-size: 11.5px; color: {C["INK3"]};">이체 {head_sum(V5_TRANSFER)}은 제외</span></div>'),
+        card(ledger5_rows, pad="4px 14px 10px"),
+    ]) + bottomnav(2)), keep_all=True)
+
+
 # ══════════════ 6. 목적지 › 새 목적지 설계 ══════════════
 presets = []
 for name, meta, col, ic in [("비상금 6개월", "6개월치 생활비", C["SKY"], "shield"),

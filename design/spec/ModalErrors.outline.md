@@ -3,7 +3,7 @@
 원본 `canvas/ModalErrors.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:390px height:2061px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
+  `width:390px height:2100px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
   - `div`
     `padding:0 2px 6px`
     - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
@@ -50,7 +50,7 @@
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` — “0원을 저장하면 그날 소비가 0원으로 기록되고, 비워 두면 아무것도 기록되지 않습니다.”
+        - `span` **text 11.5px/400** — “안 썼어요로 표시하면 0으로 보이고 거래는 만들지 않아요”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:9px margin-top:14px border-top:1px solid #EFF2F8`
@@ -205,15 +205,23 @@
       `font-size:11px color:#697182 margin-top:6px`
   - `div` **text 11px/600** — “F · 저장하지 않고 닫기”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
-  - `div` **Card(18)**
-    `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px`
-    - `div` **text 16px/700** — “저장하지 않고 닫을까요?”
-      `font-size:16px font-weight:700 letter-spacing:-0.02em color:#101828`
-    - `div` **text 12.5px/400** — “금액과 카테고리를 입력했지만 아직 저장하지 않았습니다. 닫으면 입력한 내용이 사라집니다.”
-      `font-size:12.5px line-height:1.55 color:#475467 margin-top:6px`
-    - `div`
-      `display:flex gap:9px margin-top:15px`
-      - `div` **text 15px/600** — “계속 입력”
-        `display:flex align-items:center justify-content:center gap:6px height:46px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
-      - `div` **text 15px/600** — “저장하지 않고 닫기”
-        `display:flex align-items:center justify-content:center gap:6px height:46px flex:1.3 border-radius:13px background:#FCEBEA border:none color:#C0342F font-size:15px font-weight:600`
+  - `div`
+    `display:flex flex-direction:column gap:8px`
+    - `div` **Card(18)**
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px`
+      - `div` **text 16px/700** — “저장하지 않고 닫을까요?”
+        `font-size:16px font-weight:700 letter-spacing:-0.02em color:#101828`
+      - `div` **text 12.5px/400** — “금액과 카테고리를 입력했지만 아직 저장하지 않았습니다. 닫으면 입력한 내용이 사라집니다.”
+        `font-size:12.5px line-height:1.55 color:#475467 margin-top:6px`
+      - `div`
+        `display:flex gap:9px margin-top:15px`
+        - `div` **text 15px/600** — “계속 입력”
+          `display:flex align-items:center justify-content:center gap:6px height:46px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
+        - `div` **text 15px/600** — “저장하지 않고 닫기”
+          `display:flex align-items:center justify-content:center gap:6px height:46px flex:1.3 border-radius:13px background:#FCEBEA border:none color:#C0342F font-size:15px font-weight:600`
+    - `div` **Callout(info)**
+      `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
+      - `span`
+        `margin-top:1px`
+      - `span` **text 11.5px/400** — “하루 시트 예외(확인 없음 · 초안은 메모리에만, 앱 재시작 시 사라짐)”
+        `font-size:11.5px line-height:1.5 color:#626D88`

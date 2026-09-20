@@ -6,7 +6,7 @@
   `width:390px height:844px background:#2A3245 color:#101828 display:flex flex-direction:column position:relative`
   - `div`
     `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
-    - `span` **text 11px/500** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+    - `span` **text 11px/500** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `font-size:11px line-height:1.4 font-weight:500 color:rgba(255,255,255,.62)`
   - `div` **BottomSheet**
     `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
@@ -58,7 +58,7 @@
           `display:flex align-items:center justify-content:center gap:6px height:52px width:100% border-radius:14px background:#3556E6 border:none color:#FFFFFF font-size:16px font-weight:600`
       - `div`
         - `div`
-          `display:flex align-items:center gap:14px`
+          `display:flex flex-direction:column gap:5px`
   - `div`
     `position:absolute left:0 right:0 bottom:0 height:280px background:#E8ECF5 border-top:1px solid #D7DEEA display:flex align-items:center justify-content:center flex-direction:column gap:4px`
     - `span` **text 12px/600** — “시스템 숫자 키보드 자리”

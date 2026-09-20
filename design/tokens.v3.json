@@ -202,7 +202,19 @@
     "rules": {
       "unitSuffix": "값보다 한 단계 작게, ink-2 색",
       "responsive": "display / metric-xl / metric / title 만 데스크톱에서 커짐",
-      "financialInput": "16px 이상 (모바일 자동 확대 방지)"
+      "financialInput": "16px 이상 (모바일 자동 확대 방지)",
+      "calendarCellSum": {
+        "name": "달력 칸 합계",
+        "style": "11px / 600 · line-height 13px · tabular-nums (큰 글자 13, 칸 폭 47 미만은 12)",
+        "format": [
+          "1만 미만은 원 단위 그대로: 4,500 · 900",
+          "1만 이상은 만 단위 소수 한 자리: 1.2만 · 12.5만 (500원에서 올림 — 11,500 → 1.2만)",
+          "100만 이상은 소수 없이: 120만 · 1,200만",
+          "1억 이상: 1.2억"
+        ],
+        "never": "100.0만 · 0.0만",
+        "scope": "달력 칸에만. 상태 줄 · 시트 헤더 · 완료 카드의 합계와 개별 거래는 원 단위 그대로(오늘 4건 37,000원)"
+      }
     }
   },
   "space": {
@@ -334,6 +346,34 @@
     "toast": {
       "success": "ink 배경 + positive 체크 + 되돌리기",
       "error": "#7A1F1B 배경 + 다시 시도"
+    },
+    "calendar": {
+      "cell": {
+        "strip": "44 × 56",
+        "month": "카드 안쪽 ÷ 7 × 56 (390 = 47.7 · 360 = 44.6 · 320 = 39.4) · 큰 글자 × 72",
+        "radius": 10,
+        "modifierRow": "height 12 — 비어도 자리 유지",
+        "focus": "ring 3px"
+      },
+      "color": {
+        "today": "brand-soft",
+        "dateAndMarks": "ink-2 (날짜 · 0 · ✓ · 이체)",
+        "empty": "ink-3 (— · 요일)",
+        "future": "disabled",
+        "rule": "새 hex 없음 · 의미색(warning · negative · violet) 쓰지 않음 · 카테고리색 점 쓰지 않음"
+      },
+      "statusLine": "meta 11 / ink-2 · 한 문장",
+      "reviewRow": "height 32 (24 + 8) · 12.5 / 600 · ink",
+      "daySheet": {
+        "radius": 26,
+        "header": 44,
+        "saveButton": 52
+      },
+      "chip": {
+        "height": 32,
+        "radius": 8,
+        "dot": 8
+      }
     }
   },
   "chart": {

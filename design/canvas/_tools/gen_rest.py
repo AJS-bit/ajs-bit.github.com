@@ -161,7 +161,7 @@ BLOCKS = [
         fieldchip('목표액 *') + fieldchip('현재 순자산 9,350만원 · 자동', 'brand') + fieldchip('현재 적립액', 'off'),
         '현재 순자산은 자산 화면에서 자동으로 가져옵니다. 직접 넣는 값이 아니어서 적립 버튼이 없습니다.',
         goalrow(47, C["VIO"], '순자산 2억원', '순자산 9,350 / 20,000만원 · 자동 계산',
-                '도착 예상 2032년 6월 · 미래 경로 기준',
+                '도착 예상 2031년 10월 · 미래 경로 기준',      # DestGoals · Goals · 숫자 기준표와 같은 값(2032년 6월은 투자 계좌 5,000만원의 도착일)
                 f'<span style="font-size: 11px; color: {C["INK4"]}; flex-shrink: 0;">적립 없음</span>'))),
 
     ('D · 부채 상환', type_block(
@@ -225,33 +225,43 @@ def past_month_stepper():
             f'{icon("right", 16, C["TAB_INK"], 2)}</div>')
 
 
-past_hero = hero(
-    f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">'
-    f'<span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em; color: {C["INK3"]};">마감한 달</span>'
-    f'{badge("7월 마감 완료 · 확정", "pos", "check")}</div>'
+def closed_hero(month, pct, diff, networth, metrics, reclose=False):
+    """마감한 달의 히어로(= 소비 탭의 월 마감 카드). reclose=True 면 v5(§9-9) — 달력 카드가 없을 때 `N월 다시 마감 필요 ›` 한 줄이 붙는다(주황 없이 굵기만)."""
+    tail = ''
+    if reclose:
+        tail = (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 40px; margin-top: 10px; '
+                f'margin-bottom: -6px; border-top: 1px solid {C["LINE_SOFT"]};">'
+                f'<span style="font-size: 12.5px; font-weight: 600; color: {C["INK"]}; white-space: nowrap;">{month} 다시 마감 필요 &rsaquo;</span></div>')
+    return hero(
+        f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">'
+        f'<span style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.07em; color: {C["INK3"]};">마감한 달</span>'
+        f'{badge(month + " 마감 완료 · 확정", "pos", "check")}</div>'
 
-    f'<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 9px;">'
-    f'{display_num("54.3", "%", 54, 25)}'
-    f'<div style="text-align: right; flex-shrink: 0; padding-bottom: 6px;">'
-    f'<div style="font-size: 11.5px; color: {C["INK3"]};">이번 달보다</div>'
-    f'<div style="font-size: 13px; font-weight: 600; color: {C["POS"]};">3.6%p 낮음</div></div></div>'
+        f'<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 9px;">'
+        f'{display_num(pct, "%", 54, 25)}'
+        f'<div style="text-align: right; flex-shrink: 0; padding-bottom: 6px;">'
+        f'<div style="font-size: 11.5px; color: {C["INK3"]};">이번 달보다</div>'
+        f'<div style="font-size: 13px; font-weight: 600; color: {C["POS"]};">{diff}</div></div></div>'
 
-    f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">'
-    f'<span style="font-size: 13px; font-weight: 500; color: {C["INK2"]};">월급 대비 소비 <b style=font-weight:600>확정</b></span>'
-    f'<span style="display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0;">'
-    f'<span style="font-size: 11px; font-weight: 500; color: {C["INK4"]};">순자산 대비</span>'
-    f'<span style="font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK2"]};">2.0%</span></span></div>'
+        f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">'
+        f'<span style="font-size: 13px; font-weight: 500; color: {C["INK2"]};">월급 대비 소비 <b style=font-weight:600>확정</b></span>'
+        f'<span style="display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0;">'
+        f'<span style="font-size: 11px; font-weight: 500; color: {C["INK4"]};">순자산 대비</span>'
+        f'<span style="font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK2"]};">{networth}</span></span></div>'
 
-    + metric3([
-        ('마감 실수령', '352', '만원', None),
-        ('월 소비 합계', '191', '만원', None),
-        ('남은 여유', '+20', '만원', C["POS"]),
-    ])
+        + metric3(metrics)
 
-    + f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; '
-      f'padding-top: 11px; border-top: 1px solid {C["LINE_SOFT"]};">'
-      f'<span style="font-size: 11.5px; color: {C["INK3"]};">7월 마감값 기준 · 예상치 아님</span>'
-      f'{link("마감 내역")}</div>')
+        + f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; '
+          f'padding-top: 11px; border-top: 1px solid {C["LINE_SOFT"]};">'
+          f'<span style="font-size: 11.5px; color: {C["INK3"]};">{month} 마감값 기준 · 예상치 아님</span>'
+          f'{link("마감 내역")}</div>' + tail)
+
+
+past_hero = closed_hero('7월', '54.3', '3.6%p 낮음', '2.0%', [
+    ('마감 실수령', '352', '만원', None),
+    ('월 소비 합계', '191', '만원', None),
+    ('남은 여유', '+20', '만원', C["POS"]),
+])
 
 past_chart = card(
     f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">'
@@ -377,6 +387,85 @@ w('CoachEmpty', sheet(
     f'{btn("소비 기록하기", "primary", ic="plus", h=48).replace("width: 100%;", "flex: 1.4;")}'
     f'{btn("닫기", "secondary", h=48).replace("width: 100%;", "flex: 1;")}'), keep_all=True)
 
+
+
+# ══════════════════════════════════════════════════════════════
+# 5 · 달력이 없을 때 `확인할 내용`이 옮겨 가는 자리 (AlertsReview · 구현 참고 장)
+# ══════════════════════════════════════════════════════════════
+# plan/v5-calendar.md §3-3 · §8 · §9-9 · §9-19 · §12-36: 달력 카드를 껐거나 달력이 나오기 전 단계에서는 같은 목록 · 같은 문구를
+# 소비 탭 알림 줄(AlertsPanel)이 보여 주고, `8월 다시 마감 필요 ›`는 월 마감 카드에도, `분류하기 ›`는 내역 필터 칩으로도 나온다.
+# 표현은 굵기 600 · 주황 없음. 틀과 알림 행은 gen_modals 의 것을 그대로 쓴다(import 하면 모달 장도 다시 써지지만 같은 내용이다).
+from gen_modals import alert, group, ALERTS_DESC, STALE_NOTE, spec_frame, mark, guide_row, case_cap
+
+REVIEW_ITEMS = ['8월 다시 마감 필요', '통신 반복 건이 두 번 잡혔을 수 있어요', '분류 안 함 7건 · 분류하기']
+
+
+def review_row(text, last=False):
+    bb = '' if last else f'border-bottom: 1px solid {C["LINE_ROW"]};'
+    return (f'<div style="display: flex; align-items: center; min-height: 44px; {bb}">'
+            f'<span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">{text} &rsaquo;</span></div>')
+
+
+review_group = (
+    f'<div style="position: relative; flex-shrink: 0;">'
+    + group('확인할 내용', f'<div style="padding: 0 13px; background: {C["INSET"]}; border-radius: 14px;">'
+            + ''.join(review_row(t, last=(i == len(REVIEW_ITEMS) - 1)) for i, t in enumerate(REVIEW_ITEMS)) + '</div>', mb=7)
+    + mark(1, pos='position: absolute; top: -5px; right: -5px;') + '</div>')
+
+alerts_review_sheet = sheet(
+    '알림 3건', ALERTS_DESC,
+    review_group +
+    f'<div style="display: flex; flex-direction: column;">'
+    f'{alert("warn", "warn", "주거/관리 한도의 94%를 썼어요", "47만원 / 50만원 · 이번 달 22일 남음", "카테고리 한도")}'
+    f'{alert("neg", "bank", "카드 할부 금리가 14.5%예요", "보유 부채 중 가장 높습니다", "상환 전략")}'
+    f'{alert("sky", "shield", "비상금이 목표의 68%예요", "1,020 / 1,500만원 · 480만원 남음", "목적지 배분")}</div>'
+    f'{STALE_NOTE}',
+    btn('닫기', 'secondary', h=48), scrim_h=40, body_gap=13)
+
+# 8월 마감 카드 — 값은 MonthlyClose 의 8월(급여 360만 · 소비 2,043,800 · 소비율 56.8% · 월말 순자산 9,120만)에서 계산.
+# `남은 여유`는 SpendingPast(7월: 한도 211 − 소비 191 = +20)와 같은 정의 = 소비 한도 − 월 소비 합계 → 360 × 60% = 216 − 204.4 = 11.6 → +12.
+# (저축·투자 여력 식 390 − 204.4 − 92 − 63 = +31 은 다른 이름의 값이라 이 라벨에 쓰지 않는다 · 숫자 기준표 #3 · #11)
+aug_hero = closed_hero('8월', '56.8', '1.1%p 낮음', '2.2%', [
+    ('마감 실수령', '360', '만원', None),
+    ('월 소비 합계', '204', '만원', None),
+    ('남은 여유', '+12', '만원', C["POS"]),
+], reclose=True)
+
+_chip = lambda inner, on=False, strong=False: (
+    f'<span style="display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 10px; border-radius: 99px; '
+    + (f'background: {C["BRAND_SOFT"]}; color: {C["BRAND"]}; font-weight: 600;' if on else
+       f'border: 1px solid {C["LINE"]}; color: {C["INK"] if strong else C["INK2"]}; font-weight: {600 if strong else 500};')
+    + f' font-size: 12.5px; white-space: nowrap; flex-shrink: 0;">{inner}</span>')
+chips_sample = card(
+    f'<div style="display: flex; gap: 5px; overflow: hidden;">'
+    + _chip(f'전체 14건{icon("down", 13, C["BRAND"], 2)}', on=True) + _chip('분류 안 함 7건', strong=True)
+    + _chip(f'{catdot("식비", 8)}식비') + '</div>', pad='12px 14px')      # 폭 340 안에 들어가게 앞의 세 칩만
+# `전체 14건` = LedgerV5 의 칩과 같은 수(gen_screens.V5_COUNT · 소비 13 + 이체 1). gen_screens 는 import 하면 장을 다시 쓰므로 글자로 둔다 — 그쪽 행 수가 바뀌면 여기도 맞춘다.
+
+REVIEW_GUIDE = [
+    (1, '확인할 내용', '달력 카드의 「확인할 내용 N개 ›」 목록과 같은 세 항목 · 같은 문구입니다.',
+     '달력 카드를 끈 사용자와 달력이 나오기 전 단계에서만 알림 맨 위에 보입니다. 굵기로만 구분하고 주황은 쓰지 않습니다. 항목이 없으면 이 묶음도 없습니다. '
+     '그림은 세 항목이 모두 있을 때입니다 — 9월 8일 시안의 홈에는 그중 둘만 있습니다(확인할 내용 목록 시트 장).'),
+    (None, '8월 다시 마감 필요 ›', '8월 월 마감 창을 엽니다.', '마감한 뒤 그 달의 소비 합계가 바뀌었을 때 생깁니다(조건은 지금과 같음).'),
+    (None, '통신 반복 건이 두 번 잡혔을 수 있어요 ›', '그 날짜의 하루 시트를 열어 두 행을 보여 줍니다.', '손으로 적은 건과 자동 기록이 겹친 것 같을 때. 반복 겹침 확인이 들어가는 2단계부터 나옵니다.'),
+    (None, '분류 안 함 7건 · 분류하기 ›', '분류하기 시트를 엽니다.', '분류 안 함이 1건 이상이면 항상 들어갑니다.'),
+]
+review_guide = card(''.join(guide_row(*r, last=(i == len(REVIEW_GUIDE) - 1)) for i, r in enumerate(REVIEW_GUIDE)), pad='4px 16px')
+review_foot = (f'<p style="margin: 0 2px; font-size: 12px; line-height: 1.6; color: {C["INK3"]};">달력을 끈 홈에서도 히어로의 '
+               f'<b style="font-weight: 600; color: {C["INK2"]};">소비 기록하기</b>는 그대로 오늘 하루 시트를 엽니다. 홈에는 이 목록을 따로 두지 않습니다.</p>')
+
+w('AlertsReview', spec_frame(
+    1200, 1040, '달력이 없을 때 「확인할 내용」이 보이는 곳',
+    '홈에 달력 카드가 없으면(껐거나 달력이 나오기 전 단계) 같은 목록을 소비 탭의 알림이 보여 줍니다. 왼쪽이 알림 창, 오른쪽 아래가 같은 문구가 붙는 다른 두 자리입니다.',
+    f'<div style="display: flex; gap: 28px; align-items: flex-start;">'
+    f'<div style="width: 390px; flex-shrink: 0; border-radius: 18px; overflow: hidden;">{alerts_review_sheet}</div>'
+    f'<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px;">{review_guide}'
+    f'<div style="display: flex; gap: 20px; align-items: flex-start;">'
+    f'<div style="width: 362px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;">'
+    f'{case_cap(2, "소비 탭의 월 마감 카드", "다시 마감해야 하는 달의 카드 맨 아래에 같은 문구가 한 줄 붙습니다. 누르면 그 달의 월 마감 창이 열립니다.")}{aug_hero}</div>'
+    f'<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px;">'
+    f'{case_cap(3, "내역 탭의 필터 칩", "분류하기 시트는 이 칩으로도 열립니다(소비 · 내역 v5 장).")}{chips_sample}</div></div>'
+    f'{review_foot}</div></div>', sub_w=1000), keep_all=True)
 
 if __name__ == '__main__':
     import sys

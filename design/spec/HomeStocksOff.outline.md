@@ -4,32 +4,8 @@
 
 - `div` **화면프레임**
   `width:390px height:844px background:#EDF0F7 color:#101828 display:flex flex-direction:column`
-  - `div` **Header**
-    `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
-    - `div`
-      `display:flex align-items:center justify-content:space-between gap:8px`
-      - `div`
-        `display:flex align-items:center gap:8px`
-        - `div`
-          `width:28px height:28px border-radius:9px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
-        - `span` **text 15px/700** — “NAVI”
-          `font-size:15px font-weight:700 letter-spacing:0.06em color:#101828`
-      - `div`
-        `display:flex align-items:center gap:2px`
-        - `div`
-          `width:36px height:36px border-radius:11px display:flex align-items:center justify-content:center`
-        - `div`
-          `width:36px height:36px border-radius:11px display:flex align-items:center justify-content:center`
-        - `div`
-          `width:36px height:36px border-radius:11px display:flex align-items:center justify-content:center position:relative`
-    - `div`
-      `display:flex align-items:baseline justify-content:space-between gap:8px`
-      - `h1` **text 21px/700** — “오늘의 내비게이션”
-        `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.25 color:#101828`
-      - `span` **text 12px/500** — “9월 8일 · 22일 남음”
-        `font-size:12px font-weight:500 color:#626D88`
   - `div` **본문(스크롤 영역)**
-    `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
+    `flex:1 min-height:0 display:flex flex-direction:column gap:8px justify-content:flex-end padding:0 14px 27px`
     - `div` **HeroCard**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
       - `div`
@@ -72,6 +48,36 @@
           `font-size:11.5px font-weight:600 color:#3556E6 white-space:nowrap`
       - `div` — “소비 기록하기”
         `display:flex align-items:center justify-content:center gap:6px height:46px margin-top:10px border-radius:13px background:#3556E6 color:#FFFFFF font-size:15px font-weight:600`
+    - `div` **Card(18)**
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+      - `div`
+        `display:flex align-items:center justify-content:space-between gap:8px`
+        - `span` **text 14px/600** — “이번 달 달력”
+          `font-size:14px font-weight:600 color:#101828`
+        - `span` — “펼치기”
+          `display:inline-flex align-items:center gap:2px font-size:12px font-weight:600 color:#475467`
+      - `div`
+        `display:flex justify-content:space-between margin-top:8px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:#E9EDFD display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+      - `div` **text 11px/400** — “오늘 4건 37,000원”
+        `font-size:11px line-height:1.5 color:#475467 margin-top:8px`
+      - `div`
+        `display:flex align-items:center justify-content:space-between height:32px margin-top:2px border-top:1px solid #EFF2F8`
+        - `span` **text 12.5px/600** — “확인할 내용 2개”
+          `font-size:12.5px font-weight:600 color:#101828`
     - `div` **TurnCard**
       `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
       - `div`

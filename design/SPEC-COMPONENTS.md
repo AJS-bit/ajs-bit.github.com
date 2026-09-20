@@ -1,8 +1,10 @@
 # 컴포넌트 사양서 — 이 파일을 먼저 구현하세요
 
-아트보드 75장에 나오는 모든 블록은 **아래 24개 컴포넌트의 조합**입니다.
+v3 아트보드 77장에 나오는 모든 블록은 **아래 24개 컴포넌트의 조합**입니다.
 화면마다 div를 새로 짜면 시안과 달라집니다. 여기 있는 것을 먼저 공통 컴포넌트로 만들고,
 화면은 그 컴포넌트를 배치하는 일만 하세요.
+
+**v5(홈 달력 · 하루 시트)에서 11종이 늘었습니다 — §27.** 컴포넌트 장(`Components`) 08절에 같은 조각이 있습니다.
 
 - 값은 **아트보드에서 그대로 뽑은 실측치**입니다. 반올림하거나 "비슷한 Tailwind 클래스"로 바꾸지 마세요.
   `13.5px`는 `text-sm`(14px)이 아닙니다. `border-radius: 18px`는 `rounded-2xl`(16px)이 아닙니다.
@@ -288,6 +290,16 @@ display flex · gap 8 · padding 10px 11px · border-radius 12
 
 5칸 순서: 홈 · 자산 · 소비 · 목표 · 미래. (화면 제목은 "목적지"지만 **탭 라벨은 "목표"**입니다 — 아트보드 그대로 두세요)
 
+**v4 2단계(내비 재편)부터** 칸 구성이 바뀝니다. 치수 · 색은 위 그대로이고 칸 수와 라벨만 다릅니다(`plan/v4-stocks.md` §4).
+
+| 사용자 | 칸 | 아이콘 |
+|---|---|---|
+| 주식을 켠 사용자 | 홈 · 자산 · 소비 · 주식 · 목적지 (5칸) | home · wallet · card · candle · flag |
+| 주식을 끈 사용자 | 홈 · 자산 · 소비 · 목적지 (4칸) | home · wallet · card · flag |
+
+`목표` · `미래` 탭은 없어지고 `목적지` 한 탭 안의 세그먼트(`내 목적지 / 자산 경로 / 상환 계획`)가 됩니다. 6칸이나 자산 탭 아래 주식 세그먼트는 쓰지 않습니다.
+출시 순서가 v3 → v4-1 → v5-1 → v5-2 → v4-2 이므로 **v5 1 · 2단계 화면의 하단 탭은 아직 `홈 · 자산 · 소비 · 목표 · 미래`**입니다.
+
 ## 18. BottomSheet (모달)
 
 ```
@@ -303,6 +315,25 @@ display flex · gap 8 · padding 10px 11px · border-radius 12
 본문:   flex 1 · min-height 0 · overflow hidden · padding 14px 18px 0 · display flex · flex-direction column · gap 15
 푸터:   display flex · gap 10 · padding 12px 18px 20px · border-top 1px solid #EFF2F8 · flex-shrink 0
 ```
+
+### 하루 시트 변형 (v5 · `DaySheet` · `DaySheetList` · `DaySheetEdit` · `ClassifySheet`)
+
+```
+스크림: 상단 여백 60(키보드가 열린 기본 상태) · 맨 아래 가운데 11px/500 line-height 1.4 rgba(255,255,255,.62)
+        "배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요"
+시트:   위와 같음(border-radius 26px 26px 0 0 · 손잡이 38×4)
+헤더:   padding 12px 18px 12px · border-bottom 1px solid #EFF2F8 · 높이 약 44 + 둘째 줄
+        왼쪽 ‹ 18×18 stroke #475467 · h2 18px/700 -0.025em nowrap · "오늘" 12.5px/500 #626D88 margin-left 6
+        오른쪽 › 18×18 (갈 수 없으면 stroke #C4CCDA) · 둘째 줄 12.5px #626D88 · 닫기는 글자 13px/600 #475467
+본문:   padding 12px 18px 0 · gap 10
+        금액 칸 height 48 · radius 12 · 포커스 1.5px #3556E6 + 0 0 0 3px rgba(53,86,230,.16)
+                라벨 12px/600 #475467 · 값 20px/600 -0.02em · 단위 13px/500 #626D88
+        메모 칸 height 44 · radius 12 · border 1px solid #CFD7E6 · 값 15px
+저장:   height 52 · radius 14 · 16px/600 · background #3556E6 — 시트의 유일한 채운 버튼
+키보드: 기기가 그림 · 약 280px · 그 위로 날짜 · 금액 · 저장이 보여야 함
+```
+
+확인 없이 닫히고 초안은 메모리에만 둡니다(앱을 다시 켜면 사라짐 — 오류 F 의 하루 시트 예외).
 
 ## 19. Toast
 
@@ -508,6 +539,131 @@ r = 한도 ÷ 배분 합 × 100                      // 216 ÷ 236 = 91.5%
 
 ---
 
+## 27. v5 — 홈 달력과 하루 시트 (11종)
+
+`plan/v5-calendar.md` §6 의 등록 표를 아트보드(`HomeCalendarStrip` · `HomeCalendar` · `DaySheet` · `DoneCard` · `ClassifySheet` ·
+`HeroInsufficient` · `HeroFootnotes`)에서 잰 값으로 옮긴 것입니다. **새 hex 는 없습니다.** 달력 칸은 `brand-soft #E9EDFD` ·
+`ink-2 #475467` · `ink-3 #626D88` · `disabled #B4BECD` 만 조합하고, 달력 · 하루 시트 · 완료 카드에는 의미색(주황 · 빨강 · 가정 보라)을 쓰지 않습니다.
+
+### 27-1. CalendarCell
+
+```
+스트립 칸: width 44 · height 56 · border-radius 10 · display flex · column · align/justify center · gap 3 · flex-shrink 0
+           요일 10px/500 line-height 1 #626D88 · 날짜 11px/500 line-height 1 #475467 (오늘 600 #101828)
+           합계 11px/600 line-height 13px tabular-nums #101828
+           수식어 줄 height 12 · inline-flex · gap 3 — 비어 있어도 자리를 둔다(모든 칸의 날짜 줄이 같은 높이)
+월 달력 칸: min-width 0 · height 56(큰 글자 72) · border-radius 10 · gap 2
+           폭 = 카드 안쪽 ÷ 7 (390 = 47.7 · 360 = 44.6 · 320 = 39.4)
+           날짜 12px/500 line-height 1.2 (오늘 700) · 합계 11px/600 line-height 1.2 nowrap
+           큰 글자: 날짜 14.5 · 합계 13(칸 폭 47 미만은 12)
+```
+
+| 상태 | 표시 |
+|---|---|
+| 합계 | `4,500` · `1.2만` — `#101828` |
+| 미입력 | `—` `#626D88`(ink-3). 회색이지만 누를 수 있음 |
+| 안 썼어요 | `0` `#475467`(ink-2). ✓ 를 붙이지 않음 |
+| 다 적었어요 | 합계 + ✓ 11×11 stroke `#475467` stroke-width 2.8 |
+| 이체 | 수식어 줄에 글자 `이체` 10px/500 `#475467`. 카테고리색 점을 쓰지 않음 |
+| 오늘 | background `#E9EDFD` |
+| 누름 | box-shadow inset 0 0 0 2px `#3556E6` |
+| 미래 | 날짜 `#697182`, 숫자 자리 빈 칸(height 13) · 누를 수 없음 |
+| 시작일 이전 | 미래 칸과 같은 모양(날짜 `#697182` · `—` 없이 합계 · 수식어 자리를 비움)이되 **누르면 그 날짜 시트가 열림** — `CalendarCells` 9번 · `HeroInsufficient` |
+| 이웃 달 | 지난달 · 이번 달 이웃 칸 opacity .7(합계만) · 범위 밖 opacity .45(숫자만 · 버튼 아님) |
+| 포커스 | focus ring 3px (`accessibility.focusVisible`) |
+
+칸 숫자 형식은 `tokens.v3.json` `typography.rules.calendarCellSum` — `4,500` · `1.2만` · `12.5만` · `120만` · `1,200만` · `1.2억`. `100.0만`은 없습니다.
+
+### 27-2. RecentStrip · MonthCalendar · DayList
+
+```
+카드:     Card(18) · padding 13px 14px 13px
+접힘 머리: 제목 "이번 달 달력" 14px/600 · 오른쪽 토글 "펼치기 ▾" 12px/600 #475467 + 셰브론 14×14
+스트립:   display flex · justify-content space-between · margin-top 8 · 7칸(간격 0 · 오늘이 오른쪽 끝)
+          지난달 날짜는 "8/31" 처럼 씀
+펼침 머리: min-height 32 · ‹ › 버튼 32×32 radius 10 border 1px #E3E8F1 (갈 수 없으면 아이콘 opacity .5)
+          달 이름 "2026년 9월" min-width 94 · 15px/700 -0.015em nowrap · 오른쪽 "접기 ▴" 12px/600
+요일 줄:   grid repeat(7, minmax(0, 1fr)) · margin-top 8 · padding-bottom 5 · 11px/500 #626D88 (약 21)
+월 그리드: 주마다 grid repeat(7, minmax(0, 1fr)) · border-top 1px solid #EFF2F8 · padding 2px 0 · 맨 아래 border-bottom 같은 선
+```
+
+MonthCalendar 는 **모든 폭 · 글자 크기의 펼침 기본**입니다. DayList(날짜 목록 · 원 단위 그대로)는 큰 글자에서 `목록으로 보기 ›`를 고른 때만(`CalendarGridSizes`).
+
+### 27-3. StatusLine
+
+`font-size 11 · line-height 1.5 · #475467 · margin-top 8` — 항상 한 문장, 평가어 없음. 접힘 `오늘 4건 37,000원`, 펼침 `9월 기록한 소비 124,000원 · 오늘 4건 37,000원`.
+
+### 27-4. ReviewRow (DataRow §10 변형)
+
+`display flex · space-between · height 32 (= 24 + 간격 8) · margin-top 2 · border-top 1px solid #EFF2F8` · 라벨 `확인할 내용 2개` 12.5px/600 `#101828` · 셰브론 15×15 stroke `#697182`. 주황을 쓰지 않습니다. 누르는 영역은 44.
+
+### 27-5. DaySheet
+
+§18 의 「하루 시트 변형」. radius 26 · 헤더 44 · 저장 버튼 52 · 키보드가 열린 상태가 기본 아트보드입니다.
+
+### 27-6. ColorChipRow
+
+```
+줄: display flex · gap 6 · overflow hidden — 자주 쓴 3개 + "전체 ›" 12.5px/600 #3556E6 (펼치면 가로 스크롤 13개)
+칩: height 32 · padding 0 11px 0 9px · border-radius 8 · background #FFFFFF · border 1px solid #D7DEEA
+    색 점 8×8 radius 99 (dataPalette) + 이름 12.5px/500 #101828 · gap 6 · nowrap
+선택(분류하기의 추천 칩): height 30 · background #E9EDFD · border 1.5px solid #3556E6 · 12px/600
+```
+
+색만으로 뜻을 전하지 않습니다(점 + 이름). `저축/투자` · `대출상환`은 칩 줄에 없고 `저장`(목록 우선 시트는 `추가`) 바로 아래의 링크 `저축·투자로 기록 ›` · `대출상환으로 기록 ›`입니다. 링크 아래에 11.5px `#626D88` 한 줄 `저축·투자와 대출상환은 거래 추가에서 남겨요 · 소비율에는 안 들어가요`가 붙고, 시트 맨 아래는 확인 버튼(`9월 8일 다 적었어요` · `오늘은 안 썼어요` — 흰 바탕 + 1px `#D7DEEA` 테두리 · 높이 44) 자리입니다.
+
+### 27-7. RecentEntryChip
+
+`height 32 · padding 0 11px · border-radius 8 · background #F4F6FB · 12px/500 #101828 · gap 7 · nowrap` — 메모(8자 + …) + 금액 600 + 분류(색 점 7×7 + 카테고리 이름 11px/500 `#475467` · gap 4), 분류가 없으면 점 없이 `분류 안 함` 11px/500 `#626D88`. 색만으로 분류를 전하지 않습니다 — 점 뒤에 이름이 꼭 붙습니다(`DaySheet` 기준 · 2026-09-21 · `Components` 08절의 조각도 같은 모습 — `_tools/refresh_components_v5.py`로 다시 잘라 옵니다).
+
+### 27-8. DoneCard (Toast §19 변형)
+
+```
+background #101828 · border-radius 16 · padding 13px 14px 12px · box-shadow 0 8px 24px rgba(0,0,0,.28)
+위치: left 14 · right 14 · bottom 78 (하단 탭 위) — dc-keep, 라이트 · 다크 동일
+제목 14px/700 #FFFFFF + 체크 15×15 stroke #3DD489 · 오른쪽 "닫기" 12px/600 rgba(255,255,255,.72)
+둘째 줄 13.5px/500 margin-top 7 · 셋째 줄(규칙 통과 시에만) 12.5px rgba(255,255,255,.72) margin-top 3
+버튼 줄 margin-top 11 · gap 8 · height 36 · radius 10
+  주 행동 "한 건 더" padding 0 14 · border 1px rgba(255,255,255,.55) · 13px/700
+  "방금 기록한 12,000원 취소" padding 0 12 · border 1px rgba(255,255,255,.28) · 13px/600
+```
+
+### 27-9. ClassifyGroupRow (DataRow §10 변형)
+
+```
+묶음 행: height 52 · gap 10 · border-bottom 1px solid #F3F5FA
+         제목 14px/600 + "×4" 500 #626D88 · 둘째 줄 12px #475467 · 오른쪽 추천 칩(27-6 선택형) · 셰브론 16×16 #697182
+건별 행: 묶음 아래 background #F4F6FB · radius 0 0 12px 12px · padding 0 10px 2px
+         height 40 · padding-left 8 · 체크 22×22 radius 7 (#3556E6 / 빈 칸 border 1.5px #CFD7E6)
+         날짜 13px #475467 · 금액 13px/600 · 제외한 건은 금액 #B4BECD + "· 제외"
+푸터:    "3건 저장" height 52 radius 14 · 아래 11.5px #626D88 "나머지 4건은 분류 안 함으로 남아요"
+```
+
+계획 표의 높이 46 과 달리 아트보드 실측은 52 입니다 — 아트보드가 기준입니다.
+
+### 27-10. HeroInsufficient (HomeHero 상태)
+
+자리 · 모양은 HeroCard §4 그대로이고 내용만 바뀝니다.
+
+| 자리 | 값 |
+|---|---|
+| eyebrow | `이번 달 기록한 소비` · 오른쪽 배지 없음(`순항 중` 없음) |
+| display | `5,000` 54px/700 + `원` 25px/600 `#475467` · 소비 0건이면 `아직 기록이 없어요` |
+| 보조(오른쪽) | `월급의` 11px/500 `#626D88` + `0.1%` 14px/600 — 월급이 없으면 없음(`총수입의 N%`로 바꾸지 않음) |
+| 각주 | `아직 기록하지 않은 소비는 포함되지 않았어요` 13px/500 `#475467` · 둘째 줄 12px line-height 1.45 `#626D88` — 3종 |
+| RouteBar | 트랙 + 목표 눈금만. 채움 · 현재 위치 없음 |
+| StatTriple | 월 실수령 값 · `월말 예상 —` · `월말 예상 여유 —`(`#697182`) |
+| 버튼 | `소비 기록하기`(월급 미입력이면 `월급 입력하고 시작` → 월급 입력으로) |
+
+둘째 줄 3종: `7월 기록도 확인하면 예상을 볼 수 있어요 · 확인하기 ›` · `예상에 쓸 이전 기록을 확인해 주세요 · 확인할 달 보기 ›` · `예상에 사용할 지난 소비 기록이 아직 없어요`(링크 없음). 상태 카탈로그 `EmptyStates` F.
+
+### 27-11. HomeHero 조건부 각주
+
+기준 줄(`실수령 급여 기준 · …` + `기준 조정 ›`)과 버튼 사이에 `font-size 11 · line-height 1.4 · #626D88 · margin-top 4`로 한 줄씩 붙습니다.
+기존 요소의 치수는 그대로이고 카드 높이만 줄 수만큼 늡니다. 문구 4종과 조합은 `HeroFootnotes`.
+
+---
+
 ## 실제로 쓰이는 값 목록 — 자가 점검용
 
 아트보드에서 기계로 뽑은 실측 목록입니다. **여기에 없는 값을 새로 만들면 시안과 다른 화면입니다.**
@@ -519,6 +675,7 @@ r = 한도 ÷ 배분 합 × 100                      // 216 ÷ 236 = 91.5%
 |---|---|
 | 모바일 화면·모달 (28장) | `10 · 10.5 · 11 · 11.5 · 12 · 12.5 · 13 · 13.5 · 14 · 14.5 · 15 · 16 · 17 · 18 · 19 · 21 · 22 · 25 · 26 · 27 · 30 · 33 · 34 · 54` |
 | 상태 카탈로그 (6장) | 위와 같고 `15.5 · 20 · 48` 추가 |
+| v5 달력 · 하루 시트 | 모바일과 같고 `20` 추가(하루 시트 금액 칸의 값) |
 | 데스크톱 (2장) | `10.5`~`17` 동일 + `20 · 21 · 22 · 26 · 28 · 34 · 62` |
 | 토큰·컴포넌트 시트 (2장) | 참조용 시트라 구현 대상이 아닙니다 |
 

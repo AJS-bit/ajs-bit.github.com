@@ -694,11 +694,11 @@
 - [ ] **Card(18)** — “내 데이터로 시작할까요?”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:18px 16px`
 
-## EmptyStates — 상태 · 미입력 5종
+## EmptyStates — 상태 · 미입력 6종
 
-`canvas/EmptyStates.dc.html` · 390×1733 · 원본 `app/page.tsx` · 렌더 `preview/EmptyStates.png`
+`canvas/EmptyStates.dc.html` · 390×2480 · 원본 `app/page.tsx` · 렌더 `preview/EmptyStates.png`
 
-> 미입력 5종. **미입력을 0원이나 좋은 성과로 표시하지 않는다**는 규칙이 그림으로 있는 시트.
+> 미입력 6종. **미입력을 0원이나 좋은 성과로 표시하지 않는다**는 규칙이 그림으로 있는 시트.
 
 - [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
@@ -708,7 +708,7 @@
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
 - [ ] text 11px/600 — “B · 급여 미입력 · 소비 기록만 있음”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
-- [ ] **Card(20)** — “현재 위치”
+- [ ] **Card(20)** — “이번 달 기록한 소비”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
 - [ ] text 11px/600 — “C · 급여 0원 · 부수입만 있음”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -722,6 +722,12 @@
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(20)** — “9월에 기록한 거래가 없어요”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
+- [ ] text 11px/600 — “F · 히어로 이력 부족 · 예상을 아직 보여 주지 않을 때”
+      `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
+- [ ] **Card(20)** — “이번 달 기록한 소비”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
+- [ ] **Card(20)** — “각주 둘째 줄 · 부족한 것에 따라 셋 중 하나”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:12px 16px 6px`
 
 ## PeerStates — 상태 · 또래 카드 5종
 
@@ -783,7 +789,7 @@
 
 ## ModalErrors — 상태 · 모달 오류·저장 6종
 
-`canvas/ModalErrors.dc.html` · 390×2061 · 원본 `모달 공통 (폼 검증·저장 경로)` · 렌더 `preview/ModalErrors.png`
+`canvas/ModalErrors.dc.html` · 390×2100 · 원본 `모달 공통 (폼 검증·저장 경로)` · 렌더 `preview/ModalErrors.png`
 
 > 모달 오류·저장 6종. 각 오류의 문구와 위치가 정해져 있다.
 
@@ -811,8 +817,8 @@
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px`
 - [ ] text 11px/600 — “F · 저장하지 않고 닫기”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
-- [ ] **Card(18)** — “저장하지 않고 닫을까요?”
-      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px`
+- [ ] **div** — “저장하지 않고 닫을까요?”
+      `display:flex flex-direction:column gap:8px`
 
 ## Confirmations — 상태 · 삭제·초기화 확인
 
@@ -885,7 +891,7 @@
 
 ## Tokens — 토큰 · 색 · 타이포 · 간격
 
-`canvas/Tokens.dc.html` · 1200×1684 · 원본 `app/globals.css · lib/engine/constants.ts` · 렌더 `preview/Tokens.png`
+`canvas/Tokens.dc.html` · 1200×1720 · 원본 `app/globals.css · lib/engine/constants.ts` · 렌더 `preview/Tokens.png`
 
 > 토큰 시트. 구현이 아니라 참조용.
 
@@ -900,7 +906,7 @@
 
 ## Components — 컴포넌트 · 상태
 
-`canvas/Components.dc.html` · 1200×1555 · 원본 `components/navi/shared.tsx · components/ui/button.tsx` · 렌더 `preview/Components.png`
+`canvas/Components.dc.html` · 1200×2724 · 원본 `components/navi/shared.tsx · components/ui/button.tsx` · 렌더 `preview/Components.png`
 
 > 컴포넌트·상태 시트. SPEC-COMPONENTS.md의 그림판.
 
@@ -909,7 +915,8 @@
 - [ ] **div** — “01 · 버튼 위계와 상태”
       `display:grid grid-template-columns:minmax(0, 1fr) minmax(0, 1.1fr) gap:32px`
 - [ ] **div** — “07 · 행동을 어디에 놓는가 — 이번 재설계의 핵심 규칙”
-      `margin-top:auto padding:18px 20px background:#F4F6FB border-radius:16px`
+      `padding:18px 20px background:#F4F6FB border-radius:16px`
+- [ ] **div** — “08 · v5 달력과 하루 시트 — 새 컴포넌트 11종”
 
 ## IntroPosition — 첫 실행 · 소개 1 현재 위치
 
@@ -940,7 +947,7 @@
         `margin-top:36px display:flex flex-direction:column gap:10px`
   - [ ] text 11px/600 — “항로”
         `display:block margin-top:30px font-size:11px font-weight:600 letter-spacing:0.07em color:#3556E6`
-  - [ ] **h1** — “목표까지 얼마나 남았는지, 지금 무엇을 할지 알려줍니다.”
+  - [ ] **h1** — “목표까지 얼마나 남았는지, 지금 무엇을 하면 되는지 알려줍니다.”
         `font-size:23px font-weight:700 letter-spacing:-0.03em line-height:1.4 color:#101828`
   - [ ] **div** — “다음”
         `margin-top:auto display:flex flex-direction:column gap:16px`
@@ -967,23 +974,13 @@
 `canvas/HomeSetup.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/HomeSetup.png`
 
 - [ ] **div** — “홈 구성”
-      `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
-  - [ ] **div** — “홈 구성”
-        `display:flex align-items:center justify-content:space-between gap:8px height:56px margin-top:8px`
-  - [ ] text 22px/700 — “홈에 무엇을 둘까요?”
-        `font-size:22px font-weight:700 letter-spacing:-0.03em line-height:1.35 color:#101828`
-  - [ ] **p** — “소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 골라 주세요.”
-        `font-size:13.5px line-height:1.5 color:#475467`
-  - [ ] **div** — “현재 위치 · 월급 대비 소비율”
-        `margin-top:12px`
-  - [ ] **div** — “홈 카드”
-        `margin-top:12px`
-  - [ ] **div** — “다음 안내”
-        `margin-top:8px`
-  - [ ] **div** — “주식도 볼까요?”
-        `margin-top:10px`
-  - [ ] **div** — “이 구성으로 시작”
-        `margin-top:auto display:flex flex-direction:column gap:8px`
+      `padding:0 20px`
+- [ ] **div** — “홈에 무엇을 둘까요?”
+      `flex:1 min-height:0 padding:0 20px`
+  - [ ] **div** — “홈에 무엇을 둘까요?”
+        `display:flex flex-direction:column margin-top:0px`
+- [ ] **div** — “이 구성으로 시작”
+      `padding:8px 20px 24px display:flex flex-direction:column gap:8px`
 
 ## HomeConfigured — 홈 · 구성 반영 · 탭 합치기 전
 
@@ -995,6 +992,8 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
   - [ ] **Card(18)** — “이번 달 한도”
@@ -1018,7 +1017,7 @@
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:15px 16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “진행 중인 목적지”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 8px`
-  - [ ] **div** — “목적지 추가”
+  - [ ] **div** — “새 목적지 설계”
         `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
@@ -1044,12 +1043,12 @@
 
 `canvas/HomeStocksOff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksOff.png`
 
-- [ ] **Header** — “NAVI”
-      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
 - [ ] **본문(스크롤 영역)** — “현재 위치”
-      `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px justify-content:flex-end padding:0 14px 27px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
   - [ ] **Card(18)** — “이번 달 한도”
@@ -1128,12 +1127,12 @@
 
 `canvas/HomeStocksCard.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksCard.png`
 
-- [ ] **Header** — “NAVI”
-      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
 - [ ] **본문(스크롤 영역)** — “현재 위치”
-      `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px justify-content:flex-end padding:0 14px 27px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
   - [ ] **Card(18)** — “주식 요약”
@@ -1282,7 +1281,7 @@
 
 `canvas/DaySheet.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheet.png`
 
-- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+- [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
 - [ ] **BottomSheet** — “9월 8일 소비 기록”
       `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
@@ -1312,7 +1311,7 @@
 
 `canvas/DaySheetList.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheetList.png`
 
-- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+- [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
 - [ ] **BottomSheet** — “9월 3일 소비 기록”
       `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
@@ -1327,13 +1326,14 @@
     - [ ] **div** — “추가”
           `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
     - [ ] **div** — “저축·투자로 기록 ›”
+    - [ ] **div** — “9월 3일 다 적었어요”
           `margin-top:auto`
 
 ## DaySheetEdit — 하루 시트 · 수정 모드
 
 `canvas/DaySheetEdit.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheetEdit.png`
 
-- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+- [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
 - [ ] **BottomSheet** — “9월 3일 기록 수정”
       `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
@@ -1366,6 +1366,8 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px position:relative`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
   - [ ] **Card(18)** — “이번 달 한도”
@@ -1429,6 +1431,8 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
   - [ ] **HeroCard** — “이번 달 기록한 소비”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **Card(18)** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #7EC4E8 border-radius:18px padding:13px 14px`
   - [ ] **Card(18)** — “이번 달 한도”
@@ -1436,11 +1440,11 @@
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
-## DaySheet360 — 하루 시트 · 360px
+## DaySheet360 — 하루 시트 · 360 × 640 작은 폰
 
-`canvas/DaySheet360.dc.html` · 360×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheet360.png`
+`canvas/DaySheet360.dc.html` · 360×640 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheet360.png`
 
-- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+- [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
 - [ ] **BottomSheet** — “9월 8일 소비 기록”
       `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
@@ -1448,23 +1452,15 @@
         `display:flex justify-content:center padding:9px 0 0`
   - [ ] **div** — “9월 8일 소비 기록”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
-  - [ ] **div** — “금액”
+  - [ ] **div** — “최근 기록”
         `flex:1 min-height:0 padding:12px 14px 0 display:flex flex-direction:column gap:10px`
-    - [ ] **div** — “금액”
-          `display:flex align-items:center justify-content:space-between gap:10px height:48px padding:0 14px border-radius:12px background:#FFFFFF border:1.5px solid #3556E6 box-shadow:0 0 0 3px rgba(53,86,230,.16)`
-    - [ ] **div** — “· 저장을 눌러야 기록돼요”
-          `font-size:11.5px line-height:1.45 color:#626D88 padding:0 2px`
-    - [ ] **div** — “메모”
-          `display:flex align-items:center justify-content:space-between gap:10px height:44px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
-    - [ ] **div** — “분류”
-          `display:flex flex-direction:column gap:8px`
     - [ ] **div** — “최근 기록”
-          `display:flex flex-direction:column gap:8px`
-    - [ ] **div** — “저장”
-          `margin-top:2px`
     - [ ] **div** — “저축·투자로 기록 ›”
-- [ ] **div** — “시스템 숫자 키보드 자리”
-      `position:absolute left:0 right:0 bottom:0 height:280px background:#E8ECF5 border-top:1px solid #D7DEEA display:flex align-items:center justify-content:center flex-direction:column gap:4px`
+    - [ ] **div** — “오늘 기록”
+          `display:flex flex-direction:column`
+    - [ ] **div** — “9월 8일 다 적었어요”
+  - [ ] **div** — “저장”
+        `padding:10px 14px 14px border-top:1px solid #EFF2F8 background:#FFFFFF`
 
 ## HeroFootnotes — 참고 · 홈 맨 위 카드의 안내 줄
 
@@ -1495,6 +1491,10 @@
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “68%”
+        `display:flex align-items:center gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px`
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
@@ -1549,29 +1549,422 @@
 
 ## CalendarCells — 참고 · 달력 칸 읽는 법
 
-`canvas/CalendarCells.dc.html` · 940×730 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarCells.png`
+`canvas/CalendarCells.dc.html` · 1330×820 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarCells.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
 - [ ] text 20px/700 — “달력 칸 읽는 법”
       `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-- [ ] text 13px/400 — “칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 오른쪽에서”
+- [ ] text 13px/400 — “칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 가운데에서”
       `font-size:13px line-height:1.55 color:#626D88`
 - [ ] **div** — “2026년 9월”
       `display:flex gap:28px align-items:flex-start`
 
 ## CalendarGridSizes — 참고 · 달력을 펼치면 어디서나 월 달력
 
-`canvas/CalendarGridSizes.dc.html` · 1150×1300 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarGridSizes.png`
+`canvas/CalendarGridSizes.dc.html` · 1150×1490 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarGridSizes.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
 - [ ] text 20px/700 — “달력을 펼치면 어디서나 월 달력”
       `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-- [ ] text 13px/400 — “화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다.”
+- [ ] text 13px/400 — “화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다. 접어 둔 ”
       `font-size:13px line-height:1.55 color:#626D88`
 - [ ] **div** — “가장 좁은 폰”
       `display:flex gap:36px align-items:flex-start`
 - [ ] **div** — “가장 좁은 폰에서 지난달을 볼 때”
       `display:flex gap:36px align-items:flex-start margin-top:26px`
+- [ ] **div** — “구현 메모”
+      `margin-top:24px display:flex flex-direction:column gap:4px`
+
+## DesktopHomeV5 — 데스크톱 홈 · 달력 포함 (제안)
+
+`canvas/DesktopHomeV5.dc.html` · 1440×1000 · 원본 `v5 제안 · 데스크톱 달력 배치는 계획에 결정 없음` · 렌더 `preview/DesktopHomeV5.png`
+
+- [ ] **div** — “NAVI”
+      `width:232px background:#FFFFFF display:flex flex-direction:column padding:22px 16px 18px`
+- [ ] **div** — “샘플 데이터로 둘러보는 중 · 표시된 이름과 금액은 실제 정보가 아닙니다”
+      `flex:1 display:flex flex-direction:column padding:18px 28px 22px`
+  - [ ] **div** — “샘플 데이터로 둘러보는 중 · 표시된 이름과 금액은 실제 정보가 아닙니다”
+        `display:flex align-items:center justify-content:space-between gap:12px height:38px padding:0 16px background:#E9EDFD border-radius:12px`
+  - [ ] **div** — “2026년 9월 8일 · 이번 달 22일 남음”
+        `display:flex align-items:flex-end justify-content:space-between gap:12px margin-top:18px`
+  - [ ] **div** — “현재 위치”
+        `display:grid grid-template-columns:minmax(0, 1.6fr) minmax(0, 1fr) gap:18px margin-top:16px align-items:start`
+
+## HomeSetupStocksOn — 첫 실행 · 홈 구성 · 주식 켬
+
+`canvas/HomeSetupStocksOn.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/HomeSetupStocksOn.png`
+
+- [ ] **div** — “홈 구성”
+      `padding:0 20px`
+- [ ] **div** — “홈에 무엇을 둘까요?”
+      `flex:1 min-height:0 padding:0 20px`
+  - [ ] **div** — “홈에 무엇을 둘까요?”
+        `display:flex flex-direction:column margin-top:-83px`
+- [ ] **div** — “이 구성으로 시작”
+      `padding:8px 20px 24px display:flex flex-direction:column gap:8px`
+
+## SettingsHomeEntry — 설정 · 「홈 구성 ›」 행
+
+`canvas/SettingsHomeEntry.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2` · 렌더 `preview/SettingsHomeEntry.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:60px display:flex align-items:flex-end justify-content:center`
+- [ ] **BottomSheet** — “내 수치 입력”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “내 수치 입력”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “소비 목표”
+        `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column justify-content:flex-end gap:15px`
+    - [ ] **div** — “소비 목표”
+    - [ ] **div** — “추가 설정”
+    - [ ] **div** — “홈 화면”
+    - [ ] **div** — “데이터”
+  - [ ] **div** — “취소”
+        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
+
+## HomeLayoutEdit — 설정 › 홈 구성 (처음 실행 뒤에 다시 고칠 때)
+
+`canvas/HomeLayoutEdit.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2 · §7` · 렌더 `preview/HomeLayoutEdit.png`
+
+- [ ] **div** — “홈 구성”
+      `padding:0 20px`
+- [ ] **div** — “소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 골라 주세요.”
+      `flex:1 min-height:0 padding:0 20px`
+  - [ ] **div** — “소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 골라 주세요.”
+        `display:flex flex-direction:column margin-top:0px`
+- [ ] **div** — “저장”
+      `padding:8px 20px 24px display:flex flex-direction:column gap:8px`
+
+## DestPayoff — 목적지 · 상환 계획
+
+`canvas/DestPayoff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4` · 렌더 `preview/DestPayoff.png`
+
+- [ ] **div** — “목적지”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “저장되지 않는 가정”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **Card(18)** — “저장되지 않는 가정”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px border:1px dashed #B79BFF`
+  - [ ] **Card(18)** — “고금리 우선”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이 계획을 저장할까요?”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## DaySheetScrolled — 하루 시트 · 키보드를 내린 모습
+
+`canvas/DaySheetScrolled.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §4` · 렌더 `preview/DaySheetScrolled.png`
+
+- [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “9월 8일 소비 기록”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “9월 8일 소비 기록”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “금액”
+        `flex:1 min-height:0 padding:12px 18px 0 display:flex flex-direction:column gap:10px`
+    - [ ] **div** — “금액”
+          `display:flex align-items:center justify-content:space-between gap:10px height:48px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
+    - [ ] **div** — “· 저장을 눌러야 기록돼요”
+          `font-size:11.5px line-height:1.45 color:#626D88 padding:0 2px`
+    - [ ] **div** — “메모”
+          `display:flex align-items:center justify-content:space-between gap:10px height:44px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
+    - [ ] **div** — “분류”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “최근 기록”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “저장”
+          `margin-top:2px`
+    - [ ] **div** — “저축·투자로 기록 ›”
+    - [ ] **div** — “오늘 기록”
+          `margin-top:4px`
+    - [ ] **div** — “9월 8일 다 적었어요”
+          `margin-top:auto`
+
+## DaySheetNoSpend — 하루 시트 · 소비 0건인 날 (오늘은 안 썼어요)
+
+`canvas/DaySheetNoSpend.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetNoSpend.png`
+
+- [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “9월 8일 소비 기록”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “9월 8일 소비 기록”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “금액”
+        `flex:1 min-height:0 padding:12px 18px 0 display:flex flex-direction:column gap:10px`
+    - [ ] **div** — “금액”
+          `display:flex align-items:center justify-content:space-between gap:10px height:48px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
+    - [ ] text 11.5px/400 — “금액을 넣거나, 안 썼으면 「오늘은 안 썼어요」로 표시해요”
+          `font-size:11.5px line-height:1.45 color:#626D88 padding:0 2px`
+    - [ ] **div** — “메모”
+          `display:flex align-items:center justify-content:space-between gap:10px height:44px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
+    - [ ] **div** — “분류”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “최근 기록”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “저장”
+          `margin-top:2px`
+    - [ ] **div** — “저축·투자로 기록 ›”
+    - [ ] **div** — “오늘 기록”
+          `position:relative margin-top:4px`
+    - [ ] **div** — “오늘은 안 썼어요”
+          `position:relative margin-top:auto`
+
+## ReviewListSheet — 확인할 내용 목록 시트
+
+`canvas/ReviewListSheet.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §3-3` · 렌더 `preview/ReviewListSheet.png`
+
+- [ ] **div** — “시안 주석 · 앱에는 보이지 않아요”
+      `flex:1 min-height:0 display:flex flex-direction:column justify-content:center`
+  - [ ] **div** — “시안 주석 · 앱에는 보이지 않아요”
+        `padding:12px 14px border:1px dashed rgba(255,255,255,.32) border-radius:12px display:flex flex-direction:column gap:7px`
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “확인할 내용 2개”
+      `background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+
+## HomeDefaultScroll — 홈 · 기본 5카드 전체 (v5 · 2단계)
+
+`canvas/HomeDefaultScroll.dc.html` · 390×1330 · 원본 `v5 · plan/v5-calendar.md §3-1 · §10 2단계` · 렌더 `preview/HomeDefaultScroll.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “68%”
+        `display:flex align-items:center gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px`
+  - [ ] **Card(18)** — “또래와 내 페이스”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## CalendarStatusLines — 참고 · 달력 아래 한 줄이 바뀌는 경우
+
+`canvas/CalendarStatusLines.dc.html` · 1200×1050 · 원본 `v5 · plan/v5-calendar.md §3-3` · 렌더 `preview/CalendarStatusLines.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “달력 아래 한 줄이 바뀌는 경우”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “접어 둔 달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장이 있습니다. 아래 경우에는 그 ”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “이번 달 달력”
+      `display:flex gap:32px align-items:flex-start`
+
+## DaySheetStates — 참고 · 기록 창의 글이 바뀌는 경우
+
+`canvas/DaySheetStates.dc.html` · 1210×1660 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetStates.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “기록 창의 글이 바뀌는 경우”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “기록 창은 하나이고, 날짜 · 시간 · 입력한 값에 따라 아래 다섯 자리의 글과 모양만 바뀝니”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “오늘 4건 37,000원”
+      `display:flex gap:32px align-items:flex-start`
+- [ ] **Card(18)** — “구현 메모”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:10px 18px 8px`
+
+## DaySheetNoSpendStates — 참고 · 안 쓴 날을 표시하는 경우
+
+`canvas/DaySheetNoSpendStates.dc.html` · 1200×1160 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetNoSpendStates.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “안 쓴 날을 표시하는 경우”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “소비가 한 건도 없는 날에만 기록 창 맨 아래에 오늘은 안 썼어요가 보입니다. 누르면 달력 칸”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “오늘 소비는 아직 기록이 없어요 · 이체 300,000원(소비율 제외)”
+      `display:flex gap:32px align-items:flex-start`
+- [ ] **Card(18)** — “구현 메모”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:10px 18px 8px`
+
+## DoneCardStates — 참고 · 저장 완료 카드의 경우들
+
+`canvas/DoneCardStates.dc.html` · 1200×1090 · 원본 `v5 · plan/v5-calendar.md §4-4` · 렌더 `preview/DoneCardStates.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “저장 완료 카드의 경우들”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “저장이 끝나면 홈 아래쪽에 뜨는 카드 하나가 제목 · 셋째 줄 · 행동만 바꿔 가며 모든 경우”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “저장했어요”
+      `display:flex gap:32px align-items:flex-start`
+
+## LedgerV5 — 소비 · 내역 (v5 · 분류 안 함 칩 · 날짜별 합계)
+
+`canvas/LedgerV5.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §9 · components/navi/spending-tab.tsx` · 렌더 `preview/LedgerV5.png`
+
+- [ ] **div** — “소비”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “메모·카테고리 검색”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **Card(18)** — “메모·카테고리 검색”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+  - [ ] **Card(18)** — “9월 8일”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px 10px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## MonthlyCloseV5 — 월 마감 (v5 · 분류 안 함 안내)
+
+`canvas/MonthlyCloseV5.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §9` · 렌더 `preview/MonthlyCloseV5.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:40px display:flex align-items:flex-end justify-content:center`
+- [ ] **BottomSheet** — “2026년 8월 마감”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “2026년 8월 마감”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “이미 에 마감한 달입니다. 다시 저장하면 기존 마감값을 덮어씁니다.”
+        `flex:1 min-height:0 padding:14px 18px 12px display:flex flex-direction:column gap:12px`
+    - [ ] **Callout(warn)** — “이미 에 마감한 달입니다. 다시 저장하면 기존 마감값을 덮어씁니다.”
+          `display:flex gap:8px padding:10px 11px background:#FDF1E0 border-radius:12px`
+    - [ ] **div** — “그 달의 실제 수치”
+    - [ ] **div** — “· 다음 달 한도 배분에도 기타로 들어가요 ·”
+          `padding:10px 12px border:1px solid #E3E8F1 border-radius:12px font-size:12px line-height:1.5 color:#475467`
+    - [ ] **div** — “자동으로 채워진 값”
+  - [ ] **div** — “이 달의 수입·상환·잔액을 확인했고, 빠진 소비 기록이 없는지 살펴봤어요”
+        `padding:12px 18px background:#F4F6FB border-top:1px solid #E3E8F1`
+  - [ ] **div** — “취소”
+        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
+
+## TransactionAddFromDaySheet — 참고 · 거래 추가 — 하루 시트에서 넘어왔을 때
+
+`canvas/TransactionAddFromDaySheet.dc.html` · 960×850 · 원본 `v5 · plan/v5-calendar.md §4` · 렌더 `preview/TransactionAddFromDaySheet.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
+- [ ] text 20px/700 — “거래 추가 — 하루 시트에서 넘어왔을 때”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “하루 시트 아래의 링크 「저축·투자로 기록 ›」를 누르면 소비 탭의 거래 추가 창이 이 모습으”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “거래 추가”
+      `display:flex gap:28px align-items:flex-start`
+
+## AlertsReview — 참고 · 달력이 없을 때 「확인할 내용」이 보이는 곳
+
+`canvas/AlertsReview.dc.html` · 1200×1040 · 원본 `v5 · plan/v5-calendar.md §3-3 · §7` · 렌더 `preview/AlertsReview.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
+- [ ] text 20px/700 — “달력이 없을 때 「확인할 내용」이 보이는 곳”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “홈에 달력 카드가 없으면(껐거나 달력이 나오기 전 단계) 같은 목록을 소비 탭의 알림이 보여 ”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “배경을 눌러 닫기”
+      `display:flex gap:28px align-items:flex-start`
+
+## InsufficientElsewhere — 참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들
+
+`canvas/InsufficientElsewhere.dc.html` · 1230×1330 · 원본 `v5 · plan/v5-calendar.md §3-4 · §9-22` · 렌더 `preview/InsufficientElsewhere.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “예상 기준을 확인하기 전 — 홈 밖의 화면들”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “홈의 이력 부족 상태(HeroInsufficient)와 같은 사람입니다 — 9월 5일에 처음 ”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “1”
+      `display:flex gap:24px align-items:flex-start`
+- [ ] **Card(18)** — “구현 메모”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:10px 18px 8px`
+
+## FutureProvisional — 참고 · 미래 · 자산 경로의 잠정 표시
+
+`canvas/FutureProvisional.dc.html` · 1230×1080 · 원본 `v5 · plan/v5-calendar.md §3-4` · 렌더 `preview/FutureProvisional.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “미래 · 자산 경로 — 예상 기준을 확인하기 전의 잠정 표시”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “지난 소비 기록을 확인하기 전에도 미래 · 목표 화면의 예상 값은 그대로 보여 주되 잠정이라고”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “미래”
+      `display:flex gap:32px align-items:flex-start`
+
+## LimitCardCases — 참고 · 이번 달 한도 카드의 네 가지 경우
+
+`canvas/LimitCardCases.dc.html` · 1200×960 · 원본 `v5 · plan/v5-calendar.md §10 3단계` · 렌더 `preview/LimitCardCases.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “이번 달 한도 카드 — 하루 금액 자리의 네 가지 경우”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “3단계에서 홈 한도 카드의 하루 47,270원이 앞으로 하루 47,270원으로 바뀝니다. 한도”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “평소 — 한도가 남아 있을 때”
+      `display:flex gap:32px align-items:flex-start`
+- [ ] **Card(18)** — “구현 메모”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:10px 18px 8px`
+
+## RecurringPrefill — 반복 거래 · 방금 저장한 거래로 미리 채움
+
+`canvas/RecurringPrefill.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §10 3단계` · 렌더 `preview/RecurringPrefill.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:40px display:flex align-items:flex-end justify-content:center`
+- [ ] **BottomSheet** — “반복 거래”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “반복 거래”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “새 반복 거래”
+        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+    - [ ] **div** — “새 반복 거래”
+    - [ ] **div** — “등록된 반복 거래”
+  - [ ] **div** — “닫기”
+        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
+
+## EtcSubline — 참고 · 분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치
+
+`canvas/EtcSubline.dc.html` · 1200×970 · 원본 `v5 · plan/v5-calendar.md §5-3 · §9` · 렌더 `preview/EtcSubline.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치에서”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “하루 시트에서 분류 없이 저장한 소비는 기타로 들어갑니다. 소비 · 한도 화면은 기타 아래에 ”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “1”
+      `display:flex gap:24px align-items:flex-start`
+- [ ] **Card(18)** — “구현 메모”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:10px 18px 8px`
+
+## ImportBackupNotes — 참고 · 가져오기 · 백업 안내
+
+`canvas/ImportBackupNotes.dc.html` · 1230×1060 · 원본 `v5 · plan/v5-calendar.md §10 3단계` · 렌더 `preview/ImportBackupNotes.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “가져오기 · 백업 — 확인 표시와 분류 안 함 표시가 어떻게 따라오는지”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “달력의 확인 표시(다 적었어요 · 안 썼어요)와 분류 안 함 표시는 백업 파일에 함께 들어갑니”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “배경을 눌러 닫기”
+      `display:flex gap:32px align-items:flex-start`
 

@@ -3,7 +3,7 @@
 원본 `canvas/Components.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:1555px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:28px`
+  `width:1200px height:2724px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:28px`
   - `div`
     `display:flex align-items:flex-end justify-content:space-between gap:20px border-bottom:2px solid #101828`
     - `div`
@@ -146,7 +146,7 @@
         - `div`
           `display:flex align-items:center gap:10px padding:12px 14px border-radius:13px background:#7A1F1B box-shadow:0 12px 30px -14px rgba(16,24,40,.5)`
   - `div`
-    `margin-top:auto padding:18px 20px background:#F4F6FB border-radius:16px`
+    `padding:18px 20px background:#F4F6FB border-radius:16px`
     - `div` **text 12px/600** — “07 · 행동을 어디에 놓는가 — 이번 재설계의 핵심 규칙”
       `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88`
     - `div`
@@ -171,3 +171,62 @@
           `font-size:13px font-weight:600 color:#101828`
         - `div` **text 11.5px/400** — ““기준 조정”은 “실수령 급여 기준…” 문장 오른쪽. 무엇이 바뀌는지 읽은 자리에서 바로 누릅니다.”
           `font-size:11.5px line-height:1.55 color:#475467 margin-top:4px`
+  - `div`
+    - `div` **text 12px/600** — “08 · v5 달력과 하루 시트 — 새 컴포넌트 11종”
+      `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88`
+    - `p` **text 12.5px/400** — “조각은 v5 시안(홈 달력 · 하루 시트 · 완료 카드 · 분류하기)에서 그대로 가져왔습니다. 새 색은 없습니다 —”
+      `font-size:12.5px line-height:1.55 color:#475467`
+    - `div`
+      `display:flex align-items:flex-start justify-content:space-between gap:18px margin-top:14px background:#EDF0F7 border-radius:18px padding:16px 14px 18px`
+      - `div`
+        `width:362px display:flex flex-direction:column gap:9px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div` **Card(18)**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+        - `div` **Card(18)**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+        - `div`
+          `height:8px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div`
+          `background:#FFFFFF border:1px solid #E3E8F1 border-top:none border-radius:0 0 20px 20px padding:4px 16px 16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+      - `div`
+        `width:362px display:flex flex-direction:column gap:9px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div` **BottomSheet**
+          `background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+        - `div`
+          `height:8px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div` **HeroCard**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px 20px 0 0 border-bottom:none padding:16px 16px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+      - `div`
+        `width:324px display:flex flex-direction:column gap:9px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div` **Card(18)**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 6px 10px display:flex justify-content:space-between`
+        - `div`
+          `height:8px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div`
+          `background:#101828 border-radius:16px padding:13px 14px 12px color:#FFFFFF box-shadow:0 8px 24px rgba(0,0,0,.28)`
+        - `div`
+          `height:8px`
+        - `div`
+          `display:flex gap:8px padding:0 2px`
+        - `div` **Card(18)**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:2px 16px 4px`

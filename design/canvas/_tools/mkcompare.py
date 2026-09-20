@@ -61,7 +61,7 @@ SETS = {
         ('월 마감', 'MonthlyClose', 'DarkMonthlyClose'),
     ]),
     'compare-4-states': ('상태 — 미입력 · 모달 오류', [
-        ('미입력 5종', 'EmptyStates', 'DarkEmptyStates'),
+        ('미입력 6종', 'EmptyStates', 'DarkEmptyStates'),
         ('모달 오류 6종', 'ModalErrors', 'DarkModalErrors'),
     ]),
     'compare-5-desktop': ('데스크톱 — 홈', [

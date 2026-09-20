@@ -3,14 +3,14 @@
 원본 `canvas/EmptyStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:390px height:1733px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
+  `width:390px height:2480px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
   - `div`
     `padding:0 2px 6px`
     - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
       `display:inline-block font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
     - `h2` **text 18px/700** — “미입력 · 빈 상태”
       `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-    - `p` **text 12px/400** — “아직 입력하지 않은 값이 있을 때 화면이 어떻게 보이는지 다섯 가지 경우입니다. 실제로는 한 번에 하나만 보입니다.”
+    - `p` **text 12px/400** — “아직 입력하지 않은 값이 있을 때 화면이 어떻게 보이는지 여섯 가지 경우입니다. 실제로는 한 번에 하나만 보입니다.”
       `font-size:12px line-height:1.45 color:#626D88`
   - `div` **text 11px/600** — “A · 첫 시작 · 홈”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -59,49 +59,48 @@
     `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
     - `div`
       `display:flex align-items:center justify-content:space-between gap:8px`
-      - `span` **text 11px/600** — “현재 위치”
+      - `span` **text 11px/600** — “이번 달 기록한 소비”
         `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
       - `span` **StatusPill** — “급여 미입력”
         `background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
     - `div`
-      `display:flex align-items:baseline gap:10px margin-top:8px`
-      - `span` **text 48px/700** — “—”
-        `font-size:48px font-weight:700 letter-spacing:-0.04em line-height:1 color:#B4BECD`
-      - `span` **text 13px/500** — “월급 대비 이번 달 예상 소비”
+      `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:8px`
+      - `div`
+        `display:flex align-items:baseline gap:2px`
+        - `span` **text 54px/700** — “124,000”
+          `font-size:54px font-weight:700 letter-spacing:-0.045em line-height:1 color:#101828`
+        - `span` **text 25px/600** — “원”
+          `font-size:25px font-weight:600 letter-spacing:-0.02em color:#475467`
+    - `div`
+      `display:flex align-items:baseline justify-content:space-between gap:10px margin-top:5px`
+      - `span` **text 13px/500** — “아직 기록하지 않은 소비는 포함되지 않았어요”
         `font-size:13px font-weight:500 color:#475467`
-    - `div`
-      `display:flex align-items:center justify-content:space-between gap:10px margin-top:9px padding:9px 11px background:#F4F6FB border-radius:11px`
-      - `span` **text 12px/400** — “순자산 대비 이번 달 소비”
-        `font-size:12px color:#626D88`
-      - `span`
-        `display:inline-flex align-items:center gap:4px`
-        - `span` **text 15px/600** — “2.2%”
-          `font-size:15px font-weight:600 letter-spacing:-0.02em color:#101828`
+    - `div` **text 12px/400** — “실수령 급여를 입력하면 월급 대비 소비율을 보여 드려요.”
+      `font-size:12px line-height:1.45 color:#626D88 margin-top:3px`
     - `div` **ProgressTrack**
-      `height:10px border-radius:99px background:#EFF2F8 border:1px dashed #CFD7E6 margin-top:14px`
-    - `p` **text 12.5px/400** — “실수령 급여를 입력하면 월급 대비 소비율을 보여 드려요.”
-      `font-size:12.5px line-height:1.5 color:#475467`
+      `height:10px border-radius:99px background:#EFF2F8 border:1px dashed #CFD7E6 margin-top:15px`
     - `div`
-      `display:grid grid-template-columns:repeat(3, minmax(0, 1fr)) margin-top:13px border-top:1px solid #EFF2F8`
+      `display:grid grid-template-columns:repeat(3, minmax(0, 1fr)) gap:0 margin-top:14px border-top:1px solid #EFF2F8`
       - `div`
-        - `div` **text 11.5px/500** — “월 실수령”
+        `display:flex flex-direction:column gap:3px`
+        - `span` **text 11.5px/500** — “월 실수령”
           `font-size:11.5px font-weight:500 color:#626D88`
-        - `div` **text 18px/600** — “—”
-          `font-size:18px font-weight:600 color:#B4BECD margin-top:3px`
+        - `span` **text 18px/600** — “—”
+          `font-size:18px font-weight:600 letter-spacing:-0.02em color:#697182`
       - `div`
-        `padding:0 10px border-left:1px solid #EFF2F8`
-        - `div` **text 11.5px/500** — “월말 예상”
+        `display:flex flex-direction:column gap:3px padding:0 10px border-left:1px solid #EFF2F8`
+        - `span` **text 11.5px/500** — “월말 예상”
           `font-size:11.5px font-weight:500 color:#626D88`
-        - `div` — “208”
-          `font-size:18px font-weight:600 color:#101828 margin-top:3px`
+        - `span` — “—”
+          `font-size:18px font-weight:600 letter-spacing:-0.02em color:#697182`
       - `div`
-        `border-left:1px solid #EFF2F8`
-        - `div` **text 11.5px/500** — “월말 예상 여유”
+        `display:flex flex-direction:column gap:3px border-left:1px solid #EFF2F8`
+        - `span` **text 11.5px/500** — “월말 예상 여유”
           `font-size:11.5px font-weight:500 color:#626D88`
-        - `div` **text 18px/600** — “—”
-          `font-size:18px font-weight:600 color:#B4BECD margin-top:3px`
-    - `div` **text 15px/600** — “실수령 급여 입력하기”
-      `display:flex align-items:center justify-content:center height:46px margin-top:12px border-radius:13px background:#3556E6 color:#FFFFFF font-size:15px font-weight:600`
+        - `span` — “—”
+          `font-size:18px font-weight:600 letter-spacing:-0.02em color:#697182`
+    - `div` **text 15px/600** — “월급 입력하고 시작”
+      `display:flex align-items:center justify-content:center height:46px margin-top:12px border-radius:13px background:#3556E6 color:#FFFFFF font-size:15px font-weight:600 white-space:nowrap`
   - `div` **text 11px/600** — “C · 급여 0원 · 부수입만 있음”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
   - `div` **Card(20)**
@@ -208,3 +207,117 @@
           `font-size:11.5px color:#626D88 margin-top:1px`
       - `div` **text 13px/600** — “검색 지우기”
         `height:34px padding:0 13px border-radius:10px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:13px font-weight:600 display:flex align-items:center`
+  - `div` **text 11px/600** — “F · 히어로 이력 부족 · 예상을 아직 보여 주지 않을 때”
+    `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
+  - `div` **Card(20)**
+    `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
+    - `div`
+      `display:flex align-items:center justify-content:space-between gap:8px`
+      - `span` **text 11px/600** — “이번 달 기록한 소비”
+        `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
+    - `div`
+      `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:8px`
+      - `div`
+        `display:flex align-items:baseline gap:2px`
+        - `span` **text 54px/700** — “5,000”
+          `font-size:54px font-weight:700 letter-spacing:-0.045em line-height:1 color:#101828`
+        - `span` **text 25px/600** — “원”
+          `font-size:25px font-weight:600 letter-spacing:-0.02em color:#475467`
+      - `div`
+        `display:flex flex-direction:column align-items:flex-end gap:1px`
+        - `span` **text 11px/500** — “월급의”
+          `font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 14px/600** — “0.1%”
+          `font-size:14px font-weight:600 color:#101828`
+    - `div`
+      `display:flex align-items:baseline justify-content:space-between gap:10px margin-top:5px`
+      - `span` **text 13px/500** — “아직 기록하지 않은 소비는 포함되지 않았어요”
+        `font-size:13px font-weight:500 color:#475467`
+    - `div` **text 12px/400** — “예상에 사용할 지난 소비 기록이 아직 없어요”
+      `font-size:12px line-height:1.45 color:#626D88 margin-top:3px`
+    - `div`
+      `margin-top:15px`
+      - `div` **ProgressTrack**
+        `position:relative height:10px border-radius:99px background:#E8ECF5`
+        - `div`
+          `position:absolute left:60% top:-5px width:2px height:20px border-radius:2px background:#101828`
+      - `div`
+        `position:relative height:15px margin-top:5px`
+        - `span` **text 11px/400** — “0%”
+          `position:absolute left:0 font-size:11px color:#626D88`
+        - `span` **text 11px/600** — “내 목표 60%”
+          `position:absolute left:60% transform:translateX(-50%) font-size:11px font-weight:600 color:#101828 white-space:nowrap`
+        - `span` **text 11px/400** — “100%”
+          `position:absolute right:0 font-size:11px color:#626D88`
+    - `div`
+      `display:grid grid-template-columns:repeat(3, minmax(0, 1fr)) gap:0 margin-top:14px border-top:1px solid #EFF2F8`
+      - `div`
+        `display:flex flex-direction:column gap:3px`
+        - `span` **text 11.5px/500** — “월 실수령”
+          `font-size:11.5px font-weight:500 color:#626D88`
+        - `span` — “360”
+          `font-size:18px font-weight:600 letter-spacing:-0.02em color:#101828`
+      - `div`
+        `display:flex flex-direction:column gap:3px padding:0 10px border-left:1px solid #EFF2F8`
+        - `span` **text 11.5px/500** — “월말 예상”
+          `font-size:11.5px font-weight:500 color:#626D88`
+        - `span` — “—”
+          `font-size:18px font-weight:600 letter-spacing:-0.02em color:#697182`
+      - `div`
+        `display:flex flex-direction:column gap:3px border-left:1px solid #EFF2F8`
+        - `span` **text 11.5px/500** — “월말 예상 여유”
+          `font-size:11.5px font-weight:500 color:#626D88`
+        - `span` — “—”
+          `font-size:18px font-weight:600 letter-spacing:-0.02em color:#697182`
+    - `div`
+      `display:flex align-items:center justify-content:space-between gap:10px margin-top:12px`
+      - `span` **text 11px/400** — “실수령 급여 기준 · 부수입·저축 이체·대출상환 제외”
+        `font-size:11px line-height:1.4 color:#626D88`
+      - `span` **text 11.5px/600** — “기준 조정 ›”
+        `font-size:11.5px font-weight:600 color:#3556E6 white-space:nowrap`
+    - `div`
+      `margin-top:10px`
+      - `div` — “소비 기록하기”
+        `display:flex align-items:center justify-content:center gap:6px height:46px width:100% border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`
+  - `div` **Card(20)**
+    `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:12px 16px 6px`
+    - `div` **text 11px/600** — “각주 둘째 줄 · 부족한 것에 따라 셋 중 하나”
+      `font-size:11px font-weight:600 letter-spacing:0.06em color:#626D88`
+    - `div`
+      `padding:10px 0`
+      - `div` **text 11.5px/600** — “지난 소비 기록이 없을 때 · 위 카드”
+        `font-size:11.5px font-weight:600 color:#475467`
+      - `div` **text 12px/400** — “예상에 사용할 지난 소비 기록이 아직 없어요”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:3px`
+    - `div`
+      `padding:10px 0 border-top:1px solid #EFF2F8`
+      - `div` **text 11.5px/600** — “확인하지 않은 달이 하나일 때”
+        `font-size:11.5px font-weight:600 color:#475467`
+      - `div` — “7월 기록도 확인하면 예상을 볼 수 있어요 ·”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:3px`
+        - `span` — “확인하기 ›”
+          `font-weight:600 color:#3556E6 white-space:nowrap`
+    - `div`
+      `padding:10px 0 border-top:1px solid #EFF2F8`
+      - `div` **text 11.5px/600** — “확인하지 않은 달이 여러 개일 때”
+        `font-size:11.5px font-weight:600 color:#475467`
+      - `div` — “예상에 쓸 이전 기록을 확인해 주세요 ·”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:3px`
+        - `span` — “확인할 달 보기 ›”
+          `font-weight:600 color:#3556E6 white-space:nowrap`
+    - `div`
+      `padding:10px 0 border-top:1px solid #EFF2F8`
+      - `div` **text 11.5px/600** — “이번 달 소비가 0건일 때 · 큰 숫자 자리”
+        `font-size:11.5px font-weight:600 color:#475467`
+      - `div`
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:3px`
+        - `span` **text 15px/600** — “아직 기록이 없어요”
+          `font-size:15px font-weight:600 letter-spacing:-0.015em color:#101828`
+    - `div`
+      `padding:10px 0 border-top:1px solid #EFF2F8`
+      - `div` **text 11.5px/600** — “월급을 넣지 않았을 때”
+        `font-size:11.5px font-weight:600 color:#475467`
+      - `div` — “자리를 비웁니다 · 위 B 와 같아요”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:3px`
+        - `span` — “월급의 0.1%”
+          `color:#475467`

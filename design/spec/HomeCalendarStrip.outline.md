@@ -116,6 +116,34 @@
           `font-size:12.5px line-height:1.45 color:#475467`
         - `span` **text 12.5px/600** — “상환 전략 보기 ›”
           `font-size:12.5px font-weight:600 color:#3556E6 margin-top:5px`
+    - `div` **Card(18)**
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+      - `div`
+        `display:flex align-items:center justify-content:space-between gap:8px`
+        - `span` — “이번 달 한도”
+          `font-size:13.5px font-weight:600 color:#101828 white-space:nowrap`
+        - `div`
+          `display:flex align-items:center gap:4px`
+      - `div`
+        `position:relative height:8px border-radius:99px background:#E8ECF5 margin-top:9px`
+        - `div`
+          `position:absolute inset:0 48.1% 0 0 border-radius:99px background:linear-gradient(90deg, #6E6BEE 0%, #7A3FE4 100%)`
+    - `div` **Card(18)**
+      `display:flex align-items:center gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px`
+      - `div`
+        `width:52px height:52px border-radius:99px background:conic-gradient(#7A3FE4 0% 68%, #E8ECF5 68% 100%) display:flex align-items:center justify-content:center`
+        - `div` **text 13px/700** — “68%”
+          `width:40px height:40px border-radius:99px background:#FFFFFF display:flex align-items:center justify-content:center font-size:13px font-weight:700 letter-spacing:-0.02em color:#7A3FE4`
+      - `div`
+        `display:flex flex-direction:column gap:2px flex:1`
+        - `span` **text 11px/600** — “대표 목적지”
+          `font-size:11px font-weight:600 letter-spacing:0.06em color:#626D88`
+        - `span` **text 15px/600** — “비상금 6개월”
+          `font-size:15px font-weight:600 letter-spacing:-0.015em color:#101828`
+        - `span` **text 12.5px/400** — “1,020 / 1,500만원 · 월 35만원 적립”
+          `font-size:12.5px color:#475467`
+        - `span` **text 11.5px/400** — “예상 도착 2027년 11월”
+          `font-size:11.5px color:#626D88`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div`

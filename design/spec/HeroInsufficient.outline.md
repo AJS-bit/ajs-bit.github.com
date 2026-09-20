@@ -73,6 +73,32 @@
         - `div` — “소비 기록하기”
           `display:flex align-items:center justify-content:center gap:6px height:46px width:100% border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`
     - `div` **Card(18)**
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+      - `div`
+        `display:flex align-items:center justify-content:space-between gap:8px`
+        - `span` **text 14px/600** — “이번 달 달력”
+          `font-size:14px font-weight:600 color:#101828`
+        - `span` — “펼치기”
+          `display:inline-flex align-items:center gap:2px font-size:12px font-weight:600 color:#475467`
+      - `div`
+        `display:flex justify-content:space-between margin-top:8px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+        - `div`
+          `width:44px height:56px border-radius:10px background:#E9EDFD display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+      - `div` **text 11px/400** — “오늘 1건 5,000원”
+        `font-size:11px line-height:1.5 color:#475467 margin-top:8px`
+    - `div` **Card(18)**
       `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #7EC4E8 border-radius:18px padding:13px 14px`
       - `div`
         `width:34px height:34px border-radius:11px background:#E4F2FB display:flex align-items:center justify-content:center`
@@ -80,9 +106,9 @@
         `display:flex flex-direction:column gap:3px`
         - `span` **text 11px/600** — “다음 안내”
           `font-size:11px font-weight:600 letter-spacing:0.06em color:#0A72AC`
-        - `span` **text 15px/600** — “오늘 첫 기록을 남겼어요”
+        - `span` **text 15px/600** — “기록한 소비 5,000원”
           `font-size:15px font-weight:600 letter-spacing:-0.015em line-height:1.35 color:#101828`
-        - `span` **text 12.5px/400** — “며칠 더 기록하면 월말 예상을 보여 드려요.”
+        - `span` **text 12.5px/400** — “아직 기록하지 않은 소비는 포함하지 않았어요”
           `font-size:12.5px line-height:1.45 color:#475467`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`

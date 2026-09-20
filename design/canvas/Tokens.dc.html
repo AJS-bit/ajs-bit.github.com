@@ -10,13 +10,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
     a { color: #3556E6; text-decoration: none; }
     a:hover { color: #2743C4; }
   </style>
 </helmet>
 
-<div style="width: 1200px; height: 1684px; background: #FFFFFF; color: #101828; padding: 40px 44px; display: flex; flex-direction: column; gap: 30px; overflow: hidden; font-variant-numeric: tabular-nums;">
+<div style="width: 1200px; height: 1720px; background: #FFFFFF; color: #101828; padding: 40px 44px; display: flex; flex-direction: column; gap: 30px; overflow: hidden; font-variant-numeric: tabular-nums;">
 
   <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 2px solid #101828;">
     <div>
@@ -278,6 +278,19 @@
       </div>
 
       <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #626D88; margin-top: 24px;">07 · 그래프 규칙</div><div style="margin-top: 12px; border: 1px solid #E3E8F1; border-radius: 14px; padding: 14px; font-size: 12px; line-height: 1.6; color: #475467;"><span style="font-weight: 600; color: #101828;">그래프 규칙은 「컴포넌트 · 상태」 장의 03b · 그래프 규칙을 참고하세요.</span><br>그래프 높이(모바일) · 소비 추이 150px · 미래 150px · 스파크라인 58px</div>
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: #626D88; margin-top: 24px;">08 · 달력 규칙 — v5</div>
+      <div style="margin-top: 12px; border: 1px solid #E3E8F1; border-radius: 14px; overflow: hidden;">
+        <div style="padding: 12px 14px; border-bottom: 1px solid #EFF2F8;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;"><span style="font-size: 12px; font-weight: 600; color: #101828;">타이포 · 달력 칸 합계</span><span style="font-size: 11px; color: #626D88; white-space: nowrap;">11px · 600 · 줄 높이 13 · tabular-nums</span></div>
+          <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 10px;"><div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0;"><span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 30px; border-radius: 8px; background: #F4F6FB; font-size: 11px; line-height: 13px; font-weight: 600; color: #101828; white-space: nowrap;">4,500</span><span style="font-size: 10.5px; color: #626D88; white-space: nowrap;">1만 미만</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0;"><span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 30px; border-radius: 8px; background: #F4F6FB; font-size: 11px; line-height: 13px; font-weight: 600; color: #101828; white-space: nowrap;">1.2만</span><span style="font-size: 10.5px; color: #626D88; white-space: nowrap;">1만 이상</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0;"><span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 30px; border-radius: 8px; background: #F4F6FB; font-size: 11px; line-height: 13px; font-weight: 600; color: #101828; white-space: nowrap;">12.5만</span><span style="font-size: 10.5px; color: #626D88; white-space: nowrap;">소수 한 자리</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0;"><span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 30px; border-radius: 8px; background: #F4F6FB; font-size: 11px; line-height: 13px; font-weight: 600; color: #101828; white-space: nowrap;">120만</span><span style="font-size: 10.5px; color: #626D88; white-space: nowrap;">100만 이상</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0;"><span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 30px; border-radius: 8px; background: #F4F6FB; font-size: 11px; line-height: 13px; font-weight: 600; color: #101828; white-space: nowrap;">1,200만</span><span style="font-size: 10.5px; color: #626D88; white-space: nowrap;">소수 없음</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0;"><span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 30px; border-radius: 8px; background: #F4F6FB; font-size: 11px; line-height: 13px; font-weight: 600; color: #101828; white-space: nowrap;">1.2억</span><span style="font-size: 10.5px; color: #626D88; white-space: nowrap;">1억 이상</span></div></div>
+          <div style="font-size: 11.5px; line-height: 1.55; color: #475467; margin-top: 9px;">만 단위 소수 한 자리는 500원에서 올립니다(11,500 → 1.2만). <span style="font-weight: 600; color: #101828;">100.0만은 없습니다</span> — 100만부터는 소수를 뗍니다. 상태 줄 · 시트 · 완료 카드의 합계와 개별 거래는 원 단위 그대로입니다(오늘 4건 37,000원).</div>
+        </div>
+        <div style="padding: 12px 14px;">
+          <div style="font-size: 12px; font-weight: 600; color: #101828;">색 · 달력 칸은 네 가지만</div>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; margin-top: 10px;"><div style="display: flex; align-items: center; gap: 8px; min-width: 0;"><span style="width: 22px; height: 22px; border-radius: 7px; background: #E9EDFD; flex-shrink: 0;"></span><span style="font-size: 11.5px; line-height: 1.35; color: #475467;"><span style="font-weight: 600; color: #101828;">brand-soft</span><br>오늘 칸 배경</span></div><div style="display: flex; align-items: center; gap: 8px; min-width: 0;"><span style="width: 22px; height: 22px; border-radius: 7px; background: #475467; flex-shrink: 0;"></span><span style="font-size: 11.5px; line-height: 1.35; color: #475467;"><span style="font-weight: 600; color: #101828;">ink-2</span><br>날짜 · 0 · ✓ · 이체</span></div><div style="display: flex; align-items: center; gap: 8px; min-width: 0;"><span style="width: 22px; height: 22px; border-radius: 7px; background: #626D88; flex-shrink: 0;"></span><span style="font-size: 11.5px; line-height: 1.35; color: #475467;"><span style="font-weight: 600; color: #101828;">ink-3</span><br>미입력 — · 요일</span></div><div style="display: flex; align-items: center; gap: 8px; min-width: 0;"><span style="width: 22px; height: 22px; border-radius: 7px; background: #B4BECD; flex-shrink: 0;"></span><span style="font-size: 11.5px; line-height: 1.35; color: #475467;"><span style="font-weight: 600; color: #101828;">disabled</span><br>미래 날짜</span></div></div>
+          <div style="font-size: 11.5px; line-height: 1.55; color: #475467; margin-top: 9px;">새 hex 는 없습니다. 달력 · 하루 시트 · 완료 카드에는 주황 · 빨강 · 가정 보라를 쓰지 않고, 카테고리 색은 시트의 칩과 목록 행에서만 색 점 8px + 이름으로 씁니다.</div>
+        </div>
+      </div>
     </div>
 
   </div>

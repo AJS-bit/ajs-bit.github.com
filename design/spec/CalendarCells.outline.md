@@ -3,12 +3,12 @@
 원본 `canvas/CalendarCells.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:940px height:730px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1330px height:820px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “달력 칸 읽는 법”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` **text 13px/400** — “칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 오른쪽에서 찾으세요.”
+  - `p` **text 13px/400** — “칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 가운데에서 찾으세요.”
     `font-size:13px line-height:1.55 color:#626D88`
   - `div`
     `display:flex gap:28px align-items:flex-start`
@@ -27,9 +27,11 @@
         - `div`
           `display:flex align-items:center justify-content:space-between height:32px margin-top:2px border-top:1px solid #EFF2F8`
     - `div`
-      `flex:1`
+      `width:490px`
       - `div` **Card(18)**
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 16px`
+        - `div`
+          `display:flex gap:11px padding:10px 0 border-bottom:1px solid #F3F5FA`
         - `div`
           `display:flex gap:11px padding:10px 0 border-bottom:1px solid #F3F5FA`
         - `div`
@@ -50,3 +52,24 @@
         `font-size:12px line-height:1.6 color:#626D88`
         - `b` — “8/31”
           `font-weight:600 color:#475467`
+    - `div`
+      `width:362px display:flex flex-direction:column gap:22px`
+      - `div`
+        `width:362px display:flex flex-direction:column gap:8px`
+        - `div`
+        - `div`
+          `position:relative`
+      - `div` **Card(18)**
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 16px`
+        - `div` **text 13.5px/700** — “칸에 금액을 쓰는 법”
+          `font-size:13.5px font-weight:700 color:#101828`
+        - `div`
+          `display:flex align-items:center gap:12px padding:9px 0 border-bottom:1px solid #F3F5FA`
+        - `div`
+          `display:flex align-items:center gap:12px padding:9px 0 border-bottom:1px solid #F3F5FA`
+        - `div`
+          `display:flex align-items:center gap:12px padding:9px 0 border-bottom:1px solid #F3F5FA`
+        - `div`
+          `display:flex align-items:center gap:12px padding:9px 0`
+        - `div` **text 12px/400** — “상태 줄 · 기록 창 · 저장 완료 카드의 합계는 줄이지 않고 원 단위 그대로 씁니다(오늘 4건 37,000원).”
+          `font-size:12px line-height:1.5 color:#626D88 border-top:1px solid #F3F5FA`

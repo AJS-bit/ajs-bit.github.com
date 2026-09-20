@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+    a { color: #3556E6; text-decoration: none; }
+    a:hover { color: #2743C4; }
+    text { font-family: 'IBM Plex Sans KR', system-ui, sans-serif; }
+  </style>
+</helmet>
+
+<div style="width: 960px; height: 850px; background: #EDF0F7; color: #101828; padding: 28px 30px 30px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; font-variant-numeric: tabular-nums;"><span style="align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: #475467; border: 1px solid #E3E8F1; background: #FFFFFF; border-radius: 99px; padding: 4px 10px; white-space: nowrap;">구현 참고 · 앱 화면이 아닙니다</span><h2 style="margin: 2px 0 0; font-size: 20px; font-weight: 700; letter-spacing: -0.025em; color: #101828;">거래 추가 — 하루 시트에서 넘어왔을 때</h2><p style="margin: 0 0 8px; font-size: 13px; line-height: 1.55; color: #626D88; max-width: 760px;">하루 시트 아래의 링크 「저축·투자로 기록 ›」를 누르면 소비 탭의 거래 추가 창이 이 모습으로 열립니다. 왼쪽 창의 번호를 오른쪽에서 찾으세요.</p><div style="display: flex; gap: 28px; align-items: flex-start;"><div style="width: 390px; flex-shrink: 0;">  <div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 26px 26px 18px 18px; display: flex; flex-direction: column; overflow: hidden; color: #101828;">
+
+    <div style="display: flex; justify-content: center; padding: 9px 0 0; flex-shrink: 0;">
+      <span style="width: 38px; height: 4px; border-radius: 99px; background: #D7DEEA;"></span>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px 13px; border-bottom: 1px solid #EFF2F8; flex-shrink: 0;">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: #101828;">거래 추가</h2>
+      <div style="width: 36px; height: 36px; border-radius: 11px; background: #F4F6FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#475467" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </div>
+    </div>
+
+    <div style="padding: 14px 18px 14px; display: flex; flex-direction: column; gap: 15px;">
+
+      <div>
+        <div style="font-size: 12px; font-weight: 600; color: #475467; margin-bottom: 7px; display: flex; align-items: center;"><span>거래 종류</span><span style="margin: -2px 0 -2px 6px; flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">1</span></div>
+        <div style="display: flex; gap: 4px; background: #F4F6FB; border-radius: 11px; padding: 3px;">
+          <div style="flex: 1; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #5B6880;">일반 소비</div>
+          <div style="flex: 1; height: 36px; border-radius: 8px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #101828; box-shadow: 0 1px 2px rgba(16,24,40,.08);">저축·투자</div>
+          <div style="flex: 1; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: #5B6880;">대출상환</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <div style="flex: 1;">
+          <div style="font-size: 12px; font-weight: 600; color: #475467; margin-bottom: 7px; display: flex; align-items: center;"><span>날짜</span><span style="margin: -2px 0 -2px 6px; flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">2</span></div>
+          <div style="display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 12px; border-radius: 11px; border: 1px solid #CFD7E6; background: #FFFFFF;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#626D88" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span style="font-size: 15px; font-weight: 500; color: #101828;">2026. 09. 08</span>
+          </div>
+        </div>
+        <div style="width: 148px;">
+          <div style="font-size: 12px; font-weight: 600; color: #475467; margin-bottom: 7px;">금액 <span style="color: #C0342F;">*</span></div>
+          <div style="display: flex; align-items: center; gap: 4px; height: 46px; padding: 0 12px; border-radius: 11px; border: 1.5px solid #3556E6; background: #FFFFFF;">
+            <span style="flex: 1; text-align: right; font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: #101828;">12,000</span>
+            <span style="font-size: 13px; font-weight: 500; color: #626D88;">원</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px;">
+          <span style="font-size: 12px; font-weight: 600; color: #475467;">카테고리</span>
+          <span style="font-size: 11.5px; color: #626D88;">거래 종류에 따라 정해져요</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 12px; border-radius: 11px; border: 1px solid #E3E8F1; background: #F4F6FB;"><span style="width: 8px; height: 8px; border-radius: 3px; background: #34d17e; flex-shrink: 0;"></span><span style="flex: 1; font-size: 15px; font-weight: 500; color: #475467;">저축/투자</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#697182" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      </div>
+
+      <div>
+        <div style="font-size: 12px; font-weight: 600; color: #475467; margin-bottom: 7px; display: flex; align-items: center;"><span>메모 <span style="font-weight: 500; color: #697182;">선택 사항</span></span><span style="margin: -2px 0 -2px 6px; flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">3</span></div>
+        <div style="display: flex; align-items: center; height: 46px; padding: 0 12px; border-radius: 11px; border: 1px solid #CFD7E6; background: #FFFFFF;">
+          <span style="font-size: 15px; font-weight: 400; color: #101828;">적금 추가 납입</span>
+        </div>
+      </div>
+
+      <div style="background: #F4F6FB; border-radius: 14px; padding: 13px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+          <div style="min-width: 0;">
+            <div style="font-size: 13.5px; font-weight: 600; color: #101828;">잔액에도 반영하기</div>
+            <div style="font-size: 11.5px; color: #626D88; margin-top: 2px;">선택한 계좌의 잔액이 함께 줄어들어요</div>
+          </div>
+          <div style="width: 46px; height: 27px; border-radius: 99px; background: #E3E8F1; padding: 3px; display: flex; justify-content: flex-start; flex-shrink: 0;">
+            <span style="width: 21px; height: 21px; border-radius: 99px; background: #FFFFFF;"></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display: flex; gap: 7px; padding: 0 2px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#626D88" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span style="font-size: 11.5px; line-height: 1.45; color: #626D88;">일반 소비는 월급 대비 소비율과 카테고리 한도에 함께 반영됩니다. <span style="white-space: nowrap;">저축·투자</span> 이체와 대출상환은 소비율에서 제외돼요.</span>
+      </div>
+
+    </div>
+
+    <div style="display: flex; gap: 10px; padding: 12px 18px 20px; border-top: 1px solid #EFF2F8; flex-shrink: 0;">
+      <div style="flex: 1; height: 48px; border-radius: 13px; border: 1px solid #D7DEEA; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; color: #475467;">취소</div>
+      <div style="flex: 1.4; height: 48px; border-radius: 13px; background: #3556E6; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; color: #FFFFFF;">거래 저장<span style="margin-left: 6px; vertical-align: -3px; flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">4</span></div>
+    </div>
+
+  </div></div><div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px;"><div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 4px 16px; flex-shrink: 0; "><div style="display: flex; gap: 11px; padding: 10px 0; border-bottom: 1px solid #F3F5FA;"><span style="flex-shrink: 0; margin-top: 1px; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">1</span><div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><div style="font-size: 13.5px; line-height: 1.4; color: #475467;"><b style="font-weight: 600; color: #101828;">거래 종류</b>&nbsp;&nbsp;<b style="font-weight: 600;">저축·투자</b>가 미리 선택된 채 열립니다.</div><div style="font-size: 12px; line-height: 1.45; color: #626D88;">하루 시트의 <b style="font-weight: 600;">저축·투자로 기록 &rsaquo;</b>를 눌렀을 때입니다. <b style="font-weight: 600;">대출상환으로 기록 &rsaquo;</b>를 눌렀으면 대출상환이 선택됩니다.</div></div></div><div style="display: flex; gap: 11px; padding: 10px 0; border-bottom: 1px solid #F3F5FA;"><span style="flex-shrink: 0; margin-top: 1px; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">2</span><div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><div style="font-size: 13.5px; line-height: 1.4; color: #475467;"><b style="font-weight: 600; color: #101828;">날짜 · 금액</b>&nbsp;&nbsp;하루 시트에 적어 둔 값 그대로 채워집니다.</div><div style="font-size: 12px; line-height: 1.45; color: #626D88;">9월 8일 시트에서 12,000원을 적고 넘어온 그림입니다. 여기서 고칠 수 있습니다.</div></div></div><div style="display: flex; gap: 11px; padding: 10px 0; border-bottom: 1px solid #F3F5FA;"><span style="flex-shrink: 0; margin-top: 1px; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">3</span><div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><div style="font-size: 13.5px; line-height: 1.4; color: #475467;"><b style="font-weight: 600; color: #101828;">메모</b>&nbsp;&nbsp;하루 시트에 적은 메모도 함께 넘어옵니다.</div><div style="font-size: 12px; line-height: 1.45; color: #626D88;">칸 순서는 기존 거래 추가와 같습니다(거래 종류 → 날짜 · 금액 → 카테고리 → 메모 → 잔액 반영). 순서를 바꾸지 않습니다.</div></div></div><div style="display: flex; gap: 11px; padding: 10px 0; "><span style="flex-shrink: 0; margin-top: 1px; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #FFFFFF;">4</span><div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><div style="font-size: 13.5px; line-height: 1.4; color: #475467;"><b style="font-weight: 600; color: #101828;">거래 저장</b>&nbsp;&nbsp;저장하면 소비 탭에 머물지 않고 <b style="font-weight: 600;">홈으로 돌아와 완료 카드</b>가 뜹니다.</div><div style="font-size: 12px; line-height: 1.45; color: #626D88;">저장에 성공하면 출발한 하루 시트의 9월 8일 초안을 비웁니다. 취소하거나 저장에 실패하면 초안은 남습니다.</div></div></div></div><div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 13px 16px; flex-shrink: 0; "><div style="font-size: 12px; font-weight: 700; color: #101828;">어디서 와서 어디로 가나</div><div style="display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 9px;"><span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; font-size: 12.5px; font-weight: 600; background: #F4F6FB; color: #475467;">홈 · 하루 시트</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#697182" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; font-size: 12.5px; font-weight: 600; background: #F4F6FB; color: #475467;">저축·투자로 기록 &rsaquo;</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#697182" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; font-size: 12.5px; font-weight: 600; background: #E9EDFD; color: #3556E6;">소비 탭 · 거래 추가</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#697182" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; font-size: 12.5px; font-weight: 600; background: #F4F6FB; color: #475467;">거래 저장</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#697182" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; font-size: 12.5px; font-weight: 600; background: #F4F6FB; color: #475467;">홈 · 완료 카드</span></div><p style="margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: #626D88;">하루 시트에는 거래 종류 · 잔액 반영 · 계좌 선택이 없어서, 저축·투자와 대출상환은 이 창에서 남깁니다. 소비율에는 들어가지 않습니다. 수입 · 환불은 어디에서도 안내하지 않습니다.</p></div></div></div></div>
+</x-dc>
+</body>
+</html>

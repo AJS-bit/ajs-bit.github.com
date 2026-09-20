@@ -3,7 +3,7 @@
 원본 `canvas/Tokens.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:1684px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:30px`
+  `width:1200px height:1720px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:30px`
   - `div`
     `display:flex align-items:flex-end justify-content:space-between gap:20px border-bottom:2px solid #101828`
     - `div`
@@ -270,3 +270,11 @@
         - `span` — “그래프 규칙은 「컴포넌트 · 상태」 장의 03b · 그래프 규칙을 참고하세요.”
           `font-weight:600 color:#101828`
         - `br`
+      - `div` **text 12px/600** — “08 · 달력 규칙 — v5”
+        `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88 margin-top:24px`
+      - `div`
+        `margin-top:12px border:1px solid #E3E8F1 border-radius:14px`
+        - `div`
+          `padding:12px 14px border-bottom:1px solid #EFF2F8`
+        - `div`
+          `padding:12px 14px`

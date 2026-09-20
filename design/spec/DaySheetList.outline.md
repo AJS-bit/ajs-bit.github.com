@@ -6,7 +6,7 @@
   `width:390px height:844px background:#2A3245 color:#101828 display:flex flex-direction:column position:relative`
   - `div`
     `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
-    - `span` **text 11px/500** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+    - `span` **text 11px/500** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `font-size:11px line-height:1.4 font-weight:500 color:rgba(255,255,255,.62)`
   - `div` **BottomSheet**
     `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
@@ -33,6 +33,9 @@
       - `div` — “추가”
         `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
       - `div`
-        `margin-top:auto`
         - `div`
-          `display:flex align-items:center gap:14px`
+          `display:flex flex-direction:column gap:5px`
+      - `div`
+        `margin-top:auto`
+        - `div` **SecondaryButton(44)** — “9월 3일 다 적었어요”
+          `display:flex align-items:center justify-content:center gap:6px height:44px width:100% border-radius:12px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:14.5px font-weight:600 white-space:nowrap`

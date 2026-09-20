@@ -5,7 +5,7 @@ plan/v4-stocks.md §4·§5·§7. 1단계와 같은 방식(라이트를 만들고
 `import gen_v4`가 1단계 5장도 함께 다시 쓴다(멱등). 목적지 탭의 본문은 Goals.dc.html·Future.dc.html에서
 그대로 잘라 쓴다 — 내비만 바뀌고 화면은 v3 그대로라는 것이 2단계의 요점이기 때문.
 
-    python3 gen_v4_stocks.py          # 15 + 15장 → ../ , 스냅숏 샘플 → ../../stocks-snapshot.sample.json
+    python3 gen_v4_stocks.py          # 16 + 16장 → ../ , 스냅숏 샘플 → ../../stocks-snapshot.sample.json
 """
 import json
 import pathlib
@@ -15,7 +15,7 @@ import gen_v4 as s1                     # 1단계 조각(mark·topline·checkbox
 from darken import darken
 
 OUT = s1.OUT
-V4B = ['DestGoals', 'DestFuture', 'HomeStocksOff',                                   # 2단계
+V4B = ['DestGoals', 'DestFuture', 'DestPayoff', 'HomeStocksOff',                                   # 2단계
        'StocksMine', 'HoldingAdd', 'StocksEmpty', 'HomeStocksCard',                  # 3단계
        'StocksHome', 'StockListGrowth', 'StockListDividend', 'StockDetail', 'StockThemes', 'StockStates',   # 4단계
        'StockSettings', 'SnapshotUpdate']                                            # 5단계
@@ -160,14 +160,35 @@ def dest_header(active):
     return screen_header('목적지', '4개 진행 중 · 앞으로의 항로', tabs=['내 목적지', '자산 경로', '상환 계획'], active=active)
 
 
-w('DestGoals', frame(dest_header(0) + '\n' + content_of('Goals') + '\n' + nav_v4(4)))
+# 세그먼트에서 '새 목적지 설계'가 빠졌으므로 목록 끝 점선 버튼이 그 화면으로 가는 길이다 — 문구를 바꾸고 오른쪽 화살표를 붙인다.
+goals_content = content_of('Goals')
+ADD_OLD = '</svg>\n      목적지 추가\n    </div>'
+assert goals_content.count(ADD_OLD) == 1
+goals_content = goals_content.replace(
+    ADD_OLD, '</svg>\n      <span style="white-space: nowrap; flex-shrink: 0;">새 목적지 설계</span>\n      '
+    + icon("right", 16, C["BRAND"], 2) + '\n    </div>')
+w('DestGoals', frame(dest_header(0) + '\n' + goals_content + '\n' + nav_v4(4)))
 w('DestFuture', frame(dest_header(1) + '\n' + content_of('Future') + '\n' + nav_v4(4)))
+# 상환 계획 — Payoff 본문(가정 카드 보라 점선 · 저장 띠 포함)을 그대로, 머리와 내비만 새 것.
+payoff_content = content_of('Payoff')
+assert '저장되지 않는 가정' in payoff_content and 'dashed' in payoff_content
+# Payoff 원본이 keep_all=True 로 쓰이므로(gen_screens) 여기도 같게 — 안내문이 낱말 중간에서 꺾이지 않는다.
+w('DestPayoff', frame(dest_header(2) + '\n' + payoff_content + '\n' + nav_v4(4)), keep_all=True)
 
 # 주식 꺼짐 = 4탭. 홈은 1단계 '구성 반영' 그대로, 내비만 다르다.
 hc = (OUT / 'HomeConfigured.dc.html').read_text(encoding='utf-8')
 hc_body = s1.cut(hc, '<div style="width: 390px; height: 844px;', M_NAV)
 hc_inner = hc_body[hc_body.index('>') + 1:]
-w('HomeStocksOff', frame(hc_inner + nav_v4(0, stocks=False)))
+# 달력이 들어오면서 홈이 844 를 넘는다. 위에서부터 그리면 이 장이 보여 주려는 아래 카드(한도 · 순자산 · 상환 계획)가 잘리므로
+# HomeCalendar 처럼 '아래로 스크롤한 상태'로 그린다 — 머리는 밀려 올라가고, 본문은 아래 맞춤(flex-end)이라 넘치는 만큼 히어로 윗단이 잘린다.
+HC_CONTENT = '<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 0 14px; overflow: hidden;">'
+# 아래 패딩 27px(허용 20~35) — 절단선이 히어로 큰 숫자 줄(57.9% · 여유)과 그다음 줄 사이의 빈 띠에 와서, 프레임 맨 위에 글자 아랫부분이 남지 않는다.
+# 12px 이면 절단선이 54px 숫자 줄을 지나 글자 밑동 약 8px 이 남는다. 본문 높이가 바뀌면 이 값을 다시 잰다.
+assert HC_CONTENT.count('padding: 0 14px;') == 1
+HOME_SCROLLED = HC_CONTENT.replace('padding: 0 14px;', 'justify-content: flex-end; padding: 0 14px 27px;')
+assert hc_inner.count(HC_CONTENT) == 1 and '이번 달 달력' in hc_inner
+hc_scrolled = '\n  ' + hc_inner[hc_inner.index(HC_CONTENT):].replace(HC_CONTENT, HOME_SCROLLED)
+w('HomeStocksOff', frame(hc_scrolled + nav_v4(0, stocks=False)))
 
 
 # ══════════════ 3단계 · 주식탭 뼈대 (사용자 입력만) ══════════════
@@ -236,10 +257,14 @@ stock_summary_card = card(
     f'<div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">'
     f'<span style="font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK"]};">1,244만원</span>'
     f'{icon("right", 16, C["INK4"], 2)}</div></div>', pad='4px 14px')
+# v4-3 은 v5-3 뒤라 한도 라벨이 '앞으로 하루 …'(gen_v5 home_expanded 와 같은 치환 · 첫 줄은 한 줄 고정).
+LIM_LEFT = '<span style="font-size: 13.5px; font-weight: 600; color: #101828;">이번 달 한도 '
+assert s1.limit_block.count(LIM_LEFT) == 1 and s1.limit_block.count('하루 47,270원') == 1
+limit_v53 = (s1.limit_block.replace(LIM_LEFT, LIM_LEFT.replace('color: #101828;', 'color: #101828; white-space: nowrap;'))
+             .replace('하루 47,270원', '앞으로 하루 47,270원'))
 w('HomeStocksCard', frame(
-    f'\n  {s1.header}\n\n'
-    f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 0 14px; overflow: hidden;">\n\n'
-    f'    {s1.hero_block}\n\n    {s1.guide_block}\n\n    {stock_summary_card}\n\n    {s1.limit_block}\n\n    {s1.networth_card}\n\n  </div>\n\n'
+    f'\n  {HOME_SCROLLED}\n\n'
+    f'    {s1.hero_block}\n\n    {s1.calendar_block}\n\n    {s1.guide_block}\n\n    {stock_summary_card}\n\n    {limit_v53}\n\n    {s1.networth_card}\n\n  </div>\n\n'
     f'  {nav_v4(0)}\n'), keep_all=True)
 
 
@@ -409,7 +434,7 @@ metrics_card = card(
     + ''.join(f'<div style="display: flex; flex-direction: column; gap: 3px; {"padding-left: 10px; border-left: 1px solid " + C["LINE_SOFT"] + ";" if i else "padding-right: 10px;"}">'
               f'<span style="font-size: 11.5px; font-weight: 500; color: {C["INK3"]};">{k}</span>'
               f'<span style="font-size: 16px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK"]};">{v}</span></div>'
-              for i, (k, v) in enumerate([('연 매출', '300.9조'), ('영업이익', '32.7조'), ('시가총액', '425조')]))
+              for i, (k, v) in enumerate([('연 매출', '300.9조'), ('영업이익', '32.7조'), ('이익 증가율', '연 18%')]))   # 성장 = 매출 · 영업이익 · 증가율(계획 §5-2 S3). 값은 이유 카드 '이익 성장 속도 연 18%'와 같다.
     + '</div>', pad='11px 14px')
 sim_card = (
     f'<div style="background: {C["SURF"]}; border: 1px dashed {C["VIO_LINE"]}; border-radius: 18px; padding: 12px 14px; flex-shrink: 0;">'
