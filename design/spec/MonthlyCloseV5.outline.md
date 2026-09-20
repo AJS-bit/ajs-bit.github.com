@@ -40,7 +40,7 @@
           `display:flex gap:10px margin-top:12px`
       - `div` — “· 다음 달 한도 배분에도 기타로 들어가요 ·”
         `padding:10px 12px border:1px solid #E3E8F1 border-radius:12px font-size:12px line-height:1.5 color:#475467`
-        - `span` — “분류 안 함 4건 · 32,000원이 기타로 들어가요”
+        - `span` — “분류 안 함 3건 · 21,200원이 기타로 들어가요”
           `font-weight:600 color:#101828`
         - `span` — “지금 분류 ›”
           `font-weight:600 color:#3556E6 white-space:nowrap`

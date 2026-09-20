@@ -260,18 +260,18 @@ w('Ledger', frame(
 # 날짜 그룹 헤더 `소비 8.7만 · 이체 30만`(0인 항목 생략) + 확인한 날 체크 · 행 ⋯ 에 `매달 반복으로 만들기`(분류 안 함 행 제외).
 # 날짜별 합계는 달력 시안(gen_calendar.SEP)과 같은 값이어야 한다 — 아래 assert 가 지킨다. v3 기준 그림 `Ledger` 는 그대로 둔다.
 # 9월 8일(오늘) 행은 하루 시트의 `오늘 기록`(계획 §4-2 도면 · gen_v5.RECENT)과 같은 자료다 — 커피 4,500 = 카페/간식 · 편의점 6,500 = 분류 안 함.
-# 9월 6일 이체는 손으로 적은 이체다 — 등록된 반복 거래 `ETF 자동이체`는 매월 5일(RecurringPrefill)이라 이 행에 `반복` 배지를 달지 않는다.
-from gen_calendar import SEP, SEP_CHECK, SEP_TOTAL, fmt_sum
+# 9월 6일 이체는 등록된 반복 거래 `ETF 자동이체`(매월 6일 · RecurringPrefill 등록 목록)가 자동으로 기록한 행이다 — `소비율 제외` + `반복` 배지(v3 Ledger 의 같은 행과 같은 모양).
+from gen_calendar import SEP, SEP_CHECK, SEP_TRANSFER, SEP_TOTAL, fmt_sum
 
 WEEKDAY = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
 
-# (날짜, [(카테고리 | None = 분류 안 함, 아이콘, 메모, 계좌 글, 금액, 종류)]) — 종류 'spend' | 'transfer'
+# (날짜, [(카테고리 | None = 분류 안 함, 아이콘, 메모, 계좌 글, 금액, 종류)]) — 종류 'spend' | 'transfer'(손으로 적은 이체) | 'transfer-auto'(반복 거래가 자동 기록한 이체)
 LEDGER_V5 = [
     (8, [('카페/간식', 'coffee', '커피', '계좌 미지정', 4_500, 'spend'),
          ('식비', 'rice', '점심', '계좌 미지정', 9_000, 'spend'),
          ('쇼핑', 'bag', '생필품', '계좌 미지정', 17_000, 'spend'),
          (None, None, '편의점', None, 6_500, 'spend')]),
-    (6, [('저축/투자', 'leaf', 'ETF 계좌로 이체', '생활비 → ETF 계좌', 300_000, 'transfer')]),
+    (6, [('저축/투자', 'leaf', 'ETF 자동이체', '생활비 → ETF 계좌', 300_000, 'transfer-auto')]),
     (5, [(None, None, '버스', None, 4_500, 'spend'),
          (None, None, '', None, 3_000, 'spend'),
          (None, None, '커피', None, 4_500, 'spend')]),
@@ -287,7 +287,8 @@ for _d, _rows in LEDGER_V5:       # 칸 숫자 = 내역 날짜 헤더와 같은 
 V5_COUNT = sum(len(rows) for _, rows in LEDGER_V5)
 V5_UNCAT = [r for _, rows in LEDGER_V5 for r in rows if r[0] is None]
 assert len(V5_UNCAT) == 7 and sum(r[4] for r in V5_UNCAT) == 32_000      # `분류 안 함 7건` · 히어로 각주 `분류 안 한 32,000원`
-V5_TRANSFER = sum(r[4] for _, rows in LEDGER_V5 for r in rows if r[5] == 'transfer')
+V5_TRANSFER = sum(r[4] for _, rows in LEDGER_V5 for r in rows if r[5].startswith('transfer'))
+assert V5_TRANSFER == 300_000 and {d for d, rows in LEDGER_V5 if any(r[5].startswith('transfer') for r in rows)} == SEP_TRANSFER      # 내역의 이체 날짜 = 달력의 이체 배지 날짜
 
 
 def head_sum(n):
@@ -313,8 +314,8 @@ def tx5(cat, ic, memo, link_txt, amt, kind, menu=''):
         title, sub = (memo or '분류 안 함 기록'), '분류 안 함'
     else:
         tile, title, sub = caticon(cat, ic, 34), memo, f'{cat} · {link_txt}'
-    muted = kind == 'transfer'
-    badges = minib('소비율 제외', 'mute') if muted else ''      # 손으로 적은 이체 — `반복` 배지는 자동 기록된 반복 거래에만 단다(이 장에는 없음)
+    muted = kind.startswith('transfer')
+    badges = (minib('소비율 제외', 'mute') if muted else '') + (minib('반복', 'brand') if kind == 'transfer-auto' else '')      # `반복` 배지는 자동 기록된 반복 거래에만 단다(9월 6일 ETF 자동이체)
     b = f'<span style="display: inline-flex; gap: 5px; margin-left: 6px;">{badges}</span>' if badges else ''
     return (f'<div style="position: relative; display: flex; align-items: center; gap: 11px; min-height: 54px; border-top: 1px solid {C["LINE_ROW"]};">'
             f'{tile}<div style="flex: 1; min-width: 0;">'
@@ -326,7 +327,7 @@ def tx5(cat, ic, memo, link_txt, amt, kind, menu=''):
 
 def daygroup5(day, rows):
     spend = sum(r[4] for r in rows if r[5] == 'spend')
-    transfer = sum(r[4] for r in rows if r[5] == 'transfer')
+    transfer = sum(r[4] for r in rows if r[5].startswith('transfer'))
     parts = ([f'소비 {head_sum(spend)}'] if spend else []) + ([f'이체 {head_sum(transfer)}'] if transfer else [])     # 0인 항목은 생략
     chk = (f'<span style="display: inline-flex; flex-shrink: 0;">{icon("check", 12, C["INK2"], 2.8)}</span>') if day in SEP_CHECK else ''
     wd = WEEKDAY[(1 + day) % 7] + (' · 오늘' if day == 8 else '')           # 2026-09-01 = 화요일

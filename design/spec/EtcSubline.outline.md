@@ -50,7 +50,7 @@
         `font-size:12px line-height:1.55 color:#475467`
         - `b` — “기타”
           `font-weight:600 color:#101828`
-        - `b` — “분류 안 함 4건 32,000원”
+        - `b` — “분류 안 함 7건 32,000원”
           `font-weight:600 color:#101828`
     - `div`
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`

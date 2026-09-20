@@ -46,7 +46,7 @@
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
-      - `div` **text 11px/400** — “8월 기록한 소비 1,660,200원”
+      - `div` **text 11px/400** — “8월 기록한 소비 1,715,200원”
         `font-size:11px line-height:1.5 color:#475467 margin-top:8px`
       - `div`
         `display:flex align-items:center justify-content:space-between height:32px margin-top:2px border-top:1px solid #EFF2F8`

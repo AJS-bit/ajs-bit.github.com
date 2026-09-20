@@ -38,12 +38,15 @@ SEP = {1: 12_000, 2: None, 3: 58_500, 4: 4_500, 5: 12_000, 6: 0, 7: None, 8: 37_
 SEP_CHECK, SEP_TRANSFER = {1, 4, 5}, {6}
 AUG = {1: 23_500, 2: 61_000, 3: 9_800, 4: 4_500, 5: 712_000, 6: 15_300, 7: 38_000, 8: 52_400, 9: 0, 10: 12_000,
        11: 6_700, 12: 89_000, 13: 4_500, 14: 27_600, 15: 118_000, 16: None, 17: 9_900, 18: 33_000, 19: 4_500,
-       20: 64_500, 21: 17_800, 22: 72_000, 23: 41_200, 24: 5_600, 25: 13_000, 26: 8_900, 27: 29_500, 28: 96_000,
+       20: 64_500, 21: 17_800, 22: 72_000, 23: 41_200, 24: 5_600, 25: 68_000, 26: 8_900, 27: 29_500, 28: 96_000,
        29: 35_000, 30: None, 31: 55_000}
 AUG_CHECK = {d for d, v in AUG.items() if v and d != 31}          # 0(안 썼어요)에는 ✓ 없음
-AUG_TRANSFER = {25}
+AUG_TRANSFER = {6}                # 반복 거래 `ETF 자동이체` 매월 6일(RecurringPrefill · LedgerV5 9월 6일과 같은 날)
+# 8월 25일 68,000 = 그날 쓴 13,000 + 자동 기록된 반복 거래 `휴대폰 요금` 55,000(매월 25일 · RecurringPrefill · DaySheetConfirm)
+assert AUG[25] == 13_000 + 55_000
 SEP_TOTAL = sum(v for v in SEP.values() if v)
 AUG_TOTAL = sum(v for v in AUG.values() if v)
+assert AUG_TOTAL == 1_715_200      # 1,660,200 + 휴대폰 요금 55,000
 MONTHS = {'sep': (SEP, SEP_CHECK, SEP_TRANSFER), 'aug': (AUG, AUG_CHECK, AUG_TRANSFER)}
 
 
@@ -125,8 +128,9 @@ def nav_btn(name, enabled=True, size=32):
             f'align-items: center; justify-content: center; flex-shrink: 0;">{arrow}</span>')
 
 
-def month_bar(label, prev_on, next_on, back_pill=False, large=False, pill_below=False, label_w=None):
-    """펼친 달력의 머리줄 — ‹ 2026년 9월 › · (지난달을 볼 때) 이번 달로 · 접기. 이동 범위는 이번 달 + 지난달(하루 시트 범위와 같다)."""
+def month_bar(label, prev_on, next_on, back_pill=False, large=False, pill_below=False, label_w=None, fold=True):
+    """펼친 달력의 머리줄 — ‹ 2026년 9월 › · (지난달을 볼 때) 이번 달로 · 접기. 이동 범위는 이번 달 + 지난달(하루 시트 범위와 같다).
+    fold=False = `접기`가 없는 머리줄(늘 펼쳐 두는 데스크톱 홈 — DesktopHomeV5). 오른쪽에 둘 것이 없으면 오른쪽 묶음도 그리지 않는다."""
     size = 40 if large else 32
     fs, tfs = (19, 15.5) if large else (15, 12)
     pill = (f'<span style="font-size: {tfs}px; font-weight: 600; color: {C["BRAND"]}; background: {C["BRAND_SOFT"]}; border-radius: 99px; '
@@ -135,12 +139,14 @@ def month_bar(label, prev_on, next_on, back_pill=False, large=False, pill_below=
     if back_pill and (pill_below or large):      # 334px 안에 머리줄 + 알약이 들어가지 않는 경우
         below = f'<div style="display: flex; justify-content: flex-end; margin-top: 6px;">{pill}</div>'
         pill = ''
+    toggle = (f'<span style="display: inline-flex; align-items: center; gap: 2px; font-size: {tfs}px; font-weight: 600; color: {C["INK2"]}; white-space: nowrap;">'
+              f'접기{icon("up", 14 if not large else 17, C["INK2"], 2.2)}</span>') if fold else ''
+    right = f'<div style="display: flex; align-items: center; gap: 8px;">{pill}{toggle}</div>' if (pill or toggle) else ''
     return (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: {size}px;">'
             f'<div style="display: flex; align-items: center; gap: 4px;">{nav_btn("left", prev_on, size)}'
             f'<span style="min-width: {label_w or (118 if large else 94)}px; text-align: center; font-size: {fs}px; font-weight: 700; letter-spacing: -0.015em; color: {C["INK"]}; white-space: nowrap;">{label}</span>'
             f'{nav_btn("right", next_on, size)}</div>'
-            f'<div style="display: flex; align-items: center; gap: 8px;">{pill}'
-            f'<span style="display: inline-flex; align-items: center; gap: 2px; font-size: {tfs}px; font-weight: 600; color: {C["INK2"]}; white-space: nowrap;">접기{icon("up", 14 if not large else 17, C["INK2"], 2.2)}</span></div></div>{below}')
+            f'{right}</div>{below}')
 
 
 def status_rows(review=2, text='오늘 4건 37,000원', large=False):
@@ -186,11 +192,11 @@ def list_link(large=True):
 
 
 def calendar_card(expanded=False, pressed=None, pad=14, month='sep', large=False, with_list_link=False,
-                  states=None, since=None, status=None, review=2, scroll=False):
+                  states=None, since=None, status=None, review=2, scroll=False, fold=True):
     """접힘(최근 7일 스트립) · 펼침(월 달력) 카드. 아래 인수는 접힘에만 쓴다(기본값이면 예전과 똑같은 결과).
     states = {날짜: (합계 글자, ✓, 이체, 0원 표시)} 기본 자료를 덮어쓸 칸 · since = 시작일(이전 칸은 옅은 빈 칸) ·
     status = 상태 줄 문장 · review = `확인할 내용 N개`(0이면 행 없음) · scroll = 320px(칸 44 고정 · 카드 안 가로 스크롤 · 오늘이 오른쪽 끝) ·
-    large = 큰 글자(칸 높이 72)."""
+    large = 큰 글자(칸 높이 72). fold=False(펼침에만) = 머리줄에 `접기`를 두지 않는다 — 늘 펼쳐 두는 데스크톱 홈."""
     if not expanded:
         tfs, sfs, isz = (18, 15.5, 17) if large else (14, 12, 14)
         title = (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
@@ -206,10 +212,10 @@ def calendar_card(expanded=False, pressed=None, pad=14, month='sep', large=False
         tail = status_rows(review=review, large=large) if status is None else status_rows(review=review, text=status, large=large)
         return card(title + body + tail, pad=f'13px {pad}px 13px')
     if month == 'sep':
-        bar = month_bar('2026년 9월', prev_on=True, next_on=False, large=large)
+        bar = month_bar('2026년 9월', prev_on=True, next_on=False, large=large, fold=fold)
         status = f'9월 기록한 소비 {SEP_TOTAL:,}원 · 오늘 4건 37,000원'
     else:
-        bar = month_bar('2026년 8월', prev_on=False, next_on=True, back_pill=True, large=large)
+        bar = month_bar('2026년 8월', prev_on=False, next_on=True, back_pill=True, large=large, fold=fold)
         status = f'8월 기록한 소비 {AUG_TOTAL:,}원'
     tail = status_rows(text=status, large=large) + (list_link(large) if with_list_link else '')
     return card(bar + month_grid(month, pressed, large) + tail, pad=f'13px {pad}px {4 if with_list_link else 13}px')

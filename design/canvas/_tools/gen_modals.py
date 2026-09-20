@@ -179,9 +179,15 @@ w('MonthlyClose', sheet(
 # ══════════════ 6-2. 월 마감 확정 — v5-1 이후 (MonthlyCloseV5) ══════════════
 # plan/v5-calendar.md §9-9 · §9-23 · §5-3: 체크박스 새 문구 + `자동으로 채워진 값` 위 분류 안 함 한 줄. v3 기준 그림 `MonthlyClose` 는 그대로 둔다.
 # 한 줄이 늘어난 만큼 시트 본문이 길어져, 맨 아래 급여 안내(`급여를 비워 두면 …`)는 이 장에서 스크롤 아래로 내려간 것으로 보고 그리지 않는다.
+# 8월 마감 창이므로 8월 값이다 — 8월 달력(gen_calendar.AUG)의 11일 6,700 · 24일 5,600 · 26일 8,900원 칸을 분류 안 함 3건으로 본다.
+# 9월의 `분류 안 함 7건 32,000원`(내역 · 분류하기 · 소비 화면)과 같은 숫자로 읽히지 않게 달마다 다른 값을 쓴다.
+from gen_calendar import AUG
+UNCAT_AUG_DAYS = (11, 24, 26)
+UNCAT_AUG_SUM = sum(AUG[d] for d in UNCAT_AUG_DAYS)
+assert UNCAT_AUG_SUM == 21_200
 UNCAT_LINE = (
     f'<div style="flex-shrink: 0; padding: 10px 12px; border: 1px solid {C["LINE"]}; border-radius: 12px; font-size: 12px; line-height: 1.5; color: {C["INK2"]};">'
-    f'<span style="font-weight: 600; color: {C["INK"]};">분류 안 함 4건 · 32,000원이 기타로 들어가요</span> · 다음 달 한도 배분에도 기타로 들어가요 · '
+    f'<span style="font-weight: 600; color: {C["INK"]};">분류 안 함 {len(UNCAT_AUG_DAYS)}건 · {UNCAT_AUG_SUM:,}원이 기타로 들어가요</span> · 다음 달 한도 배분에도 기타로 들어가요 · '
     f'<span style="font-weight: 600; color: {C["BRAND"]}; white-space: nowrap;">지금 분류 &rsaquo;</span></div>')
 
 w('MonthlyCloseV5', sheet(
