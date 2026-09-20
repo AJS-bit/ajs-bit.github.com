@@ -12,7 +12,7 @@
         `display:flex align-items:baseline gap:8px`
         - `h1` **text 21px/700** — “소비”
           `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828`
-        - `span` **text 12px/500** — “지난 달 · 마감됨”
+        - `span` **text 12px/500** — “7월 · 마감됨”
           `font-size:12px font-weight:500 color:#626D88`
       - `div`
         `display:flex align-items:center gap:2px height:34px padding:0 4px border-radius:10px background:#FFFFFF border:1px solid #E3E8F1`
@@ -81,7 +81,7 @@
         - `div`
           `position:absolute left:0 right:0 top:14px border-top:1px dashed #D7DEEA`
         - `span` **text 12px/700** — “191만”
-          `position:absolute right:0 top:36px font-size:12px font-weight:700 color:#101828`
+          `position:absolute right:8px top:36px font-size:12px font-weight:700 color:#101828 white-space:nowrap`
       - `div`
         `position:relative height:26px border-top:1px solid #EFF2F8 margin-top:6px`
         - `span` **text 11px/400** — “1일”

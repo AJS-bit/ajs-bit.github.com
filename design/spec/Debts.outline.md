@@ -70,7 +70,7 @@
           `font-size:11px font-weight:600 letter-spacing:0.06em color:#B45309`
         - `span` **text 15px/600** — “카드 할부 연 14.5%부터 갚으세요”
           `font-size:15px font-weight:600 letter-spacing:-0.015em line-height:1.35 color:#101828`
-        - `span` **text 12.5px/400** — “잔액은 전체의 2%뿐이지만 금리가 신용대출의 2.1배예요.”
+        - `span` **text 12.5px/400** — “잔액은 전체의 2%지만 금리는 신용대출의 2.1배예요.”
           `font-size:12.5px line-height:1.45 color:#475467`
         - `span` **text 12.5px/600** — “상환 전략 보기 ›”
           `font-size:12.5px font-weight:600 color:#3556E6 margin-top:5px`

@@ -7,19 +7,22 @@ OUT = pathlib.Path(__file__).resolve().parent.parent
 PHONE = (390, 844)
 # 프레임 높이는 "실제 웹폰트로 렌더한 자연 높이 + 아래 여백 24px"이다.
 # 폴백 폰트로 재면 한글 줄 높이가 짧게 나와 실제보다 작은 값이 나온다. 반드시 IBM Plex Sans KR로 재라.
-TALL = {'StorageStates': 1309, 'PeerStates': 1595, 'EmptyStates': 1718, 'Confirmations': 1228,
-        'ModalErrors': 2061, 'GoalTypes': 1767}
-TALL.update({'StockStates': 800, 'SnapshotUpdate': 860})   # v4 상태 시트 (gen_v4_stocks.py)
-TALL.update({'DaySheetConfirm': 1200, 'HeroFootnotes': 1800})   # v5 상태 시트 (gen_v5.py)
+TALL = {'StorageStates': 1324, 'PeerStates': 1555, 'EmptyStates': 1733, 'Confirmations': 1245,
+        'ModalErrors': 2061, 'GoalTypes': 1920}
 TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'DarkDesktopLedger': (1440, 900),
-        'Tokens': (1200, 1684), 'Components': (1200, 1471), 'DarkComponents': (1200, 1471),
+        'Tokens': (1200, 1684), 'Components': (1200, 1555), 'DarkComponents': (1200, 1555),
         'DaySheet360': (360, 844), 'DarkDaySheet360': (360, 844),
         'HomeCalendar360': (360, 844), 'DarkHomeCalendar360': (360, 844),   # v5 좁은 폰
         # v5 구현 참고 장 — 폰 프레임이 아니라 가로로 넓은 설명 장
         'CalendarCells': (940, 730), 'DarkCalendarCells': (940, 730),
-        'CalendarGridSizes': (1150, 1300), 'DarkCalendarGridSizes': (1150, 1300)}
+        'CalendarGridSizes': (1150, 1300), 'DarkCalendarGridSizes': (1150, 1300),
+        'DaySheetConfirm': (1200, 900), 'DarkDaySheetConfirm': (1200, 900),
+        'HeroFootnotes': (1200, 640), 'DarkHeroFootnotes': (1200, 640),
+        # v4 구현 참고 장 (gen_v4_stocks.py)
+        'StockStates': (1180, 880), 'DarkStockStates': (1180, 880),
+        'SnapshotUpdate': (1180, 762), 'DarkSnapshotUpdate': (1180, 762)}
 
 TITLES = {
     'Main': '홈 · 오늘의 내비게이션', 'HomeScroll': '홈 · 아래로 스크롤',
@@ -32,7 +35,7 @@ TITLES = {
     'DebtDialog': '모달 · 부채 수정', 'GoalDialog': '모달 · 목적지 추가',
     'RecurringDialog': '모달 · 반복 거래', 'MonthlyClose': '모달 · 월 마감',
     'ImportReview': '모달 · 백업 불러오기', 'CoachPanel': '모달 · 코칭',
-    'AlertsPanel': '모달 · 알림', 'PeerDialog': '모달 · 또래 기준 등록',
+    'AlertsPanel': '모달 · 알림', 'AlertsEmpty': '모달 · 알림 없음', 'PeerDialog': '모달 · 또래 기준 등록',
     'StorageStates': '상태 · 저장소 로딩·복구', 'PeerStates': '상태 · 또래 카드 5종',
     'EmptyStates': '상태 · 미입력 5종', 'Confirmations': '상태 · 삭제·초기화 확인',
     'ModalErrors': '상태 · 모달 오류·저장 6종', 'GoalTypes': '상태 · 목적지 유형 5종',
@@ -43,18 +46,18 @@ TITLES = {
     # v4 · 1단계 (gen_v4.py)
     'IntroPosition': '첫 실행 · 소개 1 현재 위치', 'IntroRoute': '첫 실행 · 소개 2 항로',
     'IntroDestination': '첫 실행 · 소개 3 목적지', 'HomeSetup': '첫 실행 · 홈 구성',
-    'HomeConfigured': '홈 · 구성 반영',
+    'HomeConfigured': '홈 · 구성 반영 · 탭 합치기 전',
     # v4 · 2~5단계 (gen_v4_stocks.py)
     'DestGoals': '목적지 · 내 목적지 (5탭)', 'DestFuture': '목적지 · 자산 경로 (5탭)', 'HomeStocksOff': '홈 · 주식 꺼짐 (4탭)',
     'StocksMine': '주식 · 내 종목', 'HoldingAdd': '모달 · 보유 기록', 'StocksEmpty': '주식 · 빈 상태', 'HomeStocksCard': '홈 · 주식 요약 카드',
     'StocksHome': '주식 · 둘러보기', 'StockListGrowth': '주식 · 성장주 목록', 'StockListDividend': '주식 · 배당주 목록',
-    'StockDetail': '주식 · 종목 상세', 'StockThemes': '주식 · 테마', 'StockStates': '상태 · 주식 5종',
-    'StockSettings': '모달 · 설정 › 주식', 'SnapshotUpdate': '상태 · 스냅숏 갱신',
+    'StockDetail': '주식 · 종목 상세', 'StockThemes': '주식 · 테마', 'StockStates': '참고 · 주식 탭 특수한 상황 6가지',
+    'StockSettings': '모달 · 설정 › 주식', 'SnapshotUpdate': '참고 · 종목 데이터 새로 받기',
     # v5 · 1단계 (gen_v5.py)
     'DaySheet': '하루 시트 · 오늘 (키보드 열림)', 'DaySheetList': '하루 시트 · 기록 있는 과거 날 (목록 우선)',
-    'DaySheetEdit': '하루 시트 · 수정 모드', 'DoneCard': '홈 · 저장 뒤 완료 카드', 'DaySheetConfirm': '상태 · 저장 직전 확인 4종',
+    'DaySheetEdit': '하루 시트 · 수정 모드', 'DoneCard': '홈 · 저장 뒤 완료 카드', 'DaySheetConfirm': '참고 · 저장을 한 번 더 물어보는 경우',
     'ClassifySheet': '분류하기 시트', 'HeroInsufficient': '홈 · 히어로 이력 부족', 'DaySheet360': '하루 시트 · 360px',
-    'HeroFootnotes': '상태 · 히어로 조건부 각주 4종',
+    'HeroFootnotes': '참고 · 홈 맨 위 카드의 안내 줄',
     'HomeCalendarStrip': '홈 · 달력 접힘 (최근 7일)', 'HomeCalendar': '홈 · 달력 펼침 (월 달력) · 3일 칸 누름',
     'HomeCalendar360': '홈 · 달력 펼침 · 360px (월 달력 그대로)', 'HomeCalendarPrev': '홈 · 달력 펼침 · ‹ 지난달 8월 보기',
     'CalendarCells': '참고 · 달력 칸 읽는 법', 'CalendarGridSizes': '참고 · 달력을 펼치면 어디서나 월 달력',
@@ -67,7 +70,7 @@ PAGES = [
     ('page-2', '모바일 · 모달', 6,
      ['ProfileDialog', 'TransactionAdd', 'LimitEditor', 'AssetDialog', 'DebtDialog', 'GoalDialog',
       'RecurringDialog', 'GoalContribute', 'MonthlyClose', 'ImportReview', 'CoachPanel', 'CoachEmpty',
-      'AlertsPanel', 'PeerDialog']),
+      'AlertsPanel', 'AlertsEmpty', 'PeerDialog']),
     ('page-3', '상태 카탈로그', 6,
      ['StorageStates', 'EmptyStates', 'PeerStates', 'GoalTypes', 'ModalErrors', 'Confirmations']),
     ('page-4', '데스크톱', 2, ['DesktopHome', 'DesktopLedger']),
@@ -100,7 +103,7 @@ NOTES = {
                '— 밝은 브랜드색 배경에 어두운 글자.'),
     'page-2': ('note-modals', 640,
                '모달은 헤더 / 스크롤 본문 / 고정 하단 행동 세 층\n\n'
-               '제목은 무엇을 하는 창인지, 부제는 무엇이 저장되는지 말합니다. 필수는 라벨 옆 *, 선택은 라벨 옆 회색 "선택"입니다.\n\n'
+               '제목은 무엇을 하는 창인지, 부제는 무엇이 저장되는지 말합니다. 필수는 라벨 옆 *, 필수가 아닌 칸은 라벨 옆 회색 "선택 사항"입니다.\n\n'
                '한도 조정·월 마감·백업 불러오기처럼 되돌리기 어려운 저장에는 본문과 버튼 사이에 고정 확인 줄을 둡니다.\n\n'
                '── 아래 줄은 다크입니다. 시트 배경은 surface(#121A2B), 스크림은 #04070E이고 그림자는 더 깊고 '
                '불투명해집니다. 보라 가정 배지, 회색 — 미입력, 주황/빨강 경고의 의미는 라이트와 같습니다.'),
@@ -149,26 +152,26 @@ NOTES = {
                '── 아래 줄은 다크입니다.'),
     'page-8': ('note-v4-stage3', 640,
                'v4 · 3단계 — 주식탭 뼈대 (사용자 입력만, 스냅숏 없음)\n\n'
-               '보유는 수량·평단, 관심은 이름과 메모. 종가는 직접 넣는 값이라 가격 옆에 늘 "9/5 종가 · 직접 입력"이 붙고, 비워 두면 —입니다. '
+               '보유는 수량·평단, 관심은 이름과 메모. 종가는 직접 넣는 값이라 가격 옆에 늘 "9/4 종가"가 붙고(직접 넣은 값이라는 안내는 카드 머리말에 한 번), 비워 두면 —입니다. '
                '보유 평가액 1,244만원 = 수량 × 종가 (삼성전자 60주 · SK하이닉스 20주 · KODEX 200 120주, 매입 대비 +36만원).\n\n'
                '"계좌 평가액에 반영" 토글은 기본 꺼짐(§9-6). 켜면 ETF 계좌 평가액에 더해져 자산·순자산·미래 경로로 흐릅니다.\n\n'
                '넷째 장은 홈 구성에서 주식을 켠 사용자의 홈 — 주식 요약 카드 한 줄이 들어갑니다.\n\n'
                '── 아래 줄은 다크입니다.'),
     'page-9': ('note-v4-stage4', 640,
                'v4 · 4단계 — 카테고리 탐색 (내장 스냅숏)\n\n'
-               '주식 홈: 투자 여력 띠(홈과 같은 +20만원) → 가드레일 한 줄(막지 않음) → 내 종목 → 성장 · 저평가 · 배당 · 테마. '
+               '주식 홈: 투자 여력 띠(이번 달 저축·투자 여력 27만원) → 가드레일 한 줄(막지 않음) → 내 종목 → 성장 · 저평가 · 배당 · 테마. '
                '목록의 모든 행에 이유 한 줄과 충족 수가 붙고 색으로 좋다·나쁘다를 칠하지 않습니다. 없는 값은 —이고 분모가 줄어듭니다(2/2).\n\n'
                '종목 상세: 왜 이 목록에 있나(기준 3개 ✓·실제 숫자) → 52주 위치 바 → 핵심 숫자 → "내 항로에 넣어보기"(보라 점선 · 저장되지 않는 가정). '
                '월 15만원을 더 넣으면 투자 계좌 5,000만원 도착이 2032년 6월 → 2030년 12월(calc/goals.py의 months_to와 같은 식).\n\n'
                '종목명은 실재하지만 수치는 전부 디자인 검증용 가상값입니다 — design/stocks-snapshot.sample.json 참고. 추천·매수·매도라는 말은 어디에도 없습니다.\n\n'
                '── 아래 줄은 다크입니다.'),
     'page-10': ('note-v4-stage5', 640,
-               'v4 · 5단계 — 스냅숏 갱신(선택) · 기준값 설정\n\n'
-               '설정 › 주식: 스냅숏 기준일과 갱신 버튼, 기준값(말 → 규칙 → 시작값, 스텝퍼), 주식 기능 끄기. 기준값은 통계가 아니라 시작값이라 바꿔도 앱이 판단하지 않습니다.\n\n'
-               '갱신은 파일 하나를 한 번 받는 것이고 자동 갱신은 없습니다. 실패해도 기존 스냅숏으로 전부 동작합니다 — 둘째 장의 4단계 상태.\n\n'
+               'v4 · 5단계 — 종목 데이터 새로 받기(선택) · 기준값 설정\n\n'
+               '설정 › 주식: 종목 데이터 기준일과 [새로 받기] 버튼, 기준값(말 → 규칙 → 시작값, 스텝퍼), 주식 기능 끄기. 기준값은 통계가 아니라 시작값이라 바꿔도 앱이 판단하지 않습니다.\n\n'
+               '새로 받기는 파일 하나를 한 번 받는 것이고 자동으로 받지는 않습니다. 실패해도 지금 데이터로 전부 동작합니다 — 둘째 장은 앱 화면이 아니라 받는 순서를 설명하는 구현 참고 장입니다.\n\n'
                '── 아래 줄은 다크입니다.'),
     'page-11': ('note-v5-stage1', 640,
-               'v5 · 1단계 — 홈 달력과 하루 시트 (plan/v5-calendar.md 7판)\n\n'
+               'v5 · 1단계 — 홈 달력과 하루 시트 (plan/v5-calendar.md 8판)\n\n'
                '첫째 장은 홈 그대로에 달력 카드가 히어로 바로 아래 첫 카드로 들어간 모습(접힘 = 최근 7일, 오늘이 오른쪽 끝). 둘째 장은 펼친 월 달력 — 머리줄 ‹ 2026년 9월 ›, 요일 줄, 주마다 가는 선, 이번 달 전체가 한 번에 보이는 상태. '
                '펼침은 어느 폭·어느 글자 크기에서도 월 달력이고 날짜를 세로로 늘어놓은 목록으로 저절로 바뀌지 않습니다(7판 · 둘째 줄 360px 장과 셋째 줄 구현 참고 장 「달력을 펼치면 어디서나 월 달력」). ‹ 는 지난달까지만 갑니다(하루 시트 범위와 같음). '
                '칸마다 그날 소비 합계(1만 미만은 원 단위, 1만 이상은 1.2만 형식), —는 아직 기록 없음, 0은 안 썼어요로 표시한 날, ✓는 다 적었어요, 이체 배지. '
@@ -176,7 +179,7 @@ NOTES = {
                '넷째 장은 오늘 칸을 눌렀을 때 — 기록이 없는 날은 금액에 자동 포커스라 시스템 숫자 키보드가 올라온 상태가 기본입니다(키보드는 기기가 그리므로 자리만 빈 판). '
                '숫자만 치고 저장하면 시트가 닫히고 다섯째 장의 완료 카드: 날짜 · 정확 금액 · 오늘 합계, 소비율 변화는 예상 기준이 확인된 달에만, 취소는 방금 기록한 건만.\n\n'
                '둘째 줄: 달력 펼침 360px, ‹ 로 지난달(8월)을 보는 상태, 지난달 기록이 없는 달의 홈(큰 숫자가 예상 소비율 대신 이번 달 기록한 소비), 수정 모드, 분류하기. '
-               '셋째 줄: 하루 시트 360px, 저장 직전 확인 4종, 히어로 조건부 각주 조합, 그리고 맨 오른쪽 두 장은 앱 화면이 아니라 구현 참고 장입니다 — 달력 칸 읽는 법(실제 달력 위 번호 8개와 한 줄 설명), 달력을 펼치면 어디서나 월 달력(320px · 큰 글자 · 선택 보기인 목록).\n\n'
+               '셋째 줄: 하루 시트 360px, 그리고 오른쪽 네 장은 앱 화면이 아니라 구현 참고 장입니다 — 저장을 한 번 더 물어보는 경우, 홈 맨 위 카드의 안내 줄, 달력 칸 읽는 법(실제 달력 위 번호 8개와 한 줄 설명), 달력을 펼치면 어디서나 월 달력(320px · 큰 글자 · 선택 보기인 목록).\n\n'
                '수치는 v3 샘플(오늘 4건 37,000원 + 편의점 12,000원 → 5건 49,000원 · 57.9% → 58.2%). 수입·환불 링크는 없고(앱에 그 흐름이 없음), 하루 기준선 막대도 없습니다(계획 §12-18).\n\n'
                '── 아래 줄은 다크입니다.'),
 }

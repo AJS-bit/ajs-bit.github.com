@@ -19,8 +19,9 @@
     - `h1` — “월급의 얼마를 쓰고 있는지부터”
       `font-size:26px font-weight:700 letter-spacing:-0.035em line-height:1.35 color:#101828`
       - `br`
-    - `p` **text 14px/400** — “지금 위치를 알면 목적지까지 얼마나 조절하면 되는지 보입니다.”
+    - `p` — “지금 위치를 알면 목적지까지 얼마나 조절할지 보여요.”
       `font-size:14px line-height:1.6 color:#475467`
+      - `br`
     - `div`
       `margin-top:24px`
       - `div`

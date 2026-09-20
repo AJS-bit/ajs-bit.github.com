@@ -58,53 +58,49 @@
       - `p` **text 11px/400** — “명목금액 기준이며 물가·세금·수수료는 반영하지 않았어요. 월 63만원 적립과 현재 자산 구성이 유지된다고 가정합니다”
         `padding:0 2px font-size:11px line-height:1.45 color:#626D88`
     - `div` **Card(18)**
-      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 6px`
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
       - `div`
         `display:flex align-items:center gap:6px`
         - `span` **text 14px/600** — “다음 자산 지점”
           `font-size:14px font-weight:600 color:#101828`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px height:40px border-top:1px solid #F3F5FA`
+        `display:flex align-items:center justify-content:space-between gap:8px height:36px border-top:1px solid #F3F5FA`
         - `span` **text 13.5px/600** — “1억원”
           `font-size:13.5px font-weight:600 color:#101828`
         - `div`
           `display:flex align-items:baseline gap:8px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px height:40px border-top:1px solid #F3F5FA`
+        `display:flex align-items:center justify-content:space-between gap:8px height:36px border-top:1px solid #F3F5FA`
         - `span` **text 13.5px/600** — “1억 5,000만원”
           `font-size:13.5px font-weight:600 color:#101828`
         - `div`
           `display:flex align-items:baseline gap:8px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px height:40px border-top:1px solid #F3F5FA`
+        `display:flex align-items:center justify-content:space-between gap:8px height:36px border-top:1px solid #F3F5FA`
         - `span` **text 13.5px/600** — “2억원”
           `font-size:13.5px font-weight:600 color:#101828`
         - `div`
           `display:flex align-items:baseline gap:8px`
     - `div` **Card(18)**
-      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px`
+      `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:11px 14px 11px`
       - `div`
-        `display:flex align-items:baseline justify-content:space-between gap:8px`
-        - `span` **text 13.5px/600** — “월 소비를 줄인다면”
-          `font-size:13.5px font-weight:600 color:#101828`
+        `display:flex align-items:center justify-content:space-between gap:8px`
+        - `span` **StatusPill** — “저장되지 않는 가정”
+          `display:inline-flex align-items:center gap:5px background:#F1EAFD color:#6B32D6 font-size:11px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
         - `span` **text 13px/600** — “10년 뒤 +2,032만원”
-          `font-size:13px font-weight:600 color:#0F7B47`
+          `font-size:13px font-weight:600 color:#6B32D6 white-space:nowrap`
+      - `p` — “월 소비를 줄이면 얼마나 달라질까요?”
+        `font-size:13.5px font-weight:600 letter-spacing:-0.015em color:#101828 white-space:nowrap`
+        - `span` — “15만원”
+          `color:#6B32D6`
       - `div`
-        `position:relative height:20px margin-top:9px`
-        - `div`
-          `position:absolute left:0 right:0 top:8px height:5px border-radius:99px background:#E8ECF5`
-        - `div`
-          `position:absolute left:0 width:33% top:8px height:5px border-radius:99px background:#0F7B47`
-        - `div`
-          `position:absolute left:33% top:0 width:20px height:20px border-radius:99px background:#FFFFFF border:2.5px solid #0F7B47 box-shadow:0 2px 6px rgba(15,123,71,.28)`
-      - `div`
-        `display:flex align-items:center margin-top:5px`
+        `display:flex align-items:center gap:9px margin-top:6px`
         - `span` **text 11px/400** — “0원”
-          `flex:1 font-size:11px color:#697182`
-        - `span` **text 11.5px/600** — “월 15만원 절감”
-          `font-size:11.5px font-weight:600 color:#101828 white-space:nowrap`
+          `font-size:11px color:#697182 white-space:nowrap`
+        - `div`
+          `position:relative height:20px flex:1`
         - `span` **text 11px/400** — “45만원”
-          `flex:1 text-align:right font-size:11px color:#697182`
+          `font-size:11px color:#697182 white-space:nowrap`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div`

@@ -34,18 +34,18 @@
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **StatusPill** — “저장되지 않는 가정”
           `display:inline-flex align-items:center gap:4px background:#F1EAFD color:#6B32D6 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
-        - `span` **text 12px/600** — “되돌리기”
-          `font-size:12px font-weight:600 color:#626D88`
+        - `span` **text 12px/600** — “가정 종료”
+          `font-size:12px font-weight:600 color:#626D88 white-space:nowrap`
       - `p` **text 15px/600** — “월 추가 상환을 얼마나 할까요?”
         `font-size:15px font-weight:600 letter-spacing:-0.015em color:#101828`
       - `div`
         `display:flex align-items:baseline gap:7px margin-top:9px`
-        - `span` **text 14px/500** — “0원”
+        - `span` **text 14px/500** — “15만원”
           `font-size:14px font-weight:500 color:#697182`
         - `span`
-        - `span` — “15”
+        - `span` — “20”
           `font-size:25px font-weight:700 letter-spacing:-0.03em color:#6B32D6`
-        - `span` **text 12.5px/600** — “매월 92만원 상환”
+        - `span` **text 12.5px/600** — “매월 97만원 상환”
           `font-size:12.5px font-weight:600 color:#6B32D6`
       - `div`
         `margin-top:8px`
@@ -80,7 +80,7 @@
         - `div`
       - `div`
         `display:flex gap:8px margin-top:12px`
-        - `div` **SecondaryButton(44)** — “가정 취소”
+        - `div` **SecondaryButton(44)** — “가정 종료”
           `display:flex align-items:center justify-content:center gap:6px height:44px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
         - `div` **PrimaryButton(44)** — “상환 계획 저장”
           `display:flex align-items:center justify-content:center gap:6px height:44px flex:1.4 border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`

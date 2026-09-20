@@ -57,7 +57,7 @@
         - `span` — “9월 8일”
           `font-size:13px font-weight:600 color:#101828`
         - `span` **text 12.5px/600** — “32,000원”
-          `font-size:12.5px font-weight:600 color:#475467`
+          `font-size:12.5px font-weight:600 color:#475467 white-space:nowrap`
       - `div`
         `display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
         - `div`
@@ -71,7 +71,7 @@
         - `span` — “9월 7일”
           `font-size:13px font-weight:600 color:#101828`
         - `span` **text 12.5px/600** — “118,400원”
-          `font-size:12.5px font-weight:600 color:#475467`
+          `font-size:12.5px font-weight:600 color:#475467 white-space:nowrap`
       - `div`
         `display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
         - `div`
@@ -100,8 +100,8 @@
         `display:flex align-items:baseline justify-content:space-between gap:10px padding:12px 0 6px`
         - `span` — “9월 5일”
           `font-size:13px font-weight:600 color:#101828`
-        - `span` **text 12.5px/600** — “320,000원”
-          `font-size:12.5px font-weight:600 color:#475467`
+        - `span` — “20,000원”
+          `font-size:12.5px font-weight:600 color:#475467 white-space:nowrap`
       - `div`
         `display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
         - `div`
@@ -111,11 +111,19 @@
         - `span` **text 14.5px/600** — “−300,000”
           `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#475467`
       - `div`
+        `display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#6366f118 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−20,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828`
+      - `div`
         `display:flex align-items:baseline justify-content:space-between gap:10px padding:12px 0 6px`
         - `span` — “9월 3일”
           `font-size:13px font-weight:600 color:#101828`
         - `span` **text 12.5px/600** — “470,000원”
-          `font-size:12.5px font-weight:600 color:#475467`
+          `font-size:12.5px font-weight:600 color:#475467 white-space:nowrap`
       - `div`
         `display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
         - `div`

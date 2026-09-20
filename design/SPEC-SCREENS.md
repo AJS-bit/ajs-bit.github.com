@@ -64,7 +64,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
   - [ ] **HeroCard** — “순자산”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **div** — “현금성 비상금”
+  - [ ] **div** — “현금성 자산 · 생활비 기준”
         `display:flex gap:8px`
   - [ ] **Card(18)** — “자산 구성”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -236,9 +236,9 @@
   - [ ] **HeroCard** — “기간”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:14px 14px 13px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “다음 자산 지점”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 6px`
-  - [ ] **Card(18)** — “월 소비를 줄인다면”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px`
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
+  - [ ] **Card(18)** — “저장되지 않는 가정”
+        `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:11px 14px 11px`
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
@@ -277,7 +277,7 @@
         `display:flex align-items:baseline gap:9px margin-top:18px`
   - [ ] **h1** — “월급의 얼마를 쓰고 있는지부터”
         `font-size:26px font-weight:700 letter-spacing:-0.035em line-height:1.35 color:#101828`
-  - [ ] text 14px/400 — “지금 위치를 알면 목적지까지 얼마나 조절하면 되는지 보입니다.”
+  - [ ] **p** — “지금 위치를 알면 목적지까지 얼마나 조절할지 보여요.”
         `font-size:14px line-height:1.6 color:#475467`
   - [ ] **div** — “모든 기록은 이 기기에만”
         `margin-top:24px`
@@ -377,13 +377,13 @@
   - [ ] **div** — “자산 추가”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
   - [ ] **div** — “자산 이름”
-        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+        `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
     - [ ] **div** — “자산 이름”
-          `flex:1`
+          `flex:0 0 auto`
     - [ ] **div** — “유형”
           `display:flex gap:10px`
     - [ ] **div** — “연 기대수익률”
-          `flex:1`
+          `flex:0 0 auto`
     - [ ] **Callout(info)** — “거래에서 를 켜면 이 계좌의 평가액이 함께 바뀝니다. 0원이어도 계좌 기록은 남습니다.”
           `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
   - [ ] **div** — “취소”
@@ -404,9 +404,9 @@
   - [ ] **div** — “카드 할부 수정”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
   - [ ] **div** — “부채 이름”
-        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+        `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
     - [ ] **div** — “부채 이름”
-          `flex:1`
+          `flex:0 0 auto`
     - [ ] **div** — “유형”
           `display:flex gap:10px`
     - [ ] **div** — “연 금리”
@@ -433,10 +433,10 @@
   - [ ] **div** — “목적지 추가”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
   - [ ] **div** — “유형”
-        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+        `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
     - [ ] **div** — “유형”
     - [ ] **div** — “이름”
-          `flex:1`
+          `flex:0 0 auto`
     - [ ] **div** — “갚을 부채 선택”
     - [ ] **div** — “우선순위”
           `display:flex gap:10px`
@@ -459,10 +459,10 @@
         `display:flex justify-content:center padding:9px 0 0`
   - [ ] **div** — “반복 거래”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
-  - [ ] **div** — “등록된 규칙”
+  - [ ] **div** — “등록된 반복 거래”
         `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
-    - [ ] **div** — “등록된 규칙”
-    - [ ] **div** — “새 규칙”
+    - [ ] **div** — “등록된 반복 거래”
+    - [ ] **div** — “새 반복 거래”
   - [ ] **div** — “닫기”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
 
@@ -560,9 +560,9 @@
   - [ ] **div** — “코칭”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
   - [ ] **div** — “1”
-        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:12px`
     - [ ] **div** — “1”
-          `display:flex flex-direction:column gap:9px`
+          `display:flex flex-direction:column gap:8px`
     - [ ] **Callout(info)** — “다른 안내 4개 더 보기”
           `display:flex align-items:center justify-content:space-between gap:8px height:48px padding:0 13px border-radius:12px background:#F4F6FB`
     - [ ] **div** — “카테고리 절감 가정”
@@ -614,7 +614,27 @@
           `display:flex flex-direction:column`
     - [ ] **Callout(info)** — “자산을 넘게 갱신하지 않으면 여기에 알려드려요. 지금은 갱신이 필요한 자산이 없습니다.”
           `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
-    - [ ] **div** — “알림이 없을 때”
+  - [ ] **div** — “닫기”
+        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
+
+## AlertsEmpty — 모달 · 알림 없음
+
+`canvas/AlertsEmpty.dc.html` · 390×844 · 원본 `components/navi/coach-panel.tsx` · 렌더 `preview/AlertsEmpty.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:40px display:flex align-items:flex-end justify-content:center`
+- [ ] **BottomSheet** — “알림”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “알림”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “지금 조치할 것이 없어요”
+        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+    - [ ] **div** — “지금 조치할 것이 없어요”
+          `display:flex flex-direction:column align-items:center text-align:center padding:20px 10px background:#F4F6FB border-radius:14px`
+    - [ ] **Callout(info)** — “자산을 넘게 갱신하지 않으면 여기에 알려드려요. 지금은 갱신이 필요한 자산이 없습니다.”
+          `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
   - [ ] **div** — “닫기”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
 
@@ -633,7 +653,7 @@
   - [ ] **div** — “20대 후반 비교 기준”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
   - [ ] **div** — “NAVI에는 세부 연령별 통계가 여기 넣은 값은 화면에서 항상 “내가 등록한 기준”으로 표시되”
-        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+        `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
     - [ ] **Callout(warn)** — “NAVI에는 세부 연령별 통계가 여기 넣은 값은 화면에서 항상 “내가 등록한 기준”으로 표시되”
           `display:flex gap:8px padding:10px 11px background:#FDF1E0 border-radius:12px`
     - [ ] **div** — “연령 구간”
@@ -643,19 +663,19 @@
     - [ ] **div** — “기준 연도”
           `display:flex gap:10px`
     - [ ] **div** — “자료 출처”
-          `flex:1`
-    - [ ] **Callout(info)** — “분모가 실수령 급여가 아닌 통계라면 내 소비율과 직접 비교할 수 없어요. 출처의 기준을 꼭 확”
+          `flex:0 0 auto`
+    - [ ] **Callout(info)** — “실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 소비율과 바로 비교할 수 없어요. 출”
           `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
   - [ ] **div** — “취소”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
 
 ## StorageStates — 상태 · 저장소 로딩·복구
 
-`canvas/StorageStates.dc.html` · 390×1309 · 원본 `app/page.tsx` · 렌더 `preview/StorageStates.png`
+`canvas/StorageStates.dc.html` · 390×1324 · 원본 `app/page.tsx` · 렌더 `preview/StorageStates.png`
 
 > 저장소 로딩·복구 상태 모음. 로딩과 "데이터 없음"은 다른 화면이다.
 
-- [ ] **div** — “저장소 로딩 · 실패 · 복구”
+- [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
 - [ ] text 11px/600 — “A · 불러오는 중”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -676,11 +696,11 @@
 
 ## EmptyStates — 상태 · 미입력 5종
 
-`canvas/EmptyStates.dc.html` · 390×1718 · 원본 `app/page.tsx` · 렌더 `preview/EmptyStates.png`
+`canvas/EmptyStates.dc.html` · 390×1733 · 원본 `app/page.tsx` · 렌더 `preview/EmptyStates.png`
 
 > 미입력 5종. **미입력을 0원이나 좋은 성과로 표시하지 않는다**는 규칙이 그림으로 있는 시트.
 
-- [ ] **div** — “미입력 · 빈 상태”
+- [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
 - [ ] text 11px/600 — “A · 첫 시작 · 홈”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -705,11 +725,11 @@
 
 ## PeerStates — 상태 · 또래 카드 5종
 
-`canvas/PeerStates.dc.html` · 390×1595 · 원본 `components/navi/peer-card.tsx` · 렌더 `preview/PeerStates.png`
+`canvas/PeerStates.dc.html` · 390×1555 · 원본 `components/navi/peer-card.tsx` · 렌더 `preview/PeerStates.png`
 
 > 또래 카드 5종. 통계가 없으면 없다고 말한다. 평균·백분위·상위 %를 지어내지 않는다.
 
-- [ ] **div** — “또래 카드 · 상태 5종”
+- [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
 - [ ] text 11px/600 — “A · 나이 미입력”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -734,29 +754,29 @@
 
 ## GoalTypes — 상태 · 목적지 유형 5종
 
-`canvas/GoalTypes.dc.html` · 390×1767 · 원본 `components/navi/goals-view.tsx` · 렌더 `preview/GoalTypes.png`
+`canvas/GoalTypes.dc.html` · 390×1920 · 원본 `components/navi/goals-view.tsx` · 렌더 `preview/GoalTypes.png`
 
 > 목적지 유형 5종의 카드 변형.
 
-- [ ] **div** — “목적지 유형 5종”
+- [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
-- [ ] text 11px/600 — “A · 일반 저축 — 수익률을 쓰지 않음”
+- [ ] text 11px/600 — “A · 일반 저축”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “💰”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px 15px`
-- [ ] text 11px/600 — “B · 투자 — 수익률이 계산에 들어감”
+- [ ] text 11px/600 — “B · 투자”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “🌱”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px 15px`
-- [ ] text 11px/600 — “C · 순자산 — 값을 직접 넣지 않음”
+- [ ] text 11px/600 — “C · 순자산”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “💎”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px 15px`
-- [ ] text 11px/600 — “D · 부채 상환 — 상환 계획에서 계산”
+- [ ] text 11px/600 — “D · 부채 상환”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “🏔️”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px 15px`
-- [ ] text 11px/600 — “E · 비상금 — 저축과 같되 수익률 0% 고정”
+- [ ] text 11px/600 — “E · 비상금”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “🧯”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px 15px`
@@ -767,13 +787,13 @@
 
 > 모달 오류·저장 6종. 각 오류의 문구와 위치가 정해져 있다.
 
-- [ ] **div** — “모달 오류 · 저장 상태 6종”
+- [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
 - [ ] text 11px/600 — “A · 필수 값 미입력 — 저장 비활성”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “거래 추가”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px`
-- [ ] text 11px/600 — “B · 값이 규칙에 어긋남 — 배분 합 초과”
+- [ ] text 11px/600 — “B · 카테고리 한도 합계가 총한도를 넘음”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “카테고리 배분 편집”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px`
@@ -796,11 +816,11 @@
 
 ## Confirmations — 상태 · 삭제·초기화 확인
 
-`canvas/Confirmations.dc.html` · 390×1228 · 원본 `components/ui/alert-dialog.tsx 사용처` · 렌더 `preview/Confirmations.png`
+`canvas/Confirmations.dc.html` · 390×1245 · 원본 `components/ui/alert-dialog.tsx 사용처` · 렌더 `preview/Confirmations.png`
 
 > 삭제·초기화 확인 4종. 되돌릴 수 없는 동작은 무엇이 사라지는지 건수로 말한다.
 
-- [ ] **div** — “삭제 · 초기화 확인”
+- [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
 - [ ] text 11px/600 — “A · 자산 삭제”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -814,9 +834,9 @@
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(20)** — “비상금 6개월을 삭제할까요?”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
-- [ ] text 11px/600 — “D · 반복 규칙 삭제”
+- [ ] text 11px/600 — “D · 반복 거래 삭제”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
-- [ ] **Card(20)** — “ETF 자동이체 규칙을 삭제할까요?”
+- [ ] **Card(20)** — “ETF 자동이체 반복 거래를 삭제할까요?”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
 - [ ] text 11px/600 — “E · 전체 초기화”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -880,7 +900,7 @@
 
 ## Components — 컴포넌트 · 상태
 
-`canvas/Components.dc.html` · 1200×1471 · 원본 `components/navi/shared.tsx · components/ui/button.tsx` · 렌더 `preview/Components.png`
+`canvas/Components.dc.html` · 1200×1555 · 원본 `components/navi/shared.tsx · components/ui/button.tsx` · 렌더 `preview/Components.png`
 
 > 컴포넌트·상태 시트. SPEC-COMPONENTS.md의 그림판.
 
@@ -890,4 +910,668 @@
       `display:grid grid-template-columns:minmax(0, 1fr) minmax(0, 1.1fr) gap:32px`
 - [ ] **div** — “07 · 행동을 어디에 놓는가 — 이번 재설계의 핵심 규칙”
       `margin-top:auto padding:18px 20px background:#F4F6FB border-radius:16px`
+
+## IntroPosition — 첫 실행 · 소개 1 현재 위치
+
+`canvas/IntroPosition.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/IntroPosition.png`
+
+- [ ] **div** — “소개 1 / 3”
+      `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
+  - [ ] **div** — “소개 1 / 3”
+        `display:flex align-items:center justify-content:space-between gap:8px height:56px margin-top:8px`
+  - [ ] **div** — “현재 위치”
+        `margin-top:36px display:flex flex-direction:column gap:10px`
+  - [ ] text 11px/600 — “현재 위치”
+        `display:block margin-top:30px font-size:11px font-weight:600 letter-spacing:0.07em color:#3556E6`
+  - [ ] **h1** — “이번 달 소비가 월급의 몇 %인지 숫자 하나로 봅니다.”
+        `font-size:23px font-weight:700 letter-spacing:-0.03em line-height:1.4 color:#101828`
+  - [ ] **div** — “다음”
+        `margin-top:auto display:flex flex-direction:column gap:16px`
+
+## IntroRoute — 첫 실행 · 소개 2 항로
+
+`canvas/IntroRoute.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/IntroRoute.png`
+
+- [ ] **div** — “소개 2 / 3”
+      `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
+  - [ ] **div** — “소개 2 / 3”
+        `display:flex align-items:center justify-content:space-between gap:8px height:56px margin-top:8px`
+  - [ ] **div** — “항로”
+        `margin-top:36px display:flex flex-direction:column gap:10px`
+  - [ ] text 11px/600 — “항로”
+        `display:block margin-top:30px font-size:11px font-weight:600 letter-spacing:0.07em color:#3556E6`
+  - [ ] **h1** — “목표까지 얼마나 남았는지, 지금 무엇을 할지 알려줍니다.”
+        `font-size:23px font-weight:700 letter-spacing:-0.03em line-height:1.4 color:#101828`
+  - [ ] **div** — “다음”
+        `margin-top:auto display:flex flex-direction:column gap:16px`
+
+## IntroDestination — 첫 실행 · 소개 3 목적지
+
+`canvas/IntroDestination.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/IntroDestination.png`
+
+- [ ] **div** — “소개 3 / 3”
+      `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
+  - [ ] **div** — “소개 3 / 3”
+        `display:flex align-items:center justify-content:space-between gap:8px height:56px margin-top:8px`
+  - [ ] **div** — “목적지”
+        `margin-top:36px display:flex flex-direction:column gap:10px`
+  - [ ] text 11px/600 — “목적지”
+        `display:block margin-top:30px font-size:11px font-weight:600 letter-spacing:0.07em color:#3556E6`
+  - [ ] **h1** — “비상금 · 투자 · 상환, 언제 도착할지 날짜로 알려줍니다.”
+        `font-size:23px font-weight:700 letter-spacing:-0.03em line-height:1.4 color:#101828`
+  - [ ] **div** — “다음”
+        `margin-top:auto display:flex flex-direction:column gap:16px`
+
+## HomeSetup — 첫 실행 · 홈 구성
+
+`canvas/HomeSetup.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/HomeSetup.png`
+
+- [ ] **div** — “홈 구성”
+      `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
+  - [ ] **div** — “홈 구성”
+        `display:flex align-items:center justify-content:space-between gap:8px height:56px margin-top:8px`
+  - [ ] text 22px/700 — “홈에 무엇을 둘까요?”
+        `font-size:22px font-weight:700 letter-spacing:-0.03em line-height:1.35 color:#101828`
+  - [ ] **p** — “소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 골라 주세요.”
+        `font-size:13.5px line-height:1.5 color:#475467`
+  - [ ] **div** — “현재 위치 · 월급 대비 소비율”
+        `margin-top:12px`
+  - [ ] **div** — “홈 카드”
+        `margin-top:12px`
+  - [ ] **div** — “다음 안내”
+        `margin-top:8px`
+  - [ ] **div** — “주식도 볼까요?”
+        `margin-top:10px`
+  - [ ] **div** — “이 구성으로 시작”
+        `margin-top:auto display:flex flex-direction:column gap:8px`
+
+## HomeConfigured — 홈 · 구성 반영 · 탭 합치기 전
+
+`canvas/HomeConfigured.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/HomeConfigured.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “순자산”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+  - [ ] **Card(18)** — “상환 계획”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## DestGoals — 목적지 · 내 목적지 (5탭)
+
+`canvas/DestGoals.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/DestGoals.png`
+
+- [ ] **div** — “목적지”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “월 저축 배분”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “월 저축 배분”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:15px 16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “진행 중인 목적지”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 8px`
+  - [ ] **div** — “목적지 추가”
+        `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## DestFuture — 목적지 · 자산 경로 (5탭)
+
+`canvas/DestFuture.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/DestFuture.png`
+
+- [ ] **div** — “목적지”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “기간”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “기간”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:14px 14px 13px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “다음 자산 지점”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
+  - [ ] **Card(18)** — “저장되지 않는 가정”
+        `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:11px 14px 11px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## HomeStocksOff — 홈 · 주식 꺼짐 (4탭)
+
+`canvas/HomeStocksOff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksOff.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “순자산”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+  - [ ] **Card(18)** — “상환 계획”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## StocksMine — 주식 · 내 종목
+
+`canvas/StocksMine.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StocksMine.png`
+
+- [ ] **div** — “주식”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “이번 달 저축·투자 여력”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **div** — “이번 달 저축·투자 여력”
+        `display:flex align-items:center gap:10px padding:10px 14px background:#E9EDFD border-radius:14px`
+  - [ ] **Card(18)** — “보유”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 8px`
+  - [ ] **Card(18)** — “관심”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 6px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## HoldingAdd — 모달 · 보유 기록
+
+`canvas/HoldingAdd.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HoldingAdd.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:60px display:flex align-items:flex-end justify-content:center`
+- [ ] **BottomSheet** — “보유 기록”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “보유 기록”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “종목”
+        `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
+    - [ ] **div** — “종목”
+          `flex:0 0 auto`
+    - [ ] **div** — “수량”
+          `display:flex gap:10px`
+    - [ ] **div** — “종가”
+          `display:flex gap:10px`
+    - [ ] **Callout(info)** — “종가는 직접 넣는 값이라 실시간 시세가 아니에요. 가격 옆에는 늘 이 기준일이 붙습니다.”
+          `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
+    - [ ] **div** — “연결 계좌”
+          `flex:0 0 auto`
+    - [ ] **div** — “계좌 평가액에 반영”
+          `display:flex align-items:center justify-content:space-between gap:10px padding:12px 13px background:#F4F6FB border-radius:14px`
+  - [ ] **div** — “취소”
+        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
+
+## StocksEmpty — 주식 · 빈 상태
+
+`canvas/StocksEmpty.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StocksEmpty.png`
+
+- [ ] **div** — “주식”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “이번 달 저축·투자 여력”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **div** — “이번 달 저축·투자 여력”
+        `display:flex align-items:center gap:10px padding:10px 14px background:#E9EDFD border-radius:14px`
+  - [ ] **Card(18)** — “아직 기록한 종목이 없어요”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+  - [ ] **Card(18)** — “이 화면에 없는 것”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## HomeStocksCard — 홈 · 주식 요약 카드
+
+`canvas/HomeStocksCard.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksCard.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “주식 요약”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “순자산”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## StocksHome — 주식 · 둘러보기
+
+`canvas/StocksHome.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StocksHome.png`
+
+- [ ] **div** — “주식”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “이번 달 저축·투자 여력”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **div** — “이번 달 저축·투자 여력”
+        `display:flex align-items:center gap:10px padding:10px 14px background:#E9EDFD border-radius:14px`
+  - [ ] **Callout(warn)** — “비상금이 68%예요. 투자보다 비상금을 먼저 채우는 걸 권해요.”
+        `display:flex align-items:center gap:8px padding:9px 12px background:#FDF1E0 border-radius:12px`
+  - [ ] **Card(18)** — “내 종목”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+  - [ ] **div** — “성장”
+        `display:grid grid-template-columns:repeat(2, minmax(0, 1fr)) gap:10px`
+  - [ ] **p** — “데이터 기준일 2026-09-04 종가 · 설정에서 새로 받기 기준에 맞는 종목을 보여주는 것”
+        `font-size:11px line-height:1.5 color:#626D88`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## StockListGrowth — 주식 · 성장주 목록
+
+`canvas/StockListGrowth.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockListGrowth.png`
+
+- [ ] **div** — “성장주”
+      `display:flex align-items:center gap:6px padding:12px 12px 12px`
+- [ ] **본문(스크롤 영역)** — “매출 성장”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **div** — “매출 성장”
+        `display:flex flex-direction:column gap:9px`
+  - [ ] **Card(18)** — “삼성전자”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:2px 14px 0`
+  - [ ] **p** — “데이터 기준일 2026-09-04 종가 · 설정에서 새로 받기 기준에 맞는 종목을 보여주는 것”
+        `font-size:11px line-height:1.5 color:#626D88`
+
+## StockListDividend — 주식 · 배당주 목록
+
+`canvas/StockListDividend.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockListDividend.png`
+
+- [ ] **div** — “배당주”
+      `display:flex align-items:center gap:6px padding:12px 12px 12px`
+- [ ] **본문(스크롤 영역)** — “높은 배당수익률”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **div** — “높은 배당수익률”
+        `display:flex flex-direction:column gap:9px`
+  - [ ] **Card(18)** — “KT&G”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:2px 14px 0`
+  - [ ] **p** — “데이터 기준일 2026-09-04 종가 · 설정에서 새로 받기 기준에 맞는 종목을 보여주는 것”
+        `font-size:11px line-height:1.5 color:#626D88`
+
+## StockDetail — 주식 · 종목 상세
+
+`canvas/StockDetail.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockDetail.png`
+
+- [ ] **div** — “삼성전자”
+      `display:flex align-items:center gap:6px padding:12px 12px 12px`
+- [ ] **본문(스크롤 영역)** — “71,200”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px 12px`
+  - [ ] **HeroCard** — “71,200”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:12px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “성장주 목록에 있는 이유”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
+  - [ ] **Card(18)** — “연 매출”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:11px 14px`
+  - [ ] **Card(18)** — “저장되지 않는 가정”
+        `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:12px 14px`
+- [ ] **div** — “관심 추가”
+      `display:flex gap:8px padding:10px 14px 20px background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## StockThemes — 주식 · 테마
+
+`canvas/StockThemes.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockThemes.png`
+
+- [ ] **div** — “테마”
+      `display:flex align-items:center gap:6px padding:12px 12px 12px`
+- [ ] **본문(스크롤 영역)** — “테마는 기준으로 거른 목록이 아니라 예요. 한 종목이 여러 테마에 들어갈 수 있어요.”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **Callout(info)** — “테마는 기준으로 거른 목록이 아니라 예요. 한 종목이 여러 테마에 들어갈 수 있어요.”
+        `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
+  - [ ] **div** — “반도체”
+        `display:grid grid-template-columns:repeat(2, minmax(0, 1fr)) gap:8px`
+  - [ ] **p** — “데이터 기준일 2026-09-04 종가 · 설정에서 새로 받기 기준에 맞는 종목을 보여주는 것”
+        `font-size:11px line-height:1.5 color:#626D88`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## StockStates — 참고 · 주식 탭 특수한 상황 6가지
+
+`canvas/StockStates.dc.html` · 1180×880 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockStates.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “주식 탭 · 특수한 상황 6가지”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “경고 띠는 알려주기만 하고 아무것도 막지 않아요. 자료가 없는 기준은 —로 두고 충족 수에서 ”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “주식 홈 · 위쪽”
+      `display:flex gap:28px align-items:flex-start`
+
+## StockSettings — 모달 · 설정 › 주식
+
+`canvas/StockSettings.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockSettings.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:60px display:flex align-items:flex-end justify-content:center`
+- [ ] **BottomSheet** — “주식”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “주식”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “종목 데이터”
+        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+    - [ ] **div** — “종목 데이터”
+    - [ ] **div** — “기준값”
+    - [ ] **div** — “기능”
+  - [ ] **div** — “취소”
+        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
+
+## SnapshotUpdate — 참고 · 종목 데이터 새로 받기
+
+`canvas/SnapshotUpdate.dc.html` · 1180×762 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/SnapshotUpdate.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “종목 데이터 새로 받기 · 순서대로”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “주식 설정에서 [새로 받기]를 누르면 이 순서로 바뀌어요. 받다가 실패해도 지금 데이터로 그대”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “시작 · 주식 설정에서 [새로 받기]를 누르면”
+      `display:flex gap:28px align-items:flex-start`
+
+## DaySheet — 하루 시트 · 오늘 (키보드 열림)
+
+`canvas/DaySheet.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheet.png`
+
+- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “9월 8일 소비 기록”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “9월 8일 소비 기록”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “금액”
+        `flex:1 min-height:0 padding:12px 18px 0 display:flex flex-direction:column gap:10px`
+    - [ ] **div** — “금액”
+          `display:flex align-items:center justify-content:space-between gap:10px height:48px padding:0 14px border-radius:12px background:#FFFFFF border:1.5px solid #3556E6 box-shadow:0 0 0 3px rgba(53,86,230,.16)`
+    - [ ] **div** — “· 저장을 눌러야 기록돼요”
+          `font-size:11.5px line-height:1.45 color:#626D88 padding:0 2px`
+    - [ ] **div** — “메모”
+          `display:flex align-items:center justify-content:space-between gap:10px height:44px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
+    - [ ] **div** — “분류”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “최근 기록”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “저장”
+          `margin-top:2px`
+    - [ ] **div** — “저축·투자로 기록 ›”
+- [ ] **div** — “시스템 숫자 키보드 자리”
+      `position:absolute left:0 right:0 bottom:0 height:280px background:#E8ECF5 border-top:1px solid #D7DEEA display:flex align-items:center justify-content:center flex-direction:column gap:4px`
+
+## DaySheetList — 하루 시트 · 기록 있는 과거 날 (목록 우선)
+
+`canvas/DaySheetList.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheetList.png`
+
+- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “9월 3일 소비 기록”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “9월 3일 소비 기록”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “교통”
+        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:12px`
+    - [ ] **div** — “교통”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “추가”
+          `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
+    - [ ] **div** — “저축·투자로 기록 ›”
+          `margin-top:auto`
+
+## DaySheetEdit — 하루 시트 · 수정 모드
+
+`canvas/DaySheetEdit.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheetEdit.png`
+
+- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “9월 3일 기록 수정”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “9월 3일 기록 수정”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “금액”
+        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:12px`
+    - [ ] **div** — “금액”
+          `display:flex align-items:center justify-content:space-between gap:10px height:48px padding:0 14px border-radius:12px background:#FFFFFF border:1.5px solid #3556E6 box-shadow:0 0 0 3px rgba(53,86,230,.16)`
+    - [ ] **div** — “4.5만원”
+          `font-size:11.5px line-height:1.45 color:#626D88 padding:0 2px`
+    - [ ] **div** — “메모”
+          `display:flex align-items:center justify-content:space-between gap:10px height:44px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
+    - [ ] **div** — “분류”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “저장”
+          `display:flex gap:8px margin-top:2px`
+- [ ] **div** — “시스템 숫자 키보드 자리”
+      `position:absolute left:0 right:0 bottom:0 height:280px background:#E8ECF5 border-top:1px solid #D7DEEA display:flex align-items:center justify-content:center flex-direction:column gap:4px`
+
+## DoneCard — 홈 · 저장 뒤 완료 카드
+
+`canvas/DoneCard.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DoneCard.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px position:relative`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “순자산”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “저장했어요”
+      `position:absolute left:14px right:14px bottom:78px background:#101828 border-radius:16px padding:13px 14px 12px color:#FFFFFF box-shadow:0 8px 24px rgba(0,0,0,.28)`
+
+## DaySheetConfirm — 참고 · 저장을 한 번 더 물어보는 경우
+
+`canvas/DaySheetConfirm.dc.html` · 1200×900 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheetConfirm.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “저장을 눌렀는데 한 번 더 물어보는 경우”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “아래 네 경우에는 바로 저장하지 않고 금액 칸 아래에 안내가 한 줄 뜹니다. 저장을 한 번 더”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “오늘 4건 37,000원”
+      `display:flex gap:32px align-items:flex-start`
+- [ ] **Card(18)** — “구현 메모”
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:10px 18px 8px`
+
+## ClassifySheet — 분류하기 시트
+
+`canvas/ClassifySheet.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/ClassifySheet.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “분류하기 · 7건”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “분류하기 · 7건”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “커피”
+        `flex:1 min-height:0 padding:6px 18px 0 display:flex flex-direction:column`
+    - [ ] **div** — “커피”
+          `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
+    - [ ] **div** — “9월 1일”
+          `background:#F4F6FB border-radius:0 0 12px 12px padding:0 10px 2px`
+    - [ ] **div** — “간식”
+          `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
+    - [ ] **div** — “편의점”
+          `display:flex align-items:center gap:10px height:52px border-bottom:1px solid #F3F5FA`
+    - [ ] **div** — “택시”
+          `display:flex align-items:center gap:10px height:52px`
+  - [ ] **div** — “3건 저장”
+        `padding:12px 18px 20px border-top:1px solid #EFF2F8 display:flex flex-direction:column gap:8px`
+
+## HeroInsufficient — 홈 · 히어로 이력 부족
+
+`canvas/HeroInsufficient.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/HeroInsufficient.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “이번 달 기록한 소비”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **HeroCard** — “이번 달 기록한 소비”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #7EC4E8 border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## DaySheet360 — 하루 시트 · 360px
+
+`canvas/DaySheet360.dc.html` · 360×844 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/DaySheet360.png`
+
+- [ ] **div** — “배경을 눌러 닫기 · 저장 전 내용은 앱 재시작 시 사라져요”
+      `height:60px display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
+- [ ] **BottomSheet** — “9월 8일 소비 기록”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “9월 8일 소비 기록”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “금액”
+        `flex:1 min-height:0 padding:12px 14px 0 display:flex flex-direction:column gap:10px`
+    - [ ] **div** — “금액”
+          `display:flex align-items:center justify-content:space-between gap:10px height:48px padding:0 14px border-radius:12px background:#FFFFFF border:1.5px solid #3556E6 box-shadow:0 0 0 3px rgba(53,86,230,.16)`
+    - [ ] **div** — “· 저장을 눌러야 기록돼요”
+          `font-size:11.5px line-height:1.45 color:#626D88 padding:0 2px`
+    - [ ] **div** — “메모”
+          `display:flex align-items:center justify-content:space-between gap:10px height:44px padding:0 14px border-radius:12px background:#FFFFFF border:1px solid #CFD7E6`
+    - [ ] **div** — “분류”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “최근 기록”
+          `display:flex flex-direction:column gap:8px`
+    - [ ] **div** — “저장”
+          `margin-top:2px`
+    - [ ] **div** — “저축·투자로 기록 ›”
+- [ ] **div** — “시스템 숫자 키보드 자리”
+      `position:absolute left:0 right:0 bottom:0 height:280px background:#E8ECF5 border-top:1px solid #D7DEEA display:flex align-items:center justify-content:center flex-direction:column gap:4px`
+
+## HeroFootnotes — 참고 · 홈 맨 위 카드의 안내 줄
+
+`canvas/HeroFootnotes.dc.html` · 1200×640 · 원본 `v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4` · 렌더 `preview/HeroFootnotes.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “홈 맨 위 카드에 붙는 작은 안내 줄”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “예상 소비를 계산한 방식에 덧붙일 말이 있을 때만 기준 조정 줄 아래에 회색 글이 한두 줄 붙”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “현재 위치”
+      `display:flex gap:32px align-items:flex-start`
+- [ ] **p** — “오른쪽 견본은 카드의 만 잘라 보여 줍니다. 카드의 나머지는 네 경우 모두 같고, 안내 줄이 ”
+      `font-size:12px line-height:1.6 color:#626D88`
+
+## HomeCalendarStrip — 홈 · 달력 접힘 (최근 7일)
+
+`canvas/HomeCalendarStrip.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/HomeCalendarStrip.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## HomeCalendar — 홈 · 달력 펼침 (월 달력) · 3일 칸 누름
+
+`canvas/HomeCalendar.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/HomeCalendar.png`
+
+- [ ] **본문(스크롤 영역)** — “2026년 9월”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **div**
+        `height:22px background:#FFFFFF border:1px solid #E3E8F1 border-top:none border-radius:0 0 20px 20px opacity:.55`
+  - [ ] **Card(18)** — “2026년 9월”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## HomeCalendar360 — 홈 · 달력 펼침 · 360px (월 달력 그대로)
+
+`canvas/HomeCalendar360.dc.html` · 360×844 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/HomeCalendar360.png`
+
+- [ ] **본문(스크롤 영역)** — “2026년 9월”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **div**
+        `height:22px background:#FFFFFF border:1px solid #E3E8F1 border-top:none border-radius:0 0 20px 20px opacity:.55`
+  - [ ] **Card(18)** — “2026년 9월”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 10px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## HomeCalendarPrev — 홈 · 달력 펼침 · ‹ 지난달 8월 보기
+
+`canvas/HomeCalendarPrev.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/HomeCalendarPrev.png`
+
+- [ ] **본문(스크롤 영역)** — “2026년 8월”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **div**
+        `height:22px background:#FFFFFF border:1px solid #E3E8F1 border-top:none border-radius:0 0 20px 20px opacity:.55`
+  - [ ] **Card(18)** — “2026년 8월”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+
+## CalendarCells — 참고 · 달력 칸 읽는 법
+
+`canvas/CalendarCells.dc.html` · 940×730 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarCells.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “달력 칸 읽는 법”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 오른쪽에서”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “2026년 9월”
+      `display:flex gap:28px align-items:flex-start`
+
+## CalendarGridSizes — 참고 · 달력을 펼치면 어디서나 월 달력
+
+`canvas/CalendarGridSizes.dc.html` · 1150×1300 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarGridSizes.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “달력을 펼치면 어디서나 월 달력”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다.”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “가장 좁은 폰”
+      `display:flex gap:36px align-items:flex-start`
+- [ ] **div** — “가장 좁은 폰에서 지난달을 볼 때”
+      `display:flex gap:36px align-items:flex-start margin-top:26px`
 

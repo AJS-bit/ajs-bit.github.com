@@ -41,9 +41,9 @@
         - `div`
           `display:flex gap:10px`
         - `div`
-          `margin-top:9px`
-        - `div`
           `display:flex gap:10px margin-top:12px`
+        - `div`
+          `margin-top:9px`
         - `div`
           `margin-top:12px`
       - `div`

@@ -19,7 +19,7 @@
       - `div`
         - `h2` **text 18px/700** — “백업 불러오기”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “navi-backup-2026-09-01.json · 3만 4천 건 · 저장 전에 무엇이 바뀌는지 먼저 봅니다.”
+        - `p` — “navi-backup-2026-09-01.json · 기록 35건 적용하기 전에 무엇이 바뀌는지 먼저 확인하세요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`

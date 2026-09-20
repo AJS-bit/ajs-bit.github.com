@@ -3,11 +3,19 @@
 import pathlib
 from gen_common import *
 
-OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
+OUT = pathlib.Path(__file__).resolve().parent.parent
 
 
-def w(name, body):
-    (OUT / f'{name}.dc.html').write_text(doc(body), encoding='utf-8')
+BODY_CSS = '-webkit-font-smoothing: antialiased; }'
+
+
+def w(name, body, keep_all=False):
+    html = doc(body)
+    if keep_all:
+        # 설명 문장이 많은 참고 시트는 한국어 낱말이 중간에서 끊기지 않게 한다.
+        assert html.count(BODY_CSS) == 1
+        html = html.replace(BODY_CSS, BODY_CSS[:-1] + 'word-break: keep-all; }')
+    (OUT / f'{name}.dc.html').write_text(html, encoding='utf-8')
     print('wrote', name)
 
 
@@ -85,7 +93,7 @@ w('GoalContribute', sheet(
             for d, a, last in [('8월 15일', '35만원', False), ('7월 15일', '35만원', True)])
         + '</div>', pad='13px 15px'),
 
-    sheet_footer('취소', '적립액 추가')))
+    sheet_footer('취소', '적립액 추가')), keep_all=True)
 
 
 # ══════════════════════════════════════════════════════════════
@@ -100,7 +108,8 @@ def type_block(emoji, name, note_text, fields, calc, row_html, badge_html=''):
         f'<span style="font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: {C["INK"]};">{name}</span>{badge_html}</div>'
         f'<div style="font-size: 12px; line-height: 1.45; color: {C["INK3"]}; margin-top: 3px;">{note_text}</div></div></div>'
 
-        f'<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 11px;">{fields}</div>'
+        f'<div style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; color: {C["INK4"]}; margin-top: 12px;">입력하는 칸</div>'
+        f'<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">{fields}</div>'
 
         f'<div style="display: flex; gap: 8px; padding: 9px 11px; background: {C["INSET"]}; border-radius: 11px; margin-top: 10px;">'
         f'<span style="flex-shrink: 0; margin-top: 1px;">{icon("chart", 13, C["INK3"], 1.9)}</span>'
@@ -132,56 +141,78 @@ def goalrow(pct, color, title, meta1, meta2, action=None):
 
 
 BLOCKS = [
-    ('A · 일반 저축 — 수익률을 쓰지 않음', type_block(
+    ('A · 일반 저축', type_block(
         '💰', '일반 저축', '수익률을 반영하지 않고 넣은 돈만 더합니다.',
         fieldchip('목표액 *') + fieldchip('현재 적립액') + fieldchip('목표일') + fieldchip('연 수익률', 'off'),
-        '남은 금액 ÷ 월 배분. 수익률 칸이 아예 없어 “왜 계산이 다르지”가 생기지 않습니다.',
+        '남은 금액을 월 적립액으로 나눠 도착 예상일을 계산합니다.',
         goalrow(20, C["BRAND"], '결혼 자금 2,000만원', '400 / 2,000만원 · 월 30만원',
                 '도착 예상 2031년 3월', smallbtn('적립')))),
 
-    ('B · 투자 — 수익률이 계산에 들어감', type_block(
+    ('B · 투자', type_block(
         '🌱', '투자', '설정한 투자 기대수익률을 반영합니다.',
         fieldchip('목표액 *') + fieldchip('현재 평가액') + fieldchip('목표일') + fieldchip('연 기대수익률 5.0%', 'vio'),
-        '복리로 계산합니다. 수익률은 <b style=font-weight:600>확정값이 아니므로 보라색</b>으로 표시하고, '
-        '도착 예상 옆에 “가정”을 붙입니다.',
+        '복리로 계산합니다. 수익률은 가정값이라 도착 예상 옆에 “가정”이 붙습니다.',
         goalrow(42, '#6B85EC', '투자 계좌 5,000만원', '2,100 / 5,000만원 · 월 28만원',
                 '2032년 6월 도착 · 연 5.0% 가정', smallbtn('적립')),
         badge('가정 포함', 'vio'))),
 
-    ('C · 순자산 — 값을 직접 넣지 않음', type_block(
+    ('C · 순자산', type_block(
         '💎', '순자산', '현재 순자산과 자산별 가중 기대수익률을 그대로 씁니다.',
         fieldchip('목표액 *') + fieldchip('현재 순자산 9,350만원 · 자동', 'brand') + fieldchip('현재 적립액', 'off'),
-        '현재값은 자산 화면에서 자동으로 옵니다. 그래서 <b style=font-weight:600>적립 버튼이 없습니다</b> — '
-        '순자산은 자산·부채를 고치면 따라 움직입니다.',
+        '현재 순자산은 자산 화면에서 자동으로 가져옵니다. 직접 넣는 값이 아니어서 적립 버튼이 없습니다.',
         goalrow(47, C["VIO"], '순자산 2억원', '순자산 9,350 / 20,000만원 · 자동 계산',
                 '도착 예상 2032년 6월 · 미래 경로 기준',
                 f'<span style="font-size: 11px; color: {C["INK4"]}; flex-shrink: 0;">적립 없음</span>'))),
 
-    ('D · 부채 상환 — 상환 계획에서 계산', type_block(
+    ('D · 부채 상환', type_block(
         '🏔️', '부채 상환', '실제 부채 잔액과 상환 설정에서 진행률·완제일을 계산합니다.',
         fieldchip('연결할 부채 *') + fieldchip('신용대출 ✓', 'brand') + fieldchip('목표액', 'off') + fieldchip('적립액', 'off'),
-        '목표액을 묻지 않습니다. 연결한 부채의 원금이 목표이고, 완제일은 '
-        '<b style=font-weight:600>상환 전략 화면의 계획</b>에서 옵니다. 두 화면이 다른 답을 내지 않게 하기 위해서입니다.',
+        '연결한 부채의 남은 원금이 목표가 됩니다. 완제 예상일은 상환 전략 화면의 계획을 그대로 씁니다.',
         goalrow(31, C["NEG"], '신용대출 완제', '남은 원금 2,200만원 · 연 6.8%',
                 '완제 예상 2030년 10월 · 상환 계획 반영',
                 f'<span style="font-size: 11px; color: {C["INK4"]}; flex-shrink: 0;">적립 없음</span>'))),
 
-    ('E · 비상금 — 저축과 같되 수익률 0% 고정', type_block(
+    ('E · 비상금', type_block(
         '🧯', '비상금', '언제든 쓸 수 있는 현금으로 보고 수익률은 0%로 계산합니다.',
         fieldchip('목표액 *') + fieldchip('현재 적립액') + fieldchip('목표 개월 수') + fieldchip('연 수익률 0% 고정', 'off'),
-        '목표액을 <b style=font-weight:600>월 고정비 × 개월 수</b>로도 채울 수 있습니다. '
-        '수익률은 잠겨 있어 “현금을 굴린다”는 오해가 생기지 않습니다.',
+        '목표액은 월 고정비 × 개월 수로도 정할 수 있습니다. 수익률은 0%로 고정됩니다.',
         goalrow(68, C["BRAND"], '비상금 6개월', '월 고정비 250만원 × 6개월 = 1,500만원',
                 '남은 480만원 · 월 35만원', smallbtn('적립')))),
 ]
 
 
+REF_PILL = (f'<span style="display: inline-block; margin-bottom: 8px; font-size: 11px; font-weight: 600; '
+            f'letter-spacing: 0.02em; color: {C["INK2"]}; border: 1px solid {C["LINE"]}; background: {C["SURF"]}; '
+            f'border-radius: 99px; padding: 4px 10px; white-space: nowrap;">구현 참고 · 앱 화면이 아닙니다</span>')
+
+
+def legend_item(tone, text):
+    # 견본 색은 fieldchip 과 같은 토큰을 쓴다.
+    # 연한 장 배경 위에서는 배경색만으로 구분이 안 돼서, 글자 '가'를 넣은 작은 칩으로 그리고 테두리로 색을 드러낸다.
+    fg, bg, bd = {"mute": (C["INK2"], C["INSET"], f'1px solid {C["INPUT"]}'),
+                  "brand": (C["BRAND"], C["BRAND_SOFT"], f'1px solid {C["BRAND"]}'),
+                  "vio": (C["VIO_STRONG"], C["VIO_SOFT"], f'1px solid {C["VIO_LINE"]}'),
+                  "off": (C["DIS"], C["SURF"], f'1px dashed {C["DIS"]}')}[tone]
+    return (f'<span style="display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;">'
+            f'<span style="display: inline-flex; align-items: center; height: 16px; padding: 0 5px; border-radius: 5px; '
+            f'background: {bg}; border: {bd}; color: {fg}; font-size: 10px; font-weight: 600; line-height: 1; '
+            f'flex-shrink: 0;">가</span>{text}</span>')
+
+
+LEGEND = (f'<div style="display: flex; flex-wrap: wrap; gap: 5px 12px; margin-top: 9px; font-size: 11px; color: {C["INK3"]};">'
+          + legend_item('mute', '진한 칸 = 직접 입력') + legend_item('brand', '파란 칸 = 자동으로 채워짐')
+          + legend_item('vio', '보라 칸 = 가정값') + legend_item('off', '흐린 칸 = 이 유형에는 없음') + '</div>')
+
+
 def types_sheet(h):
-    return state_sheet(
+    # 구현 참고용 시트: 제목 위에 알약, 용도 문장 아래에 칸 색 범례를 끼운다(state_sheet 는 공용이라 그대로 둔다).
+    html = state_sheet(
         '목적지 유형 5종',
-        '유형이 바꾸는 것은 셋뿐입니다 — <b style=font-weight:600>수익률 가정 · 현재값을 어디서 가져오는가 · 적립 버튼의 유무</b>. '
-        '나머지 화면 구조는 다섯 유형이 똑같습니다.',
+        '목적지 유형마다 입력하는 칸과 계산 방식이 어떻게 다른지 보여 줍니다.',
         BLOCKS, h=h)
+    assert html.count('<h2 ') == 1 and html.count('</p></div>') >= 1
+    html = html.replace('<h2 ', REF_PILL + '<h2 ', 1)
+    return html.replace('</p></div>', '</p>' + LEGEND + '</div>', 1)
 
 
 # ══════════════════════════════════════════════════════════════
@@ -200,10 +231,10 @@ past_hero = hero(
     f'{badge("7월 마감 완료 · 확정", "pos", "check")}</div>'
 
     f'<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 9px;">'
-    f'{display_num("54.2", "%", 54, 25)}'
+    f'{display_num("54.3", "%", 54, 25)}'
     f'<div style="text-align: right; flex-shrink: 0; padding-bottom: 6px;">'
     f'<div style="font-size: 11.5px; color: {C["INK3"]};">이번 달보다</div>'
-    f'<div style="font-size: 13px; font-weight: 600; color: {C["POS"]};">3.7%p 낮음</div></div></div>'
+    f'<div style="font-size: 13px; font-weight: 600; color: {C["POS"]};">3.6%p 낮음</div></div></div>'
 
     f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">'
     f'<span style="font-size: 13px; font-weight: 500; color: {C["INK2"]};">월급 대비 소비 <b style=font-weight:600>확정</b></span>'
@@ -234,12 +265,13 @@ past_chart = card(
     f'<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">'
     f'<stop offset="0" stop-color="{C["BRAND"]}" stop-opacity=".18"/>'
     f'<stop offset="1" stop-color="{C["BRAND"]}" stop-opacity="0"/></linearGradient></defs>'
-    f'<path d="M2 100 L30 92 L58 88 L86 70 L114 64 L142 58 L170 50 L198 46 L226 38 L254 34 L282 30 L310 27 L328 26 L328 108 L2 108 Z" fill="url(#pg)"/>'
-    f'<path d="M2 100 L30 92 L58 88 L86 70 L114 64 L142 58 L170 50 L198 46 L226 38 L254 34 L282 30 L310 27 L328 26" '
+    f'<path d="M2 100 L30 92 L58 88 L86 70 L114 64 L142 58 L170 50 L198 46 L226 38 L254 34 L282 30 L308 27 L322 26 L322 108 L2 108 Z" fill="url(#pg)"/>'
+    f'<path d="M2 100 L30 92 L58 88 L86 70 L114 64 L142 58 L170 50 L198 46 L226 38 L254 34 L282 30 L308 27 L322 26" '
     f'fill="none" stroke="{C["BRAND"]}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>'
-    f'<circle cx="328" cy="26" r="4" fill="{C["BRAND"]}"/></svg>'
-    f'<span style="position: absolute; right: 0; top: 36px; font-size: 12px; font-weight: 700; color: {C["INK"]};">191만</span></div>'
+    f'<circle cx="322" cy="26" r="4" fill="{C["BRAND"]}"/></svg>'
+    f'<span style="position: absolute; right: 8px; top: 36px; font-size: 12px; font-weight: 700; color: {C["INK"]}; white-space: nowrap;">191만</span></div>'
 
+    # 끝점은 점(r 4)이 카드 가장자리에 잘리지 않게 x 322 로 당겼다(오른쪽 여백 8). 나머지 날짜의 x 는 그대로다.
     # 눈금은 축 좌표에 맞춘다. 그림 영역 x 2~328이 1일~31일이므로
     # x(15) = 2 + 14/30 * 326 = 154.13 → viewBox 폭 330의 46.7%.
     # space-between으로 두면 가운데 라벨이 양끝 폭 차이만큼 밀려 여기서 3.5px 어긋났다.
@@ -270,7 +302,7 @@ tab_note = (f'<div style="display: flex; align-items: center; gap: 7px; padding:
             f'마감한 달이라 <b style=font-weight:600>한도 탭이 없어요</b> · 기록은 내역에서 수정</span></div>')
 
 w('SpendingPast', frame(
-    screen_header('소비', '지난 달 · 마감됨', tabs=['월 요약', '내역'], active=0,
+    screen_header('소비', '7월 · 마감됨', tabs=['월 요약', '내역'], active=0,
                   trailing=past_month_stepper()) +
     tab_note +
     content([past_hero, past_chart, past_cats], gap=10) +
@@ -343,10 +375,10 @@ w('CoachEmpty', sheet(
         pad='14px 15px'),
 
     f'{btn("소비 기록하기", "primary", ic="plus", h=48).replace("width: 100%;", "flex: 1.4;")}'
-    f'{btn("닫기", "secondary", h=48).replace("width: 100%;", "flex: 1;")}'))
+    f'{btn("닫기", "secondary", h=48).replace("width: 100%;", "flex: 1;")}'), keep_all=True)
 
 
 if __name__ == '__main__':
     import sys
-    h = int(sys.argv[1]) if len(sys.argv) > 1 else 1900
-    w('GoalTypes', types_sheet(h))
+    h = int(sys.argv[1]) if len(sys.argv) > 1 else 1920
+    w('GoalTypes', types_sheet(h), keep_all=True)

@@ -2,24 +2,27 @@
 import pathlib
 from gen_common import *
 
-OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
+OUT = pathlib.Path(__file__).resolve().parent.parent
 
 
-def w(name, body):
-    (OUT / f'{name}.dc.html').write_text(doc(body), encoding='utf-8')
+def w(name, body, keep_all=True):
+    """모달 · 시트 장은 설명 문장이 많아 word-break: keep-all 을 기본으로 켠다(gen_common.doc 의 기본값은 그대로 False)."""
+    (OUT / f'{name}.dc.html').write_text(doc(body, keep_all=keep_all), encoding='utf-8')
     print('wrote', name)
 
 
-def group(label, inner, meta=None):
+def group(label, inner, meta=None, fixed=False, mb=9):
+    """fixed=True 면 본문이 넘칠 때 이 구역이 눌리지 않는다(목록 마지막 행이 상자 테두리에 닿는 것 방지)."""
     m = f'<span style="font-size: 11.5px; color: {C["INK3"]};">{meta}</span>' if meta else ''
-    return (f'<div><div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 9px;">'
+    root = '<div style="flex-shrink: 0;">' if fixed else '<div>'
+    return (f'{root}<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: {mb}px;">'
             f'<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: {C["INK3"]};">{label}</span>{m}</div>{inner}</div>')
 
 
 def foldrow(label, meta=None, open_=False):
     m = f'<span style="font-size: 12px; color: {C["INK3"]};">{meta}</span>' if meta else ''
     return (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 48px; '
-            f'padding: 0 13px; border-radius: 12px; background: {C["INSET"]};">'
+            f'padding: 0 13px; border-radius: 12px; background: {C["INSET"]}; flex-shrink: 0;">'
             f'<span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">{label}</span>'
             f'<div style="display: flex; align-items: center; gap: 8px;">{m}{icon("up" if open_ else "down", 16, C["INK4"], 2)}</div></div>')
 
@@ -59,9 +62,9 @@ w('ProfileDialog', sheet(
     group('추가 설정',
           f'<div style="display: flex; gap: 10px;">{field("부수입", "30", "만원", optional=True)}'
           f'{field("총자산", "1억 8,210", "만원", state="readonly")}</div>'
-          f'<div style="margin-top: 9px;">{note("자산을 5건 입력해 두어서 총자산은 합계로 고정됩니다. 개별 자산에서 수정하세요.", "mute", "lock")}</div>'
           f'<div style="display: flex; gap: 10px; margin-top: 12px;">{field("총부채", "8,860", "만원", state="readonly")}'
           f'{field("기대수익률", "2.4", "%", optional=True, w=124)}</div>'
+          f'<div style="margin-top: 9px;">{note("자산 5건·부채 4건을 따로 입력해 두어서 총자산과 총부채는 그 합계로 표시됩니다. 자산·부채 화면에서 고칠 수 있어요.", "mute", "lock")}</div>'
           f'<div style="margin-top: 12px;"><div style="font-size: 12px; font-weight: 600; color: {C["INK2"]}; margin-bottom: 7px;">테마</div>'
           f'{segmented(["시스템", "라이트", "다크"], 0)}</div>') +
     group('데이터', f'<div style="display: flex; gap: 8px;">'
@@ -74,22 +77,22 @@ w('ProfileDialog', sheet(
 # ══════════════ 2. 자산 추가 ══════════════
 w('AssetDialog', sheet(
     '자산 추가', '이름과 평가액만 있으면 저장돼요.',
-    f'{field("자산 이름", "ETF 계좌", required=True)}'
+    f'{solo(field("자산 이름", "ETF 계좌", required=True))}'
     f'<div style="display: flex; gap: 10px;">{select_field("유형", "투자")}{field("평가액", "4,890", "만원", required=True, w=142)}</div>'
-    f'{field("연 기대수익률", "6.5", "%", optional=True, helper="비워 두면 유형 기본값을 씁니다", w=None)}'
+    f'{solo(field("연 기대수익률", "6.5", "%", optional=True, helper="비워 두면 유형 기본값을 씁니다", w=None))}'
     f'{note("거래에서 <b style=font-weight:600>잔액에도 반영하기</b>를 켜면 이 계좌의 평가액이 함께 바뀝니다. 0원이어도 계좌 기록은 남습니다.", "mute")}',
-    sheet_footer('취소', '자산 추가'), scrim_h=190))
+    sheet_footer('취소', '자산 추가'), scrim_h=190, body_pb=14))
 
 
 # ══════════════ 3. 부채 수정 ══════════════
 w('DebtDialog', sheet(
     '카드 할부 수정', '거래에서 대출상환으로 연결된 부채예요.',
-    f'{field("부채 이름", "카드 할부", required=True)}'
+    f'{solo(field("부채 이름", "카드 할부", required=True))}'
     f'<div style="display: flex; gap: 10px;">{select_field("유형", "할부")}{field("남은 원금", "180", "만원", required=True, w=142)}</div>'
     f'<div style="display: flex; gap: 10px;">{field("연 금리", "14.5", "%", required=True)}{field("월 최소 상환액", "2", "만원", w=142)}</div>'
     f'{note("연 14.5%는 보유한 부채 중 가장 높아요. 고금리 우선 전략에서 1순위로 상환됩니다.", "warn", "warn")}'
     f'{note("남은 원금을 0으로 두면 완납으로 기록되고 목록에는 남습니다. 삭제하면 연결된 거래의 부채 연결이 끊깁니다.", "mute")}',
-    sheet_footer('취소', '변경 저장'), scrim_h=110,
+    sheet_footer('취소', '변경 저장'), scrim_h=110, body_pb=14,
     header_right=f'<div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">{smallbtn("삭제", "danger", "trash", h=32)}'
                  f'<div style="width: 36px; height: 36px; border-radius: 11px; background: {C["INSET"]}; display: flex; align-items: center; justify-content: center;">{icon("x", 17, C["INK2"], 2.2)}</div></div>'))
 
@@ -121,12 +124,12 @@ for i, (name, bal, on) in enumerate([("카드 할부", "180만원 · 연 14.5%",
 w('GoalDialog', sheet(
     '목적지 추가', '유형에 따라 필요한 값이 달라져요.',
     group('유형', f'<div style="display: flex; gap: 6px;">{"".join(types)}</div>') +
-    f'{field("이름", "신용대출 완제", required=True)}'
-    + group('갚을 부채 선택', f'<div style="padding: 0 13px; background: {C["INSET"]}; border-radius: 14px;">{"".join(debtpick)}</div>',
-            meta='2건 선택 · 2,380만원')
+    f'{solo(field("이름", "신용대출 완제", required=True))}'
+    + group('갚을 부채 선택', f'<div style="padding: 6px 13px; background: {C["INSET"]}; border-radius: 14px; flex-shrink: 0;">{"".join(debtpick)}</div>',
+            meta='2건 선택 · 2,380만원', fixed=True)
     + f'<div style="display: flex; gap: 10px;">{select_field("우선순위", "1순위 · 가장 먼저")}{field("목표 기한", "2029.06", optional=True, w=124)}</div>'
     + note('부채 상환 목적지는 적립 대신 <span style="font-weight:600">상환 계획</span>을 따릅니다. 목표액·적립액 입력란이 없고 홈 대표로도 지정할 수 있어요.', 'mute'),
-    sheet_footer('취소', '목적지 추가'), scrim_h=40))
+    sheet_footer('취소', '목적지 추가'), scrim_h=40, body_pb=14))
 
 
 # ══════════════ 5. 반복 거래 관리 ══════════════
@@ -145,14 +148,14 @@ for i, (name, meta, amt, on) in enumerate([("ETF 자동이체", "매월 5일 · 
 
 w('RecurringDialog', sheet(
     '반복 거래', '매달 자동으로 만들어지는 거래예요. 끄면 다음 달부터 생성되지 않습니다.',
-    group('등록된 규칙', f'<div style="padding: 0 13px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 14px;">{"".join(rules)}</div>',
+    group('등록된 반복 거래', f'<div style="padding: 0 13px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 14px;">{"".join(rules)}</div>',
           meta='3건 · 활성 2건') +
-    group('새 규칙',
+    group('새 반복 거래',
           f'<div style="display: flex; gap: 10px;">{field("이름", "넷플릭스", required=True)}{field("금액", "13,500", "원", required=True, w=142)}</div>'
           f'<div style="display: flex; gap: 10px; margin-top: 12px;">{select_field("카테고리", "구독")}{field("결제일", "15", "일", w=104)}'
           f'{field("시작 월", "2026.10", w=112)}</div>'
-          f'<div style="margin-top: 11px;">{note("이미 지난 달에는 만들어지지 않아요. 생성된 거래는 개별로 수정·삭제할 수 있습니다.", "mute")}</div>'),
-    sheet_footer('닫기', '규칙 추가'), scrim_h=40))
+          f'<div style="margin-top: 11px;">{note("이미 지난 달에는 만들어지지 않아요. 이미 만들어진 거래는 하나씩 고치거나 지울 수 있어요.", "mute")}</div>'),
+    sheet_footer('닫기', '반복 거래 추가'), scrim_h=40))
 
 
 # ══════════════ 6. 월 마감 확정 ══════════════
@@ -187,13 +190,13 @@ def diffrow(label, count, tone, desc, last=False):
             f'{icon("right", 15, C["INK4"], 2)}</div>')
 
 w('ImportReview', sheet(
-    '백업 불러오기', 'navi-backup-2026-09-01.json · 3만 4천 건 · 저장 전에 무엇이 바뀌는지 먼저 봅니다.',
+    '백업 불러오기', 'navi-backup-2026-09-01.json · 기록 35건<br>적용하기 전에 무엇이 바뀌는지 먼저 확인하세요.',
     group('적용 방식', segmented(['기존에 추가', '전체 교체'], 0) +
           f'<div style="margin-top: 9px;">{note("추가는 겹치지 않는 기록만 넣습니다. 전체 교체를 고르면 현재 기록이 모두 사라져요.", "mute")}</div>') +
     group('불러올 항목', f'<div style="padding: 0 13px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 14px;">'
                           f'{diffrow("새로 추가", 24, "new", "거래 21 · 자산 2 · 목적지 1")}'
-                          f'{diffrow("이미 있음 · 건너뜀", 8, "dup", "같은 거래 ID")}'
-                          f'{diffrow("값이 다름 · 백업 우선", 2, "conf", "자산 평가액 2건")}'
+                          f'{diffrow("이미 있는 기록", 8, "dup", "같은 거래라 건너뜁니다")}'
+                          f'{diffrow("값이 다른 기록", 2, "conf", "자산 평가액 2건 · 백업 파일 값으로 바뀝니다")}'
                           f'{diffrow("검토 필요", 1, "chk", "연결된 계좌가 없는 거래 1건", last=True)}</div>') +
     group('적용 후', f'<div style="display: flex; gap: 8px;">'
                       f'<div style="flex: 1; padding: 12px; background: {C["INSET"]}; border-radius: 13px;">'
@@ -220,33 +223,33 @@ def advice(tone, title, body, action, num):
             f'font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">{num}</span>'
             f'<div style="min-width: 0;"><div style="font-size: 14px; font-weight: 600; letter-spacing: -0.015em; color: {C["INK"]};">{title}</div>'
             f'<div style="font-size: 12.5px; line-height: 1.5; color: {C["INK2"]}; margin-top: 4px;">{body}</div>'
-            f'<div style="font-size: 12.5px; font-weight: 600; color: {C["BRAND"]}; margin-top: 8px;">{action} &rsaquo;</div></div></div>')
+            f'<div style="font-size: 12.5px; font-weight: 600; color: {C["BRAND"]}; margin-top: 6px;">{action} &rsaquo;</div></div></div>')
 
 w('CoachPanel', sheet(
-    '코칭', '저장된 기록만 보고 드리는 조언이에요. 우선순위가 높은 순서입니다.',
-    f'<div style="display: flex; flex-direction: column; gap: 9px;">'
+    '코칭', '저장된 기록을 보고 중요한 순서로 알려드려요.',
+    f'<div style="display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;">'
     f'{advice("neg", "카드 할부 금리 14.5%를 먼저 정리하세요", "잔액은 전체의 2%뿐이지만 금리가 신용대출의 2.1배예요. 고금리 우선 전략에서 1순위입니다.", "상환 전략 열기", 1)}'
     f'{advice("warn", "주거/관리가 한도의 94%예요", "9월 8일인데 벌써 47만원을 썼어요. 관리비 결제일이 지난 뒤라면 정상 속도입니다.", "카테고리 한도 보기", 2)}'
-    f'{advice("pos", "비상금이 생활비 5.8개월치까지 왔어요", "목표 6개월(1,500만원)까지 40만원 남았습니다. 월 35만원이면 다음 달에 닿아요.", "목적지 배분 조정", 3)}</div>'
+    f'{advice("pos", "비상금이 목표의 68%까지 왔어요", "목표 1,500만원까지 480만원 남았습니다. 월 35만원이면 2027년 11월에 닿아요.", "목적지 배분 조정", 3)}</div>'
     f'{foldrow("다른 안내 4개 더 보기", "낮은 우선순위")}'
     + group('카테고리 절감 가정',
-            f'<div style="padding: 13px; background: {C["VIO_SOFT"]}; border-radius: 14px; border: 1px dashed {C["VIO_LINE"]};">'
+            f'<div style="padding: 11px 13px; background: {C["VIO_SOFT"]}; border-radius: 14px; border: 1px dashed {C["VIO_LINE"]};">'
             f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
             f'{badge("저장되지 않는 가정", "vio", "spark")}'
             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["VIO_STRONG"]};">−15%</span></div>'
-            f'<div style="margin-top: 10px;">{slider(37, C["VIO"])}</div>'
+            f'<div style="margin-top: 8px;">{slider(37, C["VIO"])}</div>'
             f'<div style="display: flex; align-items: center; margin-top: 4px;">'
             f'<span style="flex: 1; font-size: 11px; color: {C["INK4"]};">0%</span>'
             f'<span style="font-size: 11.5px; font-weight: 600; color: {C["VIO_STRONG"]}; white-space: nowrap;">월 31만원 절감 가정</span>'
             f'<span style="flex: 1; text-align: right; font-size: 11px; color: {C["INK4"]};">40%</span></div>'
-            f'<div style="display: flex; gap: 8px; margin-top: 11px;">'
-            f'<div style="flex: 1; padding: 10px 11px; background: {C["SURF"]}; border-radius: 11px;">'
+            f'<div style="display: flex; gap: 8px; margin-top: 9px;">'
+            f'<div style="flex: 1; padding: 8px 11px; background: {C["SURF"]}; border-radius: 11px;">'
             f'<div style="font-size: 11.5px; color: {C["INK3"]};">비상금 도착</div>'
-            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">7개월 빨라짐</div></div>'
-            f'<div style="flex: 1; padding: 10px 11px; background: {C["SURF"]}; border-radius: 11px;">'
+            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">6개월 빨라짐</div></div>'
+            f'<div style="flex: 1; padding: 8px 11px; background: {C["SURF"]}; border-radius: 11px;">'
             f'<div style="font-size: 11.5px; color: {C["INK3"]};">10년 적립 효과</div>'
-            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">+4,227만원</div></div></div></div>'),
-    btn('닫기', 'secondary', h=48), scrim_h=40))
+            f'<div style="font-size: 15px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-top: 2px;">+4,227만원</div></div></div></div>', mb=7),
+    btn('닫기', 'secondary', h=48), scrim_h=40, body_gap=12), keep_all=True)
 
 
 # ══════════════ 9. 알림 패널 ══════════════
@@ -260,32 +263,40 @@ def alert(tone, ic, title, body, action, muted=False):
             f'<div style="min-width: 0;"><div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">{title}</div>'
             f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; margin-top: 3px;">{body}</div>{a}</div></div>')
 
+ALERTS_DESC = '저장된 기록을 기준으로 만든 알림이에요. 읽어도 기록은 바뀌지 않아요.'
+STALE_NOTE = note("자산을 <b style=font-weight:600>3개월</b> 넘게 갱신하지 않으면 여기에 알려드려요. 지금은 갱신이 필요한 자산이 없습니다.", "mute")
+
 w('AlertsPanel', sheet(
-    '알림 3건', '저장된 기록을 기준으로 만든 알림이에요. 읽어도 기록은 바뀌지 않습니다.',
+    '알림 3건', ALERTS_DESC,
     f'<div style="display: flex; flex-direction: column;">'
     f'{alert("warn", "warn", "주거/관리 한도의 94%를 썼어요", "47만원 / 50만원 · 이번 달 22일 남음", "카테고리 한도")}'
     f'{alert("neg", "bank", "카드 할부 금리가 14.5%예요", "보유 부채 중 가장 높습니다", "상환 전략")}'
-    f'{alert("sky", "shield", "비상금이 목표까지 40만원 남았어요", "현재 5.8개월 · 1,460만원", "목적지 배분")}</div>'
-    f'{note("자산을 <b style=font-weight:600>3개월</b> 넘게 갱신하지 않으면 여기에 알려드려요. 지금은 갱신이 필요한 자산이 없습니다.", "mute")}'
-    + group('알림이 없을 때',
-            f'<div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 10px; '
-            f'background: {C["INSET"]}; border-radius: 14px;">'
-            f'<div style="width: 40px; height: 40px; border-radius: 13px; background: {C["POS_SOFT"]}; display: flex; align-items: center; justify-content: center;">{icon("check", 20, C["POS"], 2.4)}</div>'
-            f'<div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]}; margin-top: 10px;">지금 조치할 것이 없어요</div>'
-            f'<div style="font-size: 12px; color: {C["INK3"]}; margin-top: 4px;">한도·부채·비상금 모두 정상 범위입니다</div></div>'),
+    f'{alert("sky", "shield", "비상금이 목표의 68%예요", "1,020 / 1,500만원 · 480만원 남음", "목적지 배분")}</div>'
+    f'{STALE_NOTE}',
+    btn('닫기', 'secondary', h=48), scrim_h=40))
+
+# 알림이 하나도 없을 때 — 예전에는 AlertsPanel 안에 '알림이 없을 때'라는 설계자용 소제목과 함께 끼어 있었다
+w('AlertsEmpty', sheet(
+    '알림', ALERTS_DESC,
+    f'<div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 10px; '
+    f'background: {C["INSET"]}; border-radius: 14px;">'
+    f'<div style="width: 40px; height: 40px; border-radius: 13px; background: {C["POS_SOFT"]}; display: flex; align-items: center; justify-content: center;">{icon("check", 20, C["POS"], 2.4)}</div>'
+    f'<div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]}; margin-top: 10px;">지금 조치할 것이 없어요</div>'
+    f'<div style="font-size: 12px; color: {C["INK3"]}; margin-top: 4px;">한도·부채·비상금 모두 정상 범위입니다</div></div>'
+    f'{STALE_NOTE}',
     btn('닫기', 'secondary', h=48), scrim_h=40))
 
 
 # ══════════════ 10. 또래 기준 등록 ══════════════
 w('PeerDialog', sheet(
-    '20대 후반 비교 기준', '만 27~29세 구간에 쓸 기준을 직접 등록합니다. 앱이 만들어 주는 값이 아니에요.',
+    '20대 후반 비교 기준', '만 27~29세 구간에 쓸 기준을 직접 등록해요. 앱이 만든 값이 아니에요.',
     note('NAVI에는 세부 연령별 통계가 <span style="font-weight:600">들어 있지 않습니다.</span> 여기 넣은 값은 화면에서 항상 “내가 등록한 기준”으로 표시되고, 순위나 상위 %로 바뀌지 않습니다.', 'warn', 'warn') +
     f'<div style="display: flex; gap: 10px;">{field("연령 구간", "20대 후반 · 만 27~29세", state="readonly")}</div>'
     f'<div style="display: flex; gap: 10px;">{field("평균 소비율", "62.0", "%", required=True)}{field("조사 인원", "1,200", "명", w=132)}</div>'
-    f'<div style="display: flex; gap: 10px;">{field("기준 연도", "2025", "년", required=True, w=132)}{field("소비율 분모", "실수령 급여", state="readonly")}</div>'
-    f'{field("자료 출처", "디자인 검증용 가상 기준", required=True, helper="화면에 그대로 표시됩니다")}'
-    f'{note("분모가 실수령 급여가 아닌 통계라면 내 소비율과 직접 비교할 수 없어요. 출처의 기준을 꼭 확인하세요.", "mute")}',
-    sheet_footer('취소', '기준 저장'), scrim_h=40,
+    f'<div style="display: flex; gap: 10px;">{field("기준 연도", "2025", "년", required=True, w=132)}{field("소비율 계산 기준", "실수령 급여", state="readonly")}</div>'
+    f'{solo(field("자료 출처", "직접 입력한 예시 기준", required=True, helper="화면에 그대로 표시됩니다"))}'
+    f'{note("실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 소비율과 바로 비교할 수 없어요. 출처의 기준을 꼭 확인하세요.", "mute")}',
+    sheet_footer('취소', '기준 저장'), scrim_h=40, body_pb=14,
     header_right=f'<div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">{smallbtn("기준 삭제", "danger", "trash", h=32)}'
                  f'<div style="width: 36px; height: 36px; border-radius: 11px; background: {C["INSET"]}; display: flex; align-items: center; justify-content: center;">{icon("x", 17, C["INK2"], 2.2)}</div></div>'))
 
@@ -304,7 +315,7 @@ def confirm(ic, tone, title, body, cancel, ok, ok_kind="danger", extra=""):
 
 w('Confirmations', state_sheet(
     '삭제 · 초기화 확인',
-    '무엇이 함께 사라지는지 대상 이름과 영향을 항상 적습니다. 파괴적인 행동은 오른쪽, 취소는 왼쪽입니다.',
+    '지우기 전에 한 번 더 묻는 창 다섯 가지입니다.',
     [('A · 자산 삭제',
       confirm('trash', 'neg', 'ETF 계좌를 삭제할까요?',
               '평가액 4,890만원이 총자산에서 빠지고 순자산이 4,460만원이 됩니다. 이 계좌에 연결된 거래 12건은 <span style="font-weight:600">연결만 끊기고 남습니다.</span>',
@@ -317,14 +328,14 @@ w('Confirmations', state_sheet(
       confirm('trash', 'neg', '비상금 6개월을 삭제할까요?',
               '적립한 1,020만원 기록은 자산에 그대로 남습니다. 홈 대표 목적지가 <span style="font-weight:600">투자 계좌 5,000만원</span>으로 바뀝니다.',
               '취소', '삭제')),
-     ('D · 반복 규칙 삭제',
-      confirm('trash', 'warn', 'ETF 자동이체 규칙을 삭제할까요?',
-              '앞으로 자동 생성되지 않습니다. 이미 만들어진 거래 8건은 남아요.',
-              '취소', '규칙만 삭제', 'primary')),
+     ('D · 반복 거래 삭제',
+      confirm('trash', 'warn', 'ETF 자동이체 반복 거래를 삭제할까요?',
+              '앞으로는 자동으로 만들어지지 않아요. 이미 만들어진 거래 8건은 남아요.',
+              '취소', '반복만 삭제', 'primary')),
      ('E · 전체 초기화',
       confirm('warn', 'neg', '모두 지우고 새로 시작할까요?',
               '거래 132건 · 자산 5건 · 부채 4건 · 목적지 4건 · 월 마감 6건이 <span style="font-weight:600">되돌릴 수 없이</span> 사라집니다.',
               '취소', '모두 삭제',
               extra=f'<div style="margin-top: 12px;">{note("먼저 백업을 내보내면 나중에 그대로 복구할 수 있어요.", "warn", "download")}</div>'
                     f'<div style="margin-top: 9px;">{checkbox("백업을 내보냈거나, 지워도 괜찮습니다.", False)}</div>'))],
-    h=1228))
+    h=1245, pill='구현 참고 · 앱 화면이 아닙니다'), keep_all=True)

@@ -37,8 +37,6 @@
         `display:flex align-items:baseline justify-content:space-between gap:8px margin-top:13px padding:0 2px`
         - `span` **text 13.5px/600** — “계획한 속도로 쓰고 있나요?”
           `font-size:13.5px font-weight:600 color:#101828`
-        - `span` **text 12px/600** — “고정비 선반영 구간”
-          `font-size:12px font-weight:600 color:#B45309`
       - `div`
         `margin-top:8px`
       - `div`
@@ -49,7 +47,7 @@
           `display:inline-flex align-items:center gap:5px font-size:11px color:#475467`
         - `span` — “계획선”
           `display:inline-flex align-items:center gap:5px font-size:11px color:#475467`
-      - `p` **text 11px/400** — “계획선은 한도를 일수로 나눈 속도예요. 주거·통신·보험처럼 초반에 빠져나가는 고정비 때문에 실제 선이 먼저 올라갑니”
+      - `p` **text 11px/400** — “계획선은 한도를 일수로 나눈 속도예요. 주거·통신·보험처럼 초반에 빠져나가는 고정비 때문에 실제 선이 먼저 올라가요”
         `padding:0 2px font-size:11px line-height:1.45 color:#626D88`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`

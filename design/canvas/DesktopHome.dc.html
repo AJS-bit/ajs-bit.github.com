@@ -53,12 +53,12 @@
       <div style="display: flex; align-items: center; gap: 11px; height: 42px; padding: 0 12px; border-radius: 11px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#626D88" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
         <span style="font-size: 14px; font-weight: 500; color: #475467;">미래</span>
-        <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #697182;">2.0억</span>
+        <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #697182; white-space: nowrap;">10년 뒤 3.2억</span>
       </div>
     </div>
 
     <div style="margin-top: 22px; padding: 13px; background: #F4F6FB; border-radius: 14px;">
-      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #626D88;">이번 달 남은 여유</div>
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #626D88;">이번 달 남은 한도</div>
       <div style="display: flex; align-items: baseline; gap: 3px; margin-top: 4px;">
         <span style="font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: #0F7B47;">104</span>
         <span style="font-size: 13px; font-weight: 600; color: #0F7B47;">만원</span>
@@ -150,7 +150,7 @@
                 <div style="font-size: 21px; font-weight: 600; letter-spacing: -0.025em; color: #101828; margin-top: 3px;">208<span style="font-size: 14px; font-weight: 500; color: #475467;">만원</span></div>
               </div>
               <div style="padding-left: 14px; border-left: 1px solid #EFF2F8;">
-                <div style="font-size: 12px; font-weight: 500; color: #626D88;">남은 여유</div>
+                <div style="font-size: 12px; font-weight: 500; color: #626D88; white-space: nowrap;">월말 예상 여유</div>
                 <div style="font-size: 21px; font-weight: 600; letter-spacing: -0.025em; color: #0F7B47; margin-top: 3px;">8<span style="font-size: 14px; font-weight: 500; color: #0F7B47;">만원</span></div>
               </div>
             </div>
@@ -186,35 +186,36 @@
               <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.015em; color: #101828;">계획한 속도로 쓰고 있나요?</span>
               <span style="font-size: 12.5px; color: #626D88;">누적 112만원 · 한도 216만원</span>
             </div>
-            <span style="font-size: 12.5px; font-weight: 600; color: #B45309;">고정비 선반영 구간</span>
           </div>
 
-          <div style="flex: 1; min-height: 0; margin-top: 12px;">
-            <svg width="646" height="176" viewBox="0 0 646 176" fill="none" preserveAspectRatio="none" style="display: block; width: 100%; height: 100%;">
+          <div style="position: relative; flex: 1; min-height: 0; margin-top: 12px;">
+            <svg width="646" height="176" viewBox="0 0 646 176" fill="none" preserveAspectRatio="none" style="position: absolute; inset: 0; display: block; width: 100%; height: 100%;">
               <defs>
                 <linearGradient id="dspend" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stop-color="#3556E6" stop-opacity="0.22"/>
                   <stop offset="100%" stop-color="#3556E6" stop-opacity="0"/>
                 </linearGradient>
               </defs>
-              <path d="M14 142 L632 24" stroke="#B9C3D6" stroke-width="1.4" stroke-dasharray="5 5" stroke-linecap="round"/>
-              <line x1="163" y1="142" x2="163" y2="72" stroke="#DCE2EC" stroke-width="1"/>
+              <rect x="14" y="0" width="149" height="142" fill="#B45309" fill-opacity="0.06"/>
+              <path d="M14 142 L632 24" stroke="#B9C3D6" stroke-width="1.4" stroke-dasharray="5 5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+              <line x1="163" y1="142" x2="163" y2="72" stroke="#DCE2EC" stroke-width="1" vector-effect="non-scaling-stroke"/>
               <path d="M14 139.7 L35.3 135.4 L56.6 108.1 L77.9 101.5 L99.2 91.7 L120.5 87.9 L141.8 84 L163 80.7 L163 142 L14 142 Z" fill="url(#dspend)"/>
-              <path d="M14 139.7 L35.3 135.4 L56.6 108.1 L77.9 101.5 L99.2 91.7 L120.5 87.9 L141.8 84 L163 80.7" stroke="#3556E6" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M163 80.7 L319 64.1 L475 47.3 L632 28.2" stroke="#8FA6F2" stroke-width="2.4" stroke-dasharray="6 5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="163" cy="80.7" r="4.4" fill="#3556E6"/>
-              <circle cx="163" cy="80.7" r="8.4" fill="#3556E6" fill-opacity="0.15"/>
-              <text x="163" y="69" text-anchor="middle" font-size="12" font-weight="600" fill="#101828">112만</text>
-              <circle cx="632" cy="28.2" r="3.8" fill="#8FA6F2"/>
-              <text x="632" y="16" text-anchor="end" font-size="12" font-weight="600" fill="#4B6BDE">월말 예상 208만</text>
-              <text x="330" y="108" text-anchor="start" font-size="11" fill="#697182">계획선 · 한도 216만까지</text>
-              <line x1="14" y1="142" x2="632" y2="142" stroke="#E3E8F1" stroke-width="1"/>
-              <text x="14" y="159" text-anchor="start" font-size="11" fill="#697182">1일</text>
-              <text x="163" y="159" text-anchor="middle" font-size="11" font-weight="600" fill="#475467">8일 오늘</text>
-              <text x="319" y="159" text-anchor="middle" font-size="11" fill="#697182">15일</text>
-              <text x="475" y="159" text-anchor="middle" font-size="11" fill="#697182">22일</text>
-              <text x="632" y="159" text-anchor="end" font-size="11" fill="#697182">30일</text>
+              <path d="M14 139.7 L35.3 135.4 L56.6 108.1 L77.9 101.5 L99.2 91.7 L120.5 87.9 L141.8 84 L163 80.7" stroke="#3556E6" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+              <path d="M163 80.7 L319 64.1 L475 47.3 L632 28.2" stroke="#8FA6F2" stroke-width="2.4" stroke-dasharray="6 5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+              <line x1="14" y1="142" x2="632" y2="142" stroke="#E3E8F1" stroke-width="1" vector-effect="non-scaling-stroke"/>
             </svg>
+            <span style="position: absolute; left: 2.17%; top: 0; padding: 4px 0 0 7px; font-size: 11px; color: #626D88; white-space: nowrap;">월세·보험 등 고정비가 먼저 나갔어요</span>
+            <span style="position: absolute; left: 25.23%; top: 45.85%; width: 17px; height: 17px; margin: -8.5px 0 0 -8.5px; border-radius: 99px; background: rgba(53,86,230,.15);"></span>
+            <span style="position: absolute; left: 25.23%; top: 45.85%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 99px; background: #3556E6;"></span>
+            <span style="position: absolute; left: 25.23%; top: 45.85%; transform: translate(-50%, -100%); margin-top: -10px; font-size: 12px; font-weight: 600; line-height: 1.2; color: #101828; white-space: nowrap;">112만</span>
+            <span style="position: absolute; left: 97.83%; top: 16.02%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 99px; background: #8FA6F2;"></span>
+            <span style="position: absolute; right: 2.17%; top: 16.02%; transform: translateY(-100%); margin-top: -7px; font-size: 12px; font-weight: 600; line-height: 1.2; color: #4B6BDE; white-space: nowrap;">월말 예상 208만</span>
+            <span style="position: absolute; left: 51.08%; top: 56%; font-size: 11px; line-height: 1.2; color: #697182; white-space: nowrap;">계획선 · 한도 216만까지</span>
+            <span style="position: absolute; left: 2.17%; top: 80.68%; margin-top: 6px; font-size: 11px; line-height: 1.2; color: #697182; white-space: nowrap;">1일</span>
+            <span style="position: absolute; left: 25.23%; top: 80.68%; margin-top: 6px; transform: translateX(-50%); font-size: 11px; font-weight: 600; line-height: 1.2; color: #475467; white-space: nowrap;">8일 오늘</span>
+            <span style="position: absolute; left: 49.38%; top: 80.68%; margin-top: 6px; transform: translateX(-50%); font-size: 11px; line-height: 1.2; color: #697182; white-space: nowrap;">15일</span>
+            <span style="position: absolute; left: 73.53%; top: 80.68%; margin-top: 6px; transform: translateX(-50%); font-size: 11px; line-height: 1.2; color: #697182; white-space: nowrap;">22일</span>
+            <span style="position: absolute; right: 2.17%; top: 80.68%; margin-top: 6px; font-size: 11px; line-height: 1.2; color: #697182; white-space: nowrap;">30일</span>
           </div>
 
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; flex-shrink: 0;">
@@ -295,7 +296,7 @@
 
           <div style="display: flex; gap: 8px; margin-top: 12px; padding: 10px 11px; background: #F4F6FB; border-radius: 12px; flex-shrink: 0;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#626D88" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            <span style="font-size: 11.5px; line-height: 1.45; color: #626D88;">내가 직접 등록한 기준입니다. 앱에 내장된 통계나 순위가 아니에요.<br>출처 <span style="color: #475467;">디자인 검증용 가상 기준</span> · 2025년 · 표본 1,200명</span>
+            <span style="font-size: 11.5px; line-height: 1.45; color: #626D88;">내가 직접 등록한 기준이에요. 앱 통계가 아닙니다.<br>출처: <span style="color: #475467;">직접 입력한 예시 기준</span> · 2025년 · 표본 1,200명</span>
           </div>
         </div>
 
@@ -306,7 +307,7 @@
           </div>
           <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 8px;">
             <span style="font-size: 13px; color: #475467;">사용 <span style="font-weight: 600; color: #101828;">112만원</span> / 216만원</span>
-            <span style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: #0F7B47;">남은 104만원</span>
+            <span style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: #0F7B47; white-space: nowrap; flex-shrink: 0;">남은 한도 104만원</span>
           </div>
           <div style="position: relative; height: 9px; border-radius: 99px; background: #E8ECF5; margin-top: 9px; overflow: hidden;">
             <div style="position: absolute; inset: 0 48.1% 0 0; border-radius: 99px; background: linear-gradient(90deg, #6E6BEE 0%, #7A3FE4 100%);"></div>

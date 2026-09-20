@@ -265,15 +265,8 @@
           `display:flex align-items:center gap:14px padding:14px background:#EDF0F7`
       - `div` **text 12px/600** — “07 · 그래프 규칙”
         `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88 margin-top:24px`
-      - `div`
-        `margin-top:12px border:1px solid #E3E8F1 border-radius:14px padding:14px`
-        - `div`
-          `display:flex gap:9px border-bottom:1px solid #EFF2F8`
-        - `div`
-          `display:flex gap:9px padding:11px 0 border-bottom:1px solid #EFF2F8`
-        - `div`
-          `display:flex gap:9px padding:11px 0 border-bottom:1px solid #EFF2F8`
-        - `div`
-          `display:flex gap:9px padding:11px 0 border-bottom:1px solid #EFF2F8`
-        - `div`
-          `display:flex gap:9px`
+      - `div` — “그래프 높이(모바일) · 소비 추이 150px · 미래 150px · 스파크라인 58px”
+        `margin-top:12px border:1px solid #E3E8F1 border-radius:14px padding:14px font-size:12px line-height:1.6 color:#475467`
+        - `span` — “그래프 규칙은 「컴포넌트 · 상태」 장의 03b · 그래프 규칙을 참고하세요.”
+          `font-weight:600 color:#101828`
+        - `br`

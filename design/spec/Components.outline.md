@@ -3,7 +3,7 @@
 원본 `canvas/Components.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:1471px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:28px`
+  `width:1200px height:1555px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:28px`
   - `div`
     `display:flex align-items:flex-end justify-content:space-between gap:20px border-bottom:2px solid #101828`
     - `div`
@@ -98,6 +98,10 @@
           `position:relative height:24px border-top:1px solid #EFF2F8 margin-top:4px`
       - `div`
         `display:flex flex-direction:column gap:7px margin-top:12px`
+        - `div`
+          `display:flex gap:8px`
+        - `div`
+          `display:flex gap:8px`
         - `div`
           `display:flex gap:8px`
         - `div`

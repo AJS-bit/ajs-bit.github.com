@@ -6,12 +6,12 @@
 |---|---|
 | `gen_common.py` | 색·아이콘·카드·버튼·입력·시트 등 공통 조각 |
 | `gen_screens.py` | 새로 추가한 화면 7종 (온보딩·저장소 상태·부채·상환 전략·내역·목적지 설계·상환 계획) |
-| `gen_modals.py` | 모달 11종 |
+| `gen_modals.py` | 모달 12종(알림 없음 `AlertsEmpty` 포함) · 확인 대화상자 시트 |
 | `gen_errors.py` | 모달 오류·저장 상태 6종 시트 (`python3 gen_errors.py <높이>`) |
 | `gen_rest.py` | 적립 모달 · 목적지 유형 5종 · 소비 지난 달 · 코칭 기록 없음 (`python3 gen_rest.py <유형 시트 높이>`) |
 | `gen_v4.py` | **v4 · 1단계** 아트보드 5종(소개 3장·홈 구성·구성 반영 홈)과 다크 짝. 홈은 `Main.dc.html`을 잘라 쓴다 |
 | `gen_v4_stocks.py` | **v4 · 2~5단계** 아트보드 15종(목적지 탭 · 주식 뼈대 · 카테고리 탐색 · 설정)과 다크 짝, 스냅숏 표본 JSON. 목적지 탭 본문은 `Goals`·`Future`를 잘라 쓴다 |
-| `gen_v5.py` | **v5 · 1단계** 아트보드 15종과 다크 짝 — 하루 시트 9종(시트 기본·목록 우선·수정·완료 카드·확인 4종·분류하기·이력 부족 히어로·360px·각주 조합) + 홈 달력 6종(접힘 스트립 · 펼침 월 달력 390/360 · 지난달 보기 + 구현 참고 장 2종 = 달력 칸 읽는 법 940 × 730 · 폭과 글자 크기 1150 × 1300 — 앱 화면이 아니라 설명 장이라 `spec_frame`으로 가로로 넓게 그린다). 펼침은 어느 폭에서도 7열 월 달력(계획 7판). 홈은 `Main.dc.html`을 잘라 쓴다 |
+| `gen_v5.py` | **v5 · 1단계** 아트보드 15종과 다크 짝 — 하루 시트 쪽 9종(시트 기본·목록 우선·수정·완료 카드·확인 4종·분류하기·이력 부족 히어로·360px·각주 조합) + 홈 달력 6종(접힘 스트립 · 펼침 월 달력 390/360 · 지난달 보기 + 구현 참고 장 4종 = 저장을 한 번 더 물어보는 경우 1200 × 900 · 홈 맨 위 카드의 안내 줄 1200 × 640 · 달력 칸 읽는 법 940 × 730 · 폭과 글자 크기 1150 × 1300 — 앱 화면이 아니라 설명 장이라 `spec_frame`으로 가로로 넓게 그린다). 펼침은 어느 폭에서도 7열 월 달력(계획 7판). 홈은 `Main.dc.html`을 잘라 쓴다 |
 | `gen_canvas.py` | `canvas.json`(페이지·좌표·주석) 생성 |
 | `mkcompare.py` | 라이트/다크를 한 장에 나란히 놓은 비교 시트 HTML 생성 (아트보드가 아니라 검토용) |
 | `calc/` | 시안에 적힌 완제일·도착일·총이자를 만들어 낸 상각·복리 계산기 |
@@ -19,7 +19,7 @@
 
 ```bash
 python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2061 \
-  && python3 gen_rest.py 1767 && python3 darken.py && python3 gen_canvas.py
+  && python3 gen_rest.py 1920 && python3 darken.py && python3 gen_canvas.py
 ```
 
 `Main` · `Assets` · `Spending` · `Limits` · `Goals` · `Future` · `HomeScroll` · `PeerStates` · `EmptyStates` · `Desktop*` · `Tokens` · `Components`는 손으로 쓴 파일이라 생성 대상이 아닙니다. **캔버스 편집기에서 직접 고친 내용은 스크립트를 다시 돌리면 덮어써집니다.** 한 번 손으로 고치기 시작했다면 `.dc.html`을 원본으로 삼고 스크립트는 `darken.py`만 쓰세요.

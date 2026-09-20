@@ -60,8 +60,8 @@
       `display:flex gap:8px`
       - `div`
         `flex:1 background:#FFFFFF border:1px solid #E3E8F1 border-radius:14px padding:11px 12px`
-        - `div` **text 11.5px/500** — “현금성 비상금”
-          `font-size:11.5px font-weight:500 color:#626D88`
+        - `div` **text 11.5px/500** — “현금성 자산 · 생활비 기준”
+          `font-size:11.5px font-weight:500 color:#626D88 white-space:nowrap`
         - `div`
           `display:flex align-items:baseline gap:4px margin-top:3px`
       - `div`

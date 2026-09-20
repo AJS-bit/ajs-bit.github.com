@@ -48,7 +48,9 @@
         - `div`
           `display:flex align-items:center gap:10px height:56px border-bottom:1px solid #F3F5FA`
         - `div`
-          `display:flex align-items:center gap:10px height:56px`
+          `display:flex align-items:center gap:10px height:56px border-bottom:1px solid #F3F5FA`
+        - `div`
+          `display:flex align-items:center gap:10px height:52px`
     - `div`
       `display:flex align-items:center justify-content:space-between gap:8px padding:11px 18px background:#E4F4EA border-top:1px solid #C9E5D5`
       - `span` — “배분 합계가 총한도와 같아요”

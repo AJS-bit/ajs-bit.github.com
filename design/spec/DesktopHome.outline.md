@@ -43,11 +43,11 @@
         `display:flex align-items:center gap:11px height:42px padding:0 12px border-radius:11px`
         - `span` **text 14px/500** — “미래”
           `font-size:14px font-weight:500 color:#475467`
-        - `span` **text 12px/600** — “2.0억”
-          `font-size:12px font-weight:600 color:#697182`
+        - `span` **text 12px/600** — “10년 뒤 3.2억”
+          `font-size:12px font-weight:600 color:#697182 white-space:nowrap`
     - `div`
       `margin-top:22px padding:13px background:#F4F6FB border-radius:14px`
-      - `div` **text 11px/600** — “이번 달 남은 여유”
+      - `div` **text 11px/600** — “이번 달 남은 한도”
         `font-size:11px font-weight:600 letter-spacing:0.06em color:#626D88`
       - `div`
         `display:flex align-items:baseline gap:3px margin-top:4px`

@@ -236,7 +236,7 @@ SVG 대신 conic-gradient입니다. 라이브러리 쓰지 마세요.
 ## 14. InputField
 
 ```
-라벨: 12px/600 #475467 · margin-bottom 7   (필수 표시는 뒤에 <span color #C0342F>*</span>, 선택은 11px/500 #697182 "선택")
+라벨: 12px/600 #475467 · margin-bottom 7   (필수 표시는 뒤에 <span color #C0342F>*</span>, 필수가 아닌 칸은 11px/500 #697182 "선택 사항")
 필드: display flex · align-items center · gap 5 · height 46 · padding 0 12
       border-radius 11 · border 1px solid #CFD7E6 (dark #39455F) · background #FFFFFF (dark #121A2B)
 텍스트 입력: flex 1 · 15px/400 · #101828 · overflow hidden · white-space nowrap

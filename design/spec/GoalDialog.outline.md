@@ -24,14 +24,14 @@
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
     - `div`
-      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+      `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
       - `div`
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div`
           `display:flex gap:6px`
       - `div`
-        `flex:1`
+        `flex:0 0 auto`
         - `div` — “이름”
           `font-size:12px font-weight:600 color:#475467`
         - `div` **InputField**
@@ -40,7 +40,7 @@
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div`
-          `padding:0 13px background:#F4F6FB border-radius:14px`
+          `padding:6px 13px background:#F4F6FB border-radius:14px`
       - `div`
         `display:flex gap:10px`
         - `div`

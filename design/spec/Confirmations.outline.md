@@ -3,12 +3,14 @@
 원본 `canvas/Confirmations.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:390px height:1228px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
+  `width:390px height:1245px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
   - `div`
     `padding:0 2px 6px`
+    - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
+      `display:inline-block font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
     - `h2` **text 18px/700** — “삭제 · 초기화 확인”
       `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-    - `p` **text 12px/400** — “무엇이 함께 사라지는지 대상 이름과 영향을 항상 적습니다. 파괴적인 행동은 오른쪽, 취소는 왼쪽입니다.”
+    - `p` **text 12px/400** — “지우기 전에 한 번 더 묻는 창 다섯 가지입니다.”
       `font-size:12px line-height:1.45 color:#626D88`
   - `div` **text 11px/600** — “A · 자산 삭제”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -67,7 +69,7 @@
         `display:flex align-items:center justify-content:center gap:6px height:44px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
       - `div` **text 15px/600** — “삭제”
         `display:flex align-items:center justify-content:center gap:6px height:44px flex:1 border-radius:13px background:#FCEBEA border:none color:#C0342F font-size:15px font-weight:600`
-  - `div` **text 11px/600** — “D · 반복 규칙 삭제”
+  - `div` **text 11px/600** — “D · 반복 거래 삭제”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
   - `div` **Card(20)**
     `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
@@ -76,15 +78,15 @@
       - `div` **Callout(warn)**
         `width:38px height:38px border-radius:12px background:#FDF1E0 display:flex align-items:center justify-content:center`
       - `div`
-        - `div` **text 15.5px/700** — “ETF 자동이체 규칙을 삭제할까요?”
+        - `div` **text 15.5px/700** — “ETF 자동이체 반복 거래를 삭제할까요?”
           `font-size:15.5px font-weight:700 letter-spacing:-0.02em color:#101828`
-        - `div` **text 12.5px/400** — “앞으로 자동 생성되지 않습니다. 이미 만들어진 거래 8건은 남아요.”
+        - `div` **text 12.5px/400** — “앞으로는 자동으로 만들어지지 않아요. 이미 만들어진 거래 8건은 남아요.”
           `font-size:12.5px line-height:1.55 color:#475467 margin-top:5px`
     - `div`
       `display:flex gap:8px margin-top:14px`
       - `div` **SecondaryButton(44)** — “취소”
         `display:flex align-items:center justify-content:center gap:6px height:44px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
-      - `div` **PrimaryButton(44)** — “규칙만 삭제”
+      - `div` **PrimaryButton(44)** — “반복만 삭제”
         `display:flex align-items:center justify-content:center gap:6px height:44px flex:1 border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`
   - `div` **text 11px/600** — “E · 전체 초기화”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`

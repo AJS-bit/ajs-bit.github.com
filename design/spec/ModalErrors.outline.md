@@ -6,9 +6,11 @@
   `width:390px height:2061px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
   - `div`
     `padding:0 2px 6px`
+    - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
+      `display:inline-block font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
     - `h2` **text 18px/700** — “모달 오류 · 저장 상태 6종”
       `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-    - `p` **text 12px/400** — “오류는 무엇이 잘못됐는지와 어떻게 고치는지를 같이 말합니다. 실패해도 입력한 값은 지우지 않습니다.”
+    - `p` **text 12px/400** — “저장이 막히거나 실패했을 때 보이는 창 여섯 가지입니다. 실제로는 한 번에 하나만 보입니다.”
       `font-size:12px line-height:1.45 color:#626D88`
   - `div` **text 11px/600** — “A · 필수 값 미입력 — 저장 비활성”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -56,7 +58,7 @@
         `display:flex align-items:center justify-content:center gap:6px height:46px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
       - `div` **text 15px/600** — “저장”
         `display:flex align-items:center justify-content:center gap:6px height:46px flex:1.4 border-radius:13px background:#E8ECF5 border:none color:#B4BECD font-size:15px font-weight:600`
-  - `div` **text 11px/600** — “B · 값이 규칙에 어긋남 — 배분 합 초과”
+  - `div` **text 11px/600** — “B · 카테고리 한도 합계가 총한도를 넘음”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
   - `div` **Card(18)**
     `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px`
@@ -90,22 +92,16 @@
         `position:absolute left:91.5% top:-5px width:2px height:20px border-radius:2px background:#101828`
     - `div`
       `display:flex justify-content:space-between margin-top:7px`
-      - `span` — “배분 합”
+      - `span` — “카테고리 한도 합계”
         `font-size:11px color:#626D88`
         - `b` — “236만원”
           `font-weight:600`
-      - `span` **text 11px/600** — “총한도 216만원 · 20만원 초과”
+      - `span` **text 11px/600** — “총한도 216만원”
         `font-size:11px font-weight:600 color:#C0342F`
+    - `div` **text 12px/600** — “이렇게 고칠 수 있어요”
+      `margin-top:15px font-size:12px font-weight:600 color:#475467`
     - `div`
-      `margin-top:13px`
-      - `div`
-        `display:flex gap:8px padding:10px 11px background:#FCEBEA border-radius:12px`
-        - `span`
-          `margin-top:1px`
-        - `span` **text 11.5px/400** — “총한도를 넘는 배분은 저장할 수 없습니다. 아래 중 하나를 고르거나 다른 카테고리를 줄여 주세요.”
-          `font-size:11.5px line-height:1.5 color:#7C221E`
-    - `div`
-      `display:flex flex-direction:column gap:7px margin-top:11px`
+      `display:flex flex-direction:column gap:7px margin-top:8px`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px height:42px padding:0 12px border-radius:11px border:1px solid #D7DEEA background:#FFFFFF`
         - `span` **text 13px/600** — “식비를 45만원으로 되돌리기”

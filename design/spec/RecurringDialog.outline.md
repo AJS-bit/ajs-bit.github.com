@@ -43,5 +43,5 @@
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
       - `div` **SecondaryButton(48)** — “닫기”
         `display:flex align-items:center justify-content:center gap:6px height:48px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
-      - `div` **PrimaryButton(48)** — “규칙 추가”
+      - `div` **PrimaryButton(48)** — “반복 거래 추가”
         `display:flex align-items:center justify-content:center gap:6px height:48px flex:1.4 border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`

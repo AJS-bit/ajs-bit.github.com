@@ -14,7 +14,7 @@
 | 경로 | 무엇 |
 |---|---|
 | `design/` | **v3 디자인 인계 묶음(확정본).** 코덱스가 GitHub raw로 읽습니다. 입구 `design/여기부터.md`, 지시서 `design/CODEX-BRIEF.md` |
-| `design/canvas/*.dc.html` | 아트보드 75장(라이트 38 · 다크 37). **값의 최종 기준** |
+| `design/canvas/*.dc.html` | 아트보드 147장(라이트 74 · 다크 73 — v3 77장(`AlertsEmpty` 추가) + v4 40 + v5 30). **값의 최종 기준** |
 | `design/canvas/_tools/` | 생성기·다크 변환·렌더·계산기. 먼저 `_tools/README.md`를 읽을 것 |
 | `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 컴포넌트 24개 실측 CSS · 화면별 조립 체크리스트 |
 | `plan/v4-stocks.md` | **v4 계획.** §9에 결정 사항. 페이지판은 `plan/_tools/md2page.py`로 생성 |
@@ -47,6 +47,12 @@
   칸 폭은 카드 안쪽 7등분(320px = 39.4 × 56), 큰 글자는 칸 높이 72 + 선택 행 `목록으로 보기 ›`(자동 대체 없음). 시안 15장(`HomeCalendar360` · `HomeCalendarPrev` · `CalendarGridSizes` 추가, `HomeCalendar` · `CalendarCells` 고침),
   독립 검토 3관점 반영 · 캔버스 반영(24번째 판) · 시안·등록부·생성기 커밋됨(2026-09-20). 앱에서 고칠 곳과 다시 쓸 테스트 기대값은 계획 §10 7판 메모. 앞으로 앱 빌드·구현은 코덱스가 맡는다.
   이 맥에서는 Brave로 렌더가 된다 — `render_png.py --chrome "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"`(가끔 멈추므로 장마다 시간 제한을 둘 것).
+
+- **시안 전체 점검과 반영 (2026-09-20).** 라이트 73장을 전부 렌더해 「달력 칸 · 상태」와 같은 종류의 문제를 찾았고 39곳을 고쳤다(전·후를 먼저 보여 주고 "다 반영해" 승인). 기록과 숫자 기준표는
+  `design/CHANGES-2026-09-20.md`. 핵심: 설명·상태 장은 **구현 참고 장**(맨 위 알약 `구현 참고 · 앱 화면이 아닙니다`, 새로 그린 것은 `spec_frame`으로 가로로 넓게) · 모달의 단독 행 필드는 `gen_common.solo()` ·
+  본문은 `word-break: keep-all`, 버튼·배지는 `nowrap` + `flex-shrink: 0` · 필수 아님 표기는 `선택 사항` · 가정 카드는 어디서나 보라 점선 · **같은 값은 모든 장에서 같게**(비상금 1,020/1,500 · 10년 뒤 약 3.2억 ·
+  저축·투자 여력 27만원 · 주식 기준일 9/4 · 상환 9년 8개월). v3 확정본도 바뀌었으므로 코덱스는 `CHANGES-2026-09-20.md`를 보고 맞춘다. v5 계획은 8판(앱 문구 7개 교체). 새 장 `AlertsEmpty`. 장 수 147(라이트 74 · 다크 73).
+  점검 방법: `_tools`의 생성기는 이제 이 맥에서 전부 돈다(상대 경로). 렌더는 Brave 헤드리스를 장마다 시간 제한을 두고 3개까지 병렬로.
 
 ## 사용자가 정한 작업 규칙 — 반드시
 

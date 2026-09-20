@@ -60,7 +60,7 @@
         `margin-top:15px padding:13px background:#F1EAFD border-radius:14px`
         - `div`
           `display:flex align-items:flex-end justify-content:space-between gap:10px`
-        - `div` **text 11.5px/400** — “현재 잔여자금 27만원 안에서 충당할 수 있어요. 저장하면 배분에 반영됩니다.”
+        - `div` **text 11.5px/400** — “지금 월 저축 63만원은 모두 배분돼 있어요. 새로 필요한 월 24만원은 이번 달 저축·투자 여력 27만원 안에서 ”
           `font-size:11.5px line-height:1.45 color:#4E2496 margin-top:6px`
       - `div`
         `margin-top:12px`

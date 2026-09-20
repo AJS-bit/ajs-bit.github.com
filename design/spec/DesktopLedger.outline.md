@@ -51,8 +51,8 @@
         `display:flex align-items:center gap:11px height:42px padding:0 12px border-radius:11px`
         - `span` **text 14px/500** — “미래”
           `font-size:14px font-weight:500 color:#475467`
-        - `span` **text 12px/600** — “2.0억”
-          `font-size:12px font-weight:600 color:#697182`
+        - `span` **text 12px/600** — “10년 뒤 3.2억”
+          `font-size:12px font-weight:600 color:#697182 white-space:nowrap`
     - `div`
       `margin-top:auto display:flex flex-direction:column gap:3px`
       - `div`

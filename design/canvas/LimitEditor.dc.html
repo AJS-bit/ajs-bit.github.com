@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
     a { color: #3556E6; text-decoration: none; }
     a:hover { color: #2743C4; }
   </style>
@@ -110,7 +110,7 @@
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 10px; height: 56px;">
+        <div style="display: flex; align-items: center; gap: 10px; height: 56px; border-bottom: 1px solid #F3F5FA;">
           <div style="width: 32px; height: 32px; border-radius: 10px; background: #0ea5e920; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v6M16 5v6M2 11h19.6"/><path d="M18 17h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2v-4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6c0 1 .8 2 2 2h1"/><circle cx="7" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
           </div>
@@ -122,6 +122,15 @@
             <span style="flex: 1; text-align: right; font-size: 16px; font-weight: 500; color: #B4BECD;">12</span>
             <span style="font-size: 12.5px; font-weight: 500; color: #626D88;">만원</span>
           </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; height: 52px;">
+          <div style="width: 32px; height: 32px; border-radius: 10px; background: #F4F6FB; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 600; color: #626D88;">+9</div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 13.5px; font-weight: 600; color: #101828; white-space: nowrap;">나머지 9개 카테고리</div>
+            <div style="font-size: 11px; color: #626D88;">자동 79만원</div>
+          </div>
+          <span style="display: inline-flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 600; color: #475467; white-space: nowrap; flex-shrink: 0;">펼치기<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#475467" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
         </div>
 
       </div>

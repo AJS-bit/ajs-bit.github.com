@@ -3,15 +3,15 @@
 원본 `canvas/EmptyStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:390px height:1718px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
+  `width:390px height:1733px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
   - `div`
     `padding:0 2px 6px`
+    - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
+      `display:inline-block font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
     - `h2` **text 18px/700** — “미입력 · 빈 상태”
       `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-    - `p` — “미입력은 로만 표시하고, 0원·0%·좋은 성과로 바꾸지 않습니다. 자산이 없어도 급여와 소비 기록만으로 시작할 수 ”
+    - `p` **text 12px/400** — “아직 입력하지 않은 값이 있을 때 화면이 어떻게 보이는지 다섯 가지 경우입니다. 실제로는 한 번에 하나만 보입니다.”
       `font-size:12px line-height:1.45 color:#626D88`
-      - `span` — “—”
-        `font-weight:600 color:#475467`
   - `div` **text 11px/600** — “A · 첫 시작 · 홈”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
   - `div` **Card(20)**
@@ -61,8 +61,8 @@
       `display:flex align-items:center justify-content:space-between gap:8px`
       - `span` **text 11px/600** — “현재 위치”
         `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
-      - `span` **StatusPill** — “기준 없음”
-        `background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
+      - `span` **StatusPill** — “급여 미입력”
+        `background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
     - `div`
       `display:flex align-items:baseline gap:10px margin-top:8px`
       - `span` **text 48px/700** — “—”
@@ -71,20 +71,16 @@
         `font-size:13px font-weight:500 color:#475467`
     - `div`
       `display:flex align-items:center justify-content:space-between gap:10px margin-top:9px padding:9px 11px background:#F4F6FB border-radius:11px`
-      - `span` — “급여가 없어도 는 계산돼요”
+      - `span` **text 12px/400** — “순자산 대비 이번 달 소비”
         `font-size:12px color:#626D88`
-        - `b` — “순자산 대비”
-          `font-weight:600`
       - `span`
         `display:inline-flex align-items:center gap:4px`
         - `span` **text 15px/600** — “2.2%”
           `font-size:15px font-weight:600 letter-spacing:-0.02em color:#101828`
     - `div` **ProgressTrack**
       `height:10px border-radius:99px background:#EFF2F8 border:1px dashed #CFD7E6 margin-top:14px`
-    - `p` — “실수령 급여를 입력하면 이 비율을 계산할 수 있어요.”
+    - `p` **text 12.5px/400** — “실수령 급여를 입력하면 월급 대비 소비율을 보여 드려요.”
       `font-size:12.5px line-height:1.5 color:#475467`
-      - `span` — “미입력은 0%가 아닙니다.”
-        `font-weight:600 color:#101828`
     - `div`
       `display:grid grid-template-columns:repeat(3, minmax(0, 1fr)) margin-top:13px border-top:1px solid #EFF2F8`
       - `div`
@@ -100,7 +96,7 @@
           `font-size:18px font-weight:600 color:#101828 margin-top:3px`
       - `div`
         `border-left:1px solid #EFF2F8`
-        - `div` **text 11.5px/500** — “남은 여유”
+        - `div` **text 11.5px/500** — “월말 예상 여유”
           `font-size:11.5px font-weight:500 color:#626D88`
         - `div` **text 18px/600** — “—”
           `font-size:18px font-weight:600 color:#B4BECD margin-top:3px`
@@ -114,8 +110,8 @@
       `display:flex align-items:center justify-content:space-between gap:8px`
       - `span` **text 11px/600** — “현재 위치”
         `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
-      - `span` **StatusPill** — “급여 기준 없음”
-        `background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
+      - `span` **StatusPill** — “급여 0원”
+        `background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
     - `div`
       `display:flex align-items:baseline gap:10px margin-top:8px`
       - `span` **text 48px/700** — “—”

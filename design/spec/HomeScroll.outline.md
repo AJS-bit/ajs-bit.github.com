@@ -66,7 +66,7 @@
           `font-weight:500 color:#475467`
       - `div`
         `display:flex gap:7px margin-top:10px padding:9px 10px background:#F4F6FB border-radius:11px`
-        - `span` — “내가 직접 등록한 기준입니다. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명”
+        - `span` — “내가 직접 등록한 기준이에요. 앱 통계가 아닙니다. 출처: · 2025년 · 표본 1,200명”
           `font-size:11px line-height:1.45 color:#626D88`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`

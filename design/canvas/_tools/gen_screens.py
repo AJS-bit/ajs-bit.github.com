@@ -2,11 +2,20 @@
 import pathlib
 from gen_common import *
 
-OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
+OUT = pathlib.Path(__file__).resolve().parent.parent
 
 
-def w(name, body):
-    (OUT / f'{name}.dc.html').write_text(doc(body), encoding='utf-8')
+KEEP_ALL_FROM = '-webkit-font-smoothing: antialiased; }'
+KEEP_ALL_TO = '-webkit-font-smoothing: antialiased; word-break: keep-all; }'
+
+
+def w(name, body, keep_all=False):
+    """keep_all=True 면 body 에 word-break: keep-all 을 넣어 한글이 낱말 중간에서 갈라지지 않게 한다."""
+    html = doc(body)
+    if keep_all:
+        assert html.count(KEEP_ALL_FROM) == 1
+        html = html.replace(KEEP_ALL_FROM, KEEP_ALL_TO)
+    (OUT / f'{name}.dc.html').write_text(html, encoding='utf-8')
     print('wrote', name)
 
 
@@ -33,13 +42,13 @@ w('Onboarding', frame(
     f'<h1 style="margin: 14px 0 0; font-size: 26px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.35; color: {C["INK"]};">'
     f'월급의 얼마를<br>쓰고 있는지부터</h1>'
     f'<p style="margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: {C["INK2"]};">'
-    f'지금 위치를 알면 목적지까지 얼마나 조절하면 되는지 보입니다.</p>'
+    f'지금 위치를 알면<br>목적지까지 얼마나 조절할지 보여요.</p>'
     f'<div style="margin-top: 24px;">{"".join(steps)}</div>'
     f'<div style="margin-top: auto; padding-bottom: 24px; display: flex; flex-direction: column; gap: 10px;">'
     f'{btn("내 데이터로 시작하기", "primary", h=52, radius=14, size=16)}'
     f'{btn("샘플로 둘러보기", "secondary", h=50, radius=14, size=15)}'
     f'<p style="margin: 6px 0 0; text-align: center; font-size: 11.5px; line-height: 1.5; color: {C["INK3"]};">'
-    f'샘플은 가상 데이터이며 내 기록과 섞이지 않아요.</p></div></div>'))
+    f'샘플은 가상 데이터이며 내 기록과 섞이지 않아요.</p></div></div>'), keep_all=True)
 
 
 # ══════════════ 2. 저장소 로딩 · 실패 · 복구 ══════════════
@@ -52,9 +61,13 @@ def big_state(ic, icol, ibg, title, body, actions, extra=""):
         f'{extra}<div style="display: flex; gap: 8px; width: 100%; margin-top: 15px;">{actions}</div></div>', pad="18px 16px")
 
 
+REF_PILL = (f'<span style="display: inline-block; margin-bottom: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; '
+            f'color: {C["INK2"]}; border: 1px solid {C["LINE"]}; background: {C["SURF"]}; border-radius: 99px; padding: 4px 10px; '
+            f'white-space: nowrap;">구현 참고 · 앱 화면이 아닙니다</span>')
+
 w('StorageStates', state_sheet(
     '저장소 로딩 · 실패 · 복구',
-    '기기 저장소를 읽지 못했을 때도 기존 기록을 덮어쓰지 않습니다. 복구는 항상 미리보기를 거칩니다.',
+    '기록을 불러오거나 복구할 때 생길 수 있는 네 가지 경우입니다. 실제로는 한 번에 하나만 보입니다.',
     [('A · 불러오는 중',
       card(f'<div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 14px 4px;">'
            f'<div style="width: 44px; height: 44px; border-radius: 99px; border: 3px solid {C["TRACK"]}; border-top-color: {C["BRAND"]};"></div>'
@@ -71,13 +84,13 @@ w('StorageStates', state_sheet(
                 'NAVI 백업 형식이 아니거나 파일이 손상됐습니다. 현재 기록은 그대로입니다.',
                 btn('다른 파일 선택', 'primary', h=44).replace('width: 100%;', 'flex: 1;') +
                 btn('취소', 'secondary', h=44).replace('width: 100%;', 'flex: 1;'),
-                extra='<div style="width: 100%; margin-top: 13px;">' + note('navi-backup-2026-08.json · 12.4KB<br>오류 — 필수 항목 <span style="font-weight:600">version</span>이 없습니다', 'neg', 'warn') + '</div>')),
+                extra='<div style="width: 100%; margin-top: 13px;">' + note('navi-backup-2026-08.json · 12.4KB<br>NAVI에서 내보낸 백업 파일이 아니에요', 'neg', 'warn') + '</div>')),
      ('D · 샘플에서 내 데이터로 전환',
       big_state('arrowr', C["BRAND"], C["BRAND_SOFT"], '내 데이터로 시작할까요?',
                 '샘플 기록은 모두 지워지고 빈 상태에서 시작합니다. 샘플은 백업되지 않아요.',
                 btn('내 데이터로 시작', 'primary', h=44).replace('width: 100%;', 'flex: 1;') +
                 btn('계속 둘러보기', 'secondary', h=44).replace('width: 100%;', 'flex: 1;')))],
-    h=1264))
+    h=1324).replace('<h2 ', REF_PILL + '<h2 ', 1), keep_all=True)
 
 
 def kvrow(k, v, vcol, strong=False, last=False):
@@ -126,7 +139,7 @@ w('Debts', frame(
              f'<span style="font-size: 11px; color: {C["INK3"]};">담보 70% · 신용 25% · 학자금 3% · 할부 2%</span>'
              f'<span style="font-size: 11px; color: {C["INK3"]};">총자산의 48.7%</span></div>'),
         guidance('warn', '고금리 경고', '카드 할부 연 14.5%부터 갚으세요',
-                 '잔액은 전체의 2%뿐이지만 금리가 신용대출의 2.1배예요.', '상환 전략 보기'),
+                 '잔액은 전체의 2%지만 금리는 신용대출의 2.1배예요.', '상환 전략 보기'),
         card(section_head('부채 4건', '8,860만원', smallbtn('추가', 'soft', 'plus')) +
              f'<div style="display: flex; flex-direction: column; margin-top: 6px;">{"".join(rows)}</div>'),
         card(f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">'
@@ -136,7 +149,7 @@ w('Debts', frame(
              f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px;">'
              f'<span style="font-size: 11.5px; color: {C["INK3"]};">최소 77만원 + 추가 15만원</span>'
              f'<span style="font-size: 11.5px; color: {C["INK3"]};">소비율에는 포함되지 않아요</span></div>', pad="13px 14px"),
-    ]) + bottomnav(1)))
+    ]) + bottomnav(1)), keep_all=True)
 
 
 # ══════════════ 4. 자산 › 상환 전략 ══════════════
@@ -170,7 +183,7 @@ w('Strategy', frame(
              f'<div style="flex: 1; padding-bottom: 4px;">'
              f'<div style="font-size: 11.5px; color: {C["INK3"]};">최소 상환 77만원에 더해서</div>'
              f'<div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]}; margin-top: 2px;">매월 92만원 상환</div></div></div>'
-             f'<div style="margin-top: 9px;">{note("입력 후 다른 곳을 누르면 저장됩니다. 방식 선택은 누르는 즉시 반영돼요.", "mute")}</div></div>'),
+             f'<div style="margin-top: 9px;">{note("금액은 입력하고 다른 곳을 누르면 저장돼요.", "mute")}</div></div>'),
         card(f'<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0;">'
              f'<div style="padding-right: 12px;">'
              f'<div style="font-size: 11.5px; font-weight: 500; color: {C["INK3"]};">예상 완제</div>'
@@ -205,7 +218,10 @@ minib = lambda t, tone: (f'<span style="font-size: 10px; font-weight: 600; color
 daygroup = lambda d, w_, s: (f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 12px 0 6px;">'
                              f'<span style="font-size: 13px; font-weight: 600; color: {C["INK"]};">{d} '
                              f'<span style="font-weight: 500; color: {C["INK3"]};">{w_}</span></span>'
-                             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["INK2"]};">{s}</span></div>')
+                             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["INK2"]}; white-space: nowrap;">{s}</span></div>')
+
+# 날짜 합계는 소비만 센다 — 소비율에서 빠지는 이체는 회색 덧말로 따로 적는다
+excl = lambda t: f' <span style="font-weight: 500; color: {C["INK4"]};">· {t}</span>'
 
 w('Ledger', frame(
     screen_header('소비', tabs=['이번 달', '내역', '한도'], active=1,
@@ -226,13 +242,14 @@ w('Ledger', frame(
         card(daygroup('9월 8일', '화요일 · 오늘', '32,000원') +
              tx('식비', 'rice', '점심 · 팀 회식', '생활비 통장', '−32,000') +
              daygroup('9월 7일', '월요일', '118,400원') +
-             tx('교통', 'bus', '교통카드 충전', '연결 없음', '−50,000') +
+             tx('교통', 'bus', '교통카드 충전', '계좌 미지정', '−50,000') +
              tx('쇼핑', 'bag', '생필품', '신용카드', '−62,000') +
              tx('카페/간식', 'coffee', '카페', '생활비 통장', '−6,400') +
-             daygroup('9월 5일', '토요일', '320,000원') +
+             daygroup('9월 5일', '토요일', '20,000원' + excl('이체 30만원 제외')) +
              tx('저축/투자', 'leaf', 'ETF 자동이체', '생활비 → ETF 계좌', '−300,000',
                 badges=minib('소비율 제외', 'mute') + minib('반복', 'brand'), muted=True) +
-             daygroup('9월 3일', '수요일', '470,000원') +
+             tx('통신', 'phone', '휴대폰 요금', '생활비 통장', '−20,000', badges=minib('반복', 'brand')) +
+             daygroup('9월 3일', '목요일', '470,000원') +
              tx('주거/관리', 'house', '월세 · 관리비', '생활비 통장', '−470,000'),
              pad="4px 14px 10px"),
     ]) + bottomnav(2)))
@@ -240,7 +257,7 @@ w('Ledger', frame(
 
 # ══════════════ 6. 목적지 › 새 목적지 설계 ══════════════
 presets = []
-for name, meta, col, ic in [("비상금 6개월", "생활비 기준 1,500만원", C["SKY"], "shield"),
+for name, meta, col, ic in [("비상금 6개월", "6개월치 생활비", C["SKY"], "shield"),
                             ("전세 보증금", "목표액 직접 입력", C["VIO"], "house"),
                             ("은퇴 연금", "30년 뒤 목표", C["POS"], "leaf")]:
     presets.append(
@@ -283,10 +300,10 @@ w('GoalDesign', frame(
              f'<span style="font-size: 16px; font-weight: 600; color: {C["VIO_STRONG"]};">만원</span></div></div>'
              f'{badge("저장되지 않는 계산", "vio", "spark")}</div>'
              f'<div style="font-size: 11.5px; line-height: 1.45; color: #4E2496; margin-top: 6px;">'
-             f'현재 잔여자금 27만원 안에서 충당할 수 있어요. 저장하면 배분에 반영됩니다.</div></div>'
+             f'지금 월 저축 63만원은 모두 배분돼 있어요. 새로 필요한 월 24만원은 이번 달 저축·투자 여력 27만원 안에서 낼 수 있어요.</div></div>'
              f'<div style="margin-top: 12px;">{goal_chart}</div>'
              f'{btn("목적지로 저장", "primary")}', pad=15),
-    ]) + bottomnav(3)))
+    ]) + bottomnav(3)), keep_all=True)
 
 
 # ══════════════ 7. 미래 › 상환 계획 ══════════════
@@ -309,27 +326,27 @@ w('Payoff', frame(
     content([
         card(f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
              f'{badge("저장되지 않는 가정", "vio", "spark")}'
-             f'<span style="font-size: 12px; font-weight: 600; color: {C["INK3"]};">되돌리기</span></div>'
+             f'<span style="font-size: 12px; font-weight: 600; color: {C["INK3"]}; white-space: nowrap; flex-shrink: 0;">가정 종료</span></div>'
              f'<p style="margin: 11px 0 0; font-size: 15px; font-weight: 600; letter-spacing: -0.015em; color: {C["INK"]};">월 추가 상환을 얼마나 할까요?</p>'
              f'<div style="display: flex; align-items: baseline; gap: 7px; margin-top: 9px;">'
-             f'<span style="font-size: 14px; font-weight: 500; color: {C["INK4"]}; text-decoration: line-through;">0원</span>'
+             f'<span style="font-size: 14px; font-weight: 500; color: {C["INK4"]}; text-decoration: line-through;">15만원</span>'
              f'<span style="align-self: center;">{icon("arrowr", 13, C["VIO_STRONG"], 2.4)}</span>'
-             f'<span style="font-size: 25px; font-weight: 700; letter-spacing: -0.03em; color: {C["VIO_STRONG"]};">15<span style="font-size: 15px; font-weight: 600;">만원</span></span>'
-             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-left: auto;">매월 92만원 상환</span></div>'
-             f'<div style="margin-top: 8px;">{slider(56, C["VIO"])}</div>'
+             f'<span style="font-size: 25px; font-weight: 700; letter-spacing: -0.03em; color: {C["VIO_STRONG"]};">20<span style="font-size: 15px; font-weight: 600;">만원</span></span>'
+             f'<span style="font-size: 12.5px; font-weight: 600; color: {C["VIO_STRONG"]}; margin-left: auto;">매월 97만원 상환</span></div>'
+             f'<div style="margin-top: 8px;">{slider(round(20 / 27 * 100), C["VIO"])}</div>'
              f'<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 5px;">'
              f'<span style="font-size: 11px; color: {C["INK4"]};">최소 상환만</span>'
              f'<span style="font-size: 11px; color: {C["INK4"]};">월 27만원</span></div>'
-             f'<div style="margin-top: 11px;">{note("최소 상환(월 77만원)은 줄일 수 없어 슬라이더에 포함되지 않습니다.", "mute")}</div>',
+             f'<div style="margin-top: 11px;">{note("최소 상환 월 77만원은 줄일 수 없어 슬라이더에서 뺐어요.", "mute")}</div>',
              extra=f'border: 1px dashed {C["VIO_LINE"]};'),
-        card(f'<div style="display: flex; gap: 8px;">{compare("고금리 우선", "2036년 4월", "9년 8개월 뒤", "1,734만원", best=True)}'
-             f'{compare("소액 우선", "2036년 4월", "9년 8개월 뒤", "1,764만원")}</div>'
-             f'<div style="margin-top: 11px;">{note("고금리 우선이 이자를 <b style=font-weight:600>30만원</b> 적게 냅니다. 완제는 같은 달이고 이자만 차이 납니다. 추가 상환 없이 두면 완제 2038년 9월 · 총이자 2,248만원.", "mute")}</div>',
+        card(f'<div style="display: flex; gap: 8px;">{compare("고금리 우선", "2035년 8월", "9년 뒤", "1,614만원", best=True)}'
+             f'{compare("소액 우선", "2035년 9월", "9년 1개월 뒤", "1,643만원")}</div>'
+             f'<div style="margin-top: 11px;">{note("고금리 우선이 이자를 <b style=font-weight:600>약 30만원</b> 적게 내고 한 달 먼저 끝나요. 추가 상환 없이 두면 완제 2038년 9월 · 총이자 2,248만원.", "mute")}</div>',
              pad="13px 14px"),
         card(f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">'
              f'<div style="min-width: 0;"><div style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">이 계획을 저장할까요?</div>'
              f'<div style="font-size: 11.5px; line-height: 1.45; color: {C["INK3"]}; margin-top: 2px;">저장해야 자산 경로와 목적지 계산에 반영됩니다.</div></div></div>'
              f'<div style="display: flex; gap: 8px; margin-top: 12px;">'
-             f'{btn("가정 취소", "secondary", h=44).replace("width: 100%;", "flex: 1;")}'
+             f'{btn("가정 종료", "secondary", h=44).replace("width: 100%;", "flex: 1;")}'
              f'{btn("상환 계획 저장", "primary", h=44).replace("width: 100%;", "flex: 1.4;")}</div>'),
-    ]) + bottomnav(4)))
+    ]) + bottomnav(4)), keep_all=True)

@@ -3,12 +3,14 @@
 원본 `canvas/StorageStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:390px height:1309px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
+  `width:390px height:1324px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
   - `div`
     `padding:0 2px 6px`
+    - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
+      `display:inline-block font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
     - `h2` **text 18px/700** — “저장소 로딩 · 실패 · 복구”
       `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-    - `p` **text 12px/400** — “기기 저장소를 읽지 못했을 때도 기존 기록을 덮어쓰지 않습니다. 복구는 항상 미리보기를 거칩니다.”
+    - `p` **text 12px/400** — “기록을 불러오거나 복구할 때 생길 수 있는 네 가지 경우입니다. 실제로는 한 번에 하나만 보입니다.”
       `font-size:12px line-height:1.45 color:#626D88`
   - `div` **text 11px/600** — “A · 불러오는 중”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`

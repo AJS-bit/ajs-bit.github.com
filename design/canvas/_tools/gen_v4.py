@@ -19,8 +19,17 @@ ARROW = ('M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3
          'L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z')
 
 
-def w(name, body):
+KEEP_ALL_FROM = '-webkit-font-smoothing: antialiased; }'
+KEEP_ALL_TO = '-webkit-font-smoothing: antialiased; word-break: keep-all; }'
+
+
+def w(name, body, keep_all=True):
+    """keep_all — 한국어가 단어 중간에서 줄바꿈되지 않게 body에 word-break: keep-all을 넣는다.
+    HomeConfigured는 Main.dc.html을 그대로 잘라 쓰므로 Main과 같게 두려고 끈다."""
     light = doc(body)
+    if keep_all:
+        assert light.count(KEEP_ALL_FROM) == 1
+        light = light.replace(KEEP_ALL_FROM, KEEP_ALL_TO)
     (OUT / f'{name}.dc.html').write_text(light, encoding='utf-8')
     (OUT / f'Dark{name}.dc.html').write_text(darken(light), encoding='utf-8')
     print('wrote', name, '+ Dark' + name)
@@ -87,7 +96,7 @@ hero_excerpt = hero(
     f'<span style="font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK2"]};">2.2%</span></span></div>'
     + f'<div style="margin-top: 15px;">{route_bar()}</div>')
 
-w('IntroPosition', intro(1, '현재 위치', '이번 달 소비가 월급의 몇 %인지, 숫자 하나로 봅니다.', hero_excerpt))
+w('IntroPosition', intro(1, '현재 위치', '이번 달 소비가 월급의 몇 %인지<br>숫자 하나로 봅니다.', hero_excerpt))
 
 
 # ══════════════ 소개 2 · 항로 ══════════════
@@ -97,7 +106,7 @@ route_card = card(
 guide_card = guidance('warn', '다음 안내', '카드 할부 금리 14.5%부터 줄여보세요',
                       '고금리 부채는 자산이 자라는 속도를 가장 크게 낮춰요.', '상환 전략 보기')
 
-w('IntroRoute', intro(2, '항로', '목표까지 얼마나 남았고, 지금 무엇을 하면 되는지 알려줍니다.', route_card + guide_card))
+w('IntroRoute', intro(2, '항로', '목표까지 얼마나 남았는지,<br>지금 무엇을 할지 알려줍니다.', route_card + guide_card))
 
 
 # ══════════════ 소개 3 · 목적지 ══════════════
@@ -120,7 +129,7 @@ dest_card = card(
     + dest_row('신용대출 완제', '2030년 10월 · 상환 계획 반영', 31, C['WARN'], last=True)
     + '</div>', pad='12px 14px 2px')
 
-w('IntroDestination', intro(3, '목적지', '비상금·투자·상환. 언제 도착하는지 날짜로 말합니다.', dest_card))
+w('IntroDestination', intro(3, '목적지', '비상금 · 투자 · 상환,<br>언제 도착할지 날짜로 알려줍니다.', dest_card))
 
 
 # ══════════════ 구성 · 홈에 무엇을 둘까요? ══════════════
@@ -178,9 +187,9 @@ PICKS = [
     ('guide', '다음 안내', '지금 할 일 한 가지', True),
     ('goal', '대표 목적지', '가장 앞선 목적지와 도착 예상', False),
     ('limit', '이번 달 한도', '하루 한도와 남은 금액', True),
-    ('peer', '또래와 내 페이스', '등록한 기준과 내 소비율 비교', False),
-    ('rows', '순자산 대비 소비', '순자산 대비 · 종합 점수 · 10년 뒤', False),
-    ('line', '순자산 한 줄', '순자산과 다음 마일스톤', True),
+    ('peer', '또래와 내 페이스', '내가 넣은 또래 기준과 내 소비율 비교', False),
+    ('rows', '순자산 대비 소비', '가진 자산에 비해 얼마나 쓰는지', False),
+    ('line', '순자산 한 줄', '지금 순자산과 다음 목표 금액', True),
     ('line', '상환 계획 한 줄', '완제 예정일과 이번 달 상환액', True),
 ]
 picked = sum(1 for p in PICKS if p[3])
@@ -204,7 +213,7 @@ w('HomeSetup', frame(
     f'<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 20px; overflow: hidden;">'
     f'{topline("홈 구성")}'
     f'<h1 style="margin: 10px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.35; color: {C["INK"]};">홈에 무엇을 둘까요?</h1>'
-    f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 고르세요.</p>'
+    f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">소비율은 늘 맨 위에 있어요.<br>그 아래에 둘 카드를 5개까지 골라 주세요.</p>'
     f'<div style="margin-top: 12px;">{fixed_row}</div>'
     f'<div style="margin-top: 12px;">{section_head("홈 카드", right=count_lbl)}</div>'
     f'<div style="margin-top: 8px;">{card(pick_rows, pad="0 14px")}</div>'
@@ -260,4 +269,4 @@ w('HomeConfigured', frame(
     f'\n  {header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 0 14px; overflow: hidden;">\n\n'
     f'    {hero_block}\n\n    {guide_block}\n\n    {limit_block}\n\n    {networth_card}\n\n    {payoff_card}\n\n  </div>\n\n'
-    f'  {bottomnav(0)}\n'))
+    f'  {bottomnav(0)}\n'), keep_all=False)

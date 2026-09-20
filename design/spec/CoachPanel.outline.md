@@ -19,14 +19,14 @@
       - `div`
         - `h2` **text 18px/700** — “코칭”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “저장된 기록만 보고 드리는 조언이에요. 우선순위가 높은 순서입니다.”
+        - `p` **text 12.5px/400** — “저장된 기록을 보고 중요한 순서로 알려드려요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
     - `div`
-      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:12px`
       - `div`
-        `display:flex flex-direction:column gap:9px`
+        `display:flex flex-direction:column gap:8px`
         - `div`
           `display:flex gap:11px padding:13px border-radius:14px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #C0342F`
         - `div`
@@ -43,7 +43,7 @@
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div`
-          `padding:13px background:#F1EAFD border-radius:14px border:1px dashed #B79BFF`
+          `padding:11px 13px background:#F1EAFD border-radius:14px border:1px dashed #B79BFF`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
       - `div` **SecondaryButton(48)** — “닫기”

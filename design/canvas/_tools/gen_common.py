@@ -71,6 +71,11 @@ _P = {
 }
 
 
+# 필수가 아닌 입력 칸의 라벨 뒤에 붙는 표기. '선택'만 쓰면 '고르는 칸'으로 읽혀서 '선택 사항'으로 쓴다.
+# 12px · 약 52px 폭 — 라벨과 합쳐 칸 폭을 넘지 않는지 볼 것(가장 좁은 예: 124px 칸의 '기대수익률 선택 사항' ≈ 112px).
+OPTIONAL_MARK = "선택 사항"
+
+
 def icon(name, size=18, stroke="#475467", w=1.8, fill="none"):
     return (f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="{fill}" stroke="{stroke}" '
             f'stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round">{_P[name]}</svg>')
@@ -88,7 +93,9 @@ HELMET = """<helmet>
 </helmet>"""
 
 
-def doc(body):
+def doc(body, keep_all=False):
+    """keep_all=True 면 body 에 word-break: keep-all 을 넣어 한국어가 낱말 중간에서 꺾이지 않게 한다."""
+    helmet = HELMET.replace('antialiased; }', 'antialiased; word-break: keep-all; }') if keep_all else HELMET
     return f"""<!doctype html>
 <html>
 <head>
@@ -97,7 +104,7 @@ def doc(body):
 </head>
 <body>
 <x-dc>
-{HELMET}
+{helmet}
 
 {body}
 </x-dc>
@@ -283,7 +290,7 @@ def section_head(title, meta=None, right=""):
 def field(label, value, unit=None, required=False, optional=False, state="default", helper=None, w=None, right_align=False):
     """입력 필드."""
     req = f' <span style="color: {C["NEG"]};">*</span>' if required else ''
-    opt = f' <span style="font-weight: 500; color: {C["INK4"]};">선택</span>' if optional else ''
+    opt = f' <span style="font-weight: 500; color: {C["INK4"]};">{OPTIONAL_MARK}</span>' if optional else ''
     bd, bg, fg, extra = f'1px solid {C["INPUT"]}', C["SURF"], C["INK"], ''
     if state == "focus":
         bd, extra = f'1.5px solid {C["BRAND"]}', 'box-shadow: 0 0 0 3px rgba(53,86,230,.16);'
@@ -312,8 +319,14 @@ def field(label, value, unit=None, required=False, optional=False, state="defaul
             f'<span style="flex: 1; {align} font-size: {fsize}px; font-weight: {weight}; color: {fg}; overflow: hidden; white-space: nowrap;">{value}</span>{u}{lock}</div>{hl}</div>')
 
 
+def solo(field_html):
+    """세로로 쌓이는 시트 본문에 필드를 한 줄로 단독 배치할 때 쓴다.
+    field() 의 'flex: 1'은 가로 줄에서 폭을 나누려는 값인데, 세로 flex 본문에 그대로 두면 남는 높이를 먹어 필드 아래가 벌어진다."""
+    return field_html.replace('flex: 1; min-width: 0;', 'flex: 0 0 auto; min-width: 0;', 1)
+
+
 def select_field(label, value, w=None, optional=False):
-    opt = f' <span style="font-weight: 500; color: {C["INK4"]};">선택</span>' if optional else ''
+    opt = f' <span style="font-weight: 500; color: {C["INK4"]};">{OPTIONAL_MARK}</span>' if optional else ''
     width = f'width: {w}px;' if w else 'flex: 1;'
     return (f'<div style="{width} min-width: 0;">'
             f'<div style="font-size: 12px; font-weight: 600; color: {C["INK2"]}; margin-bottom: 7px;">{label}{opt}</div>'
@@ -408,12 +421,14 @@ def caticon(name, ic, size=30):
 
 
 # ---------- 바텀시트 모달 ----------
-def sheet(title, desc, body, footer, scrim_h=60, sticky=None, header_right=None):
+def sheet(title, desc, body, footer, scrim_h=60, sticky=None, header_right=None, body_pb=0, body_gap=15):
+    """body_pb = 본문 아래 안쪽 여백(마지막 안내 상자가 버튼 구분선에 붙지 않게 14), body_gap = 본문 구역 간격."""
     hr = header_right if header_right is not None else (
         f'<div style="width: 36px; height: 36px; border-radius: 11px; background: {C["INSET"]}; display: flex; '
         f'align-items: center; justify-content: center; flex-shrink: 0;">{icon("x", 17, C["INK2"], 2.2)}</div>')
     d = f'<p style="margin: 4px 0 0; font-size: 12.5px; line-height: 1.45; color: {C["INK3"]};">{desc}</p>' if desc else ''
     st = sticky or ''
+    pb = f'{body_pb}px' if body_pb else '0'
     return frame(
         f'<div style="height: {scrim_h}px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 12px; flex-shrink: 0;">'
         f'<span style="font-size: 11.5px; font-weight: 500; color: rgba(255,255,255,.62);">배경을 눌러 닫기</span></div>'
@@ -423,7 +438,7 @@ def sheet(title, desc, body, footer, scrim_h=60, sticky=None, header_right=None)
         f'<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 12px 18px 14px; '
         f'border-bottom: 1px solid {C["LINE_SOFT"]}; flex-shrink: 0;"><div>'
         f'<h2 style="margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {C["INK"]};">{title}</h2>{d}</div>{hr}</div>'
-        f'<div style="flex: 1; min-height: 0; overflow: hidden; padding: 14px 18px 0; display: flex; flex-direction: column; gap: 15px;">{body}</div>'
+        f'<div style="flex: 1; min-height: 0; overflow: hidden; padding: 14px 18px {pb}; display: flex; flex-direction: column; gap: {body_gap}px;">{body}</div>'
         f'{st}'
         f'<div style="display: flex; gap: 10px; padding: 12px 18px 20px; border-top: 1px solid {C["LINE_SOFT"]}; flex-shrink: 0;">{footer}</div>'
         f'</div>',
@@ -435,9 +450,12 @@ def sheet_footer(cancel="취소", save="저장", save_kind="primary"):
             btn(save, save_kind, h=48).replace('width: 100%;', 'flex: 1.4;'))
 
 
-def state_sheet(title, desc, blocks, h=1360):
-    """라벨 붙은 상태 카드 목록 아트보드."""
-    out = [f'<div style="padding: 0 2px 6px;">'
+def state_sheet(title, desc, blocks, h=1360, pill=None):
+    """라벨 붙은 상태 카드 목록 아트보드. pill = 제목 위 알약(앱 화면이 아닌 설명 장임을 알릴 때)."""
+    pl = (f'<span style="display: inline-block; margin-bottom: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; '
+          f'color: {C["INK2"]}; border: 1px solid {C["LINE"]}; background: {C["SURF"]}; border-radius: 99px; padding: 4px 10px; '
+          f'white-space: nowrap;">{pill}</span>') if pill else ''
+    out = [f'<div style="padding: 0 2px 6px;">{pl}'
            f'<h2 style="margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {C["INK"]};">{title}</h2>'
            f'<p style="margin: 4px 0 0; font-size: 12px; line-height: 1.45; color: {C["INK3"]};">{desc}</p></div>']
     for label, block in blocks:

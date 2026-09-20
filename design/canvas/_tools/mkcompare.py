@@ -2,7 +2,7 @@
 """라이트/다크 아트보드를 한 장에 나란히 놓은 비교 시트를 만든다."""
 import json, pathlib, re, sys
 
-SRC = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
+SRC = pathlib.Path(__file__).resolve().parent.parent
 SP = pathlib.Path('/tmp/claude-0/-home-user-ajs-bit-github-com/8f2afc13-0278-5882-ad06-7ee97dbbe248/scratchpad')
 CV = json.loads((SRC / 'canvas.json').read_text())
 SIZE = {a['file']: (a['w'], a['h']) for a in CV['artboards']}

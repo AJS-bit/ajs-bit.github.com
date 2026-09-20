@@ -4,7 +4,7 @@ import pathlib
 from gen_common import (C, icon, doc, state_sheet, card, field, note, btn,
                         smallbtn, section_head, badge, bar)
 
-OUT = pathlib.Path('/home/user/ajs-bit.github.com/design/canvas')
+OUT = pathlib.Path(__file__).resolve().parent.parent
 
 
 def modal_head(title, meta=None):
@@ -72,20 +72,18 @@ over_bar = (f'<div style="position: relative; height: 10px; border-radius: 99px;
             f'background: repeating-linear-gradient(135deg, {C["NEG"]} 0 4px, #E0908C 4px 8px);"></div>'
             f'<div style="position: absolute; left: 91.5%; top: -5px; width: 2px; height: 20px; border-radius: 2px; background: {C["INK"]};"></div></div>'
             f'<div style="display: flex; justify-content: space-between; margin-top: 7px;">'
-            f'<span style="font-size: 11px; color: {C["INK3"]};">배분 합 <b style=font-weight:600>236만원</b></span>'
-            f'<span style="font-size: 11px; font-weight: 600; color: {C["NEG"]};">총한도 216만원 &middot; 20만원 초과</span></div>')
+            f'<span style="font-size: 11px; color: {C["INK3"]};">카테고리 한도 합계 <b style=font-weight:600>236만원</b></span>'
+            f'<span style="font-size: 11px; font-weight: 600; color: {C["NEG"]};">총한도 216만원</span></div>')
 
 b = card(
     modal_head('카테고리 배분 편집', '13개') +
     '<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">' +
-    field('식비', '65', unit='만원', state='error', helper='이 값을 넣으면 배분 합이 총한도를 넘습니다') +
+    field('식비', '65', unit='만원', state='error', helper='총한도보다 20만원 많아요') +
     '</div>' +
     over_bar +
-    f'<div style="margin-top: 13px;">' +
-    note('총한도를 넘는 배분은 저장할 수 없습니다. 아래 중 하나를 고르거나 다른 카테고리를 줄여 주세요.', 'neg', 'warn') +
-    '</div>'
-    f'<div style="display: flex; flex-direction: column; gap: 7px; margin-top: 11px;">'
-    f'{choice("식비를 45만원으로 되돌리기", "배분 합 216만원")}'
+    f'<div style="margin-top: 15px; font-size: 12px; font-weight: 600; color: {C["INK2"]};">이렇게 고칠 수 있어요</div>'
+    f'<div style="display: flex; flex-direction: column; gap: 7px; margin-top: 8px;">'
+    f'{choice("식비를 45만원으로 되돌리기", "합계 216만원")}'
     f'{choice("총한도를 236만원으로 올리기", "실수령 급여의 65.6%")}</div>' +
     footer(btn('취소', 'secondary'), btn('저장', 'disabled')),
     pad='16px')
@@ -142,9 +140,14 @@ f = card(
     f'{btn("저장하지 않고 닫기", "danger").replace("width: 100%;", "flex: 1.3;")}</div>',
     pad='16px')
 
+REF_PILL = (f'<span style="display: inline-block; margin-bottom: 8px; font-size: 11px; font-weight: 600; '
+            f'letter-spacing: 0.02em; color: {C["INK2"]}; border: 1px solid {C["LINE"]}; background: {C["SURF"]}; '
+            f'border-radius: 99px; padding: 4px 10px; white-space: nowrap;">구현 참고 · 앱 화면이 아닙니다</span>')
+BODY_CSS = '-webkit-font-smoothing: antialiased; }'
+
 BLOCKS = [
     ('A · 필수 값 미입력 — 저장 비활성', a),
-    ('B · 값이 규칙에 어긋남 — 배분 합 초과', b),
+    ('B · 카테고리 한도 합계가 총한도를 넘음', b),
     ('C · 저장 중 — 입력 잠금', c),
     ('D · 저장 실패 — 입력값 보존', d),
     ('E · 저장 완료 — 무엇이 바뀌었는지', e),
@@ -156,7 +159,14 @@ if __name__ == '__main__':
     h = int(sys.argv[1]) if len(sys.argv) > 1 else 1800
     body = state_sheet(
         '모달 오류 · 저장 상태 6종',
-        '오류는 무엇이 잘못됐는지와 어떻게 고치는지를 같이 말합니다. 실패해도 입력한 값은 지우지 않습니다.',
+        '저장이 막히거나 실패했을 때 보이는 창 여섯 가지입니다. 실제로는 한 번에 하나만 보입니다.',
         BLOCKS, h=h)
-    (OUT / 'ModalErrors.dc.html').write_text(doc(body), encoding='utf-8')
+    # 구현 참고용 시트: 제목 위에 알약을 끼운다(state_sheet 는 공용이라 그대로 둔다).
+    assert body.count('<h2 ') == 1
+    body = body.replace('<h2 ', REF_PILL + '<h2 ', 1)
+    html = doc(body)
+    # 설명 문장이 많은 참고 시트는 한국어 낱말이 중간에서 끊기지 않게 한다.
+    assert html.count(BODY_CSS) == 1
+    html = html.replace(BODY_CSS, BODY_CSS[:-1] + 'word-break: keep-all; }')
+    (OUT / 'ModalErrors.dc.html').write_text(html, encoding='utf-8')
     print('ModalErrors.dc.html written, h =', h)

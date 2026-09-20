@@ -19,7 +19,7 @@
       - `div`
         - `h2` **text 18px/700** — “20대 후반 비교 기준”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “만 27~29세 구간에 쓸 기준을 직접 등록합니다. 앱이 만들어 주는 값이 아니에요.”
+        - `p` **text 12.5px/400** — “만 27~29세 구간에 쓸 기준을 직접 등록해요. 앱이 만든 값이 아니에요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `display:flex align-items:center gap:8px`
@@ -28,7 +28,7 @@
         - `div`
           `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
     - `div`
-      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+      `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
       - `div` **Callout(warn)**
         `display:flex gap:8px padding:10px 11px background:#FDF1E0 border-radius:12px`
         - `span`
@@ -52,7 +52,7 @@
         - `div`
           `flex:1`
       - `div`
-        `flex:1`
+        `flex:0 0 auto`
         - `div` — “자료 출처”
           `font-size:12px font-weight:600 color:#475467`
         - `div` **InputField**
@@ -63,7 +63,7 @@
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` **text 11.5px/400** — “분모가 실수령 급여가 아닌 통계라면 내 소비율과 직접 비교할 수 없어요. 출처의 기준을 꼭 확인하세요.”
+        - `span` **text 11.5px/400** — “실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 소비율과 바로 비교할 수 없어요. 출처의 기준을 꼭 확인하”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
