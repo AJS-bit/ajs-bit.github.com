@@ -151,40 +151,21 @@ def _ln(w_, top, col=None, left=8, h=3):
             f'border-radius: 99px; background: {col};"></span>')
 
 
-def thumb(kind):
-    """카드 축소 미리보기 44×30. 글자 없이 형태만 — 무엇인지 알아보게 하는 용도."""
-    if kind == 'calendar':
-        return calendar_thumb()          # 최근 7일 스트립 축소판 — 같은 44 × 30 틀
-    if kind == 'guide':
-        inner = (f'<span style="position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: {C["WARN_RULE"]};"></span>'
-                 + _ln(22, 9, C["INK4"], 10) + _ln(14, 17, None, 10))
-    elif kind == 'goal':
-        inner = (f'<span style="position: absolute; left: 7px; top: 8px; width: 14px; height: 14px; border-radius: 99px; '
-                 f'background: conic-gradient({C["VIO"]} 0% 68%, {C["INPUT"]} 68% 100%);"></span>'
-                 f'<span style="position: absolute; left: 10.5px; top: 11.5px; width: 7px; height: 7px; border-radius: 99px; background: {C["INSET"]};"></span>'
-                 + _ln(12, 10, C["INK4"], 26) + _ln(9, 17, None, 26))
-    elif kind == 'limit':
-        inner = _ln(16, 7, C["INK4"]) + _ln(28, 17, C["TRACK"], 8, 5) + _ln(15, 17, C["VIO"], 8, 5)
-    elif kind == 'peer':
-        inner = (_ln(28, 8, C["TRACK"], 8, 5) + _ln(17, 8, C["BRAND"], 8, 5)
-                 + _ln(28, 17, C["TRACK"], 8, 5) + _ln(19, 17, C["VIO_LINE"], 8, 5))
-    elif kind == 'rows':
-        inner = (_ln(12, 6, C["INK4"]) + _ln(8, 6, C["INK4"], 28) + _ln(12, 13.5) + _ln(8, 13.5, None, 28)
-                 + _ln(12, 21) + _ln(8, 21, None, 28))
-    elif kind == 'line':
-        inner = _ln(14, 13.5, C["INK4"]) + _ln(12, 13.5, C["INK"], 24)
-    elif kind == 'stock':
-        inner = _ln(14, 9, C["INK4"]) + _ln(12, 9, C["INK"], 24) + _ln(9, 18) + _ln(7, 18, None, 20) + _ln(6, 18, None, 30)
-    else:
-        raise KeyError(kind)
-    return (f'<div style="width: 44px; height: 30px; border-radius: 7px; background: {C["INSET"]}; border: 1px solid {C["LINE_SOFT"]}; '
-            f'flex-shrink: 0; overflow: hidden; position: relative;">{inner}</div>')
+# 홈 구성 목록의 왼쪽 그림 — 카드 축소 미리보기(막대 몇 개)는 서로 구별이 안 돼 아이콘 하나로 바꿨다(2026-09-21 사용자 선택 · 전·후 비교 뒤).
+CARD_ICON = {'calendar': 'cal', 'guide': 'arrowur', 'limit': 'sliders', 'goal': 'target', 'peer': 'users',
+             'ratio': 'chart', 'networth': 'wallet', 'payoff': 'bank', 'stock': 'trend'}
 
 
-def pick_row(kind, name, desc, on, last=False):
+def thumb(cid):
+    """카드 아이콘 32 × 32(회색 바탕 · radius 10 · 아이콘 17px ink-2). 이름을 읽기 전에 무엇인지 보이게 한다."""
+    return (f'<div style="width: 32px; height: 32px; border-radius: 10px; background: {C["INSET"]}; flex-shrink: 0; display: flex; '
+            f'align-items: center; justify-content: center;">{icon(CARD_ICON[cid], 17, C["INK2"], 1.9)}</div>')
+
+
+def pick_row(cid, name, desc, on, last=False):
     bb = '' if last else f'border-bottom: 1px solid {C["LINE_ROW"]};'
     return (f'<div style="display: flex; align-items: center; gap: 12px; height: 48px; {bb}">'
-            f'{checkbox(on)}{thumb(kind)}'
+            f'{checkbox(on)}{thumb(cid)}'
             f'<div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0;">'
             f'<span style="font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: {C["INK"]};">{name}</span>'
             f'<span style="font-size: 11.5px; color: {C["INK3"]}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{desc}</span></div></div>')
@@ -198,7 +179,8 @@ CARDS = [
     ('limit', 'limit', '이번 달 한도', '하루 한도와 남은 한도'),
     ('goal', 'goal', '대표 목적지', '가장 앞선 목적지와 도착 예상'),
     ('peer', 'peer', '또래와 내 페이스', '내가 넣은 또래 기준과 내 소비율 비교'),
-    ('ratio', 'rows', '순자산 대비 소비', '가진 자산에 비해 얼마나 쓰는지'),
+    # 홈 맨 아래 세 줄 카드(순자산 대비 소비 · 자산 종합 점수 · N년 뒤 순자산)를 한 카드로 묶어 켜고 끈다 — 이름 `자산 한눈에`(2026-09-21 사용자 결정)
+    ('ratio', 'rows', '자산 한눈에', '순자산 대비 소비 · 자산 점수 · 10년 뒤 순자산'),
     ('networth', 'line', '순자산 한 줄', '지금 순자산과 다음 목표 금액'),
     ('payoff', 'line', '상환 계획 한 줄', '완제 예정일과 이번 달 상환액'),
 ]
@@ -236,7 +218,7 @@ def setup_screen(top, head, on, stocks, footer, after_list='', scroll=0):
     cards = CARDS + ([STOCK_CARD] if stocks else [])
     picked = sum(1 for c in cards if c[0] in on)
     count_lbl = f'<span style="font-size: 12px; font-weight: 600; color: {C["INK3"]}; white-space: nowrap; flex-shrink: 0;">{picked} / 5 선택</span>'
-    rows = ''.join(pick_row(k, n, d, cid in on, last=(i == len(cards) - 1)) for i, (cid, k, n, d) in enumerate(cards))
+    rows = ''.join(pick_row(cid, n, d, cid in on, last=(i == len(cards) - 1)) for i, (cid, k, n, d) in enumerate(cards))
     return frame(
         f'<div style="padding: 0 20px; flex-shrink: 0;">{top}</div>'
         f'<div style="flex: 1; min-height: 0; overflow: hidden; padding: 0 20px;">'
