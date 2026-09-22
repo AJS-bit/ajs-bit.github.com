@@ -33,6 +33,9 @@ def main():
         sys.exit('직렬화 규칙이 바뀌었습니다 — 변경 없이 다시 써도 원문과 달라집니다. 편집기 판이 바뀌었는지 확인하세요.')
     old = doc['content']['files']
     new = {}
+    # canvas.json 을 맨 앞에 — 문서가 7MB 를 넘은 2026-09-22 판에서 canvas.json 이 마지막 키이면 에디터가 배치를 읽지 못해
+    # 모든 장을 한 열로 늘어놓았다(헤드리스로 이분 탐색해 확인 · 맨 앞이면 정상). 원인은 에디터 안이라 순서로 피한다.
+    new['canvas.json'] = (CANVAS / 'canvas.json').read_text(encoding='utf-8')
     for name in old:                                  # 기존 순서 유지, 디스크에서 사라진 아트보드는 뺀다
         if name.endswith('.dc.html'):
             f = CANVAS / name
@@ -42,7 +45,6 @@ def main():
             new[name] = old[name]
     for f in sorted(CANVAS.glob('*.dc.html')):
         new.setdefault(f.name, f.read_text(encoding='utf-8'))
-    new['canvas.json'] = (CANVAS / 'canvas.json').read_text(encoding='utf-8')
     layout = json.loads(new['canvas.json'])
     missing = [a['file'] for a in layout['artboards'] if a['file'] not in new]
     if missing:
