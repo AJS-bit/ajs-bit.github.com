@@ -46,6 +46,10 @@ def main():
     for f in sorted(CANVAS.glob('*.dc.html')):
         new.setdefault(f.name, f.read_text(encoding='utf-8'))
     layout = json.loads(new['canvas.json'])
+    # 캔버스에 배치되지 않은 장(gen_canvas.SOURCE_ONLY — 생성기 원본 전용)은 문서에 넣지 않는다. 넣으면 에디터가 페이지 오른쪽에 저절로 늘어놓는다.
+    placed = {a['file'] for a in layout['artboards']}
+    for name in [n for n in new if n.endswith('.dc.html') and n not in placed]:
+        del new[name]
     missing = [a['file'] for a in layout['artboards'] if a['file'] not in new]
     if missing:
         sys.exit(f'canvas.json에 있으나 파일이 없는 아트보드: {missing}')

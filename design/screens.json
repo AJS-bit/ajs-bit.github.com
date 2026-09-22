@@ -1,34 +1,12 @@
 {
   "artboards": [
     {
-      "file": "Main.dc.html",
-      "name": "Main",
-      "base": "Main",
-      "theme": "light",
-      "title": "홈 · 오늘의 내비게이션",
-      "page": "모바일 · 화면",
-      "w": 390,
-      "h": 844,
-      "source": "app/page.tsx"
-    },
-    {
-      "file": "HomeScroll.dc.html",
-      "name": "HomeScroll",
-      "base": "HomeScroll",
-      "theme": "light",
-      "title": "홈 · 아래로 스크롤",
-      "page": "모바일 · 화면",
-      "w": 390,
-      "h": 844,
-      "source": "app/page.tsx"
-    },
-    {
       "file": "Assets.dc.html",
       "name": "Assets",
       "base": "Assets",
       "theme": "light",
       "title": "자산 · 구성",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -39,7 +17,7 @@
       "base": "Debts",
       "theme": "light",
       "title": "자산 · 부채",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -50,7 +28,7 @@
       "base": "Strategy",
       "theme": "light",
       "title": "자산 · 상환 전략",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -61,32 +39,10 @@
       "base": "Spending",
       "theme": "light",
       "title": "소비 · 이번 달",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
-    },
-    {
-      "file": "DarkHome.dc.html",
-      "name": "DarkHome",
-      "base": "Main",
-      "theme": "dark",
-      "title": "홈 · 오늘의 내비게이션 (다크)",
-      "page": "모바일 · 화면",
-      "w": 390,
-      "h": 844,
-      "source": "app/page.tsx"
-    },
-    {
-      "file": "DarkHomeScroll.dc.html",
-      "name": "DarkHomeScroll",
-      "base": "HomeScroll",
-      "theme": "dark",
-      "title": "홈 · 아래로 스크롤 (다크)",
-      "page": "모바일 · 화면",
-      "w": 390,
-      "h": 844,
-      "source": "app/page.tsx"
     },
     {
       "file": "DarkAssets.dc.html",
@@ -94,7 +50,7 @@
       "base": "Assets",
       "theme": "dark",
       "title": "자산 · 구성 (다크)",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -105,7 +61,7 @@
       "base": "Debts",
       "theme": "dark",
       "title": "자산 · 부채 (다크)",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -116,7 +72,7 @@
       "base": "Strategy",
       "theme": "dark",
       "title": "자산 · 상환 전략 (다크)",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -127,18 +83,7 @@
       "base": "Spending",
       "theme": "dark",
       "title": "소비 · 이번 달 (다크)",
-      "page": "모바일 · 화면",
-      "w": 390,
-      "h": 844,
-      "source": "components/navi/spending-view.tsx"
-    },
-    {
-      "file": "Ledger.dc.html",
-      "name": "Ledger",
-      "base": "Ledger",
-      "theme": "light",
-      "title": "소비 · 내역",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
@@ -149,7 +94,7 @@
       "base": "Limits",
       "theme": "light",
       "title": "소비 · 한도",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
@@ -160,7 +105,7 @@
       "base": "SpendingPast",
       "theme": "light",
       "title": "소비 · 지난 달(마감)",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
@@ -171,7 +116,7 @@
       "base": "Goals",
       "theme": "light",
       "title": "목적지 · 내 목적지",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/goals-view.tsx"
@@ -182,7 +127,7 @@
       "base": "GoalDesign",
       "theme": "light",
       "title": "목적지 · 새 목적지 설계",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/goal-tools.tsx"
@@ -193,21 +138,10 @@
       "base": "Future",
       "theme": "light",
       "title": "미래 · 자산 경로",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/future-view.tsx"
-    },
-    {
-      "file": "DarkLedger.dc.html",
-      "name": "DarkLedger",
-      "base": "Ledger",
-      "theme": "dark",
-      "title": "소비 · 내역 (다크)",
-      "page": "모바일 · 화면",
-      "w": 390,
-      "h": 844,
-      "source": "components/navi/spending-view.tsx"
     },
     {
       "file": "DarkLimits.dc.html",
@@ -215,7 +149,7 @@
       "base": "Limits",
       "theme": "dark",
       "title": "소비 · 한도 (다크)",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
@@ -226,7 +160,7 @@
       "base": "SpendingPast",
       "theme": "dark",
       "title": "소비 · 지난 달(마감) (다크)",
-      "page": "모바일 · 화면",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
@@ -237,7 +171,7 @@
       "base": "Goals",
       "theme": "dark",
       "title": "목적지 · 내 목적지 (다크)",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/goals-view.tsx"
@@ -248,7 +182,7 @@
       "base": "GoalDesign",
       "theme": "dark",
       "title": "목적지 · 새 목적지 설계 (다크)",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/goal-tools.tsx"
@@ -259,7 +193,7 @@
       "base": "Future",
       "theme": "dark",
       "title": "미래 · 자산 경로 (다크)",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/future-view.tsx"
@@ -270,7 +204,7 @@
       "base": "Payoff",
       "theme": "light",
       "title": "미래 · 상환 계획",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/future-view.tsx"
@@ -281,7 +215,7 @@
       "base": "Onboarding",
       "theme": "light",
       "title": "첫 실행",
-      "page": "모바일 · 화면",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "app/page.tsx"
@@ -292,7 +226,7 @@
       "base": "Payoff",
       "theme": "dark",
       "title": "미래 · 상환 계획 (다크)",
-      "page": "모바일 · 화면",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "components/navi/future-view.tsx"
@@ -303,7 +237,7 @@
       "base": "Onboarding",
       "theme": "dark",
       "title": "첫 실행 (다크)",
-      "page": "모바일 · 화면",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "app/page.tsx"
@@ -314,7 +248,7 @@
       "base": "ProfileDialog",
       "theme": "light",
       "title": "모달 · 내 수치 입력",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/shared.tsx"
@@ -325,7 +259,7 @@
       "base": "TransactionAdd",
       "theme": "light",
       "title": "모달 · 거래 추가",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/transaction-link-fields.tsx"
@@ -336,7 +270,7 @@
       "base": "LimitEditor",
       "theme": "light",
       "title": "모달 · 한도 조정",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-analysis.tsx"
@@ -347,7 +281,7 @@
       "base": "AssetDialog",
       "theme": "light",
       "title": "모달 · 자산 추가",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -358,7 +292,7 @@
       "base": "DebtDialog",
       "theme": "light",
       "title": "모달 · 부채 수정",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -369,7 +303,7 @@
       "base": "GoalDialog",
       "theme": "light",
       "title": "모달 · 목적지 추가",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/goals-view.tsx"
@@ -380,7 +314,7 @@
       "base": "ProfileDialog",
       "theme": "dark",
       "title": "모달 · 내 수치 입력 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/shared.tsx"
@@ -391,7 +325,7 @@
       "base": "TransactionAdd",
       "theme": "dark",
       "title": "모달 · 거래 추가 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/transaction-link-fields.tsx"
@@ -402,7 +336,7 @@
       "base": "LimitEditor",
       "theme": "dark",
       "title": "모달 · 한도 조정 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-analysis.tsx"
@@ -413,7 +347,7 @@
       "base": "AssetDialog",
       "theme": "dark",
       "title": "모달 · 자산 추가 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -424,7 +358,7 @@
       "base": "DebtDialog",
       "theme": "dark",
       "title": "모달 · 부채 수정 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/asset-view.tsx"
@@ -435,7 +369,7 @@
       "base": "GoalDialog",
       "theme": "dark",
       "title": "모달 · 목적지 추가 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/goals-view.tsx"
@@ -446,7 +380,7 @@
       "base": "RecurringDialog",
       "theme": "light",
       "title": "모달 · 반복 거래",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
@@ -457,21 +391,10 @@
       "base": "GoalContribute",
       "theme": "light",
       "title": "모달 · 적립액 추가",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/goals-view.tsx"
-    },
-    {
-      "file": "MonthlyClose.dc.html",
-      "name": "MonthlyClose",
-      "base": "MonthlyClose",
-      "theme": "light",
-      "title": "모달 · 월 마감",
-      "page": "모바일 · 모달",
-      "w": 390,
-      "h": 844,
-      "source": "components/navi/spending-analysis.tsx"
     },
     {
       "file": "ImportReview.dc.html",
@@ -479,7 +402,7 @@
       "base": "ImportReview",
       "theme": "light",
       "title": "모달 · 백업 불러오기",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/import-review.tsx"
@@ -490,7 +413,7 @@
       "base": "CoachPanel",
       "theme": "light",
       "title": "모달 · 코칭",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -501,7 +424,7 @@
       "base": "CoachEmpty",
       "theme": "light",
       "title": "모달 · 코칭 기록 없음",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -512,7 +435,7 @@
       "base": "RecurringDialog",
       "theme": "dark",
       "title": "모달 · 반복 거래 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/spending-view.tsx"
@@ -523,21 +446,10 @@
       "base": "GoalContribute",
       "theme": "dark",
       "title": "모달 · 적립액 추가 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/goals-view.tsx"
-    },
-    {
-      "file": "DarkMonthlyClose.dc.html",
-      "name": "DarkMonthlyClose",
-      "base": "MonthlyClose",
-      "theme": "dark",
-      "title": "모달 · 월 마감 (다크)",
-      "page": "모바일 · 모달",
-      "w": 390,
-      "h": 844,
-      "source": "components/navi/spending-analysis.tsx"
     },
     {
       "file": "DarkImportReview.dc.html",
@@ -545,7 +457,7 @@
       "base": "ImportReview",
       "theme": "dark",
       "title": "모달 · 백업 불러오기 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/import-review.tsx"
@@ -556,7 +468,7 @@
       "base": "CoachPanel",
       "theme": "dark",
       "title": "모달 · 코칭 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -567,7 +479,7 @@
       "base": "CoachEmpty",
       "theme": "dark",
       "title": "모달 · 코칭 기록 없음 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -578,7 +490,7 @@
       "base": "AlertsPanel",
       "theme": "light",
       "title": "모달 · 알림",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -589,7 +501,7 @@
       "base": "AlertsEmpty",
       "theme": "light",
       "title": "모달 · 알림 없음",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -600,7 +512,7 @@
       "base": "PeerDialog",
       "theme": "light",
       "title": "모달 · 또래 기준 등록",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/peer-card.tsx"
@@ -611,7 +523,7 @@
       "base": "AlertsPanel",
       "theme": "dark",
       "title": "모달 · 알림 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -622,7 +534,7 @@
       "base": "AlertsEmpty",
       "theme": "dark",
       "title": "모달 · 알림 없음 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/coach-panel.tsx"
@@ -633,7 +545,7 @@
       "base": "PeerDialog",
       "theme": "dark",
       "title": "모달 · 또래 기준 등록 (다크)",
-      "page": "모바일 · 모달",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "components/navi/peer-card.tsx"
@@ -644,7 +556,7 @@
       "base": "StorageStates",
       "theme": "light",
       "title": "상태 · 저장소 로딩·복구",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1324,
       "source": "app/page.tsx"
@@ -655,7 +567,7 @@
       "base": "EmptyStates",
       "theme": "light",
       "title": "상태 · 미입력 6종",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 2480,
       "source": "app/page.tsx"
@@ -666,7 +578,7 @@
       "base": "PeerStates",
       "theme": "light",
       "title": "상태 · 또래 카드 5종",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1555,
       "source": "components/navi/peer-card.tsx"
@@ -677,7 +589,7 @@
       "base": "GoalTypes",
       "theme": "light",
       "title": "상태 · 목적지 유형 5종",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1920,
       "source": "components/navi/goals-view.tsx"
@@ -688,7 +600,7 @@
       "base": "ModalErrors",
       "theme": "light",
       "title": "상태 · 모달 오류·저장 6종",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 2100,
       "source": "모달 공통 (폼 검증·저장 경로)"
@@ -699,7 +611,7 @@
       "base": "Confirmations",
       "theme": "light",
       "title": "상태 · 삭제·초기화 확인",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1245,
       "source": "components/ui/alert-dialog.tsx 사용처"
@@ -710,7 +622,7 @@
       "base": "StorageStates",
       "theme": "dark",
       "title": "상태 · 저장소 로딩·복구 (다크)",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1324,
       "source": "app/page.tsx"
@@ -721,7 +633,7 @@
       "base": "EmptyStates",
       "theme": "dark",
       "title": "상태 · 미입력 6종 (다크)",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 2480,
       "source": "app/page.tsx"
@@ -732,7 +644,7 @@
       "base": "PeerStates",
       "theme": "dark",
       "title": "상태 · 또래 카드 5종 (다크)",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1555,
       "source": "components/navi/peer-card.tsx"
@@ -743,7 +655,7 @@
       "base": "GoalTypes",
       "theme": "dark",
       "title": "상태 · 목적지 유형 5종 (다크)",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1920,
       "source": "components/navi/goals-view.tsx"
@@ -754,7 +666,7 @@
       "base": "ModalErrors",
       "theme": "dark",
       "title": "상태 · 모달 오류·저장 6종 (다크)",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 2100,
       "source": "모달 공통 (폼 검증·저장 경로)"
@@ -765,21 +677,10 @@
       "base": "Confirmations",
       "theme": "dark",
       "title": "상태 · 삭제·초기화 확인 (다크)",
-      "page": "상태 카탈로그",
+      "page": "상태 · 구현 참고",
       "w": 390,
       "h": 1245,
       "source": "components/ui/alert-dialog.tsx 사용처"
-    },
-    {
-      "file": "DesktopHome.dc.html",
-      "name": "DesktopHome",
-      "base": "DesktopHome",
-      "theme": "light",
-      "title": "데스크톱 · 홈",
-      "page": "데스크톱",
-      "w": 1440,
-      "h": 900,
-      "source": "app/page.tsx"
     },
     {
       "file": "DesktopLedger.dc.html",
@@ -791,17 +692,6 @@
       "w": 1440,
       "h": 900,
       "source": "components/navi/spending-view.tsx"
-    },
-    {
-      "file": "DarkDesktopHome.dc.html",
-      "name": "DarkDesktopHome",
-      "base": "DesktopHome",
-      "theme": "dark",
-      "title": "데스크톱 · 홈 (다크)",
-      "page": "데스크톱",
-      "w": 1440,
-      "h": 900,
-      "source": "app/page.tsx"
     },
     {
       "file": "DarkDesktopLedger.dc.html",
@@ -853,7 +743,7 @@
       "base": "IntroPosition",
       "theme": "light",
       "title": "첫 실행 · 소개 1 현재 위치",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -864,7 +754,7 @@
       "base": "IntroPosition",
       "theme": "dark",
       "title": "첫 실행 · 소개 1 현재 위치 (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -875,7 +765,7 @@
       "base": "IntroRoute",
       "theme": "light",
       "title": "첫 실행 · 소개 2 항로",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -886,7 +776,7 @@
       "base": "IntroRoute",
       "theme": "dark",
       "title": "첫 실행 · 소개 2 항로 (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -897,7 +787,7 @@
       "base": "IntroDestination",
       "theme": "light",
       "title": "첫 실행 · 소개 3 목적지",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -908,7 +798,7 @@
       "base": "IntroDestination",
       "theme": "dark",
       "title": "첫 실행 · 소개 3 목적지 (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -919,7 +809,7 @@
       "base": "HomeSetup",
       "theme": "light",
       "title": "첫 실행 · 홈 구성",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -930,7 +820,7 @@
       "base": "HomeSetup",
       "theme": "dark",
       "title": "첫 실행 · 홈 구성 (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -940,8 +830,8 @@
       "name": "HomeConfigured",
       "base": "HomeConfigured",
       "theme": "light",
-      "title": "홈 · 구성 반영 · 탭 합치기 전",
-      "page": "v4 · 1단계 첫 실행",
+      "title": "홈 · 첫 실행 구성 반영",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -951,8 +841,8 @@
       "name": "DarkHomeConfigured",
       "base": "HomeConfigured",
       "theme": "dark",
-      "title": "홈 · 구성 반영 · 탭 합치기 전 (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "title": "홈 · 첫 실행 구성 반영 (다크)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -963,7 +853,7 @@
       "base": "DestGoals",
       "theme": "light",
       "title": "목적지 · 내 목적지 (5탭)",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -974,7 +864,7 @@
       "base": "DestGoals",
       "theme": "dark",
       "title": "목적지 · 내 목적지 (5탭) (다크)",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -985,7 +875,7 @@
       "base": "DestFuture",
       "theme": "light",
       "title": "목적지 · 자산 경로 (5탭)",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -996,7 +886,7 @@
       "base": "DestFuture",
       "theme": "dark",
       "title": "목적지 · 자산 경로 (5탭) (다크)",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1007,7 +897,7 @@
       "base": "HomeStocksOff",
       "theme": "light",
       "title": "홈 · 주식 꺼짐 (4탭)",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1018,7 +908,7 @@
       "base": "HomeStocksOff",
       "theme": "dark",
       "title": "홈 · 주식 꺼짐 (4탭) (다크)",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1029,7 +919,7 @@
       "base": "StocksMine",
       "theme": "light",
       "title": "주식 · 내 종목",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1040,7 +930,7 @@
       "base": "StocksMine",
       "theme": "dark",
       "title": "주식 · 내 종목 (다크)",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1051,7 +941,7 @@
       "base": "HoldingAdd",
       "theme": "light",
       "title": "모달 · 보유 기록",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1062,7 +952,7 @@
       "base": "HoldingAdd",
       "theme": "dark",
       "title": "모달 · 보유 기록 (다크)",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1073,7 +963,7 @@
       "base": "StocksEmpty",
       "theme": "light",
       "title": "주식 · 빈 상태",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1084,7 +974,7 @@
       "base": "StocksEmpty",
       "theme": "dark",
       "title": "주식 · 빈 상태 (다크)",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1095,7 +985,7 @@
       "base": "HomeStocksCard",
       "theme": "light",
       "title": "홈 · 주식 요약 카드",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1106,7 +996,7 @@
       "base": "HomeStocksCard",
       "theme": "dark",
       "title": "홈 · 주식 요약 카드 (다크)",
-      "page": "v4 · 3단계 주식 뼈대",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1117,7 +1007,7 @@
       "base": "StocksHome",
       "theme": "light",
       "title": "주식 · 둘러보기",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1128,7 +1018,7 @@
       "base": "StocksHome",
       "theme": "dark",
       "title": "주식 · 둘러보기 (다크)",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1139,7 +1029,7 @@
       "base": "StockListGrowth",
       "theme": "light",
       "title": "주식 · 성장주 목록",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1150,7 +1040,7 @@
       "base": "StockListGrowth",
       "theme": "dark",
       "title": "주식 · 성장주 목록 (다크)",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1161,7 +1051,7 @@
       "base": "StockListDividend",
       "theme": "light",
       "title": "주식 · 배당주 목록",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1172,7 +1062,7 @@
       "base": "StockListDividend",
       "theme": "dark",
       "title": "주식 · 배당주 목록 (다크)",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1183,7 +1073,7 @@
       "base": "StockDetail",
       "theme": "light",
       "title": "주식 · 종목 상세",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1194,7 +1084,7 @@
       "base": "StockDetail",
       "theme": "dark",
       "title": "주식 · 종목 상세 (다크)",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1205,7 +1095,7 @@
       "base": "StockThemes",
       "theme": "light",
       "title": "주식 · 테마",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1216,7 +1106,7 @@
       "base": "StockThemes",
       "theme": "dark",
       "title": "주식 · 테마 (다크)",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1227,7 +1117,7 @@
       "base": "StockStates",
       "theme": "light",
       "title": "참고 · 주식 탭 특수한 상황 6가지",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 1180,
       "h": 880,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1238,7 +1128,7 @@
       "base": "StockStates",
       "theme": "dark",
       "title": "참고 · 주식 탭 특수한 상황 6가지 (다크)",
-      "page": "v4 · 4단계 카테고리",
+      "page": "주식",
       "w": 1180,
       "h": 880,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1249,7 +1139,7 @@
       "base": "StockSettings",
       "theme": "light",
       "title": "모달 · 설정 › 주식",
-      "page": "v4 · 5단계 설정",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1260,7 +1150,7 @@
       "base": "StockSettings",
       "theme": "dark",
       "title": "모달 · 설정 › 주식 (다크)",
-      "page": "v4 · 5단계 설정",
+      "page": "모달 · 설정",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1271,7 +1161,7 @@
       "base": "SnapshotUpdate",
       "theme": "light",
       "title": "참고 · 종목 데이터 새로 받기",
-      "page": "v4 · 5단계 설정",
+      "page": "주식",
       "w": 1180,
       "h": 762,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1282,7 +1172,7 @@
       "base": "SnapshotUpdate",
       "theme": "dark",
       "title": "참고 · 종목 데이터 새로 받기 (다크)",
-      "page": "v4 · 5단계 설정",
+      "page": "주식",
       "w": 1180,
       "h": 762,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
@@ -1293,7 +1183,7 @@
       "base": "DaySheet",
       "theme": "light",
       "title": "하루 시트 · 오늘 (키보드 열림)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1304,7 +1194,7 @@
       "base": "DaySheet",
       "theme": "dark",
       "title": "하루 시트 · 오늘 (키보드 열림) (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1315,7 +1205,7 @@
       "base": "DaySheetList",
       "theme": "light",
       "title": "하루 시트 · 기록 있는 과거 날 (목록 우선)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1326,7 +1216,7 @@
       "base": "DaySheetList",
       "theme": "dark",
       "title": "하루 시트 · 기록 있는 과거 날 (목록 우선) (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1337,7 +1227,7 @@
       "base": "DaySheetEdit",
       "theme": "light",
       "title": "하루 시트 · 수정 모드",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1348,7 +1238,7 @@
       "base": "DaySheetEdit",
       "theme": "dark",
       "title": "하루 시트 · 수정 모드 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1359,7 +1249,7 @@
       "base": "DoneCard",
       "theme": "light",
       "title": "홈 · 저장 뒤 완료 카드",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1370,7 +1260,7 @@
       "base": "DoneCard",
       "theme": "dark",
       "title": "홈 · 저장 뒤 완료 카드 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1381,7 +1271,7 @@
       "base": "DaySheetConfirm",
       "theme": "light",
       "title": "참고 · 저장을 한 번 더 물어보는 경우",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 900,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1392,7 +1282,7 @@
       "base": "DaySheetConfirm",
       "theme": "dark",
       "title": "참고 · 저장을 한 번 더 물어보는 경우 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 900,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1403,7 +1293,7 @@
       "base": "ClassifySheet",
       "theme": "light",
       "title": "분류하기 시트",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1414,7 +1304,7 @@
       "base": "ClassifySheet",
       "theme": "dark",
       "title": "분류하기 시트 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1425,7 +1315,7 @@
       "base": "HeroInsufficient",
       "theme": "light",
       "title": "홈 · 히어로 이력 부족",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1436,7 +1326,7 @@
       "base": "HeroInsufficient",
       "theme": "dark",
       "title": "홈 · 히어로 이력 부족 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1447,7 +1337,7 @@
       "base": "DaySheet360",
       "theme": "light",
       "title": "하루 시트 · 360 × 640 작은 폰",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 360,
       "h": 640,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1458,7 +1348,7 @@
       "base": "DaySheet360",
       "theme": "dark",
       "title": "하루 시트 · 360 × 640 작은 폰 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 360,
       "h": 640,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1469,7 +1359,7 @@
       "base": "HeroFootnotes",
       "theme": "light",
       "title": "참고 · 홈 맨 위 카드의 안내 줄",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 640,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1480,7 +1370,7 @@
       "base": "HeroFootnotes",
       "theme": "dark",
       "title": "참고 · 홈 맨 위 카드의 안내 줄 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 640,
       "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
@@ -1491,7 +1381,7 @@
       "base": "HomeCalendarStrip",
       "theme": "light",
       "title": "홈 · 달력 접힘 (최근 7일)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1502,7 +1392,7 @@
       "base": "HomeCalendarStrip",
       "theme": "dark",
       "title": "홈 · 달력 접힘 (최근 7일) (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1513,7 +1403,7 @@
       "base": "HomeCalendar",
       "theme": "light",
       "title": "홈 · 달력 펼침 (월 달력) · 3일 칸 누름",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1524,7 +1414,7 @@
       "base": "HomeCalendar360",
       "theme": "light",
       "title": "홈 · 달력 펼침 · 360px (월 달력 그대로)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 360,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1535,7 +1425,7 @@
       "base": "HomeCalendarPrev",
       "theme": "light",
       "title": "홈 · 달력 펼침 · ‹ 지난달 8월 보기",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1546,7 +1436,7 @@
       "base": "HomeCalendar",
       "theme": "dark",
       "title": "홈 · 달력 펼침 (월 달력) · 3일 칸 누름 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1557,7 +1447,7 @@
       "base": "HomeCalendar360",
       "theme": "dark",
       "title": "홈 · 달력 펼침 · 360px (월 달력 그대로) (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 360,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1568,7 +1458,7 @@
       "base": "HomeCalendarPrev",
       "theme": "dark",
       "title": "홈 · 달력 펼침 · ‹ 지난달 8월 보기 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "홈",
       "w": 390,
       "h": 844,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1579,7 +1469,7 @@
       "base": "CalendarCells",
       "theme": "light",
       "title": "참고 · 달력 칸 읽는 법",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1330,
       "h": 820,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1590,7 +1480,7 @@
       "base": "CalendarGridSizes",
       "theme": "light",
       "title": "참고 · 달력을 펼치면 어디서나 월 달력",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1150,
       "h": 1490,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1601,7 +1491,7 @@
       "base": "CalendarCells",
       "theme": "dark",
       "title": "참고 · 달력 칸 읽는 법 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1330,
       "h": 820,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1612,7 +1502,7 @@
       "base": "CalendarGridSizes",
       "theme": "dark",
       "title": "참고 · 달력을 펼치면 어디서나 월 달력 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1150,
       "h": 1490,
       "source": "v5 미구현 · plan/v5-calendar.md §3"
@@ -1622,7 +1512,7 @@
       "name": "DesktopHomeV5",
       "base": "DesktopHomeV5",
       "theme": "light",
-      "title": "데스크톱 홈 · 달력 포함 (v5 뒤)",
+      "title": "데스크톱 · 홈",
       "page": "데스크톱",
       "w": 1440,
       "h": 1000,
@@ -1633,7 +1523,7 @@
       "name": "DarkDesktopHomeV5",
       "base": "DesktopHomeV5",
       "theme": "dark",
-      "title": "데스크톱 홈 · 달력 포함 (v5 뒤) (다크)",
+      "title": "데스크톱 · 홈 (다크)",
       "page": "데스크톱",
       "w": 1440,
       "h": 1000,
@@ -1645,7 +1535,7 @@
       "base": "HomeSetupStocksOn",
       "theme": "light",
       "title": "첫 실행 · 홈 구성 · 주식 켬",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -1656,7 +1546,7 @@
       "base": "SettingsHomeEntry",
       "theme": "light",
       "title": "설정 · 「홈 구성 ›」 행",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2"
@@ -1667,7 +1557,7 @@
       "base": "HomeLayoutEdit",
       "theme": "light",
       "title": "설정 › 홈 구성 (처음 실행 뒤에 다시 고칠 때)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2 · §7"
@@ -1678,7 +1568,7 @@
       "base": "HomeSetupStocksOn",
       "theme": "dark",
       "title": "첫 실행 · 홈 구성 · 주식 켬 (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3"
@@ -1689,7 +1579,7 @@
       "base": "SettingsHomeEntry",
       "theme": "dark",
       "title": "설정 · 「홈 구성 ›」 행 (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2"
@@ -1700,7 +1590,7 @@
       "base": "HomeLayoutEdit",
       "theme": "dark",
       "title": "설정 › 홈 구성 (처음 실행 뒤에 다시 고칠 때) (다크)",
-      "page": "v4 · 1단계 첫 실행",
+      "page": "첫 실행",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2 · §7"
@@ -1711,7 +1601,7 @@
       "base": "DestPayoff",
       "theme": "light",
       "title": "목적지 · 상환 계획",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4"
@@ -1722,7 +1612,7 @@
       "base": "DestPayoff",
       "theme": "dark",
       "title": "목적지 · 상환 계획 (다크)",
-      "page": "v4 · 2단계 내비",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
       "source": "v4 미구현 · plan/v4-stocks.md §4"
@@ -1733,7 +1623,7 @@
       "base": "DaySheetScrolled",
       "theme": "light",
       "title": "하루 시트 · 키보드를 내린 모습",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §4"
@@ -1744,7 +1634,7 @@
       "base": "DaySheetNoSpend",
       "theme": "light",
       "title": "하루 시트 · 소비 0건인 날 (오늘은 안 썼어요)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
@@ -1755,7 +1645,7 @@
       "base": "ReviewListSheet",
       "theme": "light",
       "title": "확인할 내용 목록 시트",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §3-3"
@@ -1765,8 +1655,8 @@
       "name": "HomeDefaultScroll",
       "base": "HomeDefaultScroll",
       "theme": "light",
-      "title": "홈 · 기본 5카드 전체 (v5 · 2단계)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "title": "홈 · 기본 5카드 전체 스크롤",
+      "page": "홈",
       "w": 390,
       "h": 1330,
       "source": "v5 · plan/v5-calendar.md §3-1 · §10 2단계"
@@ -1777,7 +1667,7 @@
       "base": "DaySheetScrolled",
       "theme": "dark",
       "title": "하루 시트 · 키보드를 내린 모습 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §4"
@@ -1788,7 +1678,7 @@
       "base": "DaySheetNoSpend",
       "theme": "dark",
       "title": "하루 시트 · 소비 0건인 날 (오늘은 안 썼어요) (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
@@ -1799,7 +1689,7 @@
       "base": "ReviewListSheet",
       "theme": "dark",
       "title": "확인할 내용 목록 시트 (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §3-3"
@@ -1809,8 +1699,8 @@
       "name": "DarkHomeDefaultScroll",
       "base": "HomeDefaultScroll",
       "theme": "dark",
-      "title": "홈 · 기본 5카드 전체 (v5 · 2단계) (다크)",
-      "page": "v5 · 달력과 하루 시트 (1 · 2단계)",
+      "title": "홈 · 기본 5카드 전체 스크롤 (다크)",
+      "page": "홈",
       "w": 390,
       "h": 1330,
       "source": "v5 · plan/v5-calendar.md §3-1 · §10 2단계"
@@ -1821,7 +1711,7 @@
       "base": "CalendarStatusLines",
       "theme": "light",
       "title": "참고 · 달력 아래 한 줄이 바뀌는 경우",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 1050,
       "source": "v5 · plan/v5-calendar.md §3-3"
@@ -1832,7 +1722,7 @@
       "base": "CalendarStatusLines",
       "theme": "dark",
       "title": "참고 · 달력 아래 한 줄이 바뀌는 경우 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 1050,
       "source": "v5 · plan/v5-calendar.md §3-3"
@@ -1843,7 +1733,7 @@
       "base": "DaySheetStates",
       "theme": "light",
       "title": "참고 · 기록 창의 글이 바뀌는 경우",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1210,
       "h": 1660,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
@@ -1854,7 +1744,7 @@
       "base": "DaySheetStates",
       "theme": "dark",
       "title": "참고 · 기록 창의 글이 바뀌는 경우 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1210,
       "h": 1660,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
@@ -1865,7 +1755,7 @@
       "base": "DaySheetNoSpendStates",
       "theme": "light",
       "title": "참고 · 안 쓴 날을 표시하는 경우",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 1160,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
@@ -1876,7 +1766,7 @@
       "base": "DoneCardStates",
       "theme": "light",
       "title": "참고 · 저장 완료 카드의 경우들",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 1090,
       "source": "v5 · plan/v5-calendar.md §4-4"
@@ -1887,7 +1777,7 @@
       "base": "DaySheetNoSpendStates",
       "theme": "dark",
       "title": "참고 · 안 쓴 날을 표시하는 경우 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 1160,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
@@ -1898,7 +1788,7 @@
       "base": "DoneCardStates",
       "theme": "dark",
       "title": "참고 · 저장 완료 카드의 경우들 (다크)",
-      "page": "v5 · 구현 참고 장",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 1090,
       "source": "v5 · plan/v5-calendar.md §4-4"
@@ -1908,8 +1798,8 @@
       "name": "LedgerV5",
       "base": "LedgerV5",
       "theme": "light",
-      "title": "소비 · 내역 (v5 · 분류 안 함 칩 · 날짜별 합계)",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "title": "소비 · 내역 (분류 안 함 칩 · 날짜별 합계)",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §9 · components/navi/spending-tab.tsx"
@@ -1919,8 +1809,8 @@
       "name": "MonthlyCloseV5",
       "base": "MonthlyCloseV5",
       "theme": "light",
-      "title": "월 마감 (v5 · 분류 안 함 안내)",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "title": "모달 · 월 마감 (분류 안 함 안내)",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §9"
@@ -1931,7 +1821,7 @@
       "base": "TransactionAddFromDaySheet",
       "theme": "light",
       "title": "참고 · 거래 추가 — 하루 시트에서 넘어왔을 때",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "page": "하루 시트 · 기록",
       "w": 960,
       "h": 850,
       "source": "v5 · plan/v5-calendar.md §4"
@@ -1941,8 +1831,8 @@
       "name": "DarkLedgerV5",
       "base": "LedgerV5",
       "theme": "dark",
-      "title": "소비 · 내역 (v5 · 분류 안 함 칩 · 날짜별 합계) (다크)",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "title": "소비 · 내역 (분류 안 함 칩 · 날짜별 합계) (다크)",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §9 · components/navi/spending-tab.tsx"
@@ -1952,8 +1842,8 @@
       "name": "DarkMonthlyCloseV5",
       "base": "MonthlyCloseV5",
       "theme": "dark",
-      "title": "월 마감 (v5 · 분류 안 함 안내) (다크)",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "title": "모달 · 월 마감 (분류 안 함 안내) (다크)",
+      "page": "자산 · 소비",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §9"
@@ -1964,7 +1854,7 @@
       "base": "TransactionAddFromDaySheet",
       "theme": "dark",
       "title": "참고 · 거래 추가 — 하루 시트에서 넘어왔을 때 (다크)",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "page": "하루 시트 · 기록",
       "w": 960,
       "h": 850,
       "source": "v5 · plan/v5-calendar.md §4"
@@ -1975,7 +1865,7 @@
       "base": "InsufficientElsewhere",
       "theme": "light",
       "title": "참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "page": "상태 · 구현 참고",
       "w": 1230,
       "h": 1330,
       "source": "v5 · plan/v5-calendar.md §3-4 · §9-22"
@@ -1986,7 +1876,7 @@
       "base": "FutureProvisional",
       "theme": "light",
       "title": "참고 · 미래 · 자산 경로의 잠정 표시",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "page": "상태 · 구현 참고",
       "w": 1230,
       "h": 1080,
       "source": "v5 · plan/v5-calendar.md §3-4"
@@ -1997,7 +1887,7 @@
       "base": "InsufficientElsewhere",
       "theme": "dark",
       "title": "참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들 (다크)",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "page": "상태 · 구현 참고",
       "w": 1230,
       "h": 1330,
       "source": "v5 · plan/v5-calendar.md §3-4 · §9-22"
@@ -2008,7 +1898,7 @@
       "base": "FutureProvisional",
       "theme": "dark",
       "title": "참고 · 미래 · 자산 경로의 잠정 표시 (다크)",
-      "page": "v5 · 다른 화면에 닿는 곳",
+      "page": "상태 · 구현 참고",
       "w": 1230,
       "h": 1080,
       "source": "v5 · plan/v5-calendar.md §3-4"
@@ -2019,7 +1909,7 @@
       "base": "LimitCardCases",
       "theme": "light",
       "title": "참고 · 이번 달 한도 카드의 네 가지 경우",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 960,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
@@ -2030,7 +1920,7 @@
       "base": "RecurringPrefill",
       "theme": "light",
       "title": "반복 거래 · 방금 저장한 거래로 미리 채움",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
@@ -2041,7 +1931,7 @@
       "base": "LimitCardCases",
       "theme": "dark",
       "title": "참고 · 이번 달 한도 카드의 네 가지 경우 (다크)",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 960,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
@@ -2052,7 +1942,7 @@
       "base": "RecurringPrefill",
       "theme": "dark",
       "title": "반복 거래 · 방금 저장한 거래로 미리 채움 (다크)",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
@@ -2063,7 +1953,7 @@
       "base": "EtcSubline",
       "theme": "light",
       "title": "참고 · 분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 970,
       "source": "v5 · plan/v5-calendar.md §5-3 · §9"
@@ -2074,7 +1964,7 @@
       "base": "ImportBackupNotes",
       "theme": "light",
       "title": "참고 · 가져오기 · 백업 안내",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "상태 · 구현 참고",
       "w": 1230,
       "h": 1060,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
@@ -2085,7 +1975,7 @@
       "base": "EtcSubline",
       "theme": "dark",
       "title": "참고 · 분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치 (다크)",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "상태 · 구현 참고",
       "w": 1200,
       "h": 970,
       "source": "v5 · plan/v5-calendar.md §5-3 · §9"
@@ -2096,7 +1986,7 @@
       "base": "ImportBackupNotes",
       "theme": "dark",
       "title": "참고 · 가져오기 · 백업 안내 (다크)",
-      "page": "v5 · 3단계 한도 라벨 · 반복 거래 · 백업",
+      "page": "상태 · 구현 참고",
       "w": 1230,
       "h": 1060,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
@@ -2107,7 +1997,7 @@
       "base": "TourHome1",
       "theme": "light",
       "title": "첫 실행 안내 · 홈 1 / 3 현재 위치",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2118,7 +2008,7 @@
       "base": "TourHome2",
       "theme": "light",
       "title": "첫 실행 안내 · 홈 2 / 3 달력으로 기록",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2129,7 +2019,7 @@
       "base": "TourHome3",
       "theme": "light",
       "title": "첫 실행 안내 · 홈 3 / 3 다음 안내",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2140,7 +2030,7 @@
       "base": "TourHome1",
       "theme": "dark",
       "title": "첫 실행 안내 · 홈 1 / 3 현재 위치 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2151,7 +2041,7 @@
       "base": "TourHome2",
       "theme": "dark",
       "title": "첫 실행 안내 · 홈 2 / 3 달력으로 기록 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2162,7 +2052,7 @@
       "base": "TourHome3",
       "theme": "dark",
       "title": "첫 실행 안내 · 홈 3 / 3 다음 안내 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2173,7 +2063,7 @@
       "base": "TourAssets1",
       "theme": "light",
       "title": "첫 실행 안내 · 자산 1 / 3 세 탭",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2184,7 +2074,7 @@
       "base": "TourAssets2",
       "theme": "light",
       "title": "첫 실행 안내 · 자산 2 / 3 순자산",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2195,7 +2085,7 @@
       "base": "TourAssets3",
       "theme": "light",
       "title": "첫 실행 안내 · 자산 3 / 3 현금성 자산",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2206,7 +2096,7 @@
       "base": "TourAssets1",
       "theme": "dark",
       "title": "첫 실행 안내 · 자산 1 / 3 세 탭 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2217,7 +2107,7 @@
       "base": "TourAssets2",
       "theme": "dark",
       "title": "첫 실행 안내 · 자산 2 / 3 순자산 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2228,7 +2118,7 @@
       "base": "TourAssets3",
       "theme": "dark",
       "title": "첫 실행 안내 · 자산 3 / 3 현금성 자산 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2239,7 +2129,7 @@
       "base": "TourSpending1",
       "theme": "light",
       "title": "첫 실행 안내 · 소비 1 / 3 세 탭",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2250,7 +2140,7 @@
       "base": "TourSpending2",
       "theme": "light",
       "title": "첫 실행 안내 · 소비 2 / 3 속도 그래프",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2261,7 +2151,7 @@
       "base": "TourSpending3",
       "theme": "light",
       "title": "첫 실행 안내 · 소비 3 / 3 카테고리",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2272,7 +2162,7 @@
       "base": "TourSpending1",
       "theme": "dark",
       "title": "첫 실행 안내 · 소비 1 / 3 세 탭 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2283,7 +2173,7 @@
       "base": "TourSpending2",
       "theme": "dark",
       "title": "첫 실행 안내 · 소비 2 / 3 속도 그래프 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2294,7 +2184,7 @@
       "base": "TourSpending3",
       "theme": "dark",
       "title": "첫 실행 안내 · 소비 3 / 3 카테고리 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2305,7 +2195,7 @@
       "base": "TourGoals1",
       "theme": "light",
       "title": "첫 실행 안내 · 목적지 1 / 3 월 저축 배분",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2316,7 +2206,7 @@
       "base": "TourGoals2",
       "theme": "light",
       "title": "첫 실행 안내 · 목적지 2 / 3 도착 예상",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2327,7 +2217,7 @@
       "base": "TourGoals3",
       "theme": "light",
       "title": "첫 실행 안내 · 목적지 3 / 3 목적지 추가",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2338,7 +2228,7 @@
       "base": "TourGoals1",
       "theme": "dark",
       "title": "첫 실행 안내 · 목적지 1 / 3 월 저축 배분 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2349,7 +2239,7 @@
       "base": "TourGoals2",
       "theme": "dark",
       "title": "첫 실행 안내 · 목적지 2 / 3 도착 예상 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2360,7 +2250,7 @@
       "base": "TourGoals3",
       "theme": "dark",
       "title": "첫 실행 안내 · 목적지 3 / 3 목적지 추가 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2371,7 +2261,7 @@
       "base": "TourFuture1",
       "theme": "light",
       "title": "첫 실행 안내 · 미래 1 / 3 자산 경로",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2382,7 +2272,7 @@
       "base": "TourFuture2",
       "theme": "light",
       "title": "첫 실행 안내 · 미래 2 / 3 다음 지점",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2393,7 +2283,7 @@
       "base": "TourFuture3",
       "theme": "light",
       "title": "첫 실행 안내 · 미래 3 / 3 가정",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2404,7 +2294,7 @@
       "base": "TourFuture1",
       "theme": "dark",
       "title": "첫 실행 안내 · 미래 1 / 3 자산 경로 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2415,7 +2305,7 @@
       "base": "TourFuture2",
       "theme": "dark",
       "title": "첫 실행 안내 · 미래 2 / 3 다음 지점 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
@@ -2426,7 +2316,7 @@
       "base": "TourFuture3",
       "theme": "dark",
       "title": "첫 실행 안내 · 미래 3 / 3 가정 (다크)",
-      "page": "첫 실행 안내 · 탭에 처음 들어갈 때 한 번씩",
+      "page": "첫 실행 안내 · 탭마다 3단계",
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"

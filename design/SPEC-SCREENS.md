@@ -10,48 +10,6 @@
 
 ---
 
-## Main — 홈 · 오늘의 내비게이션
-
-`canvas/Main.dc.html` · 390×844 · 원본 `app/page.tsx` · 렌더 `preview/Main.png`
-
-> 이번 달 소비가 월급의 몇 %인지를 **한 번에** 읽히는 화면. display 숫자는 57.9% 하나뿐이고, 나머지는 전부 그 아래 위계로 내려간다.
-
-- [ ] **SampleBanner** — “샘플 데이터로 둘러보는 중”
-      `display:flex align-items:center justify-content:space-between gap:8px height:32px padding:0 14px background:#E9EDFD`
-- [ ] **Header** — “NAVI”
-      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
-- [ ] **본문(스크롤 영역)** — “현재 위치”
-      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
-  - [ ] **HeroCard** — “현재 위치”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **TurnCard** — “다음 안내”
-        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
-  - [ ] **Card(18)** — “68%”
-        `display:flex align-items:center gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px`
-  - [ ] **Card(18)** — “이번 달 한도”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
-- [ ] **BottomNav** — “홈”
-      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
-
-## HomeScroll — 홈 · 아래로 스크롤
-
-`canvas/HomeScroll.dc.html` · 390×844 · 원본 `app/page.tsx` · 렌더 `preview/HomeScroll.png`
-
-> 홈을 아래로 내린 상태. 히어로가 스크롤 밖으로 나가고 목적지·한도·또래 카드가 이어진다. 히어로는 sticky가 아니다.
-
-- [ ] **본문(스크롤 영역)** — “저장되지 않는 가정”
-      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px 0`
-  - [ ] **div**
-        `height:20px background:#FFFFFF border:1px solid #E3E8F1 border-top:none border-radius:0 0 18px 18px opacity:.55`
-  - [ ] **Card(18)** — “저장되지 않는 가정”
-        `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:14px`
-  - [ ] **Card(18)** — “또래와 내 페이스”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
-  - [ ] **Card(18)** — “순자산 대비 소비”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
-- [ ] **BottomNav** — “홈”
-      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
-
 ## Assets — 자산 · 구성
 
 `canvas/Assets.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx` · 렌더 `preview/Assets.png`
@@ -125,23 +83,6 @@
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “카테고리별 소비”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
-- [ ] **BottomNav** — “홈”
-      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
-
-## Ledger — 소비 · 내역
-
-`canvas/Ledger.dc.html` · 390×844 · 원본 `components/navi/spending-view.tsx` · 렌더 `preview/Ledger.png`
-
-> 거래 내역. 날짜 그룹 헤더 + DataRow 반복. 금액은 전부 오른쪽 정렬 tabular.
-
-- [ ] **div** — “소비”
-      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **본문(스크롤 영역)** — “메모·카테고리 검색”
-      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
-  - [ ] **Card(18)** — “메모·카테고리 검색”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
-  - [ ] **Card(18)** — “9월 8일”
-        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px 10px`
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
@@ -494,33 +435,6 @@
   - [ ] **div** — “취소”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
 
-## MonthlyClose — 모달 · 월 마감
-
-`canvas/MonthlyClose.dc.html` · 390×844 · 원본 `components/navi/spending-analysis.tsx` · 렌더 `preview/MonthlyClose.png`
-
-> 월 마감. 마감하면 그 달 값이 고정된다는 것을 분명히 말한다.
-
-- [ ] **div** — “배경을 눌러 닫기”
-      `height:40px display:flex align-items:flex-end justify-content:center`
-- [ ] **BottomSheet** — “2026년 8월 마감”
-      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
-  - [ ] **div**
-        `display:flex justify-content:center padding:9px 0 0`
-  - [ ] **div** — “2026년 8월 마감”
-        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
-  - [ ] **div** — “이미 에 마감한 달입니다. 다시 저장하면 기존 마감값을 덮어씁니다.”
-        `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
-    - [ ] **Callout(warn)** — “이미 에 마감한 달입니다. 다시 저장하면 기존 마감값을 덮어씁니다.”
-          `display:flex gap:8px padding:10px 11px background:#FDF1E0 border-radius:12px`
-    - [ ] **div** — “그 달의 실제 수치”
-    - [ ] **div** — “자동으로 채워진 값”
-    - [ ] **Callout(info)** — “급여를 비워 두면 그 달은 로 남습니다. 지금 급여로 과거를 채우지 않아요.”
-          `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
-  - [ ] **div** — “위 수치가 실제와 같음을 확인했습니다.”
-        `padding:12px 18px background:#F4F6FB border-top:1px solid #E3E8F1`
-  - [ ] **div** — “취소”
-        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
-
 ## ImportReview — 모달 · 백업 불러오기
 
 `canvas/ImportReview.dc.html` · 390×844 · 원본 `components/navi/import-review.tsx` · 렌더 `preview/ImportReview.png`
@@ -849,27 +763,6 @@
 - [ ] **Card(20)** — “모두 지우고 새로 시작할까요?”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
 
-## DesktopHome — 데스크톱 · 홈
-
-`canvas/DesktopHome.dc.html` · 1440×900 · 원본 `app/page.tsx` · 렌더 `preview/DesktopHome.png`
-
-> 데스크톱 홈. 사이드바 + 2열. 모바일 카드를 그냥 늘리지 않고 가로를 실제로 쓴다.
-
-- [ ] **div** — “NAVI”
-      `width:232px background:#FFFFFF display:flex flex-direction:column padding:22px 16px 18px`
-- [ ] **div** — “샘플 데이터로 둘러보는 중 · 표시된 이름과 금액은 실제 정보가 아닙니다”
-      `flex:1 display:flex flex-direction:column padding:18px 28px 22px`
-  - [ ] **div** — “샘플 데이터로 둘러보는 중 · 표시된 이름과 금액은 실제 정보가 아닙니다”
-        `display:flex align-items:center justify-content:space-between gap:12px height:38px padding:0 16px background:#E9EDFD border-radius:12px`
-  - [ ] **div** — “2026년 9월 8일 · 이번 달 22일 남음”
-        `display:flex align-items:flex-end justify-content:space-between gap:12px margin-top:18px`
-  - [ ] **div** — “현재 위치”
-        `flex:1 min-height:0 display:grid grid-template-columns:minmax(0, 1.6fr) minmax(0, 1fr) gap:18px margin-top:16px`
-    - [ ] **div** — “현재 위치”
-          `display:flex flex-direction:column gap:16px`
-    - [ ] **div** — “다음 안내”
-          `display:flex flex-direction:column gap:14px`
-
 ## DesktopLedger — 데스크톱 · 소비 내역
 
 `canvas/DesktopLedger.dc.html` · 1440×900 · 원본 `components/navi/spending-view.tsx` · 렌더 `preview/DesktopLedger.png`
@@ -982,7 +875,7 @@
 - [ ] **div** — “이 구성으로 시작”
       `padding:8px 20px 24px display:flex flex-direction:column gap:8px`
 
-## HomeConfigured — 홈 · 구성 반영 · 탭 합치기 전
+## HomeConfigured — 홈 · 첫 실행 구성 반영
 
 `canvas/HomeConfigured.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §3` · 렌더 `preview/HomeConfigured.png`
 
@@ -1579,7 +1472,7 @@
 - [ ] **div** — “구현 메모”
       `margin-top:24px display:flex flex-direction:column gap:4px`
 
-## DesktopHomeV5 — 데스크톱 홈 · 달력 포함 (v5 뒤)
+## DesktopHomeV5 — 데스크톱 · 홈
 
 `canvas/DesktopHomeV5.dc.html` · 1440×1000 · 원본 `v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)` · 렌더 `preview/DesktopHomeV5.png`
 
@@ -1735,7 +1628,7 @@
 - [ ] **BottomSheet** — “확인할 내용 2개”
       `background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column`
 
-## HomeDefaultScroll — 홈 · 기본 5카드 전체 (v5 · 2단계)
+## HomeDefaultScroll — 홈 · 기본 5카드 전체 스크롤
 
 `canvas/HomeDefaultScroll.dc.html` · 390×1330 · 원본 `v5 · plan/v5-calendar.md §3-1 · §10 2단계` · 렌더 `preview/HomeDefaultScroll.png`
 
@@ -1814,7 +1707,7 @@
 - [ ] **div** — “저장했어요”
       `display:flex gap:32px align-items:flex-start`
 
-## LedgerV5 — 소비 · 내역 (v5 · 분류 안 함 칩 · 날짜별 합계)
+## LedgerV5 — 소비 · 내역 (분류 안 함 칩 · 날짜별 합계)
 
 `canvas/LedgerV5.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §9 · components/navi/spending-tab.tsx` · 렌더 `preview/LedgerV5.png`
 
@@ -1829,7 +1722,7 @@
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
-## MonthlyCloseV5 — 월 마감 (v5 · 분류 안 함 안내)
+## MonthlyCloseV5 — 모달 · 월 마감 (분류 안 함 안내)
 
 `canvas/MonthlyCloseV5.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §9` · 렌더 `preview/MonthlyCloseV5.png`
 
