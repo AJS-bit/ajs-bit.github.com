@@ -171,10 +171,9 @@ def pick_row(cid, name, desc, on, last=False):
             f'<span style="font-size: 11.5px; color: {C["INK3"]}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{desc}</span></div></div>')
 
 
-# 목록 순서 = 기본 배열(v5 §3-1): 이번 달 달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스 → 순자산 대비 소비(목록에 남고 기본 꺼짐)
-# → 새 카드 둘 → (주식 켰을 때만) 주식 요약. 달력도 상한 5에 센다.
+# 목록 순서 = 기본 배열(v5 §3-1): 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스 → 순자산 대비 소비(목록에 남고 기본 꺼짐)
+# → 새 카드 둘 → (주식 켰을 때만) 주식 요약. 달력은 2026-09-22 사용자 결정으로 선택지에서 빠져 소비율처럼 고정 행(늘 켜짐) — 상한은 4.
 CARDS = [
-    ('calendar', 'calendar', '이번 달 달력', '날마다 쓴 금액, 날짜를 눌러 바로 기록'),
     ('guide', 'guide', '다음 안내', '지금 할 일 한 가지'),
     ('limit', 'limit', '이번 달 한도', '하루 한도와 남은 한도'),
     ('goal', 'goal', '대표 목적지', '가장 앞선 목적지와 도착 예상'),
@@ -185,18 +184,27 @@ CARDS = [
     ('payoff', 'line', '상환 계획 한 줄', '완제 예정일과 이번 달 상환액'),
 ]
 STOCK_CARD = ('stock', 'stock', '주식 요약', '보유 평가액과 관심 종목 수, 기준일')
-# 이 시안의 선택: 달력(기본 켜짐) · 다음 안내 · 이번 달 한도 + 새 카드 둘 → 5 / 5. HomeConfigured 가 이 구성의 결과.
-ON_SETUP = {'calendar', 'guide', 'limit', 'networth', 'payoff'}
-# 주식 켠 변형: HomeStocksCard(달력 · 다음 안내 · 주식 요약 · 이번 달 한도 · 순자산)와 같은 구성 → 5 / 5.
-ON_STOCKS = {'calendar', 'guide', 'limit', 'networth', 'stock'}
-# 설정에서 들어와 달력을 끈 상태 → 4 / 5.
-ON_EDIT = ON_SETUP - {'calendar'}
+# 이 시안의 선택: 다음 안내 · 이번 달 한도 + 새 카드 둘 → 4 / 4(달력은 고정 행). HomeConfigured 가 이 구성의 결과.
+ON_SETUP = {'guide', 'limit', 'networth', 'payoff'}
+# 주식 켠 변형: HomeStocksCard(달력 · 다음 안내 · 주식 요약 · 이번 달 한도 · 순자산)와 같은 구성 → 4 / 4.
+ON_STOCKS = {'guide', 'limit', 'networth', 'stock'}
+# 설정에서 들어온 같은 구성(달력은 끌 수 없다).
+ON_EDIT = ON_SETUP
 
-fixed_row = card(
-    f'<div style="display: flex; align-items: center; gap: 10px; height: 48px;">'
-    f'{icon("lock", 16, C["INK4"], 1.9)}'
-    f'<span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">현재 위치 · 월급 대비 소비율</span>'
-    f'<span style="margin-left: auto;">{badge("고정", "mute")}</span></div>', pad='0 14px')
+def lock_row(label, sub=None, last=False):
+    """고정 행 — 자물쇠 · 이름(· 한 줄 설명) · `고정` 배지. 소비율과 달력 둘 다 이 모양."""
+    bb = '' if last else f'border-bottom: 1px solid {C["LINE_ROW"]};'
+    sub_html = (f'<span style="font-size: 11.5px; color: {C["INK3"]}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{sub}</span>'
+                if sub else '')
+    return (f'<div style="display: flex; align-items: center; gap: 10px; height: 48px; {bb}">'
+            f'{icon("lock", 16, C["INK4"], 1.9)}'
+            f'<div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0;">'
+            f'<span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">{label}</span>{sub_html}</div>'
+            f'<span style="flex-shrink: 0;">{badge("고정", "mute")}</span></div>')
+
+
+# 소비율과 달력은 늘 켜져 있다(달력은 2026-09-22 결정 — 기록의 기본 입구라서 끌 수 없음).
+fixed_row = card(lock_row('현재 위치 · 월급 대비 소비율') + lock_row('이번 달 달력', '날짜를 눌러 바로 기록 · 늘 소비율 아래', last=True), pad='0 14px')
 
 
 def stock_card(on):
@@ -208,8 +216,8 @@ def stock_card(on):
         f'{toggle(on)}</div>')
 
 
-LEAD = (f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">소비율은 늘 맨 위에 있어요.<br>'
-        f'그 아래에 둘 카드를 5개까지 골라 주세요.</p>')
+LEAD = (f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">소비율과 달력은 늘 맨 위에 있어요.<br>'
+        f'그 아래에 둘 카드를 4개까지 골라 주세요.</p>')
 
 
 def setup_screen(top, head, on, stocks, footer, after_list='', scroll=0):
@@ -217,7 +225,7 @@ def setup_screen(top, head, on, stocks, footer, after_list='', scroll=0):
     scroll = 위로 밀어 올린 거리(px). 주식을 켜면 9행이라 844 안에 다 안 들어가 제목 · 안내 문장이 위로 넘어간 상태로 그린다."""
     cards = CARDS + ([STOCK_CARD] if stocks else [])
     picked = sum(1 for c in cards if c[0] in on)
-    count_lbl = f'<span style="font-size: 12px; font-weight: 600; color: {C["INK3"]}; white-space: nowrap; flex-shrink: 0;">{picked} / 5 선택</span>'
+    count_lbl = f'<span style="font-size: 12px; font-weight: 600; color: {C["INK3"]}; white-space: nowrap; flex-shrink: 0;">{picked} / 4 선택</span>'
     rows = ''.join(pick_row(cid, n, d, cid in on, last=(i == len(cards) - 1)) for i, (cid, k, n, d) in enumerate(cards))
     return frame(
         f'<div style="padding: 0 20px; flex-shrink: 0;">{top}</div>'
@@ -248,11 +256,9 @@ edit_top = (f'<div style="display: flex; align-items: center; justify-content: s
             f'<h1 style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.03em; color: {C["INK"]};">홈 구성</h1>'
             f'<div style="width: 36px; height: 36px; border-radius: 11px; background: {C["INSET"]}; display: flex; align-items: center; '
             f'justify-content: center; flex-shrink: 0;">{icon("x", 17, C["INK2"], 2.2)}</div></div>')
-# 달력을 끈 상태에서만 목록 아래에 나오는 한 줄(v5 §7 '달력이 싫은 사용자'). 의미색 없이 잉크 단계만.
-CAL_OFF_NOTE = (f'<p style="margin: 8px 2px 0; font-size: 11.5px; line-height: 1.5; color: {C["INK3"]};">'
-                f'달력을 꺼도 소비 기록하기는 오늘 기록을 열어요. 확인할 내용은 소비 탭 알림에서 볼 수 있어요.</p>')
+# 달력은 끌 수 없으므로 예전의 '달력을 꺼도 …' 안내 줄은 없다(2026-09-22).
 w('HomeLayoutEdit', setup_screen(edit_top, LEAD.replace('margin: 6px 0 0;', 'margin: 0;'), ON_EDIT, False,
-                                 btn("저장", "primary", h=52, radius=14, size=16), after_list=CAL_OFF_NOTE))
+                                 btn("저장", "primary", h=52, radius=14, size=16)))
 
 
 # ══════════════ 설정 시트 · `홈 구성 ›` 행 ══════════════
@@ -330,7 +336,7 @@ guide_block = cut(main_src, M_GUIDE, M_GOAL).rstrip()
 limit_block = cut(main_src, M_LIMIT, M_NAV).rstrip()
 assert limit_block.endswith('</div>')
 limit_block = limit_block[:limit_block.rfind('</div>')].rstrip()   # 콘텐츠 컨테이너의 닫는 태그는 뺀다
-assert hero_block.count('57.9') == 1 and '소비 기록하기' in hero_block
+assert hero_block.count('57.9') == 1 and '소비 기록하기' not in hero_block   # 히어로 버튼은 2026-09-22에 뺐다 — 기록은 달력 날짜로
 # 달력 카드 — Main 에는 아직 달력이 없어 잘라 올 마커(M_CAL)가 없다. HomeCalendarStrip 과 같은 접힘 카드를 공용 조각으로 만든다.
 # gen_v4_stocks · gen_v5 가 s1.calendar_block 으로 같은 카드를 가져다 쓸 수 있다.
 calendar_block = calendar_card(False)

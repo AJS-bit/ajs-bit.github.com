@@ -76,8 +76,6 @@
           `font-size:11px line-height:1.4 color:#626D88`
         - `span` **text 11.5px/600** — “기준 조정 ›”
           `font-size:11.5px font-weight:600 color:#3556E6 white-space:nowrap`
-      - `div` — “소비 기록하기”
-        `display:flex align-items:center justify-content:center gap:6px height:46px margin-top:10px border-radius:13px background:#3556E6 color:#FFFFFF font-size:15px font-weight:600`
     - `div` **TurnCard**
       `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
       - `div`

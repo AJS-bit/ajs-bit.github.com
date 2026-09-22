@@ -16,7 +16,7 @@
     `flex:1 min-height:0 padding:0 20px`
     - `div`
       `display:flex flex-direction:column margin-top:0px`
-      - `p` — “소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 골라 주세요.”
+      - `p` — “소비율과 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
         `font-size:13.5px line-height:1.5 color:#475467`
         - `br`
       - `div`
@@ -31,8 +31,6 @@
         `margin-top:8px`
         - `div` **Card(18)**
           `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:0 14px`
-      - `p` **text 11.5px/400** — “달력을 꺼도 소비 기록하기는 오늘 기록을 열어요. 확인할 내용은 소비 탭 알림에서 볼 수 있어요.”
-        `font-size:11.5px line-height:1.5 color:#626D88`
       - `div`
         `margin-top:10px`
         - `div` **Card(18)**

@@ -68,10 +68,6 @@
           `font-size:11px line-height:1.4 color:#626D88`
         - `span` **text 11.5px/600** — “기준 조정 ›”
           `font-size:11.5px font-weight:600 color:#3556E6 white-space:nowrap`
-      - `div`
-        `margin-top:10px`
-        - `div` — “소비 기록하기”
-          `display:flex align-items:center justify-content:center gap:6px height:46px width:100% border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
       - `div`

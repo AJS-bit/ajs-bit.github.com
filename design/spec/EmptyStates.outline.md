@@ -277,8 +277,6 @@
         `font-size:11.5px font-weight:600 color:#3556E6 white-space:nowrap`
     - `div`
       `margin-top:10px`
-      - `div` — “소비 기록하기”
-        `display:flex align-items:center justify-content:center gap:6px height:46px width:100% border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`
   - `div` **Card(20)**
     `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:12px 16px 6px`
     - `div` **text 11px/600** — “각주 둘째 줄 · 부족한 것에 따라 셋 중 하나”

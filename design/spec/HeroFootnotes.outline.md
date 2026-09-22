@@ -30,11 +30,9 @@
           `display:flex align-items:center justify-content:space-between gap:10px margin-top:12px`
         - `div`
           `position:relative margin-top:4px border-radius:4px box-shadow:0 0 0 3px rgba(53,86,230,.16)`
-        - `div` — “소비 기록하기”
-          `display:flex align-items:center justify-content:center gap:6px height:46px margin-top:10px border-radius:13px background:#3556E6 color:#FFFFFF font-size:15px font-weight:600`
       - `p` — “안내 줄은 에 붙습니다. 그림은 2번의 경우입니다.”
         `font-size:12px line-height:1.5 color:#626D88`
-        - `b` — “기준 조정 줄과 버튼 사이”
+        - `b` — “기준 조정 줄 아래, 카드의 맨 끝”
           `font-weight:600 color:#475467`
     - `div`
       `flex:1 display:grid grid-template-columns:repeat(2, 362px) gap:24px 20px align-items:start`

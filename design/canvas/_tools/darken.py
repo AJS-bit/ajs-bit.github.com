@@ -175,7 +175,7 @@ V4 = ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeConfi
 V4 += ['DestGoals', 'DestFuture', 'HomeStocksOff', 'StocksMine', 'HoldingAdd', 'StocksEmpty', 'HomeStocksCard', 'StocksHome', 'StockListGrowth', 'StockListDividend', 'StockDetail', 'StockThemes', 'StockStates', 'StockSettings', 'SnapshotUpdate']   # gen_v4_stocks.py
 V4 += ['HomeCalendarStrip', 'HomeCalendar', 'DaySheet', 'DaySheetList', 'DaySheetEdit', 'DoneCard', 'DaySheetConfirm', 'ClassifySheet', 'HeroInsufficient', 'DaySheet360', 'HeroFootnotes', 'CalendarCells', 'HomeCalendar360', 'HomeCalendarPrev', 'CalendarGridSizes']   # gen_v5.py (v5 1단계)
 # 최신화 반영(2026-09-21) — 새 장. v3 생성기·손편집 산물은 여기서만 다크가 만들어진다
-V5X = ['LedgerV5', 'MonthlyCloseV5', 'AlertsReview', 'TransactionAddFromDaySheet', 'DesktopHomeV5']   # gen_screens · gen_modals · 손편집
+V5X = ['LedgerV5', 'MonthlyCloseV5', 'TransactionAddFromDaySheet', 'DesktopHomeV5']   # gen_screens · gen_modals · 손편집
 V5X += ['HomeSetupStocksOn', 'SettingsHomeEntry', 'HomeLayoutEdit']   # gen_v4.py
 V5X += ['DestPayoff']   # gen_v4_stocks.py
 V5X += ['DaySheetScrolled', 'HomeDefaultScroll']   # gen_v5.py

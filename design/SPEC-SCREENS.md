@@ -1634,9 +1634,9 @@
 
 - [ ] **div** — “홈 구성”
       `padding:0 20px`
-- [ ] **div** — “소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 골라 주세요.”
+- [ ] **div** — “소비율과 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
       `flex:1 min-height:0 padding:0 20px`
-  - [ ] **div** — “소비율은 늘 맨 위에 있어요. 그 아래에 둘 카드를 5개까지 골라 주세요.”
+  - [ ] **div** — “소비율과 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
         `display:flex flex-direction:column margin-top:0px`
 - [ ] **div** — “저장”
       `padding:8px 20px 24px display:flex flex-direction:column gap:8px`
@@ -1867,19 +1867,6 @@
 - [ ] **div** — “거래 추가”
       `display:flex gap:28px align-items:flex-start`
 
-## AlertsReview — 참고 · 달력이 없을 때 「확인할 내용」이 보이는 곳
-
-`canvas/AlertsReview.dc.html` · 1200×1040 · 원본 `v5 · plan/v5-calendar.md §3-3 · §7` · 렌더 `preview/AlertsReview.png`
-
-- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
-      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
-- [ ] text 20px/700 — “달력이 없을 때 「확인할 내용」이 보이는 곳”
-      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-- [ ] text 13px/400 — “홈에 달력 카드가 없으면(껐거나 달력이 나오기 전 단계) 같은 목록을 소비 탭의 알림이 보여 ”
-      `font-size:13px line-height:1.55 color:#626D88`
-- [ ] **div** — “배경을 눌러 닫기”
-      `display:flex gap:28px align-items:flex-start`
-
 ## InsufficientElsewhere — 참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들
 
 `canvas/InsufficientElsewhere.dc.html` · 1230×1330 · 원본 `v5 · plan/v5-calendar.md §3-4 · §9-22` · 렌더 `preview/InsufficientElsewhere.png`
@@ -1969,4 +1956,295 @@
       `font-size:13px line-height:1.55 color:#626D88`
 - [ ] **div** — “배경을 눌러 닫기”
       `display:flex gap:32px align-items:flex-start`
+
+## TourHome1 — 첫 실행 안내 · 홈 1 / 3 현재 위치
+
+`canvas/TourHome1.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourHome1.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “68%”
+        `display:flex align-items:center gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourHome2 — 첫 실행 안내 · 홈 2 / 3 달력으로 기록
+
+`canvas/TourHome2.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourHome2.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “68%”
+        `display:flex align-items:center gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourHome3 — 첫 실행 안내 · 홈 3 / 3 다음 안내
+
+`canvas/TourHome3.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourHome3.png`
+
+- [ ] **Header** — “NAVI”
+      `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+- [ ] **본문(스크롤 영역)** — “현재 위치”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
+  - [ ] **HeroCard** — “현재 위치”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “이번 달 달력”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
+  - [ ] **TurnCard** — “다음 안내”
+        `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
+  - [ ] **Card(18)** — “이번 달 한도”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+  - [ ] **Card(18)** — “68%”
+        `display:flex align-items:center gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourAssets1 — 첫 실행 안내 · 자산 1 / 3 세 탭
+
+`canvas/TourAssets1.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourAssets1.png`
+
+- [ ] **div** — “자산”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “순자산”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “순자산”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **div** — “현금성 자산 · 생활비 기준”
+        `display:flex gap:8px`
+  - [ ] **Card(18)** — “자산 구성”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourAssets2 — 첫 실행 안내 · 자산 2 / 3 순자산
+
+`canvas/TourAssets2.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourAssets2.png`
+
+- [ ] **div** — “자산”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “순자산”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “순자산”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **div** — “현금성 자산 · 생활비 기준”
+        `display:flex gap:8px`
+  - [ ] **Card(18)** — “자산 구성”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourAssets3 — 첫 실행 안내 · 자산 3 / 3 현금성 자산
+
+`canvas/TourAssets3.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourAssets3.png`
+
+- [ ] **div** — “자산”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “순자산”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “순자산”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **div** — “현금성 자산 · 생활비 기준”
+        `display:flex gap:8px`
+  - [ ] **Card(18)** — “자산 구성”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourSpending1 — 첫 실행 안내 · 소비 1 / 3 세 탭
+
+`canvas/TourSpending1.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourSpending1.png`
+
+- [ ] **div** — “소비”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “57.9”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “57.9”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “카테고리별 소비”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourSpending2 — 첫 실행 안내 · 소비 2 / 3 속도 그래프
+
+`canvas/TourSpending2.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourSpending2.png`
+
+- [ ] **div** — “소비”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “57.9”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “57.9”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “카테고리별 소비”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourSpending3 — 첫 실행 안내 · 소비 3 / 3 카테고리
+
+`canvas/TourSpending3.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourSpending3.png`
+
+- [ ] **div** — “소비”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “57.9”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “57.9”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “카테고리별 소비”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourGoals1 — 첫 실행 안내 · 목적지 1 / 3 월 저축 배분
+
+`canvas/TourGoals1.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourGoals1.png`
+
+- [ ] **div** — “목적지”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “월 저축 배분”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “월 저축 배분”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:15px 16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “진행 중인 목적지”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 8px`
+  - [ ] **div** — “목적지 추가”
+        `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourGoals2 — 첫 실행 안내 · 목적지 2 / 3 도착 예상
+
+`canvas/TourGoals2.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourGoals2.png`
+
+- [ ] **div** — “목적지”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “월 저축 배분”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “월 저축 배분”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:15px 16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “진행 중인 목적지”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 8px`
+  - [ ] **div** — “목적지 추가”
+        `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourGoals3 — 첫 실행 안내 · 목적지 3 / 3 목적지 추가
+
+`canvas/TourGoals3.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourGoals3.png`
+
+- [ ] **div** — “목적지”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “월 저축 배분”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “월 저축 배분”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:15px 16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “진행 중인 목적지”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 8px`
+  - [ ] **div** — “목적지 추가”
+        `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourFuture1 — 첫 실행 안내 · 미래 1 / 3 자산 경로
+
+`canvas/TourFuture1.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourFuture1.png`
+
+- [ ] **div** — “미래”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “기간”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “기간”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:14px 14px 13px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “다음 자산 지점”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
+  - [ ] **Card(18)** — “저장되지 않는 가정”
+        `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:11px 14px 11px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourFuture2 — 첫 실행 안내 · 미래 2 / 3 다음 지점
+
+`canvas/TourFuture2.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourFuture2.png`
+
+- [ ] **div** — “미래”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “기간”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “기간”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:14px 14px 13px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “다음 자산 지점”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
+  - [ ] **Card(18)** — “저장되지 않는 가정”
+        `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:11px 14px 11px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
+
+## TourFuture3 — 첫 실행 안내 · 미래 3 / 3 가정
+
+`canvas/TourFuture3.dc.html` · 390×844 · 원본 `미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md` · 렌더 `preview/TourFuture3.png`
+
+- [ ] **div** — “미래”
+      `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
+- [ ] **본문(스크롤 영역)** — “기간”
+      `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
+  - [ ] **HeroCard** — “기간”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:14px 14px 13px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
+  - [ ] **Card(18)** — “다음 자산 지점”
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
+  - [ ] **Card(18)** — “저장되지 않는 가정”
+        `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:11px 14px 11px`
+- [ ] **BottomNav** — “홈”
+      `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+- [ ] **div** — “처음 안내”
+      `position:absolute inset:0`
 

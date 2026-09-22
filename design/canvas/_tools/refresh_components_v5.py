@@ -75,7 +75,7 @@ cut=hero.index('<div style="display: grid; grid-template-columns: repeat(3, minm
 hero_top=hero[:cut]+'</div>'
 hero_top=hero_top.replace('border-radius: 20px; padding: 16px;','border-radius: 20px 20px 0 0; border-bottom: none; padding: 16px 16px 14px;',1).replace(' flex-shrink: 0;','',1)
 # ⑪ 조건부 각주 — HeroFootnotes 2번 견본의 카드 아랫부분
-k=hf_s.index('분류 안 한 32,000원은 적은 금액 그대로 예상에 더했어요</div><div style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 46px;')
+k=hf_s.index('분류 안 한 32,000원은 적은 금액 그대로 예상에 더했어요</div></div>')   # 안내 줄이 카드의 마지막 줄(히어로 버튼은 2026-09-22에 뺌)
 a=hf_s.rfind('<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-top: none; border-radius: 0 0 20px 20px;',0,k)
 tail=balanced(hf_s,a)
 assert '안내 줄</span>' not in tail

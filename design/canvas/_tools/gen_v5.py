@@ -527,8 +527,7 @@ def hero_insufficient(second='예상에 사용할 지난 소비 기록이 아직
         + metric3([('월 실수령', '360', '만원', None), ('월말 예상', '—', '', C["INK4"]), ('월말 예상 여유', '—', '', C["INK4"])])
         + f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px;">'
         f'<span style="font-size: 11px; line-height: 1.4; color: {C["INK3"]};">실수령 급여 기준 · 부수입·저축 이체·대출상환 제외</span>'
-        f'<span style="font-size: 11.5px; font-weight: 600; color: {C["BRAND"]}; white-space: nowrap;">기준 조정 &rsaquo;</span></div>'
-        + f'<div style="margin-top: 10px;">{btn("소비 기록하기", "primary", "plus", h=46)}</div>')
+        f'<span style="font-size: 11.5px; font-weight: 600; color: {C["BRAND"]}; white-space: nowrap;">기준 조정 &rsaquo;</span></div>')   # 버튼 없음(2026-09-22) — 기록은 달력 날짜로
 
 
 # 예상 기준 통과 전 다음 안내는 사실 안내만(계획 §3-4) — '며칠 더 기록하면 …' 같은 '시간이 지나면' 문장은 쓰지 않는다.
@@ -557,28 +556,26 @@ w('HeroInsufficient', frame(
 
 # ══════════════ 8. 홈 맨 위 카드에 붙는 작은 안내 줄 — 구현 참고 장 ══════════════
 # 앱 화면이 아니다. 왼쪽에 온전한 카드 한 장(②의 경우)을 두어 안내 줄 자리를 표시하고, 오른쪽에는 카드의 아랫부분
-# (기준 줄 + 안내 줄 + 버튼)만 네 경우로 놓는다. 기준 줄이 한 줄에 들어가는 실제 폭을 지키려고 견본은 카드 폭 362 그대로 2 × 2.
+# (기준 줄 + 안내 줄)만 네 경우로 놓는다. 히어로 버튼은 2026-09-22에 뺐으므로 안내 줄이 카드의 마지막 줄이다. 기준 줄이 한 줄에 들어가는 실제 폭을 지키려고 견본은 카드 폭 362 그대로 2 × 2.
 HERO_BASIS = '<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px;">'
-HERO_BTN = '<div style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 46px; margin-top: 10px;'
-assert s1.hero_block.count(HERO_BASIS) == 1 and s1.hero_block.count(HERO_BTN) == 1
-assert s1.hero_block.index(HERO_BASIS) < s1.hero_block.index(HERO_BTN) and s1.hero_block.endswith('</div>')
+assert s1.hero_block.count(HERO_BASIS) == 1 and '소비 기록하기' not in s1.hero_block and s1.hero_block.endswith('</div>')
 hero_top = s1.hero_block[:s1.hero_block.index(HERO_BASIS)]                       # 카드 여는 태그 ~ 세 칸 요약
 _tail = s1.hero_block[s1.hero_block.index(HERO_BASIS):]
-hero_tail = _tail[:_tail.rstrip().rindex('</div>')].rstrip()                     # 기준 줄 + 버튼(카드 닫는 태그 앞까지)
+hero_tail = _tail[:_tail.rstrip().rindex('</div>')].rstrip()                     # 기준 줄(카드 닫는 태그 앞까지)
 NOTE_STYLE = f'font-size: 11px; line-height: 1.4; color: {C["INK3"]};'
 
 
 def hero_tail_with(notes, marked=False):
-    """기준 줄과 버튼 사이에 안내 줄을 붙인다. marked = 안내 줄 자리를 옅은 파란 테두리와 알약으로 표시(왼쪽 온전한 카드용)."""
+    """기준 줄 아래에 안내 줄을 붙인다. marked = 안내 줄 자리를 옅은 파란 테두리와 알약으로 표시(왼쪽 온전한 카드용)."""
     if marked:
-        # 알약은 안내 줄의 빈 오른쪽 끝에 세로 가운데로 — 윗줄의 `기준 조정 ›`도 아래 버튼도 가리지 않는다
+        # 알약은 안내 줄의 빈 오른쪽 끝에 세로 가운데로 — 윗줄의 `기준 조정 ›`를 가리지 않는다
         pill = (f'<span style="position: absolute; top: 50%; right: 4px; transform: translateY(-50%); height: 17px; padding: 0 7px; border-radius: 99px; '
                 f'background: {C["INK"]}; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; white-space: nowrap;">안내 줄</span>')
         extra = (f'<div style="position: relative; margin-top: 4px; border-radius: 4px; box-shadow: 0 0 0 3px rgba(53,86,230,.16);">'
                  + ''.join(f'<div style="{NOTE_STYLE}">{n}</div>' for n in notes) + pill + '</div>')
     else:
         extra = ''.join(f'<div style="{NOTE_STYLE} margin-top: 4px;">{n}</div>' for n in notes)
-    return hero_tail.replace(HERO_BTN, extra + HERO_BTN, 1)
+    return hero_tail + extra
 
 
 def hero_fragment(notes):
@@ -592,14 +589,14 @@ NOTE_B = '분류 안 한 지난 기록도 평균에 넣었어요. 분류하면 �
 NOTE_C = '지난 고정비 기록을 보고 앞으로 나갈 돈도 예상했어요'
 NOTE_D = '기록이 한 달치뿐이라 예상이 달라질 수 있어요'
 FOOTNOTE_CASES = [
-    (1, '덧붙일 말이 없을 때', '기준 조정 줄 바로 아래에 버튼이 옵니다. 지금 홈과 같습니다.', []),
+    (1, '덧붙일 말이 없을 때', '기준 조정 줄로 카드가 끝납니다. 지금 홈과 같습니다.', []),
     (2, '이번 달에 분류 안 한 기록이 있을 때', '안내가 한 줄 붙습니다.', [NOTE_A]),
     (3, '지난달 기록으로 예상을 계산한 날', '안내가 두 줄 붙습니다. 이번 달 기록만으로 계산한 날에는 나오지 않습니다.', [NOTE_B, NOTE_C]),
     (4, '기록이 한 달치뿐일 때', '안내가 한 줄 붙습니다.', [NOTE_D])]
 footnote_left = (
     f'<div style="width: 362px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;">{hero_top}{hero_tail_with([NOTE_A], marked=True)}</div>'
     f'<p style="margin: 2px 2px 0; font-size: 12px; line-height: 1.5; color: {C["INK3"]};">안내 줄은 '
-    f'<b style="font-weight: 600; color: {C["INK2"]};">기준 조정 줄과 버튼 사이</b>에 붙습니다. 그림은 2번의 경우입니다.</p></div>')
+    f'<b style="font-weight: 600; color: {C["INK2"]};">기준 조정 줄 아래, 카드의 맨 끝</b>에 붙습니다. 그림은 2번의 경우입니다.</p></div>')
 footnote_foot = (f'<p style="margin: 10px 2px 0; font-size: 12px; line-height: 1.6; color: {C["INK3"]}; max-width: 900px;">오른쪽 견본은 카드의 '
                  f'<b style="font-weight: 600; color: {C["INK2"]};">아랫부분</b>만 잘라 보여 줍니다. 카드의 나머지는 네 경우 모두 같고, 안내 줄이 붙은 만큼만 카드가 길어집니다. '
                  f'안내 문구는 기획 문서 5-3의 문구 표와 같아야 합니다.</p>')
