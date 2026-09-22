@@ -112,6 +112,24 @@ TITLES = {
     'TourFuture1': '첫 실행 안내 · 미래 1 / 3 자산 경로',
     'TourFuture2': '첫 실행 안내 · 미래 2 / 3 다음 지점',
     'TourFuture3': '첫 실행 안내 · 미래 3 / 3 가정',
+    'TourDebts1': '첫 실행 안내 · 부채 1 / 3 총부채',
+    'TourDebts2': '첫 실행 안내 · 부채 2 / 3 고금리 경고',
+    'TourDebts3': '첫 실행 안내 · 부채 3 / 3 부채 목록',
+    'TourStrategy1': '첫 실행 안내 · 상환 전략 1 / 3 상환 방식',
+    'TourStrategy2': '첫 실행 안내 · 상환 전략 2 / 3 예상 완제',
+    'TourStrategy3': '첫 실행 안내 · 상환 전략 3 / 3 완제 순서',
+    'TourLedger1': '첫 실행 안내 · 내역 1 / 3 검색 · 칩',
+    'TourLedger2': '첫 실행 안내 · 내역 2 / 3 날짜 묶음',
+    'TourLedger3': '첫 실행 안내 · 내역 3 / 3 거래 추가',
+    'TourLimits1': '첫 실행 안내 · 한도 1 / 3 총한도',
+    'TourLimits2': '첫 실행 안내 · 한도 2 / 3 카테고리 배분',
+    'TourLimits3': '첫 실행 안내 · 한도 3 / 3 계산 근거',
+    'TourGoalDesign1': '첫 실행 안내 · 새 목적지 설계 1 / 3 두 탭',
+    'TourGoalDesign2': '첫 실행 안내 · 새 목적지 설계 2 / 3 추천',
+    'TourGoalDesign3': '첫 실행 안내 · 새 목적지 설계 3 / 3 입력',
+    'TourPayoff1': '첫 실행 안내 · 상환 계획 1 / 3 가정',
+    'TourPayoff2': '첫 실행 안내 · 상환 계획 2 / 3 비교',
+    'TourPayoff3': '첫 실행 안내 · 상환 계획 3 / 3 저장',
 }
 
 # 페이지는 단계(v3 · v4 · v5)가 아니라 화면 종류로 묶는다(2026-09-22 사용자 요청 — "이제 다 v5"). 이름은 내용 그대로.
@@ -131,10 +149,13 @@ PAGES = [
     ('first-run', '첫 실행', 4,
      ['IntroPosition', 'IntroRoute', 'IntroDestination', 'Onboarding',
       'HomeSetup', 'HomeSetupStocksOn', 'SettingsHomeEntry', 'HomeLayoutEdit']),
-    ('tour', '첫 실행 안내 · 탭마다 3단계', 3,
+    ('tour', '첫 실행 안내 · 화면마다 3단계', 3,
      ['TourHome1', 'TourHome2', 'TourHome3', 'TourAssets1', 'TourAssets2', 'TourAssets3',
       'TourSpending1', 'TourSpending2', 'TourSpending3', 'TourGoals1', 'TourGoals2', 'TourGoals3',
-      'TourFuture1', 'TourFuture2', 'TourFuture3']),
+      'TourFuture1', 'TourFuture2', 'TourFuture3',
+      'TourDebts1', 'TourDebts2', 'TourDebts3', 'TourStrategy1', 'TourStrategy2', 'TourStrategy3',
+      'TourLedger1', 'TourLedger2', 'TourLedger3', 'TourLimits1', 'TourLimits2', 'TourLimits3',
+      'TourGoalDesign1', 'TourGoalDesign2', 'TourGoalDesign3', 'TourPayoff1', 'TourPayoff2', 'TourPayoff3']),
     ('stocks', '주식', 4,
      ['StocksMine', 'HoldingAdd', 'StocksEmpty', 'StocksHome', 'StockListGrowth', 'StockListDividend',
       'StockDetail', 'StockThemes', 'StockStates', 'SnapshotUpdate']),
@@ -181,10 +202,10 @@ NOTES = {
                   '이 화면은 처음 설치해 처음 실행할 때만 뜨고, 그 뒤엔 설정 창의 「홈 구성 ›」 행 → 같은 목록(닫기 · 저장)으로만 바꾼다. 샘플 → 내 데이터로 넘어가도 구성은 그대로.\n\n'
                   '저장은 settings.homeLayout · settings.onboarding · settings.features(보호 파일 · 백업 형식 불변).\n\n── 아래 줄은 다크입니다.'),
     'tour': ('note-tour', 640,
-             '첫 실행 안내 — 앱을 처음 설치해 첫 실행할 때, 탭에 처음 들어가면 그 탭의 안내가 1단계부터 뜹니다(2026-09-22 사용자 요청). 홈 · 자산 · 소비 · 목적지 · 미래 각 3단계.\n\n'
+             '첫 실행 안내 — 앱을 처음 설치해 첫 실행할 때, 화면에 처음 들어가면 그 화면의 안내가 1단계부터 뜹니다(2026-09-22 사용자 요청). 다섯 탭(홈 · 자산 · 소비 · 목적지 · 미래)과 탭 안의 세그먼트 화면 여섯(부채 · 상환 전략 · 내역 · 한도 · 새 목적지 설계 · 상환 계획) — 11화면 × 3단계 = 33장. 줄 순서 = 탭 다섯 → 세그먼트 여섯.\n\n'
              '어두운 막 위에 요소 하나만 밝히고(브랜드 파랑 테두리) 그 아래 12px에 카드 — 요소가 화면 아래쪽이면 카드는 위. '
              '카드 = 「처음 안내」 알약 + 「탭 n / 3」 · 제목 16 / 700 · 본문 13 / 1.55 · 「건너뛰기」(그 탭의 남은 단계를 건너뜀) · 「다음」/「알겠어요」 40px.\n\n'
-             '다시 보려면 설정 › 도움말 › 「처음 안내 다시 보기」. 저장은 settings.onboarding.tourSeen = {home, assets, spending, goals, future}. '
+             '다시 보려면 설정 › 도움말 › 「처음 안내 다시 보기」. 저장은 settings.onboarding.tourSeen = {home, assets, debts, strategy, spending, ledger, limits, goals, goalDesign, future, payoff}. '
              '좌표와 문구는 gen_tour.py의 표(실측)이고 탭 장을 고치면 다시 잽니다.\n\n── 아래 줄은 다크입니다.'),
     'stocks': ('note-stocks', 640,
                '주식 — 내 종목(보유 · 관심 · 직접 입력) · 보유 기록 모달 · 빈 상태 · 둘러보기(투자 여력 띠 · 가드레일 · 성장 / 저평가 / 배당 / 테마) · 성장주 · 배당주 목록 · 종목 상세(내 항로에 넣어보기) · 테마 · 특수한 상황 6가지 · 종목 데이터 새로 받기.\n\n'
