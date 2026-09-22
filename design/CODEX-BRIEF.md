@@ -9,7 +9,7 @@
 NAVI(자산 성장 내비게이션)의 UI를 v3 디자인으로 바꿉니다. **계산 로직·저장 형식은 바꾸지 않습니다.**
 디자인은 `design/canvas/`에 **v3 아트보드 77장**(라이트 39 · 다크 38)으로 그려져 있고, 모든 수치는 실제 계산으로 검증돼 있습니다.
 
-> **2026-09-21 덧붙임.** `canvas/`에는 이제 v3 아트보드 77장(알림이 없을 때 장이 추가됨) 말고도 v4 · v5 시안이 함께 들어 있습니다(전체 193장 · 캔버스 14페이지 — v3는 1~5페이지 `모바일 · 화면`~`디자인 시스템`, 6~10이 v4, 11~14가 v5). **v4 · v5 장은 이 지시서의 구현 범위가 아닙니다** — 기준은 `plan/v4-stocks.md` · `plan/v5-calendar.md`이고, v5는 컴포넌트 11종을 새로 등록합니다(`SPEC-COMPONENTS.md` §27). `SPEC-SCREENS.md` · `spec/` · `screens.json`에도 v4 · v5 장이 함께 들어 있으니 `screens.json`의 `page`로 가려 읽으세요. 4페이지 데스크톱의 셋째 장 `DesktopHomeV5`는 v5 뒤의 데스크톱 홈이라 역시 범위 밖입니다(달력 자리는 2026-09-21에 이 그림대로 정해졌습니다). v3 장에서 인계 뒤에 바뀐 것은 `CHANGES-2026-09-20.md` · `CHANGES-2026-09-21.md`에 있습니다 — 뒤 문서의 「열려 있던 결정 여섯 가지」 6번으로 다크의 꺼진 토글 손잡이(`#8595AE`)와 세그먼트 선택 칸(`#2E3A54`)이 바뀌어 v3 다크 17장도 달라졌습니다.
+> **2026-09-22 덧붙임(2026-09-21 덧붙임을 대체).** `canvas/`는 이제 단계 구분 없이 **지금 앱의 기준** 211장 · 11페이지입니다(화면 종류별 — 홈 · 하루 시트 · 기록 · 자산 · 소비 · 목적지 · 미래 · 첫 실행 · 첫 실행 안내 · 주식 · 모달 · 설정 · 데스크톱 · 상태 · 구현 참고 · 디자인 시스템). 이 지시서의 v3 범위는 이미 구현됐고, 그 뒤의 결정은 `CHANGES-2026-09-20.md` → `CHANGES-2026-09-21.md` → **`CHANGES-2026-09-22.md`** 순서로 쌓여 있습니다. 계획 원문은 `plan/v4-stocks.md` · `plan/v5-calendar.md`(11판). v5 컴포넌트 11종은 `SPEC-COMPONENTS.md` §27. 달력이 들어가기 전의 옛 장(`Main` · `HomeScroll` · `Ledger` · `MonthlyClose` · `DesktopHome`)은 캔버스 · `screens.json` · `SPEC-SCREENS.md`에 없습니다 — 홈은 `HomeCalendarStrip`, 내역은 `LedgerV5`, 월 마감은 `MonthlyCloseV5`, 데스크톱 홈은 `DesktopHomeV5`를 보세요.
 
 
 작업 대상은 **여러분 저장소에 있는 원본 앱**입니다. 디자인 자료는 아래 공개 저장소에 있습니다.
@@ -34,9 +34,9 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 |---|---|---|
 | 1 | 이 문서 | 작업 순서·제약·완료 기준 |
 | 2 | **[`SPEC-COMPONENTS.md`](SPEC-COMPONENTS.md)** | **컴포넌트 24개의 실측 CSS. 화면보다 이것을 먼저 만듭니다** |
-| 3 | **[`SPEC-SCREENS.md`](SPEC-SCREENS.md)** | **v3 화면 39개의 블록 체크리스트(`Main`부터 `Components`까지 — 그 뒤는 v4 · v5 장). 조립하면서 하나씩 지웁니다** |
+| 3 | **[`SPEC-SCREENS.md`](SPEC-SCREENS.md)** | **캔버스 라이트 106장의 블록 체크리스트. 조립하면서 하나씩 지웁니다** |
 | 4 | [`DESIGN-TOKENS-v3.md`](DESIGN-TOKENS-v3.md) · [`tokens.v3.json`](tokens.v3.json) | 색·타이포·간격 값의 출처 |
-| 5 | [`screens.json`](screens.json) | 아트보드 ↔ 소스 파일 매핑 (기계 판독용 · 193장 전부 — v3 77장은 `page`가 `모바일 · 화면`~`디자인 시스템`인 장) |
+| 5 | [`screens.json`](screens.json) | 아트보드 ↔ 소스 파일 매핑 (기계 판독용 · 캔버스 211장 · `page`가 캔버스 페이지 이름) |
 | 6 | [`sample-data.json`](sample-data.json) | 시안이 그리는 가상 사용자 — 개발 픽스처로 그대로 사용 |
 | 7 | [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) | 파일별 작업 내용 (4단계) |
 | 8 | [`README.md`](README.md) | 왜 이렇게 바꿨는지 — 문제 진단과 5가지 원칙 |
