@@ -181,6 +181,7 @@ V5X += ['DestPayoff']   # gen_v4_stocks.py
 V5X += ['DaySheetScrolled', 'HomeDefaultScroll']   # gen_v5.py
 V5X += ['DaySheetNoSpend', 'DaySheetNoSpendStates', 'ReviewListSheet', 'DoneCardStates', 'DaySheetStates', 'CalendarStatusLines']   # gen_v5_sheets.py
 V5X += ['InsufficientElsewhere', 'FutureProvisional', 'EtcSubline', 'LimitCardCases', 'RecurringPrefill', 'ImportBackupNotes']   # gen_v5_screens.py
+V5X += ['SettingsNotify', 'NotifyCases']   # gen_notify.py (2026-09-23 기기 알림)
 
 if __name__ == '__main__':
     n = 0

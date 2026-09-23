@@ -33,6 +33,7 @@ WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHo
         'EtcSubline': (1200, 970), 'DarkEtcSubline': (1200, 970),
         'LimitCardCases': (1200, 960), 'DarkLimitCardCases': (1200, 960),
         'ImportBackupNotes': (1230, 1060), 'DarkImportBackupNotes': (1230, 1060),
+        'NotifyCases': (1200, 830), 'DarkNotifyCases': (1200, 830),   # 기기 알림 참고 장 (gen_notify.py · 2026-09-23)
         # v4 구현 참고 장 (gen_v4_stocks.py)
         'StockStates': (1180, 880), 'DarkStockStates': (1180, 880),
         'SnapshotUpdate': (1180, 762), 'DarkSnapshotUpdate': (1180, 762)}
@@ -112,6 +113,7 @@ TITLES = {
     'TourFuture1': '첫 실행 안내 · 미래 1 / 3 자산 경로',
     'TourFuture2': '첫 실행 안내 · 미래 2 / 3 다음 지점',
     'TourFuture3': '첫 실행 안내 · 미래 3 / 3 가정',
+    'SettingsNotify': '모달 · 설정 › 알림 (기기 알림)', 'NotifyCases': '참고 · 기기 알림 여섯 가지와 규칙',
     'TourDebts1': '첫 실행 안내 · 부채 1 / 3 총부채',
     'TourDebts2': '첫 실행 안내 · 부채 2 / 3 고금리 경고',
     'TourDebts3': '첫 실행 안내 · 부채 3 / 3 부채 목록',
@@ -162,13 +164,13 @@ PAGES = [
     ('modals', '모달 · 설정', 5,
      ['ProfileDialog', 'TransactionAdd', 'LimitEditor', 'AssetDialog', 'DebtDialog', 'GoalDialog',
       'RecurringDialog', 'GoalContribute', 'ImportReview', 'CoachPanel', 'CoachEmpty',
-      'AlertsPanel', 'AlertsEmpty', 'PeerDialog', 'StockSettings']),
+      'AlertsPanel', 'AlertsEmpty', 'PeerDialog', 'StockSettings', 'SettingsNotify']),
     ('desktop', '데스크톱', 2, ['DesktopHomeV5', 'DesktopLedger']),
     ('states', '상태 · 구현 참고', 3,
      ['StorageStates', 'EmptyStates', 'PeerStates', 'GoalTypes', 'ModalErrors', 'Confirmations',
       'CalendarCells', 'CalendarGridSizes', 'CalendarStatusLines', 'HeroFootnotes', 'DaySheetConfirm',
       'DaySheetStates', 'DaySheetNoSpendStates', 'DoneCardStates', 'InsufficientElsewhere', 'FutureProvisional',
-      'LimitCardCases', 'EtcSubline', 'ImportBackupNotes']),
+      'LimitCardCases', 'EtcSubline', 'ImportBackupNotes', 'NotifyCases']),
     ('system', '디자인 시스템', 2, ['Tokens', 'Components']),
 ]
 
@@ -211,14 +213,14 @@ NOTES = {
                '주식 — 내 종목(보유 · 관심 · 직접 입력) · 보유 기록 모달 · 빈 상태 · 둘러보기(투자 여력 띠 · 가드레일 · 성장 / 저평가 / 배당 / 테마) · 성장주 · 배당주 목록 · 종목 상세(내 항로에 넣어보기) · 테마 · 특수한 상황 6가지 · 종목 데이터 새로 받기.\n\n'
                '추천 · 매수 · 매도라는 말을 쓰지 않는다. 가격 옆에는 항상 기준일(9/4 종가). 기준값은 사용자 것(설정 › 주식). 스냅숏 수치는 전부 가상(design/stocks-snapshot.sample.json).\n\n── 아래 줄은 다크입니다.'),
     'modals': ('note-modals', 640,
-               '모달 · 설정 — 내 수치 입력 · 거래 추가 · 한도 조정 · 자산 · 부채 · 목적지 · 반복 거래 · 적립 · 백업 불러오기 · 코칭(있음 · 없음) · 알림(있음 · 없음) · 또래 기준 · 설정 › 주식.\n\n'
+               '모달 · 설정 — 내 수치 입력 · 거래 추가 · 한도 조정 · 자산 · 부채 · 목적지 · 반복 거래 · 적립 · 백업 불러오기 · 코칭(있음 · 없음) · 알림(있음 · 없음) · 또래 기준 · 설정 › 주식 · 설정 › 알림(기기 알림 — 2026-09-23 · 앱을 안 켜고 있을 때 시각으로 오는 여섯 가지, 기본 켬 셋).\n\n'
                '단독 행 필드는 solo, 버튼 · 배지는 nowrap. 필수 아님 표기는 「선택 사항」. 저장 실패는 창 안에 고정.\n\n── 아래 줄은 다크입니다.'),
     'desktop': ('note-desktop', 640,
                 '데스크톱 1440 — 홈은 히어로 아래 왼쪽 열 첫 자리에 펼친 월 달력(폭 348 · 늘 펼침 · 접기 없음), 그래프는 그 오른쪽, 사이드바는 주식 켠 5칸(주식 수치 옆 기준일). 히어로에 「소비 기록하기」 없음. 소비 내역은 왼쪽 목록 + 오른쪽 상세.\n\n── 아래 줄은 다크입니다.'),
     'states': ('note-states', 640,
                '상태 카탈로그와 구현 참고 장 — 앱 화면이 아니라 설명 장(맨 위 알약 「구현 참고 · 앱 화면이 아닙니다」).\n\n'
                '저장소 로딩 · 복구 / 미입력 6종(F = 히어로 이력 부족) / 또래 카드 5종 / 목적지 유형 5종 / 모달 오류 · 저장 6종 / 삭제 · 초기화 확인 / 달력 칸 읽는 법 / 펼치면 어디서나 월 달력 / 달력 아래 한 줄이 바뀌는 경우 / 홈 맨 위 카드의 안내 줄 / '
-               '저장을 한 번 더 물어보는 경우 / 기록 창의 글이 바뀌는 경우 / 안 쓴 날 표시 / 완료 카드의 경우들 / 예상 기준 확인 전 홈 밖의 화면 / 미래의 잠정 표시 / 한도 카드 네 경우 / 기타 서브라인 / 가져오기 · 백업 안내.\n\n── 아래 줄은 다크입니다.'),
+               '저장을 한 번 더 물어보는 경우 / 기록 창의 글이 바뀌는 경우 / 안 쓴 날 표시 / 완료 카드의 경우들 / 예상 기준 확인 전 홈 밖의 화면 / 미래의 잠정 표시 / 한도 카드 네 경우 / 기타 서브라인 / 가져오기 · 백업 안내 / 기기 알림 여섯 가지와 규칙.\n\n── 아래 줄은 다크입니다.'),
     'system': ('note-system', 640,
                '디자인 시스템 — 토큰(색 · 타이포 · 간격 · 08절 v5 토큰)과 컴포넌트 24종 + v5 11종의 상태. 값의 최종 기준은 아트보드이고 실측 CSS는 design/SPEC-COMPONENTS.md.\n\n'
                '── 아래 줄은 다크입니다. 토큰 장만 다크가 없습니다(표 자체가 두 테마를 보여 줍니다).'),

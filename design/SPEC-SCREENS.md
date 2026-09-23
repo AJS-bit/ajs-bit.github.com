@@ -2477,3 +2477,43 @@
 - [ ] **div** — “처음 안내”
       `position:absolute inset:0`
 
+## SettingsNotify — 모달 · 설정 › 알림 (기기 알림)
+
+`canvas/SettingsNotify.dc.html` · 390×844 · 원본 `미구현 · 기기 알림 · design/CHANGES-2026-09-23.md · NAVI-NOTIFY-MEETING-2026-09-23.md` · 렌더 `preview/SettingsNotify.png`
+
+- [ ] **div** — “배경을 눌러 닫기”
+      `height:60px display:flex align-items:flex-end justify-content:center`
+- [ ] **BottomSheet** — “알림”
+      `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+  - [ ] **div**
+        `display:flex justify-content:center padding:9px 0 0`
+  - [ ] **div** — “알림”
+        `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
+  - [ ] **div** — “조용한 시간”
+        `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
+    - [ ] **div** — “조용한 시간”
+          `margin-top:0px`
+    - [ ] **div** — “알림”
+          `margin-top:8px`
+    - [ ] **div** — “확인”
+          `margin-top:8px`
+    - [ ] **div** — “절전 중이면 몇 분 늦을 수 있어요. 앱을 35일 넘게 안 열면 예약이 멈춰요.”
+          `margin-top:8px`
+  - [ ] **div** — “닫기”
+        `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
+
+## NotifyCases — 참고 · 기기 알림 여섯 가지와 규칙
+
+`canvas/NotifyCases.dc.html` · 1200×830 · 원본 `미구현 · 기기 알림 · design/CHANGES-2026-09-23.md` · 렌더 `preview/NotifyCases.png`
+
+- [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
+      `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
+- [ ] text 20px/700 — “기기 알림 — 여섯 가지와 규칙”
+      `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
+- [ ] text 13px/400 — “앱 안 알림 창과 별개로, 앱을 안 켜고 있을 때 시각으로 오는 안드로이드 로컬 알림입니다. ”
+      `font-size:13px line-height:1.55 color:#626D88`
+- [ ] **div** — “1”
+      `display:grid grid-template-columns:repeat(3, 362px) gap:26px 28px align-items:start`
+- [ ] **div** — “규칙”
+      `margin-top:22px padding:16px 18px background:#FFFFFF border:1px solid #E3E8F1 border-radius:16px`
+

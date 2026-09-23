@@ -2716,6 +2716,50 @@
       "w": 390,
       "h": 844,
       "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+    },
+    {
+      "file": "SettingsNotify.dc.html",
+      "name": "SettingsNotify",
+      "base": "SettingsNotify",
+      "theme": "light",
+      "title": "모달 · 설정 › 알림 (기기 알림)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md · NAVI-NOTIFY-MEETING-2026-09-23.md"
+    },
+    {
+      "file": "DarkSettingsNotify.dc.html",
+      "name": "DarkSettingsNotify",
+      "base": "SettingsNotify",
+      "theme": "dark",
+      "title": "모달 · 설정 › 알림 (기기 알림) (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md · NAVI-NOTIFY-MEETING-2026-09-23.md"
+    },
+    {
+      "file": "NotifyCases.dc.html",
+      "name": "NotifyCases",
+      "base": "NotifyCases",
+      "theme": "light",
+      "title": "참고 · 기기 알림 여섯 가지와 규칙",
+      "page": "상태 · 구현 참고",
+      "w": 1200,
+      "h": 830,
+      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md"
+    },
+    {
+      "file": "DarkNotifyCases.dc.html",
+      "name": "DarkNotifyCases",
+      "base": "NotifyCases",
+      "theme": "dark",
+      "title": "참고 · 기기 알림 여섯 가지와 규칙 (다크)",
+      "page": "상태 · 구현 참고",
+      "w": 1200,
+      "h": 830,
+      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md"
     }
   ],
   "note": ".dc.html은 정적 HTML + 인라인 스타일입니다. <helmet> 안의 폰트/기본 CSS를 걷어내고 그 뒤의 최상위 div가 화면 하나입니다."

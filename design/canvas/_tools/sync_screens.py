@@ -11,6 +11,7 @@ CANVAS = pathlib.Path(__file__).resolve().parent.parent
 DESIGN = CANVAS.parent
 
 SOURCE = {   # 새 장의 출처 — 기존 장은 screens.json에 이미 있는 값을 그대로 둔다
+    'SettingsNotify': '미구현 · 기기 알림 · design/CHANGES-2026-09-23.md · NAVI-NOTIFY-MEETING-2026-09-23.md', 'NotifyCases': '미구현 · 기기 알림 · design/CHANGES-2026-09-23.md',
     'TourDebts1': '미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md',
     'TourDebts2': '미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md',
     'TourDebts3': '미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md',
