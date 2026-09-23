@@ -11,7 +11,7 @@
       - `div`
         `display:flex align-items:center gap:8px`
         - `div`
-          `width:28px height:28px border-radius:9px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
+          `width:32px height:32px border-radius:10px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
         - `span` **text 12px/500** — “홈 구성”
           `font-size:12px font-weight:500 color:#626D88`
       - `span` **text 13px/600** — “건너뛰기”

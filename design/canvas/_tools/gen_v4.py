@@ -39,10 +39,10 @@ def w(name, body, keep_all=True):
     print('wrote', name, '+ Dark' + name)
 
 
-def mark(size=28, radius=9, glyph=15):
+def mark(size=32, radius=10, glyph=21):   # brand_mark.py 규격(2026-09-23) — 종이비행기 54% · 무게중심 가운데
     return (f'<div style="width: {size}px; height: {size}px; border-radius: {radius}px; background: {BRAND_GRAD}; '
             f'display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
-            f'<svg width="{glyph}" height="{glyph}" viewBox="0 0 24 24" fill="#FFFFFF"><path d="{ARROW}"/></svg></div>')
+            f'<svg width="{glyph}" height="{glyph}" viewBox="1.2 -1.2 24 24" fill="#FFFFFF"><path d="{ARROW}"/></svg></div>')
 
 
 # ══════════════ 공통 조각 ══════════════
