@@ -36,7 +36,7 @@
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **StatusPill** — “저장되지 않는 가정”
           `display:inline-flex align-items:center gap:4px background:#F1EAFD color:#6B32D6 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
-        - `span` **text 12px/600** — “가정 종료”
+        - `span` **text 12px/600** — “되돌리기”
           `font-size:12px font-weight:600 color:#626D88 white-space:nowrap`
       - `p` **text 15px/600** — “월 추가 상환을 얼마나 할까요?”
         `font-size:15px font-weight:600 letter-spacing:-0.015em color:#101828`

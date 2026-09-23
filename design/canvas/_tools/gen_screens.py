@@ -444,7 +444,7 @@ w('Payoff', frame(
     content([
         card(f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
              f'{badge("저장되지 않는 가정", "vio", "spark")}'
-             f'<span style="font-size: 12px; font-weight: 600; color: {C["INK3"]}; white-space: nowrap; flex-shrink: 0;">가정 종료</span></div>'
+             f'<span style="font-size: 12px; font-weight: 600; color: {C["INK3"]}; white-space: nowrap; flex-shrink: 0;">되돌리기</span></div>'
              f'<p style="margin: 11px 0 0; font-size: 15px; font-weight: 600; letter-spacing: -0.015em; color: {C["INK"]};">월 추가 상환을 얼마나 할까요?</p>'
              f'<div style="display: flex; align-items: baseline; gap: 7px; margin-top: 9px;">'
              f'<span style="font-size: 14px; font-weight: 500; color: {C["INK4"]}; text-decoration: line-through;">15만원</span>'
