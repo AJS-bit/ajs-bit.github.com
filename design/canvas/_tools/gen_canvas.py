@@ -7,28 +7,28 @@ OUT = pathlib.Path(__file__).resolve().parent.parent
 PHONE = (390, 844)
 # 프레임 높이는 "실제 웹폰트로 렌더한 자연 높이 + 아래 여백 24px"이다.
 # 폴백 폰트로 재면 한글 줄 높이가 짧게 나와 실제보다 작은 값이 나온다. 반드시 IBM Plex Sans KR로 재라.
-TALL = {'StorageStates': 1324, 'PeerStates': 1555, 'EmptyStates': 2480, 'Confirmations': 1245,
+TALL = {'StorageStates': 1324, 'PeerStates': 1555, 'EmptyStates': 2800, 'Confirmations': 1245,
         'ModalErrors': 2100, 'GoalTypes': 1920,
-        'HomeDefaultScroll': 1330}   # v5 · 2단계 기본 5카드 홈 전체 스크롤
+        'HomeDefaultScroll': 1360}   # v5 · 2단계 기본 5카드 홈 전체 스크롤
 TALL.update({'Dark' + k: v for k, v in TALL.items()})
 WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 900), 'DarkDesktopHome': (1440, 900),
         'DarkDesktopLedger': (1440, 900),
-        'DesktopHomeV5': (1440, 1000), 'DarkDesktopHomeV5': (1440, 1000),   # v5 달력이 들어간 데스크톱 홈(2026-09-21 채택)
-        'Tokens': (1200, 1720), 'Components': (1200, 2724), 'DarkComponents': (1200, 2724),
+        'DesktopHomeV5': (1440, 1070), 'DarkDesktopHomeV5': (1440, 1070),   # v5 달력이 들어간 데스크톱 홈(2026-09-21 채택 · 2026-09-24 1000 → 1070 달력 안내 줄 · 적기 줄)
+        'Tokens': (1200, 1720), 'Components': (1200, 2920), 'DarkComponents': (1200, 2920),
         'DaySheet360': (360, 640), 'DarkDaySheet360': (360, 640),   # 작은 폰 360 × 640
         'HomeCalendar360': (360, 844), 'DarkHomeCalendar360': (360, 844),   # v5 좁은 폰
         # v5 구현 참고 장 — 폰 프레임이 아니라 가로로 넓은 설명 장
-        'CalendarCells': (1330, 820), 'DarkCalendarCells': (1330, 820),
-        'CalendarGridSizes': (1150, 1490), 'DarkCalendarGridSizes': (1150, 1490),
+        'CalendarCells': (1330, 830), 'DarkCalendarCells': (1330, 830),
+        'CalendarGridSizes': (1150, 1670), 'DarkCalendarGridSizes': (1150, 1670),
         'DaySheetConfirm': (1200, 900), 'DarkDaySheetConfirm': (1200, 900),
         'HeroFootnotes': (1200, 640), 'DarkHeroFootnotes': (1200, 640),
         # 최신화 반영(2026-09-21) — v5 구현 참고 장과 다른 화면에 닿는 곳
-        'CalendarStatusLines': (1200, 1050), 'DarkCalendarStatusLines': (1200, 1050),
-        'DaySheetNoSpendStates': (1200, 1160), 'DarkDaySheetNoSpendStates': (1200, 1160),
-        'DoneCardStates': (1200, 1090), 'DarkDoneCardStates': (1200, 1090),
+        'CalendarStatusLines': (1200, 1570), 'DarkCalendarStatusLines': (1200, 1570),   # 2026-09-24 후속 1160 → 1500(처음 쓰는 날 · 펼친 달력 오늘 0건 견본) → 1540(최종 점검 후속 · 미래 견본의 확인할 내용 행 · 메모) → 1570(통합 점검 · 샘플 문장 위 줄)
+        'DaySheetNoSpendStates': (1200, 1190), 'DarkDaySheetNoSpendStates': (1200, 1190),   # 2026-09-24 후속 1160 → 1190(오늘 칸 + → 0 → + 견본)
+        'DoneCardStates': (1200, 1100), 'DarkDoneCardStates': (1200, 1100),
         'DaySheetStates': (1210, 1660), 'DarkDaySheetStates': (1210, 1660),
         'TransactionAddFromDaySheet': (960, 850), 'DarkTransactionAddFromDaySheet': (960, 850),
-        'InsufficientElsewhere': (1230, 1330), 'DarkInsufficientElsewhere': (1230, 1330),
+        'InsufficientElsewhere': (1230, 1390), 'DarkInsufficientElsewhere': (1230, 1390),
         'FutureProvisional': (1230, 1080), 'DarkFutureProvisional': (1230, 1080),
         'EtcSubline': (1200, 970), 'DarkEtcSubline': (1200, 970),
         'LimitCardCases': (1200, 960), 'DarkLimitCardCases': (1200, 960),
@@ -72,7 +72,7 @@ TITLES = {
     'DaySheetEdit': '하루 시트 · 수정 모드', 'DoneCard': '홈 · 저장 뒤 완료 카드', 'DaySheetConfirm': '참고 · 저장을 한 번 더 물어보는 경우',
     'ClassifySheet': '분류하기 시트', 'HeroInsufficient': '홈 · 히어로 이력 부족', 'DaySheet360': '하루 시트 · 360 × 640 작은 폰',
     'HeroFootnotes': '참고 · 홈 맨 위 카드의 안내 줄',
-    'HomeCalendarStrip': '홈 · 달력 접힘 (최근 7일)', 'HomeCalendar': '홈 · 달력 펼침 (월 달력) · 3일 칸 누름',
+    'HomeCalendarStrip': '홈 · 달력 접힘 (최근 7일)', 'HomeCalendar': '홈 · 달력 펼침 (월 달력)',
     'HomeCalendar360': '홈 · 달력 펼침 · 360px (월 달력 그대로)', 'HomeCalendarPrev': '홈 · 달력 펼침 · ‹ 지난달 8월 보기',
     'CalendarCells': '참고 · 달력 칸 읽는 법', 'CalendarGridSizes': '참고 · 달력을 펼치면 어디서나 월 달력',
     # 최신화 반영(2026-09-21) 새 장
@@ -182,8 +182,9 @@ def dark_of(name):
 
 NOTES = {
     'home': ('note-home', 640,
-             '홈 — 히어로(월급 대비 소비율 · 고정) 아래 첫 카드가 이번 달 달력. 기록의 입구는 달력 날짜(오늘 칸)이고 히어로에 「소비 기록하기」 버튼은 없다(2026-09-22).\n\n'
-             '첫 줄: 달력 접힘(최근 7일) · 펼침(7열 월 달력 · 3일 칸 누름) · ‹ 지난달 · 360px 좁은 폰(월 달력 그대로) · 기본 5카드 전체 스크롤. '
+             '홈 — 히어로(고정 · 큰 숫자와 게이지 = 이번 달 지금까지 쓴 돈 ÷ 월급 31.1%, 월말 예상 57.9%는 배지 · 아래 칸 글자로만 · 2026-09-24) 아래 첫 카드가 달력 「이번 달 소비 기록」. '
+             '기록의 입구는 달력 날짜 — 오늘 칸의 + · 「+ 오늘 쓴 돈 적기」 버튼 · 기록이 있으면 「+ 더 적기」. 히어로에 「소비 기록하기」 버튼은 없다(2026-09-22).\n\n'
+             '첫 줄: 달력 접힘(최근 7일) · 펼침(7열 월 달력) · ‹ 지난달 · 360px 좁은 폰(월 달력 그대로) · 기본 5카드 전체 스크롤. '
              '둘째 줄: 첫 실행 홈 구성의 결과(달력 · 다음 안내 · 한도 · 순자산 · 상환) · 주식 요약 카드가 있는 홈 · 저장 뒤 완료 카드 · 예상 기준을 확인하기 전의 히어로(이력 부족).\n\n'
              '한도 라벨 「하루 47,270원」은 1 · 2단계, 「앞으로 하루」는 3단계 뒤(주식 카드 홈만). 같은 값은 모든 장에서 같다(design/CHANGES-2026-09-20.md 숫자 기준표).\n\n'
              '── 아래 줄은 다크입니다. darken.py가 라이트에서 만든 토큰 매핑 사본이고 레이아웃은 1px도 다르지 않습니다.'),
@@ -200,7 +201,7 @@ NOTES = {
                     '합친 탭에서 새 목적지 설계는 목록 끝 점선 버튼으로 들어간다. 시뮬레이션 값은 calc/crosscheck.py 확정값(총이자 1,734만원 · 완제 2036년 4월).\n\n── 아래 줄은 다크입니다.'),
     'first-run': ('note-first-run', 640,
                   '첫 실행 — 소개 3장(현재 위치 · 항로 · 목적지 · 한 장에 한 문장 · 어디서든 건너뛰기) → 홈 구성 → 시작 화면(내 데이터로 / 샘플로) → 홈.\n\n'
-                  '홈 구성: 소비율과 이번 달 달력은 고정 행(둘 다 끌 수 없음 · 2026-09-22), 아래 카드는 4개까지, 행마다 아이콘. 「주식도 볼까요?」는 1단계부터 보이고 켜면 목록 끝에 주식 요약 행. '
+                  '홈 구성: 소비율과 달력 「이번 달 소비 기록」은 고정 행(둘 다 끌 수 없음 · 2026-09-22 · 이름 2026-09-24), 아래 카드는 4개까지, 행마다 아이콘. 「주식도 볼까요?」는 1단계부터 보이고 켜면 목록 끝에 주식 요약 행. '
                   '이 화면은 처음 설치해 처음 실행할 때만 뜨고, 그 뒤엔 설정 창의 「홈 구성 ›」 행 → 같은 목록(닫기 · 저장)으로만 바꾼다. 샘플 → 내 데이터로 넘어가도 구성은 그대로.\n\n'
                   '저장은 settings.homeLayout · settings.onboarding · settings.features(보호 파일 · 백업 형식 불변).\n\n── 아래 줄은 다크입니다.'),
     'tour': ('note-tour', 640,
@@ -216,7 +217,7 @@ NOTES = {
                '모달 · 설정 — 내 수치 입력 · 거래 추가 · 한도 조정 · 자산 · 부채 · 목적지 · 반복 거래 · 적립 · 백업 불러오기 · 코칭(있음 · 없음) · 알림(있음 · 없음) · 또래 기준 · 설정 › 주식 · 설정 › 알림(기기 알림 — 2026-09-23 · 앱을 안 켜고 있을 때 시각으로 오는 여섯 가지, 기본 켬 셋).\n\n'
                '단독 행 필드는 solo, 버튼 · 배지는 nowrap. 필수 아님 표기는 「선택 사항」. 저장 실패는 창 안에 고정.\n\n── 아래 줄은 다크입니다.'),
     'desktop': ('note-desktop', 640,
-                '데스크톱 1440 — 홈은 히어로 아래 왼쪽 열 첫 자리에 펼친 월 달력(폭 348 · 늘 펼침 · 접기 없음), 그래프는 그 오른쪽, 사이드바는 주식 켠 5칸(주식 수치 옆 기준일). 히어로에 「소비 기록하기」 없음. 소비 내역은 왼쪽 목록 + 오른쪽 상세.\n\n── 아래 줄은 다크입니다.'),
+                '데스크톱 1440 — 홈은 히어로 아래 왼쪽 열 첫 자리에 펼친 월 달력(폭 348 · 늘 펼침 · 접기 없음), 그래프는 그 오른쪽, 사이드바는 주식 켠 5칸(주식 수치 옆 기준일). 히어로에 「소비 기록하기」 없음. 소비 내역은 왼쪽 목록 + 오른쪽 상세.\n\n소비 내역(DesktopLedger)의 날짜 행(9/3 210,000 · 9/5 ETF 30만 · 9/7 118,400 · 9/8 32,000 · 32건)과 반복 거래 5일은 v3 샘플이라 옆 장의 달력 · LedgerV5와 다르다 — 2026-09-21 결정 3-2A로 그대로 둠 · 구현 기대값으로 쓰지 않는다(CHANGES-2026-09-24 「확인할 것」).\n\n── 아래 줄은 다크입니다.'),
     'states': ('note-states', 640,
                '상태 카탈로그와 구현 참고 장 — 앱 화면이 아니라 설명 장(맨 위 알약 「구현 참고 · 앱 화면이 아닙니다」).\n\n'
                '저장소 로딩 · 복구 / 미입력 6종(F = 히어로 이력 부족) / 또래 카드 5종 / 목적지 유형 5종 / 모달 오류 · 저장 6종 / 삭제 · 초기화 확인 / 달력 칸 읽는 법 / 펼치면 어디서나 월 달력 / 달력 아래 한 줄이 바뀌는 경우 / 홈 맨 위 카드의 안내 줄 / '

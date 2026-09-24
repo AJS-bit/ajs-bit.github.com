@@ -16,6 +16,8 @@
           `display:flex align-items:center gap:4px`
         - `div`
           `display:flex align-items:center gap:8px`
+      - `div` **text 12px/400** — “날짜를 누르면 그날 쓴 돈을 적어요”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:6px`
       - `div`
         `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) margin-top:8px`
         - `span` **text 11px/500** — “일”
@@ -46,10 +48,10 @@
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
-      - `div` **text 11px/400** — “8월 기록한 소비 1,715,200원”
-        `font-size:11px line-height:1.5 color:#475467 margin-top:8px`
+      - `div` **text 12.5px/400** — “8월 기록한 소비 1,715,200원”
+        `font-size:12.5px line-height:1.5 color:#475467 margin-top:8px`
       - `div`
-        `display:flex align-items:center justify-content:space-between height:32px margin-top:2px border-top:1px solid #EFF2F8`
+        `display:flex align-items:center justify-content:space-between height:32px margin-top:6px border-top:1px solid #EFF2F8`
         - `span` **text 12.5px/600** — “확인할 내용 2개”
           `font-size:12.5px font-weight:600 color:#101828`
     - `div` **TurnCard**

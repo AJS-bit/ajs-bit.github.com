@@ -3,7 +3,7 @@
 원본 `canvas/Components.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:2724px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:28px`
+  `width:1200px height:2920px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:28px`
   - `div`
     `display:flex align-items:flex-end justify-content:space-between gap:20px border-bottom:2px solid #101828`
     - `div`
@@ -60,11 +60,11 @@
         `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88 margin-top:28px`
       - `div`
         `display:flex flex-wrap:wrap gap:8px margin-top:14px`
-        - `span` — “목표 안에서 순항 중”
+        - `span` — “월말에도 목표 안”
           `display:inline-flex align-items:center gap:5px background:#E4F4EA color:#0F7B47 font-size:12px font-weight:600 border-radius:99px padding:5px 10px`
-        - `span` **text 12px/600** — “목표 초과”
+        - `span` **text 12px/600** — “월말엔 목표 초과”
           `display:inline-flex align-items:center gap:5px background:#FDF1E0 color:#B45309 font-size:12px font-weight:600 border-radius:99px padding:5px 10px`
-        - `span` **text 12px/600** — “급여의 100% 초과”
+        - `span` **text 12px/600** — “월말엔 월급 초과”
           `display:inline-flex align-items:center gap:5px background:#FCEBEA color:#C0342F font-size:12px font-weight:600 border-radius:99px padding:5px 10px`
         - `span` **text 12px/600** — “기준 없음”
           `display:inline-flex align-items:center gap:5px background:#F0F2F7 color:#5B6880 font-size:12px font-weight:600 border-radius:99px padding:5px 10px`
@@ -217,7 +217,7 @@
         - `div`
           `display:flex gap:8px padding:0 2px`
         - `div` **Card(18)**
-          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 6px 10px display:flex justify-content:space-between`
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 6px 10px display:grid grid-template-columns:repeat(4, 1fr)`
         - `div`
           `height:8px`
         - `div`

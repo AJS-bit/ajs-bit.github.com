@@ -36,7 +36,7 @@
           `width:40px height:40px border-radius:11px border:1px solid #E3E8F1 display:flex align-items:center justify-content:center`
       - `div`
         `display:flex gap:5px margin-top:10px`
-        - `div` **SampleBanner** — “전체 14건”
+        - `div` **SampleBanner** — “전체 24건”
           `display:inline-flex align-items:center gap:4px height:32px padding:0 10px border-radius:99px background:#E9EDFD color:#3556E6 font-weight:600 font-size:12.5px white-space:nowrap`
         - `div` **text 12.5px/600** — “분류 안 함 7건”
           `display:inline-flex align-items:center gap:4px height:32px padding:0 10px border-radius:99px border:1px solid #E3E8F1 color:#101828 font-weight:600 font-size:12.5px white-space:nowrap`
@@ -208,8 +208,108 @@
         `display:flex align-items:center justify-content:space-between gap:10px padding:12px 0 6px`
         - `span` — “9월 1일”
           `font-size:13px font-weight:600 color:#101828 white-space:nowrap`
-        - `span` — “소비 1.2만”
+        - `span` — “소비 101만”
           `display:inline-flex align-items:center gap:5px font-size:12.5px font-weight:600 color:#475467 white-space:nowrap`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#8b5cf618 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−320,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#8b5cf618 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−150,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#0d948818 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−120,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#6366f118 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−80,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#a855f718 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−35,500”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#f9731618 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−214,500”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#0ea5e918 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−25,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#ec489918 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−13,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#14b8a618 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−10,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
+      - `div`
+        `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
+        - `div`
+          `width:34px height:34px border-radius:10px background:#64748b18 display:flex align-items:center justify-content:center`
+        - `div`
+          `flex:1`
+        - `span` **text 14.5px/600** — “−28,000”
+          `font-size:14.5px font-weight:600 letter-spacing:-0.02em color:#101828 white-space:nowrap`
+        - `span`
+          `display:inline-flex`
       - `div`
         `position:relative display:flex align-items:center gap:11px min-height:54px border-top:1px solid #F3F5FA`
         - `div`

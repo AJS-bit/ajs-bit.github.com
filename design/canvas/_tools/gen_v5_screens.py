@@ -131,7 +131,7 @@ CARD18 = '<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-rad
 NAV = '<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; height: 66px;'
 sp_header = cut(SP, SP_HEADER, SP_CONTENT).rstrip()
 sp_top = cut(SP, SP_TOP, CARD18).rstrip()
-assert balanced(sp_header) and balanced(sp_top) and sp_top.count('57.9') == 1
+assert balanced(sp_header) and balanced(sp_top) and sp_top.count('>31.1</span>') == 1 and sp_top.count('월급 대비 지금까지 쓴 돈') == 1
 
 
 def strip_outer_close(html):
@@ -158,7 +158,8 @@ assert balanced(lm_top) and balanced(lm_cats) and lm_cats.count('카테고리 �
 # HeroInsufficient 와 같은 사람: 9월 5일에 처음 열었고 오늘(8일) 커피 5,000원 한 건. 월급 360만원 · 한도 216만원. 부채와 비상금 목적지는 적어 둠.
 # 예상 값(# 제안 · 계산기 미검증 예시): 무이력이라 5,000 ÷ 8일 × 30일 = 18,750원 → 월급의 0.5%.
 
-# ① 소비 · 이번 달 — 머리 + 맨 위 카드. 배지가 빠지고 예상 값 옆에 `잠정`, 그 아래 사실 문구.
+# ① 소비 · 이번 달 — 머리 + 맨 위 카드. 큰 숫자는 지금까지 쓴 돈 ÷ 월급(5,000 ÷ 3,600,000 = 0.14% → 0.1% · 2026-09-24 — 잠정이 붙지 않는다),
+#    월말 배지가 빠지고 그래프의 월말 예상 라벨에만 `잠정`, 그 아래 사실 문구.
 # 계획선은 y = 118 − 0.2822 × (x − 12). 글은 선과 겹치지 않게 놓는다 — `계획선 · …` 라벨은 v3 Spending 과 같은 y 86(그 x 구간의 선은 y 68 이하라 글 위로 지나감),
 # `5,000원`은 y 80(x 74~113 에서 선은 y 89 이상이라 글 아래로 지나감 · 세로 안내선은 글 바로 밑 84 까지).
 spend_svg = (
@@ -180,16 +181,16 @@ spend_svg = (
     '<text x="350" y="133" text-anchor="end" font-size="10.5" fill="#697182">30일</text></svg>')
 PCT_UNIT = '<span style="font-size: 18px; font-weight: 600; color: #475467;">%</span>'
 BADGE_CRUISE = ('<span style="display: inline-flex; align-items: center; gap: 4px; background: #E4F4EA; color: #0F7B47; font-size: 11.5px; font-weight: 600; '
-                'border-radius: 99px; padding: 4px 9px;">목표 안에서 순항 중</span>')
+                'border-radius: 99px; padding: 4px 9px;">월말에도 목표 안</span>')
 PACE_ROW = '<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 13px; padding: 0 2px;">'
 fact_line = (f'<div style="display: flex; align-items: flex-start; gap: 4px; margin-top: 11px; padding: 0 2px;">'
              f'<span style="font-size: 12.5px; line-height: 1.45; color: {C["INK2"]};">{FACT_5K}</span>{imark(2)}</div>\n\n      ')
-spend_first = swap(sp_top, '>57.9</span>', '>0.5</span>')
-spend_first = swap(spend_first, PCT_UNIT, PCT_UNIT + f'\n            <span style="margin-left: 6px; align-self: center; display: inline-flex; align-items: center;">{chip_lg()}{imark(1)}</span>')
+spend_first = swap(sp_top, '>31.1</span>', '>0.1</span>')
+spend_first = swap(spend_first, PCT_UNIT, PCT_UNIT + f'\n            <span style="margin-left: 2px; align-self: center; display: inline-flex; align-items: center;">{imark(1)}</span>')
 spend_first = swap(spend_first, BADGE_CRUISE, '')
 spend_first = swap(spend_first, PACE_ROW, fact_line + PACE_ROW)
 spend_first = re.sub(r'<svg width="362" height="150".*?</svg>', lambda m_: spend_svg, spend_first, count=1, flags=re.S)
-assert '순항' not in spend_first and spend_first.count('잠정') == 2 and balanced(spend_first)
+assert '월말에도' not in spend_first and spend_first.count('잠정') == 1 and balanced(spend_first)      # 잠정은 그래프의 `월말 예상 1.9만 · 잠정` 하나
 spend_part = (f'<div style="width: 390px; background: {C["BG"]}; border: 1px solid {C["LINE"]}; border-radius: 24px; overflow: hidden; padding-bottom: 14px;">'
               f'{sp_header}<div style="padding: 0 14px;">{spend_first}</div></div>')
 
@@ -209,17 +210,17 @@ coach_first = mini_sheet('코칭', '저장된 기록을 보고 중요한 순서�
                          + advice('neg', '카드 할부 금리 14.5%를 먼저 정리하세요', '잔액은 전체의 2%뿐이지만 금리가 신용대출의 2.1배예요. 고금리 우선 전략에서 1순위입니다.', '상환 전략 열기', 1)
                          + advice('sky', '기록한 소비 5,000원', '아직 기록하지 않은 소비는 포함하지 않았어요', None, 2) + '</div>')
 
-# ⑤ 또래 카드 — PeerStates 의 B 에서 초록 줄(`목표 60% 안에서 순항 중`)만 사실 문구로.
+# ⑤ 또래 카드 — PeerStates 의 B 에서 초록 줄(`월말에도 목표 60% 안이에요` — 월말 예상 기준)만 사실 문구로.
 PS = src('PeerStates')
 i_b = PS.index('B · 연령 구간 있음')
 i_card = PS.index('<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 14px;">', i_b)
 i_c = PS.index('<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #606B7D; padding: 6px 2px 0;">C ·', i_card)
 peer_b = PS[i_card:i_c].rstrip()
-assert balanced(peer_b) and peer_b.count('순항 중') == 1
+assert balanced(peer_b) and peer_b.count('월말에도 목표 60% 안이에요') == 1
 peer_first = re.sub(r'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 13px; padding: 10px 12px; background: #E4F4EA; border-radius: 12px;">.*?</div>',
                     lambda m_: (f'<div style="margin-top: 13px; padding: 10px 12px; background: {C["INSET"]}; border-radius: 12px; font-size: 12.5px; line-height: 1.45; color: {C["INK2"]};">{FACT_5K}</div>'),
                     peer_b, count=1, flags=re.S)
-assert balanced(peer_first) and '순항' not in peer_first
+assert balanced(peer_first) and '월말에도' not in peer_first
 
 # ⑥ 알림 — `이번 달 적자입니다`는 목록에도 개수에도 없다. 확정 부채 · 비상금(사실)은 그대로.
 bell = (f'<div style="display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: {C["INSET"]}; border-radius: 12px;">'
@@ -236,25 +237,28 @@ assert '적자' not in alerts_first
 guide_first = first_guide.replace(' flex-shrink: 0;">', '">', 1)
 
 ins_memo = memo_box([
-    (1, f'소비 · 이번 달 — 숫자 옆 배지 {code("목표 안에서 순항 중")} · {code("월급을 넘는 소비")}가 없습니다. 예상 값(소비율 · 월말 예상)은 공식대로 계산해 보여 주되 {code("잠정")}을 붙입니다.'),
-    (2, f'그 자리에 사실 문구 {code("기록한 소비 N원 · 아직 기록하지 않은 소비는 포함하지 않았어요")} 한 줄만 남습니다. 색 · 아이콘으로 좋다 · 나쁘다를 말하지 않습니다.'),
+    (1, f'소비 · 이번 달 — 큰 숫자는 지금까지 쓴 돈 ÷ 월급(0.1%)이라 기준 확인과 상관없이 그대로이고 잠정도 붙지 않습니다. 월말 배지 {code("월말에도 목표 안")} · {code("월말엔 목표 초과")} · {code("월말엔 월급 초과")}가 없고, 그래프의 월말 예상 라벨에만 <span style="white-space: nowrap;">{code("잠정")}을</span> 붙입니다.'),
+    (2, f'그 자리에 사실 문구 {code("기록한 소비 N원 · 아직 기록하지 않은 소비는 포함하지 않았어요")} 한 줄만 남습니다. 색 · 아이콘으로 좋다 · 나쁘다를 말하지 않습니다. '
+        f'이번 달 기록이 0건이면 {code("기록한 소비 0원")}이 아니라 {code("이번 달 기록이 아직 없어요 · 달력에서 날짜를 눌러 쓴 돈을 적어 보세요")}입니다.'),
     (3, f'한도 탭 — 예상에서 나오는 한도 각주와 카테고리 줄의 {code("초과 예상")}이 없습니다. 이미 넘은 한도는 예상이 아니라 사실이므로 그대로 표시합니다.'),
     (4, f'코치 — {code("예상 잔여자금률 77% — 축적 여력이 큽니다")} · {code("모든 목표가 궤도에 있습니다")}가 없습니다. 고금리 부채처럼 확정된 안내는 그대로입니다.'),
     (5, f'다음 안내 — {code("지금의 저축·투자 흐름을 유지하세요")}가 없습니다. 홈(HeroInsufficient)과 같은 카드입니다.'),
-    (6, f'또래 카드 — {code("목표 60% 안에서 순항 중")} 줄이 없습니다. 나머지(연령 구간 · 기준 등록)는 그대로입니다.'),
+    (6, f'또래 카드 — 월말 예상으로 판단하는 {code("월말에도 목표 60% 안이에요")} 줄이 없습니다. 나머지(연령 구간 · 기준 등록)는 그대로입니다. '
+        f'월급이 있고 이번 달 기록이 0건이면 제목이 {code("이번 달 기록이 아직 없어요")} · 띠 라벨 {code("이번 달 기록")} · 버튼은 {code("소비 기록하기")} 하나입니다(월급 입력을 다시 묻지 않음).'),
     (7, f'알림 — 예상으로 만든 {code("이번 달 적자입니다")}는 목록과 개수(제목 · 머리줄 종 배지)에서 모두 빠집니다. 알림 생성은 그대로 두고 표시할 때 거릅니다.')],
-    tail=f'판정은 하나입니다 — 예상 기준 확인 규칙(계획 §3-4)을 통과하기 전이면 위 일곱 곳이 전부 이 모양이고, 통과하면 전부 원래 화면으로 돌아갑니다. 그래서 {code("순항 중")}이 어디에도 없습니다.')
+    tail=f'판정은 하나입니다 — 예상 기준 확인 규칙(계획 §3-4)을 통과하기 전이면 위 일곱 곳이 전부 이 모양이고, 통과하면 전부 원래 화면으로 돌아갑니다. 그래서 월말 예상으로 판단하는 {code("월말에도 목표 안")}이 어디에도 없습니다. 지금까지 쓴 돈의 비율(홈 · 소비의 큰 숫자)은 사실이라 그대로 보입니다. '
+         f'통과했어도 이번 달 기록이 0건이면 코치 · 다음 안내 · 또래 카드는 판정하지 않고 {code("이번 달 기록이 아직 없어요")}라고만 씁니다(판정 = 통과 · 이번 달 기록 1건 이상).')
 
 ins_body = (
     f'<div style="display: flex; gap: 24px; align-items: flex-start;">'
-    + col(390, [case(1, '소비 · 이번 달', '배지가 없고, 예상 값에는 잠정이 붙습니다.', spend_part),
+    + col(390, [case(1, '소비 · 이번 달', '큰 숫자는 지금까지 쓴 돈이라 그대로, 배지가 없고 그래프의 월말 예상에 잠정이 붙습니다.', spend_part),
                 case(5, '다음 안내', '흐름을 유지하라는 권고 대신 사실만.', guide_first)])
     + col(362, [case(3, '소비 · 한도', '예상 각주와 초과 예상 표시가 없습니다.', limit_first),
                 case(4, '코치', '확정된 안내와 사실 안내만 남습니다.', coach_first)])
-    + col(362, [case(6, '또래와 내 페이스', '순항 문구가 있던 줄이 사실 문구로 바뀝니다.', peer_first),
+    + col(362, [case(6, '또래와 내 페이스', '월말 예상으로 판단하는 줄이 사실 문구로 바뀝니다.', peer_first),
                 case(7, '알림', '예상으로 만든 적자 알림은 목록에도 개수에도 없습니다.', alerts_first)])
     + '</div>' + ins_memo)
-INS_W, INS_H = 1230, 1330
+INS_W, INS_H = 1230, 1390      # 2026-09-24 1330 → 1350(구현 메모 1 · 6 · 끝 문단이 길어짐) → 1390(최종 점검 후속 · 메모 2 · 6 · 끝 문단에 기록 0건 · 자연 높이 1360)
 w('InsufficientElsewhere', spec_frame(
     INS_W, INS_H, '예상 기준을 확인하기 전 — 홈 밖의 화면들',
     '홈의 이력 부족 상태(HeroInsufficient)와 같은 사람입니다 — 9월 5일에 처음 열었고 오늘 커피 5,000원 한 건을 적었습니다. '
@@ -330,7 +334,7 @@ fut_memo = memo_box([
     (2, f'다음 자산 지점은 도착일 세 줄이 모두 같은 예상에서 나오므로 줄마다 붙이지 않고 카드 제목 옆에 한 번만 붙입니다.'),
     (3, f'보라 점선 {code("저장되지 않는 가정")} 카드에는 붙이지 않습니다 — 기록에서 계산한 기본 예측(초록 선 · 월 63만원 적립)과 사용자가 넣은 가정은 이미 모양으로 구분됩니다.'),
     (4, f'목표 화면은 목적지마다 {code("도착 예상")} 날짜 옆에 작은 칩. 부채 상환 목적지의 {code("완제 예상")}은 소비 예상이 아니라 상환 계획에서 나오므로 붙이지 않습니다.'),
-    (5, f'예상 기준 확인 규칙(계획 §3-4)을 통과하면 칩과 이유 문장이 함께 사라집니다. 소비 · 이번 달의 예상 값에도 같은 칩을 씁니다(InsufficientElsewhere 1번). v4-2 뒤 목적지 탭(DestFuture · DestGoals)도 같은 자리입니다.')])
+    (5, f'예상 기준 확인 규칙(계획 §3-4)을 통과하면 칩과 이유 문장이 함께 사라집니다. 소비 · 이번 달은 그래프의 월말 예상 라벨에 잠정을 붙입니다(InsufficientElsewhere 1번 · 큰 숫자는 지금까지 쓴 돈이라 붙이지 않음). v4-2 뒤 목적지 탭(DestFuture · DestGoals)도 같은 자리입니다.')])
 
 fut_right = (f'<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 22px;">'
              f'<div style="display: grid; grid-template-columns: repeat(2, 362px); gap: 22px 20px; align-items: start;">'

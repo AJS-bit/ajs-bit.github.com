@@ -63,7 +63,7 @@
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` **text 11.5px/400** — “실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 소비율과 바로 비교할 수 없어요. 출처의 기준을 꼭 확인하”
+        - `span` **text 11.5px/400** — “실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 월말 예상과 바로 비교할 수 없어요. 출처의 기준을 꼭 확”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

@@ -329,7 +329,7 @@ w('PeerDialog', sheet(
     f'<div style="display: flex; gap: 10px;">{field("평균 소비율", "62.0", "%", required=True)}{field("조사 인원", "1,200", "명", w=132)}</div>'
     f'<div style="display: flex; gap: 10px;">{field("기준 연도", "2025", "년", required=True, w=132)}{field("소비율 계산 기준", "실수령 급여", state="readonly")}</div>'
     f'{solo(field("자료 출처", "직접 입력한 예시 기준", required=True, helper="화면에 그대로 표시됩니다"))}'
-    f'{note("실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 소비율과 바로 비교할 수 없어요. 출처의 기준을 꼭 확인하세요.", "mute")}',
+    f'{note("실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 월말 예상과 바로 비교할 수 없어요. 출처의 기준을 꼭 확인하세요.", "mute")}',
     sheet_footer('취소', '기준 저장'), scrim_h=40, body_pb=14,
     header_right=f'<div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">{smallbtn("기준 삭제", "danger", "trash", h=32)}'
                  f'<div style="width: 36px; height: 36px; border-radius: 11px; background: {C["INSET"]}; display: flex; align-items: center; justify-content: center;">{icon("x", 17, C["INK2"], 2.2)}</div></div>'))

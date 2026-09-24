@@ -36,7 +36,7 @@
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **text 11px/600** — “현재 위치”
           `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
-        - `span` **StatusPill** — “목표 안에서 순항 중”
+        - `span` **StatusPill** — “월말에도 목표 안”
           `display:inline-flex align-items:center gap:4px background:#E4F4EA color:#0F7B47 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
       - `div`
         `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:8px`
@@ -46,7 +46,7 @@
           `display:flex flex-direction:column align-items:flex-end gap:1px`
       - `div`
         `display:flex align-items:baseline justify-content:space-between gap:10px margin-top:5px`
-        - `span` **text 13px/500** — “월급 대비 이번 달 예상 소비”
+        - `span` **text 13px/500** — “월급 360만원 중 112만원 썼어요”
           `font-size:13px font-weight:500 color:#475467`
         - `span`
           `display:inline-flex align-items:center gap:4px`
@@ -74,30 +74,36 @@
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px`
-        - `span` **text 14px/600** — “이번 달 달력”
+        - `span` **text 14px/600** — “이번 달 소비 기록”
           `font-size:14px font-weight:600 color:#101828`
         - `span` — “펼치기”
           `display:inline-flex align-items:center gap:2px font-size:12px font-weight:600 color:#475467`
+      - `div` **text 12px/400** — “날짜를 누르면 그날 쓴 돈을 적어요”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:2px`
       - `div`
-        `display:flex justify-content:space-between margin-top:8px`
+        `display:flex justify-content:space-between margin-top:10px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:#E9EDFD display:flex flex-direction:column align-items:center justify-content:center gap:3px`
-      - `div` **text 11px/400** — “오늘 4건 37,000원”
-        `font-size:11px line-height:1.5 color:#475467 margin-top:8px`
+          `width:44px height:56px border-radius:10px background:#E9EDFD box-shadow:inset 0 0 0 1.5px #3556E6 display:flex flex-direction:column align-items:center justify-content:center gap:2px`
       - `div`
-        `display:flex align-items:center justify-content:space-between height:32px margin-top:2px border-top:1px solid #EFF2F8`
+        `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:10px`
+        - `span` **text 12.5px/400** — “오늘 4건 37,000원”
+          `flex:1 font-size:12.5px line-height:1.5 color:#475467`
+        - `span` **SampleBanner** — “더 적기”
+          `display:inline-flex align-items:center gap:4px height:32px padding:0 12px border-radius:99px background:#E9EDFD color:#3556E6 font-size:13px font-weight:700 white-space:nowrap`
+      - `div`
+        `display:flex align-items:center justify-content:space-between height:32px margin-top:6px border-top:1px solid #EFF2F8`
         - `span` **text 12.5px/600** — “확인할 내용 2개”
           `font-size:12.5px font-weight:600 color:#101828`
     - `div` **TurnCard**
@@ -177,11 +183,11 @@
   - `div`
     `position:absolute inset:0`
     - `div` **HeroCard**
-      `position:absolute left:14px top:395px width:362px height:172px border-radius:20px box-shadow:0 0 0 2px rgba(255,255,255,.95), 0 0 0 4px #3556E6, 0 0 0 9999px rgba(16,24,40,.62)`
+      `position:absolute left:14px top:395px width:362px height:222px border-radius:20px box-shadow:0 0 0 2px rgba(255,255,255,.95), 0 0 0 4px #3556E6, 0 0 0 9999px rgba(16,24,40,.62)`
     - `div` **Card(18)**
-      `position:absolute left:14px width:362px top:579px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px display:flex flex-direction:column gap:8px box-shadow:0 12px 32px -12px rgba(16,24,40,.45)`
+      `position:absolute left:14px width:362px bottom:461px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px display:flex flex-direction:column gap:8px box-shadow:0 12px 32px -12px rgba(16,24,40,.45)`
       - `div`
-        `position:absolute top:-7px left:30px width:13px height:13px background:#FFFFFF transform:rotate(45deg) border-left:1px solid #E3E8F1 border-top:1px solid #E3E8F1`
+        `position:absolute bottom:-7px left:30px width:13px height:13px background:#FFFFFF transform:rotate(45deg) border-bottom:1px solid #E3E8F1`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` — “처음 안내”
@@ -190,7 +196,7 @@
           `font-size:11.5px font-weight:600 color:#626D88 white-space:nowrap`
       - `span` **text 16px/700** — “날짜를 누르면 바로 기록”
         `font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.35 color:#101828`
-      - `span` **text 13px/400** — “그날 쓴 금액을 숫자만 넣고 저장하면 끝이에요. 분류는 나중에 소비 탭에서 해도 돼요.”
+      - `span` **text 13px/400** — “날짜를 누르거나 아래 + 버튼을 누르고 숫자만 넣으면 끝이에요. 분류는 나중에 소비 탭에서 해도 돼요.”
         `font-size:13px line-height:1.55 color:#475467`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px margin-top:6px`

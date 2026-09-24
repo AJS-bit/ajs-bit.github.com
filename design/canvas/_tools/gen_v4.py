@@ -5,7 +5,7 @@ plan/v4-stocks.md §3(첫 실행 흐름)·§7(1단계)·§10. 라이트를 만�
 다크 짝까지 쓴다. 홈 아트보드의 헤더·히어로·다음 안내·이번 달 한도는 Main.dc.html에서 그대로
 잘라 온다(v3 홈과 1px도 다르지 않아야 하므로 다시 그리지 않는다).
 
-홈 구성 목록과 구성 반영 홈에는 v5 계획(§3-1 · §3-5 · §9-12)의 `이번 달 달력` 카드가 들어간다 — 달력 조각은 gen_calendar 에서 가져온다
+홈 구성 목록과 구성 반영 홈에는 v5 계획(§3-1 · §3-5 · §9-12)의 달력 카드(제목 `이번 달 소비 기록` · 2026-09-24)가 들어간다 — 달력 조각은 gen_calendar 에서 가져온다
 (Main 에는 달력이 없어 잘라 올 마커가 없다. HomeCalendarStrip 과 같은 calendar_card(False) 를 쓴다).
 
     python3 gen_v4.py            # 8 + 8장 → ../
@@ -46,8 +46,8 @@ def mark(size=32, radius=10, glyph=21):   # brand_mark.py 규격(2026-09-23) —
 
 
 # ══════════════ 공통 조각 ══════════════
-def route_bar(cur=57.9, target=60):
-    """홈 히어로의 항로 바. 채움 = 현재값, 깃발 = 목표. SPEC-COMPONENTS §26 식 그대로."""
+def route_bar(cur=31.1, target=60):
+    """홈 히어로의 항로 바. 채움 = 지금까지 쓴 돈 ÷ 월 실수령(2026-09-24 — 전에는 월말 예상), 깃발 = 목표. SPEC-COMPONENTS §26 식 그대로."""
     return (f'<div style="position: relative; height: 10px; border-radius: 99px; background: {C["TRACK"]}; overflow: visible;">'
             f'<div style="position: absolute; inset: 0 {100 - cur:.4g}% 0 0; border-radius: 99px; background: linear-gradient(90deg, #3556E6 0%, #6E6BEE 100%);"></div>'
             f'<div style="position: absolute; left: {target}%; top: -5px; width: 2px; height: 20px; border-radius: 2px; background: {C["INK"]};"></div></div>'
@@ -87,17 +87,17 @@ def intro(step, eyebrow, sentence, art):
 
 # ══════════════ 소개 1 · 현재 위치 ══════════════
 hero_excerpt = hero(
-    eyebrow_row('현재 위치', badge('목표 안에서 순항 중', 'pos', 'check'))
+    eyebrow_row('현재 위치', badge('월말에도 목표 안', 'pos', 'check'))      # 배지 = 월말 예상 기준 · 큰 숫자 · 게이지 = 지금까지 쓴 돈(2026-09-24)
     + f'<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 8px;">'
-    + display_num('57.9')
+    + display_num('31.1')
     + f'<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px; padding-bottom: 4px;">'
     f'<span style="font-size: 11px; font-weight: 500; color: {C["INK3"]};">목표까지</span>'
-    f'<span style="font-size: 14px; font-weight: 600; color: {C["POS"]};">2.1%p 여유</span></div></div>'
+    f'<span style="font-size: 14px; font-weight: 600; color: {C["INK"]};">28.9%p 남음</span></div></div>'
     + f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">'
-    f'<span style="font-size: 13px; font-weight: 500; color: {C["INK2"]};">월급 대비 이번 달 예상 소비</span>'
+    f'<span style="font-size: 13px; font-weight: 500; color: {C["INK2"]};">월급 360만원 중 112만원 썼어요</span>'
     f'<span style="display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0;">'
     f'<span style="font-size: 11px; font-weight: 500; color: {C["INK4"]};">순자산 대비</span>'
-    f'<span style="font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK2"]};">2.2%</span></span></div>'
+    f'<span style="font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK2"]};">1.2%</span></span></div>'
     + f'<div style="margin-top: 15px;">{route_bar()}</div>')
 
 w('IntroPosition', intro(1, '현재 위치', '이번 달 소비가 월급의 몇 %인지<br>숫자 하나로 봅니다.', hero_excerpt))
@@ -105,7 +105,7 @@ w('IntroPosition', intro(1, '현재 위치', '이번 달 소비가 월급의 몇
 
 # ══════════════ 소개 2 · 항로 ══════════════
 route_card = card(
-    eyebrow_row('항로', f'<span style="font-size: 12px; font-weight: 600; color: {C["INK"]};">현재 57.9% · 목표 60%</span>')
+    eyebrow_row('항로', f'<span style="font-size: 12px; font-weight: 600; color: {C["INK"]};">현재 31.1% · 목표 60%</span>')
     + f'<div style="margin-top: 16px;">{route_bar()}</div>')
 guide_card = guidance('warn', '다음 안내', '카드 할부 금리 14.5%부터 줄여보세요',
                       '고금리 부채는 자산이 자라는 속도를 가장 크게 낮춰요.', '상환 전략 보기')
@@ -177,9 +177,10 @@ CARDS = [
     ('guide', 'guide', '다음 안내', '지금 할 일 한 가지'),
     ('limit', 'limit', '이번 달 한도', '하루 한도와 남은 한도'),
     ('goal', 'goal', '대표 목적지', '가장 앞선 목적지와 도착 예상'),
-    ('peer', 'peer', '또래와 내 페이스', '내가 넣은 또래 기준과 내 소비율 비교'),
-    # 홈 맨 아래 세 줄 카드(순자산 대비 소비 · 자산 종합 점수 · N년 뒤 순자산)를 한 카드로 묶어 켜고 끈다 — 이름 `자산 한눈에`(2026-09-21 사용자 결정)
-    ('ratio', 'rows', '자산 한눈에', '순자산 대비 소비 · 자산 점수 · 10년 뒤 순자산'),
+    ('peer', 'peer', '또래와 내 페이스', '내가 넣은 또래 기준과 내 월말 예상 비교'),      # 또래 카드는 월말 예상으로 비교(2026-09-24 — 카드 라벨 `내 월말 예상`)
+    # 홈 맨 아래 세 줄 카드(순자산 대비 월말 예상 · 자산 종합 점수 · N년 뒤 순자산)를 한 카드로 묶어 켜고 끈다 — 이름 `자산 한눈에`(2026-09-21 사용자 결정)
+    # 첫 줄 이름은 2026-09-24 에 `순자산 대비 소비` → `순자산 대비 월말 예상`(값은 그대로 예상 — 히어로의 순자산 대비는 쓴 돈 기준이라 이름으로 가른다)
+    ('ratio', 'rows', '자산 한눈에', '순자산 대비 월말 예상 · 자산 점수 · 10년 뒤 순자산'),
     ('networth', 'line', '순자산 한 줄', '지금 순자산과 다음 목표 금액'),
     ('payoff', 'line', '상환 계획 한 줄', '완제 예정일과 이번 달 상환액'),
 ]
@@ -203,8 +204,8 @@ def lock_row(label, sub=None, last=False):
             f'<span style="flex-shrink: 0;">{badge("고정", "mute")}</span></div>')
 
 
-# 소비율과 달력은 늘 켜져 있다(달력은 2026-09-22 결정 — 기록의 기본 입구라서 끌 수 없음).
-fixed_row = card(lock_row('현재 위치 · 월급 대비 소비율') + lock_row('이번 달 달력', '날짜를 눌러 바로 기록 · 늘 소비율 아래', last=True), pad='0 14px')
+# 소비율과 달력은 늘 켜져 있다(달력은 2026-09-22 결정 — 기록의 기본 입구라서 끌 수 없음). 달력 행 이름은 카드 제목과 같게 `이번 달 소비 기록`(2026-09-24 · 안내 문장 LEAD 도 같은 이름).
+fixed_row = card(lock_row('현재 위치 · 월급 대비 소비율') + lock_row('이번 달 소비 기록', '날짜를 눌러 바로 기록 · 늘 소비율 아래', last=True), pad='0 14px')
 
 
 def stock_card(on):
@@ -216,7 +217,7 @@ def stock_card(on):
         f'{toggle(on)}</div>')
 
 
-LEAD = (f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">소비율과 달력은 늘 맨 위에 있어요.<br>'
+LEAD = (f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">소비율과 이번 달 소비 기록은 늘 맨 위에 있어요.<br>'
         f'그 아래에 둘 카드를 4개까지 골라 주세요.</p>')
 
 
@@ -336,11 +337,13 @@ guide_block = cut(main_src, M_GUIDE, M_GOAL).rstrip()
 limit_block = cut(main_src, M_LIMIT, M_NAV).rstrip()
 assert limit_block.endswith('</div>')
 limit_block = limit_block[:limit_block.rfind('</div>')].rstrip()   # 콘텐츠 컨테이너의 닫는 태그는 뺀다
-assert hero_block.count('57.9') == 1 and '소비 기록하기' not in hero_block   # 히어로 버튼은 2026-09-22에 뺐다 — 기록은 달력 날짜로
+assert hero_block.count('>31.1<') == 1 and '소비 기록하기' not in hero_block   # 히어로 버튼은 2026-09-22에 뺐다 — 기록은 달력 날짜로
+# 큰 숫자 · 게이지 = 지금까지 쓴 돈 ÷ 월 실수령(1,120,000 ÷ 3,600,000 = 31.1% · 채움 inset 68.9%), 배지 · 아래 칸 = 월말 예상(57.9% · 208만원) — 2026-09-24
+assert all(hero_block.count(x) == 1 for x in ('월말에도 목표 안', '28.9%p 남음', '월급 360만원 중 112만원 썼어요', '>1.2%<', 'inset: 0 68.9% 0 0', '>208<span'))
 # 달력 카드 — Main 에는 아직 달력이 없어 잘라 올 마커(M_CAL)가 없다. HomeCalendarStrip 과 같은 접힘 카드를 공용 조각으로 만든다.
 # gen_v4_stocks · gen_v5 가 s1.calendar_block 으로 같은 카드를 가져다 쓸 수 있다.
 calendar_block = calendar_card(False)
-assert calendar_block.count('이번 달 달력') == 1 and '펼치기' in calendar_block
+assert calendar_block.count('이번 달 소비 기록') == 1 and '펼치기' in calendar_block and '더 적기' in calendar_block
 
 
 def line_card(label, sub, value):

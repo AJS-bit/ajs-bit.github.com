@@ -21,7 +21,7 @@
     "transferToSavings": 630000,
     "debtRepayment": 920000,
     "leftover": 270000,
-    "_note": "소비율 = spendProjected / netSalary = 57.9%. 208만원은 반올림 표시이므로 정밀값을 그대로 쓰세요 — 2,080,000이면 57.8%가 나옵니다. 저축 이체와 대출상환은 소비율에서 제외합니다."
+    "_note": "월말 예상 소비율 = spendProjected / netSalary = 57.9% — 홈 배지 · 아래 칸 · 또래 카드 · 자산 한눈에 · 지난달 비교가 쓴다. 208만원은 반올림 표시이므로 정밀값을 그대로 쓰세요 — 2,080,000이면 57.8%가 나옵니다. 쓴 돈 비율(2026-09-24 · 홈 · 소비 탭의 큰 숫자와 게이지 · 완료 카드 6순위) = spendSoFar / netSalary = 31.1% · 목표까지 28.9%p 남음 · 순자산 대비 = spendSoFar / derived.netWorth = 1.2%. 달력 9월 1~8일 칸 합 = spendSoFar(9월 1일 1,008,000원 = 관리비 · 공과금 · 보험 · 통신 · 구독 · 장보기 등 — 월세 700,000원은 9월 8일에 적는 장면(DaySheetConfirm · RecurringPrefill)이라 여기에 없다). 저축 이체와 대출상환은 두 비율 모두에서 제외합니다."
   },
   "assets": [
     { "name": "전세 보증금",  "type": "부동산", "value": 95000000, "rate": 0.0 },

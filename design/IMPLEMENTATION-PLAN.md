@@ -31,14 +31,14 @@
 `RouteBar`가 이 디자인의 핵심 재사용 요소입니다. 홈·소비·한도·목적지가 모두 이걸 씁니다.
 
 ```
-<RouteBar value={57.9} target={60} max={100} tone="positive" />
+<RouteBar value={31.1} target={60} max={100} tone="positive" />   // 홈: value = 지금까지 쓴 돈 ÷ 월 실수령(2026-09-24 — 전에는 월말 예상 57.9)
 ```
 
 ### 3단계 · 화면별 레이아웃
 
 | 파일 | 작업 | 대응 아트보드 |
 |---|---|---|
-| `app/page.tsx` | 홈 히어로 재구성(숫자 왼쪽 + 증감 오른쪽 + RouteBar + 3지표 + 근거줄/기준 조정 + 단일 CTA). 캡션 줄 오른쪽에 **순자산 대비 보조 지표**(`예상 소비 ÷ 순자산`, 13px) — 순자산 0이거나 자산 미입력이면 이 조각만 숨기고 주 지표는 그대로. 다음 안내 턴 카드. 보조 지표 3개 → `더 깊이 보기` 아코디언 3행. 데스크톱 1.6fr/1fr 그리드 | `Main`, `HomeScroll`, `DesktopHome`, `EmptyStates` |
+| `app/page.tsx` | 홈 히어로 재구성(숫자 왼쪽 + 증감 오른쪽 + RouteBar + 3지표 + 근거줄/기준 조정 + 단일 CTA). 캡션 줄 오른쪽에 **순자산 대비 보조 지표**(`지금까지 쓴 돈 ÷ 순자산`, 13px · 2026-09-24 전에는 예상 소비 기준 — 히어로 값 정의는 `SPEC-COMPONENTS.md` §4 표) — 순자산 0이거나 자산 미입력이면 이 조각만 숨기고 주 지표는 그대로. 다음 안내 턴 카드. 보조 지표 3개 → `더 깊이 보기` 아코디언 3행. 데스크톱 1.6fr/1fr 그리드 | `Main`, `HomeScroll`, `DesktopHomeV5`(데스크톱 홈 — 옛 `DesktopHome`은 v3 원본 전용 기록), `EmptyStates` |
 | `components/navi/asset-view.tsx` | 요약 타일 5개 → 히어로(순자산 + 스파크라인 + 구성 막대) + 칩 2개 + 계좌 `DataRow` 목록. `+ 추가`를 섹션 헤더로. 부채 탭은 총부채 히어로 + 고금리 경고 + 부채 행 목록, 상환 전략 탭은 방식 카드 2장 + 추가 상환 입력 + 상환 순서 | `Assets`, `Debts`, `Strategy`, `AssetDialog`, `DebtDialog` |
 | `components/navi/spending-view.tsx` | 이번 달 탭: 타일 4개 → 히어로 1개(소비율 + 계획 대비 그래프). 내역 탭: 검색줄 + 반복 거래 버튼 + 날짜 그룹 목록. 한도 탭: **총한도 조정 / 배분 편집 버튼 분리**. 과거 달은 탭 2개 + 예상 말투 제거 + 점선 예상선 제거 | `Spending`, `Limits`, `SpendingPast`, `DesktopLedger` |
 | `components/navi/goals-view.tsx` | 요약 타일 4개 → 월 저축 배분 카드 1개. `목표 추가`를 목록 끝 점선 버튼으로 이동. 행 안쪽 `+ 적립`(순자산·부채 목표는 미표시). 유형별로 **쓰지 않는 입력 칸을 렌더하지 않음**. 적립 모달에 저장 전 변화 3줄(적립액·진행률·도착 예상) | `Goals`, `GoalDialog`, `GoalTypes`, `GoalContribute` |

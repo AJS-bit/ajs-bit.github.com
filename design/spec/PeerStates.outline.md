@@ -32,8 +32,8 @@
         `font-size:11px font-weight:600 letter-spacing:0.06em color:#626D88`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px margin-top:7px`
-        - `span` — “내 목표 60% 대비”
-          `font-size:13px color:#475467`
+        - `span` **text 13px/600** — “월말에도 목표 60% 안이에요”
+          `font-size:13px font-weight:600 color:#0F7B47`
         - `span` **text 12.5px/600** — “소비 점검하기 ›”
           `font-size:12.5px font-weight:600 color:#3556E6`
   - `div` **text 11px/600** — “B · 연령 구간 있음 · 비교 기준 없음”
@@ -63,7 +63,7 @@
       `display:flex align-items:center justify-content:space-between gap:8px margin-top:13px padding:10px 12px background:#E4F4EA border-radius:12px`
       - `span` **text 12.5px/400** — “내 목표와 비교하면”
         `font-size:12.5px color:#14603D`
-      - `span` **text 13px/600** — “목표 60% 안에서 순항 중”
+      - `span` **text 13px/600** — “월말에도 목표 60% 안이에요”
         `font-size:13px font-weight:600 color:#0F7B47`
   - `div` **text 11px/600** — “C · 직접 등록한 기준으로 비교 가능”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -112,7 +112,7 @@
         `font-size:14px font-weight:600 color:#101828`
       - `span`
         `display:inline-flex align-items:baseline gap:6px white-space:nowrap`
-        - `span` **text 11.5px/400** — “내 소비율”
+        - `span` **text 11.5px/400** — “내 월말 예상”
           `font-size:11.5px color:#626D88`
         - `span` **text 20px/700** — “—”
           `font-size:20px font-weight:700 color:#B4BECD`

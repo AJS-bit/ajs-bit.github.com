@@ -77,9 +77,9 @@
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **본문(스크롤 영역)** — “57.9”
+- [ ] **본문(스크롤 영역)** — “31.1”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
-  - [ ] **HeroCard** — “57.9”
+  - [ ] **HeroCard** — “31.1”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “카테고리별 소비”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -578,7 +578,7 @@
           `display:flex gap:10px`
     - [ ] **div** — “자료 출처”
           `flex:0 0 auto`
-    - [ ] **Callout(info)** — “실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 소비율과 바로 비교할 수 없어요. 출”
+    - [ ] **Callout(info)** — “실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 월말 예상과 바로 비교할 수 없어요.”
           `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
   - [ ] **div** — “취소”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
@@ -610,7 +610,7 @@
 
 ## EmptyStates — 상태 · 미입력 6종
 
-`canvas/EmptyStates.dc.html` · 390×2480 · 원본 `app/page.tsx` · 렌더 `preview/EmptyStates.png`
+`canvas/EmptyStates.dc.html` · 390×2800 · 원본 `app/page.tsx` · 렌더 `preview/EmptyStates.png`
 
 > 미입력 6종. **미입력을 0원이나 좋은 성과로 표시하지 않는다**는 규칙이 그림으로 있는 시트.
 
@@ -620,11 +620,11 @@
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(20)** — “출발 준비”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
-- [ ] text 11px/600 — “B · 급여 미입력 · 소비 기록만 있음”
+- [ ] text 11px/600 — “B · 급여 미입력 · 소비 기록만 있음 · 예상 기준 확인 전”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
-- [ ] **Card(20)** — “이번 달 기록한 소비”
+- [ ] **Card(20)** — “현재 위치”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
-- [ ] text 11px/600 — “C · 급여 0원 · 부수입만 있음”
+- [ ] text 11px/600 — “C · 급여 0원 · 부수입만 있음 · 예상 기준 통과”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(20)** — “현재 위치”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
@@ -636,9 +636,9 @@
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(20)** — “9월에 기록한 거래가 없어요”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
-- [ ] text 11px/600 — “F · 히어로 이력 부족 · 예상을 아직 보여 주지 않을 때”
+- [ ] text 11px/600 — “F · 히어로 이력 부족 · 월말 예상을 아직 보여 주지 않을 때”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
-- [ ] **Card(20)** — “이번 달 기록한 소비”
+- [ ] **Card(20)** — “현재 위치”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px`
 - [ ] **Card(20)** — “각주 둘째 줄 · 부족한 것에 따라 셋 중 하나”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:12px 16px 6px`
@@ -799,7 +799,7 @@
 
 ## Components — 컴포넌트 · 상태
 
-`canvas/Components.dc.html` · 1200×2724 · 원본 `components/navi/shared.tsx · components/ui/button.tsx` · 렌더 `preview/Components.png`
+`canvas/Components.dc.html` · 1200×2920 · 원본 `components/navi/shared.tsx · components/ui/button.tsx` · 렌더 `preview/Components.png`
 
 > 컴포넌트·상태 시트. SPEC-COMPONENTS.md의 그림판.
 
@@ -885,7 +885,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -937,10 +937,10 @@
 `canvas/HomeStocksOff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksOff.png`
 
 - [ ] **본문(스크롤 영역)** — “현재 위치”
-      `flex:1 min-height:0 display:flex flex-direction:column gap:8px justify-content:flex-end padding:0 14px 27px`
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px justify-content:flex-end padding:0 14px 32px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1021,10 +1021,10 @@
 `canvas/HomeStocksCard.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksCard.png`
 
 - [ ] **본문(스크롤 영역)** — “현재 위치”
-      `flex:1 min-height:0 display:flex flex-direction:column gap:8px justify-content:flex-end padding:0 14px 27px`
+      `flex:1 min-height:0 display:flex flex-direction:column gap:8px justify-content:flex-end padding:0 14px 32px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1259,7 +1259,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px position:relative`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1322,11 +1322,11 @@
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
-- [ ] **본문(스크롤 영역)** — “이번 달 기록한 소비”
+- [ ] **본문(스크롤 영역)** — “현재 위치”
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
-  - [ ] **HeroCard** — “이번 달 기록한 소비”
+  - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **Card(18)** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #7EC4E8 border-radius:18px padding:13px 14px`
@@ -1365,7 +1365,7 @@
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
 - [ ] text 20px/700 — “홈 맨 위 카드에 붙는 작은 안내 줄”
       `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-- [ ] text 13px/400 — “예상 소비를 계산한 방식에 덧붙일 말이 있을 때만 기준 조정 줄 아래에 회색 글이 한두 줄 붙”
+- [ ] text 13px/400 — “월말 예상을 계산한 방식에 덧붙일 말이 있을 때만 기준 조정 줄 아래에 회색 글이 한두 줄 붙”
       `font-size:13px line-height:1.55 color:#626D88`
 - [ ] **div** — “현재 위치”
       `display:flex gap:32px align-items:flex-start`
@@ -1382,7 +1382,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1393,7 +1393,7 @@
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
-## HomeCalendar — 홈 · 달력 펼침 (월 달력) · 3일 칸 누름
+## HomeCalendar — 홈 · 달력 펼침 (월 달력)
 
 `canvas/HomeCalendar.dc.html` · 390×844 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/HomeCalendar.png`
 
@@ -1444,7 +1444,7 @@
 
 ## CalendarCells — 참고 · 달력 칸 읽는 법
 
-`canvas/CalendarCells.dc.html` · 1330×820 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarCells.png`
+`canvas/CalendarCells.dc.html` · 1330×830 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarCells.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1457,7 +1457,7 @@
 
 ## CalendarGridSizes — 참고 · 달력을 펼치면 어디서나 월 달력
 
-`canvas/CalendarGridSizes.dc.html` · 1150×1490 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarGridSizes.png`
+`canvas/CalendarGridSizes.dc.html` · 1150×1670 · 원본 `v5 미구현 · plan/v5-calendar.md §3` · 렌더 `preview/CalendarGridSizes.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1474,7 +1474,7 @@
 
 ## DesktopHomeV5 — 데스크톱 · 홈
 
-`canvas/DesktopHomeV5.dc.html` · 1440×1000 · 원본 `v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)` · 렌더 `preview/DesktopHomeV5.png`
+`canvas/DesktopHomeV5.dc.html` · 1440×1070 · 원본 `v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)` · 렌더 `preview/DesktopHomeV5.png`
 
 - [ ] **div** — “NAVI”
       `width:232px background:#FFFFFF display:flex flex-direction:column padding:22px 16px 18px`
@@ -1527,9 +1527,9 @@
 
 - [ ] **div** — “홈 구성”
       `padding:0 20px`
-- [ ] **div** — “소비율과 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
+- [ ] **div** — “소비율과 이번 달 소비 기록은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요”
       `flex:1 min-height:0 padding:0 20px`
-  - [ ] **div** — “소비율과 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
+  - [ ] **div** — “소비율과 이번 달 소비 기록은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요”
         `display:flex flex-direction:column margin-top:0px`
 - [ ] **div** — “저장”
       `padding:8px 20px 24px display:flex flex-direction:column gap:8px`
@@ -1630,7 +1630,7 @@
 
 ## HomeDefaultScroll — 홈 · 기본 5카드 전체 스크롤
 
-`canvas/HomeDefaultScroll.dc.html` · 390×1330 · 원본 `v5 · plan/v5-calendar.md §3-1 · §10 2단계` · 렌더 `preview/HomeDefaultScroll.png`
+`canvas/HomeDefaultScroll.dc.html` · 390×1360 · 원본 `v5 · plan/v5-calendar.md §3-1 · §10 2단계` · 렌더 `preview/HomeDefaultScroll.png`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1638,7 +1638,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px 14px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1653,15 +1653,15 @@
 
 ## CalendarStatusLines — 참고 · 달력 아래 한 줄이 바뀌는 경우
 
-`canvas/CalendarStatusLines.dc.html` · 1200×1050 · 원본 `v5 · plan/v5-calendar.md §3-3` · 렌더 `preview/CalendarStatusLines.png`
+`canvas/CalendarStatusLines.dc.html` · 1200×1570 · 원본 `v5 · plan/v5-calendar.md §3-3` · 렌더 `preview/CalendarStatusLines.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
 - [ ] text 20px/700 — “달력 아래 한 줄이 바뀌는 경우”
       `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-- [ ] text 13px/400 — “접어 둔 달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장이 있습니다. 아래 경우에는 그 ”
+- [ ] text 13px/400 — “접어 둔 달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장과 적기 알약(오늘 기록이 없으면”
       `font-size:13px line-height:1.55 color:#626D88`
-- [ ] **div** — “이번 달 달력”
+- [ ] **div** — “이번 달 소비 기록”
       `display:flex gap:32px align-items:flex-start`
 
 ## DaySheetStates — 참고 · 기록 창의 글이 바뀌는 경우
@@ -1681,13 +1681,13 @@
 
 ## DaySheetNoSpendStates — 참고 · 안 쓴 날을 표시하는 경우
 
-`canvas/DaySheetNoSpendStates.dc.html` · 1200×1160 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetNoSpendStates.png`
+`canvas/DaySheetNoSpendStates.dc.html` · 1200×1190 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetNoSpendStates.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
 - [ ] text 20px/700 — “안 쓴 날을 표시하는 경우”
       `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-- [ ] text 13px/400 — “소비가 한 건도 없는 날에만 기록 창 맨 아래에 오늘은 안 썼어요가 보입니다. 누르면 달력 칸”
+- [ ] text 13px/400 — “소비가 한 건도 없는 날에만 기록 창 맨 아래에 오늘은 안 썼어요가 보입니다. 누르면 달력의 ”
       `font-size:13px line-height:1.55 color:#626D88`
 - [ ] **div** — “오늘 소비는 아직 기록이 없어요 · 이체 300,000원(소비율 제외)”
       `display:flex gap:32px align-items:flex-start`
@@ -1696,7 +1696,7 @@
 
 ## DoneCardStates — 참고 · 저장 완료 카드의 경우들
 
-`canvas/DoneCardStates.dc.html` · 1200×1090 · 원본 `v5 · plan/v5-calendar.md §4-4` · 렌더 `preview/DoneCardStates.png`
+`canvas/DoneCardStates.dc.html` · 1200×1100 · 원본 `v5 · plan/v5-calendar.md §4-4` · 렌더 `preview/DoneCardStates.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1762,7 +1762,7 @@
 
 ## InsufficientElsewhere — 참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들
 
-`canvas/InsufficientElsewhere.dc.html` · 1230×1330 · 원본 `v5 · plan/v5-calendar.md §3-4 · §9-22` · 렌더 `preview/InsufficientElsewhere.png`
+`canvas/InsufficientElsewhere.dc.html` · 1230×1390 · 원본 `v5 · plan/v5-calendar.md §3-4 · §9-22` · 렌더 `preview/InsufficientElsewhere.png`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1860,7 +1860,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1883,7 +1883,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1906,7 +1906,7 @@
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
   - [ ] **HeroCard** — “현재 위치”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
-  - [ ] **Card(18)** — “이번 달 달력”
+  - [ ] **Card(18)** — “이번 달 소비 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
   - [ ] **TurnCard** — “다음 안내”
         `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
@@ -1982,9 +1982,9 @@
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **본문(스크롤 영역)** — “57.9”
+- [ ] **본문(스크롤 영역)** — “31.1”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
-  - [ ] **HeroCard** — “57.9”
+  - [ ] **HeroCard** — “31.1”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “카테고리별 소비”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -1999,9 +1999,9 @@
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **본문(스크롤 영역)** — “57.9”
+- [ ] **본문(스크롤 영역)** — “31.1”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
-  - [ ] **HeroCard** — “57.9”
+  - [ ] **HeroCard** — “31.1”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “카테고리별 소비”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -2016,9 +2016,9 @@
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **본문(스크롤 영역)** — “57.9”
+- [ ] **본문(스크롤 영역)** — “31.1”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
-  - [ ] **HeroCard** — “57.9”
+  - [ ] **HeroCard** — “31.1”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px 14px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “카테고리별 소비”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`

@@ -8,7 +8,7 @@
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “홈 맨 위 카드에 붙는 작은 안내 줄”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` **text 13px/400** — “예상 소비를 계산한 방식에 덧붙일 말이 있을 때만 기준 조정 줄 아래에 회색 글이 한두 줄 붙습니다.”
+  - `p` **text 13px/400** — “월말 예상을 계산한 방식에 덧붙일 말이 있을 때만 기준 조정 줄 아래에 회색 글이 한두 줄 붙습니다.”
     `font-size:13px line-height:1.55 color:#626D88`
   - `div`
     `display:flex gap:32px align-items:flex-start`

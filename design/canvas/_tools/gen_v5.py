@@ -22,8 +22,8 @@ import gen_v4 as s1                     # cut · header · hero_block · guide_b
 from gen_v4_stocks import nav_v4        # (import 부작용: 2~5단계 파일도 다시 쓴다 — 멱등)
 from darken import darken
 from gen_calendar import (WD, TODAY, fmt_sum, SEP, SEP_CHECK, SEP_TRANSFER, AUG, AUG_CHECK, AUG_TRANSFER, SEP_TOTAL, AUG_TOTAL,
-                          MONTHS, WEEKS, day_state, _mods, cell, gcell, nav_btn, month_bar, status_rows, month_grid, list_link,
-                          calendar_card)   # 달력 자료 · 칸 · 카드는 공용 모듈(gen_v4 계열도 함께 쓴다)
+                          MONTHS, WEEKS, day_state, _mods, cell, gcell, nav_btn, month_bar, month_grid, list_link,
+                          calendar_card, hint, status_line, today_tail, review_row, TODAY_TEXT, TODAY_RING)   # 달력 자료 · 칸 · 카드는 공용 모듈(gen_v4 계열도 함께 쓴다)
 
 OUT = s1.OUT
 V5 = ['HomeCalendarStrip', 'HomeDefaultScroll', 'HomeCalendar', 'HomeCalendar360', 'HomeCalendarPrev', 'DaySheet', 'DaySheetScrolled', 'DaySheetList', 'DaySheetEdit',
@@ -317,9 +317,12 @@ w('DaySheetEdit', sheet_frame(edit_body, keyboard=True))
 
 
 # ══════════════ 4. 완료 카드 — 홈 위 ══════════════
-# 저장 뒤 홈: 히어로는 Main과 같은 자리·모양이고 값만 12,000원 저장 뒤로(57.9 → 58.2, 208 → 210만원, 여유 8 → 6만원, 2.1%p → 1.8%p · 하루 47,270 → 46,730원).
+# 저장 뒤 홈: 히어로는 Main과 같은 자리·모양이고 값만 12,000원 저장 뒤로(2026-09-24 — 큰 숫자 · 게이지 · 설명 줄 = 지금까지 쓴 돈):
+# 쓴 돈 1,120,000 → 1,132,000 · 31.1 → 31.4% · 112만 → 113만원 · 목표까지 28.9 → 28.6%p 남음 · 채움 inset 68.9 → 68.6%,
+# 아래 칸(월말 예상 기준)은 208 → 210만원 · 여유 8 → 6만원(배지 `월말에도 목표 안` 그대로 · 210 ÷ 360 = 58.3%) · 순자산 대비 1.2% 그대로 · 하루 47,270 → 46,730원.
 hero_after = s1.hero_block
-for a, b in [('>57.9<', '>58.2<'), ('2.1%p 여유', '1.8%p 여유'), ('inset: 0 42.1% 0 0', 'inset: 0 41.8% 0 0'),
+for a, b in [('>31.1<', '>31.4<'), ('28.9%p 남음', '28.6%p 남음'), ('inset: 0 68.9% 0 0', 'inset: 0 68.6% 0 0'),
+             ('월급 360만원 중 112만원 썼어요', '월급 360만원 중 113만원 썼어요'),
              ('>208<span', '>210<span'), ('>8<span style="font-size: 13px; font-weight: 500; color: #0F7B47;">만원', '>6<span style="font-size: 13px; font-weight: 500; color: #0F7B47;">만원')]:
     assert hero_after.count(a) == 1, a
     hero_after = hero_after.replace(a, b)
@@ -328,7 +331,7 @@ limit_after = (s1.limit_block.replace('남은 한도 104만원', '남은 한도 
 assert limit_after.count('하루 46,730원') == 1 and '앞으로 하루' not in limit_after and limit_after.count('남은 한도 103만원') == 1 and limit_after.count('inset: 0 47.6% 0 0') == 1
 
 # 셋째 줄 — 이 장의 저장은 DaySheet 에서 분류를 고르지 않은(`나중에 분류`) 편의점 12,000원이라 계획 §4-4 우선순위의 4순위 문장이 온다.
-# 소비율 줄 `소비율 57.9% → 58.2%`는 앞선 조건이 하나도 없을 때만(6순위) — 히어로의 58.2% 등 값은 그대로다.
+# 6순위 `월급의 31.1% → 31.4%`(지금까지 쓴 돈 ÷ 월급, 저장 전 → 뒤 · 2026-09-24)는 앞선 조건이 하나도 없고 월급이 있을 때만 — 히어로의 31.4% 등 값은 그대로다.
 DONE_THIRD = '소비에는 이미 포함됐어요 · 분류하면 예상을 다시 계산해요'      # 계획 §4-4 원문
 DONE_CARD = ('<!--dc-keep--><div style="position: absolute; left: 14px; right: 14px; bottom: 78px; background: #101828; border-radius: 16px; padding: 13px 14px 12px; color: #FFFFFF; box-shadow: 0 8px 24px rgba(0,0,0,.28);">'
              '<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
@@ -345,9 +348,10 @@ DONE_CARD = ('<!--dc-keep--><div style="position: absolute; left: 14px; right: 1
 calendar_after = calendar_card(False, states={TODAY: (fmt_sum(49_000), False, False, False)}, status='오늘 5건 49,000원')
 assert calendar_after.count('>4.9만<') == 1 and '3.7만' not in calendar_after
 # 완료 카드 아래 끝(766)과 탭 바(778) 사이 12px 틈에 밑의 한도 카드 글자 윗절반이 비치지 않게, 본문을 한도 카드 시작 위에서 자른다.
-# 실제 글꼴 실측: 다음 안내 아래 끝 748.1 · 한도 카드 시작 757.1 · 탭 바 위 끝 778 → 본문 아래 끝을 756 으로(778 − 22). 틈에는 장 바탕만 보인다.
+# 실제 글꼴 실측(2026-09-24 · 달력 카드 172 → 222): 달력 아래 끝 617.7 · 다음 안내 626.6 ~ 743.0 · 한도 카드 시작 752.0 · 탭 바 위 끝 778
+# → 본문 아래 끝을 751 로(778 − 27). 다음 안내는 완료 카드(624 ~ 766) 밑에 가려지고, 틈(766 ~ 778)에는 장 바탕만 보인다.
 # 한도 카드 · 순자산 카드는 HTML 에 그대로 둔다(기준표 5번 46,730원 · 103만원 · 47.6%). 달력 · 다음 안내 높이가 바뀌면 이 값을 다시 잴 것.
-DONE_BODY_CUT = 22
+DONE_BODY_CUT = 27
 w('DoneCard', frame(
     f'\n  {s1.header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 9px; padding: 0 14px; margin-bottom: {DONE_BODY_CUT}px; overflow: hidden; position: relative;">\n\n'
@@ -507,27 +511,50 @@ w('ClassifySheet', sheet_frame(classify_body, scrim_text='배경을 눌러 닫�
 
 
 # ══════════════ 7. 히어로 이력 부족 — 홈 ══════════════
-def hero_insufficient(second='예상에 사용할 지난 소비 기록이 아직 없어요'):
-    return hero(
-        eyebrow_row('이번 달 기록한 소비', '')
-        + f'<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 8px;">'
-        f'<div style="display: flex; align-items: baseline; gap: 2px;"><span style="font-size: 54px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; color: {C["INK"]};">5,000</span>'
-        f'<span style="font-size: 25px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK2"]};">원</span></div>'
-        f'<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px; padding-bottom: 4px;">'
-        f'<span style="font-size: 11px; font-weight: 500; color: {C["INK3"]};">월급의</span>'
-        f'<span style="font-size: 14px; font-weight: 600; color: {C["INK"]};">0.1%</span></div></div>'
-        + f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">'
-        f'<span style="font-size: 13px; font-weight: 500; color: {C["INK2"]};">아직 기록하지 않은 소비는 포함되지 않았어요</span></div>'
-        f'<div style="font-size: 12px; line-height: 1.45; color: {C["INK3"]}; margin-top: 3px;">{second}</div>'
-        + f'<div style="margin-top: 15px;"><div style="position: relative; height: 10px; border-radius: 99px; background: {C["TRACK"]}; overflow: visible;">'
-        f'<div style="position: absolute; left: 60%; top: -5px; width: 2px; height: 20px; border-radius: 2px; background: {C["INK"]};"></div></div>'
-        f'<div style="position: relative; height: 15px; margin-top: 5px;"><span style="position: absolute; left: 0; font-size: 11px; color: {C["INK3"]};">0%</span>'
-        f'<span style="position: absolute; left: 60%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: {C["INK"]}; white-space: nowrap;">내 목표 60%</span>'
-        f'<span style="position: absolute; right: 0; font-size: 11px; color: {C["INK3"]};">100%</span></div></div>'
-        + metric3([('월 실수령', '360', '만원', None), ('월말 예상', '—', '', C["INK4"]), ('월말 예상 여유', '—', '', C["INK4"])])
-        + f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px;">'
-        f'<span style="font-size: 11px; line-height: 1.4; color: {C["INK3"]};">실수령 급여 기준 · 부수입·저축 이체·대출상환 제외</span>'
-        f'<span style="font-size: 11.5px; font-weight: 600; color: {C["BRAND"]}; white-space: nowrap;">기준 조정 &rsaquo;</span></div>')   # 버튼 없음(2026-09-22) — 기록은 달력 날짜로
+# 2026-09-24(13판): 이력 부족도 평소(A1)와 같은 틀이다 — 머리말 `현재 위치` · 큰 숫자 = 지금까지 쓴 돈 ÷ 월급 · 설명 줄 · 오른쪽 `목표까지 N%p 남음` ·
+# 게이지 채움 · 순자산 대비는 A1 과 같은 규칙(쓴 돈 기준이라 예상 기준을 통과하지 않아도 보인다). 다른 점: 배지 없음 · 아래 칸 `월말 예상 —` · `월말 예상 여유 —` ·
+# 설명 줄 바로 아래 각주 두 줄. 틀이 같아야 기록 부족 → 통과로 넘어가도 카드가 흔들리지 않으므로 Main 의 히어로를 잘라 값만 바꾼다(다시 그리지 않는다).
+BADGE_RE = re.compile(r'\s*<span style="display: inline-flex; align-items: center; gap: 4px; background: #E4F4EA;.*?</span>', re.S)
+HERO_RIGHT = '<span style="font-size: 14px; font-weight: 600; color: #101828;">28.9%p 남음</span>'
+HERO_CAPTION_ROW = '<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">'
+TILE2 = '>208<span style="font-size: 13px; font-weight: 500; color: #475467;">만원</span></span>'
+TILE3 = '>8<span style="font-size: 13px; font-weight: 500; color: #0F7B47;">만원</span></span>'
+DASH = f'<span style="font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: {C["INK4"]};">—</span>'
+FOOT_FIRST = '아직 기록하지 않은 소비는 포함되지 않았어요'           # 계획 §3-4 원문
+FOOT_NO_HISTORY = '월말 예상에 쓸 지난 소비 기록이 아직 없어요'       # 둘째 줄 3종의 셋째(2026-09-24 — `예상` → `월말 예상`)
+for _m in (HERO_RIGHT, HERO_CAPTION_ROW, TILE2, TILE3, '>31.1</span>', '월급 360만원 중 112만원 썼어요', '>1.2%</span>', 'inset: 0 68.9% 0 0'):
+    assert s1.hero_block.count(_m) == 1, _m
+assert len(BADGE_RE.findall(s1.hero_block)) == 1
+
+
+def foot_line(text):
+    return f'<div style="font-size: 12px; line-height: 1.45; color: {C["INK3"]}; margin-top: 3px;">{text}</div>'
+
+
+def hero_insufficient(second=FOOT_NO_HISTORY, big='0.1', caption='월급 360만원 중 5,000원 썼어요', gap='59.9%p 남음', burn='0.1% 미만', fill=0.1):
+    """이력 부족 히어로(A2) — 기본값은 9월 5일에 처음 연 사람(오늘 커피 5,000원 한 건): 5,000 ÷ 3,600,000 = 0.14% → 0.1% · 목표까지 59.9%p 남음 ·
+    순자산 대비 5,000 ÷ 9,350만 = 0.005% → `0.1% 미만`(0 < x < 0.05 · 0.0% 로 보이지 않게). 채움은 0.1%라 막대에는 거의 보이지 않는다."""
+    h = BADGE_RE.sub('', s1.hero_block, count=1)
+    h = h.replace('>31.1</span>', f'>{big}</span>')
+    h = h.replace(HERO_RIGHT, HERO_RIGHT.replace('28.9%p 남음', gap))
+    h = h.replace('월급 360만원 중 112만원 썼어요', caption)
+    h = h.replace('>1.2%</span>', f'>{burn}</span>')
+    h = h.replace('inset: 0 68.9% 0 0', f'inset: 0 {100 - fill:.4g}% 0 0')
+    # 아래 칸 둘 — 월말 예상 · 월말 예상 여유 = —(회색). 칸의 글자 span 을 통째로 바꾼다
+    i2 = h.index(TILE2); j2 = h.rindex('<span style="font-size: 18px;', 0, i2)
+    h = h[:j2] + DASH + h[i2 + len(TILE2):]
+    i3 = h.index(TILE3); j3 = h.rindex('<span style="font-size: 18px;', 0, i3)
+    h = h[:j3] + DASH + h[i3 + len(TILE3):]
+    # 설명 줄 바로 아래 각주 두 줄
+    c0 = h.index(HERO_CAPTION_ROW)
+    depth, k = 0, c0
+    for m in re.finditer(r'<div\b|</div>', h[c0:]):
+        depth += 1 if m.group(0) == '<div' else -1
+        if depth == 0:
+            k = c0 + m.end(); break
+    h = h[:k] + '\n      ' + foot_line(FOOT_FIRST) + foot_line(second) + h[k:]
+    assert h.count('—</span>') == 2 and '월말에도 목표 안' not in h and h.count('<div') == h.count('</div>')
+    return h
 
 
 # 예상 기준 통과 전 다음 안내는 사실 안내만(계획 §3-4) — '며칠 더 기록하면 …' 같은 '시간이 지나면' 문장은 쓰지 않는다.
@@ -602,7 +629,7 @@ footnote_foot = (f'<p style="margin: 10px 2px 0; font-size: 12px; line-height: 1
                  f'안내 문구는 기획 문서 5-3의 문구 표와 같아야 합니다.</p>')
 w('HeroFootnotes', spec_frame(
     1200, 640, '홈 맨 위 카드에 붙는 작은 안내 줄',
-    '예상 소비를 계산한 방식에 덧붙일 말이 있을 때만 기준 조정 줄 아래에 회색 글이 한두 줄 붙습니다.',
+    '월말 예상을 계산한 방식에 덧붙일 말이 있을 때만 기준 조정 줄 아래에 회색 글이 한두 줄 붙습니다.',
     f'<div style="display: flex; gap: 32px; align-items: flex-start;">{footnote_left}'
     f'{case_grid([(case_cap(n, t, d), hero_fragment(notes)) for n, t, d, notes in FOOTNOTE_CASES])}</div>{footnote_foot}', sub_w=760), keep_all=True)
 
@@ -660,7 +687,8 @@ P_PEER = '<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-rad
 P_ROWS = '<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 4px 14px; flex-shrink: 0;">'
 assert _scroll_src.count(P_PEER) == 1 and _scroll_src.count(P_ROWS) == 1
 peer_block = s1.cut(_scroll_src, P_PEER, P_ROWS).rstrip()
-assert peer_block.count('또래와 내 페이스') == 1 and peer_block.count('<div') == peer_block.count('</div>') and '순자산 대비 소비' not in peer_block
+assert peer_block.count('또래와 내 페이스') == 1 and peer_block.count('<div') == peer_block.count('</div>') and '순자산 대비 월말 예상' not in peer_block
+assert peer_block.count('내 월말 예상') == 1 and '내 소비율' not in peer_block      # 또래 카드는 월말 예상으로 비교(2026-09-24 이름)
 
 # 홈 · 접힘 — 히어로 그대로, 첫 카드가 달력(최근 7일). 그 아래로 다음 안내 · 이번 달 한도 · 대표 목적지가 이어진다(화면 아래에서 잘림).
 w('HomeCalendarStrip', frame(
@@ -671,15 +699,17 @@ w('HomeCalendarStrip', frame(
 
 # 홈 · 기본 5카드 전체(2단계 검토물 '기본 구성 홈 before/after'의 after) — 스크롤 전체 길이를 한 장에.
 # 달력 · 다음 안내 · 이번 달 한도 · 대표 목적지 · 또래와 내 페이스(`순자산 대비 소비`는 기본에서 빠짐). v4-2 전이라 옛 5탭. 한도 라벨은 3단계 전이라 v3 그대로 `하루 47,270원`(limit_stage12 · 같은 페이지의 다른 홈 장과 같다).
-HOME_DEFAULT_H = 1330
+HOME_DEFAULT_H = 1360      # 2026-09-24 최종 점검 후속 1330 → 1360(또래 카드 각주를 PeerStates C 문구로 · 두 줄 늚 · 자연 높이 1330)
 w('HomeDefaultScroll', frame(
     f'\n  {s1.header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 9px; padding: 0 14px 14px; overflow: hidden;">\n\n'
     f'    {s1.hero_block}\n\n    {calendar_card(False)}\n\n    {s1.guide_block}\n\n    {limit_stage12()}\n\n    {goal_block}\n\n    {peer_block}\n\n  </div>\n\n'
     f'  {bottomnav(0)}\n', h=HOME_DEFAULT_H))
 
-# 홈 · 펼침 — 월 달력. 아래로 조금 스크롤한 상태(히어로 아랫단이 위에 남음). 3일 칸을 누른 순간(눌림 링) → 다음 장 하루 시트.
-w('HomeCalendar', home_expanded(pressed=3))
+# 홈 · 펼침 — 월 달력. 아래로 조금 스크롤한 상태(히어로 아랫단이 위에 남음). 날짜 칸을 누르면 → 다음 장 하루 시트.
+# 2026-09-24 최종 점검 후속 — 3일 칸 누름(2px 링)을 그리지 않는다. 오늘 칸도 1.5px 링이라 정지 그림에서 둘째 오늘처럼 읽혔다.
+# 누름 모양은 SPEC-COMPONENTS §27-1 표(inset 2px)와 CalendarCells 끝 문단 · Components 08 설명 1 에 글로 남는다.
+w('HomeCalendar', home_expanded())
 # 같은 화면 360px — 가장 흔한 안드로이드 폭. 카드 좌우 패딩 10, 칸 폭 44.6. 목록으로 바뀌지 않는다.
 w('HomeCalendar360', home_expanded(width=360, pad=10))
 # ‹ 로 지난달(8월)을 보는 상태 — 6주. › 와 `이번 달로`가 살아나고, 칸을 누르면 그 날짜 하루 시트.
@@ -696,7 +726,7 @@ CELL_GUIDE = [   # (번호, 이름, 무엇을 뜻하는지, 누르면 어떻게 
     (2, '금액', '그날 쓴 돈의 합계 · 쓰는 법은 오른쪽 표에 있어요', '누르면 그날 기록 목록이 먼저 보여요'),
     (3, '금액 아래 ✓', '다 적었어요로 표시한 날', '그날 기록을 고치면 ✓가 풀려요'),
     (4, '0', '안 쓴 날이라고 표시한 날', ('이체', '저축·대출상환이 있던 날 · 소비 합계에는 넣지 않아요')),      # 한 번호 안에서 같은 굵기의 두 줄
-    (5, '오늘', '옅은 파란 칸에 굵은 날짜', '누르면 금액 입력부터 시작해요'),
+    (5, '오늘', '옅은 파란 칸 · 파란 테두리 · 굵은 날짜 · 아직 안 적었으면 — 대신 파란 +', '누르면 금액 입력부터 시작해요 · 카드 아래 적기 버튼 · 알약과 같은 곳'),
     (6, '아직 오지 않은 날', '날짜만 옅게 보여요', '눌러도 열리지 않아요'),
     (7, '지난달 날짜', '첫 주의 8월 30·31일 · 기록이 옅게 보여요', '누르면 그 날짜 기록 창이 열려요'),
     (8, '다음 달 날짜', '10월 1~3일 · 아직 오지 않은 날은 날짜만 옅게', '누를 수 없어요 · 이미 지난 날이면 7번처럼 기록이 옅게 보여요'),
@@ -713,14 +743,15 @@ def marked_calendar():
         for kind, d, m in wk:
             is_sep = m == 'sep'
             c_ = gcell(d, month=m if m in MONTHS else 'sep', kind=kind,
-                       today=(is_sep and d == TODAY and kind != 'out'), future=(is_sep and d > TODAY))
+                       today=(is_sep and d == TODAY and kind != 'out'), future=(is_sep and d > TODAY))      # 오늘 칸 테두리 · + 규칙은 gcell 이 그린다
             n = MARKS.get((m, d))
             cs.append(f'<div style="position: relative; min-width: 0;">{c_}{mark(n, True) if n else ""}</div>')
         rows.append(f'<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid {C["LINE_SOFT"]}; padding: 2px 0;">{"".join(cs)}</div>')
     grid = (f'<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin-top: 8px; padding-bottom: 5px;">{wd}</div>'
             f'<div style="display: flex; flex-direction: column; border-bottom: 1px solid {C["LINE_SOFT"]};">{"".join(rows)}</div>')
-    return card(month_bar('2026년 9월', prev_on=True, next_on=False) + grid
-                + status_rows(text=f'9월 기록한 소비 {SEP_TOTAL:,}원 · 오늘 4건 37,000원'), pad='13px 14px 13px')
+    return card(month_bar('2026년 9월', prev_on=True, next_on=False) + hint(mt=6) + grid
+                + status_line(f'9월 기록한 소비 {SEP_TOTAL:,}원') + today_tail(day_state('sep', TODAY), TODAY_TEXT, mt=8)
+                + review_row(2), pad='13px 14px 13px')
 
 
 def guide_row(n, name, meaning, tap, last=False):
@@ -739,12 +770,14 @@ def guide_row(n, name, meaning, tap, last=False):
 cell_guide = card(''.join(guide_row(*r, last=(i == len(CELL_GUIDE) - 1)) for i, r in enumerate(CELL_GUIDE)), pad='4px 16px')
 cell_foot = (f'<p style="margin: 10px 2px 0; font-size: 12px; line-height: 1.6; color: {C["INK3"]};">'
              f'접힌 최근 7일 줄에는 달 제목이 없어서 지난달 날짜를 <b style="font-weight: 600; color: {C["INK2"]};">8/31</b>처럼 달을 붙여 씁니다. '
-             f'6일 칸은 안 쓴 날로 표시했고 이체도 있어서 0과 이체가 같이 보입니다. 표시 없이 이체만 있는 날은 숫자 없이 이체만 보입니다. 칸을 누르는 순간에는 파란 테두리가 생깁니다(홈 · 달력 펼침 장).</p>')
+             f'6일 칸은 안 쓴 날로 표시했고 이체도 있어서 0과 이체가 같이 보입니다. 표시 없이 이체만 있는 날은 숫자 없이 이체만 보입니다. '
+             f'오늘 칸의 가는 파란 테두리(1.5px)는 늘 있고, 칸을 누르는 순간에는 더 굵은 테두리(2px)가 생깁니다(그림에는 그리지 않음 · SPEC-COMPONENTS §27-1). 오늘 칸의 +가 금액으로 바뀌어도 칸 크기는 같습니다.</p>')
 
 # 9번(시작일 이전)은 왼쪽 9월 달력에 없는 상태라(그 사람은 8월에도 기록이 있다) 다른 사람의 접힌 줄을 따로 보여 준다 — HeroInsufficient 와 같은 달력.
 # 번호 자리: 카드 안쪽 332를 7칸(44)이 space-between 으로 나눠 칸 간격 4 → 3일 칸(둘째)의 오른쪽 끝 = 1 + 14 + 48 + 44 = 107.
+# 세로: 제목 줄 아래 안내 한 줄(2 + 17.4)과 칸 위 간격 10(전 8)이 생겨 칸이 21px 내려갔다(2026-09-24) — 38 → 59.
 since_strip = (f'<div style="position: relative;">{calendar_first}'
-               + mark(9, pos="position: absolute; top: 38px; left: 93px;") + '</div>')
+               + mark(9, pos="position: absolute; top: 59px; left: 93px;") + '</div>')
 
 
 def fmt_row(examples, rule, last=False):
@@ -767,7 +800,8 @@ fmt_card = card(
       f'상태 줄 · 기록 창 · 저장 완료 카드의 합계는 줄이지 않고 원 단위 그대로 씁니다(오늘 4건 37,000원).</div>', pad='12px 16px')
 
 w('CalendarCells', spec_frame(
-    1330, 820, '달력 칸 읽는 법', '칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 가운데에서 찾으세요.',
+    1330, 830, '달력 칸 읽는 법',      # 2026-09-24 820 → 830(달력 카드에 안내 줄 · 적기 줄 · 자연 높이 801)
+    '칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 가운데에서 찾으세요.',
     f'<div style="display: flex; gap: 28px; align-items: flex-start;">'
     f'<div style="width: 362px; flex-shrink: 0;">{marked_calendar()}</div>'
     f'<div style="width: 490px; flex-shrink: 0;">{cell_guide}{cell_foot}</div>'
@@ -789,11 +823,21 @@ def list_amount(a):
     return f'<span style="font-size: 16px; font-weight: 600; color: {col};">{a}</span>'
 
 
+# 목록의 오늘 행(2026-09-24 최종 점검 후속) — 칸과 같이 brand-soft 바탕 · 안쪽 테두리 1.5px brand · 반경 10. 오늘 기록이 0건이면 `—` 대신 파란 원 `+`(24 — 큰 글자 칸과 같다).
+# 이 견본의 오늘은 4건 37,000원이라 금액 그대로. 행 좌우 안쪽 6px(오늘 행 바탕이 글자에 닿지 않게 모든 행에).
+LIST_TODAY = f'background: {C["BRAND_SOFT"]}; border-radius: 10px; {TODAY_RING}'
+
+
+def list_row(d, a, c, today=False):
+    line = f'border-top: 1px solid {"transparent" if today else C["LINE_ROW"]};'
+    return (f'<div style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 6px; {line}{" " + LIST_TODAY if today else ""}">'
+            f'<span style="flex: 1; font-size: 16px; color: {C["INK"]};{" font-weight: 600;" if today else ""}">{d}</span>{list_amount(a)}{icon("check", 14, C["INK2"], 2.8) if c else EMPTY13}</div>')
+
+
 list_view = card(
-    month_bar('2026년 9월', prev_on=True, next_on=False, large=True)
+    month_bar('2026년 9월', prev_on=True, next_on=False, large=True) + hint(True, mt=6)
     + f'<div style="margin-top: 8px;">'
-    + ''.join(f'<div style="display: flex; align-items: center; gap: 10px; min-height: 48px; border-top: 1px solid {C["LINE_ROW"]};"><span style="flex: 1; font-size: 16px; color: {C["INK"]};">{d}</span>{list_amount(a)}{icon("check", 14, C["INK2"], 2.8) if c else EMPTY13}</div>'
-              for d, a, c in LIST_ROWS)
+    + ''.join(list_row(d, a, c, today=(i == 0)) for i, (d, a, c) in enumerate(LIST_ROWS))
     + '</div>'
     + list_link(True).replace('목록으로 보기', '달력으로 보기'),
     pad='13px 14px 4px')
@@ -801,9 +845,9 @@ list_view = card(
 
 cal320 = calendar_card(True, pad=8).replace('2026년 9월', '9월').replace('min-width: 94px', 'min-width: 44px')
 cal_large = calendar_card(True, large=True, with_list_link=True)
-bar_prev320 = card(month_bar('8월', prev_on=False, next_on=True, back_pill=True, pill_below=True, label_w=44)
+bar_prev320 = card(month_bar('8월', prev_on=False, next_on=True, back_pill=True, pill_below=True, label_w=44) + hint(mt=6)
                    + month_grid('aug', weeks=slice(0, 1)), pad='13px 8px 13px')          # 머리 부분만 떠 있지 않게 요일 줄과 첫 주를 붙인다
-cal_large320 = card(month_bar('8월', prev_on=False, next_on=True, back_pill=True, large=True, label_w=52)
+cal_large320 = card(month_bar('8월', prev_on=False, next_on=True, back_pill=True, large=True, label_w=52) + hint(True, mt=6)
                     + month_grid('aug', large=True, tight=True, weeks=slice(0, 3)), pad='13px 8px 13px')
 
 # 접힌 최근 7일 줄 — 320px: 칸 44 × 56 그대로 · 카드 좌우 패딩 8 · 카드 안 가로 스크롤(오늘이 오른쪽 끝에서 시작, 왼쪽 칸이 잘려 보인다).
@@ -814,11 +858,13 @@ strip_large = calendar_card(False, large=True)
 # 구현 수치는 견본 설명에 흩지 않고 맨 아래 한 단락으로 모은다.
 sizes_memo = (f'<div style="margin-top: 24px; display: flex; flex-direction: column; gap: 4px;">'
               f'<div style="font-size: 12px; font-weight: 600; color: {C["INK2"]};">구현 메모</div>'
-              f'<p style="margin: 0; font-size: 12px; line-height: 1.6; color: {C["INK3"]};">가장 좁은 폰은 화면 너비 320px, 달력 칸은 39 × 56입니다. '
+              f'<p style="margin: 0; font-size: 12px; line-height: 1.6; color: {C["INK3"]}; word-break: keep-all;">가장 좁은 폰은 화면 너비 320px, 달력 칸은 39 × 56입니다. '
               f'큰 글자에서는 칸 높이가 72가 됩니다. 좁은 폰 + 큰 글자에서는 금액 글자 크기를 12로 줄입니다. '
               f'지난달을 볼 때 &lsquo;이번 달로&rsquo; 버튼은 제목 줄 바로 아래 줄 오른쪽에 둡니다. '
               f'접힌 최근 7일 줄의 칸은 어느 폭에서나 44 × 56입니다. 가장 좁은 폰에서는 일곱 칸(308)이 카드 안쪽(276)에 다 들어가지 않아 카드 좌우 여백을 8로 줄이고 줄을 옆으로 밀어 봅니다. '
-              f'처음에는 오늘이 오른쪽 끝에 보입니다. 큰 글자에서는 접힌 줄도 칸 높이 72 · 날짜 14.5이고, 칸 폭이 44라 금액 글자는 12입니다.</p></div>')
+              f'처음에는 오늘이 오른쪽 끝에 보입니다. 큰 글자에서는 접힌 줄도 칸 높이 72 · 날짜 14.5이고, 칸 폭이 44라 금액 글자는 12입니다. '
+              f'카드 아래 버튼 「+ 오늘 쓴 돈 적기」와 알약 줄(오늘 합계 + 「+ 더 적기」)은 어느 폭에서나 높이 40, 큰 글자에서는 48이고 제목 아래 안내 한 줄은 15px입니다. '
+              f'목록으로 보기의 오늘 행도 칸처럼 파란 안쪽 테두리이고, 오늘 기록이 없으면 「—」 대신 파란 +(24)가 옵니다.</p></div>')
 
 sizes_row1 = ('<div style="display: flex; gap: 36px; align-items: flex-start;">'
               + sample(292, '가장 좁은 폰', '달력 그대로. 제목은 9월만 적어요', cal320)
@@ -835,5 +881,6 @@ sizes_row2 = ('<div style="display: flex; gap: 36px; align-items: flex-start; ma
               + '</div>')
 
 w('CalendarGridSizes', spec_frame(
-    1150, 1490, '달력을 펼치면 어디서나 월 달력', '화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다. 접어 둔 최근 7일 줄도 칸 그대로입니다.',
+    1150, 1670, '달력을 펼치면 어디서나 월 달력',      # 2026-09-24 1490 → 1670(카드마다 안내 줄 · 적기 버튼/알약 줄)
+    '화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다. 접어 둔 최근 7일 줄도 칸 그대로입니다.',
     sizes_row1 + sizes_row2 + sizes_memo))

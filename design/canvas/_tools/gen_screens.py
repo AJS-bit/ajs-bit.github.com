@@ -279,11 +279,35 @@ LEDGER_V5 = [
     (3, [('교통', 'bus', '택시', '계좌 미지정', 45_000, 'spend'),
          ('식비', 'rice', '점심', '계좌 미지정', 9_000, 'spend'),
          (None, None, '간식', None, 4_500, 'spend')]),
-    (1, [(None, None, '커피', None, 4_500, 'spend'),
+    # 9월 1일 — 고정비가 먼저 나간 날(2026-09-24 · 합 1,008,000원 = 달력 칸 `101만`). 9/1~9/8 카테고리 합이 소비 · 한도 장의 값과 같다:
+    # 주거/관리 47만 · 식비 24만 · 보험 12만 · 통신 8만 · 교통 7만 · 쇼핑 3만 · 문화/여가 1만 · 기타 6만(분류 안 함 32,000 포함 — EtcSubline) · 합계 112만원.
+    # 주거/관리 47만은 관리비 · 공과금이고 월세가 아니다 — 월세 700,000원은 9월 8일에 적는 장면(DaySheetConfirm → 완료 카드 → RecurringPrefill `결제일 8`)이라
+    # 9월 1일에 월세가 있으면 같은 달 월세가 두 번이 된다(2026-09-24 후속 · 전에는 월세 400,000 + 관리비 70,000).
+    (1, [('주거/관리', 'house', '관리비', '생활비 계좌', 320_000, 'spend'),
+         ('주거/관리', 'house', '전기·가스·수도', '생활비 계좌', 150_000, 'spend'),
+         ('보험', 'shield', '보험료', '생활비 계좌', 120_000, 'spend'),
+         ('통신', 'phone', '인터넷·TV', '생활비 계좌', 80_000, 'spend'),
+         ('구독', 'repeat', 'OTT·음악', '계좌 미지정', 35_500, 'spend'),
+         ('식비', 'rice', '장보기', '계좌 미지정', 214_500, 'spend'),
+         ('교통', 'bus', '교통카드 충전', '계좌 미지정', 25_000, 'spend'),
+         ('쇼핑', 'bag', '생활용품', '계좌 미지정', 13_000, 'spend'),
+         ('문화/여가', 'spark', '영화', '계좌 미지정', 10_000, 'spend'),
+         ('기타', 'tag', '세탁소', '계좌 미지정', 28_000, 'spend'),
+         (None, None, '커피', None, 4_500, 'spend'),
          ('식비', 'rice', '점심', '계좌 미지정', 7_500, 'spend')]),
 ]
 for _d, _rows in LEDGER_V5:       # 칸 숫자 = 내역 날짜 헤더와 같은 숫자(§12-22)
     assert sum(r[4] for r in _rows if r[5] == 'spend') == (SEP[_d] or 0), _d
+# 9월 카테고리 합(분류 안 함은 기타로 센다) = 소비 · 이번 달 카테고리 카드와 한도 장의 값(만원)
+_cat = {}
+for _d, _rows in LEDGER_V5:
+    for r in _rows:
+        if r[5] == 'spend':
+            _cat[r[0] or '기타'] = _cat.get(r[0] or '기타', 0) + r[4]
+assert {k: _cat[k] for k in ('주거/관리', '식비', '보험', '통신', '교통', '쇼핑', '문화/여가', '기타')} == {
+    '주거/관리': 470_000, '식비': 240_000, '보험': 120_000, '통신': 80_000, '교통': 70_000, '쇼핑': 30_000, '문화/여가': 10_000, '기타': 60_000}
+assert sum(_cat.values()) == SEP_TOTAL == 1_120_000
+assert not any('월세' in r[2] for _, rows in LEDGER_V5 for r in rows)      # 월세는 9월 8일 장면(DaySheetConfirm · RecurringPrefill)에만
 V5_COUNT = sum(len(rows) for _, rows in LEDGER_V5)
 V5_UNCAT = [r for _, rows in LEDGER_V5 for r in rows if r[0] is None]
 assert len(V5_UNCAT) == 7 and sum(r[4] for r in V5_UNCAT) == 32_000      # `분류 안 함 7건` · 히어로 각주 `분류 안 한 32,000원`

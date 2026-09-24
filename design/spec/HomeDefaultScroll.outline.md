@@ -3,7 +3,7 @@
 원본 `canvas/HomeDefaultScroll.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:390px height:1330px background:#EDF0F7 color:#101828 display:flex flex-direction:column`
+  `width:390px height:1360px background:#EDF0F7 color:#101828 display:flex flex-direction:column`
   - `div` **Header**
     `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
     - `div`
@@ -36,7 +36,7 @@
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **text 11px/600** — “현재 위치”
           `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
-        - `span` **StatusPill** — “목표 안에서 순항 중”
+        - `span` **StatusPill** — “월말에도 목표 안”
           `display:inline-flex align-items:center gap:4px background:#E4F4EA color:#0F7B47 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
       - `div`
         `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:8px`
@@ -46,7 +46,7 @@
           `display:flex flex-direction:column align-items:flex-end gap:1px`
       - `div`
         `display:flex align-items:baseline justify-content:space-between gap:10px margin-top:5px`
-        - `span` **text 13px/500** — “월급 대비 이번 달 예상 소비”
+        - `span` **text 13px/500** — “월급 360만원 중 112만원 썼어요”
           `font-size:13px font-weight:500 color:#475467`
         - `span`
           `display:inline-flex align-items:center gap:4px`
@@ -74,30 +74,36 @@
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px`
-        - `span` **text 14px/600** — “이번 달 달력”
+        - `span` **text 14px/600** — “이번 달 소비 기록”
           `font-size:14px font-weight:600 color:#101828`
         - `span` — “펼치기”
           `display:inline-flex align-items:center gap:2px font-size:12px font-weight:600 color:#475467`
+      - `div` **text 12px/400** — “날짜를 누르면 그날 쓴 돈을 적어요”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:2px`
       - `div`
-        `display:flex justify-content:space-between margin-top:8px`
+        `display:flex justify-content:space-between margin-top:10px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:3px`
+          `width:44px height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
         - `div`
-          `width:44px height:56px border-radius:10px background:#E9EDFD display:flex flex-direction:column align-items:center justify-content:center gap:3px`
-      - `div` **text 11px/400** — “오늘 4건 37,000원”
-        `font-size:11px line-height:1.5 color:#475467 margin-top:8px`
+          `width:44px height:56px border-radius:10px background:#E9EDFD box-shadow:inset 0 0 0 1.5px #3556E6 display:flex flex-direction:column align-items:center justify-content:center gap:2px`
       - `div`
-        `display:flex align-items:center justify-content:space-between height:32px margin-top:2px border-top:1px solid #EFF2F8`
+        `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:10px`
+        - `span` **text 12.5px/400** — “오늘 4건 37,000원”
+          `flex:1 font-size:12.5px line-height:1.5 color:#475467`
+        - `span` **SampleBanner** — “더 적기”
+          `display:inline-flex align-items:center gap:4px height:32px padding:0 12px border-radius:99px background:#E9EDFD color:#3556E6 font-size:13px font-weight:700 white-space:nowrap`
+      - `div`
+        `display:flex align-items:center justify-content:space-between height:32px margin-top:6px border-top:1px solid #EFF2F8`
         - `span` **text 12.5px/600** — “확인할 내용 2개”
           `font-size:12.5px font-weight:600 color:#101828`
     - `div` **TurnCard**
@@ -166,7 +172,7 @@
           `font-weight:500 color:#475467`
       - `div`
         `display:flex gap:7px margin-top:10px padding:9px 10px background:#F4F6FB border-radius:11px`
-        - `span` — “내가 직접 등록한 기준이에요. 앱 통계가 아닙니다. 출처: · 2025년 · 표본 1,200명”
+        - `span` — “내가 직접 등록한 기준입니다. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 실”
           `font-size:11px line-height:1.45 color:#626D88`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`

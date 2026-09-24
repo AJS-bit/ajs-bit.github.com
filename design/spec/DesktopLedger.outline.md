@@ -21,7 +21,7 @@
         `display:flex align-items:center gap:11px height:42px padding:0 12px border-radius:11px`
         - `span` **text 14px/500** — “홈”
           `font-size:14px font-weight:500 color:#475467`
-        - `span` **text 12px/600** — “57.9%”
+        - `span` **text 12px/600** — “31.1%”
           `font-size:12px font-weight:600 color:#697182`
       - `div`
         `display:flex align-items:center gap:11px height:42px padding:0 12px border-radius:11px`

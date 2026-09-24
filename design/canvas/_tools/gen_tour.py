@@ -40,7 +40,7 @@ def coach(target, title, body, step, last, above=False, radius=20):
         f'<span style="display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 9px; border-radius: 99px; background: {C["BRAND_SOFT"]}; '
         f'color: {C["BRAND"]}; font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em;">{icon("help", 12, C["BRAND"], 2.2)}처음 안내</span>{counter}</div>'
         f'<span style="font-size: 16px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; color: {C["INK"]};">{title}</span>'
-        f'<span style="font-size: 13px; line-height: 1.55; color: {C["INK2"]};">{body}</span>'
+        f'<span style="font-size: 13px; line-height: 1.55; color: {C["INK2"]}; word-break: keep-all;">{body}</span>'
         f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px;">'
         f'<span style="font-size: 13px; font-weight: 600; color: {C["INK3"]}; padding: 8px 4px;">건너뛰기</span>{primary}</div></div>')
     return f'<div style="position: absolute; inset: 0; z-index: 5; overflow: hidden;">{ring}{card_html}</div>'
@@ -53,13 +53,15 @@ def with_coach(html, overlay):
     return html[:k] + overlay + html[k:]
 
 
-# 실측 좌표(x, y, w, h) — 2026-09-22 · 히어로 버튼을 뺀 뒤. 홈: 히어로 296 · 달력 172 · 다음 안내 116. 세그먼트는 모서리 14, 버튼 13, 카드 20(내역 묶음 · 한도 배분 18 · 한도 근거 14 · 머리 「거래」 10).
+# 실측 좌표(x, y, w, h) — 2026-09-22 · 히어로 버튼을 뺀 뒤. 홈은 2026-09-24 다시 잼(달력 카드에 안내 한 줄 · 적기 알약 줄 40): 히어로 296 · 달력 222 · 다음 안내 116(627).
+# 세그먼트는 모서리 14, 버튼 13, 카드 20(내역 묶음 · 한도 배분 18 · 한도 근거 14 · 머리 「거래」 10).
 # 내역 2단계는 994px 목록 카드를 탭 바 위까지(490)만 강조한다.
 TOUR = {
     'Home': ('HomeCalendarStrip', '홈', [
-        ((14, 90, 362, 296), '여기가 현재 위치예요', '월급에서 이번 달 얼마나 쓸지 예상한 비율이에요. 내 목표 아래면 순항 중으로 표시돼요.', False, 20),
-        ((14, 395, 362, 172), '날짜를 누르면 바로 기록', '그날 쓴 금액을 숫자만 넣고 저장하면 끝이에요. 분류는 나중에 소비 탭에서 해도 돼요.', False, 20),
-        ((14, 576, 362, 116), '지금 할 일 한 가지', '기록이 쌓이면 가장 효과가 큰 일 하나를 골라 알려 줘요. 누르면 그 화면으로 바로 가요.', True, 20)]),
+        ((14, 90, 362, 296), '여기가 현재 위치예요', '이번 달 월급에서 지금까지 쓴 비율이에요. 막대가 내 목표 선을 넘지 않게 써 보세요. 월말 예상은 아래 칸에 있어요.', False, 20),
+        # 달력이 222 로 길어져 카드를 아래에 두면 탭 바(778~)를 덮는다(629 + 186 = 815) — 규칙대로 위(히어로 쪽)로 올린다(2026-09-24)
+        ((14, 395, 362, 222), '날짜를 누르면 바로 기록', '날짜를 누르거나 아래 + 버튼을 누르고 숫자만 넣으면 끝이에요. 분류는 나중에 소비 탭에서 해도 돼요.', True, 20),
+        ((14, 627, 362, 116), '지금 할 일 한 가지', '기록이 쌓이면 가장 효과가 큰 일 하나를 골라 알려 줘요. 누르면 그 화면으로 바로 가요.', True, 20)]),
     'Assets': ('Assets', '자산', [
         ((16, 60, 358, 42), '가진 것과 갚을 것', '자산 구성 · 부채 · 상환 전략 세 탭이에요. 부채가 있으면 상환 전략에서 갚는 순서를 정해요.', False, 14),
         ((14, 114, 362, 275), '순자산 = 자산 − 부채', '여섯 달 흐름을 그래프로 봐요. 자산이나 부채를 고치면 바로 다시 계산돼요.', False, 20),

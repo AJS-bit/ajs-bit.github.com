@@ -3,7 +3,7 @@
 원본 `canvas/DesktopHomeV5.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1440px height:1000px background:#EDF0F7 color:#101828 display:flex`
+  `width:1440px height:1070px background:#EDF0F7 color:#101828 display:flex`
   - `div`
     `width:232px background:#FFFFFF display:flex flex-direction:column padding:22px 16px 18px`
     - `div`
@@ -31,7 +31,7 @@
         `display:flex align-items:center gap:11px height:42px padding:0 12px border-radius:11px`
         - `span` **text 14px/500** — “소비”
           `font-size:14px font-weight:500 color:#475467`
-        - `span` **text 12px/600** — “57.9%”
+        - `span` **text 12px/600** — “31.1%”
           `font-size:12px font-weight:600 color:#697182`
       - `div`
         `display:flex align-items:center gap:11px height:42px padding:0 12px border-radius:11px`

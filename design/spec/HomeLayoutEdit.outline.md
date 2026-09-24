@@ -16,7 +16,7 @@
     `flex:1 min-height:0 padding:0 20px`
     - `div`
       `display:flex flex-direction:column margin-top:0px`
-      - `p` — “소비율과 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
+      - `p` — “소비율과 이번 달 소비 기록은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
         `font-size:13.5px line-height:1.5 color:#475467`
         - `br`
       - `div`

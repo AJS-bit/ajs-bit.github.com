@@ -20,7 +20,9 @@ import gen_v5 as v5
 from gen_v5 import (w, won, mark, spec_frame, case_cap, sample, memo_row, sheet_header, sheet_frame, amount_field, memo_field,
                     category_row, cat_chip, recent_row, recent_chip, RECENT, save_btn, links_row, day_done_btn, tx_row, field_label,
                     unsaved_line, neutral_notice, nowrap_btn, scrim_line, SCRIM_H)
-from gen_calendar import WD, TODAY, WEEKS, cell, calendar_card, month_bar, month_grid, status_rows
+from gen_calendar import (WD, TODAY, WEEKS, SEP_TOTAL, cell, calendar_card, month_bar, month_grid, hint, status_line, today_tail, pill_row,
+                          day_state, STATUS_FS, TODAY_TEXT, NO_RECORD, MARKS_ONLY, month_total_text, review_row as cal_review_row)
+# cal_review_row = 달력 카드의 `확인할 내용 N개 ›` 행. 이 파일의 review_row 는 확인할 내용 목록 시트(ReviewListSheet)의 행이라 다르다.
 
 NEW = ['DaySheetNoSpend', 'DaySheetNoSpendStates', 'ReviewListSheet', 'DoneCardStates', 'DaySheetStates', 'CalendarStatusLines']
 
@@ -106,11 +108,17 @@ def mini_sheet(sub, below, title='9월 8일 소비 기록'):
                      + f'<div style="padding: 12px 18px 16px; display: flex; flex-direction: column; gap: 10px;">{skip_band()}{below}</div>')
 
 
-def today_cell_note(cell_text, badge):
-    """누른 뒤 달력의 오늘 칸 — 글로 설명하지 않고 칸 그대로 보여 준다."""
-    c_ = cell(TODAY, '화', state=(cell_text, False, badge, cell_text == '0'))
-    return (f'<div style="display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: {C["INSET"]}; border-radius: 12px;">{c_}'
-            f'<span style="font-size: 12px; line-height: 1.5; color: {C["INK2"]};">홈 달력의 오늘 칸</span></div>')
+# 홈 달력의 오늘 칸(2026-09-24 — 기록 0건인 오늘은 `—`가 아니라 파란 `+`). 이체가 있으면 칸 아래에 `이체`가 붙는다.
+PLUS, PLUS_TR = NO_RECORD, ('—', False, True, False)          # 오늘 · 소비 0건(표시 전) — 이체 없음 / 이체만 있음
+ZERO_TR = ('0', False, True, True)                            # `오늘은 안 썼어요`로 표시한 뒤(이체만 있는 날)
+
+
+def today_cell_note(states, label='홈 달력의 오늘 칸'):
+    """달력의 오늘 칸 — 글로 설명하지 않고 칸 그대로 보여 준다. states 가 둘이면 전 → 뒤."""
+    cells = f'<span style="display: inline-flex; flex-shrink: 0;">{icon("right", 14, C["INK4"], 2.2)}</span>'.join(
+        cell(TODAY, '화', state=st_) for st_ in states)
+    return (f'<div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: {C["INSET"]}; border-radius: 12px;">{cells}'
+            f'<span style="font-size: 12px; line-height: 1.5; color: {C["INK2"]}; margin-left: 2px;">{label}</span></div>')
 
 
 ns_left = (
@@ -121,14 +129,14 @@ ns_left = (
 assert ns_left.count('padding: 12px 18px 6px;') == 1
 
 NS_CASES = [
-    (1, '소비도 이체도 없는 날', '목록 없이 맨 아래에 버튼만 보입니다.',
-     mini_sheet('오늘 소비는 아직 기록이 없어요', day_done_btn('오늘은 안 썼어요'))),
-    (3, '버튼을 누른 뒤', '저장 완료 카드도 토스트도 없습니다. 달력 칸의 0이 확인입니다.',
+    (1, '소비도 이체도 없는 날', '목록 없이 맨 아래에 버튼만 보입니다. 달력의 오늘 칸은 파란 +입니다.',
+     mini_sheet('오늘 소비는 아직 기록이 없어요', day_done_btn('오늘은 안 썼어요') + today_cell_note([PLUS]))),
+    (3, '버튼을 누른 뒤', '저장 완료 카드도 토스트도 없습니다. 오늘 칸의 파란 +가 0으로 바뀌는 것이 확인입니다.',
      mini_sheet(SUB_MARKED + f'<span style="display: block; margin-top: 2px;">{CONFIRMED}</span>',
-                list_block(transfer_row('저축/투자', '적금', 300000)) + today_cell_note('0', True))),
-    (1, '안 썼다고 표시한 날을 다시 열었을 때', '표시 풀기를 누르면 칸이 —(이체가 있으면 이체만)로 돌아갑니다.',
+                list_block(transfer_row('저축/투자', '적금', 300000)) + today_cell_note([PLUS_TR, ZERO_TR], '누르기 전 → 누른 뒤'))),
+    (1, '안 썼다고 표시한 날을 다시 열었을 때', '표시 풀기를 누르면 오늘 칸이 0에서 다시 파란 +로 돌아갑니다. 이체가 있으면 + 아래에 이체가 남습니다.',
      mini_sheet(f'오늘은 안 썼다고 표시했어요<span style="display: block; margin-top: 2px;">{CONFIRMED}</span>',
-                list_block(transfer_row('저축/투자', '적금', 300000)))),
+                list_block(transfer_row('저축/투자', '적금', 300000)) + today_cell_note([ZERO_TR, PLUS_TR], '표시 풀기를 누르면'))),
     (3, '소비가 한 건이라도 있는 날', '자동으로 기록된 고정비뿐이어도 이 버튼 대신 다 적었어요가 보입니다.',
      mini_sheet('오늘 1건 10,900원',
                 list_block(tx_row('구독', '음악 구독', 10900, last=True, h=LIST_H)) + day_done_btn('9월 8일 다 적었어요'))),
@@ -136,7 +144,7 @@ NS_CASES = [
 NS_MEMO = [
     (1, '둘째 줄은 그날 소비 합계 자리입니다. 소비가 0건이면 합계 대신 이 문장이 오고, 이체가 있으면 이체 금액을 (소비율 제외)와 함께 덧붙입니다.'),
     (2, '이체 · 상환 행은 소비율 제외 배지와 회색 금액으로 그립니다. 칸 숫자에도 소비 합계에도 들어가지 않습니다.'),
-    (3, '오늘은 안 썼어요는 그 날짜 소비 거래가 0건일 때만 보입니다. 0원 거래를 만들지 않고 그 날짜에 표시만 남깁니다. '
+    (3, '오늘은 안 썼어요는 그 날짜 소비 거래가 0건일 때만 보입니다. 0원 거래를 만들지 않고 그 날짜에 표시만 남깁니다 — 달력 오늘 칸의 파란 +가 0이 되고, 표시를 풀면 다시 +입니다. '
         '표시한 뒤 소비를 저장하면 표시가 풀리고(상태 줄 9월 8일 표시가 풀렸어요 · 다시 표시), 마지막 소비를 지워 0건이 된 날은 자동으로 표시하지 않고 '
         '표시를 풀었어요 · 안 썼으면 「오늘은 안 썼어요」를 보여 줍니다.'),
 ]
@@ -166,7 +174,8 @@ def grid2(samples, cols=2):
 
 
 w('DaySheetNoSpendStates', spec_frame(
-    1200, 1160, '안 쓴 날을 표시하는 경우', '소비가 한 건도 없는 날에만 기록 창 맨 아래에 오늘은 안 썼어요가 보입니다. 누르면 달력 칸이 —에서 0으로 바뀝니다.',
+    1200, 1190, '안 쓴 날을 표시하는 경우',      # 2026-09-24 후속 1160 → 1190(오늘 칸 + → 0 → + 견본 · 자연 높이 1164)
+    '소비가 한 건도 없는 날에만 기록 창 맨 아래에 오늘은 안 썼어요가 보입니다. 누르면 달력의 오늘 칸이 파란 +에서 0으로 바뀝니다.',
     f'<div style="display: flex; gap: 32px; align-items: flex-start;">{ns_left}'
     f'{grid2([(case_cap(n, t, d), pic) for n, t, d, pic in NS_CASES])}</div>{memo_card(NS_MEMO)}', sub_w=760), keep_all=True)
 
@@ -245,14 +254,15 @@ MAIN_BASE = f'9월 8일 · {b7("12,000원")} 저장 · 오늘 5건 49,000원'
 # 왼쪽 큰 카드 = DoneCard 장과 같은 저장(분류를 고르지 않은 편의점 12,000원) — 셋째 줄은 §4-4 의 4순위 문장
 done_base = done_card('저장했어요', MAIN_BASE, v5.DONE_THIRD, [('한 건 더', 'main'), ('방금 기록한 12,000원 취소', 'cancel')])
 assert v5.DONE_CARD.count(v5.DONE_THIRD) == 1 and v5.DONE_CARD.count('방금 기록한 12,000원 취소') == 1      # DoneCard 장과 같은 문구
-assert '소비율 57.9%' not in v5.DONE_CARD
+assert '월급의' not in v5.DONE_CARD      # 이 장의 저장은 4순위 문장이 먼저라 6순위 줄이 없다
 
 THIRD = [('마감한 달에 저장', '8월 다시 마감 ›'),
          ('지난달 날짜로 저장', '8월 합계와 최근 3개월 평균이 바뀌어 이번 달 예상도 달라질 수 있어요'),
          ('0~5시에 오늘로 저장', '어제로 옮기기 ›'),
          ('분류 안 함으로 저장', '소비에는 이미 포함됐어요 · 분류하면 예상을 다시 계산해요'),
          ('고정비 카테고리로 저장', '매달 반복으로 만들기 ›'),
-         ('그 밖에 · 예상 기준이 확인된 달', '소비율 57.9% → 58.2%')]
+         ('그 밖에 · 월급 있음 · 저장 전 기록 1건 이상', '월급의 31.1% → 31.4%')]      # 지금까지 쓴 돈 ÷ 월급, 저장 전 → 뒤(1,120,000 → 1,132,000 · 2026-09-24 — 예상 기준 조건 없음)
+# 2026-09-24 최종 점검 후속: 6순위 줄은 저장 전 이번 달 기록이 0건이면(그달 첫 기록 — 0%를 보이지 않음) 없고, 전 · 후 글자가 같아도(31.1% → 31.1%) 없다(앱 navi-commit-policy)
 PICTURED = 3      # 왼쪽 큰 카드(= DoneCard 장)가 걸린 순위 — 분류 안 함으로 저장
 assert THIRD[PICTURED][1] == v5.DONE_THIRD
 
@@ -288,9 +298,10 @@ DONE_CASES = [
     (1, '분류하기에서 저장했을 때', '제목에 건수가 붙고 행동은 취소 하나뿐입니다.',
      # 둘째 줄은 계획 §10 「9판 (b) 시안에서 정해 승인된 것」 표 원문 그대로 — ClassifySheet(gen_v5.CLS_*)의 7건을 다 정했을 때와 맞는다: 커피 3 + 메모 없는 3,000원 = 카페/간식 4건 · 간식 + 편의점 = 식비 2건 · 버스 = 교통 1건
      done_card('분류했어요 · 7건', '카페/간식 4건 · 식비 2건 · 교통 1건', None, [('7건 분류 취소', 'cancel')])),
-    (2, '예상 기준이 확인되기 전인 달', '소비율 줄이 없습니다. 다른 셋째 줄 조건도 없으면 두 줄로 끝납니다.',
-     done_card('저장했어요', f'9월 8일 · {b7("12,000원")} 저장 · 오늘 2건 17,000원', None, [('한 건 더', 'main'), ('방금 기록한 12,000원 취소', 'cancel')])),
-    (3, '월급을 아직 안 넣었을 때', '한 건 더 자리에 월급 넣기가 옵니다. 소비율 줄은 없습니다.',
+    # 9월 5일에 처음 연 사람(HeroInsufficient)이 커피 5,000원 뒤에 12,000원을 분류해 저장 — 이번 달 쓴 돈 5,000 → 17,000원 = 월급의 0.1% → 0.5%
+    (2, '예상 기준이 확인되기 전인 달', '월급의 몇 %인지는 지금까지 쓴 돈이라 이때도 나옵니다. 월말 예상은 말하지 않습니다.',
+     done_card('저장했어요', f'9월 8일 · {b7("12,000원")} 저장 · 오늘 2건 17,000원', '월급의 0.1% → 0.5%', [('한 건 더', 'main'), ('방금 기록한 12,000원 취소', 'cancel')])),
+    (3, '월급을 아직 안 넣었을 때', '한 건 더 자리에 월급 넣기가 옵니다. 월급의 몇 % 줄은 없습니다.',
      done_card('저장했어요', f'9월 8일 · {b7("5,000원")} 저장 · 오늘 1건 5,000원', None, [('월급 넣기 &rsaquo;', 'main'), ('방금 기록한 5,000원 취소', 'cancel')])),
     (3, '취소를 눌러 기록이 지워졌을 때', '같은 카드가 결과를 알립니다. 그 날짜의 확인 표시는 풀립니다.',
      done_card('12,000원 기록을 취소했어요')),
@@ -299,13 +310,15 @@ DONE_CASES = [
 ]
 DONE_MEMO = [
     (1, '제목은 세 가지입니다 — 기록 창 저장은 저장했어요, 수정 저장은 고쳤어요, 분류하기 저장은 분류했어요 · 7건. 뒤의 둘은 행동이 취소 버튼뿐입니다. 카드는 하나이고 새 저장이 생기면 자리를 바꿉니다.'),
-    (2, '셋째 줄은 한 줄만 씁니다. 왼쪽 표에서 위에 있는 조건이 먼저입니다. 소비율 줄은 앞선 조건이 하나도 없고 예상 기준이 확인된 달에만 나오며 월급 미입력 · 이력 부족에는 없습니다. 분류를 고르지 않고 저장하면 예상 기준이 확인된 달에도 4순위 문장이 먼저입니다.'),
+    (2, '셋째 줄은 한 줄만 씁니다. 왼쪽 표에서 위에 있는 조건이 먼저입니다. 6순위 월급의 N% → M%는 지금까지 쓴 돈 ÷ 월급(홈 큰 숫자와 같은 <span style="white-space: nowrap;">값)의</span> 저장 전 → 뒤이고, 앞선 조건이 하나도 없고 월급을 넣었을 때 나옵니다 — 예상 기준을 확인하기 전인 달에도 나오고 월급 미입력에는 없습니다. '
+        '저장 전 이번 달 기록이 0건이면(그달 첫 기록) 이 줄은 없습니다 — 0%를 보이지 않습니다. 전 · 후 글자가 같아도(31.1% → 31.1% · 0.1% 미만 → 0.1% 미만) 없습니다. 분류를 고르지 않고 저장하면 4순위 문장이 먼저입니다.'),
     (3, '취소는 누르는 순간 방금 그 기록만 검사합니다. 금액 · 날짜 · 분류 · 계좌 연결이 저장 직후와 하나라도 다르면 취소하지 않습니다. '
         '카드는 자동으로 닫히지 않습니다(닫기 · 다음 저장 · 다른 탭 이동까지). 색으로 평가하지 않고 사실만 씁니다. 다 적었어요 · 안 썼어요는 카드 없이 달력 칸의 표시가 확인입니다.'),
 ]
 
 w('DoneCardStates', spec_frame(
-    1200, 1090, '저장 완료 카드의 경우들', '저장이 끝나면 홈 아래쪽에 뜨는 카드 하나가 제목 · 셋째 줄 · 행동만 바꿔 가며 모든 경우를 맡습니다.',
+    1200, 1100, '저장 완료 카드의 경우들',      # 2026-09-24 최종 점검 후속 1090 → 1100(메모 2 · 6순위 줄이 없는 두 경우 · 자연 높이 1074)
+    '저장이 끝나면 홈 아래쪽에 뜨는 카드 하나가 제목 · 셋째 줄 · 행동만 바꿔 가며 모든 경우를 맡습니다.',
     f'<div style="display: flex; gap: 32px; align-items: flex-start;">{done_left}'
     f'<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 22px;">'
     f'{grid2([(case_cap(n, t, d), pic) for n, t, d, pic in DONE_CASES])}{memo_card(DONE_MEMO)}</div></div>', sub_w=760), keep_all=True)
@@ -462,45 +475,72 @@ def st(text, link=None):
 
 
 _base = calendar_card(False)
-STATUS_OPEN = f'<div style="font-size: 11px; line-height: 1.5; color: {C["INK2"]}; margin-top: 8px;">오늘 4건 37,000원</div>'
+STATUS_OPEN = f'<span style="flex: 1; min-width: 0; font-size: {STATUS_FS}px; line-height: 1.5; color: {C["INK2"]};">{TODAY_TEXT}</span>'
 assert _base.count(STATUS_OPEN) == 1
-status_left_card = _base.replace(STATUS_OPEN, f'<div style="position: relative;">{STATUS_OPEN}{mark(1, pos="position: absolute; top: 0; right: 0;")}</div>')
+status_left_card = _base.replace(STATUS_OPEN, STATUS_OPEN.replace(f'{TODAY_TEXT}</span>', f'{TODAY_TEXT}{mark(1, pos="margin-left: 6px; vertical-align: -3px;")}</span>'))
 
-future_card = card(month_bar('2026년 9월', prev_on=True, next_on=False) + month_grid('sep', weeks=slice(1, 3))
-                   + status_rows(text='아직 오지 않은 날은 적을 수 없어요'), pad='13px 14px 13px')
+# 펼친 달력에서 아직 오지 않은 날을 눌렀을 때 — 그 달 합계 줄은 그대로, 오늘 합계 자리에 3초 안내(알약은 그대로) · `확인할 내용 2개` 행도 그대로
+# (2026-09-24 최종 점검 후속 — 안내가 떠 있는 동안 행이 사라지는 것처럼 보이지 않게. 행이 없는 견본은 샘플 · 처음 쓰는 날뿐)
+future_card = card(month_bar('2026년 9월', prev_on=True, next_on=False) + hint(mt=6) + month_grid('sep', weeks=slice(1, 3))
+                   + status_line(f'9월 기록한 소비 {SEP_TOTAL:,}원') + today_tail(day_state('sep', TODAY), '아직 오지 않은 날은 적을 수 없어요', mt=8)
+                   + cal_review_row(2),
+                   pad='13px 14px 13px')
+assert '확인할 내용 2개' in future_card
+
+# 샘플 문장은 늘 위 줄(버튼일 때도 알약일 때도) — 샘플에서 그날 첫 기록을 저장해 버튼이 알약으로 바뀌어도 카드 높이가 같다
+# (2026-09-24 통합 점검 — 알약 옆에 두면 첫 저장에 카드가 한 줄 줄어든다). 알약 옆은 오늘 합계.
+SAMPLE_TEXT = '샘플에서는 확인 표시를 세지 않아요 · 카테고리는 지금 골라요'
+_sample_base = calendar_card(False, review=0)
+_pill = pill_row(TODAY_TEXT, mt=10)
+assert _sample_base.count(_pill) == 1
+sample_card = _sample_base.replace(_pill, status_line(SAMPLE_TEXT, mt=8) + pill_row(TODAY_TEXT, mt=6))
 
 STATUS_CASES = [
-    ('오늘 소비 기록이 아직 없을 때', '오늘 칸은 회색 —입니다.',
-     calendar_card(False, states={TODAY: ('—', False, False, False)}, status='오늘 아직 기록이 없어요')),
-    ('오늘을 안 쓴 날로 표시했을 때', '오늘 칸은 0입니다.',
+    ('오늘 소비 기록이 아직 없을 때', '오늘 칸에 파란 +가 생기고, 문장 대신 「+ 오늘 쓴 돈 적기」 버튼이 옵니다.',
+     calendar_card(False, today_empty=True)),
+    ('오늘을 안 쓴 날로 표시했을 때', '오늘 칸은 0이고 알약은 「+ 적기」입니다.',
      calendar_card(False, states={TODAY: ('0', False, False, True)}, status='오늘은 안 썼다고 표시했어요')),
     ('저녁 6시가 지났고 오늘 기록이 있을 때', '합계 뒤에 한 문장으로 이어 붙습니다. 누르면 바로 표시됩니다.',
      calendar_card(False, status=st('오늘 4건 37,000원', '9월 8일 다 적었어요 &rsaquo;'))),
     ('표시한 날의 기록이 바뀌었을 때', '안 쓴 날로 표시한 뒤 4,500원을 적은 경우입니다.',
      calendar_card(False, states={TODAY: ('4,500', False, False, False)}, status=st('9월 8일 표시가 풀렸어요', '다시 표시'))),
-    ('아직 오지 않은 날을 눌렀을 때', '기록 창은 열리지 않고 3초 동안 상태 줄 전체를 대신합니다.', future_card),
-    ('샘플 데이터로 둘러보는 중일 때', '언제나 이 문장입니다. 확인할 내용 행은 없습니다.',
-     calendar_card(False, review=0, status='샘플에서는 확인 표시를 세지 않아요 · 카테고리는 지금 골라요')),
+    ('아직 오지 않은 날을 눌렀을 때', '기록 창은 열리지 않고 3초 동안 오늘 합계 자리에 이 문장이 옵니다.', future_card),
+    ('샘플 데이터로 둘러보는 중일 때', '언제나 이 문장이 위 줄에 있고, 알약 옆은 오늘 합계입니다. 확인할 내용 행은 없습니다.', sample_card),
+    # 2026-09-24 승인 그림(달력)이 그렸지만 생성기에 없던 두 상태 — gen_calendar.calendar_card 의 today_empty · since
+    ('처음 쓰는 날 · 시작일이 오늘일 때', '시작일 전 날짜는 합계 없이 날짜만 옅게 보입니다. 오늘 칸의 +와 버튼으로 시작하고, 확인할 내용 행은 없습니다.',
+     calendar_card(False, today_empty=True, since=TODAY, review=0)),
 ]
+# 펼친 달력 · 오늘 기록이 아직 없을 때 — 왼쪽 열 맨 아래(카드가 길어 오른쪽 격자에 두면 한 줄이 통째로 늘어난다)
+FIRST_OPEN = calendar_card(True, today_empty=True)
+assert month_total_text(9, SEP_TOTAL - 37_000) in FIRST_OPEN and '오늘 쓴 돈 적기' in FIRST_OPEN and '더 적기' not in FIRST_OPEN
+assert month_total_text(9, 0) == '9월 기록이 아직 없어요'
 # 그림의 표식은 1 하나뿐이다 — 첫 줄에만 1 을 달고 나머지 두 줄은 같은 1번의 이어지는 설명(번호 없이 같은 들여쓰기).
 STATUS_MEMO = [
-    (1, '상태 줄은 언제나 한 문장입니다. 회색 작은 글씨(11px)이고 평가하는 말이나 느낌표를 쓰지 않습니다.'),
-    (None, '달력을 펼치면 앞에 그 달 합계가 붙습니다(9월 기록한 소비 124,000원 · 오늘 4건 37,000원). 지난달을 볼 때는 8월 합계만 말합니다. '
-        '그 달에 표시만 있고 소비 기록이 0건이면 표시만 있고 기록은 없어 소비율은 —예요를 함께 씁니다.'),
-    (None, '표시가 풀렸어요 · 3초 안내 · 샘플 문장은 어느 달을 보든 상태 줄 전체를 대신합니다. 저장 실패는 여기가 아니라 기록 창 안에 남습니다.'),
+    (1, '상태 줄은 언제나 한 문장입니다. 회색 12.5px이고 평가하는 말이나 느낌표를 쓰지 않습니다. 오늘 기록이 0건이면(안 썼어요 표시가 아니면) 문장 대신 '
+        '「+ 오늘 쓴 돈 적기」 <span style="white-space: nowrap;">버튼(40)이</span> 오고, 기록이 있으면 문장 오른쪽에 「+ 더 적기」(안 썼어요 표시면 「+ 적기」) 알약이 붙습니다. 알약 줄도 높이 40이라 저장해도 카드 높이가 그대로입니다.'),
+    (None, f'달력을 펼치면 그 위에 그 달 합계 한 줄(9월 기록한 소비 {SEP_TOTAL:,}원)이 더 있고, 오늘 합계와 알약(또는 버튼)은 그 아래 줄입니다. 지난달을 볼 때는 8월 합계만 말하고 버튼 · 알약이 없습니다. '
+        f'그 달 소비 기록이 0건이면 합계 줄은 0원이 아니라 「{month_total_text(9, 0)}」이고, 안 썼어요 표시만 있으면 「{MARKS_ONLY}」를 붙입니다(버튼일 때는 합계 줄 끝, 알약일 때는 오늘 줄 끝).'),
+    (None, '표시가 풀렸어요 · 3초 안내는 어느 달을 보든 오늘 합계 자리를 대신합니다 — 알약 옆 같은 줄이라 줄 높이 40이 그대로이고, 펼친 달력의 그 달 합계 줄과 확인할 내용 행도 그대로입니다. '
+        '버튼이 있을 때(오늘 0건)는 버튼 위 한 줄입니다. 샘플 문장은 늘 위 줄이고 알약 옆은 오늘 합계라, 샘플에서 첫 기록을 저장해도 카드 높이가 같습니다. 저장 실패는 여기가 아니라 기록 창 안에 남습니다.'),
 ]
-status_left = (
-    f'<div style="width: 362px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;">{status_left_card}'
-    f'<p style="margin: 2px 2px 8px; font-size: 12px; line-height: 1.5; color: {C["INK3"]};">상태 줄은 '
-    f'<b style="font-weight: 600; color: {C["INK2"]};">날짜 칸 아래 한 줄</b>입니다. 그림은 평소(오늘 기록이 있고 저녁 6시 전)입니다.</p>'
-    f'{memo_card(STATUS_MEMO)}</div>')
+
 
 def cap(title, desc):
     return (f'<div><div style="font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: {C["INK"]};">{title}</div>'
             f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; margin-top: 3px;">{desc}</div></div>')
 
 
+status_left = (
+    f'<div style="width: 362px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;">{status_left_card}'
+    f'<p style="margin: 2px 2px 8px; font-size: 12px; line-height: 1.5; color: {C["INK3"]};">상태 줄은 '
+    f'<b style="font-weight: 600; color: {C["INK2"]};">날짜 칸 아래 한 줄</b>입니다. 그림은 평소(오늘 기록이 있고 저녁 6시 전)입니다.</p>'
+    f'{memo_card(STATUS_MEMO)}'
+    f'<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px;">'
+    + cap('펼친 달력 · 오늘 기록이 아직 없을 때', '그 달 합계 한 줄 아래에 버튼이 옵니다. 오늘 칸에는 파란 +. 합계는 오늘을 뺀 그 달 기록입니다.')
+    + f'{FIRST_OPEN}</div></div>')
+
 w('CalendarStatusLines', spec_frame(
-    1200, 1050, '달력 아래 한 줄이 바뀌는 경우', '접어 둔 달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장이 있습니다. 아래 경우에는 그 문장이 바뀝니다.',
+    1200, 1570, '달력 아래 한 줄이 바뀌는 경우',      # 2026-09-24 1050 → 1160(견본 카드마다 안내 줄 · 적기 줄 40) → 1500(처음 쓰는 날 · 펼친 달력 오늘 0건 견본) → 1540(최종 점검 후속 · 미래 견본의 확인할 내용 행 · 메모) → 1570(통합 점검 · 샘플 문장 위 줄 · 자연 높이 1543.5)
+    '접어 둔 달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장과 적기 알약(오늘 기록이 없으면 버튼)이 있습니다. 아래 경우에는 그 줄이 바뀝니다.',
     f'<div style="display: flex; gap: 32px; align-items: flex-start;">{status_left}'
     f'{grid2([(cap(t, d), pic) for t, d, pic in STATUS_CASES])}</div>', sub_w=760), keep_all=True)

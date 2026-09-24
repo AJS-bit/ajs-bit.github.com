@@ -182,11 +182,12 @@ hc_inner = hc_body[hc_body.index('>') + 1:]
 # 달력이 들어오면서 홈이 844 를 넘는다. 위에서부터 그리면 이 장이 보여 주려는 아래 카드(한도 · 순자산 · 상환 계획)가 잘리므로
 # HomeCalendar 처럼 '아래로 스크롤한 상태'로 그린다 — 머리는 밀려 올라가고, 본문은 아래 맞춤(flex-end)이라 넘치는 만큼 히어로 윗단이 잘린다.
 HC_CONTENT = '<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; padding: 0 14px; overflow: hidden;">'
-# 아래 패딩 27px(허용 20~35) — 절단선이 히어로 큰 숫자 줄(57.9% · 여유)과 그다음 줄 사이의 빈 띠에 와서, 프레임 맨 위에 글자 아랫부분이 남지 않는다.
-# 12px 이면 절단선이 54px 숫자 줄을 지나 글자 밑동 약 8px 이 남는다. 본문 높이가 바뀌면 이 값을 다시 잰다.
+# 아래 패딩 32px(허용 20~35) — 절단선이 히어로 큰 숫자 줄(31.1% · 28.9%p 남음)과 설명 줄 사이의 빈 띠(히어로 위 끝에서 약 105px)에 와서, 프레임 맨 위에 글자 아랫부분이 남지 않는다.
+# 실측(2026-09-24 · 달력 카드 172 → 222): 큰 숫자 줄 글자 밑동 ≈ 98 · 설명 줄 글자 윗단 ≈ 113(히어로 위 끝 기준). 27px 이면 절단선이 99.8 에 와서 `남음` 밑동이 남는다.
+# 본문 높이가 바뀌면 이 값을 다시 잰다.
 assert HC_CONTENT.count('padding: 0 14px;') == 1
-HOME_SCROLLED = HC_CONTENT.replace('padding: 0 14px;', 'justify-content: flex-end; padding: 0 14px 27px;')
-assert hc_inner.count(HC_CONTENT) == 1 and '이번 달 달력' in hc_inner
+HOME_SCROLLED = HC_CONTENT.replace('padding: 0 14px;', 'justify-content: flex-end; padding: 0 14px 32px;')
+assert hc_inner.count(HC_CONTENT) == 1 and '이번 달 소비 기록' in hc_inner
 hc_scrolled = '\n  ' + hc_inner[hc_inner.index(HC_CONTENT):].replace(HC_CONTENT, HOME_SCROLLED)
 w('HomeStocksOff', frame(hc_scrolled + nav_v4(0, stocks=False)))
 
@@ -529,7 +530,8 @@ FRAG = f'border: 1px solid {C["INPUT"]}; border-radius: 22px; overflow: hidden; 
 
 # 특수한 상황 (4단계) — 경고 띠 3종 · 자료 없음 2종 · 여러 목록. 왼쪽은 실제 화면 조각, 오른쪽은 번호별 견본.
 band_emergency = guardrail(GUARD_EMERGENCY)
-band_over = guardrail('이번 달 소비율이 63.2%예요. 목표 60%를 넘었어요.', '한도 보기')
+# 가드레일은 월말 예상 기준(2026-09-24 — 홈 큰 숫자는 지금까지 쓴 돈이라 `소비율`만 쓰면 홈 숫자와 헷갈린다)
+band_over = guardrail('월말 예상 소비율이 63.2%예요. 목표 60%를 넘어요.', '한도 보기')
 row_short = card(list_rows([GROWTH[5]]), pad='2px 14px')
 row_nodiv = card(list_rows([DIVIDEND[3]]), pad='2px 14px')
 list_badges = (f'<div style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">'
@@ -546,7 +548,7 @@ states_left = (cap('주식 홈 · 위쪽') + home_frag + SPACER
                + cap('종목 상세 · 맨 위') + name_bar + marked(3, detail_top))
 states_cells = [
     spec_cell(1, '비상금이 모자랄 때', '비상금을 다 채우기 전까지 주식 홈 위쪽에 보여요. 누르면 목적지로 가요.', band_emergency),
-    spec_cell(1, '이번 달 소비가 목표를 넘었을 때', '소비율이 목표를 넘은 달에 보여요. 누르면 소비 한도로 가요.', band_over),
+    spec_cell(1, '이번 달 소비가 목표를 넘을 때', '월말 예상 소비율이 목표를 넘는 달에 보여요. 누르면 소비 한도로 가요.', band_over),
     spec_cell(1, '둘 다 괜찮을 때 — 띠가 나타나지 않아요', '띠 자리에 다른 안내를 넣지 않아요. 아래 카드가 그대로 올라와요.',
               f'<div style="display: flex; flex-direction: column; gap: 10px;">{capacity_band()}{mine_summary}</div>'),
     spec_cell(2, '상장한 지 얼마 안 돼 기록이 짧을 때', '자료가 없는 기준은 충족 수에서 빼고, 몇 개가 빠졌는지 배지 아래에 적어요. 0으로 세지 않아요.', row_short),

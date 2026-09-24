@@ -8,6 +8,7 @@ ClassifySheet · HeroInsufficient · HeroFootnotes)의 조각을 그대로 옮�
 그 뒤 darken.py 로 DarkComponents 를 다시 만든다.
 """
 import pathlib, re
+from gen_calendar import cell as _cal_cell, TODAY as _TODAY      # 오늘 · 기록 0건(+) 칸 견본 — 홈 장에는 없는 상태라 같은 조각에서 만든다(파일을 쓰지 않는 모듈)
 
 CANVAS = pathlib.Path(__file__).resolve().parent.parent
 
@@ -32,7 +33,7 @@ strip_s=R('HomeCalendarStrip'); month_s=R('HomeCalendar'); day_s=R('DaySheet'); 
 i=strip_s.find('펼치기'); strip_card=balanced(strip_s, strip_s.rfind('<div style="background: #FFFFFF',0,i))
 i=month_s.find('접기'); month_card=balanced(month_s, month_s.rfind('<div style="background: #FFFFFF',0,i))
 # ① 칸 — 스트립 카드의 칸을 그대로
-cells_row=balanced(strip_card, strip_card.index('<div style="display: flex; justify-content: space-between; margin-top: 8px;">'))
+cells_row=balanced(strip_card, strip_card.index('<div style="display: flex; justify-content: space-between; margin-top: 10px;">'))
 cells=[]; pos=cells_row.index('>')+1
 while True:
     k=cells_row.find('<div style="width: 44px; height: 56px;',pos)
@@ -42,13 +43,17 @@ assert len(cells)==7
 def find(txt): 
     r=[c for c in cells if txt in c]; assert r, txt; return r[0]
 c_sum=find('>5.9만<'); c_none=find('>2</span>'); c_zero=find('>0</span>'); c_check=find('>4,500<'); c_today=find('#E9EDFD')
-assert '이체' in c_zero and '—' in c_none
+assert '이체' in c_zero and '—' in c_none and 'inset 0 0 0 1.5px #3556E6' in c_today
+c_add=_cal_cell(_TODAY, '화', state=('—', False, False, False))      # 오늘 · 아직 안 적음 — 파란 원 +
+assert 'inset 0 0 0 1.5px #3556E6' in c_add and c_add.count('border-radius: 99px; background: #3556E6') == 1
 c_focus=c_sum.replace('background: transparent; ','background: transparent; box-shadow: inset 0 0 0 1.5px #3556E6, 0 0 0 3px rgba(53,86,230,.16);',1)
 assert c_focus!=c_sum
 CAP='<span style="font-size: 10.5px; line-height: 1.3; color: #626D88; text-align: center; white-space: nowrap;">%s</span>'
-def cellcol(c,cap): return '<div style="display: flex; flex-direction: column; align-items: center; gap: 5px; width: 50px;">'+c+CAP%cap+'</div>'
-cell_states=('<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 12px 6px 10px; display: flex; justify-content: space-between;">'
-  + cellcol(c_sum,'합계') + cellcol(c_none,'미입력') + cellcol(c_zero,'안 씀 · 이체') + cellcol(c_check,'다 적음') + cellcol(c_today,'오늘') + cellcol(c_focus,'포커스') + '</div>')
+# 칸 일곱 개를 4 + 3 격자로(2026-09-24 최종 점검 후속 — 50px 열에 `오늘 · 안 적음`이 넘치고 `포커스`만 둘째 줄에 떨어지던 것). 열 77.5 · 카드 높이 그대로
+def cellcol(c,cap): return '<div style="display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0;">'+c+CAP%cap+'</div>'
+cell_states=('<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 12px 6px 10px; display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 10px;">'
+  + cellcol(c_sum,'합계') + cellcol(c_none,'미입력') + cellcol(c_zero,'안 씀 · 이체') + cellcol(c_check,'다 적음')
+  + cellcol(c_today,'오늘') + cellcol(c_add,'오늘 · 안 적음') + cellcol(c_focus,'포커스') + '</div>')
 
 # ⑤ 하루 시트 — 흰 시트 부분만(키보드 · 배경 제외)
 a=day_s.index('<div style="flex: 1; min-height: 0; background: #FFFFFF; border-radius: 26px 26px 0 0;')
@@ -82,16 +87,16 @@ assert '안내 줄</span>' not in tail
 
 NUM='<span style="flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #101828; color: #FFFFFF; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center;">%s</span>'
 D={
- 1:('CalendarCell','스트립 44 × 56 · 월 달력은 카드 안쪽 ÷ 7(390 = 47.7 · 360 = 44.6 · 320 = 39.4) × 56, 큰 글자 × 72. 요일 10/500 · 날짜 11/500(월 달력 12, 오늘 굵게) · 합계 11/600 줄 높이 13. 수식어 줄 12px 은 비어도 자리를 둡니다. 미입력 —(ink-3) · 안 씀 0(ink-2) · ✓ · 이체(ink-2) · 오늘 brand-soft · 포커스 링 3px.'),
- 2:('RecentStrip · MonthCalendar · DayList','접힘은 7칸(간격 0 · 오늘이 오른쪽 끝) + 제목 오른쪽 「펼치기 ▾」. 펼침은 머리줄(‹ 월 › 32 × 32 · 「접기 ▴」) + 요일 줄 약 21 + 7열 grid, 주마다 line-soft 1px. 날짜 목록은 큰 글자에서 「목록으로 보기」를 고른 때만.'),
- 3:('StatusLine','meta 11 / 400 · ink-2 · 위 간격 8 · 한 문장.'),
- 4:('ReviewRow','높이 32(= 24 + 간격 8) · 위 선 line-soft · 12.5 / 600 · ink · 주황 없음. 누르는 영역은 44.'),
- 5:('DaySheet','위 모서리 26 · 손잡이 38 × 4 · 제목 18 / 700 · 금액 칸 48 · 메모 칸 44 · 저장 버튼 52(radius 14 · 16 / 600). 키보드가 열린 상태가 기본.'),
+ 1:('CalendarCell','스트립 44 × 56 · 월 달력은 카드 안쪽 ÷ 7(390 = 47.7 · 360 = 44.6 · 320 = 39.4) × 56, 큰 글자 × 72. 요일 10/500 · 날짜 11/500(월 달력 12, 오늘 굵게) · 합계 11/600 줄 높이 13. 수식어 줄(스트립 9 · 월 달력 12)은 비어도 자리를 둡니다. 미입력 —(ink-3) · 안 씀 0(ink-2) · ✓ · 이체(ink-2) · 오늘 brand-soft + 안쪽 테두리 1.5px brand(늘) · 오늘 기록 0건(안 썼어요 아님)이면 — 대신 파란 원 +(지름 20 · 큰 글자 24, 이체나 ✓ 와 함께면 16 · 칸 크기 불변) · 누르는 순간 테두리 2px&nbsp;· 포커스 링 3px.'),
+ 2:('RecentStrip · MonthCalendar · DayList','접힘은 제목 「이번 달 소비 기록」 + 오른쪽 「펼치기 ▾」 + 안내 한 줄 「날짜를 누르면 그날 쓴 돈을 적어요」(12 · ink-3) + 7칸(간격 0 · 오늘이 오른쪽 끝 · 위 간격 10). 펼침은 머리줄(‹ 월 › 32 × 32 · 「접기 ▴」) + 같은 안내 한 줄 + 요일 줄 약 21 + 7열 grid, 주마다 line-soft 1px. 날짜 목록은 큰 글자에서 「목록으로 보기」를 고른 때만.'),
+ 3:('StatusLine · 적기 버튼','상태 문장 12.5 / 400 · ink-2 · 한 문장. 오늘 기록 0건(안 썼어요 <span style="white-space: nowrap;">아님)이면</span> 문장 대신 가득 찬 폭 버튼 「+ 오늘 쓴 돈 적기」(40 · 반경 12&nbsp;· brand-soft · brand 14 / 700 · button 요소 · 누르면 오늘 하루 시트). 기록이 있으면 문장 오른쪽에 알약 「+ 더 적기」(안 썼어요 표시면 「+ 적기」 · 32 · 13 / 700) — 그 줄도 높이 40이라 저장 전후 카드 높이가 같습니다. 펼친 달력은 그 위에 그 달 합계 한 줄. 지난달을 볼 때는 버튼 · 알약 없음.'),
+ 4:('ReviewRow','높이 32 · 위 간격 6 · 위 선 line-soft · 12.5 / 600 · ink · 주황 없음. 누르는 영역은 44.'),
+ 5:('DaySheet','위 모서리 26 · 손잡이 38 × 4 · 제목 18 / 700 · 금액 칸 48 · 메모 칸 44&nbsp;· 저장 버튼 52(radius 14 · 16 / 600). 키보드가 열린 상태가 기본.'),
  6:('ColorChipRow','칩 높이 32 · radius 8 · 색 점 8px + 이름 12.5 / 500 · 자주 쓴 3개 + 「전체 ›」. 색만으로 뜻을 전하지 않습니다.'),
  7:('RecentEntryChip','높이 32 · radius 8 · inset 배경 · 메모 + 금액(600) + 색 점 7px + 카테고리 이름 11 / 500(분류가 없으면 점 없이 「분류 안 함」 11px). 색만으로 뜻을 전하지 않습니다.'),
  8:('DoneCard','ink 배경 · radius 16 · 제목 14 / 700 + 닫기 · 둘째 줄 13.5 · 버튼 높이 36(주 행동 + 방금 기록 취소). 라이트 · 다크에서 같은 모양.'),
- 9:('ClassifyGroupRow','묶음 행 높이 52 · 제목 14 / 600 + 건수 12 · 오른쪽 추천 칩 30 · 펼치면 건별 행 40(체크 22 · 제외는 disabled 색).'),
- 10:('HeroInsufficient','히어로의 자리 · 모양 그대로. 큰 숫자 = 이번 달 기록한 소비(0건이면 「아직 기록이 없어요」) · 보조 = 월급의 N%(월급이 없으면 없음) · 항로 바는 목표 눈금만 · 월말 예상과 여유는 — · 순항 배지 없음.'),
+ 9:('ClassifyGroupRow','묶음 행 높이 52 · 제목 14 / 600 + 건수 12 · 오른쪽 추천 칩 30&nbsp;· 펼치면 건별 행 40(체크 22 · 제외는 disabled 색).'),
+ 10:('HeroInsufficient','평소 히어로와 같은 틀(2026-09-24). 머리말 「현재 위치」 · 큰 숫자 = 지금까지 쓴 돈 ÷ 월급(0 < x < 0.05 면 0.1 + 「% 미만」 · 0건이면 「아직 기록이 없어요」) · 설명 줄 「월급 360만원 중 5,000원 썼어요」 · 오른쪽 「목표까지 59.9%p 남음」 · 게이지 채움 · 순자산 대비는 평소와 같은 규칙. 다른 점은 배지 없음 · 월말 예상과 월말 예상 여유 — · 설명 줄 아래 각주 두 줄(12 · ink-3).'),
  11:('HomeHero 조건부 각주','기준 조정 줄 아래에 meta 11 / 1.4 · ink-3 · 위 간격 4 로 한 줄씩. 기존 요소 치수는 그대로이고 카드 높이만 줄 수만큼 늡니다.'),
 }
 def note(n):

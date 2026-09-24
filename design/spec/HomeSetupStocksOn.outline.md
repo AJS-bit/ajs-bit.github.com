@@ -22,7 +22,7 @@
       `display:flex flex-direction:column margin-top:-83px`
       - `h1` **text 22px/700** — “홈에 무엇을 둘까요?”
         `font-size:22px font-weight:700 letter-spacing:-0.03em line-height:1.35 color:#101828`
-      - `p` — “소비율과 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
+      - `p` — “소비율과 이번 달 소비 기록은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
         `font-size:13.5px line-height:1.5 color:#475467`
         - `br`
       - `div`

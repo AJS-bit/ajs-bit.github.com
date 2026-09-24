@@ -357,14 +357,18 @@
         "focus": "ring 3px"
       },
       "color": {
-        "today": "brand-soft",
+        "today": "brand-soft + 안쪽 테두리 1.5px brand (2026-09-24 · 이번 달을 볼 때 늘)",
+        "todayEmpty": "오늘 기록 0건(안 썼어요 아님)이면 — 대신 파란 원 + — 지름 20(큰 글자 24) · brand 바탕 · 흰 +",
         "dateAndMarks": "ink-2 (날짜 · 0 · ✓ · 이체)",
         "empty": "ink-3 (— · 요일)",
         "future": "disabled",
         "rule": "새 hex 없음 · 의미색(warning · negative · violet) 쓰지 않음 · 카테고리색 점 쓰지 않음"
       },
-      "statusLine": "meta 11 / ink-2 · 한 문장",
-      "reviewRow": "height 32 (24 + 8) · 12.5 / 600 · ink",
+      "statusLine": "12.5 / ink-2 · 한 문장 (2026-09-24 · 11 → 12.5 · 큰 글자 16)",
+      "hint": "12 / 1.45 · ink-3 · '날짜를 누르면 그날 쓴 돈을 적어요' — 머리줄 아래(접힘 · 펼침) · 큰 글자 15",
+      "recordButton": "오늘 기록 0건 — 가득 찬 폭 '+ 오늘 쓴 돈 적기' · height 40 · radius 12 · brand-soft · brand 14/700 (큰 글자 48 · 14 · 16.5)",
+      "morePill": "기록 있음 · 안 썼어요 — 상태 문장 오른쪽 '+ 더 적기' / '+ 적기' · height 32 · radius 99 · brand-soft · brand 13/700 · 줄 min-height 40 (버튼과 같아 저장 전후 카드 높이 불변)",
+      "reviewRow": "height 32 · 위 간격 6 · 12.5 / 600 · ink",
       "daySheet": {
         "radius": 26,
         "header": 44,

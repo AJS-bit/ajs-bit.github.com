@@ -240,7 +240,7 @@ def closed_hero(month, pct, diff, networth, metrics, reclose=False):
         f'<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 9px;">'
         f'{display_num(pct, "%", 54, 25)}'
         f'<div style="text-align: right; flex-shrink: 0; padding-bottom: 6px;">'
-        f'<div style="font-size: 11.5px; color: {C["INK3"]};">이번 달보다</div>'
+        f'<div style="font-size: 11.5px; color: {C["INK3"]}; white-space: nowrap;">이번 달 예상보다</div>'
         f'<div style="font-size: 13px; font-weight: 600; color: {C["POS"]};">{diff}</div></div></div>'
 
         f'<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">'

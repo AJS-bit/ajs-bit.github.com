@@ -42,7 +42,7 @@
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **text 11px/600** — “현재 위치”
           `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
-        - `span` **StatusPill** — “목표 안에서 순항 중”
+        - `span` **StatusPill** — “월말에도 목표 안”
           `display:inline-flex align-items:center gap:4px background:#E4F4EA color:#0F7B47 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
       - `div`
         `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:8px`
@@ -52,7 +52,7 @@
           `display:flex flex-direction:column align-items:flex-end gap:1px`
       - `div`
         `display:flex align-items:baseline justify-content:space-between gap:10px margin-top:5px`
-        - `span` **text 13px/500** — “월급 대비 이번 달 예상 소비”
+        - `span` **text 13px/500** — “월급 360만원 중 112만원 썼어요”
           `font-size:13px font-weight:500 color:#475467`
         - `span`
           `display:inline-flex align-items:center gap:4px`
