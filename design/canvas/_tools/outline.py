@@ -26,6 +26,7 @@ class Node:
     def __init__(self, tag, style, attrs):
         self.tag, self.style, self.attrs = tag, style, attrs
         self.kids, self.text = [], ''
+        self.seq = []      # 글과 자식을 문서 순서대로(원문 공백 그대로) — gen_spec_screens 가 인라인 글을 이어 붙일 때 쓴다(2026-09-27 fix-up 2)
 
 
 class T(HTMLParser):
@@ -38,6 +39,7 @@ class T(HTMLParser):
         a = dict(attrs)
         n = Node(tag, re.sub(r'\s+', ' ', a.get('style', '')).strip(), a)
         self.stack[-1].kids.append(n)
+        self.stack[-1].seq.append(n)
         if tag not in VOID:
             self.stack.append(n)
 
@@ -49,6 +51,7 @@ class T(HTMLParser):
             self.stack.pop()
 
     def handle_data(self, d):
+        self.stack[-1].seq.append(d)
         d = d.strip()
         if d:
             self.stack[-1].text += (' ' if self.stack[-1].text else '') + d

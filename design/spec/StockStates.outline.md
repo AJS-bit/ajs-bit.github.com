@@ -3,10 +3,10 @@
 원본 `canvas/StockStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1180px height:880px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1180px height:975px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
-  - `h2` **text 20px/700** — “주식 탭 · 특수한 상황 6가지”
+  - `h2` **text 20px/700** — “주식 탭 · 특수한 상황 8가지”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
   - `p` **text 13px/400** — “경고 띠는 알려주기만 하고 아무것도 막지 않아요. 자료가 없는 기준은 —로 두고 충족 수에서 빼요. 왼쪽 화면의 번”
     `font-size:13px line-height:1.55 color:#626D88`
@@ -52,6 +52,10 @@
       `flex:1`
       - `div`
         `display:grid grid-template-columns:repeat(2, minmax(0, 1fr)) gap:22px 24px align-items:start`
+        - `div`
+          `display:flex flex-direction:column gap:9px`
+        - `div`
+          `display:flex flex-direction:column gap:9px`
         - `div`
           `display:flex flex-direction:column gap:9px`
         - `div`

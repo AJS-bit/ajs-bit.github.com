@@ -7,14 +7,28 @@
   - `div`
     `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
     - `div`
-      `display:flex align-items:center justify-content:space-between gap:8px`
-      - `h1` **text 21px/700** — “소비”
-        `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828`
+      `display:flex align-items:flex-start justify-content:space-between gap:8px`
       - `div`
-        `display:flex align-items:center gap:8px`
+        `display:flex align-items:center gap:4px min-height:36px`
+        - `h1` **text 21px/700** — “소비”
+          `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.25 color:#101828`
+        - `span`
+          `width:28px height:28px border-radius:99px display:inline-flex align-items:center justify-content:center`
+      - `div`
+        `display:flex align-items:flex-start gap:0`
+        - `div`
+          `width:44px display:flex flex-direction:column align-items:center`
+        - `div`
+          `width:44px display:flex flex-direction:column align-items:center`
+        - `div`
+          `width:44px display:flex flex-direction:column align-items:center`
+    - `div`
+      `display:flex align-items:center justify-content:space-between gap:8px`
+      - `div`
+        `display:flex align-items:center justify-content:space-between gap:8px flex:1`
         - `div`
           `display:flex align-items:center gap:2px height:34px padding:0 4px border-radius:10px background:#FFFFFF border:1px solid #E3E8F1`
-        - `div` — “거래”
+        - `div` — “기록”
           `display:inline-flex align-items:center gap:3px height:34px padding:0 11px border-radius:10px background:#3556E6 color:#FFFFFF font-size:13px font-weight:600`
     - `div`
       `display:flex gap:4px background:#E3E8F1 border-radius:12px padding:3px`
@@ -156,7 +170,7 @@
       `display:flex flex-direction:column align-items:center gap:3px flex:1`
       - `div`
         `width:40px height:24px display:flex align-items:center justify-content:center`
-      - `span` **text 11px/500** — “목표”
+      - `span` **text 11px/500** — “목적지”
         `font-size:11px font-weight:500 color:#606B7D`
     - `div`
       `display:flex flex-direction:column align-items:center gap:3px flex:1`

@@ -7,15 +7,29 @@
   - `div`
     `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
     - `div`
-      `display:flex align-items:center justify-content:space-between gap:8px`
-      - `h1` **text 21px/700** — “소비”
-        `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828`
+      `display:flex align-items:flex-start justify-content:space-between gap:8px`
       - `div`
-        `display:flex align-items:center gap:8px`
+        `display:flex align-items:center gap:4px min-height:36px`
+        - `h1` **text 21px/700** — “소비”
+          `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.25 color:#101828`
+        - `span`
+          `width:28px height:28px border-radius:99px display:inline-flex align-items:center justify-content:center`
+      - `div`
+        `display:flex align-items:flex-start gap:0`
         - `div`
-          `display:flex align-items:center gap:2px height:34px padding:0 4px border-radius:10px background:#FFFFFF border:1px solid #E3E8F1`
-        - `div` — “거래”
-          `display:inline-flex align-items:center gap:3px height:34px padding:0 11px border-radius:10px background:#3556E6 color:#FFFFFF font-size:13px font-weight:600`
+          `width:44px display:flex flex-direction:column align-items:center`
+        - `div`
+          `width:44px display:flex flex-direction:column align-items:center`
+        - `div`
+          `width:44px display:flex flex-direction:column align-items:center`
+    - `div`
+      `display:flex align-items:center justify-content:space-between gap:8px`
+      - `div`
+        `display:flex align-items:center gap:2px height:34px padding:0 4px border-radius:10px background:#FFFFFF border:1px solid #E3E8F1`
+        - `span` **text 13px/600** — “2026년 9월”
+          `font-size:13px font-weight:600 color:#101828 padding:0 4px`
+      - `div` — “기록”
+        `display:inline-flex align-items:center gap:3px height:34px padding:0 11px border-radius:10px background:#3556E6 color:#FFFFFF font-size:13px font-weight:600`
     - `div`
       `display:flex gap:4px background:#E3E8F1 border-radius:12px padding:3px`
       - `div` **SegmentedItem** — “이번 달”
@@ -32,8 +46,8 @@
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **text 11px/600** — “이번 달 총한도”
           `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
-        - `span` **StatusPill** — “자동 계산”
-          `display:inline-flex align-items:center gap:4px background:#E9EDFD color:#3556E6 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
+        - `span` — “자동”
+          `display:inline-flex align-items:center gap:2px height:26px background:#E9EDFD color:#3556E6 font-size:12px font-weight:600 border-radius:99px padding:0 8px 0 11px`
       - `div`
         `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:6px`
         - `div`
@@ -48,10 +62,21 @@
         `display:flex align-items:center justify-content:space-between gap:8px margin-top:7px`
         - `span` **text 11.5px/400** — “사용 112만원 · 52%”
           `font-size:11.5px color:#626D88`
-        - `span` **text 11.5px/400** — “22일 남음 · 하루 47,270원”
-          `font-size:11.5px color:#626D88`
+        - `span` **text 11.5px/400** — “오늘 포함 23일 남음 · 하루 45,220원”
+          `font-size:11.5px color:#626D88 white-space:nowrap`
+      - `div` **text 12px/400** — “저축 · 상환 계획까지 지키려면 152만원 안에서 쓰면 돼요”
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:7px`
       - `div` — “총한도 조정”
         `display:flex align-items:center justify-content:center gap:6px height:44px margin-top:13px border-radius:12px background:#FFFFFF border:1.5px solid #3556E6 color:#3556E6 font-size:14px font-weight:600`
+    - `div` **Card(18)**
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px 14px 12px`
+      - `span` **text 14px/600** — “소비 경고”
+        `font-size:14px font-weight:600 color:#101828`
+      - `div`
+        `display:flex gap:11px padding:11px 0 2px`
+        - `div`
+          `width:32px height:32px border-radius:10px background:#FCEBEA display:flex align-items:center justify-content:center`
+        - `div`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
       - `div`
@@ -63,17 +88,17 @@
       - `div`
         `display:flex flex-direction:column margin-top:6px`
         - `div`
-          `display:flex align-items:center gap:10px height:44px border-bottom:1px solid #F3F5FA`
+          `display:flex align-items:center gap:8px height:44px border-bottom:1px solid #F3F5FA`
         - `div`
-          `display:flex align-items:center gap:10px height:44px border-bottom:1px solid #F3F5FA`
+          `display:flex align-items:center gap:8px height:44px border-bottom:1px solid #F3F5FA`
         - `div`
-          `display:flex align-items:center gap:10px height:44px border-bottom:1px solid #F3F5FA`
+          `display:flex align-items:center gap:8px height:44px border-bottom:1px solid #F3F5FA`
         - `div`
-          `display:flex align-items:center gap:10px height:44px border-bottom:1px solid #F3F5FA`
+          `display:flex align-items:center gap:8px height:44px border-bottom:1px solid #F3F5FA`
         - `div`
-          `display:flex align-items:center gap:10px height:44px border-bottom:1px solid #F3F5FA`
+          `display:flex align-items:center gap:8px height:44px border-bottom:1px solid #F3F5FA`
         - `div`
-          `display:flex align-items:center gap:10px height:44px`
+          `display:flex align-items:center gap:8px min-height:63px padding:6px 0`
       - `div` — “나머지 7개 카테고리 보기”
         `display:flex align-items:center justify-content:center gap:5px height:38px margin-top:6px border-top:1px solid #F3F5FA font-size:12.5px font-weight:600 color:#5B6880`
     - `div`
@@ -106,7 +131,7 @@
       `display:flex flex-direction:column align-items:center gap:3px flex:1`
       - `div`
         `width:40px height:24px display:flex align-items:center justify-content:center`
-      - `span` **text 11px/500** — “목표”
+      - `span` **text 11px/500** — “목적지”
         `font-size:11px font-weight:500 color:#606B7D`
     - `div`
       `display:flex flex-direction:column align-items:center gap:3px flex:1`
@@ -115,26 +140,26 @@
       - `span` **text 11px/500** — “미래”
         `font-size:11px font-weight:500 color:#606B7D`
   - `div`
-    `position:absolute inset:0`
+    `position:absolute left:0 top:0 width:390px height:778px`
     - `div` **HeroCard**
-      `position:absolute left:14px top:112px width:362px height:215px border-radius:20px box-shadow:0 0 0 2px rgba(255,255,255,.95), 0 0 0 4px #3556E6, 0 0 0 9999px rgba(16,24,40,.62)`
+      `position:absolute left:14px top:171px width:362px height:240px border-radius:20px box-shadow:0 0 0 2px rgba(255,255,255,.95), 0 0 0 4px #3556E6, 0 0 0 9999px rgba(16,24,40,.62)`
+    - `div`
+      `position:absolute left:44px top:417px width:13px height:13px background:#FFFFFF border-left:1px solid #E3E8F1 border-top:1px solid #E3E8F1 transform:rotate(45deg)`
     - `div` **Card(18)**
-      `position:absolute left:14px width:362px top:339px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px display:flex flex-direction:column gap:8px box-shadow:0 12px 32px -12px rgba(16,24,40,.45)`
+      `position:absolute left:14px top:423px width:362px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px box-shadow:0 12px 32px -12px rgba(16,24,40,.45) font-size:13px line-height:1.55 color:#101828`
       - `div`
-        `position:absolute top:-7px left:30px width:13px height:13px background:#FFFFFF transform:rotate(45deg) border-left:1px solid #E3E8F1 border-top:1px solid #E3E8F1`
-      - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px`
+        `display:flex align-items:center justify-content:space-between gap:8px flex-wrap:wrap font-size:11.5px font-weight:600 color:#626D88`
         - `span` — “처음 안내”
-          `display:inline-flex align-items:center gap:5px height:22px padding:0 9px border-radius:99px background:#E9EDFD color:#3556E6 font-size:11.5px font-weight:700 letter-spacing:0.02em`
-        - `span` **text 11.5px/600** — “한도 1 / 3”
-          `font-size:11.5px font-weight:600 color:#626D88 white-space:nowrap`
-      - `span` **text 16px/700** — “이번 달 쓸 수 있는 돈”
-        `font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.35 color:#101828`
-      - `span` **text 13px/400** — “월급에서 저축 · 상환을 뺀 총한도예요. 자동 계산이지만 직접 정할 수도 있어요.”
-        `font-size:13px line-height:1.55 color:#475467`
+          `display:inline-flex align-items:center gap:5px min-height:22px padding:2px 9px border-radius:99px background:#E9EDFD color:#3556E6 font-weight:700 letter-spacing:0.02em white-space:nowrap`
+        - `span` — “한도 1 / 3”
+          `white-space:nowrap`
+      - `div` **text 16px/700** — “이번 달 쓸 수 있는 돈”
+        `margin-top:8px font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.35 color:#101828`
+      - `div` **text 13px/400** — “월급 × 소비 목표로 정한 이번 달 한도예요. 소비 목표를 바꾸면 바로 따라 바뀌고, 직접 정할 수도 있어요.”
+        `margin-top:8px font-size:13px line-height:1.55 color:#475467`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px margin-top:6px`
-        - `span` **text 13px/600** — “건너뛰기”
-          `font-size:13px font-weight:600 color:#626D88 padding:8px 4px`
+        `display:flex align-items:center justify-content:space-between flex-wrap:wrap gap:4px 8px margin-top:14px`
+        - `div`
+          `display:flex align-items:center flex-wrap:wrap gap:0 12px`
         - `span` **text 14px/600** — “다음”
-          `display:inline-flex align-items:center justify-content:center height:40px padding:0 20px border-radius:12px background:#3556E6 color:#FFFFFF font-size:14px font-weight:600 white-space:nowrap`
+          `display:inline-flex align-items:center justify-content:center min-height:40px padding:8px 20px border-radius:12px background:#3556E6 color:#FFFFFF font-size:14px font-weight:600 line-height:1.4 white-space:nowrap`

@@ -28,7 +28,7 @@
         - `div`
           `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
     - `div`
-      `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
+      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
       - `div` **Callout(warn)**
         `display:flex gap:8px padding:10px 11px background:#FDF1E0 border-radius:12px`
         - `span`
@@ -52,18 +52,14 @@
         - `div`
           `flex:1`
       - `div`
-        `flex:0 0 auto`
-        - `div` — “자료 출처”
-          `font-size:12px font-weight:600 color:#475467`
-        - `div` **InputField**
-          `display:flex align-items:center gap:5px height:46px padding:0 12px border-radius:11px border:1px solid #CFD7E6 background:#FFFFFF`
+        `flex:1 min-height:0 display:flex flex-direction:column`
         - `div`
-          `display:flex align-items:center gap:5px margin-top:6px`
+          `flex:0 0 auto`
       - `div` **Callout(info)**
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` **text 11.5px/400** — “실수령 급여가 아닌 다른 소득을 기준으로 한 통계라면 내 월말 예상과 바로 비교할 수 없어요. 출처의 기준을 꼭 확”
+        - `span` **text 11.5px/400** — “월급(실수령)이 아닌 다른 소득을 기준으로 한 통계라면 내 월말 예상과 바로 비교할 수 없어요. 출처의 기준을 꼭 ”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

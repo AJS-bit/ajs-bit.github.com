@@ -19,7 +19,7 @@
       - `div`
         - `h2` **text 18px/700** — “자산 추가”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “이름과 평가액만 있으면 저장돼요.”
+        - `p` **text 12.5px/400** — “이름과 지금 금액만 있으면 저장돼요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
@@ -32,25 +32,19 @@
         - `div` **InputField**
           `display:flex align-items:center gap:5px height:46px padding:0 12px border-radius:11px border:1px solid #CFD7E6 background:#FFFFFF`
       - `div`
-        `display:flex gap:10px`
+        `display:flex gap:10px align-items:flex-start margin-top:0px`
         - `div`
           `flex:1`
         - `div`
           `width:142px`
       - `div`
         `flex:0 0 auto`
-        - `div` — “연 기대수익률”
+        - `div` — “수익률 (연)”
           `font-size:12px font-weight:600 color:#475467`
         - `div` **InputField**
           `display:flex align-items:center gap:5px height:46px padding:0 12px border-radius:11px border:1px solid #CFD7E6 background:#FFFFFF`
         - `div`
           `display:flex align-items:center gap:5px margin-top:6px`
-      - `div` **Callout(info)**
-        `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
-        - `span`
-          `margin-top:1px`
-        - `span` — “거래에서 를 켜면 이 계좌의 평가액이 함께 바뀝니다. 0원이어도 계좌 기록은 남습니다.”
-          `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
       - `div` **SecondaryButton(48)** — “취소”

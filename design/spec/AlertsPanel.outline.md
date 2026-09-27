@@ -17,7 +17,7 @@
     - `div`
       `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
       - `div`
-        - `h2` **text 18px/700** — “알림 3건”
+        - `h2` **text 18px/700** — “알림 1건”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
         - `p` **text 12.5px/400** — “저장된 기록을 기준으로 만든 알림이에요. 읽어도 기록은 바뀌지 않아요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
@@ -27,17 +27,15 @@
       `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
       - `div`
         `display:flex flex-direction:column`
-        - `div`
-          `display:flex gap:11px min-height:60px padding:13px 0 border-bottom:1px solid #F3F5FA`
-        - `div`
-          `display:flex gap:11px min-height:60px padding:13px 0 border-bottom:1px solid #F3F5FA`
+        - `div` **text 11px/600** — “중요 1”
+          `font-size:11px font-weight:600 line-height:17px letter-spacing:0.04em color:#626D88`
         - `div`
           `display:flex gap:11px min-height:60px padding:13px 0 border-bottom:1px solid #F3F5FA`
       - `div` **Callout(info)**
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` — “자산을 넘게 갱신하지 않으면 여기에 알려드려요. 지금은 갱신이 필요한 자산이 없습니다.”
+        - `span` **text 11.5px/400** — “자산의 잔액 확인일이 없거나 35일 넘게 갱신하지 않으면 여기에 알려 드려요. 지금은 갱신이 필요한 자산이 없어요.”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

@@ -43,7 +43,7 @@
         `display:flex align-items:center gap:11px height:42px padding:0 12px border-radius:11px`
         - `span` **text 14px/500** — “미래”
           `font-size:14px font-weight:500 color:#475467`
-        - `span` **text 12px/600** — “10년 뒤 3.2억”
+        - `span` **text 12px/600** — “10년 뒤 3.8억”
           `font-size:12px font-weight:600 color:#697182 white-space:nowrap`
     - `div`
       `margin-top:22px padding:13px background:#F4F6FB border-radius:14px`
@@ -59,13 +59,13 @@
         `position:relative height:6px border-radius:99px background:#E3E8F1 margin-top:8px`
         - `div`
           `position:absolute inset:0 48.1% 0 0 border-radius:99px background:#3556E6`
-      - `div` **text 11px/400** — “22일 · 하루 47,270원”
+      - `div` **text 11px/400** — “오늘 포함 23일 · 하루 45,220원”
         `font-size:11px color:#626D88 margin-top:6px`
     - `div`
       `margin-top:auto display:flex flex-direction:column gap:3px`
       - `div`
         `display:flex align-items:center gap:11px height:40px padding:0 12px border-radius:11px`
-        - `span` **text 13.5px/500** — “설정 · 내 수치”
+        - `span` **text 13.5px/500** — “설정”
           `font-size:13.5px font-weight:500 color:#475467`
       - `div` **Callout(info)**
         `display:flex align-items:center gap:10px height:48px padding:0 10px border-radius:12px background:#F4F6FB`
@@ -76,20 +76,20 @@
     `flex:1 display:flex flex-direction:column padding:18px 28px 22px`
     - `div`
       `display:flex align-items:center justify-content:space-between gap:12px height:38px padding:0 16px background:#E9EDFD border-radius:12px`
-      - `span` **text 12.5px/500** — “샘플 데이터로 둘러보는 중 · 표시된 이름과 금액은 실제 정보가 아닙니다”
+      - `span` **text 12.5px/500** — “샘플 데이터로 둘러보는 중”
         `font-size:12.5px font-weight:500 color:#3B4E8F`
       - `span` **text 12.5px/600** — “내 데이터로 시작 ›”
         `font-size:12.5px font-weight:600 color:#3556E6`
     - `div`
       `display:flex align-items:flex-end justify-content:space-between gap:12px margin-top:18px`
       - `div`
-        - `div` **text 11.5px/600** — “2026년 9월 8일 · 이번 달 22일 남음”
+        - `div` **text 11.5px/600** — “2026년 9월 8일 · 이번 달 오늘 포함 23일 남음”
           `font-size:11.5px font-weight:600 letter-spacing:0.07em color:#626D88`
         - `h1` **text 26px/700** — “오늘의 내비게이션”
           `font-size:26px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828`
       - `div`
         `display:flex align-items:center gap:8px`
-        - `div` — “내 수치 입력”
+        - `div` — “설정”
           `display:inline-flex align-items:center gap:6px height:40px padding:0 14px border-radius:11px background:#FFFFFF border:1px solid #E3E8F1 font-size:13.5px font-weight:600 color:#475467`
         - `div`
           `width:40px height:40px border-radius:11px background:#FFFFFF border:1px solid #E3E8F1 display:flex align-items:center justify-content:center`

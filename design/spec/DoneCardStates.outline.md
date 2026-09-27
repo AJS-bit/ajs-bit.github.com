@@ -3,12 +3,12 @@
 원본 `canvas/DoneCardStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:1100px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1200px height:1534px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “저장 완료 카드의 경우들”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` **text 13px/400** — “저장이 끝나면 홈 아래쪽에 뜨는 카드 하나가 제목 · 셋째 줄 · 행동만 바꿔 가며 모든 경우를 맡습니다.”
+  - `p` **text 13px/400** — “저장이 끝나면 홈 아래쪽에 뜨는 카드 하나가 제목 · 셋째 줄 · 행동만 바꿔 가며 모든 경우를 맡습니다. 6초 뒤”
     `font-size:13px line-height:1.55 color:#626D88`
   - `div`
     `display:flex gap:32px align-items:flex-start`
@@ -21,17 +21,23 @@
         - `span` **text 10.5px/700** — “1”
           `position:absolute left:-8px top:14px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
         - `span` **text 10.5px/700** — “2”
-          `position:absolute left:-8px top:63px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
+          `position:absolute left:-8px top:84px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
         - `span` **text 10.5px/700** — “3”
-          `position:absolute left:-8px top:102px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `p` — “제목 · 셋째 줄 · 행동 두 칸(주 행동 + 취소). 둘째 줄은 언제나 날짜 · 정확한 금액 · 그날 합계입니다.”
+          `position:absolute left:-8px top:166px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
+      - `p` — “제목 · 셋째 칩 줄) · 행동 두 행동 + 되돌리기). 둘째 줄은 언제나 날짜 · · 카테고리 · 없으면 카테고리”
         `font-size:12px line-height:1.6 color:#626D88`
         - `b` — “1”
           `font-weight:600 color:#475467`
         - `b` — “2”
           `font-weight:600 color:#475467`
+        - `span` — “줄(+”
+          `white-space:nowrap`
         - `b` — “3”
           `font-weight:600 color:#475467`
+        - `span` — “칸(주”
+          `white-space:nowrap`
+        - `span` — “무엇을(메모”
+          `white-space:nowrap`
       - `div` **Card(18)**
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 16px 4px`
         - `div`
@@ -47,11 +53,27 @@
         - `div`
           `display:flex flex-direction:column gap:5px padding:9px 0 border-bottom:1px solid #F3F5FA`
         - `div`
+          `display:flex flex-direction:column gap:5px padding:9px 0 border-bottom:1px solid #F3F5FA`
+        - `div`
           `display:flex flex-direction:column gap:5px padding:9px 0`
+      - `div` **Header**
+        `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 16px 10px`
+        - `div`
+          `display:flex align-items:center gap:7px`
+        - `div`
+          `background:#E9EDFD border-radius:12px padding:11px 12px 10px display:flex flex-direction:column gap:8px`
+        - `p` — “이번 달 기록 중 메모가 있고, 지난달에 같은 메모 · 같은 금액이 한 번씩 있고, 같은 반복 기록이 없을 때 목록”
+          `font-size:12px line-height:1.55 color:#626D88`
     - `div`
       `flex:1 display:flex flex-direction:column gap:22px`
       - `div`
         `flex:1 display:grid grid-template-columns:repeat(2, 362px) gap:24px 20px align-items:start`
+        - `div`
+          `display:flex flex-direction:column gap:8px`
+        - `div`
+          `display:flex flex-direction:column gap:8px`
+        - `div`
+          `display:flex flex-direction:column gap:8px`
         - `div`
           `display:flex flex-direction:column gap:8px`
         - `div`

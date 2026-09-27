@@ -14,8 +14,8 @@
         `font-size:19px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828 white-space:nowrap`
       - `span` **text 12px/500** — “기준 3개”
         `font-size:12px font-weight:500 color:#626D88`
-    - `span` **StatusPill** — “9/4 종가”
-      `display:inline-flex align-items:center gap:4px background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
+    - `span` **StatusPill** — “9월 4일 종가”
+      `display:inline-flex align-items:center gap:4px background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
   - `div` **본문(스크롤 영역)**
     `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
     - `div`
@@ -74,6 +74,38 @@
           `display:flex flex-direction:column align-items:flex-end gap:4px`
       - `div` — “아래로 6종목 더”
         `display:flex align-items:center justify-content:center gap:4px height:42px border-top:1px solid #F3F5FA font-size:12.5px font-weight:600 color:#3556E6`
-    - `p` — “데이터 기준일 2026-09-04 종가 · 설정에서 새로 받기 기준에 맞는 종목을 보여주는 것이지 투자 권유가 아니”
+    - `p` — “데이터 기준일 2026년 9월 4일 종가 · 설정 › 주식에서 새로 받기 기준에 맞는 종목을 보여주는 것이지 투자 ”
       `font-size:11px line-height:1.5 color:#626D88`
       - `br`
+  - `div` **BottomNav**
+    `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
+    - `div`
+      `display:flex flex-direction:column align-items:center gap:3px flex:1`
+      - `div`
+        `width:40px height:24px display:flex align-items:center justify-content:center`
+      - `span` **text 11px/500** — “홈”
+        `font-size:11px font-weight:500 color:#606B7D`
+    - `div`
+      `display:flex flex-direction:column align-items:center gap:3px flex:1`
+      - `div`
+        `width:40px height:24px display:flex align-items:center justify-content:center`
+      - `span` **text 11px/500** — “자산”
+        `font-size:11px font-weight:500 color:#606B7D`
+    - `div`
+      `display:flex flex-direction:column align-items:center gap:3px flex:1`
+      - `div`
+        `width:40px height:24px display:flex align-items:center justify-content:center`
+      - `span` **text 11px/500** — “소비”
+        `font-size:11px font-weight:500 color:#606B7D`
+    - `div`
+      `display:flex flex-direction:column align-items:center gap:3px flex:1`
+      - `div`
+        `width:40px height:24px border-radius:99px background:#E9EDFD display:flex align-items:center justify-content:center`
+      - `span` **text 11px/600** — “주식”
+        `font-size:11px font-weight:600 color:#3556E6`
+    - `div`
+      `display:flex flex-direction:column align-items:center gap:3px flex:1`
+      - `div`
+        `width:40px height:24px display:flex align-items:center justify-content:center`
+      - `span` **text 11px/500** — “목적지”
+        `font-size:11px font-weight:500 color:#606B7D`

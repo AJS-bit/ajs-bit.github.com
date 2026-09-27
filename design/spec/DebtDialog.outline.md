@@ -19,7 +19,7 @@
       - `div`
         - `h2` **text 18px/700** — “카드 할부 수정”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “거래에서 대출상환으로 연결된 부채예요.”
+        - `p` **text 12.5px/400** — “금리와 매달 내는 돈으로 다 갚는 달을 계산해요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `display:flex align-items:center gap:8px`
@@ -36,13 +36,13 @@
         - `div` **InputField**
           `display:flex align-items:center gap:5px height:46px padding:0 12px border-radius:11px border:1px solid #CFD7E6 background:#FFFFFF`
       - `div`
-        `display:flex gap:10px`
+        `display:flex gap:10px align-items:flex-start margin-top:0px`
         - `div`
           `flex:1`
         - `div`
           `width:142px`
       - `div`
-        `display:flex gap:10px`
+        `display:flex gap:10px align-items:flex-start margin-top:0px`
         - `div`
           `flex:1`
         - `div`
@@ -51,13 +51,13 @@
         `display:flex gap:8px padding:10px 11px background:#FDF1E0 border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` **text 11.5px/400** — “연 14.5%는 보유한 부채 중 가장 높아요. 고금리 우선 전략에서 1순위로 상환됩니다.”
+        - `span` **text 11.5px/400** — “연 14.5%는 보유한 부채 중 가장 높아요. 상환 계획에서 순서를 확인하세요.”
           `font-size:11.5px line-height:1.5 color:#7A3E0A`
       - `div` **Callout(info)**
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` **text 11.5px/400** — “남은 원금을 0으로 두면 완납으로 기록되고 목록에는 남습니다. 삭제하면 연결된 거래의 부채 연결이 끊깁니다.”
+        - `span` **text 11.5px/400** — “다 갚았다면 삭제하지 말고 남은 원금을 0으로 저장하세요. 연결된 부채 상환 목적지가 다 갚은 것으로 남아요.”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

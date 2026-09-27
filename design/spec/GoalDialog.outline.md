@@ -5,11 +5,11 @@
 - `div` **화면프레임**
   `width:390px height:844px background:#2A3245 color:#101828 display:flex flex-direction:column`
   - `div`
-    `height:40px display:flex align-items:flex-end justify-content:center`
+    `flex:0 1 40px min-height:12px display:flex align-items:flex-end justify-content:center`
     - `span` **text 11.5px/500** — “배경을 눌러 닫기”
       `font-size:11.5px font-weight:500 color:rgba(255,255,255,.62)`
   - `div` **BottomSheet**
-    `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
+    `flex:1 0 auto background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
     - `div`
       `display:flex justify-content:center padding:9px 0 0`
       - `span` **GrabHandle**
@@ -24,7 +24,7 @@
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
     - `div`
-      `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
+      `flex:1 0 auto padding:14px 18px 0 display:flex flex-direction:column gap:15px`
       - `div`
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
@@ -37,21 +37,26 @@
         - `div` **InputField**
           `display:flex align-items:center gap:5px height:46px padding:0 12px border-radius:11px border:1px solid #CFD7E6 background:#FFFFFF`
       - `div`
+        `display:flex align-items:center gap:3px height:23px margin-top:-9px font-size:11.5px color:#626D88`
+        - `span` — “표시 아이콘”
+        - `span` **text 11.5px/400** — “🏔️”
+          `font-size:11.5px`
+      - `div`
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div`
-          `padding:6px 13px background:#F4F6FB border-radius:14px`
+          `padding:0 13px background:#F4F6FB border-radius:14px`
       - `div`
-        `display:flex gap:10px`
+        `display:flex gap:10px align-items:flex-start margin-top:0px`
         - `div`
           `flex:1`
         - `div`
-          `width:124px`
+          `width:160px`
       - `div` **Callout(info)**
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` — “부채 상환 목적지는 적립 대신 을 따릅니다. 목표액·적립액 입력란이 없고 홈 대표로도 지정할 수 있어요.”
+        - `span` — “남은 빚과 상환 계획으로 다 갚는 달을 계산해요 목표액과 진행률은 실제 남은 원금에서 자동으로 계산해요. 매달 모으”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

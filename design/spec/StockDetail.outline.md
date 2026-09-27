@@ -15,15 +15,15 @@
       - `span` **text 12px/500** — “005930 · KOSPI”
         `font-size:12px font-weight:500 color:#626D88`
   - `div` **본문(스크롤 영역)**
-    `flex:1 min-height:0 display:flex flex-direction:column gap:8px padding:0 14px 12px`
+    `flex:1 min-height:0 display:flex flex-direction:column gap:6px padding:0 14px 12px`
     - `div` **HeroCard**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:12px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
       - `div`
         `display:flex align-items:flex-end justify-content:space-between gap:10px`
         - `div`
           `display:flex align-items:baseline gap:3px`
-        - `span` **StatusPill** — “9/4 종가”
-          `display:inline-flex align-items:center gap:4px background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
+        - `span` **StatusPill** — “9월 4일 종가”
+          `display:inline-flex align-items:center gap:4px background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
       - `div`
         `display:flex align-items:center gap:6px margin-top:8px`
         - `span` **StatusPill** — “성장”
@@ -70,7 +70,7 @@
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **StatusPill** — “저장되지 않는 가정”
           `display:inline-flex align-items:center gap:4px background:#F1EAFD color:#6B32D6 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
-        - `span` **text 12px/600** — “되돌리기”
+        - `span` **text 12px/600** — “가정 종료”
           `font-size:12px font-weight:600 color:#626D88`
       - `p` **text 15px/600** — “내 항로에 넣어보기”
         `font-size:15px font-weight:600 letter-spacing:-0.015em color:#101828`
@@ -88,18 +88,19 @@
         `margin-top:8px font-size:12px color:#626D88 white-space:nowrap`
       - `div`
         `display:flex align-items:center gap:6px margin-top:5px font-size:13px color:#475467 white-space:nowrap`
-        - `span` — “2032년 6월”
+        - `span` — “2033년 12월”
           `font-weight:500 color:#697182`
-        - `span` **text 14px/700** — “2030년 12월”
+        - `span` **text 14px/700** — “2031년 9월”
           `font-size:14px font-weight:700 color:#6B32D6`
-        - `span` **StatusPill** — “1년 6개월 빨라져요”
+        - `span` **StatusPill** — “2년 3개월 빨라져요”
           `display:inline-flex align-items:center background:#F1EAFD color:#6B32D6 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
-      - `p` — “이번 달 여력 27만원 안에서 넣어 본 가정이에요. 수익률은 이 종목이 아니라 투자 계좌 목표의 연 5.0%로 봤어”
+      - `p` — “이미 목적지에 다 나눈 90만원 위에 15만원을 더 넣는 가정이에요. 수익률은 투자 계좌 5,000만원 목적지의 계”
         `font-size:11px line-height:1.45 color:#626D88`
-        - `br`
+        - `span` — “연 5.0%로”
+          `white-space:nowrap`
   - `div`
     `display:flex gap:8px padding:10px 14px 20px background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div` **SecondaryButton(48)** — “관심 추가”
       `display:flex align-items:center justify-content:center gap:6px height:48px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
-    - `div` **PrimaryButton(48)** — “보유 기록”
+    - `div` **PrimaryButton(48)** — “보유 추가”
       `display:flex align-items:center justify-content:center gap:6px height:48px flex:1.3 border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`

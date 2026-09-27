@@ -2,8 +2,8 @@
 
 원본 `canvas/ProfileDialog.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
-- `div` **화면프레임**
-  `width:390px height:844px background:#2A3245 color:#101828 display:flex flex-direction:column`
+- `div`
+  `width:390px height:1229px background:#2A3245 color:#101828 display:flex flex-direction:column`
   - `div`
     `height:60px display:flex align-items:flex-end justify-content:center`
     - `span` **text 11.5px/500** — “배경을 눌러 닫기”
@@ -17,19 +17,19 @@
     - `div`
       `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
       - `div`
-        - `h2` **text 18px/700** — “내 수치 입력”
+        - `h2` **text 18px/700** — “내 수치”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “급여와 소비 목표만 있으면 홈이 계산됩니다. 나머지는 언제든 채워도 돼요.”
+        - `p` **text 12.5px/400** — “월급과 소비 목표만 있으면 홈이 계산돼요. 나머지는 언제든 채워도 돼요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
     - `div`
-      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+      `flex:1 min-height:0 padding:14px 18px 14px display:flex flex-direction:column gap:15px`
       - `div`
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div`
-          `display:flex gap:10px`
+          `display:flex gap:10px align-items:flex-start margin-top:0px`
       - `div`
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
@@ -39,20 +39,15 @@
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div`
-          `display:flex gap:10px`
+          `display:flex gap:10px align-items:flex-start margin-top:0px`
         - `div`
-          `display:flex gap:10px margin-top:12px`
+          `display:flex gap:10px align-items:flex-start margin-top:12px`
+        - `div` **Callout(info)**
+          `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px margin-top:9px`
+        - `div` **Callout(info)**
+          `display:flex align-items:center justify-content:space-between gap:8px min-height:48px padding:8px 13px border-radius:12px background:#F4F6FB margin-top:12px`
         - `div`
-          `margin-top:9px`
-        - `div`
-          `margin-top:12px`
-      - `div`
-        - `div`
-          `display:flex align-items:baseline justify-content:space-between gap:8px`
-        - `div`
-          `display:flex gap:8px`
-        - `div`
-          `margin-top:8px`
+          `margin-top:12px border-top:1px solid #EFF2F8`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
       - `div` **SecondaryButton(48)** — “취소”

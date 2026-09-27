@@ -17,9 +17,9 @@
     - `div`
       `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
       - `div`
-        - `h2` **text 18px/700** — “보유 기록”
+        - `h2` **text 18px/700** — “보유 추가”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` — “수량과 평단만 적으면 저장돼요. 종가는 비워 두면 —로 남아요.”
+        - `p` — “종목 · 수량 · 평단만 있으면 저장돼요. 종가는 비워 두면 —로 남아요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
@@ -47,7 +47,7 @@
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` **text 11.5px/400** — “종가는 직접 넣는 값이라 실시간 시세가 아니에요. 가격 옆에는 늘 이 기준일이 붙습니다.”
+        - `span` **text 11.5px/400** — “종가는 직접 넣는 값이라 실시간 시세가 아니에요. 가격 옆에는 늘 이 기준일이 붙어요.”
           `font-size:11.5px line-height:1.5 color:#626D88`
       - `div`
         `flex:0 0 auto`
@@ -65,5 +65,5 @@
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
       - `div` **SecondaryButton(48)** — “취소”
         `display:flex align-items:center justify-content:center gap:6px height:48px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`
-      - `div` **PrimaryButton(48)** — “저장”
+      - `div` **PrimaryButton(48)** — “보유 추가”
         `display:flex align-items:center justify-content:center gap:6px height:48px flex:1.4 border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`

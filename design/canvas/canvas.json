@@ -53,7 +53,7 @@
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "홈 · 달력 접힘 (최근 7일)"
+      "title": "홈 · 달력 접힘 (7일 줄)"
     },
     {
       "file": "HomeCalendar.dc.html",
@@ -88,23 +88,23 @@
       "x": 1850,
       "y": 0,
       "w": 390,
-      "h": 1360,
-      "title": "홈 · 기본 5카드 전체 스크롤"
+      "h": 1241,
+      "title": "홈 · 기본 카드 4개 전체 스크롤"
     },
     {
       "file": "DarkHomeCalendarStrip.dc.html",
       "page": "home",
       "x": 0,
-      "y": 1412,
+      "y": 1293,
       "w": 390,
       "h": 844,
-      "title": "홈 · 달력 접힘 (최근 7일) (다크)"
+      "title": "홈 · 달력 접힘 (7일 줄) (다크)"
     },
     {
       "file": "DarkHomeCalendar.dc.html",
       "page": "home",
       "x": 470,
-      "y": 1412,
+      "y": 1293,
       "w": 390,
       "h": 844,
       "title": "홈 · 달력 펼침 (월 달력) (다크)"
@@ -113,7 +113,7 @@
       "file": "DarkHomeCalendarPrev.dc.html",
       "page": "home",
       "x": 940,
-      "y": 1412,
+      "y": 1293,
       "w": 390,
       "h": 844,
       "title": "홈 · 달력 펼침 · ‹ 지난달 8월 보기 (다크)"
@@ -122,7 +122,7 @@
       "file": "DarkHomeCalendar360.dc.html",
       "page": "home",
       "x": 1410,
-      "y": 1412,
+      "y": 1293,
       "w": 360,
       "h": 844,
       "title": "홈 · 달력 펼침 · 360px (월 달력 그대로) (다크)"
@@ -131,34 +131,43 @@
       "file": "DarkHomeDefaultScroll.dc.html",
       "page": "home",
       "x": 1850,
-      "y": 1412,
+      "y": 1293,
       "w": 390,
-      "h": 1360,
-      "title": "홈 · 기본 5카드 전체 스크롤 (다크)"
+      "h": 1241,
+      "title": "홈 · 기본 카드 4개 전체 스크롤 (다크)"
+    },
+    {
+      "file": "HomePrimaryGoal.dc.html",
+      "page": "home",
+      "x": 0,
+      "y": 2702,
+      "w": 390,
+      "h": 1195,
+      "title": "홈 · 대표 목적지 카드를 켰을 때"
     },
     {
       "file": "HomeConfigured.dc.html",
       "page": "home",
-      "x": 0,
-      "y": 2940,
+      "x": 470,
+      "y": 2702,
       "w": 390,
-      "h": 844,
-      "title": "홈 · 첫 실행 구성 반영"
+      "h": 1178,
+      "title": "홈 · 첫 실행 뒤 (내 데이터 · 카드 3개)"
     },
     {
       "file": "HomeStocksCard.dc.html",
       "page": "home",
-      "x": 470,
-      "y": 2940,
+      "x": 940,
+      "y": 2702,
       "w": 390,
       "h": 844,
-      "title": "홈 · 주식 요약 카드"
+      "title": "홈 · 주식 요약 카드 (계획 · 3단계 뒤 · 앱에는 아직 없음)"
     },
     {
       "file": "DoneCard.dc.html",
       "page": "home",
-      "x": 940,
-      "y": 2940,
+      "x": 1410,
+      "y": 2702,
       "w": 390,
       "h": 844,
       "title": "홈 · 저장 뒤 완료 카드"
@@ -166,35 +175,44 @@
     {
       "file": "HeroInsufficient.dc.html",
       "page": "home",
-      "x": 1410,
-      "y": 2940,
+      "x": 1880,
+      "y": 2702,
       "w": 390,
       "h": 844,
       "title": "홈 · 히어로 이력 부족"
     },
     {
-      "file": "DarkHomeConfigured.dc.html",
+      "file": "DarkHomePrimaryGoal.dc.html",
       "page": "home",
       "x": 0,
-      "y": 3836,
+      "y": 3949,
       "w": 390,
-      "h": 844,
-      "title": "홈 · 첫 실행 구성 반영 (다크)"
+      "h": 1195,
+      "title": "홈 · 대표 목적지 카드를 켰을 때 (다크)"
+    },
+    {
+      "file": "DarkHomeConfigured.dc.html",
+      "page": "home",
+      "x": 470,
+      "y": 3949,
+      "w": 390,
+      "h": 1178,
+      "title": "홈 · 첫 실행 뒤 (내 데이터 · 카드 3개) (다크)"
     },
     {
       "file": "DarkHomeStocksCard.dc.html",
       "page": "home",
-      "x": 470,
-      "y": 3836,
+      "x": 940,
+      "y": 3949,
       "w": 390,
       "h": 844,
-      "title": "홈 · 주식 요약 카드 (다크)"
+      "title": "홈 · 주식 요약 카드 (계획 · 3단계 뒤 · 앱에는 아직 없음) (다크)"
     },
     {
       "file": "DarkDoneCard.dc.html",
       "page": "home",
-      "x": 940,
-      "y": 3836,
+      "x": 1410,
+      "y": 3949,
       "w": 390,
       "h": 844,
       "title": "홈 · 저장 뒤 완료 카드 (다크)"
@@ -202,11 +220,101 @@
     {
       "file": "DarkHeroInsufficient.dc.html",
       "page": "home",
-      "x": 1410,
-      "y": 3836,
+      "x": 1880,
+      "y": 3949,
       "w": 390,
       "h": 844,
       "title": "홈 · 히어로 이력 부족 (다크)"
+    },
+    {
+      "file": "HomeTargetEditor.dc.html",
+      "page": "home",
+      "x": 0,
+      "y": 5312,
+      "w": 390,
+      "h": 844,
+      "title": "홈 · 소비 목표 조정 열림"
+    },
+    {
+      "file": "HomeTargetSaved.dc.html",
+      "page": "home",
+      "x": 470,
+      "y": 5312,
+      "w": 390,
+      "h": 844,
+      "title": "홈 · 소비 목표를 저장한 직후 (알림 · 종 배지 3)"
+    },
+    {
+      "file": "HomeMonthStart.dc.html",
+      "page": "home",
+      "x": 940,
+      "y": 5312,
+      "w": 390,
+      "h": 1118,
+      "title": "홈 · 달이 바뀐 첫 주 (10월 2일)"
+    },
+    {
+      "file": "HomeSampleMode.dc.html",
+      "page": "home",
+      "x": 1410,
+      "y": 5312,
+      "w": 390,
+      "h": 1246,
+      "title": "홈 · 샘플 모드"
+    },
+    {
+      "file": "HeroOverTarget.dc.html",
+      "page": "home",
+      "x": 1880,
+      "y": 5312,
+      "w": 1230,
+      "h": 765,
+      "title": "참고 · 홈 맨 위 카드 · 소비 목표를 넘을 때"
+    },
+    {
+      "file": "DarkHomeTargetEditor.dc.html",
+      "page": "home",
+      "x": 0,
+      "y": 6610,
+      "w": 390,
+      "h": 844,
+      "title": "홈 · 소비 목표 조정 열림 (다크)"
+    },
+    {
+      "file": "DarkHomeTargetSaved.dc.html",
+      "page": "home",
+      "x": 470,
+      "y": 6610,
+      "w": 390,
+      "h": 844,
+      "title": "홈 · 소비 목표를 저장한 직후 (알림 · 종 배지 3) (다크)"
+    },
+    {
+      "file": "DarkHomeMonthStart.dc.html",
+      "page": "home",
+      "x": 940,
+      "y": 6610,
+      "w": 390,
+      "h": 1118,
+      "title": "홈 · 달이 바뀐 첫 주 (10월 2일) (다크)"
+    },
+    {
+      "file": "DarkHomeSampleMode.dc.html",
+      "page": "home",
+      "x": 1410,
+      "y": 6610,
+      "w": 390,
+      "h": 1246,
+      "title": "홈 · 샘플 모드 (다크)"
+    },
+    {
+      "file": "DarkHeroOverTarget.dc.html",
+      "page": "home",
+      "x": 1880,
+      "y": 6610,
+      "w": 1230,
+      "h": 765,
+      "title": "참고 · 홈 맨 위 카드 · 소비 목표를 넘을 때 (다크)"
     },
     {
       "file": "DaySheet.dc.html",
@@ -308,19 +416,100 @@
       "title": "하루 시트 · 360 × 640 작은 폰"
     },
     {
-      "file": "ClassifySheet.dc.html",
+      "file": "DaySheetPastEmpty.dc.html",
       "page": "daysheet",
       "x": 440,
       "y": 1908,
       "w": 390,
       "h": 844,
-      "title": "분류하기 시트"
+      "title": "하루 시트 · 기록 없는 어제"
+    },
+    {
+      "file": "DaySheetDeleted.dc.html",
+      "page": "daysheet",
+      "x": 910,
+      "y": 1908,
+      "w": 390,
+      "h": 844,
+      "title": "하루 시트 · 지운 뒤 (되돌리기)"
+    },
+    {
+      "file": "DaySheetEditMoved.dc.html",
+      "page": "daysheet",
+      "x": 1380,
+      "y": 1908,
+      "w": 390,
+      "h": 844,
+      "title": "하루 시트 · 수정 · 날짜를 옮길 때"
+    },
+    {
+      "file": "ClassifySheet.dc.html",
+      "page": "daysheet",
+      "x": 1850,
+      "y": 1908,
+      "w": 390,
+      "h": 844,
+      "title": "카테고리 고르기 시트"
+    },
+    {
+      "file": "DarkDaySheet360.dc.html",
+      "page": "daysheet",
+      "x": 0,
+      "y": 2804,
+      "w": 360,
+      "h": 640,
+      "title": "하루 시트 · 360 × 640 작은 폰 (다크)"
+    },
+    {
+      "file": "DarkDaySheetPastEmpty.dc.html",
+      "page": "daysheet",
+      "x": 440,
+      "y": 2804,
+      "w": 390,
+      "h": 844,
+      "title": "하루 시트 · 기록 없는 어제 (다크)"
+    },
+    {
+      "file": "DarkDaySheetDeleted.dc.html",
+      "page": "daysheet",
+      "x": 910,
+      "y": 2804,
+      "w": 390,
+      "h": 844,
+      "title": "하루 시트 · 지운 뒤 (되돌리기) (다크)"
+    },
+    {
+      "file": "DarkDaySheetEditMoved.dc.html",
+      "page": "daysheet",
+      "x": 1380,
+      "y": 2804,
+      "w": 390,
+      "h": 844,
+      "title": "하루 시트 · 수정 · 날짜를 옮길 때 (다크)"
+    },
+    {
+      "file": "DarkClassifySheet.dc.html",
+      "page": "daysheet",
+      "x": 1850,
+      "y": 2804,
+      "w": 390,
+      "h": 844,
+      "title": "카테고리 고르기 시트 (다크)"
+    },
+    {
+      "file": "ClassifySheetPicker.dc.html",
+      "page": "daysheet",
+      "x": 0,
+      "y": 3816,
+      "w": 390,
+      "h": 844,
+      "title": "카테고리 고르기 시트 · 줄에서 고르기 펼침"
     },
     {
       "file": "ReviewListSheet.dc.html",
       "page": "daysheet",
-      "x": 910,
-      "y": 1908,
+      "x": 470,
+      "y": 3816,
       "w": 390,
       "h": 844,
       "title": "확인할 내용 목록 시트"
@@ -328,44 +517,35 @@
     {
       "file": "RecurringPrefill.dc.html",
       "page": "daysheet",
-      "x": 1380,
-      "y": 1908,
+      "x": 940,
+      "y": 3816,
       "w": 390,
-      "h": 844,
-      "title": "반복 거래 · 방금 저장한 거래로 미리 채움"
+      "h": 877,
+      "title": "반복 기록 · 방금 저장한 기록으로 미리 채움"
     },
     {
       "file": "TransactionAddFromDaySheet.dc.html",
       "page": "daysheet",
-      "x": 1850,
-      "y": 1908,
+      "x": 1410,
+      "y": 3816,
       "w": 960,
-      "h": 850,
-      "title": "참고 · 거래 추가 — 하루 시트에서 넘어왔을 때"
+      "h": 908,
+      "title": "참고 · 기록 추가 — 하루 시트에서 넘어왔을 때"
     },
     {
-      "file": "DarkDaySheet360.dc.html",
+      "file": "DarkClassifySheetPicker.dc.html",
       "page": "daysheet",
       "x": 0,
-      "y": 2810,
-      "w": 360,
-      "h": 640,
-      "title": "하루 시트 · 360 × 640 작은 폰 (다크)"
-    },
-    {
-      "file": "DarkClassifySheet.dc.html",
-      "page": "daysheet",
-      "x": 440,
-      "y": 2810,
+      "y": 4776,
       "w": 390,
       "h": 844,
-      "title": "분류하기 시트 (다크)"
+      "title": "카테고리 고르기 시트 · 줄에서 고르기 펼침 (다크)"
     },
     {
       "file": "DarkReviewListSheet.dc.html",
       "page": "daysheet",
-      "x": 910,
-      "y": 2810,
+      "x": 470,
+      "y": 4776,
       "w": 390,
       "h": 844,
       "title": "확인할 내용 목록 시트 (다크)"
@@ -373,20 +553,20 @@
     {
       "file": "DarkRecurringPrefill.dc.html",
       "page": "daysheet",
-      "x": 1380,
-      "y": 2810,
+      "x": 940,
+      "y": 4776,
       "w": 390,
-      "h": 844,
-      "title": "반복 거래 · 방금 저장한 거래로 미리 채움 (다크)"
+      "h": 877,
+      "title": "반복 기록 · 방금 저장한 기록으로 미리 채움 (다크)"
     },
     {
       "file": "DarkTransactionAddFromDaySheet.dc.html",
       "page": "daysheet",
-      "x": 1850,
-      "y": 2810,
+      "x": 1410,
+      "y": 4776,
       "w": 960,
-      "h": 850,
-      "title": "참고 · 거래 추가 — 하루 시트에서 넘어왔을 때 (다크)"
+      "h": 908,
+      "title": "참고 · 기록 추가 — 하루 시트에서 넘어왔을 때 (다크)"
     },
     {
       "file": "Assets.dc.html",
@@ -394,143 +574,197 @@
       "x": 0,
       "y": 0,
       "w": 390,
-      "h": 844,
+      "h": 977,
       "title": "자산 · 구성"
     },
     {
-      "file": "Debts.dc.html",
+      "file": "AssetsStale.dc.html",
       "page": "assets-spending",
       "x": 470,
       "y": 0,
       "w": 390,
-      "h": 844,
+      "h": 1033,
+      "title": "자산 · 잔액 확인이 필요한 자산이 있을 때"
+    },
+    {
+      "file": "Debts.dc.html",
+      "page": "assets-spending",
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 909,
       "title": "자산 · 부채"
     },
     {
       "file": "Strategy.dc.html",
       "page": "assets-spending",
-      "x": 940,
-      "y": 0,
-      "w": 390,
-      "h": 844,
-      "title": "자산 · 상환 전략"
-    },
-    {
-      "file": "Spending.dc.html",
-      "page": "assets-spending",
       "x": 1410,
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "소비 · 이번 달"
+      "title": "자산 · 상환 계획(읽기 전용 요약)"
     },
     {
       "file": "DarkAssets.dc.html",
       "page": "assets-spending",
       "x": 0,
-      "y": 896,
+      "y": 1085,
       "w": 390,
-      "h": 844,
+      "h": 977,
       "title": "자산 · 구성 (다크)"
+    },
+    {
+      "file": "DarkAssetsStale.dc.html",
+      "page": "assets-spending",
+      "x": 470,
+      "y": 1085,
+      "w": 390,
+      "h": 1033,
+      "title": "자산 · 잔액 확인이 필요한 자산이 있을 때 (다크)"
     },
     {
       "file": "DarkDebts.dc.html",
       "page": "assets-spending",
-      "x": 470,
-      "y": 896,
+      "x": 940,
+      "y": 1085,
       "w": 390,
-      "h": 844,
+      "h": 909,
       "title": "자산 · 부채 (다크)"
     },
     {
       "file": "DarkStrategy.dc.html",
       "page": "assets-spending",
-      "x": 940,
-      "y": 896,
+      "x": 1410,
+      "y": 1085,
       "w": 390,
       "h": 844,
-      "title": "자산 · 상환 전략 (다크)"
+      "title": "자산 · 상환 계획(읽기 전용 요약) (다크)"
     },
     {
-      "file": "DarkSpending.dc.html",
+      "file": "Spending.dc.html",
       "page": "assets-spending",
-      "x": 1410,
-      "y": 896,
+      "x": 0,
+      "y": 2286,
       "w": 390,
-      "h": 844,
-      "title": "소비 · 이번 달 (다크)"
+      "h": 957,
+      "title": "소비 · 이번 달"
     },
     {
       "file": "LedgerV5.dc.html",
       "page": "assets-spending",
-      "x": 0,
-      "y": 1908,
+      "x": 470,
+      "y": 2286,
       "w": 390,
       "h": 844,
-      "title": "소비 · 내역 (분류 안 함 칩 · 날짜별 합계)"
+      "title": "소비 · 내역 (카테고리 없음 칩 · 날짜별 합계)"
     },
     {
       "file": "Limits.dc.html",
       "page": "assets-spending",
-      "x": 470,
-      "y": 1908,
+      "x": 940,
+      "y": 2286,
       "w": 390,
-      "h": 844,
+      "h": 1106,
       "title": "소비 · 한도"
     },
     {
       "file": "SpendingPast.dc.html",
       "page": "assets-spending",
-      "x": 940,
-      "y": 1908,
+      "x": 1410,
+      "y": 2286,
       "w": 390,
-      "h": 844,
-      "title": "소비 · 지난 달(마감)"
+      "h": 1212,
+      "title": "소비 · 지난 달 (마감)"
     },
     {
-      "file": "MonthlyCloseV5.dc.html",
+      "file": "DarkSpending.dc.html",
       "page": "assets-spending",
-      "x": 1410,
-      "y": 1908,
+      "x": 0,
+      "y": 3550,
       "w": 390,
-      "h": 844,
-      "title": "모달 · 월 마감 (분류 안 함 안내)"
+      "h": 957,
+      "title": "소비 · 이번 달 (다크)"
     },
     {
       "file": "DarkLedgerV5.dc.html",
       "page": "assets-spending",
-      "x": 0,
-      "y": 2804,
+      "x": 470,
+      "y": 3550,
       "w": 390,
       "h": 844,
-      "title": "소비 · 내역 (분류 안 함 칩 · 날짜별 합계) (다크)"
+      "title": "소비 · 내역 (카테고리 없음 칩 · 날짜별 합계) (다크)"
     },
     {
       "file": "DarkLimits.dc.html",
       "page": "assets-spending",
-      "x": 470,
-      "y": 2804,
+      "x": 940,
+      "y": 3550,
       "w": 390,
-      "h": 844,
+      "h": 1106,
       "title": "소비 · 한도 (다크)"
     },
     {
       "file": "DarkSpendingPast.dc.html",
       "page": "assets-spending",
-      "x": 940,
-      "y": 2804,
+      "x": 1410,
+      "y": 3550,
       "w": 390,
-      "h": 844,
-      "title": "소비 · 지난 달(마감) (다크)"
+      "h": 1212,
+      "title": "소비 · 지난 달 (마감) (다크)"
+    },
+    {
+      "file": "SpendingPastOpen.dc.html",
+      "page": "assets-spending",
+      "x": 0,
+      "y": 4930,
+      "w": 390,
+      "h": 1264,
+      "title": "소비 · 지난 달 (마감 전)"
+    },
+    {
+      "file": "SpendingPastChanged.dc.html",
+      "page": "assets-spending",
+      "x": 470,
+      "y": 4930,
+      "w": 390,
+      "h": 1212,
+      "title": "소비 · 지난 달 (마감 뒤 기록이 바뀜)"
+    },
+    {
+      "file": "MonthlyCloseV5.dc.html",
+      "page": "assets-spending",
+      "x": 940,
+      "y": 4930,
+      "w": 390,
+      "h": 1099,
+      "title": "모달 · 8월 첫 마감 (카테고리 없음 안내)"
+    },
+    {
+      "file": "DarkSpendingPastOpen.dc.html",
+      "page": "assets-spending",
+      "x": 0,
+      "y": 6246,
+      "w": 390,
+      "h": 1264,
+      "title": "소비 · 지난 달 (마감 전) (다크)"
+    },
+    {
+      "file": "DarkSpendingPastChanged.dc.html",
+      "page": "assets-spending",
+      "x": 470,
+      "y": 6246,
+      "w": 390,
+      "h": 1212,
+      "title": "소비 · 지난 달 (마감 뒤 기록이 바뀜) (다크)"
     },
     {
       "file": "DarkMonthlyCloseV5.dc.html",
       "page": "assets-spending",
-      "x": 1410,
-      "y": 2804,
+      "x": 940,
+      "y": 6246,
       "w": 390,
-      "h": 844,
-      "title": "모달 · 월 마감 (분류 안 함 안내) (다크)"
+      "h": 1099,
+      "title": "모달 · 8월 첫 마감 (카테고리 없음 안내) (다크)"
     },
     {
       "file": "Goals.dc.html",
@@ -538,7 +772,7 @@
       "x": 0,
       "y": 0,
       "w": 390,
-      "h": 844,
+      "h": 992,
       "title": "목적지 · 내 목적지"
     },
     {
@@ -547,7 +781,7 @@
       "x": 470,
       "y": 0,
       "w": 390,
-      "h": 844,
+      "h": 1231,
       "title": "목적지 · 새 목적지 설계"
     },
     {
@@ -556,7 +790,7 @@
       "x": 940,
       "y": 0,
       "w": 390,
-      "h": 844,
+      "h": 1204,
       "title": "미래 · 자산 경로"
     },
     {
@@ -565,50 +799,50 @@
       "x": 1410,
       "y": 0,
       "w": 390,
-      "h": 844,
+      "h": 924,
       "title": "미래 · 상환 계획"
     },
     {
       "file": "DarkGoals.dc.html",
       "page": "dest-future",
       "x": 0,
-      "y": 896,
+      "y": 1283,
       "w": 390,
-      "h": 844,
+      "h": 992,
       "title": "목적지 · 내 목적지 (다크)"
     },
     {
       "file": "DarkGoalDesign.dc.html",
       "page": "dest-future",
       "x": 470,
-      "y": 896,
+      "y": 1283,
       "w": 390,
-      "h": 844,
+      "h": 1231,
       "title": "목적지 · 새 목적지 설계 (다크)"
     },
     {
       "file": "DarkFuture.dc.html",
       "page": "dest-future",
       "x": 940,
-      "y": 896,
+      "y": 1283,
       "w": 390,
-      "h": 844,
+      "h": 1204,
       "title": "미래 · 자산 경로 (다크)"
     },
     {
       "file": "DarkPayoff.dc.html",
       "page": "dest-future",
       "x": 1410,
-      "y": 896,
+      "y": 1283,
       "w": 390,
-      "h": 844,
+      "h": 924,
       "title": "미래 · 상환 계획 (다크)"
     },
     {
       "file": "DestGoals.dc.html",
       "page": "dest-future",
       "x": 0,
-      "y": 1908,
+      "y": 2682,
       "w": 390,
       "h": 844,
       "title": "목적지 · 내 목적지 (5탭)"
@@ -617,7 +851,7 @@
       "file": "DestFuture.dc.html",
       "page": "dest-future",
       "x": 470,
-      "y": 1908,
+      "y": 2682,
       "w": 390,
       "h": 844,
       "title": "목적지 · 자산 경로 (5탭)"
@@ -626,16 +860,16 @@
       "file": "DestPayoff.dc.html",
       "page": "dest-future",
       "x": 940,
-      "y": 1908,
+      "y": 2682,
       "w": 390,
       "h": 844,
-      "title": "목적지 · 상환 계획"
+      "title": "목적지 · 상환 계획 (5탭)"
     },
     {
       "file": "HomeStocksOff.dc.html",
       "page": "dest-future",
       "x": 1410,
-      "y": 1908,
+      "y": 2682,
       "w": 390,
       "h": 844,
       "title": "홈 · 주식 꺼짐 (4탭)"
@@ -644,7 +878,7 @@
       "file": "DarkDestGoals.dc.html",
       "page": "dest-future",
       "x": 0,
-      "y": 2804,
+      "y": 3578,
       "w": 390,
       "h": 844,
       "title": "목적지 · 내 목적지 (5탭) (다크)"
@@ -653,7 +887,7 @@
       "file": "DarkDestFuture.dc.html",
       "page": "dest-future",
       "x": 470,
-      "y": 2804,
+      "y": 3578,
       "w": 390,
       "h": 844,
       "title": "목적지 · 자산 경로 (5탭) (다크)"
@@ -662,19 +896,55 @@
       "file": "DarkDestPayoff.dc.html",
       "page": "dest-future",
       "x": 940,
-      "y": 2804,
+      "y": 3578,
       "w": 390,
       "h": 844,
-      "title": "목적지 · 상환 계획 (다크)"
+      "title": "목적지 · 상환 계획 (5탭) (다크)"
     },
     {
       "file": "DarkHomeStocksOff.dc.html",
       "page": "dest-future",
       "x": 1410,
-      "y": 2804,
+      "y": 3578,
       "w": 390,
       "h": 844,
       "title": "홈 · 주식 꺼짐 (4탭) (다크)"
+    },
+    {
+      "file": "GoalsStates.dc.html",
+      "page": "dest-future",
+      "x": 0,
+      "y": 4590,
+      "w": 390,
+      "h": 4432,
+      "title": "참고 · 목적지 상태 7종 (가정 · 펼침 · 도착 · 목표일 없음 · 도착 어려움 · 상환 늦음 · 설계 미리 보기)"
+    },
+    {
+      "file": "GoalDesignStates.dc.html",
+      "page": "dest-future",
+      "x": 470,
+      "y": 4590,
+      "w": 390,
+      "h": 1421,
+      "title": "참고 · 새 목적지 설계 상태 2종 (처음 · 다른 금액 가정)"
+    },
+    {
+      "file": "DarkGoalsStates.dc.html",
+      "page": "dest-future",
+      "x": 0,
+      "y": 9074,
+      "w": 390,
+      "h": 4432,
+      "title": "참고 · 목적지 상태 7종 (가정 · 펼침 · 도착 · 목표일 없음 · 도착 어려움 · 상환 늦음 · 설계 미리 보기) (다크)"
+    },
+    {
+      "file": "DarkGoalDesignStates.dc.html",
+      "page": "dest-future",
+      "x": 470,
+      "y": 9074,
+      "w": 390,
+      "h": 1421,
+      "title": "참고 · 새 목적지 설계 상태 2종 (처음 · 다른 금액 가정) (다크)"
     },
     {
       "file": "IntroPosition.dc.html",
@@ -704,13 +974,13 @@
       "title": "첫 실행 · 소개 3 목적지"
     },
     {
-      "file": "Onboarding.dc.html",
+      "file": "HomeSetup.dc.html",
       "page": "first-run",
       "x": 1410,
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "첫 실행"
+      "title": "첫 실행 · 홈 구성"
     },
     {
       "file": "DarkIntroPosition.dc.html",
@@ -740,31 +1010,31 @@
       "title": "첫 실행 · 소개 3 목적지 (다크)"
     },
     {
-      "file": "DarkOnboarding.dc.html",
+      "file": "DarkHomeSetup.dc.html",
       "page": "first-run",
       "x": 1410,
       "y": 896,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 (다크)"
+      "title": "첫 실행 · 홈 구성 (다크)"
     },
     {
-      "file": "HomeSetup.dc.html",
+      "file": "HomeSetupStocksOn.dc.html",
       "page": "first-run",
       "x": 0,
       "y": 1908,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 · 홈 구성"
+      "title": "첫 실행 · 홈 구성 · 주식 알림 켬"
     },
     {
-      "file": "HomeSetupStocksOn.dc.html",
+      "file": "Onboarding.dc.html",
       "page": "first-run",
       "x": 470,
       "y": 1908,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 · 홈 구성 · 주식 켬"
+      "title": "첫 실행 · 시작 방법 고르기"
     },
     {
       "file": "SettingsHomeEntry.dc.html",
@@ -773,7 +1043,7 @@
       "y": 1908,
       "w": 390,
       "h": 844,
-      "title": "설정 · 「홈 구성 ›」 행"
+      "title": "설정"
     },
     {
       "file": "HomeLayoutEdit.dc.html",
@@ -785,22 +1055,22 @@
       "title": "설정 › 홈 구성 (처음 실행 뒤에 다시 고칠 때)"
     },
     {
-      "file": "DarkHomeSetup.dc.html",
+      "file": "DarkHomeSetupStocksOn.dc.html",
       "page": "first-run",
       "x": 0,
       "y": 2804,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 · 홈 구성 (다크)"
+      "title": "첫 실행 · 홈 구성 · 주식 알림 켬 (다크)"
     },
     {
-      "file": "DarkHomeSetupStocksOn.dc.html",
+      "file": "DarkOnboarding.dc.html",
       "page": "first-run",
       "x": 470,
       "y": 2804,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 · 홈 구성 · 주식 켬 (다크)"
+      "title": "첫 실행 · 시작 방법 고르기 (다크)"
     },
     {
       "file": "DarkSettingsHomeEntry.dc.html",
@@ -809,7 +1079,7 @@
       "y": 2804,
       "w": 390,
       "h": 844,
-      "title": "설정 · 「홈 구성 ›」 행 (다크)"
+      "title": "설정 (다크)"
     },
     {
       "file": "DarkHomeLayoutEdit.dc.html",
@@ -827,7 +1097,7 @@
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 홈 1 / 3 현재 위치"
+      "title": "첫 실행 안내 · 홈 1 / 3 이번 달 소비"
     },
     {
       "file": "TourHome2.dc.html",
@@ -854,7 +1124,7 @@
       "y": 896,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 홈 1 / 3 현재 위치 (다크)"
+      "title": "첫 실행 안내 · 홈 1 / 3 이번 달 소비 (다크)"
     },
     {
       "file": "DarkTourHome2.dc.html",
@@ -899,7 +1169,7 @@
       "y": 1908,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 자산 3 / 3 현금성 자산"
+      "title": "첫 실행 안내 · 자산 3 / 3 현금성 비상금"
     },
     {
       "file": "DarkTourAssets1.dc.html",
@@ -926,7 +1196,7 @@
       "y": 2804,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 자산 3 / 3 현금성 자산 (다크)"
+      "title": "첫 실행 안내 · 자산 3 / 3 현금성 비상금 (다크)"
     },
     {
       "file": "TourSpending1.dc.html",
@@ -989,7 +1259,7 @@
       "y": 5724,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 목적지 1 / 3 월 저축 배분"
+      "title": "첫 실행 안내 · 목적지 1 / 3 매달 모으는 돈"
     },
     {
       "file": "TourGoals2.dc.html",
@@ -1016,7 +1286,7 @@
       "y": 6620,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 목적지 1 / 3 월 저축 배분 (다크)"
+      "title": "첫 실행 안내 · 목적지 1 / 3 매달 모으는 돈 (다크)"
     },
     {
       "file": "DarkTourGoals2.dc.html",
@@ -1106,7 +1376,7 @@
       "y": 9540,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 부채 2 / 3 고금리 경고"
+      "title": "첫 실행 안내 · 부채 2 / 3 상환 안내"
     },
     {
       "file": "TourDebts3.dc.html",
@@ -1133,7 +1403,7 @@
       "y": 10436,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 부채 2 / 3 고금리 경고 (다크)"
+      "title": "첫 실행 안내 · 부채 2 / 3 상환 안내 (다크)"
     },
     {
       "file": "DarkTourDebts3.dc.html",
@@ -1151,7 +1421,7 @@
       "y": 11448,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 전략 1 / 3 상환 방식"
+      "title": "첫 실행 안내 · 자산 › 상환 계획 1 / 3 저장된 계획"
     },
     {
       "file": "TourStrategy2.dc.html",
@@ -1160,7 +1430,7 @@
       "y": 11448,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 전략 2 / 3 예상 완제"
+      "title": "첫 실행 안내 · 자산 › 상환 계획 2 / 3 다 갚는 달"
     },
     {
       "file": "TourStrategy3.dc.html",
@@ -1169,7 +1439,7 @@
       "y": 11448,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 전략 3 / 3 완제 순서"
+      "title": "첫 실행 안내 · 자산 › 상환 계획 3 / 3 갚는 순서"
     },
     {
       "file": "DarkTourStrategy1.dc.html",
@@ -1178,7 +1448,7 @@
       "y": 12344,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 전략 1 / 3 상환 방식 (다크)"
+      "title": "첫 실행 안내 · 자산 › 상환 계획 1 / 3 저장된 계획 (다크)"
     },
     {
       "file": "DarkTourStrategy2.dc.html",
@@ -1187,7 +1457,7 @@
       "y": 12344,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 전략 2 / 3 예상 완제 (다크)"
+      "title": "첫 실행 안내 · 자산 › 상환 계획 2 / 3 다 갚는 달 (다크)"
     },
     {
       "file": "DarkTourStrategy3.dc.html",
@@ -1196,7 +1466,7 @@
       "y": 12344,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 전략 3 / 3 완제 순서 (다크)"
+      "title": "첫 실행 안내 · 자산 › 상환 계획 3 / 3 갚는 순서 (다크)"
     },
     {
       "file": "TourLedger1.dc.html",
@@ -1223,7 +1493,7 @@
       "y": 13356,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 내역 3 / 3 거래 추가"
+      "title": "첫 실행 안내 · 내역 3 / 3 기록 추가"
     },
     {
       "file": "DarkTourLedger1.dc.html",
@@ -1250,7 +1520,7 @@
       "y": 14252,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 내역 3 / 3 거래 추가 (다크)"
+      "title": "첫 실행 안내 · 내역 3 / 3 기록 추가 (다크)"
     },
     {
       "file": "TourLimits1.dc.html",
@@ -1367,7 +1637,7 @@
       "y": 19080,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 계획 1 / 3 가정"
+      "title": "첫 실행 안내 · 미래 › 상환 계획 1 / 3 추가 상환"
     },
     {
       "file": "TourPayoff2.dc.html",
@@ -1376,7 +1646,7 @@
       "y": 19080,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 계획 2 / 3 비교"
+      "title": "첫 실행 안내 · 미래 › 상환 계획 2 / 3 비교"
     },
     {
       "file": "TourPayoff3.dc.html",
@@ -1385,7 +1655,7 @@
       "y": 19080,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 계획 3 / 3 저장"
+      "title": "첫 실행 안내 · 미래 › 상환 계획 3 / 3 저장"
     },
     {
       "file": "DarkTourPayoff1.dc.html",
@@ -1394,7 +1664,7 @@
       "y": 19976,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 계획 1 / 3 가정 (다크)"
+      "title": "첫 실행 안내 · 미래 › 상환 계획 1 / 3 추가 상환 (다크)"
     },
     {
       "file": "DarkTourPayoff2.dc.html",
@@ -1403,7 +1673,7 @@
       "y": 19976,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 계획 2 / 3 비교 (다크)"
+      "title": "첫 실행 안내 · 미래 › 상환 계획 2 / 3 비교 (다크)"
     },
     {
       "file": "DarkTourPayoff3.dc.html",
@@ -1412,7 +1682,79 @@
       "y": 19976,
       "w": 390,
       "h": 844,
-      "title": "첫 실행 안내 · 상환 계획 3 / 3 저장 (다크)"
+      "title": "첫 실행 안내 · 미래 › 상환 계획 3 / 3 저장 (다크)"
+    },
+    {
+      "file": "TourHomeChecklist.dc.html",
+      "page": "tour",
+      "x": 0,
+      "y": 20988,
+      "w": 390,
+      "h": 844,
+      "title": "첫 실행 안내 · 홈 3 / 3 시작 순서 (처음 시작한 빈 홈)"
+    },
+    {
+      "file": "TourHelpReplay.dc.html",
+      "page": "tour",
+      "x": 470,
+      "y": 20988,
+      "w": 390,
+      "h": 844,
+      "title": "첫 실행 안내 · 제목 옆 ?로 다시 연 안내 (화면 안내)"
+    },
+    {
+      "file": "TourRules.dc.html",
+      "page": "tour",
+      "x": 940,
+      "y": 20988,
+      "w": 1200,
+      "h": 1760,
+      "title": "참고 · 첫 실행 안내 규칙 (빈 화면 · 닫기 · 다시 보기 · 배치)"
+    },
+    {
+      "file": "DarkTourHomeChecklist.dc.html",
+      "page": "tour",
+      "x": 0,
+      "y": 22800,
+      "w": 390,
+      "h": 844,
+      "title": "첫 실행 안내 · 홈 3 / 3 시작 순서 (처음 시작한 빈 홈) (다크)"
+    },
+    {
+      "file": "DarkTourHelpReplay.dc.html",
+      "page": "tour",
+      "x": 470,
+      "y": 22800,
+      "w": 390,
+      "h": 844,
+      "title": "첫 실행 안내 · 제목 옆 ?로 다시 연 안내 (화면 안내) (다크)"
+    },
+    {
+      "file": "DarkTourRules.dc.html",
+      "page": "tour",
+      "x": 940,
+      "y": 22800,
+      "w": 1200,
+      "h": 1760,
+      "title": "참고 · 첫 실행 안내 규칙 (빈 화면 · 닫기 · 다시 보기 · 배치) (다크)"
+    },
+    {
+      "file": "TourHomeSample1.dc.html",
+      "page": "tour",
+      "x": 0,
+      "y": 24728,
+      "w": 390,
+      "h": 844,
+      "title": "첫 실행 안내 · 홈 1 / 3 샘플로 둘러보기 (흐려진 샘플 띠 아래)"
+    },
+    {
+      "file": "DarkTourHomeSample1.dc.html",
+      "page": "tour",
+      "x": 0,
+      "y": 25624,
+      "w": 390,
+      "h": 844,
+      "title": "첫 실행 안내 · 홈 1 / 3 샘플로 둘러보기 (흐려진 샘플 띠 아래) (다크)"
     },
     {
       "file": "StocksMine.dc.html",
@@ -1420,8 +1762,8 @@
       "x": 0,
       "y": 0,
       "w": 390,
-      "h": 844,
-      "title": "주식 · 내 종목"
+      "h": 912,
+      "title": "주식 · 내 종목 (계획 · 3단계)"
     },
     {
       "file": "HoldingAdd.dc.html",
@@ -1430,7 +1772,7 @@
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "모달 · 보유 기록"
+      "title": "모달 · 보유 추가"
     },
     {
       "file": "StocksEmpty.dc.html",
@@ -1454,25 +1796,25 @@
       "file": "DarkStocksMine.dc.html",
       "page": "stocks",
       "x": 0,
-      "y": 896,
+      "y": 964,
       "w": 390,
-      "h": 844,
-      "title": "주식 · 내 종목 (다크)"
+      "h": 912,
+      "title": "주식 · 내 종목 (계획 · 3단계) (다크)"
     },
     {
       "file": "DarkHoldingAdd.dc.html",
       "page": "stocks",
       "x": 470,
-      "y": 896,
+      "y": 964,
       "w": 390,
       "h": 844,
-      "title": "모달 · 보유 기록 (다크)"
+      "title": "모달 · 보유 추가 (다크)"
     },
     {
       "file": "DarkStocksEmpty.dc.html",
       "page": "stocks",
       "x": 940,
-      "y": 896,
+      "y": 964,
       "w": 390,
       "h": 844,
       "title": "주식 · 빈 상태 (다크)"
@@ -1481,7 +1823,7 @@
       "file": "DarkStocksHome.dc.html",
       "page": "stocks",
       "x": 1410,
-      "y": 896,
+      "y": 964,
       "w": 390,
       "h": 844,
       "title": "주식 · 둘러보기 (다크)"
@@ -1490,7 +1832,7 @@
       "file": "StockListGrowth.dc.html",
       "page": "stocks",
       "x": 0,
-      "y": 1908,
+      "y": 2044,
       "w": 390,
       "h": 844,
       "title": "주식 · 성장주 목록"
@@ -1499,7 +1841,7 @@
       "file": "StockListDividend.dc.html",
       "page": "stocks",
       "x": 470,
-      "y": 1908,
+      "y": 2044,
       "w": 390,
       "h": 844,
       "title": "주식 · 배당주 목록"
@@ -1508,7 +1850,7 @@
       "file": "StockDetail.dc.html",
       "page": "stocks",
       "x": 940,
-      "y": 1908,
+      "y": 2044,
       "w": 390,
       "h": 844,
       "title": "주식 · 종목 상세"
@@ -1517,7 +1859,7 @@
       "file": "StockThemes.dc.html",
       "page": "stocks",
       "x": 1410,
-      "y": 1908,
+      "y": 2044,
       "w": 390,
       "h": 844,
       "title": "주식 · 테마"
@@ -1526,7 +1868,7 @@
       "file": "DarkStockListGrowth.dc.html",
       "page": "stocks",
       "x": 0,
-      "y": 2804,
+      "y": 2940,
       "w": 390,
       "h": 844,
       "title": "주식 · 성장주 목록 (다크)"
@@ -1535,7 +1877,7 @@
       "file": "DarkStockListDividend.dc.html",
       "page": "stocks",
       "x": 470,
-      "y": 2804,
+      "y": 2940,
       "w": 390,
       "h": 844,
       "title": "주식 · 배당주 목록 (다크)"
@@ -1544,7 +1886,7 @@
       "file": "DarkStockDetail.dc.html",
       "page": "stocks",
       "x": 940,
-      "y": 2804,
+      "y": 2940,
       "w": 390,
       "h": 844,
       "title": "주식 · 종목 상세 (다크)"
@@ -1553,7 +1895,7 @@
       "file": "DarkStockThemes.dc.html",
       "page": "stocks",
       "x": 1410,
-      "y": 2804,
+      "y": 2940,
       "w": 390,
       "h": 844,
       "title": "주식 · 테마 (다크)"
@@ -1562,36 +1904,36 @@
       "file": "StockStates.dc.html",
       "page": "stocks",
       "x": 0,
-      "y": 3816,
+      "y": 3952,
       "w": 1180,
-      "h": 880,
-      "title": "참고 · 주식 탭 특수한 상황 6가지"
+      "h": 975,
+      "title": "참고 · 주식 탭 특수한 상황 8가지"
     },
     {
       "file": "SnapshotUpdate.dc.html",
       "page": "stocks",
       "x": 1260,
-      "y": 3816,
+      "y": 3952,
       "w": 1180,
-      "h": 762,
+      "h": 750,
       "title": "참고 · 종목 데이터 새로 받기"
     },
     {
       "file": "DarkStockStates.dc.html",
       "page": "stocks",
       "x": 0,
-      "y": 4748,
+      "y": 4979,
       "w": 1180,
-      "h": 880,
-      "title": "참고 · 주식 탭 특수한 상황 6가지 (다크)"
+      "h": 975,
+      "title": "참고 · 주식 탭 특수한 상황 8가지 (다크)"
     },
     {
       "file": "DarkSnapshotUpdate.dc.html",
       "page": "stocks",
       "x": 1260,
-      "y": 4748,
+      "y": 4979,
       "w": 1180,
-      "h": 762,
+      "h": 750,
       "title": "참고 · 종목 데이터 새로 받기 (다크)"
     },
     {
@@ -1600,86 +1942,176 @@
       "x": 0,
       "y": 0,
       "w": 390,
-      "h": 844,
-      "title": "모달 · 내 수치 입력"
+      "h": 1229,
+      "title": "모달 · 내 수치"
     },
     {
-      "file": "TransactionAdd.dc.html",
+      "file": "ProfileDialogNoItems.dc.html",
       "page": "modals",
       "x": 470,
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "모달 · 거래 추가"
+      "title": "모달 · 내 수치 (자산 · 부채를 안 넣었을 때)"
     },
     {
-      "file": "LimitEditor.dc.html",
+      "file": "SalarySheet.dc.html",
       "page": "modals",
       "x": 940,
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "모달 · 한도 조정"
+      "title": "모달 · 월급 입력"
     },
     {
-      "file": "AssetDialog.dc.html",
+      "file": "NetWorthRatioSheet.dc.html",
       "page": "modals",
       "x": 1410,
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "모달 · 자산 추가"
+      "title": "모달 · 순자산 대비 소비"
     },
     {
-      "file": "DebtDialog.dc.html",
+      "file": "TransactionAdd.dc.html",
       "page": "modals",
       "x": 1880,
       "y": 0,
       "w": 390,
       "h": 844,
-      "title": "모달 · 부채 수정"
+      "title": "모달 · 기록 추가"
     },
     {
       "file": "DarkProfileDialog.dc.html",
       "page": "modals",
       "x": 0,
-      "y": 896,
+      "y": 1281,
+      "w": 390,
+      "h": 1229,
+      "title": "모달 · 내 수치 (다크)"
+    },
+    {
+      "file": "DarkProfileDialogNoItems.dc.html",
+      "page": "modals",
+      "x": 470,
+      "y": 1281,
       "w": 390,
       "h": 844,
-      "title": "모달 · 내 수치 입력 (다크)"
+      "title": "모달 · 내 수치 (자산 · 부채를 안 넣었을 때) (다크)"
+    },
+    {
+      "file": "DarkSalarySheet.dc.html",
+      "page": "modals",
+      "x": 940,
+      "y": 1281,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 월급 입력 (다크)"
+    },
+    {
+      "file": "DarkNetWorthRatioSheet.dc.html",
+      "page": "modals",
+      "x": 1410,
+      "y": 1281,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 순자산 대비 소비 (다크)"
     },
     {
       "file": "DarkTransactionAdd.dc.html",
       "page": "modals",
-      "x": 470,
-      "y": 896,
+      "x": 1880,
+      "y": 1281,
       "w": 390,
       "h": 844,
-      "title": "모달 · 거래 추가 (다크)"
+      "title": "모달 · 기록 추가 (다크)"
+    },
+    {
+      "file": "LimitEditor.dc.html",
+      "page": "modals",
+      "x": 0,
+      "y": 2678,
+      "w": 390,
+      "h": 1297,
+      "title": "모달 · 한도 조정"
+    },
+    {
+      "file": "AssetDialog.dc.html",
+      "page": "modals",
+      "x": 470,
+      "y": 2678,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 자산 추가"
+    },
+    {
+      "file": "AssetEditDialog.dc.html",
+      "page": "modals",
+      "x": 940,
+      "y": 2678,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 자산 수정"
+    },
+    {
+      "file": "AssetBalanceCheck.dc.html",
+      "page": "modals",
+      "x": 1410,
+      "y": 2678,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 잔액 한 번에 확인 (자산 구성의 주황 띠에서 · 확인 필요 2개)"
+    },
+    {
+      "file": "DebtDialog.dc.html",
+      "page": "modals",
+      "x": 1880,
+      "y": 2678,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 부채 수정"
     },
     {
       "file": "DarkLimitEditor.dc.html",
       "page": "modals",
-      "x": 940,
-      "y": 896,
+      "x": 0,
+      "y": 4027,
       "w": 390,
-      "h": 844,
+      "h": 1297,
       "title": "모달 · 한도 조정 (다크)"
     },
     {
       "file": "DarkAssetDialog.dc.html",
       "page": "modals",
-      "x": 1410,
-      "y": 896,
+      "x": 470,
+      "y": 4027,
       "w": 390,
       "h": 844,
       "title": "모달 · 자산 추가 (다크)"
     },
     {
+      "file": "DarkAssetEditDialog.dc.html",
+      "page": "modals",
+      "x": 940,
+      "y": 4027,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 자산 수정 (다크)"
+    },
+    {
+      "file": "DarkAssetBalanceCheck.dc.html",
+      "page": "modals",
+      "x": 1410,
+      "y": 4027,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 잔액 한 번에 확인 (자산 구성의 주황 띠에서 · 확인 필요 2개) (다크)"
+    },
+    {
       "file": "DarkDebtDialog.dc.html",
       "page": "modals",
       "x": 1880,
-      "y": 896,
+      "y": 4027,
       "w": 390,
       "h": 844,
       "title": "모달 · 부채 수정 (다크)"
@@ -1688,97 +2120,115 @@
       "file": "GoalDialog.dc.html",
       "page": "modals",
       "x": 0,
-      "y": 1908,
+      "y": 5492,
       "w": 390,
       "h": 844,
       "title": "모달 · 목적지 추가"
     },
     {
-      "file": "RecurringDialog.dc.html",
+      "file": "GoalDialogPreview.dc.html",
       "page": "modals",
       "x": 470,
-      "y": 1908,
+      "y": 5492,
+      "w": 390,
+      "h": 981,
+      "title": "모달 · 목적지 추가 (일반 저축 · 저장 전 미리 보기)"
+    },
+    {
+      "file": "RecurringDialog.dc.html",
+      "page": "modals",
+      "x": 940,
+      "y": 5492,
       "w": 390,
       "h": 844,
-      "title": "모달 · 반복 거래"
+      "title": "모달 · 반복 기록"
+    },
+    {
+      "file": "RecurringDialogOverlap.dc.html",
+      "page": "modals",
+      "x": 1410,
+      "y": 5492,
+      "w": 390,
+      "h": 945,
+      "title": "모달 · 반복 기록 (이번 달 겹침 확인)"
     },
     {
       "file": "GoalContribute.dc.html",
       "page": "modals",
-      "x": 940,
-      "y": 1908,
-      "w": 390,
-      "h": 844,
-      "title": "모달 · 적립액 추가"
-    },
-    {
-      "file": "ImportReview.dc.html",
-      "page": "modals",
-      "x": 1410,
-      "y": 1908,
-      "w": 390,
-      "h": 844,
-      "title": "모달 · 백업 불러오기"
-    },
-    {
-      "file": "CoachPanel.dc.html",
-      "page": "modals",
       "x": 1880,
-      "y": 1908,
+      "y": 5492,
       "w": 390,
-      "h": 844,
-      "title": "모달 · 코칭"
+      "h": 892,
+      "title": "모달 · 적립"
     },
     {
       "file": "DarkGoalDialog.dc.html",
       "page": "modals",
       "x": 0,
-      "y": 2804,
+      "y": 6525,
       "w": 390,
       "h": 844,
       "title": "모달 · 목적지 추가 (다크)"
     },
     {
-      "file": "DarkRecurringDialog.dc.html",
+      "file": "DarkGoalDialogPreview.dc.html",
       "page": "modals",
       "x": 470,
-      "y": 2804,
+      "y": 6525,
+      "w": 390,
+      "h": 981,
+      "title": "모달 · 목적지 추가 (일반 저축 · 저장 전 미리 보기) (다크)"
+    },
+    {
+      "file": "DarkRecurringDialog.dc.html",
+      "page": "modals",
+      "x": 940,
+      "y": 6525,
       "w": 390,
       "h": 844,
-      "title": "모달 · 반복 거래 (다크)"
+      "title": "모달 · 반복 기록 (다크)"
+    },
+    {
+      "file": "DarkRecurringDialogOverlap.dc.html",
+      "page": "modals",
+      "x": 1410,
+      "y": 6525,
+      "w": 390,
+      "h": 945,
+      "title": "모달 · 반복 기록 (이번 달 겹침 확인) (다크)"
     },
     {
       "file": "DarkGoalContribute.dc.html",
       "page": "modals",
-      "x": 940,
-      "y": 2804,
-      "w": 390,
-      "h": 844,
-      "title": "모달 · 적립액 추가 (다크)"
-    },
-    {
-      "file": "DarkImportReview.dc.html",
-      "page": "modals",
-      "x": 1410,
-      "y": 2804,
-      "w": 390,
-      "h": 844,
-      "title": "모달 · 백업 불러오기 (다크)"
-    },
-    {
-      "file": "DarkCoachPanel.dc.html",
-      "page": "modals",
       "x": 1880,
-      "y": 2804,
+      "y": 6525,
       "w": 390,
-      "h": 844,
-      "title": "모달 · 코칭 (다크)"
+      "h": 892,
+      "title": "모달 · 적립 (다크)"
+    },
+    {
+      "file": "ImportReview.dc.html",
+      "page": "modals",
+      "x": 0,
+      "y": 7674,
+      "w": 390,
+      "h": 905,
+      "title": "모달 · 백업 불러오기"
+    },
+    {
+      "file": "CoachPanel.dc.html",
+      "page": "modals",
+      "x": 470,
+      "y": 7674,
+      "w": 390,
+      "h": 942,
+      "title": "모달 · 코칭"
     },
     {
       "file": "CoachEmpty.dc.html",
       "page": "modals",
-      "x": 0,
-      "y": 3816,
+      "x": 940,
+      "y": 7674,
       "w": 390,
       "h": 844,
       "title": "모달 · 코칭 기록 없음"
@@ -1786,44 +2236,44 @@
     {
       "file": "AlertsPanel.dc.html",
       "page": "modals",
-      "x": 470,
-      "y": 3816,
-      "w": 390,
-      "h": 844,
-      "title": "모달 · 알림"
-    },
-    {
-      "file": "AlertsEmpty.dc.html",
-      "page": "modals",
-      "x": 940,
-      "y": 3816,
-      "w": 390,
-      "h": 844,
-      "title": "모달 · 알림 없음"
-    },
-    {
-      "file": "PeerDialog.dc.html",
-      "page": "modals",
       "x": 1410,
-      "y": 3816,
+      "y": 7674,
       "w": 390,
       "h": 844,
-      "title": "모달 · 또래 기준 등록"
+      "title": "모달 · 알림 (중요 1건)"
     },
     {
-      "file": "StockSettings.dc.html",
+      "file": "AlertsPanelInfo.dc.html",
       "page": "modals",
       "x": 1880,
-      "y": 3816,
+      "y": 7674,
       "w": 390,
       "h": 844,
-      "title": "모달 · 설정 › 주식"
+      "title": "모달 · 알림 (중요 1 · 참고 1)"
+    },
+    {
+      "file": "DarkImportReview.dc.html",
+      "page": "modals",
+      "x": 0,
+      "y": 8668,
+      "w": 390,
+      "h": 905,
+      "title": "모달 · 백업 불러오기 (다크)"
+    },
+    {
+      "file": "DarkCoachPanel.dc.html",
+      "page": "modals",
+      "x": 470,
+      "y": 8668,
+      "w": 390,
+      "h": 942,
+      "title": "모달 · 코칭 (다크)"
     },
     {
       "file": "DarkCoachEmpty.dc.html",
       "page": "modals",
-      "x": 0,
-      "y": 4712,
+      "x": 940,
+      "y": 8668,
       "w": 390,
       "h": 844,
       "title": "모달 · 코칭 기록 없음 (다크)"
@@ -1831,26 +2281,71 @@
     {
       "file": "DarkAlertsPanel.dc.html",
       "page": "modals",
-      "x": 470,
-      "y": 4712,
+      "x": 1410,
+      "y": 8668,
       "w": 390,
       "h": 844,
-      "title": "모달 · 알림 (다크)"
+      "title": "모달 · 알림 (중요 1건) (다크)"
+    },
+    {
+      "file": "DarkAlertsPanelInfo.dc.html",
+      "page": "modals",
+      "x": 1880,
+      "y": 8668,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 알림 (중요 1 · 참고 1) (다크)"
+    },
+    {
+      "file": "AlertsEmpty.dc.html",
+      "page": "modals",
+      "x": 0,
+      "y": 9778,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 알림 0건"
+    },
+    {
+      "file": "PeerDialog.dc.html",
+      "page": "modals",
+      "x": 470,
+      "y": 9778,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 또래 기준 등록"
+    },
+    {
+      "file": "StockSettings.dc.html",
+      "page": "modals",
+      "x": 940,
+      "y": 9778,
+      "w": 390,
+      "h": 844,
+      "title": "모달 · 설정 › 주식"
+    },
+    {
+      "file": "SettingsNotify.dc.html",
+      "page": "modals",
+      "x": 1410,
+      "y": 9778,
+      "w": 390,
+      "h": 903,
+      "title": "모달 · 설정 › 알림 (기기 알림)"
     },
     {
       "file": "DarkAlertsEmpty.dc.html",
       "page": "modals",
-      "x": 940,
-      "y": 4712,
+      "x": 0,
+      "y": 10733,
       "w": 390,
       "h": 844,
-      "title": "모달 · 알림 없음 (다크)"
+      "title": "모달 · 알림 0건 (다크)"
     },
     {
       "file": "DarkPeerDialog.dc.html",
       "page": "modals",
-      "x": 1410,
-      "y": 4712,
+      "x": 470,
+      "y": 10733,
       "w": 390,
       "h": 844,
       "title": "모달 · 또래 기준 등록 (다크)"
@@ -1858,28 +2353,19 @@
     {
       "file": "DarkStockSettings.dc.html",
       "page": "modals",
-      "x": 1880,
-      "y": 4712,
+      "x": 940,
+      "y": 10733,
       "w": 390,
       "h": 844,
       "title": "모달 · 설정 › 주식 (다크)"
     },
     {
-      "file": "SettingsNotify.dc.html",
-      "page": "modals",
-      "x": 0,
-      "y": 5724,
-      "w": 390,
-      "h": 844,
-      "title": "모달 · 설정 › 알림 (기기 알림)"
-    },
-    {
       "file": "DarkSettingsNotify.dc.html",
       "page": "modals",
-      "x": 0,
-      "y": 6620,
+      "x": 1410,
+      "y": 10733,
       "w": 390,
-      "h": 844,
+      "h": 903,
       "title": "모달 · 설정 › 알림 (기기 알림) (다크)"
     },
     {
@@ -1888,7 +2374,7 @@
       "x": 0,
       "y": 0,
       "w": 1440,
-      "h": 1070,
+      "h": 1273,
       "title": "데스크톱 · 홈"
     },
     {
@@ -1897,25 +2383,25 @@
       "x": 1520,
       "y": 0,
       "w": 1440,
-      "h": 900,
+      "h": 976,
       "title": "데스크톱 · 소비 내역"
     },
     {
       "file": "DarkDesktopHomeV5.dc.html",
       "page": "desktop",
       "x": 0,
-      "y": 1122,
+      "y": 1325,
       "w": 1440,
-      "h": 1070,
+      "h": 1273,
       "title": "데스크톱 · 홈 (다크)"
     },
     {
       "file": "DarkDesktopLedger.dc.html",
       "page": "desktop",
       "x": 1520,
-      "y": 1122,
+      "y": 1325,
       "w": 1440,
-      "h": 900,
+      "h": 976,
       "title": "데스크톱 · 소비 내역 (다크)"
     },
     {
@@ -1924,359 +2410,467 @@
       "x": 0,
       "y": 0,
       "w": 390,
-      "h": 1324,
-      "title": "상태 · 저장소 로딩·복구"
+      "h": 2779,
+      "title": "상태 · 저장소 로딩·복구 · 샘플에서 내 데이터로"
     },
     {
       "file": "EmptyStates.dc.html",
       "page": "states",
       "x": 470,
       "y": 0,
-      "w": 390,
-      "h": 2800,
-      "title": "상태 · 미입력 6종"
+      "w": 2002,
+      "h": 2353,
+      "title": "참고 · 미입력 7종 · 화면마다의 빈 카드"
     },
     {
       "file": "PeerStates.dc.html",
       "page": "states",
-      "x": 940,
+      "x": 2552,
       "y": 0,
       "w": 390,
-      "h": 1555,
-      "title": "상태 · 또래 카드 5종"
+      "h": 2972,
+      "title": "상태 · 또래 카드 6종"
     },
     {
       "file": "DarkStorageStates.dc.html",
       "page": "states",
       "x": 0,
-      "y": 2852,
+      "y": 3024,
       "w": 390,
-      "h": 1324,
-      "title": "상태 · 저장소 로딩·복구 (다크)"
+      "h": 2779,
+      "title": "상태 · 저장소 로딩·복구 · 샘플에서 내 데이터로 (다크)"
     },
     {
       "file": "DarkEmptyStates.dc.html",
       "page": "states",
       "x": 470,
-      "y": 2852,
-      "w": 390,
-      "h": 2800,
-      "title": "상태 · 미입력 6종 (다크)"
+      "y": 3024,
+      "w": 2002,
+      "h": 2353,
+      "title": "참고 · 미입력 7종 · 화면마다의 빈 카드 (다크)"
     },
     {
       "file": "DarkPeerStates.dc.html",
       "page": "states",
-      "x": 940,
-      "y": 2852,
+      "x": 2552,
+      "y": 3024,
       "w": 390,
-      "h": 1555,
-      "title": "상태 · 또래 카드 5종 (다크)"
+      "h": 2972,
+      "title": "상태 · 또래 카드 6종 (다크)"
     },
     {
       "file": "GoalTypes.dc.html",
       "page": "states",
       "x": 0,
-      "y": 5820,
+      "y": 6164,
       "w": 390,
-      "h": 1920,
+      "h": 2170,
       "title": "상태 · 목적지 유형 5종"
     },
     {
       "file": "ModalErrors.dc.html",
       "page": "states",
       "x": 470,
-      "y": 5820,
+      "y": 6164,
       "w": 390,
-      "h": 2100,
-      "title": "상태 · 모달 오류·저장 6종"
+      "h": 3290,
+      "title": "상태 · 모달 오류·저장 7종"
     },
     {
       "file": "Confirmations.dc.html",
       "page": "states",
       "x": 940,
-      "y": 5820,
+      "y": 6164,
       "w": 390,
-      "h": 1245,
-      "title": "상태 · 삭제·초기화 확인"
+      "h": 2265,
+      "title": "상태 · 삭제·초기화·확인 창 7종"
     },
     {
       "file": "DarkGoalTypes.dc.html",
       "page": "states",
       "x": 0,
-      "y": 7972,
+      "y": 9506,
       "w": 390,
-      "h": 1920,
+      "h": 2170,
       "title": "상태 · 목적지 유형 5종 (다크)"
     },
     {
       "file": "DarkModalErrors.dc.html",
       "page": "states",
       "x": 470,
-      "y": 7972,
+      "y": 9506,
       "w": 390,
-      "h": 2100,
-      "title": "상태 · 모달 오류·저장 6종 (다크)"
+      "h": 3290,
+      "title": "상태 · 모달 오류·저장 7종 (다크)"
     },
     {
       "file": "DarkConfirmations.dc.html",
       "page": "states",
       "x": 940,
-      "y": 7972,
+      "y": 9506,
       "w": 390,
-      "h": 1245,
-      "title": "상태 · 삭제·초기화 확인 (다크)"
+      "h": 2265,
+      "title": "상태 · 삭제·초기화·확인 창 7종 (다크)"
+    },
+    {
+      "file": "AssetDebtTypes.dc.html",
+      "page": "states",
+      "x": 0,
+      "y": 12964,
+      "w": 1400,
+      "h": 770,
+      "title": "참고 · 자산 · 부채 유형 목록 · 새 부채 · 다 갚은 부채"
     },
     {
       "file": "CalendarCells.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 10240,
+      "x": 1480,
+      "y": 12964,
       "w": 1330,
-      "h": 830,
+      "h": 880,
       "title": "참고 · 달력 칸 읽는 법"
     },
     {
       "file": "CalendarGridSizes.dc.html",
       "page": "states",
-      "x": 1410,
-      "y": 10240,
+      "x": 2890,
+      "y": 12964,
       "w": 1150,
-      "h": 1670,
+      "h": 1745,
       "title": "참고 · 달력을 펼치면 어디서나 월 달력"
     },
     {
-      "file": "CalendarStatusLines.dc.html",
+      "file": "DarkAssetDebtTypes.dc.html",
       "page": "states",
-      "x": 2640,
-      "y": 10240,
-      "w": 1200,
-      "h": 1570,
-      "title": "참고 · 달력 아래 한 줄이 바뀌는 경우"
+      "x": 0,
+      "y": 14761,
+      "w": 1400,
+      "h": 770,
+      "title": "참고 · 자산 · 부채 유형 목록 · 새 부채 · 다 갚은 부채 (다크)"
     },
     {
       "file": "DarkCalendarCells.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 11962,
+      "x": 1480,
+      "y": 14761,
       "w": 1330,
-      "h": 830,
+      "h": 880,
       "title": "참고 · 달력 칸 읽는 법 (다크)"
     },
     {
       "file": "DarkCalendarGridSizes.dc.html",
       "page": "states",
-      "x": 1410,
-      "y": 11962,
+      "x": 2890,
+      "y": 14761,
       "w": 1150,
-      "h": 1670,
+      "h": 1745,
       "title": "참고 · 달력을 펼치면 어디서나 월 달력 (다크)"
     },
     {
-      "file": "DarkCalendarStatusLines.dc.html",
+      "file": "CalendarStatusLines.dc.html",
       "page": "states",
-      "x": 2640,
-      "y": 11962,
+      "x": 0,
+      "y": 16674,
       "w": 1200,
-      "h": 1570,
-      "title": "참고 · 달력 아래 한 줄이 바뀌는 경우 (다크)"
+      "h": 2629,
+      "title": "참고 · 달력 아래 한 줄이 바뀌는 경우"
     },
     {
       "file": "HeroFootnotes.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 13800,
+      "x": 1280,
+      "y": 16674,
       "w": 1200,
-      "h": 640,
+      "h": 800,
       "title": "참고 · 홈 맨 위 카드의 안내 줄"
     },
     {
       "file": "DaySheetConfirm.dc.html",
       "page": "states",
-      "x": 1280,
-      "y": 13800,
+      "x": 2560,
+      "y": 16674,
       "w": 1200,
-      "h": 900,
+      "h": 1221,
       "title": "참고 · 저장을 한 번 더 물어보는 경우"
     },
     {
-      "file": "DaySheetStates.dc.html",
+      "file": "DarkCalendarStatusLines.dc.html",
       "page": "states",
-      "x": 2560,
-      "y": 13800,
-      "w": 1210,
-      "h": 1660,
-      "title": "참고 · 기록 창의 글이 바뀌는 경우"
+      "x": 0,
+      "y": 19355,
+      "w": 1200,
+      "h": 2629,
+      "title": "참고 · 달력 아래 한 줄이 바뀌는 경우 (다크)"
     },
     {
       "file": "DarkHeroFootnotes.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 15512,
+      "x": 1280,
+      "y": 19355,
       "w": 1200,
-      "h": 640,
+      "h": 800,
       "title": "참고 · 홈 맨 위 카드의 안내 줄 (다크)"
     },
     {
       "file": "DarkDaySheetConfirm.dc.html",
       "page": "states",
-      "x": 1280,
-      "y": 15512,
+      "x": 2560,
+      "y": 19355,
       "w": 1200,
-      "h": 900,
+      "h": 1221,
       "title": "참고 · 저장을 한 번 더 물어보는 경우 (다크)"
     },
     {
-      "file": "DarkDaySheetStates.dc.html",
+      "file": "DaySheetStates.dc.html",
       "page": "states",
-      "x": 2560,
-      "y": 15512,
+      "x": 0,
+      "y": 22152,
       "w": 1210,
-      "h": 1660,
-      "title": "참고 · 기록 창의 글이 바뀌는 경우 (다크)"
+      "h": 1919,
+      "title": "참고 · 기록 창의 글이 바뀌는 경우"
     },
     {
       "file": "DaySheetNoSpendStates.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 17340,
+      "x": 1290,
+      "y": 22152,
       "w": 1200,
-      "h": 1190,
+      "h": 1252,
       "title": "참고 · 안 쓴 날을 표시하는 경우"
     },
     {
       "file": "DoneCardStates.dc.html",
       "page": "states",
-      "x": 1280,
-      "y": 17340,
+      "x": 2570,
+      "y": 22152,
       "w": 1200,
-      "h": 1100,
+      "h": 1534,
       "title": "참고 · 저장 완료 카드의 경우들"
     },
     {
-      "file": "InsufficientElsewhere.dc.html",
+      "file": "DarkDaySheetStates.dc.html",
       "page": "states",
-      "x": 2560,
-      "y": 17340,
-      "w": 1230,
-      "h": 1390,
-      "title": "참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들"
+      "x": 0,
+      "y": 24123,
+      "w": 1210,
+      "h": 1919,
+      "title": "참고 · 기록 창의 글이 바뀌는 경우 (다크)"
     },
     {
       "file": "DarkDaySheetNoSpendStates.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 18782,
+      "x": 1290,
+      "y": 24123,
       "w": 1200,
-      "h": 1190,
+      "h": 1252,
       "title": "참고 · 안 쓴 날을 표시하는 경우 (다크)"
     },
     {
       "file": "DarkDoneCardStates.dc.html",
       "page": "states",
-      "x": 1280,
-      "y": 18782,
+      "x": 2570,
+      "y": 24123,
       "w": 1200,
-      "h": 1100,
+      "h": 1534,
       "title": "참고 · 저장 완료 카드의 경우들 (다크)"
     },
     {
-      "file": "DarkInsufficientElsewhere.dc.html",
+      "file": "InsufficientElsewhere.dc.html",
       "page": "states",
-      "x": 2560,
-      "y": 18782,
+      "x": 0,
+      "y": 26210,
       "w": 1230,
-      "h": 1390,
-      "title": "참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들 (다크)"
+      "h": 1864,
+      "title": "참고 · 월말 예상 기준이 서기 전 — 홈 밖의 화면들"
     },
     {
       "file": "FutureProvisional.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 20340,
+      "x": 1310,
+      "y": 26210,
       "w": 1230,
-      "h": 1080,
-      "title": "참고 · 미래 · 자산 경로의 잠정 표시"
+      "h": 1256,
+      "title": "참고 · 미래 · 목적지의 임시 계산 표시"
     },
     {
       "file": "LimitCardCases.dc.html",
       "page": "states",
-      "x": 1310,
-      "y": 20340,
+      "x": 2620,
+      "y": 26210,
       "w": 1200,
-      "h": 960,
-      "title": "참고 · 이번 달 한도 카드의 네 가지 경우"
+      "h": 1462,
+      "title": "참고 · 이번 달 한도 카드의 경우들"
     },
     {
-      "file": "EtcSubline.dc.html",
+      "file": "DarkInsufficientElsewhere.dc.html",
       "page": "states",
-      "x": 2590,
-      "y": 20340,
-      "w": 1200,
-      "h": 970,
-      "title": "참고 · 분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치"
+      "x": 0,
+      "y": 28126,
+      "w": 1230,
+      "h": 1864,
+      "title": "참고 · 월말 예상 기준이 서기 전 — 홈 밖의 화면들 (다크)"
     },
     {
       "file": "DarkFutureProvisional.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 21472,
+      "x": 1310,
+      "y": 28126,
       "w": 1230,
-      "h": 1080,
-      "title": "참고 · 미래 · 자산 경로의 잠정 표시 (다크)"
+      "h": 1256,
+      "title": "참고 · 미래 · 목적지의 임시 계산 표시 (다크)"
     },
     {
       "file": "DarkLimitCardCases.dc.html",
       "page": "states",
-      "x": 1310,
-      "y": 21472,
+      "x": 2620,
+      "y": 28126,
       "w": 1200,
-      "h": 960,
-      "title": "참고 · 이번 달 한도 카드의 네 가지 경우 (다크)"
+      "h": 1462,
+      "title": "참고 · 이번 달 한도 카드의 경우들 (다크)"
     },
     {
-      "file": "DarkEtcSubline.dc.html",
+      "file": "EtcSubline.dc.html",
       "page": "states",
-      "x": 2590,
-      "y": 21472,
+      "x": 0,
+      "y": 30158,
       "w": 1200,
-      "h": 970,
-      "title": "참고 · 분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치 (다크)"
+      "h": 1715,
+      "title": "참고 · 카테고리 없는 소비와 안 쓴 날 — 소비 · 한도 · 코치"
     },
     {
       "file": "ImportBackupNotes.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 22720,
+      "x": 1280,
+      "y": 30158,
       "w": 1230,
-      "h": 1060,
+      "h": 1103,
       "title": "참고 · 가져오기 · 백업 안내"
     },
     {
       "file": "NotifyCases.dc.html",
       "page": "states",
-      "x": 1310,
-      "y": 22720,
+      "x": 2590,
+      "y": 30158,
       "w": 1200,
-      "h": 830,
+      "h": 1435,
       "title": "참고 · 기기 알림 여섯 가지와 규칙"
+    },
+    {
+      "file": "DarkEtcSubline.dc.html",
+      "page": "states",
+      "x": 0,
+      "y": 31925,
+      "w": 1200,
+      "h": 1715,
+      "title": "참고 · 카테고리 없는 소비와 안 쓴 날 — 소비 · 한도 · 코치 (다크)"
     },
     {
       "file": "DarkImportBackupNotes.dc.html",
       "page": "states",
-      "x": 0,
-      "y": 23832,
+      "x": 1280,
+      "y": 31925,
       "w": 1230,
-      "h": 1060,
+      "h": 1103,
       "title": "참고 · 가져오기 · 백업 안내 (다크)"
     },
     {
       "file": "DarkNotifyCases.dc.html",
       "page": "states",
-      "x": 1310,
-      "y": 23832,
+      "x": 2590,
+      "y": 31925,
       "w": 1200,
-      "h": 830,
+      "h": 1435,
       "title": "참고 · 기기 알림 여섯 가지와 규칙 (다크)"
+    },
+    {
+      "file": "PayoffStates.dc.html",
+      "page": "states",
+      "x": 0,
+      "y": 33808,
+      "w": 1230,
+      "h": 1501,
+      "title": "참고 · 미래 › 상환 계획의 경우들"
+    },
+    {
+      "file": "FutureStates.dc.html",
+      "page": "states",
+      "x": 1310,
+      "y": 33808,
+      "w": 1230,
+      "h": 1749,
+      "title": "참고 · 미래 › 자산 경로의 경우들"
+    },
+    {
+      "file": "HomeGlanceRows.dc.html",
+      "page": "states",
+      "x": 2620,
+      "y": 33808,
+      "w": 1230,
+      "h": 1045,
+      "title": "참고 · 홈 자산 한눈에 줄 펼침"
+    },
+    {
+      "file": "DarkPayoffStates.dc.html",
+      "page": "states",
+      "x": 0,
+      "y": 35609,
+      "w": 1230,
+      "h": 1501,
+      "title": "참고 · 미래 › 상환 계획의 경우들 (다크)"
+    },
+    {
+      "file": "DarkFutureStates.dc.html",
+      "page": "states",
+      "x": 1310,
+      "y": 35609,
+      "w": 1230,
+      "h": 1749,
+      "title": "참고 · 미래 › 자산 경로의 경우들 (다크)"
+    },
+    {
+      "file": "DarkHomeGlanceRows.dc.html",
+      "page": "states",
+      "x": 2620,
+      "y": 35609,
+      "w": 1230,
+      "h": 1045,
+      "title": "참고 · 홈 자산 한눈에 줄 펼침 (다크)"
+    },
+    {
+      "file": "SampleModeTabs.dc.html",
+      "page": "states",
+      "x": 0,
+      "y": 37526,
+      "w": 1290,
+      "h": 823,
+      "title": "참고 · 샘플 모드 띠 (모든 탭)"
+    },
+    {
+      "file": "DebtUnpayable.dc.html",
+      "page": "states",
+      "x": 1370,
+      "y": 37526,
+      "w": 1230,
+      "h": 936,
+      "title": "참고 · 월 최소 상환액을 비운 부채"
+    },
+    {
+      "file": "DarkSampleModeTabs.dc.html",
+      "page": "states",
+      "x": 0,
+      "y": 38514,
+      "w": 1290,
+      "h": 823,
+      "title": "참고 · 샘플 모드 띠 (모든 탭) (다크)"
+    },
+    {
+      "file": "DarkDebtUnpayable.dc.html",
+      "page": "states",
+      "x": 1370,
+      "y": 38514,
+      "w": 1230,
+      "h": 936,
+      "title": "참고 · 월 최소 상환액을 비운 부채 (다크)"
     },
     {
       "file": "Tokens.dc.html",
@@ -2284,7 +2878,7 @@
       "x": 0,
       "y": 0,
       "w": 1200,
-      "h": 1720,
+      "h": 2273,
       "title": "토큰 · 색 · 타이포 · 간격"
     },
     {
@@ -2293,16 +2887,16 @@
       "x": 1280,
       "y": 0,
       "w": 1200,
-      "h": 2920,
+      "h": 4773,
       "title": "컴포넌트 · 상태"
     },
     {
       "file": "DarkComponents.dc.html",
       "page": "system",
       "x": 1280,
-      "y": 2972,
+      "y": 4825,
       "w": 1200,
-      "h": 2920,
+      "h": 4773,
       "title": "컴포넌트 · 상태 (다크)"
     }
   ],
@@ -2311,89 +2905,89 @@
       "id": "note-home",
       "page": "home",
       "x": 0,
-      "y": -210,
+      "y": -1180,
       "w": 640,
-      "text": "홈 — 히어로(고정 · 큰 숫자와 게이지 = 이번 달 지금까지 쓴 돈 ÷ 월급 31.1%, 월말 예상 57.9%는 배지 · 아래 칸 글자로만 · 2026-09-24) 아래 첫 카드가 달력 「이번 달 소비 기록」. 기록의 입구는 달력 날짜 — 오늘 칸의 + · 「+ 오늘 쓴 돈 적기」 버튼 · 기록이 있으면 「+ 더 적기」. 히어로에 「소비 기록하기」 버튼은 없다(2026-09-22).\n\n첫 줄: 달력 접힘(최근 7일) · 펼침(7열 월 달력) · ‹ 지난달 · 360px 좁은 폰(월 달력 그대로) · 기본 5카드 전체 스크롤. 둘째 줄: 첫 실행 홈 구성의 결과(달력 · 다음 안내 · 한도 · 순자산 · 상환) · 주식 요약 카드가 있는 홈 · 저장 뒤 완료 카드 · 예상 기준을 확인하기 전의 히어로(이력 부족).\n\n한도 라벨 「하루 47,270원」은 1 · 2단계, 「앞으로 하루」는 3단계 뒤(주식 카드 홈만). 같은 값은 모든 장에서 같다(design/CHANGES-2026-09-20.md 숫자 기준표).\n\n── 아래 줄은 다크입니다. darken.py가 라이트에서 만든 토큰 매핑 사본이고 레이아웃은 1px도 다르지 않습니다."
+      "text": "홈 — 히어로(고정 · 큰 숫자와 게이지 = 이번 달 지금까지 쓴 돈 ÷ 월급 31.1%, 월말 예상 57.9%는 배지 · 아래 칸 글자로만 · 2026-09-24) 아래 첫 카드가 달력 「이번 달 소비 기록」. 기록의 입구는 달력 날짜 — 오늘 칸의 + · 「+ 오늘 쓴 돈 적기」 버튼 · 기록이 있으면 「+ 더 적기」. 히어로에 「소비 기록하기」 버튼은 없다(2026-09-22).\n\n첫 줄: 달력 접힘(7일 줄) · 펼침(7열 월 달력) · ‹ 지난달(더 이전 달은 없어 ‹ 가 흐리고, 누르면 3초 동안 「더 이전 달은 소비 › 내역에서 볼 수 있어요 · 내역 보기 ›」 — 상태 페이지 CalendarStatusLines) · 360px 좁은 폰(월 달력 그대로) · 기본 카드 전체 스크롤. 둘째 줄: 홈 구성에서 「대표 목적지」를 고른 홈(다음 안내 자리에 68% 고리 · 「대표 목적지 ⌄」로 목적지 고르기 · 비상금 6개월 1,020 / 1,500만원 · 도착까지 7개월 · 매달 70만원 — 또래 · 자산 한눈에 카드는 상태 페이지 PeerStates · HomeGlanceRows) · 첫 실행 뒤 홈(내 데이터 · 빈 히어로 · 시작 순서 · 카드 3개) · 주식 요약 카드가 있는 홈(계획 · 앱에는 아직 없음) · 저장 뒤 완료 카드 · 월말 예상 기준이 서기 전의 히어로(이력 부족). 셋째 줄: 소비 목표 조정 열림 · 50%로 저장한 직후(아래 알림 「소비 목표 50%로 저장했어요 · 한도 180만원」 + 되돌리기 · 같은 순간 종 배지 1 → 3 · 다음 안내 「월말엔 소비 목표 50%를 넘어요」 · 한도 카드 180만원 기준) · 달이 바뀐 첫 주(10월 2일 · 「최근 7일 소비 기록」 — 9/26 ~ 9/30 칸은 이웃 달이라 흐리게 · 0건 히어로 · 첫 기록 전 한도) · 샘플 모드(32px 띠 · 샘플 문장 · 마감 전 히어로 — 월말 예상 — · 「6월부터 마감하기 ›」) · 홈 맨 위 카드가 소비 목표를 넘을 때(구현 참고 · 소비 목표 50%로 낮춘 뒤 「월말엔 목표 초과」 · 쓴 돈이 넘으면 「소비 목표보다 3만원 넘음」 · 딱 닿으면 「소비 목표에 딱 닿았어요」 · 셋째 칸 「월말 예상 초과」 빨강 — 앱 하네스).\n\n2026-09-26: 기본 카드 전체 스크롤은 앱 DEFAULT_HOME_CARDS(다음 안내 · 이번 달 한도 · 순자산 한 줄 · 상환 계획 한 줄 — 대표 목적지 · 또래는 기본이 아님). 저장 뒤 완료 카드 = 「9월 8일 · 편의점 · 카테고리 없음 12,000원 저장 · 오늘 5건 49,000원」 + 「지금 카테고리를 고를까요?」 칩 줄 + 「한 건 더」 · 「되돌리기」(6초 뒤 40px 띠 · 상태 페이지 DoneCardStates). 이력 부족 히어로의 사람은 시안 사용자와 같은 부채(카드 할부 14.5%)가 있어 다음 안내가 카드 할부 · 종 배지 1 — 연 10% 이상 부채가 없으면 「어제 쓴 돈도 적어 볼까요? · 7일 적기 ›」(InsufficientElsewhere ⑤).\n\n2026-09-26 앱 따라잡기: 머리줄 = 글자 달린 설정 · 코칭 · 알림(종 배지 = 중요 알림 수 1) · 「오늘 포함 23일 남음」. 히어로 머리 「이번 달 소비」 + 「소비 목표 조정」 · 오른쪽 줄은 돈 「소비 목표까지 104만원 남음」 · 「순자산의 1.2% ⓘ」 · 「월급(실수령) 기준 … · 월급 · 부수입 고치기 ›」. 시안 사용자(9월 8일)는 8월 마감값 = 8월 기록 합(1,715,200원)이고 9월에 카테고리 없는 기록이 7건이라 히어로 아래 각주는 두 줄(카테고리 없는 32,000원 · 고정비 이력)이고, 달력의 확인할 내용은 하나라 행이 그 이름 「카테고리 없는 기록 7건 · 카테고리 고르기 ›」(누르면 카테고리 고르기가 바로 열림 · 2026-09-27 앱 하네스로 확인). 마감한 달에 기록을 더한 날의 「8월 합계 고치기 ›」 줄과 「확인할 내용 2개」 목록은 상태 페이지 HeroFootnotes 2번 · 하루 시트 페이지 ReviewListSheet. 10월 2일(달이 바뀐 첫 주)의 행은 「9월 카테고리 없는 기록 7건 · 마감 전에 정리 ›」. 지난달 보기(8월)도 아래로 다음 안내 → 이번 달 한도가 이어진다. 달력 칸 아래에는 늘 범례 줄 「— 기록 없음 · 0 안 썼어요 · ✓ 다 적었어요」. 한도 카드는 어느 단계든 「오늘 포함 하루 45,220원」 + 둘째 줄 「216만원 중 112만원 썼어요」(좁으면 「남은 한도」가 둘째 줄 오른쪽). 다음 안내는 8월 마감 뒤라 「투자 계좌 5,000만원에 매달 47만원이 더 필요해요 · 목적지 보기 ›」. 같은 값은 모든 장에서 같다.\n\n── 아래 줄은 다크입니다. darken.py가 라이트에서 만든 토큰 매핑 사본이고 레이아웃은 1px도 다르지 않습니다."
     },
     {
       "id": "note-daysheet",
       "page": "daysheet",
       "x": 0,
-      "y": -210,
+      "y": -800,
       "w": 640,
-      "text": "하루 시트 — 날짜 칸을 누르면 홈 위에 뜨는 빠른 기록. 키보드가 열린 상태가 기본(오늘 · 기록 없는 날), 기록 있는 과거 날은 목록 우선, 수정 모드, 키보드 내린 모습, 소비 0건인 날(오늘은 안 썼어요), 360 × 640.\n\n분류하기 시트(분류 안 함 7건 · 32,000원) · 확인할 내용 목록 · 반복 거래 미리 채움(휴대폰 요금 · 매월 25일 · 5.5만원) · 하루 시트에서 넘어온 거래 추가(구현 참고).\n\n규칙은 plan/v5-calendar.md §4 · §5. 계산은 naviMetrics 한 곳, 초안은 메모리만, 되돌리기는 대상 지정.\n\n── 아래 줄은 다크입니다."
+      "text": "하루 시트 — 날짜 칸을 누르면 홈 위에 뜨는 빠른 기록. 키보드가 열린 상태가 기본(오늘 · 기록 없는 날), 기록 있는 과거 날은 목록 우선, 수정 모드, 키보드 내린 모습, 소비 0건인 날(오늘은 안 썼어요), 360 × 640.\n\n기록 없는 어제(「9월 7일은 안 썼어요」) · 지운 뒤(시트 안 「지웠어요 · 택시 45,000원 · 되돌리기」 — 시트 뒤 아래 알림 없음) · 수정 중 날짜 옮기기(「저장하면 9월 3일 → 9월 2일로 옮겨요」).\n\n카테고리 고르기 시트(카테고리 없는 기록 7건 · 32,000원 · 최근 기록부터 · 메모 없는 기록은 한 건씩 · 줄의 「카테고리 고르기 ›」를 누르면 그 아래 전체 고르기) · 확인할 내용 목록 · 반복 기록 미리 채움(휴대폰 요금 · 매월 25일 · 5.5만원 — 금액 쓰는 법대로 · 2026-09-27 결정 · 앱 b574373 도 5.5만원) · 하루 시트에서 넘어온 기록 추가(구현 참고). 이체 행의 ›는 자세한 「기록 수정」 창을 연다 — 기록 종류 · 날짜 · 금액 · 메모가 채워지고, 연결 계좌의 잔액을 이미 확정한 기록(9월 6일 ETF 자동이체)이면 계좌 칸 대신 「연결 계좌의 잔액을 직접 확정한 기록이에요 …」 한 줄. 저장하면 홈에 「고쳤어요」.\n\n2026-09-26 앱 구조에 맞춤: 칸 이름은 칸 위(「금액」 · 「메모」 · 빈 메모 「예: 팀 점심」), 「카테고리」 + 「나중에 고르기」(고르지 않았으면 눌린 알약), 최근 기록 칩은 앱 recentEntries 그대로(「카테고리 없음」), 「다 적었어요」 · 「안 썼어요」 아래 효과 줄, 수정 모드는 제목에 ‹ › 없이 「날짜」 칸. 9월 3일 목록은 기록 순서대로 택시 · 점심 · 간식(내역의 그 날 묶음과 같다).\n\n시트 위 어두운 배경의 안내(「배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요」 · 카테고리 고르기와 확인할 내용은 「배경을 눌러 닫기」)는 시트 윗변 바로 위(아래 12)에 붙고, 들어갈 자리가 있을 때만 보인다 — 시트가 화면 끝까지 올라오면(윗변 30 · 키보드를 내린 오늘 시트 · 360 × 640 · 키보드가 열린 모습) 안내가 없다. 키보드가 열리면 앱 창이 키보드 위로 줄어(안드로이드 에뮬레이터 확인) 시트는 30 ~ 키보드 윗변이고, 「저장」(수정 모드는 「저장」 · 「삭제」)은 본문 밖 바닥 띠에 붙는다 — 창 높이가 700 아래인 360 × 640 도 같다. 이체 줄은 메모 아래에 「소비율 제외」(메모는 낱말 단위로 두 줄까지 · 줄은 내용만큼 높아진다).\n\n규칙은 plan/v5-calendar.md §4 · §5. 계산은 naviMetrics 한 곳, 초안은 메모리만, 되돌리기는 대상 지정.\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-assets-spending",
       "page": "assets-spending",
       "x": 0,
-      "y": -210,
+      "y": -840,
       "w": 640,
-      "text": "자산 · 소비 탭 — 자산 구성 · 부채 · 상환 전략 · 소비 이번 달(계획선 그래프) · 내역(분류 안 함 칩 · 날짜별 합계) · 한도 · 지난달(마감) · 월 마감(분류 안 함 안내).\n\n화면당 display 숫자는 하나(자산 = 순자산 · 소비 = 계획 대비 속도). 미입력은 회색 —. 가정은 보라 점선 + 「저장되지 않는 가정」.\n\n── 아래 줄은 다크입니다."
+      "text": "자산 · 소비 탭 — 자산 구성 · 부채 · 상환 계획 · 소비 이번 달(계획선 그래프) · 내역(카테고리 없음 칩 · 날짜별 합계) · 한도 · 지난 달 월 요약 세 가지(마감함 · 마감 전 · 마감 뒤 기록이 바뀜) · 8월 첫 마감(카테고리 없음 안내).\n\n지난 달 월 요약은 맨 위 월 마감 카드가 상태를 말한다 — 마감함 「마감값 보기·고치기 ›」, 마감 전 「8월 마감하기」 + 마감할 달 목록, 마감 뒤 바뀜 「8월 합계 고치기 ›」(한 번 묻고 합계만 고침 · 상태 장 Confirmations G). 이미 마감한 달을 「마감값 보기·고치기 ›」로 다시 열면 같은 마감 창이 저장한 값으로 열리고, 꼬리표 없이 맨 위에 「⚠ 이미 9월 2일에 마감한 달이에요. 다시 저장하면 전에 저장한 값을 덮어써요.」가 붙는다.\n\n잔액 확인일이 없거나 35일 넘은 자산이 있으면 자산 구성 머리 아래 주황 띠 「잔액 확인이 필요한 자산 {n}개 · 한 번에 확인 ›」가 붙고, 그 줄마다 「확인 필요」 칩과 「… · 마지막 확인 {M월 D일}」/「확인 기록 없음」이 보인다 — 첫 줄 둘째 장 AssetsStale(ETF 계좌 7월 30일 · 청약저축 확인 기록 없음 · 같은 날 알림은 모달 페이지 AlertsPanelInfo). 띠를 누르면 모달 페이지의 「잔액 한 번에 확인」. 시안 사용자는 9월 1일에 다 확인해 9월 8일엔 띠가 없다.\n\n자산 › 상환 계획은 읽기 전용 요약(저장된 계획 · 다 갚는 달 · 갚는 순서)이고, 상환 방식과 월 추가 상환액은 「상환 계획 바꾸기 ›」 → 미래 › 상환 계획에서만 바꾼다. 탭 장은 본문을 다 보여 주는 높이로 그렸다(앱은 스크롤 · 지난 달 월 요약 셋도 카테고리 카드 · 소비 추이·절감 기회까지 · 내역만 ⋯ 메뉴를 연 첫 화면 844). 한도가 넘은 달의 한도 탭은 상태 페이지 LimitCardCases.\n\n내역은 개인 모드 시안 사용자(9월 1일 고정비 넷 · 6일 ETF 이체가 생활비 통장과 연결 · 반복 기록 매달 6일 · 25일 · 꺼 둠)이라 목록 위에 「매달 나가는 돈으로 등록할까요?」 제안 줄이 없다 — 그 줄(「보험료 120,000원이 지난달에도 있었어요 · 매달 나가는 돈으로 등록할까요?」)은 상태 · 구현 참고 페이지 DoneCardStates ④, 누른 뒤 열리는 미리 채운 반복 기록 창은 하루 시트 페이지 RecurringPrefill. 한도의 기타 줄 부줄 「카테고리 없음 7건 32,000원」은 앱처럼 이름 칸 안 「기타」 아래 두 줄(막대 왼쪽). 한도 탭의 기타 막대는 판정 금액이라 카테고리 없는 32,000원을 뺀 28,000원 ÷ 10만원 = 28%(소비 탭 막대는 쓴 돈 그대로). 내역의 ⋯ 메뉴는 행 아래 4px에 열린다.\n\n화면당 display 숫자는 하나(자산 = 순자산 · 소비 = 월급 대비 지금까지 쓴 돈 31.1% — 계획 대비 속도는 그 아래 그래프 · 2026-09-24). 미입력은 회색 —. 가정은 보라 점선 + 「저장되지 않는 가정」.\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-dest-future",
       "page": "dest-future",
       "x": 0,
-      "y": -210,
+      "y": -540,
       "w": 640,
-      "text": "목적지 · 미래 — 첫 줄은 지금 앱의 5탭(목표 · 새 목적지 설계 · 미래 자산 경로 · 상환 계획). 둘째 줄은 탭을 합친 뒤(v4 2단계 · plan/v4-stocks.md §4): 목표 + 미래 → 「목적지」 한 탭(세그먼트 내 목적지 · 자산 경로 · 상환 계획), 주식을 끄면 4탭 홈.\n\n합친 탭에서 새 목적지 설계는 목록 끝 점선 버튼으로 들어간다. 시뮬레이션 값은 calc/crosscheck.py 확정값(총이자 1,734만원 · 완제 2036년 4월).\n\n── 아래 줄은 다크입니다."
+      "text": "목적지 · 미래 — 첫 줄은 지금 앱의 5탭(목적지 · 새 목적지 설계 · 미래 자산 경로 · 상환 계획). 둘째 줄은 탭을 합친 뒤(v4 2단계 · plan/v4-stocks.md §4): 목적지 + 미래 → 「목적지」 한 탭(세그먼트 내 목적지 · 자산 경로 · 상환 계획), 주식을 끄면 4탭 홈.\n\n상환 계획(Payoff)은 저장된 계획(월 추가 15만원 · 고금리 우선 · 초록 「저장된 계획」). 슬라이더나 방식을 바꾼 초안(보라 점선 · 가정 종료 · 상환 계획 저장) · 다 갚지 못함 · 최소 상환만은 상태 페이지 PayoffStates, 절감 가정 0 원 위(보라 경로)는 FutureStates. 자산 경로는 기본 상태(10년 · 보통 · 절감 0원 — 절감 카드는 보통 카드 · 실선 · 배지 없음, 0 위로 움직일 때만 보라 점선 + 「저장되지 않는 가정」 · 2026-09-27 결정)이고, 투자 환경 칩은 새로 모을 돈의 수익률(조심스럽게 · 보통 · 좋을 때)이다. 셋째 줄은 참고 장 둘 — 목적지 상태 7종(매달 모으는 돈 110만원 가정 · 비상금 한 줄 펼침 · 도착한 목적지 · 목표일 없음 · 도착하기 어려움 · 부채 상환이 목표일보다 늦음 · 설계 저장 미리 보기의 빨간 줄)과 새 목적지 설계 상태 2종(처음 · 다른 금액 30만원 가정).\n\n합친 탭의 목록 끝 버튼은 앱과 같은 「+ 목적지 추가」다(2026-09-27 결정 — 새 목적지 설계는 추가 창과 같은 길). 순자산 2억원 목적지의 목표일은 2058-10-08 그대로(모두 도착하려면 146만원 · 결정). 시뮬레이션 값은 calc/crosscheck.py 확정값(총이자 1,734만원 · 다 갚는 달 2036년 5월 — 앱 달 규칙).\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-first-run",
       "page": "first-run",
       "x": 0,
-      "y": -210,
+      "y": -1000,
       "w": 640,
-      "text": "첫 실행 — 소개 3장(현재 위치 · 항로 · 목적지 · 한 장에 한 문장 · 어디서든 건너뛰기) → 홈 구성 → 시작 화면(내 데이터로 / 샘플로) → 홈.\n\n홈 구성: 소비율과 달력 「이번 달 소비 기록」은 고정 행(둘 다 끌 수 없음 · 2026-09-22 · 이름 2026-09-24), 아래 카드는 4개까지, 행마다 아이콘. 「주식도 볼까요?」는 1단계부터 보이고 켜면 목록 끝에 주식 요약 행. 이 화면은 처음 설치해 처음 실행할 때만 뜨고, 그 뒤엔 설정 창의 「홈 구성 ›」 행 → 같은 목록(닫기 · 저장)으로만 바꾼다. 샘플 → 내 데이터로 넘어가도 구성은 그대로.\n\n저장은 settings.homeLayout · settings.onboarding · settings.features(보호 파일 · 백업 형식 불변).\n\n── 아래 줄은 다크입니다."
+      "text": "첫 실행 — 소개 3장(현재 위치 · 항로 · 목적지 · 한 장에 한 문장 · 건너뛰기 → 홈 구성) → 홈 구성(「다음」 · 건너뛰기 → 시작 방법 고르기) → 시작 방법 고르기(‹ 뒤로 = 홈 구성 · 내 데이터로 시작 / 샘플로 둘러보기) → 홈. 점검의 「홈 구성 단계 없앰」은 사용자 요청으로 따르지 않았다 — HomeSetup · HomeSetupStocksOn 과 다크 짝은 남는다.\n\n홈 구성: 고정 행 「이번 달 소비」 · 「이번 달 소비 기록」(끌 수 없음), 아래 카드는 4개까지 · 행마다 아이콘과 한 줄 설명(두 줄까지). 처음 체크 = 다음 안내 · 이번 달 한도 · 순자산 한 줄(부채 카드는 미리 체크하지 않음 · 3 / 4). 처음 체크를 그대로 두고 샘플을 고르면 샘플 홈은 기본 4개(상환 계획 한 줄 포함 · chooseSample). 4 / 4 이면 나머지 행이 흐려지고, 누르면 3초 동안 「4개까지예요 · 하나를 빼고 골라 주세요」. 「주식 화면이 나오면 알려 드릴까요?」는 settings.features.stocks 만 저장하고 화면은 그대로다 — 주식 요약 행은 없다(주식 화면이 나오면 앱 안에서 한 번 알림 · plan v4 §9). 이 화면은 처음 설치해 처음 실행할 때만 뜨고, 그 뒤엔 설정 › 홈 구성(닫기 · 저장 · 안내 줄 없음)으로만 바꾼다. 카드를 하나도 고르지 않으면(0 / 4) 목록 아래에 「이번 달 소비와 소비 기록 달력만 홈에 보여요.」 한 줄이 붙는다(home-layout-editor · 그림 없음).\n\n흐름의 끝 장: 처음 설치에서 「내 데이터로 시작」 = HomeConfigured(홈 페이지) + 홈 안내 3단계 「시작 순서」 TourHomeChecklist(첫 실행 안내 페이지) · 「샘플로 둘러보기」 = HomeSampleMode(홈 페이지) + TourHomeSample1(흐려진 샘플 띠 아래의 홈 안내 · 2 · 3단계도 같은 띠 아래 · 첫 실행 안내 페이지) · 샘플에서 「내 데이터로 시작 ›」 = StorageStates D 확인 창(상태 페이지) → SalarySheet(모달 페이지).\n\n샘플로 시작하면 저장 안내 없이 탭마다 맨 위 띠 「샘플 데이터로 둘러보는 중 · 내 데이터로 시작 ›」뿐. 처음 설치에서 「내 데이터로 시작」 = 홈 + 홈 안내, 샘플에서 누르면 파란 확인 창 → 월급 입력 시트(상태 페이지 StorageStates D). 저장 문구는 폰 「이 폰에만」/「이 기기에 암호화해」, 웹 「이 브라우저에만」(소개 1 자물쇠 줄 · 시작 방법 고르기 · 설정 › 데이터). 시작 방법 고르기의 웹 문구(앱 DATA_CHOICE_COPY.web 그대로): 설명 「NAVI는 입력한 자산 · 소비 · 목적지를 이 브라우저에만 저장해요. 샘플은 기능을 둘러보는 가상 데이터예요.」 · 아래 저장 줄 「이 브라우저에만 저장돼요. 브라우저 데이터를 지우면 기록도 사라질 수 있으니 설정에서 백업 파일을 내려받아 주세요.」(폰 앱은 DATA_CHOICE_COPY.native 그대로 「앱을 삭제하거나 앱 데이터를 지우면 기록도 사라져요. 기기를 바꾸기 전에 설정에서 백업 파일을 저장해 주세요.」 — Onboarding 장의 줄).\n\n설정 › 홈 구성(HomeLayoutEdit)은 화면을 꽉 채운 페이지가 아니라 가운데 뜬 창(390 × 820 · 위 12)이다 — 위아래 12px 틈으로 흐린 홈이 비치고, 첫 화면에서는 맨 아래 「주식 화면이 나오면 알려 드릴까요?」 카드가 저장 띠에 반쯤 가려 스크롤해야 다 보인다(HomeSetup 과 같다).\n\n저장은 settings.homeLayout · settings.onboarding · settings.features(보호 파일 · 백업 형식 불변).\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-tour",
       "page": "tour",
       "x": 0,
-      "y": -210,
+      "y": -800,
       "w": 640,
-      "text": "첫 실행 안내 — 앱을 처음 설치해 첫 실행할 때, 화면에 처음 들어가면 그 화면의 안내가 1단계부터 뜹니다(2026-09-22 사용자 요청). 다섯 탭(홈 · 자산 · 소비 · 목적지 · 미래)과 탭 안의 세그먼트 화면 여섯(부채 · 상환 전략 · 내역 · 한도 · 새 목적지 설계 · 상환 계획) — 11화면 × 3단계 = 33장. 줄 순서 = 탭 다섯 → 세그먼트 여섯.\n\n어두운 막 위에 요소 하나만 밝히고(브랜드 파랑 테두리) 그 아래 12px에 카드 — 요소가 화면 아래쪽이면 카드는 위. 카드 = 「처음 안내」 알약 + 「탭 n / 3」 · 제목 16 / 700 · 본문 13 / 1.55 · 「건너뛰기」(그 탭의 남은 단계를 건너뜀) · 「다음」/「알겠어요」 40px.\n\n다시 보려면 설정 › 도움말 › 「처음 안내 다시 보기」. 저장은 settings.onboarding.tourSeen = {home, assets, debts, strategy, spending, ledger, limits, goals, goalDesign, future, payoff}. 좌표와 문구는 gen_tour.py의 표(실측)이고 탭 장을 고치면 다시 잽니다.\n\n── 아래 줄은 다크입니다."
+      "text": "첫 실행 안내 — 화면에 처음 들어가면 그 화면의 안내가 1단계부터 저절로 뜹니다(2026-09-22 사용자 요청 · 유지). 다섯 탭(홈 · 자산 · 소비 · 목적지 · 미래)과 탭 안의 세그먼트 화면 여섯(부채 · 자산 › 상환 계획 · 내역 · 한도 · 새 목적지 설계 · 미래 › 상환 계획) — 11화면 × 3단계 = 33장. 줄 순서 = 탭 다섯 → 세그먼트 여섯 → 마지막 줄(처음 시작한 빈 홈의 3단계 「시작 순서」 · 제목 옆 ?로 다시 연 안내 · 규칙 참고 장 · 샘플로 둘러보기로 시작한 홈의 1단계).\n\nTourHome1–3 은 내 데이터 홈을 설정 › 도움말 「처음 안내 다시 보기」로 다시 본 모습이다(처음 설치의 「내 데이터로 시작」은 빈 홈이라 TourHomeChecklist, 샘플에서 「내 데이터로 시작」하면 샘플에서 본 안내 상태를 그대로 이어받아 홈 안내가 다시 뜨지 않는다). 「샘플로 둘러보기」로 시작하면 같은 카드가 흐려진 샘플 띠 「샘플 데이터로 둘러보는 중 · 내 데이터로 시작 ›」 아래에서 뜨고 머리줄 · 히어로가 띠 높이(32)만큼 아래다 — 1단계를 TourHomeSample1 로 그렸고(바탕 HomeSampleMode), 다른 탭의 샘플 모드 안내도 같은 띠 아래다(SampleModeTabs).\n\n문구 · 단계 · 버튼은 앱(v5-stage1 a724aac · lib/navi-tour.ts) 그대로. 카드 = 알약 「처음 안내」(?로 다시 열면 「화면 안내」) + 「{화면} n / N」 · 제목 16 / 700 · 본문 13 / 1.55 · 홈 3 / 3 만 각주 한 줄 · 버튼 줄 = 왼쪽 「건너뛰기」(이 화면만) · 「안내 모두 끄기」(11화면 모두) + 오른쪽 「다음」/「알겠어요」 40px.\n\n막 · 강조 · 카드 자리는 아래 탭 막대 위까지 — 탭 막대는 밝게 남고 누를 수 있다(다른 화면으로 가면 이 화면은 본 것으로). 배치는 앱 placeTourCard(대상 아래 12 → 위 12 → compact · 화면 밖이면 대상을 위로 스크롤 · 스크롤은 다음 단계로 이어짐)를 이 장들의 바탕에 그대로 적용한 결과다. 빈 화면이면 안내도 「?」도 없고 미뤘다가 내용이 생긴 뒤 처음 들어갈 때 뜬다. 홈이 아닌 화면은 제목 옆 「?」로 다시 보고, 홈은 설정 › 도움말 「처음 안내 다시 보기」. 규칙 전체는 참고 장 TourRules.\n\n다크 = 카드 · 꼬리 #1E2739 · 선 #39455F · 막 rgba(4,7,14,.74)(gen_tour 가 darken 뒤에 덮어씀). 저장은 settings.onboarding.tourSeen 11키. 좌표는 gen_tour.py 의 표(실측)이고 탭 장을 고치면 다시 잽니다. 스크롤 끝 = 마지막 내용 아래가 탭 막대 위 62px(세그먼트 화면) · 38px(홈 — 세그먼트 칸의 아래 24 가 없음).\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-stocks",
       "page": "stocks",
       "x": 0,
-      "y": -210,
+      "y": -480,
       "w": 640,
-      "text": "주식 — 내 종목(보유 · 관심 · 직접 입력) · 보유 기록 모달 · 빈 상태 · 둘러보기(투자 여력 띠 · 가드레일 · 성장 / 저평가 / 배당 / 테마) · 성장주 · 배당주 목록 · 종목 상세(내 항로에 넣어보기) · 테마 · 특수한 상황 6가지 · 종목 데이터 새로 받기.\n\n추천 · 매수 · 매도라는 말을 쓰지 않는다. 가격 옆에는 항상 기준일(9/4 종가). 기준값은 사용자 것(설정 › 주식). 스냅숏 수치는 전부 가상(design/stocks-snapshot.sample.json).\n\n── 아래 줄은 다크입니다."
+      "text": "주식 — 앱(v5-stage1 a724aac)에는 주식 화면이 아직 없다. 앱의 주식은 설정 › 홈 구성의 「주식 화면이 나오면 알려 드릴까요? · 지금은 준비 중이에요」 한 줄뿐이라, 이 페이지는 v4 3 ~ 5단계 계획 그림이고 사용성 점검(2026-09-25) 결정에 맞춰 말 · 모양만 고쳤다.\n\n내 종목(3단계라 세그먼트 없음 · 보유 · 관심 · 직접 입력) · 보유 추가 · 빈 상태(카드 한 장 · 「보유 추가」 하나 · 빈 화면 = 보유 0 이고 관심 0) · 둘러보기(맨 위 띠 · 가드레일 · 성장 / 저평가 / 배당 / 테마) · 성장주 · 배당주 목록 · 종목 상세(내 항로에 넣어보기) · 테마 · 특수한 상황 8가지 · 종목 데이터 새로 받기. 「이 화면에 없는 것」 — 실시간 시세 · 주문 · 호가 · 뉴스 · 커뮤니티 · 시세 알림은 없다(v4 §5-6).\n\n맨 위 띠 = 「목적지에 나누고 남은 돈」 = 매달 모을 수 있는 돈(월급 + 부수입 − 월말 예상 소비 − 대출상환) − 목적지에 나눠 넣는 돈. 시안 사용자는 90만원을 목적지에 다 나눠 0이라 앱의 0일 때 문장을 쓴다. 제목 옆 「?」(주식 안내 · 12번째 tourSeen 키)는 v4 구현 때 만든다. 추천 · 매수 · 매도라는 말을 쓰지 않는다. 가격 옆에는 항상 기준일(9월 4일 종가). 기준값은 사용자 것(설정 › 주식). 스냅숏 수치는 전부 가상(design/stocks-snapshot.sample.json).\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-modals",
       "page": "modals",
       "x": 0,
-      "y": -210,
+      "y": -800,
       "w": 640,
-      "text": "모달 · 설정 — 내 수치 입력 · 거래 추가 · 한도 조정 · 자산 · 부채 · 목적지 · 반복 거래 · 적립 · 백업 불러오기 · 코칭(있음 · 없음) · 알림(있음 · 없음) · 또래 기준 · 설정 › 주식 · 설정 › 알림(기기 알림 — 2026-09-23 · 앱을 안 켜고 있을 때 시각으로 오는 여섯 가지, 기본 켬 셋).\n\n단독 행 필드는 solo, 버튼 · 배지는 nowrap. 필수 아님 표기는 「선택 사항」. 저장 실패는 창 안에 고정.\n\n── 아래 줄은 다크입니다."
+      "text": "모달 · 설정 — 내 수치(자산 · 부채가 있을 때 — 접힌 칸 「표시 이름 · 순자산 참고선」을 연 모습 · 없을 때) · 월급 입력 · 순자산 대비 소비 · 기록 추가 · 한도 조정 · 자산 추가 · 자산 수정 · 잔액 한 번에 확인(자산 › 자산 구성의 주황 띠 「잔액 확인이 필요한 자산 2개 · 한 번에 확인 ›」를 누른 모습 — 같은 날 AssetsStale 의 ETF 계좌 마지막 확인 7월 30일 · 청약저축 확인 기록 없음 두 줄만 · 2개 중 0개 확인함) · 부채 · 목적지 추가(부채 상환 · 일반 저축의 저장 전 미리 보기 「이대로면 매달 25만원씩 …」 · 「저장하면 이렇게 바뀌어요」) · 반복 기록(이번 달 겹침 확인) · 적립 · 백업 불러오기 · 코칭(있음 · 없음) · 알림(중요 1 · 중요 1 + 참고 1 「자산 잔액을 확인해 주세요」 — 잔액 확인일이 없거나 35일 넘은 자산이 있는 날 · 0건) · 또래 기준 · 설정 › 주식(준비 중) · 설정 › 알림.\n\n이것들을 여는 설정 시트(내 수치 행 · 화면 · 홈 화면 · 기기 알림 · 도움말 · 데이터 · 닫기)는 첫 실행 페이지의 「설정」 장(SettingsHomeEntry)이다. 순자산 대비 소비 · 설정 › 알림은 앱 기본 Dialog 라 겉이 어두운 막이 아니라 밝게 흐린 화면이고 「배경을 눌러 닫기」가 없다(나머지 시트 · 확인 창은 어두운 막).\n\n코칭 카드와 알림 줄은 시안 사용자에게 엔진이 내는 목록 그대로다(알림 = 중요 1건 · 머리줄 종 배지 1 · 종 배지는 중요만 센다). 자세한 기록 추가 창은 하루 시트의 「저축·투자로 기록 ›」 · 「대출상환으로 기록 ›」와 지난달보다 이른 달(7월 이전)의 「+ 기록」(그 달 마지막 날로)에서 열리고 — 지난달(8월)의 「+ 기록」은 8월 31일 하루 시트를 연다 —, 계좌에 연결된 기록 · 이체를 고칠 때는 같은 창이 제목 「기록 수정」으로 열린다. 긴 시트는 본문이 다 보이게 폰 한 화면보다 길게 그렸다(앱은 창 안에서 스크롤).\n\n샘플 모드의 내 수치는 맨 아래에 주황 줄 「샘플 데이터에서 바꾼 값은 샘플에만 남아요. 내 기록을 시작하려면 먼저 「내 데이터로 시작」을 눌러 주세요.」가 붙는다(시안은 내 데이터 모드). 설정 › 알림의 샘플 · 웹 · 권한 변형과, 앱을 안 켜고 있을 때 묻는 「앱을 안 켜고 있을 때 기록 · 마감을 알려 드릴까요?」(나중에 / 켜기)는 참고 장 NotifyCases에 있다.\n\n단독 행 필드는 solo, 버튼 · 배지는 nowrap. 필수 아님 표기는 「선택 사항」. 만원 칸은 쉼표 + 되읽기 「= 360만원」, 원 칸은 쉼표만. 저장 실패는 실패한 자리 옆에 한 번.\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-desktop",
       "page": "desktop",
       "x": 0,
-      "y": -210,
+      "y": -780,
       "w": 640,
-      "text": "데스크톱 1440 — 홈은 히어로 아래 왼쪽 열 첫 자리에 펼친 월 달력(폭 348 · 늘 펼침 · 접기 없음), 그래프는 그 오른쪽, 사이드바는 주식 켠 5칸(주식 수치 옆 기준일). 히어로에 「소비 기록하기」 없음. 소비 내역은 왼쪽 목록 + 오른쪽 상세.\n\n소비 내역(DesktopLedger)의 날짜 행(9/3 210,000 · 9/5 ETF 30만 · 9/7 118,400 · 9/8 32,000 · 32건)과 반복 거래 5일은 v3 샘플이라 옆 장의 달력 · LedgerV5와 다르다 — 2026-09-21 결정 3-2A로 그대로 둠 · 구현 기대값으로 쓰지 않는다(CHANGES-2026-09-24 「확인할 것」).\n\n── 아래 줄은 다크입니다."
+      "text": "데스크톱 1440 — 홈은 히어로 아래 왼쪽 열 첫 자리에 펼친 월 달력(폭 348 · 늘 펼침 · 접기 없음), 그래프는 그 오른쪽, 그 아래 가득 찬 폭 「순자산」 · 「상환 계획」 한 줄 카드, 오른쪽 열은 다음 안내 · 이번 달 한도(앱 기본 카드 DEFAULT_HOME_CARDS). 사이드바는 앱의 5칸(홈 · 자산 9,350만 · 소비 31.1% · 목적지 4 · 미래 「10년 뒤 3.8억」)과 한도 카드 「남은 한도 104만원 · 오늘 포함 23일 · 하루 45,220원」, 아래 「설정」 · 개인 모드 프로필. 머리 오른쪽은 글자 달린 「설정 · 코칭 · 알림」 버튼(종 배지 1). 히어로 각주 두 줄(카테고리 없는 32,000원 · 고정비)과 달력 행 「카테고리 없는 기록 7건 · 카테고리 고르기 ›」는 모바일 홈과 같은 시안 사용자 값. 소비 내역은 왼쪽 기록 목록 + 오른쪽 요약 카드 넷(9월 일반 소비 · 많이 쓴 카테고리 · 반복 기록 · 소비율에서 빠지는 기록).\n\n소비 내역(DesktopLedger)은 2026-09-26 모바일 내역(LedgerV5)과 같은 9월 24건 · 카테고리 없는 기록 7건 · 9/6 ETF 자동이체(반복)로 다시 그렸다 — 결정 3-2A의 v3 샘플 예외를 거둠 · 개인 모드 · 반복 기록 매달 6일 · 25일 · 꺼 둠. 머리 자리는 앱 1440 AppTopbar 그대로(제목 위 49 · 「2026년 9월 기록」 116 · 목록과 옆 카드 166 · 장 높이 976). 연결 칸은 계좌를 고르지 않은 기록이면 회색 —. 연결 칸은 이름을 끝까지 쓴다(「생활비 통장 → ETF 계좌」) — 앱 c6b7de3 에서 칸이 이름 길이만큼 넓어져 1440 에서도 잘리지 않는다(닫음 · 예전 앱은 100px 칸이라 「생활비 통장 → ET…」). 메모 없는 카테고리 없음 기록(9월 5일 3,000원)은 카테고리 칸 「카테고리 없음」 · 제목 칸 「메모 없음」(ink-3 · 400)이다 — 앱 c6b7de3 에서 고쳤고 시안도 같게 그렸다(닫음 · 예전 앱은 두 칸 모두 「카테고리 없음」). 카테고리 없는 줄의 칸은 앱처럼 회색 칸 가운데 굵은 「?」. 반복 기록 금액은 금액 쓰는 법대로 휴대폰 요금 5.5만원(모바일 반복 기록 창과 같게 · 2026-09-27 결정: 목록의 반복 기록 금액은 만 단위 소수 한 자리 · 0 떼기 — 앱 b574373 도 5.5만원). 사이드바 프로필의 저장 문구는 웹 「이 브라우저에만 저장됨」(폰은 「이 폰에만」).\n\n소비 › 이번 달 · 한도의 데스크톱 모습은 따로 그리지 않았다 — 앱은 두 열 격자(이번 달: 왼쪽 속도 카드 · 오른쪽 카테고리별 소비 / 한도: 왼쪽 총한도 · 소비 경고 · 계산 근거 · 오른쪽 카테고리 배분)이고 글자는 모바일 장(Spending · Limits)과 같다. 머리 모양(글자 달린 머리줄 + 「2026년 9월」 + 「기록 추가」)은 소비 내역 장이 보여 준다.\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-states",
       "page": "states",
       "x": 0,
-      "y": -210,
+      "y": -640,
       "w": 640,
-      "text": "상태 카탈로그와 구현 참고 장 — 앱 화면이 아니라 설명 장(맨 위 알약 「구현 참고 · 앱 화면이 아닙니다」).\n\n저장소 로딩 · 복구 / 미입력 6종(F = 히어로 이력 부족) / 또래 카드 5종 / 목적지 유형 5종 / 모달 오류 · 저장 6종 / 삭제 · 초기화 확인 / 달력 칸 읽는 법 / 펼치면 어디서나 월 달력 / 달력 아래 한 줄이 바뀌는 경우 / 홈 맨 위 카드의 안내 줄 / 저장을 한 번 더 물어보는 경우 / 기록 창의 글이 바뀌는 경우 / 안 쓴 날 표시 / 완료 카드의 경우들 / 예상 기준 확인 전 홈 밖의 화면 / 미래의 잠정 표시 / 한도 카드 네 경우 / 기타 서브라인 / 가져오기 · 백업 안내 / 기기 알림 여섯 가지와 규칙.\n\n── 아래 줄은 다크입니다."
+      "text": "상태 카탈로그와 구현 참고 장 — 앱 화면이 아니라 설명 장(맨 위 알약 「구현 참고 · 앱 화면이 아닙니다」).\n\n저장소 로딩 · 복구와 샘플에서 내 데이터로 바꿀 때의 확인 창(샘플 모드 맨 위 띠 「내 데이터로 시작 ›」에서 열림 · 누르면 월급 입력) / 미입력 7종과 화면마다의 빈 카드(F = 히어로 이력 부족 · 가로 설명 장) / 또래 카드 6종 / 목적지 유형 5종 / 모달 오류 · 저장 7종 / 삭제 · 초기화 · 확인 창 7종 / 자산 · 부채 유형 목록 · 새 부채 · 다 갚은 부채 / 달력 칸 읽는 법 / 펼치면 어디서나 월 달력 / 달력 아래 한 줄이 바뀌는 경우 / 홈 맨 위 카드의 안내 줄 / 저장을 한 번 더 물어보는 경우 / 기록 창의 글이 바뀌는 경우 / 안 쓴 날 표시 / 완료 카드의 경우들 / 월말 예상 기준이 서기 전 홈 밖의 화면 / 미래 · 목적지의 임시 계산 / 한도 카드의 경우들(넘음 · 마지막 날 · 첫 기록 전 · 달 중간 시작 · 카테고리 넘음) / 기타 부줄 / 가져오기 · 백업 안내 / 기기 알림 여섯 가지와 규칙 / 미래 › 상환 계획의 경우들(초안 · 다 갚지 못함 · 최소 상환만 · 모자람 · 같음) / 미래 › 자산 경로의 경우들(절감 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히) / 홈 자산 한눈에 줄 펼침 / 샘플 모드 띠 / 월 최소 상환액을 비운 부채.\n\n2026-09-26: 상태 줄의 새 경우 — 저녁 링크 「오늘 다 적었어요 ›」 · 이체만 있는 오늘 · 확인할 내용이 하나면 그 이름 · 1 ~ 6일 「최근 7일 소비 기록」 · 흐린 ‹ 3초 안내 · 그 달 0건.\n\n2026-09-27 결정: 미래 절감 카드는 0원이면(소비 기록이 없어 「10년 뒤 —」일 때도) 보통 카드이고, 0 위로 움직일 때만 보라 점선 + 「저장되지 않는 가정」(Future · FutureProvisional · FutureStates · 첫 실행 안내 미래 · 앱 b574373 도 같다). 미래의 바탕 없음 빈 카드는 앱대로 버튼 둘(월급 입력하기 · 자산 추가 — 월급이나 자산 중 하나만 넣어도 경로를 그려서 · EmptyStates).\n\n── 아래 줄은 다크입니다."
     },
     {
       "id": "note-system",
       "page": "system",
       "x": 0,
-      "y": -210,
+      "y": -340,
       "w": 640,
-      "text": "디자인 시스템 — 토큰(색 · 타이포 · 간격 · 08절 v5 토큰)과 컴포넌트 24종 + v5 11종의 상태. 값의 최종 기준은 아트보드이고 실측 CSS는 design/SPEC-COMPONENTS.md.\n\n── 아래 줄은 다크입니다. 토큰 장만 다크가 없습니다(표 자체가 두 테마를 보여 줍니다)."
+      "text": "디자인 시스템 — 토큰(색 · 타이포 · 간격 · 08절 v5 토큰)과 컴포넌트 24종 + v5 11종의 상태. 값의 최종 기준은 아트보드이고 실측 CSS는 design/SPEC-COMPONENTS.md.\n\n2026-09-26: 토큰은 앱 app/tokens.v3.css(a724aac)와 맞춤 — 다크 ink-3 #8595AE · line-soft · input-line · border-strong · sky(참고 · 정보) · 첫 실행 안내 층 · 보라는 저장되지 않는 가정뿐 · 넘음 색은 사용자가 정한 선으로만. 컴포넌트 01~07은 앱 모양(폼 저장은 늘 눌림 · 되읽기 · 원 단위 확인 · 아래 알림 → 40px 띠 · 오류는 자리 옆), 08은 v5 장에서 다시 잘라 오고, 09 탭 머리줄(AppTopbar) · 10 판정 줄 · 참고 줄 · 비어 있는 값이 새로 붙었다.\n\n── 아래 줄은 다크입니다. 토큰 장만 다크가 없습니다(표 자체가 두 테마를 보여 줍니다)."
     }
   ],
   "launch": {

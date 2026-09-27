@@ -17,12 +17,12 @@
       - `span` **text 13px/600** — “건너뛰기”
         `font-size:13px font-weight:600 color:#3556E6`
   - `div`
-    `flex:1 min-height:0 padding:0 20px`
+    `flex:1 min-height:0 padding:0 20px display:flex flex-direction:column justify-content:flex-end`
     - `div`
-      `display:flex flex-direction:column margin-top:-83px`
+      `display:flex flex-direction:column`
       - `h1` **text 22px/700** — “홈에 무엇을 둘까요?”
         `font-size:22px font-weight:700 letter-spacing:-0.03em line-height:1.35 color:#101828`
-      - `p` — “소비율과 이번 달 소비 기록은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
+      - `p` — “이번 달 소비와 소비 기록 달력은 늘 맨 위에 있어요. 그 아래에 둘 카드를 4개까지 골라 주세요.”
         `font-size:13.5px line-height:1.5 color:#475467`
         - `br`
       - `div`
@@ -42,8 +42,8 @@
         - `div` **Card(18)**
           `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
   - `div`
-    `padding:8px 20px 24px display:flex flex-direction:column gap:8px`
-    - `div` **text 16px/600** — “이 구성으로 시작”
+    `padding:8px 20px 24px display:flex flex-direction:column gap:8px background:#EDF0F7`
+    - `div` **text 16px/600** — “다음”
       `display:flex align-items:center justify-content:center gap:6px height:52px width:100% border-radius:14px background:#3556E6 border:none color:#FFFFFF font-size:16px font-weight:600`
     - `p` **text 11.5px/400** — “언제든 설정 › 홈 구성에서 바꿀 수 있어요.”
       `text-align:center font-size:11.5px line-height:1.5 color:#626D88`

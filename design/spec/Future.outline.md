@@ -2,24 +2,26 @@
 
 원본 `canvas/Future.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
-- `div` **화면프레임**
-  `width:390px height:844px background:#EDF0F7 color:#101828 display:flex flex-direction:column`
+- `div`
+  `width:390px height:1204px background:#EDF0F7 color:#101828 display:flex flex-direction:column`
   - `div`
     `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
     - `div`
-      `display:flex align-items:center justify-content:space-between gap:8px`
+      `display:flex align-items:flex-start justify-content:space-between gap:8px`
       - `div`
-        `display:flex align-items:baseline gap:8px`
+        `display:flex align-items:center gap:4px min-height:36px`
         - `h1` **text 21px/700** — “미래”
-          `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828`
-        - `span` **text 12px/500** — “앞으로의 항로”
-          `font-size:12px font-weight:500 color:#626D88`
+          `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.25 color:#101828`
+        - `span`
+          `width:28px height:28px border-radius:99px display:inline-flex align-items:center justify-content:center`
       - `div`
-        `display:flex align-items:center gap:2px`
+        `display:flex align-items:flex-start gap:0`
         - `div`
-          `width:36px height:36px border-radius:11px display:flex align-items:center justify-content:center`
+          `width:44px display:flex flex-direction:column align-items:center`
         - `div`
-          `width:36px height:36px border-radius:11px display:flex align-items:center justify-content:center position:relative`
+          `width:44px display:flex flex-direction:column align-items:center`
+        - `div`
+          `width:44px display:flex flex-direction:column align-items:center`
     - `div`
       `display:flex gap:4px background:#E3E8F1 border-radius:12px padding:3px`
       - `div` **SegmentedItem** — “자산 경로”
@@ -42,6 +44,10 @@
           `font-size:11px font-weight:500 color:#626D88 width:52px`
         - `div`
           `display:flex gap:5px flex:1`
+      - `div` — “앞으로 모을 돈에만 붙는 연 수익률이에요 · 보통 5.0%는 설정의 투자 자산 기본 수익률 ·”
+        `font-size:11.5px line-height:1.5 color:#626D88 margin-top:7px padding:0 2px`
+        - `span` — “바꾸기 ›”
+          `font-weight:600 color:#3556E6 white-space:nowrap`
       - `div`
         `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:14px padding:0 2px`
         - `div`
@@ -51,48 +57,46 @@
         `margin-top:10px`
       - `div`
         `display:flex align-items:center gap:12px margin-top:6px padding:0 2px`
-        - `span` — “기준 3.21억”
+        - `span` — “보통 3.82억”
           `display:inline-flex align-items:center gap:5px font-size:11px color:#475467`
-        - `span` — “보수 2.85억 ~ 낙관 4.02억”
+        - `span` — “범위 2.8억 ~ 5.47억”
           `display:inline-flex align-items:center gap:5px font-size:11px color:#475467`
-      - `p` **text 11px/400** — “명목금액 기준이며 물가·세금·수수료는 반영하지 않았어요. 월 63만원 적립과 현재 자산 구성이 유지된다고 가정합니다”
-        `padding:0 2px font-size:11px line-height:1.45 color:#626D88`
+      - `p` — “물가 · 세금은 빼고 계산했어요 ·”
+        `padding:0 2px font-size:11.5px line-height:1.45 color:#626D88`
+        - `span` — “자세히 ›”
+          `font-weight:600 color:#3556E6`
     - `div` **Card(18)**
-      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 4px`
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 5px`
       - `div`
         `display:flex align-items:center gap:6px`
         - `span` **text 14px/600** — “다음 자산 지점”
           `font-size:14px font-weight:600 color:#101828`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px height:36px border-top:1px solid #F3F5FA`
+        `display:flex align-items:center justify-content:space-between gap:8px height:40px border-top:1px solid #F3F5FA`
         - `span` **text 13.5px/600** — “1억원”
           `font-size:13.5px font-weight:600 color:#101828`
         - `div`
           `display:flex align-items:baseline gap:8px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px height:36px border-top:1px solid #F3F5FA`
+        `display:flex align-items:center justify-content:space-between gap:8px height:40px border-top:1px solid #F3F5FA`
         - `span` **text 13.5px/600** — “1억 5,000만원”
           `font-size:13.5px font-weight:600 color:#101828`
         - `div`
           `display:flex align-items:baseline gap:8px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px height:36px border-top:1px solid #F3F5FA`
+        `display:flex align-items:center justify-content:space-between gap:8px height:40px border-top:1px solid #F3F5FA`
         - `span` **text 13.5px/600** — “2억원”
           `font-size:13.5px font-weight:600 color:#101828`
         - `div`
           `display:flex align-items:baseline gap:8px`
     - `div` **Card(18)**
-      `background:#FFFFFF border:1px dashed #B79BFF border-radius:18px padding:11px 14px 11px`
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:11px 14px 11px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px`
-        - `span` **StatusPill** — “저장되지 않는 가정”
-          `display:inline-flex align-items:center gap:5px background:#F1EAFD color:#6B32D6 font-size:11px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
-        - `span` **text 13px/600** — “10년 뒤 +2,032만원”
-          `font-size:13px font-weight:600 color:#6B32D6 white-space:nowrap`
-      - `p` — “월 소비를 줄이면 얼마나 달라질까요?”
-        `font-size:13.5px font-weight:600 letter-spacing:-0.015em color:#101828 white-space:nowrap`
-        - `span` — “15만원”
-          `color:#6B32D6`
+        `display:flex align-items:center justify-content:flex-end gap:8px min-height:25px`
+        - `span` **text 13px/600** — “10년 뒤 +0원”
+          `font-size:13px font-weight:600 color:#475467 white-space:nowrap`
+      - `p` **text 13.5px/600** — “한 달에 얼마를 아끼면? 밀어서 시험해 보세요”
+        `font-size:13.5px font-weight:600 letter-spacing:-0.015em color:#101828`
       - `div`
         `display:flex align-items:center gap:9px margin-top:6px`
         - `span` **text 11px/400** — “0원”
@@ -101,6 +105,22 @@
           `position:relative height:20px flex:1`
         - `span` **text 11px/400** — “45만원”
           `font-size:11px color:#697182 white-space:nowrap`
+      - `div` **text 11.5px/400** — “줄인 만큼은 모두 매달 모으는 돈에 더한다고 봐요.”
+        `font-size:11.5px line-height:1.45 color:#626D88 margin-top:7px`
+    - `div` **Card(18)**
+      `display:flex align-items:center justify-content:space-between gap:8px height:70px padding:12px 14px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px`
+      - `span` **text 12.5px/600** — “투자 환경별 비교 · 전체 경로”
+        `font-size:12.5px font-weight:600 color:#475467`
+    - `div` **Card(18)**
+      `height:86px padding:13px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px`
+      - `div`
+        `display:flex align-items:center justify-content:space-between gap:8px height:58px padding:0 18px`
+        - `span` **text 15px/650** — “계산 방법 자세히”
+          `font-size:15px font-weight:650 color:#101828`
+    - `div`
+      `display:flex gap:8px padding:2px 4px 0 margin-top:21px`
+      - `span` **text 11px/400** — “앞으로의 금액은 100만원 단위로 어림해 「약」을 붙였어요. 지금 금액은 입력한 그대로예요. 지금 넣은 값으로 그린”
+        `font-size:11px line-height:1.65 color:#626D88`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div`
@@ -125,7 +145,7 @@
       `display:flex flex-direction:column align-items:center gap:3px flex:1`
       - `div`
         `width:40px height:24px display:flex align-items:center justify-content:center`
-      - `span` **text 11px/500** — “목표”
+      - `span` **text 11px/500** — “목적지”
         `font-size:11px font-weight:500 color:#606B7D`
     - `div`
       `display:flex flex-direction:column align-items:center gap:3px flex:1`

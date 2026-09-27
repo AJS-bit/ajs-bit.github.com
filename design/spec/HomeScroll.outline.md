@@ -40,7 +40,7 @@
           `background:#F7F4FE border-radius:12px padding:10px 11px`
         - `div`
           `background:#F7F4FE border-radius:12px padding:10px 11px`
-      - `p` **text 11px/400** — “가정일 뿐이며 저장되지 않아요. 실제 기록·한도·목표는 그대로입니다.”
+      - `p` **text 11px/400** — “가정일 뿐이며 저장되지 않아요. 실제 기록 · 한도 · 목적지는 그대로예요.”
         `font-size:11px line-height:1.45 color:#626D88`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -66,10 +66,12 @@
           `font-weight:500 color:#475467`
       - `div`
         `display:flex gap:7px margin-top:10px padding:9px 10px background:#F4F6FB border-radius:11px`
-        - `span` — “내가 직접 등록한 기준입니다. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 실”
-          `font-size:11px line-height:1.45 color:#626D88`
+        - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 현”
+          `flex:1 font-size:11px line-height:1.45 color:#626D88`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`
+      - `div` **text 13.5px/600** — “자산 한눈에”
+        `font-size:13.5px font-weight:600 color:#101828 padding:10px 0 2px`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px height:48px`
         - `span` **text 13.5px/500** — “순자산 대비 월말 예상”
@@ -116,7 +118,7 @@
       `display:flex flex-direction:column align-items:center gap:3px flex:1`
       - `div`
         `width:40px height:24px display:flex align-items:center justify-content:center`
-      - `span` **text 11px/500** — “목표”
+      - `span` **text 11px/500** — “목적지”
         `font-size:11px font-weight:500 color:#606B7D`
     - `div`
       `display:flex flex-direction:column align-items:center gap:3px flex:1`

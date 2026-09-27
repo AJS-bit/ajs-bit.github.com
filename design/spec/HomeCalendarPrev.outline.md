@@ -48,12 +48,20 @@
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
+      - `div` — “· ·”
+        `font-size:11.5px line-height:1.45 color:#626D88 margin-top:6px`
+        - `span` — “기록 없음”
+          `white-space:nowrap`
+        - `span` — “안 썼어요”
+          `white-space:nowrap`
+        - `span` — “다 적었어요”
+          `white-space:nowrap`
       - `div` **text 12.5px/400** — “8월 기록한 소비 1,715,200원”
         `font-size:12.5px line-height:1.5 color:#475467 margin-top:8px`
       - `div`
-        `display:flex align-items:center justify-content:space-between height:32px margin-top:6px border-top:1px solid #EFF2F8`
-        - `span` **text 12.5px/600** — “확인할 내용 2개”
-          `font-size:12.5px font-weight:600 color:#101828`
+        `display:flex align-items:center justify-content:space-between gap:8px min-height:32px margin-top:6px border-top:1px solid #EFF2F8`
+        - `span` **text 12.5px/600** — “카테고리 없는 기록 7건 · 카테고리 고르기”
+          `font-size:12.5px line-height:1.4 font-weight:600 color:#101828`
     - `div` **TurnCard**
       `display:flex gap:12px background:#FFFFFF border:1px solid #E3E8F1 border-left:3px solid #DE8A2A border-radius:18px padding:13px 14px`
       - `div`
@@ -62,12 +70,26 @@
         `display:flex flex-direction:column gap:3px`
         - `span` **text 11px/600** — “다음 안내”
           `font-size:11px font-weight:600 letter-spacing:0.06em color:#B45309`
-        - `span` **text 15px/600** — “카드 할부 금리 14.5%부터 줄여보세요”
+        - `span` **text 15px/600** — “투자 계좌 5,000만원에 매달 47만원이 더 필요해요”
           `font-size:15px font-weight:600 letter-spacing:-0.015em line-height:1.35 color:#101828`
-        - `span` **text 12.5px/400** — “고금리 부채는 자산이 자라는 속도를 가장 크게 낮춰요.”
+        - `span` **text 12.5px/400** — “지금 매달 모으는 돈으로는 목표일에 닿기 어려워요. 목표일이나 순서를 바꿔 보세요.”
           `font-size:12.5px line-height:1.45 color:#475467`
-        - `span` **text 12.5px/600** — “상환 전략 보기 ›”
+        - `span` **text 12.5px/600** — “목적지 보기 ›”
           `font-size:12.5px font-weight:600 color:#3556E6 margin-top:5px`
+    - `div` **Card(18)**
+      `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px`
+      - `div`
+        `display:flex flex-wrap:wrap align-items:center justify-content:space-between gap:4px 8px`
+        - `span` — “이번 달 한도”
+          `font-size:13.5px font-weight:600 color:#101828 white-space:nowrap`
+        - `div`
+          `display:flex align-items:center gap:4px`
+      - `div` **text 13px/400** — “216만원 중 112만원 썼어요”
+        `font-size:13px line-height:1.45 color:#475467 margin-top:4px`
+      - `div`
+        `position:relative height:8px border-radius:99px background:#E8ECF5 margin-top:9px`
+        - `div`
+          `position:absolute inset:0 48.1% 0 0 border-radius:99px background:linear-gradient(90deg, #6E6BEE 0%, #7A3FE4 100%)`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div`
@@ -92,7 +114,7 @@
       `display:flex flex-direction:column align-items:center gap:3px flex:1`
       - `div`
         `width:40px height:24px display:flex align-items:center justify-content:center`
-      - `span` **text 11px/500** — “목표”
+      - `span` **text 11px/500** — “목적지”
         `font-size:11px font-weight:500 color:#606B7D`
     - `div`
       `display:flex flex-direction:column align-items:center gap:3px flex:1`

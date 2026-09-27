@@ -3,7 +3,7 @@
 원본 `canvas/DaySheetNoSpendStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:1190px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1200px height:1252px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “안 쓴 날을 표시하는 경우”
@@ -17,11 +17,9 @@
       - `div`
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:26px 26px 18px 18px display:flex flex-direction:column`
         - `div`
-          `display:flex justify-content:center padding:9px 0 0`
+          `position:relative display:flex align-items:flex-start justify-content:space-between gap:10px padding:20px 18px 12px border-bottom:1px solid #EFF2F8`
         - `div`
-          `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 12px border-bottom:1px solid #EFF2F8`
-        - `div`
-          `padding:12px 18px 6px display:flex flex-direction:column gap:10px`
+          `padding:12px 18px 16px display:flex flex-direction:column gap:10px`
       - `p` — “그림은 입니다. 바뀌는 자리는 둘째 줄 · 목록 · 맨 아래 버튼 세 곳입니다.”
         `font-size:12px line-height:1.5 color:#626D88`
         - `b` — “소비는 없고 적금 이체만 있는 오늘”
@@ -56,17 +54,33 @@
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “1”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` **text 12px/400** — “둘째 줄은 그날 소비 합계 자리입니다. 소비가 0건이면 합계 대신 이 문장이 오고, 이체가 있으면 이체 금액을 (소”
+      - `div` — “둘째 줄은 그날 소비 합계 자리입니다. 소비가 0건이면 합계 대신 이 문장이 오고, 이체가 있으면 이체 금액을 (소”
         `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “「9월 7일은 안 썼어요」”
+          `white-space:nowrap`
+        - `span` — “날(—)과”
+          `white-space:nowrap`
+        - `span` — “구분돼요」입니다.”
+          `white-space:nowrap`
     - `div`
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “2”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` **text 12px/400** — “이체 · 상환 행은 소비율 제외 배지와 회색 금액으로 그립니다. 칸 숫자에도 소비 합계에도 들어가지 않습니다.”
+      - `div` — “이체 · 상환 행은 메모 아래 소비율 제외 낱말 단위로 두 줄까지 · 줄은 내용만큼 높아짐)와 회색 금액으로 그립니”
         `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “배지(메모는”
+          `white-space:nowrap`
+        - `span` — “창(기록”
+          `white-space:nowrap`
+        - `span` — “「고쳤어요」가”
+          `white-space:nowrap`
     - `div`
       `display:flex gap:10px padding:7px 0`
       - `span` **text 10.5px/700** — “3”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` **text 12px/400** — “오늘은 안 썼어요는 그 날짜 소비 거래가 0건일 때만 보입니다. 0원 거래를 만들지 않고 그 날짜에 표시만 남깁니다”
+      - `div` — “오늘은 안 썼어요는 그 날짜 소비 기록이 0건일 때만 보입니다. 0원 기록을 만들지 않고 그 날짜에 표시만 남깁니다”
         `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “풀리고(상태”
+          `white-space:nowrap`
+        - `span` — “「오늘은 안 썼어요」를”
+          `white-space:nowrap`

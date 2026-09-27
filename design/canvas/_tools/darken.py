@@ -62,6 +62,8 @@ MAP = {
     '#0A5F8F': '#9CD8F5',
     '#7EC4E8': '#2A5A78',
     '#2A3245': '#04070E',   # modal scrim
+    '#CFD3E1': '#0E1320',   # 밝은 Dialog 겉(흐린 화면 · 순자산 대비 소비 · 설정 › 알림 — 2026-09-27 fix-up)
+    '#C9D3F5': '#39455F',   # 홈 히어로 「소비 목표 조정」 알약 테두리(앱 home-target.css · 다크는 input-line) — 2026-09-26 DZ3
 }
 KEYS = sorted(MAP, key=len, reverse=True)
 PAT = re.compile('|'.join(re.escape(k) for k in KEYS), re.IGNORECASE)
@@ -77,7 +79,7 @@ KEEP = re.compile(r'<!--dc-keep-->(.*?)<!--/dc-keep-->', re.S)
 # 라이트의 꺼진 토글 손잡이와 세그먼트 선택 칸은 흰색(#FFFFFF)이 트랙보다 밝아서 떠 보인다.
 # MAP 대로 #FFFFFF → surface(#121A2B)로 바꾸면 다크에서는 트랙(#232D45 · #1A2337)보다 어두워져
 # 손잡이는 구멍처럼, 선택 칸은 파인 자리처럼 보인다. 그래서 이 둘만 MAP 보다 먼저 집어 따로 칠한다.
-# 켜진 토글(브랜드 트랙 #7FA0FF 위 surface 손잡이 · 6.9:1)은 잘 읽히므로 그대로 둔다.
+# 켜진 토글의 흰 손잡이는 생성기가 <!--dc-keep--> 로 감싸 다크에서도 흰색이다(앱과 같게 · 2026-09-27 fix-up 3 — 예전엔 surface 로 바뀌어 어두운 구멍처럼 보였다).
 KNOB_OFF_DARK = '#8595AE'   # 꺼진 토글 손잡이 = ink-3 · 트랙 #232D45 위 4.5:1
 # 세그먼트 선택 칸 = 트랙보다 밝은 표면. 열쇠는 라이트 트랙 색 — 화면 탭(#E3E8F1 → 다크 트랙 #232D45 · 그 위 1.21:1, 라이트는 1.23:1)과
 # 모달(#F4F6FB → 다크 트랙 #1A2337 · 그 위 1.38:1). 지금은 두 곳이 같은 값이다
@@ -99,6 +101,28 @@ _PILL = re.compile(r'border-radius:\s*99px', re.I)
 _TRACK_OFF = re.compile(r'background:\s*#E3E8F1', re.I)
 _KNOB_LEFT = re.compile(r'justify-content:\s*flex-start', re.I)
 _KNOB, _SEG = '\x00KNOB\x00', '\x00SEG{}\x00'   # _SEG 의 {} = 라이트 트랙 색에서 # 을 뗀 것(# 이 붙어 있으면 MAP 이 표시까지 바꿔 버린다)
+
+# ── 앱의 보조(outline) 버튼 ─────────────────────────────────────────────────────────
+# 라이트는 바탕 #EDF0F7(canvas) + 1px #E3E8F1 — 확인 창(Confirmations · Components 04)의 「취소」 · 「그대로 저장」, 미래 ② 「부채 수정 ›」,
+# 순자산 대비 소비 「자산 탭에서 보기」, 잔액 확인 「그대로예요」. MAP 대로면 canvas(#080C16)가 되어 창 위에 까만 구멍처럼 보인다.
+# 앱(a08a4f8 · shadcn outline · dark:bg-input/30 dark:border-input)은 input 선 색 #39455F 의 30% 반투명 바탕 + #39455F 선이라
+# 창 위 #1E273B · 확인 창 아래 띠 위 #202A3F · 주황 상자 위 #312F2D 로 비친다(하네스 픽셀 · 2026-09-27 fix-up 6). 바탕을 그대로 반투명으로 둔다.
+# 알아보는 법 = 한 style 안에 바탕 #EDF0F7 · 1px #E3E8F1 선 · 모서리 10/13 · 높이 32/44/46(휴대폰 틀 · 견본 상자 · 토큰 칩은 모서리 · 높이가 달라 안 걸림)
+OUTLINE_BG_DARK, OUTLINE_BD_DARK = 'rgba(57,69,95,.3)', '#39455F'
+_OUTLINE = '\x00OUTLINE\x00'
+_OUTLINE_STYLE = re.compile(r'style="([^"]*)"')
+_OUTLINE_BG = re.compile(r'background:\s*#EDF0F7', re.I)
+_OUTLINE_BD = re.compile(r'border:\s*1px solid #E3E8F1', re.I)
+_OUTLINE_SHAPE = (re.compile(r'border-radius:\s*(?:10|13)px'), re.compile(r'(?:^|[;\s])height:\s*(?:32|44|46)px'))
+
+
+def _outline(text):
+    def one(m):
+        s = m.group(1)
+        if _OUTLINE_BG.search(s) and _OUTLINE_BD.search(s) and all(p.search(s) for p in _OUTLINE_SHAPE):
+            s = _OUTLINE_BD.sub(f'border: 1px solid {_OUTLINE}BD', _OUTLINE_BG.sub(f'background: {_OUTLINE}BG', s))
+        return f'style="{s}"'
+    return _OUTLINE_STYLE.sub(one, text)
 
 
 def _lift(text, name=''):
@@ -133,8 +157,10 @@ def darken(text, name='', knob=KNOB_OFF_DARK, seg=None):
 
     text = KEEP.sub(_stash, text)
     text = _lift(text, name)
+    text = _outline(text)
     out = PAT.sub(lambda m: MAP[m.group(0).upper()], text)
     out = out.replace(_KNOB, knob)
+    out = out.replace(_OUTLINE + 'BG', OUTLINE_BG_DARK).replace(_OUTLINE + 'BD', OUTLINE_BD_DARK)
     for track, on in (seg or SEG_ON_DARK).items():
         out = out.replace(_SEG.format(track.upper().lstrip('#')), on)
     out = out.replace('rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)',
@@ -158,17 +184,25 @@ def darken(text, name='', knob=KNOB_OFF_DARK, seg=None):
     # 한도 초과 구간 빗금(ModalErrors B) — 빨강은 MAP이 바꾸고 옅은 줄만 여기서
     out = out.replace('#E8635F 0 4px, #E0908C 4px 8px', '#E8635F 0 4px, #8E4C49 4px 8px')
     assert '\x00SEG' not in out, f'{name}: SEG_ON_DARK 에 없는 트랙 색의 세그먼트가 있다'
+    # 검산 — 버튼 모양(모서리 10/13 · 높이 32/44/46)인데 바탕이 canvas 로 남은 것이 있으면 _outline 이 마크업을 놓친 것
+    for s in _OUTLINE_STYLE.findall(out):
+        if re.search(r'background:\s*#080C16', s, re.I) and all(p.search(s) for p in _OUTLINE_SHAPE):
+            raise AssertionError(f'{name}: 다크 바탕 #080C16 인 버튼 모양 칸이 남았다 — _outline 을 마크업에 맞출 것: {s[:120]}')
     for i, k in enumerate(kept):
         out = out.replace(f'\x00KEEP{i}\x00', k)
     return out
 
 
 SCREENS = ['Main', 'HomeScroll', 'Assets', 'Debts', 'Strategy', 'Spending', 'Ledger',
-           'Limits', 'Goals', 'GoalDesign', 'Future', 'Payoff', 'Onboarding', 'SpendingPast']
+           'Limits', 'Goals', 'GoalDesign', 'Future', 'Payoff', 'Onboarding', 'SpendingPast',
+           'SpendingPastOpen', 'SpendingPastChanged']   # 2026-09-25 지난 달 마감 전 · 마감 뒤 바뀜(gen_rest)
 MODALS = ['LimitEditor', 'TransactionAdd', 'ProfileDialog', 'AssetDialog', 'DebtDialog',
           'GoalDialog', 'RecurringDialog', 'MonthlyClose', 'ImportReview', 'CoachPanel',
-          'AlertsPanel', 'AlertsEmpty', 'PeerDialog', 'GoalContribute', 'CoachEmpty']
-STATES = ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations', 'GoalTypes']
+          'AlertsPanel', 'AlertsEmpty', 'PeerDialog', 'GoalContribute', 'CoachEmpty',
+          # 2026-09-25 앱 따라잡기(gen_modals) 새 모달
+          'ProfileDialogNoItems', 'SalarySheet', 'NetWorthRatioSheet', 'AssetEditDialog', 'AssetBalanceCheck', 'RecurringDialogOverlap']
+STATES = ['StorageStates', 'EmptyStates', 'PeerStates', 'ModalErrors', 'Confirmations', 'GoalTypes', 'AssetDebtTypes',
+          'GoalsStates', 'GoalDesignStates']   # 2026-09-26 DZ2 목적지 · 새 목적지 설계 상태(gen_screens)
 SYSTEM = ['Components']
 DESKTOP = ['DesktopHome', 'DesktopLedger']
 V4 = ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeConfigured']   # gen_v4.py
@@ -182,6 +216,9 @@ V5X += ['DaySheetScrolled', 'HomeDefaultScroll']   # gen_v5.py
 V5X += ['DaySheetNoSpend', 'DaySheetNoSpendStates', 'ReviewListSheet', 'DoneCardStates', 'DaySheetStates', 'CalendarStatusLines']   # gen_v5_sheets.py
 V5X += ['InsufficientElsewhere', 'FutureProvisional', 'EtcSubline', 'LimitCardCases', 'RecurringPrefill', 'ImportBackupNotes']   # gen_v5_screens.py
 V5X += ['SettingsNotify', 'NotifyCases']   # gen_notify.py (2026-09-23 기기 알림)
+V5X += ['HomeTargetEditor', 'HomeMonthStart', 'HomeSampleMode', 'DaySheetDeleted', 'DaySheetPastEmpty', 'DaySheetEditMoved', 'ClassifySheetPicker']   # gen_v5.py (2026-09-26 DZ4)
+V5X += ['PayoffStates', 'FutureStates', 'HomeGlanceRows', 'SampleModeTabs', 'DebtUnpayable']   # gen_v5_screens.py (2026-09-26 DZ4)
+V5X += ['HomePrimaryGoal', 'HomeTargetSaved', 'AssetsStale', 'AlertsPanelInfo', 'GoalDialogPreview']   # 2026-09-27 fix-up 3 새 장(gen_v5 · gen_v5_screens · gen_modals)
 
 if __name__ == '__main__':
     n = 0

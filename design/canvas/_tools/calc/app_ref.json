@@ -1,0 +1,1130 @@
+{
+ "_": "앱 a724aac 계산 코드를 시안 사용자(sample-data.json → sample_state.cjs)에 돌린 값 · 기준 2026-09-08T03:00:00Z (서울 9월 8일)",
+ "app": "a724aac",
+ "month": {
+  "days": 30,
+  "done": 8,
+  "daysLeftInclusive": 23,
+  "spend": 1120000,
+  "projected": 2084000,
+  "fixed": 705500,
+  "variable": 414500,
+  "income": 3900000,
+  "debtPay": 920000,
+  "capacity": 896000,
+  "salaryRatio": 31.111111,
+  "salaryRatioProjected": 57.888889,
+  "net": 93500000,
+  "assets": 182100000,
+  "debts": 88600000,
+  "burn": 1.197861,
+  "burnProjected": 2.228877,
+  "targetAmount": 2160000,
+  "targetLine": {
+   "kind": "left",
+   "label": "소비 목표까지",
+   "gap": 1040000,
+   "tone": "ink",
+   "text": "소비 목표까지 104만원 남음"
+  },
+  "netWorthRatioText": "순자산의 1.2%",
+  "badgeKey": "steady",
+  "monthEndLeft": 76000
+ },
+ "limit": {
+  "total": 2160000,
+  "basis": "income",
+  "fromSalary": 2160000,
+  "fromIncome": 1515995.364083,
+  "goalNeed": 1464004.635917,
+  "goalRequired": 1464004.635917,
+  "goalNeedCapped": false,
+  "debtPay": 920000,
+  "income": 3900000,
+  "planCapInfo": 1515995.364083,
+  "remain": 1040000,
+  "used": 1120000,
+  "ratio": 51.851852,
+  "dailyWon": 45220,
+  "daily": 45217.391304,
+  "categories": {
+   "식비": 450000,
+   "카페/간식": 100000,
+   "교통": 120000,
+   "주거/관리": 500000,
+   "통신": 80000,
+   "보험": 120000,
+   "구독": 40000,
+   "쇼핑": 300000,
+   "문화/여가": 150000,
+   "의료/건강": 80000,
+   "교육": 50000,
+   "경조사": 70000,
+   "기타": 100000
+  },
+  "fixedCost": 732300,
+  "variableBudget": 1427700,
+  "personalized": true
+ },
+ "scenes": {
+  "canon": {
+   "spent": 1120000,
+   "remain": 1040000,
+   "dailyWon": 45220,
+   "line": "소비 목표까지 104만원 남음"
+  },
+  "doneCard": {
+   "spent": 1132000,
+   "remain": 1028000,
+   "dailyWon": 44700,
+   "line": "소비 목표까지 103만원 남음"
+  },
+  "heroInsufficient": {
+   "spent": 5000,
+   "remain": 2155000,
+   "dailyWon": 93700,
+   "line": "소비 목표까지 216만원 남음"
+  }
+ },
+ "goals": {
+  "budget": 896000,
+  "totalRequired": 1464004.635917,
+  "surplus": -568004.635917,
+  "unplanned": [],
+  "rows": [
+   {
+    "name": "비상금 6개월",
+    "type": "emergency",
+    "priority": 1,
+    "targetDate": "2027-03-08",
+    "monthsLeft": 6,
+    "weight": 12,
+    "required": 800000,
+    "allocated": 701217.391304,
+    "gap": 98782.608696,
+    "etaMonths": 6.845238,
+    "arrivalMonths": 7,
+    "arrival": "2027년 4월",
+    "deadline": {
+     "kind": "late",
+     "gap": 1,
+     "text": "목표일보다 약 1개월 늦어요"
+    },
+    "progress": 68,
+    "saved": 10200000,
+    "target": 15000000
+   },
+   {
+    "name": "투자 계좌 5,000만원",
+    "type": "investment",
+    "priority": 2,
+    "targetDate": "2029-09-08",
+    "monthsLeft": 36,
+    "weight": 3.333333,
+    "required": 664004.635917,
+    "allocated": 194782.608696,
+    "gap": 469222.027222,
+    "etaMonths": 86.495891,
+    "arrivalMonths": 87,
+    "arrival": "2033년 12월",
+    "deadline": {
+     "kind": "late",
+     "gap": 51,
+     "text": "목표일보다 약 4년 3개월 늦어요"
+    },
+    "progress": 42,
+    "saved": 21000000,
+    "target": 50000000
+   },
+   {
+    "name": "신용대출 다 갚기",
+    "type": "debt-payoff",
+    "priority": 2,
+    "targetDate": "2031-03-08",
+    "monthsLeft": 54,
+    "weight": 0,
+    "required": 0,
+    "allocated": 0,
+    "gap": 0,
+    "etaMonths": 50,
+    "arrivalMonths": 50,
+    "arrival": "2030년 11월",
+    "deadline": {
+     "kind": "early",
+     "gap": -4,
+     "text": "목표일보다 약 4개월 빨라요"
+    },
+    "progress": 31.25,
+    "saved": 10000000,
+    "target": 32000000
+   },
+   {
+    "name": "순자산 2억원",
+    "type": "net-worth",
+    "priority": 3,
+    "targetDate": "2058-10-08",
+    "monthsLeft": 385,
+    "weight": 1.062338,
+    "required": 0,
+    "allocated": 0,
+    "gap": 0,
+    "etaMonths": 52,
+    "arrivalMonths": 52,
+    "arrival": "2031년 1월",
+    "deadline": {
+     "kind": "early",
+     "gap": -333,
+     "text": "목표일보다 약 27년 9개월 빨라요"
+    },
+    "progress": 46.75,
+    "saved": 93500000,
+    "target": 200000000
+   }
+  ],
+  "netWorthReturn": 0.024039
+ },
+ "contribute": {
+  "before": {
+   "name": "비상금 6개월",
+   "type": "emergency",
+   "priority": 1,
+   "targetDate": "2027-03-08",
+   "monthsLeft": 6,
+   "weight": 12,
+   "required": 800000,
+   "allocated": 701217.391304,
+   "gap": 98782.608696,
+   "etaMonths": 6.845238,
+   "arrivalMonths": 7,
+   "arrival": "2027년 4월",
+   "deadline": {
+    "kind": "late",
+    "gap": 1,
+    "text": "목표일보다 약 1개월 늦어요"
+   },
+   "progress": 68,
+   "saved": 10200000,
+   "target": 15000000
+  },
+  "after": {
+   "name": "비상금 6개월",
+   "type": "emergency",
+   "priority": 1,
+   "targetDate": "2027-03-08",
+   "monthsLeft": 6,
+   "weight": 12,
+   "required": 716666.666667,
+   "allocated": 701217.391304,
+   "gap": 15449.275362,
+   "etaMonths": 6.132192,
+   "arrivalMonths": 7,
+   "arrival": "2027년 4월",
+   "deadline": {
+    "kind": "late",
+    "gap": 1,
+    "text": "목표일보다 약 1개월 늦어요"
+   },
+   "progress": 71.333333,
+   "saved": 10700000,
+   "target": 15000000
+  }
+ },
+ "design": {
+  "required": 242685.628428,
+  "final": 6579658.896179,
+  "targetDate": "2033-09-08",
+  "leftover": 0,
+  "budget": 896000,
+  "surplus": -568004.635917,
+  "preview": [
+   "결혼 자금 매달 13만원 · 2038년 2월 도착 예상 · 목표일보다 약 4년 5개월 늦어요",
+   "비상금 6개월 매달 70만 → 60만원 · 도착 2027년 4월 → 2027년 5월",
+   "투자 계좌 5,000만원 매달 19만 → 17만원 · 도착 2033년 12월 → 2034년 8월"
+  ],
+  "presets": [
+   {
+    "id": "preset-debtfree",
+    "name": "부채 다 갚기",
+    "target": 88600000,
+    "targetDate": "2029-09-08"
+   },
+   {
+    "id": "preset-first100",
+    "name": "순자산 1억",
+    "target": 100000000,
+    "targetDate": "2031-09-08"
+   },
+   {
+    "id": "preset-house",
+    "name": "내 집 마련 종잣돈",
+    "target": 200000000,
+    "targetDate": "2033-09-08"
+   },
+   {
+    "id": "preset-fi",
+    "name": "생활비 25년치 모으기",
+    "target": 625200000,
+    "targetDate": "2046-09-08"
+   }
+  ]
+ },
+ "payoff": {
+  "avalanche_0": {
+   "months": 145,
+   "label": "2038년 10월",
+   "interest": 22481030.002692,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 145,
+     "label": "2038년 10월",
+     "interest": 16920756.862989
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 72,
+     "label": "2032년 9월",
+     "interest": 5262510.457174
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 60,
+     "label": "2031년 9월",
+     "interest": 180376.216174
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 10,
+     "label": "2027년 7월",
+     "interest": 117386.466355
+    }
+   ]
+  },
+  "snowball_0": {
+   "months": 145,
+   "label": "2038년 10월",
+   "interest": 22754123.163008,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 145,
+     "label": "2038년 10월",
+     "interest": 16971717.95399
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 72,
+     "label": "2032년 9월",
+     "interest": 5586647.083867
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 20,
+     "label": "2028년 5월",
+     "interest": 78371.658796
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 10,
+     "label": "2027년 7월",
+     "interest": 117386.466355
+    }
+   ]
+  },
+  "avalanche_150000": {
+   "months": 116,
+   "label": "2036년 5월",
+   "interest": 17340595.463066,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 116,
+     "label": "2036년 5월",
+     "interest": 13529573.673039
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 50,
+     "label": "2030년 11월",
+     "interest": 3560608.150743
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 60,
+     "label": "2031년 9월",
+     "interest": 180376.216174
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 6,
+     "label": "2027년 3월",
+     "interest": 70037.423111
+    }
+   ]
+  },
+  "snowball_150000": {
+   "months": 116,
+   "label": "2036년 5월",
+   "interest": 17643492.912756,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 116,
+     "label": "2036년 5월",
+     "interest": 13586307.140454
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 52,
+     "label": "2031년 1월",
+     "interest": 3937121.112078
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 12,
+     "label": "2027년 9월",
+     "interest": 50027.237113
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 6,
+     "label": "2027년 3월",
+     "interest": 70037.423111
+    }
+   ]
+  },
+  "avalanche_200000": {
+   "months": 108,
+   "label": "2035년 9월",
+   "interest": 16136570.324236,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 108,
+     "label": "2035년 9월",
+     "interest": 12679067.084965
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 46,
+     "label": "2030년 7월",
+     "interest": 3214637.8474
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 60,
+     "label": "2031년 9월",
+     "interest": 180376.216174
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 5,
+     "label": "2027년 2월",
+     "interest": 62489.175697
+    }
+   ]
+  },
+  "snowball_200000": {
+   "months": 109,
+   "label": "2035년 10월",
+   "interest": 16434352.4249,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 109,
+     "label": "2035년 10월",
+     "interest": 12740406.627493
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 47,
+     "label": "2030년 8월",
+     "interest": 3586645.120142
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 11,
+     "label": "2027년 8월",
+     "interest": 44811.501568
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 5,
+     "label": "2027년 2월",
+     "interest": 62489.175697
+    }
+   ]
+  },
+  "avalanche_300000": {
+   "months": 97,
+   "label": "2034년 10월",
+   "interest": 14186628.520246,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 97,
+     "label": "2034년 10월",
+     "interest": 11259716.868612
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 38,
+     "label": "2029년 11월",
+     "interest": 2694488.715498
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 60,
+     "label": "2031년 9월",
+     "interest": 180376.216174
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 4,
+     "label": "2027년 1월",
+     "interest": 52046.719962
+    }
+   ]
+  },
+  "snowball_300000": {
+   "months": 97,
+   "label": "2034년 10월",
+   "interest": 14467864.034345,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 97,
+     "label": "2034년 10월",
+     "interest": 11331952.761158
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 40,
+     "label": "2030년 1월",
+     "interest": 3046679.211726
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 9,
+     "label": "2027년 6월",
+     "interest": 37185.341498
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 4,
+     "label": "2027년 1월",
+     "interest": 52046.719962
+    }
+   ]
+  },
+  "current": {
+   "months": 150,
+   "label": "2039년 3월",
+   "interest": 26616566.250471,
+   "order": [
+    {
+     "name": "주택담보대출",
+     "paidOffAt": 143,
+     "label": "2038년 8월",
+     "interest": 14141170.550171
+    },
+    {
+     "name": "신용대출",
+     "paidOffAt": 150,
+     "label": "2039년 3월",
+     "interest": 12177633.017771
+    },
+    {
+     "name": "학자금대출",
+     "paidOffAt": 60,
+     "label": "2031년 9월",
+     "interest": 180376.216174
+    },
+    {
+     "name": "카드 할부",
+     "paidOffAt": 10,
+     "label": "2027년 7월",
+     "interest": 117386.466355
+    }
+   ]
+  },
+  "baseline15": {
+   "base": "추가 상환이 없으면 2038년 10월 · 이자 2,248만원",
+   "gain": "2년 5개월 빨리 끝나고 이자 514만원 덜 내요"
+  },
+  "baseline20": {
+   "base": "추가 상환이 없으면 2038년 10월 · 이자 2,248만원",
+   "gain": "3년 1개월 빨리 끝나고 이자 634만원 덜 내요"
+  },
+  "baseline30": {
+   "base": "추가 상환이 없으면 2038년 10월 · 이자 2,248만원",
+   "gain": "4년 빨리 끝나고 이자 829만원 덜 내요"
+  },
+  "info15": "고금리 우선이 이자를 30만원 덜 내요 · 끝나는 달은 같아요",
+  "info20": "고금리 우선이 이자를 30만원 덜 내고 1개월 먼저 끝나요",
+  "info30": "고금리 우선이 이자를 28만원 덜 내요 · 끝나는 달은 같아요",
+  "compare15": {
+   "kind": "better",
+   "tone": "positive",
+   "text": "소액 우선보다 이자 30만원 덜 내요"
+  },
+  "compare20": {
+   "kind": "better",
+   "tone": "positive",
+   "text": "소액 우선보다 이자 30만원 덜 내요 · 1개월 먼저 끝나요"
+  },
+  "compare30": {
+   "kind": "better",
+   "tone": "positive",
+   "text": "소액 우선보다 이자 28만원 덜 내요"
+  },
+  "breakdown15": {
+   "min": 770000,
+   "extra": 150000,
+   "total": 920000,
+   "minMissing": false,
+   "text": "최소 77만원 + 추가 15만원 = 매월 92만원",
+   "short": "최소 77만원 + 추가 15만원"
+  },
+  "breakdown20": {
+   "min": 770000,
+   "extra": 200000,
+   "total": 970000,
+   "minMissing": false,
+   "text": "최소 77만원 + 추가 20만원 = 매월 97만원",
+   "short": "최소 77만원 + 추가 20만원"
+  },
+  "breakdown30": {
+   "min": 770000,
+   "extra": 300000,
+   "total": 1070000,
+   "minMissing": false,
+   "text": "최소 77만원 + 추가 30만원 = 매월 107만원",
+   "short": "최소 77만원 + 추가 30만원"
+  },
+  "minNote": "최소 상환 월 77만원은 줄일 수 없어 슬라이더에서 뺐어요.",
+  "capacity": {
+   "0": 1046000,
+   "150000": 896000,
+   "200000": 846000,
+   "300000": 746000
+  },
+  "planCap": {
+   "0": {
+    "fromIncome": 1665995.364083,
+    "info": 1665995.364083,
+    "total": 2160000
+   },
+   "150000": {
+    "fromIncome": 1515995.364083,
+    "info": 1515995.364083,
+    "total": 2160000
+   },
+   "200000": {
+    "fromIncome": 1465995.364083,
+    "info": 1465995.364083,
+    "total": 2160000
+   },
+   "300000": {
+    "fromIncome": 1365995.364083,
+    "info": 1365995.364083,
+    "total": 2160000
+   }
+  }
+ },
+ "future": {
+  "bad": {
+   "rate": -0.003333,
+   "final": 279621881.788246,
+   "estimate": "약 2.8억원",
+   "short": "2.8억",
+   "delta": 186121881.788246,
+   "deltaText": "약 1.86억원",
+   "monthlySave": 896000
+  },
+  "base": {
+   "rate": 0.05,
+   "final": 381794438.704019,
+   "estimate": "약 3.82억원",
+   "short": "3.8억",
+   "delta": 288294438.704019,
+   "deltaText": "약 2.88억원",
+   "monthlySave": 896000
+  },
+  "good": {
+   "rate": 0.105,
+   "final": 547077791.963331,
+   "estimate": "약 5.47억원",
+   "short": "5.5억",
+   "delta": 453577791.963331,
+   "deltaText": "약 4.54억원",
+   "monthlySave": 896000
+  },
+  "start": {
+   "net": 93500000,
+   "assets": 182100000,
+   "debts": 88600000
+  },
+  "milestones": [
+   {
+    "target": 100000000,
+    "month": "2027-01",
+    "whenText": "4개월 뒤",
+    "dateText": "2027년 1월"
+   },
+   {
+    "target": 150000000,
+    "month": "2029-02",
+    "whenText": "2년 5개월 뒤",
+    "dateText": "2029년 2월"
+   },
+   {
+    "target": 200000000,
+    "month": "2031-01",
+    "whenText": "4년 4개월 뒤",
+    "dateText": "2031년 1월"
+   }
+  ],
+  "status": "ready",
+  "years": {
+   "5": {
+    "final": 220459905.676762,
+    "estimate": "약 2.2억원"
+   },
+   "10": {
+    "final": 381794438.704019,
+    "estimate": "약 3.82억원"
+   },
+   "20": {
+    "final": 852065048.547592,
+    "estimate": "약 8.52억원"
+   },
+   "30": {
+    "final": 1633775920.741306,
+    "estimate": "약 16.34억원"
+   }
+  },
+  "cut15": {
+   "final": 404948912.899239,
+   "estimate": "약 4.05억원",
+   "diff": 23154474.19522,
+   "diffText": "약 2,300만원"
+  }
+ },
+ "alerts": {
+  "counts": {
+   "important": 1,
+   "reference": 0,
+   "total": 1
+  },
+  "rows": [
+   {
+    "level": "danger",
+    "title": "카드 할부 금리가 14.5%예요",
+    "body": "보유 부채 중 가장 높아요. 투자 수익보다 갚는 쪽이 확실해요.",
+    "link": "상환 계획"
+   }
+  ],
+  "footer": "자산의 잔액 확인일이 없거나 35일 넘게 갱신하지 않으면 여기에 알려 드려요. 지금은 갱신이 필요한 자산이 없어요."
+ },
+ "insights": [
+  {
+   "priority": 1,
+   "tone": "warn",
+   "title": "주거/관리가 소비의 42%예요",
+   "body": "이번 달 47만원."
+  },
+  {
+   "priority": 1,
+   "tone": "warn",
+   "title": "고정비가 소비의 63%예요",
+   "body": "매달 71만원이 저절로 나가요. 고정비는 한 번 줄이면 매달 아껴지니 통신 · 구독 · 보험부터 살펴보세요."
+  },
+  {
+   "priority": 1,
+   "tone": "warn",
+   "title": "카드 할부 금리 14.5%가 투자 자산 기본 수익률 연 5.0%보다 높아요",
+   "body": "이 부채를 갚는 쪽이 투자보다 확실히 유리해요. 100만원을 갚으면 1년에 10만원 이득이에요."
+  },
+  {
+   "priority": 1,
+   "tone": "warn",
+   "title": "'비상금 6개월'에 매달 10만원이 모자라요",
+   "body": "목표일까지 6개월, 매달 필요한 돈은 80만원인데 이 목적지에 매달 넣을 돈은 70만원이에요."
+  },
+  {
+   "priority": 2,
+   "tone": "good",
+   "title": "월말에도 소비 목표 60% 안이에요",
+   "body": "월말 예상 208만원 · 월급의 57.9%예요."
+  },
+  {
+   "priority": 2,
+   "tone": "info",
+   "title": "매달 모을 수 있는 돈 90만원 · 월급 + 부수입의 23%",
+   "body": "저축 · 상환 계획까지 지키려면 이번 달 152만원 안에서 쓰면 돼요."
+  },
+  {
+   "priority": 3,
+   "tone": "warn",
+   "title": "순자산 대비 소비가 내 참고선보다 높아요",
+   "body": "1년 치로 치면 순자산의 26.7%를 쓰는 속도예요(내 참고선 21.6%). 참고선 안으로 오려면 월 소비를 40만원 줄이면 돼요. 참고선은 설정 › 내 수치 › 표시 이름 · 순자산 참고선에서 바꿀 수 있어요."
+  },
+  {
+   "priority": 3,
+   "tone": "info",
+   "title": "한도 안에서 쓰고 있어요",
+   "body": "이번 달 한도는 104만원 남았어요. 오늘 포함 남은 23일 동안 하루 45,220원씩 쓰면 한도(216만원)를 지켜요."
+  },
+  {
+   "priority": 3,
+   "tone": "info",
+   "title": "구독료 월 3.6만원",
+   "body": "1년이면 43.2만원이에요. 월급의 1.0%를 매달 쓰고 있어요."
+  },
+  {
+   "priority": 3,
+   "tone": "info",
+   "title": "연 소비 25배 참고선의 15.0%",
+   "body": "지금 순자산을 1년 소비 2,501만원의 25배인 6억 2,520만원과 비교한 참고값이에요. 매달 모을 수 있는 돈을 모두 모은다고 치면 약 20년 4개월 걸려요. 주거 · 연금처럼 바로 쓸 수 없는 자산과 세금은 따로 봐야 해요."
+  }
+ ],
+ "savings": [],
+ "coachCut": {
+  "ratio": 0.15,
+  "monthly": 312600,
+  "impact": {
+   "goal": "비상금 6개월",
+   "monthsSaved": 0.845238,
+   "base": 6.845238,
+   "better": 6
+  },
+  "tenYears": 48253924.222838
+ },
+ "categoryCuts": {
+  "0.1": [
+   {
+    "category": "식비",
+    "used": 240000,
+    "cut": 24000,
+    "month": "2.4만원",
+    "tile": "약 0.2개월 빨리 도착",
+    "months": 0.178571,
+    "goalName": "비상금 6개월",
+    "cap": 450000
+   },
+   {
+    "category": "교통",
+    "used": 70000,
+    "cut": 7000,
+    "month": "7,000원",
+    "tile": "1년이면 8.4만원",
+    "months": 0.053064,
+    "goalName": "비상금 6개월",
+    "cap": 120000
+   },
+   {
+    "category": "쇼핑",
+    "used": 30000,
+    "cut": 3000,
+    "month": "3,000원",
+    "tile": "1년이면 3.6만원",
+    "months": 0.022843,
+    "goalName": "비상금 6개월",
+    "cap": 300000
+   },
+   {
+    "category": "기타",
+    "used": 28000,
+    "cut": 2800,
+    "month": "2,800원",
+    "tile": "1년이면 3.4만원",
+    "months": 0.021325,
+    "goalName": "비상금 6개월",
+    "cap": 100000
+   },
+   {
+    "category": "문화/여가",
+    "used": 10000,
+    "cut": 1000,
+    "month": "1,000원",
+    "tile": "1년이면 1.2만원",
+    "months": 0.007631,
+    "goalName": "비상금 6개월",
+    "cap": 150000
+   },
+   {
+    "category": "카페/간식",
+    "used": 4500,
+    "cut": 450,
+    "month": "450원",
+    "tile": "1년이면 5,400원",
+    "months": 0.003436,
+    "goalName": "비상금 6개월",
+    "cap": 100000
+   }
+  ],
+  "0.15": [
+   {
+    "category": "식비",
+    "used": 240000,
+    "cut": 36000,
+    "month": "3.6만원",
+    "tile": "약 0.3개월 빨리 도착",
+    "months": 0.264408,
+    "goalName": "비상금 6개월",
+    "cap": 450000
+   },
+   {
+    "category": "교통",
+    "used": 70000,
+    "cut": 10500,
+    "month": "1.1만원",
+    "tile": "1년이면 13.2만원",
+    "months": 0.079288,
+    "goalName": "비상금 6개월",
+    "cap": 120000
+   },
+   {
+    "category": "쇼핑",
+    "used": 30000,
+    "cut": 4500,
+    "month": "4,500원",
+    "tile": "1년이면 5.4만원",
+    "months": 0.034207,
+    "goalName": "비상금 6개월",
+    "cap": 300000
+   },
+   {
+    "category": "기타",
+    "used": 28000,
+    "cut": 4200,
+    "month": "4,200원",
+    "tile": "1년이면 5만원",
+    "months": 0.031937,
+    "goalName": "비상금 6개월",
+    "cap": 100000
+   },
+   {
+    "category": "문화/여가",
+    "used": 10000,
+    "cut": 1500,
+    "month": "1,500원",
+    "tile": "1년이면 1.8만원",
+    "months": 0.011441,
+    "goalName": "비상금 6개월",
+    "cap": 150000
+   },
+   {
+    "category": "카페/간식",
+    "used": 4500,
+    "cut": 675,
+    "month": "675원",
+    "tile": "1년이면 8,100원",
+    "months": 0.005153,
+    "goalName": "비상금 6개월",
+    "cap": 100000
+   }
+  ]
+ },
+ "score": {
+  "total": 58,
+  "ready": true,
+  "tier": {
+   "label": "보통",
+   "tone": "accent"
+  },
+  "parts": [
+   {
+    "key": "burn",
+    "label": "자산 대비 소비",
+    "score": 23.495853,
+    "max": 40,
+    "measured": true
+   },
+   {
+    "key": "save",
+    "label": "저축률",
+    "score": 13.784615,
+    "max": 30,
+    "measured": true
+   },
+   {
+    "key": "debt",
+    "label": "부채 건전성",
+    "score": 5.877265,
+    "max": 15,
+    "measured": true
+   },
+   {
+    "key": "safe",
+    "label": "비상금",
+    "score": 15,
+    "max": 15,
+    "measured": true
+   }
+  ]
+ },
+ "glance": {
+  "burnProjected": 2.228877,
+  "burnText": "2.2%",
+  "score": "58점",
+  "tenYear": "약 3.82억원"
+ },
+ "netWorthRatio": {
+  "first": "이번 달 지금까지 쓴 112만원은 내 순자산 9,350만원의 1.2%예요.",
+  "projected": "월말 예상 208만원으로 치면 2.2%예요.",
+  "explain": "순자산은 가진 자산에서 갚을 부채를 뺀 금액이에요. 순자산이 클수록 같은 소비도 작은 비율이 돼요."
+ },
+ "nextAction": {
+  "tone": "warn",
+  "title": "투자 계좌 5,000만원에 매달 47만원이 더 필요해요",
+  "body": "지금 매달 모으는 돈으로는 목표일에 닿기 어려워요. 목표일이나 순서를 바꿔 보세요.",
+  "label": "목적지 보기",
+  "route": "goals",
+  "goalId": "goal-108"
+ },
+ "limitCases": {
+  "base": {
+   "status": "normal",
+   "daily": "오늘 포함 하루 45,220원",
+   "right": "남은 한도 104만원",
+   "usage": "216만원 중 112만원 썼어요",
+   "desktopNote": "오늘 포함 23일 남음 · 하루 45,220원 · 자동",
+   "desktopRight": "남은 한도 104만원",
+   "tone": "positive"
+  },
+  "none": {
+   "status": "none",
+   "daily": "오늘 포함 하루 —",
+   "right": "—",
+   "usage": "한도를 아직 안 정했어요",
+   "desktopNote": "오늘 포함 23일 남음 · 하루 — · 한도 기준 입력 전",
+   "desktopRight": "—",
+   "tone": "neutral"
+  },
+  "zero": {
+   "status": "zero",
+   "daily": "오늘 포함 하루 0원",
+   "right": "남은 한도 0원",
+   "usage": "216만원 중 216만원 썼어요",
+   "desktopNote": "오늘 포함 23일 남음 · 하루 0원 · 자동",
+   "desktopRight": "남은 한도 0원",
+   "tone": "neutral"
+  },
+  "over32k": {
+   "status": "over",
+   "daily": null,
+   "right": "3만원 넘음",
+   "usage": "이번 달 한도는 이미 넘었어요 · 216만원 중 219만원 썼어요",
+   "desktopNote": "오늘 포함 23일 남음 · 남은 한도 없음 · 자동",
+   "desktopRight": "3만원 넘음",
+   "tone": "negative"
+  },
+  "lastDay90k": {
+   "status": "normal",
+   "daily": "이번 달 마지막 날",
+   "right": "이번 달 남은 한도 9만원",
+   "usage": "216만원 중 207만원 썼어요",
+   "desktopNote": "이번 달 마지막 날 · 남은 한도 9만원 · 자동",
+   "desktopRight": "남은 한도 9만원",
+   "tone": "positive"
+  },
+  "doneCard": {
+   "status": "normal",
+   "daily": "오늘 포함 하루 44,700원",
+   "right": "남은 한도 103만원",
+   "usage": "216만원 중 113만원 썼어요",
+   "desktopNote": "오늘 포함 23일 남음 · 하루 44,700원 · 자동",
+   "desktopRight": "남은 한도 103만원",
+   "tone": "positive"
+  },
+  "heroInsufficient5k": {
+   "status": "normal",
+   "daily": "오늘 포함 하루 93,700원",
+   "right": "남은 한도 216만원",
+   "usage": "216만원 중 5,000원 썼어요",
+   "desktopNote": "오늘 포함 23일 남음 · 하루 93,700원 · 자동",
+   "desktopRight": "남은 한도 216만원",
+   "tone": "positive"
+  },
+  "coach": {
+   "base": [
+    "한도 안에서 쓰고 있어요 — 이번 달 한도는 104만원 남았어요. 오늘 포함 남은 23일 동안 하루 45,220원씩 쓰면 한도(216만원)를 지켜요."
+   ],
+   "over32k": [
+    "이번 달 한도를 3만원 넘었어요 — 한도 216만원 중 219만원 썼어요. 이대로면 월말엔 100만원 넘어요. 오늘 포함 남은 23일은 꼭 필요한 곳에만 써 보세요."
+   ],
+   "lastDay90k": [
+    "한도 안에서 쓰고 있어요 — 오늘이 이번 달 마지막 날이에요. 이번 달 남은 한도 9만원"
+   ]
+  }
+ },
+ "sceneMetrics": {
+  "doneCard": {
+   "spend": 1132000,
+   "projected": 2096000,
+   "salaryRatio": 31.444444,
+   "salaryRatioProjected": 58.222222,
+   "burn": 1.210695,
+   "ratioText": "31.4%",
+   "netWorthRatioText": "순자산의 1.2%",
+   "monthEndLeft": 64000,
+   "limitRatio": 52.407407,
+   "remain": 1028000,
+   "dailyWon": 44700,
+   "line": "소비 목표까지 103만원 남음",
+   "passed": true
+  },
+  "heroInsufficient": {
+   "spend": 5000,
+   "projected": 18750,
+   "salaryRatio": 0.138889,
+   "salaryRatioProjected": 0.520833,
+   "burn": 0.005348,
+   "ratioText": "0.1%",
+   "netWorthRatioText": "순자산의 0.1% 미만",
+   "monthEndLeft": 2141250,
+   "limitRatio": 0.231481,
+   "remain": 2155000,
+   "dailyWon": 93700,
+   "line": "소비 목표까지 216만원 남음",
+   "passed": false
+  }
+ },
+ "pastMonths": {
+  "2026-06": {
+   "spend": 2405700,
+   "salary": 3600000,
+   "salaryRatio": 66.825,
+   "net": 90300000,
+   "burn": 2.66412,
+   "burnText": "2.7%",
+   "limit": 2160000,
+   "left": -245700,
+   "count": 13
+  },
+  "2026-07": {
+   "spend": 1910000,
+   "salary": 3520000,
+   "salaryRatio": 54.261364,
+   "net": 93300000,
+   "burn": 2.04716,
+   "burnText": "2.0%",
+   "limit": 2112000,
+   "left": 202000,
+   "count": 13
+  },
+  "2026-08": {
+   "spend": 1715200,
+   "salary": 3600000,
+   "salaryRatio": 47.644444,
+   "net": 91200000,
+   "burn": 1.880702,
+   "burnText": "1.9%",
+   "limit": 2160000,
+   "left": 444800,
+   "count": 44
+  }
+ }
+}

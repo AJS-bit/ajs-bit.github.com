@@ -3,7 +3,7 @@
 원본 `canvas/DaySheetStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1210px height:1660px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1210px height:1919px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “기록 창의 글이 바뀌는 경우”
@@ -23,8 +23,8 @@
       - `div`
         `display:flex flex-direction:column gap:8px`
         - `div`
-        - `div`
-          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:26px 26px 18px 18px display:flex flex-direction:column`
+        - `div` **Card(18)**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px display:flex flex-direction:column gap:10px`
     - `div`
       `width:362px display:flex flex-direction:column gap:22px`
       - `div`
@@ -57,8 +57,18 @@
         - `div`
         - `div` **Card(18)**
           `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px display:flex flex-direction:column gap:10px`
+      - `div`
+        `display:flex flex-direction:column gap:8px`
+        - `div`
+        - `div` **Card(18)**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px display:flex flex-direction:column gap:10px`
     - `div`
       `width:362px display:flex flex-direction:column gap:22px`
+      - `div`
+        `display:flex flex-direction:column gap:8px`
+        - `div`
+        - `div` **Card(18)**
+          `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px display:flex flex-direction:column gap:10px`
       - `div`
         `display:flex flex-direction:column gap:8px`
         - `div`
@@ -82,20 +92,28 @@
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “1”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` **text 12px/400** — “날짜 선택기는 이번 달과 지난달 전체를 주 단위로 보여 줍니다. 그보다 앞선 달은 소비 탭의 거래 추가에서 남깁니다”
+      - `div` — “새 기록의 ‹ ›는 하루씩 움직이고 지난달 1일부터 오늘에서 멈춤). 그보다 앞선 달은 소비 탭의 기록 추가에서 남”
         `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “오늘까지입니다(›는”
+          `white-space:nowrap`
     - `div`
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “2”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` **text 12px/400** — “둘째 줄은 평소에 그날 합계(오늘 4건 37,000원)입니다. 위 네 경우에는 그 자리에 안내 문장이 옵니다. 마감”
+      - `div` — “둘째 줄은 평소에 그날 4건 37,000원)입니다. 위 네 경우에는 그 자리에 안내 문장이 옵니다. 마감한 달 안내”
         `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “합계(오늘”
+          `white-space:nowrap`
+        - `span` — “「8월 합계 고치기 ›」입니다.”
+          `white-space:nowrap`
     - `div`
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “3”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` **text 12px/400** — “금액 아래 한 줄은 저장을 한 번 더 물어보는 경우 장의 네 안내와 같은 자리입니다.”
+      - `div` — “금액 아래 한 줄은 저장을 한 번 더 물어보는 경우 장의 네 안내와 같은 자리입니다. 기록이 있는 날은 금액을 넣고”
         `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “「9월 21일은 안 썼어요」처럼”
+          `white-space:nowrap`
     - `div`
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “4”
@@ -106,5 +124,7 @@
       `display:flex gap:10px padding:7px 0`
       - `span` **text 10.5px/700** — “5”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` **text 12px/400** — “순서는 식비 · 카페/간식 · 교통 · 쇼핑 · 문화/여가 · 의료/건강 · 교육 · 경조사 · 기타, 선 아래 주”
+      - `div` — “위에 보이는 세 가지를 뺀 나머지가 늘 같은 순서로 펼쳐집니다 — 식비 · 카페/간식 · 교통 · 쇼핑 · 문화/여”
         `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “저축·투자와”
+          `white-space:nowrap`

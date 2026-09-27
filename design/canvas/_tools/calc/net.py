@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-"""순자산 경로: 자산 성장 + 월 저축 − 부채 잔액."""
+"""순자산 경로: 자산 성장 + 월 저축 − 부채 잔액.
+
+2026-09-26부터 옛 시안 모형(월 저축 63만원 · 명목 월이율 · 자산 전체에 가중 2.4%)의 기록으로만 남긴다 — 시안 숫자의 출처는 projection.py이고 crosscheck.py가 앱과 대조한다(인계 폴더 NUMBERS.md)."""
 import sys
-sys.path.insert(0, '/tmp/claude-0/-home-user-ajs-bit-github-com/8f2afc13-0278-5882-ad06-7ee97dbbe248/scratchpad')
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent))
 from amort import Debt
 
 DEBTS = [Debt('주택담보대출', 6200, 3.4, 32), Debt('신용대출', 2200, 6.8, 20),

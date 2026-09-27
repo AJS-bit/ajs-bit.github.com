@@ -25,6 +25,14 @@ plan/v5-calendar.md(9판). gen_v5.py 에서 옮겨 왔다 — gen_v4.py · gen_v
 2026-09-24 최종 점검 후속 — 접힌 스트립(보통 글자)의 수식어 줄 12 → 9(STRIP_MOD_H): 오늘 칸 안쪽 테두리와 요일 글자 사이 2px 이상 ·
 이체 · ✓ 와 함께인 오늘 칸의 `+`는 지름 16 · 글자 10(큰 글자 20 · 12 — PLUS_WITH_MOD)이라 날짜 숫자와 `이체`에 닿지 않는다 ·
 이체 · ✓ 가 없는 오늘 칸의 `+`(20 · 24)는 합계 + 수식어 자리 가운데에 두어 요일 · 날짜가 옆 칸과 같은 높이에 선다(원 위치는 그대로).
+
+2026-09-26(사용성 140건 · 앱 v5-stage1 a724aac 그대로):
+- 범례 줄 `— 기록 없음 · 0 안 썼어요 · ✓ 다 적었어요`(11.5 · ink-3 · 표시는 600) — 칸 바로 아래에 늘(접힘 스트립 · 펼친 월 달력 · 지난달) · record-11 #3.
+  늘 있어서 저장 전후 카드 높이가 같다. 앱 여백: 스트립 위 8 · 범례 위 6 · 적기 줄 위 10(펼침은 그 달 합계 줄 위 8 · 적기 줄 위 10).
+- 시작일(quickEntry.since) 전의 날도 기록이 없으면 다른 지난 빈 날처럼 `—`. 옅은 빈 칸을 쓰지 않는다.
+- 접힌 스트립은 옆으로 밀지 않는다 — 칸이 카드 안쪽 7등분(최대 44)으로 줄어 320에서도 7일이 다 보인다(앱 39 × 56).
+- `확인할 내용`이 하나면 그 항목 이름(예: `카테고리 없는 기록 7건 · 카테고리 고르기`)을 그대로 쓰고 바로 연다 — review 에 글자를 준다.
+- 1 ~ 6일처럼 스트립에 지난달 날이 들어가면 제목이 `최근 7일 소비 기록` — title · strip 인수.
 """
 from gen_common import C, icon, card
 
@@ -97,6 +105,20 @@ STRIP_MOD_H = 9
 CARD_TITLE = '이번 달 소비 기록'          # 접힌 카드 제목(2026-09-24 — 전에는 `이번 달 달력`). 펼치면 머리줄이 `‹ 2026년 9월 ›`
 HINT = '날짜를 누르면 그날 쓴 돈을 적어요'    # 머리줄 아래 안내 한 줄(접힘 · 펼침 둘 다 · 12px ink-3)
 TODAY_RING = f'box-shadow: inset 0 0 0 1.5px {C["BRAND"]};'      # 오늘 칸(이번 달을 볼 때) — 기록이 있어도 없어도
+RECENT_TITLE = '최근 7일 소비 기록'       # 1 ~ 6일 — 스트립에 지난달 날이 들어갈 때의 제목(home-17 #2 · 앱 calendar-card)
+
+
+def legend(large=False, mt=6):
+    """칸 아래 범례 줄 — `— 기록 없음 · 0 안 썼어요 · ✓ 다 적었어요`(앱 .calendar-legend).
+    11.5px(큰 글자 15) · 줄 1.45 · ink-3. 표시(— · 0 · ✓)는 600이고 0 · ✓ 는 칸과 같은 ink-2. 항목마다 줄바꿈 없음. 늘 있다."""
+    fs = 15 if large else 11.5
+    mark = f'font-weight: 600; color: {C["INK3"]};'
+    item = lambda inner: f'<span style="white-space: nowrap;">{inner}</span>'
+    chk = icon("check", 14 if large else 11, C["INK2"], 2.8).replace('<svg ', '<svg style="display: inline-block; vertical-align: -1px;" ', 1)
+    return (f'<div style="font-size: {fs}px; line-height: 1.45; color: {C["INK3"]}; margin-top: {mt}px;">'
+            + item(f'<span style="{mark}">—</span> 기록 없음') + ' · '
+            + item(f'<span style="font-weight: 600; color: {C["INK2"]};">0</span> 안 썼어요') + ' · '
+            + item(f'{chk} 다 적었어요') + '</div>')
 
 
 def plus_badge(size=20, glyph=None):
@@ -132,21 +154,25 @@ def hint(large=False, mt=2):
     return f'<div style="font-size: {15 if large else 12}px; line-height: 1.45; color: {C["INK3"]}; margin-top: {mt}px;">{HINT}</div>'
 
 
-def cell(day, wd=None, w_=44, pressed=False, prev=False, future=False, state=None, before=False, large=False):
+def cell(day, wd=None, w_=44, pressed=False, prev=False, future=False, state=None, before=False, large=False, flex=False, label=None, today=None, neighbor=False):
     """스트립 칸(접힘 · 최근 7일). 44 × 56(큰 글자 72). 달 제목이 없는 자리라 지난달 날짜는 `8/31`처럼 달을 붙인다.
     state = (합계 글자, ✓, 이체, 0원 표시)를 직접 줄 때(저장 뒤 · 첫 기록처럼 기본 자료와 다른 장).
-    before = 시작일(quickEntry.since) 이전 — `—` 없이 날짜만 옅게(누르면 열림).
+    before = 시작일(quickEntry.since) 이전 — 기록이 없으면 다른 지난 빈 날처럼 `—`(2026-09-26 · D7 — 예전에는 날짜만 옅게).
+    flex = 스트립 안의 칸 — 폭을 카드 안쪽 7등분(최대 w_)으로 줄인다(옆으로 밀지 않음). label · today = 달이 다른 날(9/26 …)을 쓸 때.
     large = 큰 글자: 칸 높이 72 · 날짜 14.5 · 합계 12(스트립 칸 44는 47px에 못 미쳐 13이 아니라 12 — 계획 §3-2).
-    오늘 칸은 늘 파란 안쪽 테두리 1.5px(누른 순간은 2px), 기록 0건 · 안 썼어요 아님이면 `—` 대신 파란 원 `+`(칸 크기 불변)."""
-    is_today = day == TODAY and not prev
-    label = f'8/{day}' if prev else str(day)
+    오늘 칸은 늘 파란 안쪽 테두리 1.5px(누른 순간은 2px), 기록 0건 · 안 썼어요 아님이면 `—` 대신 파란 원 `+`(칸 크기 불변).
+    neighbor = 이웃 달 날(1 ~ 6일의 `9/26` 같은 칸) — 앱 .calendar-cell[data-neighbor]: 날짜 ink-4 · 칸 안 글자 모두 70%(2026-09-27 fix-up 3)."""
+    is_today = (day == TODAY and not prev) if today is None else today
+    label = label or (f'8/{day}' if prev else str(day))
     h, fs_wd, fs_date, fs_sum, lh_sum, mod = (72, 12, 14.5, 12, 14, 12) if large else (56, 10, 11, 11, 13, 11)
     gap = 3 if large else 2
     mod_h = mod + 1 if large else STRIP_MOD_H          # 수식어 줄 — 보통 9 · 큰 글자 13
     bg = C["BRAND_SOFT"] if is_today else 'transparent'
     ring = f'box-shadow: inset 0 0 0 2px {C["BRAND"]};' if pressed else (TODAY_RING if is_today else '')
-    blank = future or before
-    date_col = C["INK4"] if blank else (C["INK"] if is_today else C["INK2"])
+    if before and state is None:
+        state = NO_RECORD          # 시작일 전 — 기록이 없으면 `—`(home-18)
+    blank = future
+    date_col = C["INK4"] if (blank or neighbor) else (C["INK"] if is_today else C["INK2"])
     parts = [f'<span style="font-size: {fs_date}px; line-height: 1; font-weight: {600 if is_today else 500}; color: {date_col};">{label}</span>']
     if not blank:
         s, chk, tr, zero = state if state is not None else day_state('aug' if prev else 'sep', day)
@@ -165,7 +191,9 @@ def cell(day, wd=None, w_=44, pressed=False, prev=False, future=False, state=Non
     wdl = f'<span style="font-size: {fs_wd}px; line-height: 1; font-weight: 500; color: {C["INK3"]};">{wd}</span>' if wd else ''
     # 칸 사이 간격 2(큰 글자 3) · 수식어 줄 9(큰 글자 13) — 요일 · 날짜 · 합계 · 수식어가 56 안에 49 로 들어가 오늘 칸의 안쪽 테두리(1.5px)와
     # 요일 글자 사이가 2px 넘게 빈다(2026-09-24 최종 점검 후속 · 그 전 52 → 0.75px · 처음 55)
-    return (f'<div style="width: {w_}px; height: {h}px; border-radius: 10px; background: {bg}; {ring} display: flex; flex-direction: column; align-items: center; justify-content: center; gap: {gap}px; flex-shrink: 0;">'
+    size = f'flex: 1 1 0; min-width: 0; max-width: {w_}px;' if flex else f'width: {w_}px; flex-shrink: 0;'
+    fade = ' opacity: .7;' if (neighbor and not is_today) else ''
+    return (f'<div style="{size} height: {h}px; border-radius: 10px; background: {bg}; {ring}{fade} display: flex; flex-direction: column; align-items: center; justify-content: center; gap: {gap}px;">'
             f'{wdl}{"".join(parts)}</div>')
 
 
@@ -196,10 +224,8 @@ def gcell(day, month='sep', kind='in', today=False, future=False, pressed=False,
             else:               # 합계 + 간격 + 수식어 줄 자리 가운데 — 날짜가 옆 칸과 같은 높이(원 위치는 전과 같다)
                 parts.append(plus_slot(round(sum_h + (3 if large else 2) + mod + 1, 1), 24 if large else 20))
         else:
-            if kind == 'adj':
-                col = C["INK4"]
-            else:
-                col = C["INK3"] if s == '—' else (C["INK2"] if zero else C["INK"])
+            # 이웃 달 칸도 합계 색은 이번 달과 같고 칸 전체가 70%(앱 .calendar-cell[data-neighbor] > span · 2026-09-27 fix-up 3 — 예전 ink-4 는 기록이 흐려 보였다)
+            col = C["INK3"] if s == '—' else (C["INK2"] if zero else C["INK"])
             parts.append(f'<span style="font-size: {fs_sum}px; font-weight: 600; color: {col}; font-variant-numeric: tabular-nums; line-height: 1.2; white-space: nowrap;">{s}</span>')
             parts.append(_mods(chk, tr, size=mod, fs=mod - 1) if kind == 'in' else f'<span style="height: {mod + 1}px;"></span>')
     fade = ' opacity: .45;' if kind == 'out' else (' opacity: .7;' if kind == 'adj' else '')   # 이번 달 미래 100% > 지난달 이웃 칸 70% > 범위 밖 45%
@@ -221,8 +247,9 @@ def month_bar(label, prev_on, next_on, back_pill=False, large=False, pill_below=
     fold=False = `접기`가 없는 머리줄(늘 펼쳐 두는 데스크톱 홈 — DesktopHomeV5). 오른쪽에 둘 것이 없으면 오른쪽 묶음도 그리지 않는다."""
     size = 40 if large else 32
     fs, tfs = (19, 15.5) if large else (15, 12)
-    pill = (f'<span style="font-size: {tfs}px; font-weight: 600; color: {C["BRAND"]}; background: {C["BRAND_SOFT"]}; border-radius: 99px; '
-            f'padding: 5px 10px; white-space: nowrap;">이번 달로</span>') if back_pill else ''
+    # 앱 .calendar-current-month — 11px · 600 · line-height 1.2 · inset 바탕 · brand 글자 · 5px 8px(2026-09-27 fix-up 3 · 예전 12px brand-soft 10px). 큰 글자 장은 글자만 키운다
+    pill = (f'<span style="font-size: {tfs if large else 11}px; font-weight: 600; line-height: 1.2; color: {C["BRAND"]}; background: {C["INSET"]}; border-radius: 99px; '
+            f'padding: 5px 8px; white-space: nowrap;">이번 달로</span>') if back_pill else ''
     below = ''
     if back_pill and (pill_below or large):      # 334px 안에 머리줄 + 알약이 들어가지 않는 경우
         below = f'<div style="display: flex; justify-content: flex-end; margin-top: 6px;">{pill}</div>'
@@ -280,13 +307,24 @@ def today_tail(today_state, text=None, large=False, mt=10):
     return pill_row(text or '', large, label='적기' if zero else '더 적기', mt=mt)
 
 
+REVIEW_UNCAT = '카테고리 없는 기록 7건 · 카테고리 고르기'      # 항목이 이것 하나일 때의 행 이름(D4 · record-12 #2)
+REVIEW_RECLOSE = '8월에 새 기록이 있어요 · 8월 합계 고치기'     # 항목이 이것 하나일 때(D9 · record-1)
+REVIEW_PREV_UNCAT = '9월 카테고리 없는 기록 7건 · 마감 전에 정리'   # 달이 바뀐 뒤(10월 1 ~ 6일) 지난달 항목 하나(D4 · 앱 10월 2일)
+# 캐논(시안 사용자 9월 8일 · W/design-state.json · 2026-09-27 fix-up): 8월은 마감값 = 기록 합(1,715,200)이라 합계 고치기 항목이 없고,
+# 8월 카테고리 없는 3건은 마감 뒤 기타로 골라 확인할 내용은 「카테고리 없는 기록 7건」 하나 → 행 이름 = 그 항목(앱 화면 그대로).
+REVIEW_CANON = REVIEW_UNCAT
+
+
 def review_row(review, large=False):
-    """`확인할 내용 N개 ›` 행(0이면 없음) — 버튼 · 알약 줄 아래."""
+    """`확인할 내용 N개 ›` 행(0이면 없음) — 버튼 · 알약 줄 아래. review = 항목 수(2 이상 → `확인할 내용 N개`) 또는
+    항목이 하나일 때 그 항목 이름 글자(누르면 바로 그 항목을 연다). 이름이 길면 두 줄(높이는 최소 32)."""
     if not review:
         return ''
     rfs, rh = (16, 44) if large else (12.5, 32)
-    return (f'<div style="display: flex; align-items: center; justify-content: space-between; height: {rh}px; margin-top: 6px; border-top: 1px solid {C["LINE_SOFT"]};">'
-            f'<span style="font-size: {rfs}px; font-weight: 600; color: {C["INK"]};">확인할 내용 {review}개</span>{icon("right", 15, C["INK4"], 2)}</div>')
+    text = review if isinstance(review, str) else f'확인할 내용 {review}개'
+    chev = icon("right", 15, C["INK4"], 2).replace('<svg ', '<svg style="flex-shrink: 0;" ', 1)
+    return (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: {rh}px; margin-top: 6px; border-top: 1px solid {C["LINE_SOFT"]};">'
+            f'<span style="font-size: {rfs}px; line-height: 1.4; font-weight: 600; color: {C["INK"]};">{text}</span>{chev}</div>')
 
 
 # 주 배열: ('in'|'adj'|'out', day, 그 칸의 자료가 속한 달)
@@ -304,7 +342,7 @@ WEEKS = {
 
 def month_grid(month='sep', pressed=None, large=False, tight=False, weeks=None, today_state=None, states=None, since=None):
     """states = {날짜: (합계 글자, ✓, 이체, 0원 표시)} 이번 달(9월) 칸을 덮어쓸 때(today_state 는 오늘 칸만 — 예전 인수).
-    since = 시작일(quickEntry.since) — 9월 그 날짜 전 칸과 앞 이웃 달(8월) 칸은 합계 없이 날짜만 옅게(스트립의 before 와 같은 모양)."""
+    since = 시작일(quickEntry.since) — 9월 그 날짜 전 칸과 앞 이웃 달(8월) 칸도 기록이 없으면 `—`(2026-09-26 · 스트립의 before 와 같다)."""
     states = dict(states or {})
     if today_state is not None:
         states.setdefault(TODAY, today_state)
@@ -315,10 +353,13 @@ def month_grid(month='sep', pressed=None, large=False, tight=False, weeks=None, 
         for kind, d, m in wk:
             is_sep = m == 'sep'
             before = since is not None and month == 'sep' and (m == 'aug' or (is_sep and d < since))
+            st = states.get(d) if (is_sep and kind == 'in') else None
+            if before and st is None:
+                st = NO_RECORD          # 시작일 전도 기록이 없으면 `—`(home-18 · D7) — 옅은 빈 칸을 쓰지 않는다
             cs.append(gcell(d, month=m if m in MONTHS else 'sep', kind=kind,
                             today=(is_sep and d == TODAY and kind != 'out'),
-                            future=(is_sep and d > TODAY) or before, pressed=(kind == 'in' and pressed == d), large=large, tight=tight,
-                            state=(states.get(d) if (is_sep and kind == 'in') else None)))
+                            future=(is_sep and d > TODAY), pressed=(kind == 'in' and pressed == d), large=large, tight=tight,
+                            state=st))
         rows.append(f'<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid {C["LINE_SOFT"]}; padding: 2px 0;">{"".join(cs)}</div>')
     return (f'<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin-top: {10 if large else 8}px; padding-bottom: 5px;">{head}</div>'
             f'<div style="display: flex; flex-direction: column; border-bottom: 1px solid {C["LINE_SOFT"]};">{"".join(rows)}</div>')
@@ -333,34 +374,38 @@ TODAY_TEXT = '오늘 4건 37,000원'          # 기본 자료의 오늘(9/8) —
 
 
 def calendar_card(expanded=False, pressed=None, pad=14, month='sep', large=False, with_list_link=False,
-                  states=None, since=None, status=None, review=2, scroll=False, fold=True, today_empty=False, month_total=None):
+                  states=None, since=None, status=None, review=REVIEW_CANON, scroll=False, fold=True, today_empty=False, month_total=None,
+                  title=None, strip=None):
     """접힘(최근 7일 스트립) · 펼침(월 달력) 카드. 기본값이면 예전과 똑같은 결과.
     states = {날짜: (합계 글자, ✓, 이체, 0원 표시)} 기본 자료를 덮어쓸 칸 · since = 시작일(이전 칸은 옅은 빈 칸) ·
-    status = 상태 문장(접힘) · review = `확인할 내용 N개`(0이면 행 없음) · scroll = 320px(칸 44 고정 · 카드 안 가로 스크롤 · 오늘이 오른쪽 끝) ·
+    status = 상태 문장(접힘) · review = `확인할 내용 N개`(수 · 0이면 행 없음) 또는 항목 하나의 이름(글자 · 기본 = 캐논 REVIEW_CANON) · scroll = 320px(칸 44 고정 · 카드 안 가로 스크롤 · 오늘이 오른쪽 끝) ·
     large = 큰 글자(칸 높이 72). fold=False(펼침에만) = 머리줄에 `접기`를 두지 않는다 — 늘 펼쳐 두는 데스크톱 홈.
     today_empty = 오늘 기록 0건(안 썼어요 아님) — states={TODAY: NO_RECORD}의 줄임. 오늘 칸 `+` · 버튼 `+ 오늘 쓴 돈 적기`.
     펼침(9월)도 states · since · review 를 따른다(2026-09-24 보강) — 그 달 합계 줄은 덮어쓴 칸을 빼고 다시 센다
     (`—` · 0 칸은 0원, 금액을 덮어쓴 칸이 있으면 month_total 로 합계를 준다). 합계가 0이면 `9월 기록이 아직 없어요`,
     그 달이 안 썼어요 표시뿐이면 `안 썼어요 표시만 있어요`를 붙인다(버튼일 때는 합계 줄 끝 · 알약일 때는 오늘 줄 끝 — 앱 calendar-card).
-    상태 줄 자리(2026-09-24): 오늘 기록 0건(안 썼어요 아님)이면 버튼 `+ 오늘 쓴 돈 적기`, 아니면 문장 + 알약 `+ 더 적기` — 둘 다 높이 40."""
+    상태 줄 자리(2026-09-24): 오늘 기록 0건(안 썼어요 아님)이면 버튼 `+ 오늘 쓴 돈 적기`, 아니면 문장 + 알약 `+ 더 적기` — 둘 다 높이 40.
+    2026-09-26: 칸 바로 아래 범례 줄(legend) · review 에 글자를 주면 항목 하나의 이름 · scroll 은 더 이상 옆으로 밀지 않는다(칸이 줄어 7일이 다 보임 —
+    인수는 옛 호출 호환) · title = 접힌 카드 제목(1 ~ 6일 RECENT_TITLE) · strip = 스트립 칸을 직접 줄 때 [(날짜 글자, 요일, (합계, ✓, 이체, 0원), 오늘?), …]."""
     if today_empty:
         states = {**(states or {}), TODAY: NO_RECORD}
     if not expanded:
         tfs, sfs, isz = (18, 15.5, 17) if large else (14, 12, 14)
-        title = (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
-                 f'<span style="font-size: {tfs}px; font-weight: 600; color: {C["INK"]};">{CARD_TITLE}</span>'
-                 f'<span style="display: inline-flex; align-items: center; gap: 2px; font-size: {sfs}px; font-weight: 600; color: {C["INK2"]};">펼치기{icon("down", isz, C["INK2"], 2.2)}</span></div>')
-        # 최근 7일 — 오늘이 오른쪽 끝 (9/2 ~ 9/8)
-        cells = ''.join(cell(d, WD[(1 + d) % 7], pressed=(pressed == d), state=(states or {}).get(d),
-                             before=(since is not None and d < since), large=large) for d in range(2, 9))
-        if scroll:      # 칸 7개(308)가 안 들어가는 폭 — 칸을 줄이지 않고 오른쪽(오늘)부터 보이게 두고 왼쪽이 잘린다
-            body = f'<div style="display: flex; justify-content: flex-end; overflow: hidden; margin-top: 10px;">{cells}</div>'
+        head = (f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">'
+                f'<span style="font-size: {tfs}px; font-weight: 600; color: {C["INK"]};">{title or CARD_TITLE}</span>'
+                f'<span style="display: inline-flex; align-items: center; gap: 2px; font-size: {sfs}px; font-weight: 600; color: {C["INK2"]};">펼치기{icon("down", isz, C["INK2"], 2.2)}</span></div>')
+        # 최근 7일 — 오늘이 오른쪽 끝 (9/2 ~ 9/8). 칸은 카드 안쪽 7등분(최대 44) — 320에서도 옆으로 밀지 않는다(home-17 · scroll 인수는 호환용)
+        if strip is not None:
+            cells = ''.join(cell(0, wd, state=st, large=large, flex=True, label=lab, today=td, neighbor=('/' in lab)) for lab, wd, st, td in strip)
+            today = next((st for _, _, st, td in strip if td), None) or day_state('sep', TODAY)
         else:
-            body = f'<div style="display: flex; justify-content: space-between; margin-top: 10px;">{cells}</div>'
-        today = (states or {}).get(TODAY) or day_state('sep', TODAY)
-        text = status if status is not None else (TODAY_TEXT if TODAY not in (states or {}) else None)
-        tail = today_tail(today, text, large=large) + review_row(review, large)
-        return card(title + hint(large) + body + tail, pad=f'13px {pad}px 13px')
+            cells = ''.join(cell(d, WD[(1 + d) % 7], pressed=(pressed == d), state=(states or {}).get(d),
+                                 before=(since is not None and d < since), large=large, flex=True) for d in range(2, 9))
+            today = (states or {}).get(TODAY) or day_state('sep', TODAY)
+        body = f'<div style="display: flex; justify-content: space-between; margin-top: 8px;">{cells}</div>'
+        text = status if status is not None else (TODAY_TEXT if (strip is None and TODAY not in (states or {})) else None)
+        tail = legend(large) + today_tail(today, text, large=large) + review_row(review, large)
+        return card(head + hint(large) + body + tail, pad=f'13px {pad}px 13px')
     over = dict(states or {}) if month == 'sep' else {}
     if month == 'sep':
         bar = month_bar('2026년 9월', prev_on=True, next_on=False, large=large, fold=fold)
@@ -376,10 +421,10 @@ def calendar_card(expanded=False, pressed=None, pad=14, month='sep', large=False
                                                                      ('오늘은 안 썼다고 표시했어요' if today[3] else None)))
         if marks_only and not add:
             text = f'{text} · {MARKS_ONLY}' if text else MARKS_ONLY
-        tail = status_line(head, large, mt=8) + today_tail(today, text, large=large, mt=8)
+        tail = legend(large) + status_line(head, large, mt=8) + today_tail(today, text, large=large, mt=10)
     else:           # 지난달을 보는 중 — 버튼 · 알약 없음
         bar = month_bar('2026년 8월', prev_on=False, next_on=True, back_pill=True, large=large, fold=fold)
-        tail = status_line(month_total_text(8, AUG_TOTAL), large, mt=8)
+        tail = legend(large) + status_line(month_total_text(8, AUG_TOTAL), large, mt=8)
     tail += review_row(review, large) + (list_link(large) if with_list_link else '')
     return card(bar + hint(large, mt=6) + month_grid(month, pressed, large, states=over, since=since) + tail,
                 pad=f'13px {pad}px {4 if with_list_link else 13}px')

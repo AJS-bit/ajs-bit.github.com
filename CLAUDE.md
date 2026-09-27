@@ -14,11 +14,11 @@
 | 경로 | 무엇 |
 |---|---|
 | `design/` | **v3 디자인 인계 묶음(확정본).** 코덱스가 GitHub raw로 읽습니다. 입구 `design/여기부터.md`, 지시서 `design/CODEX-BRIEF.md` |
-| `design/canvas/*.dc.html` | 아트보드 파일 261장(라이트 131 · 다크 130 · `Tokens`만 다크 없음). 캔버스에는 **251장 · 11페이지**(화면 종류별) — 달력 없는 옛 홈 `Main` · `HomeScroll`, 옛 `Ledger` · `MonthlyClose`, 옛 `DesktopHome`(+다크)은 생성기 원본 전용이라 캔버스 · `screens.json` · SPEC-SCREENS에 없음(`gen_canvas.py` `SOURCE_ONLY`). **값의 최종 기준** |
+| `design/canvas/*.dc.html` | 아트보드 파일 327장(라이트 164 · 다크 163 · `Tokens`만 다크 없음). 캔버스에는 **317장 · 11페이지**(화면 종류별 · 2026-09-26) — 달력 없는 옛 홈 `Main` · `HomeScroll`, 옛 `Ledger` · `MonthlyClose`, 옛 `DesktopHome`(+다크)은 생성기 원본 전용이라 캔버스 · `screens.json` · SPEC-SCREENS에 없음(`gen_canvas.py` `SOURCE_ONLY`). **값의 최종 기준** |
 | `design/canvas/_tools/` | 생성기·다크 변환·렌더·계산기. 먼저 `_tools/README.md`를 읽을 것 |
-| `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 컴포넌트 24개(+ v5 11종 — §27) 실측 CSS · 화면별 조립 체크리스트(라이트 97장) |
+| `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 맨 위 **용어표와 공통 규칙**(2026-09-25 · D1 ~ D16) · 컴포넌트 24개(+ v5 11종 — §27 · 첫 실행 안내 카드 — §28) 실측 CSS · 화면별 조립 체크리스트(라이트 159장) |
 | `plan/v4-stocks.md` | **v4 계획.** §9에 결정 사항. 페이지판은 `plan/_tools/md2page.py`로 생성 |
-| `plan/v5-calendar.md` | **v5 계획 — 홈 달력과 빠른 소비 입력.** §12에 결정 37개(1~18이 방향 · 36은 폐기) · §14 기기 알림. 13판(2026-09-24 히어로 게이지 · 달력 카드). 페이지판은 `md2page.py v5-calendar.md` |
+| `plan/v5-calendar.md` | **v5 계획 — 홈 달력과 빠른 소비 입력.** §12에 결정 37개(1~18이 방향 · 36은 폐기) · §14 기기 알림. 14판(2026-09-25 사용성 점검 140건 · 앱 따라잡기 — §10 14판 메모 · §12 표의 바뀐 행 표시) · 13판(2026-09-24 히어로 게이지 · 달력 카드). 페이지판은 `md2page.py v5-calendar.md` |
 
 ## 지금 상태 (2026-09-14)
 
@@ -90,6 +90,9 @@
   닿은 장 라이트 71 · 다크 70(첫 실행 안내 본문 keep-all 포함) · `CalendarStatusLines` 1570. 캔버스 39번째 판 · 계획 페이지 v5 19판 · v4 9판 publish.
   앱 `v5-stage1` `05c7e91`(커밋 넷 · 834 테스트 · QA 8종 통과) · APK `outputs/NAVI-v5-stage1-gauge-calendar-05c7e91-2026-09-24.apk`(서명 d658e495 — `ANDROID_USER_HOME=<앱>/.android-local/android-user` 필수, 기본 `~/.android` 키는 다름) · 보고 `outputs/NAVI-BUILD-REPORT-2026-09-24-GAUGE-CALENDAR.md`.
   사용자 결정 대기: 한도가 목표보다 작은 달(예: 한도 133만 < 목표 216만)에 히어로가 `목표까지 남음`인데 한도 카드는 `초과` — 권장안 = 게이지 선 · 판정을 한도 기준(`한도 37%`)으로(결과 · 제안 페이지 https://claude.ai/artifact/23YPs1WDVxWDVGiyssaKzg → 승인 뒤 반영).
+- **사용성 점검 140건 · 시안이 앱을 따라잡음 (2026-09-25~26).** 사용자가 140건을 모두 승인(「제안대로」)했고 앱이 구현했다(`v5-stage1` `a724aac` · 설계 D1 ~ D20). 사용자 「시안도 해」 → 앱을 구조 · 문구 · 상태의 기준으로, 숫자는 시안 사용자(9월 8일)에 앱 엔진을 돌린 값으로 캔버스를 고쳤다(작업본 → 전 · 후 갤러리 승인 뒤 반영). 기록 `design/CHANGES-2026-09-25.md`(규칙 전부 · 거둔 옛 결정 · 사용자 요청으로 유지한 것 · 옮겨진 확정값 · 새 장 26개 · 확인할 것 · 앱에서 고칠 것) · 용어와 공통 규칙 `design/SPEC-COMPONENTS.md` 맨 위 · v5 계획 14판 · v4 계획 §9 아래 메모.
+  핵심: 판정은 사용자가 정한 선으로만(한도 = 월급 × 소비 목표 % · 파생 상한은 회색 정보 줄 — 09-24 「사용자 결정 대기」였던 한도 < 목표 문제를 닫음) · 용어표(목적지 · 소비 목표 · 기록 · 카테고리 · 상환 계획 · 다 갚는 달 · 임시 계산 · 설정/코칭/알림) · 히어로 머리 `이번 달 소비` · 오른쪽 줄 돈 `소비 목표까지 104만원 남음` · `순자산의 1.2%` ⓘ · 알약 `소비 목표 조정` · 오늘 포함 남은 날 · 달력 범례 줄 · 저장 알림 6초 → 40px 띠 · 합계 고치기 · 글자 달린 머리줄 + `?` · 상환 계획은 미래 탭에서만 · 설정 시트 · 기본 카드 4개.
+  **사용자 요청으로 유지(AMEND):** 첫 실행 홈 구성 단계(버튼 「다음」 · 부채 카드 미리 체크 없음 · 소개 → 홈 구성 → 시작 방법 고르기) · 화면마다 처음 들어갈 때 저절로 뜨는 안내(+ `안내 모두 끄기` · 빈 화면 미룸 · 제목 옆 `?` · 막은 탭 막대 위까지 · 홈 3 / 3 각주). 장 수 327(라이트 164 · 다크 163) · 캔버스 317 · 11페이지(2026-09-27 fix-up 2 새 장 HeroOverTarget · TourHomeSample1 · fix-up 3 새 장 HomePrimaryGoal · HomeTargetSaved · AssetsStale · AlertsPanelInfo · GoalDialogPreview). **2026-09-27 사용자 결정 다섯(갤러리 「반영해」 · 권장값):** 순자산 2억원 목표일 2058-10-08 그대로 · 합친 목적지 탭 목록 끝 `+ 목적지 추가` · 미래 절감 카드는 0원이면 보통 카드(보라 점선 + 배지는 0 위에서만) · 반복 기록 금액 `5.5만원` · 미래 빈 카드 버튼 둘. 그린 글에는 결정 · 점검 번호를 쓰지 않는다(`sync_screens.py`가 검사 · `_tools/nocode.py`). 첫 실행 안내 좌표는 `gen_tour.py` `PLACE`(앱 placeTourCard 흉내 · 실측).
 
 ## 사용자가 정한 작업 규칙 — 반드시
 
@@ -97,7 +100,7 @@
 2. 디자인 때문에 **계산식·거래 ID·백업 형식·반복 거래·계좌 연결·기존 기록**을 바꾸지 않습니다.
 3. **로그인·클라우드 계정·실시간 외부 API·네트워크 필수 자산**을 새 요구사항으로 만들지 않습니다. 외부 서비스 없이 동작해야 합니다.
 4. **미입력을 0원·0%·좋은 성과로 표시하지 않습니다.** 회색 `—`입니다. 또래 통계(평균·백분위·상위 %)를 지어내지 않습니다.
-5. 시안의 숫자(완제일·도착일·총이자)는 `design/canvas/_tools/calc/`로 계산하고 `crosscheck.py`로 원본 엔진 포팅본과 대조합니다. **어긋나면 엔진이 맞습니다.** 확정값: 상환 총이자 1,734만원 · 완제 2036년 4월 · 소비율 57.9%(spendProjected 2,084,000 · 월말 예상) · 쓴 돈 비율 31.1% (spendSoFar 1,120,000 · 홈 큰 숫자 · 게이지).
+5. 시안의 숫자(다 갚는 달·도착일·총이자)는 `design/canvas/_tools/calc/`로 계산하고 `crosscheck.py`로 원본 엔진 포팅본과 대조합니다. **어긋나면 엔진이 맞습니다.** 확정값: 상환 총이자 1,734만원 · **다 갚는 달 2036년 5월**(2026-09-25 앱의 달 규칙 「이번 달 + n개월」로 옮김 · 전 완제 2036년 4월 · 9년 8개월 그대로) · 소비율 57.9%(spendProjected 2,084,000 · 월말 예상) · 쓴 돈 비율 31.1% (spendSoFar 1,120,000 · 홈 큰 숫자 · 게이지) · 매달 모을 수 있는 돈 90만원(896,000) · 10년 뒤 약 3.82억원 · 오늘 포함 23일 · 하루 45,220원.
 6. 시뮬레이션은 저장 기록과 구분합니다 — 보라 `#7A3FE4` + 점선 테두리 + "저장되지 않는 가정" 배지.
 7. 주식 화면에는 추천·매수·매도라는 말을 쓰지 않습니다. 가격 옆에는 항상 기준일을 붙입니다.
 
@@ -111,6 +114,7 @@
 - 아트보드는 `* { box-sizing: border-box }`입니다. `height`에 글자 높이만 넣으면 `padding`·`border`만큼 줄이 짧아집니다.
 - 헤드리스 크로미움 `--window-size`는 창 크롬 높이를 포함해 **아래 87px이 잘립니다.** `render_png.py`는 이미 넉넉히 찍고 잘라냅니다. 직접 찍을 땐 같은 처리를 하세요.
 - `justify-content: space-between` 3칸 줄은 양끝 폭이 다르면 가운데 라벨이 `(왼폭 − 오른폭) ÷ 2` 밀립니다. 양끝에 `flex: 1`을 주세요.
+- 첫 실행 안내 장은 탭 장을 잘라 막 · 강조 · 카드를 얹는다. 좌표는 `gen_tour.py` `PLACE` 표(바탕 장을 실제 웹폰트로 펼쳐 대상 자리와 카드 높이를 재고 앱 `placeTourCard` · 스크롤 순서를 흉내 낸 값) — **탭 장의 카드 높이가 바뀌면 다시 재지 않으면 강조가 엉뚱한 자리를 가리킨다.** 스크롤 끝은 앱처럼 마지막 내용 아래가 y 716(탭 막대 위 62px)인 자리다 — 처음에 탭 막대 위 16px로 잡아 끝에 닿는 단계가 46px 어긋났었다. **홈(세그먼트 없음)은 y 740(탭 막대 위 38px)** — 716 을 홈에도 쓰면 홈 3단계가 앱이 닿지 못하는 자리까지 24px 더 내려간다(2026-09-27 fix-up 2).
 - 값에 따라 움직이는 좌표(항로 바, 슬라이더, 차트의 오늘 위치)는 `SPEC-COMPONENTS.md` §26의 식으로 계산해서 넣습니다. 손으로 찍지 않습니다.
 
 ```bash
@@ -122,11 +126,11 @@ python3 gen_screens.py && python3 gen_modals.py && python3 gen_errors.py 2100 &&
 python3 gen_v5.py && python3 gen_v5_sheets.py && python3 gen_v5_screens.py
 # Components 08절은 v5 장의 조각을 옮겨 온 것 — v5 장을 고쳤으면 다시 잘라 온다(높이가 달라지면 직접 재서 루트 · WIDE를 고친다)
 python3 refresh_components_v5.py
-# 첫 실행 안내 15장(+ 다크) — 탭 장(HomeCalendarStrip 등)이 다시 써진 뒤에. 탭 장의 카드 위치를 바꿨으면 gen_tour.py 의 실측 표를 다시 잰다
+# 첫 실행 안내 36장(+ 다크) — 탭 장(HomeDefaultScroll 등)이 다시 써진 뒤에. 탭 장의 카드 위치를 바꿨으면 gen_tour.py 의 실측 표 PLACE 를 다시 잰다
 python3 gen_tour.py
 # 기기 알림 2장(설정 › 알림 · 참고 장) — gen_v5 를 import 하므로 v4 · v5 장도 다시 써진다(멱등)
 python3 gen_notify.py
-# 다크 95장(투어 다크는 gen_tour 가 씀) → 캔버스 등록부 → screens.json 맞춤(크기가 어긋난 장이 있으면 알려 주고 1로 끝남)
+# 다크 120장(투어 · v4 · v5 · 알림 다크는 각 생성기가 씀) → 캔버스 등록부 → screens.json 맞춤(크기가 어긋난 장이 있으면 알려 주고 1로 끝남)
 python3 darken.py && python3 gen_canvas.py && python3 sync_screens.py
 # 계산 검산
 cd calc && python3 crosscheck.py
@@ -137,7 +141,7 @@ python3 plan/_tools/md2page.py v5-calendar.md   # v5-calendar.md → v5-calendar
 
 ## 아트팩트 (같은 claude.ai 계정이면 `/artifacts`에 보입니다)
 
-- **디자인 캔버스 (저장소 기준 251장 · 11페이지)** — https://claude.ai/code/artifact/986cf3e1-d0c7-4c28-94cb-c12c50ca7b46
+- **디자인 캔버스 (저장소 기준 317장 · 11페이지)** — https://claude.ai/code/artifact/986cf3e1-d0c7-4c28-94cb-c12c50ca7b46
   contract `0.1.31` 고정. 갱신은 `design/canvas/`를 `navi-redesign.html`에 시드한 뒤 **이 URL을 `url`로 넘겨** publish. 시드는 design 스킬의 `seed-canvas.mjs` 또는 그것이 없을 때 `_tools/seed_doc.py`(페이지 안 `appifact-doc` JSON 블록만 다시 채움 · `gen_canvas.py` 뒤에 실행). publish 전에 Artifact read로 게시본을 한 번 열람해야 거절되지 않는다. 2026-09-20에 이 방법으로 v5 1단계 달력 12장 + 하루 시트 갱신분을 올렸다(24번째 판 · 145장 · 페이지 `v5 · 1단계 달력과 하루 시트`). 2026-09-21 최신화 반영분과 열린 결정 여섯 가지 반영분도 같은 방법으로 올렸다(27 ~ 31번째 판 · 193장 · 14페이지 · 그 페이지 이름은 `v5 · 달력과 하루 시트 (1 · 2단계)`로 바뀌고 뒤에 12~14페이지 추가). 2026-09-22 32번째 판 = 221장 · 15페이지(첫 실행 안내) — **그 판은 배치가 깨져 모든 장이 한 열로 늘어섰다.** 문서가 7MB를 넘으면서 `canvas.json`이 files의 마지막 키이면 에디터가 배치를 못 읽는다(헤드리스 이분 탐색으로 확인). `seed_doc.py`가 이제 `canvas.json`을 맨 앞에 두고, 33번째 판으로 복구했다. 시드한 뒤에는 `navi-redesign.html`을 Brave 헤드리스로 한 번 찍어(`--virtual-time-budget=20000`) 격자가 나오는지 보고 publish한다. 새 캔버스를 만들지 마세요. v4 시안도 이 캔버스에 페이지를 추가합니다.
 - **v4 계획 페이지** — https://claude.ai/code/artifact/26eb99d3-9719-407e-bd5d-345b1ab54fe1
   `plan/v4-stocks.md`가 원본. 고치면 `md2page.py`로 다시 만들어 이 URL로 publish.

@@ -8,7 +8,7 @@
       "title": "자산 · 구성",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 977,
       "source": "components/navi/asset-view.tsx"
     },
     {
@@ -19,7 +19,7 @@
       "title": "자산 · 부채",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 909,
       "source": "components/navi/asset-view.tsx"
     },
     {
@@ -27,7 +27,7 @@
       "name": "Strategy",
       "base": "Strategy",
       "theme": "light",
-      "title": "자산 · 상환 전략",
+      "title": "자산 · 상환 계획(읽기 전용 요약)",
       "page": "자산 · 소비",
       "w": 390,
       "h": 844,
@@ -41,7 +41,7 @@
       "title": "소비 · 이번 달",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 957,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -52,7 +52,7 @@
       "title": "자산 · 구성 (다크)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 977,
       "source": "components/navi/asset-view.tsx"
     },
     {
@@ -63,7 +63,7 @@
       "title": "자산 · 부채 (다크)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 909,
       "source": "components/navi/asset-view.tsx"
     },
     {
@@ -71,7 +71,7 @@
       "name": "DarkStrategy",
       "base": "Strategy",
       "theme": "dark",
-      "title": "자산 · 상환 전략 (다크)",
+      "title": "자산 · 상환 계획(읽기 전용 요약) (다크)",
       "page": "자산 · 소비",
       "w": 390,
       "h": 844,
@@ -85,7 +85,7 @@
       "title": "소비 · 이번 달 (다크)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 957,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -96,7 +96,7 @@
       "title": "소비 · 한도",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 1106,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -104,10 +104,10 @@
       "name": "SpendingPast",
       "base": "SpendingPast",
       "theme": "light",
-      "title": "소비 · 지난 달(마감)",
+      "title": "소비 · 지난 달 (마감)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 1212,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -118,7 +118,7 @@
       "title": "목적지 · 내 목적지",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 992,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -129,7 +129,7 @@
       "title": "목적지 · 새 목적지 설계",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 1231,
       "source": "components/navi/goal-tools.tsx"
     },
     {
@@ -140,7 +140,7 @@
       "title": "미래 · 자산 경로",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 1204,
       "source": "components/navi/future-view.tsx"
     },
     {
@@ -151,7 +151,7 @@
       "title": "소비 · 한도 (다크)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 1106,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -159,10 +159,10 @@
       "name": "DarkSpendingPast",
       "base": "SpendingPast",
       "theme": "dark",
-      "title": "소비 · 지난 달(마감) (다크)",
+      "title": "소비 · 지난 달 (마감) (다크)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 1212,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -173,7 +173,7 @@
       "title": "목적지 · 내 목적지 (다크)",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 992,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -184,7 +184,7 @@
       "title": "목적지 · 새 목적지 설계 (다크)",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 1231,
       "source": "components/navi/goal-tools.tsx"
     },
     {
@@ -195,7 +195,7 @@
       "title": "미래 · 자산 경로 (다크)",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 1204,
       "source": "components/navi/future-view.tsx"
     },
     {
@@ -206,7 +206,7 @@
       "title": "미래 · 상환 계획",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 924,
       "source": "components/navi/future-view.tsx"
     },
     {
@@ -214,11 +214,11 @@
       "name": "Onboarding",
       "base": "Onboarding",
       "theme": "light",
-      "title": "첫 실행",
+      "title": "첫 실행 · 시작 방법 고르기",
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "app/page.tsx"
+      "source": "components/navi/data-choice-screen.tsx (first-run-19 · D8 · AMEND 1)"
     },
     {
       "file": "DarkPayoff.dc.html",
@@ -228,7 +228,7 @@
       "title": "미래 · 상환 계획 (다크)",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
-      "h": 844,
+      "h": 924,
       "source": "components/navi/future-view.tsx"
     },
     {
@@ -236,21 +236,21 @@
       "name": "DarkOnboarding",
       "base": "Onboarding",
       "theme": "dark",
-      "title": "첫 실행 (다크)",
+      "title": "첫 실행 · 시작 방법 고르기 (다크)",
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "app/page.tsx"
+      "source": "components/navi/data-choice-screen.tsx (first-run-19 · D8 · AMEND 1)"
     },
     {
       "file": "ProfileDialog.dc.html",
       "name": "ProfileDialog",
       "base": "ProfileDialog",
       "theme": "light",
-      "title": "모달 · 내 수치 입력",
+      "title": "모달 · 내 수치",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 1229,
       "source": "components/navi/shared.tsx"
     },
     {
@@ -258,7 +258,7 @@
       "name": "TransactionAdd",
       "base": "TransactionAdd",
       "theme": "light",
-      "title": "모달 · 거래 추가",
+      "title": "모달 · 기록 추가",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -272,7 +272,7 @@
       "title": "모달 · 한도 조정",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 1297,
       "source": "components/navi/spending-analysis.tsx"
     },
     {
@@ -313,10 +313,10 @@
       "name": "DarkProfileDialog",
       "base": "ProfileDialog",
       "theme": "dark",
-      "title": "모달 · 내 수치 입력 (다크)",
+      "title": "모달 · 내 수치 (다크)",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 1229,
       "source": "components/navi/shared.tsx"
     },
     {
@@ -324,7 +324,7 @@
       "name": "DarkTransactionAdd",
       "base": "TransactionAdd",
       "theme": "dark",
-      "title": "모달 · 거래 추가 (다크)",
+      "title": "모달 · 기록 추가 (다크)",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -338,7 +338,7 @@
       "title": "모달 · 한도 조정 (다크)",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 1297,
       "source": "components/navi/spending-analysis.tsx"
     },
     {
@@ -379,7 +379,7 @@
       "name": "RecurringDialog",
       "base": "RecurringDialog",
       "theme": "light",
-      "title": "모달 · 반복 거래",
+      "title": "모달 · 반복 기록",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -390,10 +390,10 @@
       "name": "GoalContribute",
       "base": "GoalContribute",
       "theme": "light",
-      "title": "모달 · 적립액 추가",
+      "title": "모달 · 적립",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 892,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -404,7 +404,7 @@
       "title": "모달 · 백업 불러오기",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 905,
       "source": "components/navi/import-review.tsx"
     },
     {
@@ -415,7 +415,7 @@
       "title": "모달 · 코칭",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 942,
       "source": "components/navi/coach-panel.tsx"
     },
     {
@@ -434,7 +434,7 @@
       "name": "DarkRecurringDialog",
       "base": "RecurringDialog",
       "theme": "dark",
-      "title": "모달 · 반복 거래 (다크)",
+      "title": "모달 · 반복 기록 (다크)",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -445,10 +445,10 @@
       "name": "DarkGoalContribute",
       "base": "GoalContribute",
       "theme": "dark",
-      "title": "모달 · 적립액 추가 (다크)",
+      "title": "모달 · 적립 (다크)",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 892,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -459,7 +459,7 @@
       "title": "모달 · 백업 불러오기 (다크)",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 905,
       "source": "components/navi/import-review.tsx"
     },
     {
@@ -470,7 +470,7 @@
       "title": "모달 · 코칭 (다크)",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
+      "h": 942,
       "source": "components/navi/coach-panel.tsx"
     },
     {
@@ -489,7 +489,7 @@
       "name": "AlertsPanel",
       "base": "AlertsPanel",
       "theme": "light",
-      "title": "모달 · 알림",
+      "title": "모달 · 알림 (중요 1건)",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -500,7 +500,7 @@
       "name": "AlertsEmpty",
       "base": "AlertsEmpty",
       "theme": "light",
-      "title": "모달 · 알림 없음",
+      "title": "모달 · 알림 0건",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -522,7 +522,7 @@
       "name": "DarkAlertsPanel",
       "base": "AlertsPanel",
       "theme": "dark",
-      "title": "모달 · 알림 (다크)",
+      "title": "모달 · 알림 (중요 1건) (다크)",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -533,7 +533,7 @@
       "name": "DarkAlertsEmpty",
       "base": "AlertsEmpty",
       "theme": "dark",
-      "title": "모달 · 알림 없음 (다크)",
+      "title": "모달 · 알림 0건 (다크)",
       "page": "모달 · 설정",
       "w": 390,
       "h": 844,
@@ -555,10 +555,10 @@
       "name": "StorageStates",
       "base": "StorageStates",
       "theme": "light",
-      "title": "상태 · 저장소 로딩·복구",
+      "title": "상태 · 저장소 로딩·복구 · 샘플에서 내 데이터로",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1324,
+      "h": 2779,
       "source": "app/page.tsx"
     },
     {
@@ -566,10 +566,10 @@
       "name": "EmptyStates",
       "base": "EmptyStates",
       "theme": "light",
-      "title": "상태 · 미입력 6종",
+      "title": "참고 · 미입력 7종 · 화면마다의 빈 카드",
       "page": "상태 · 구현 참고",
-      "w": 390,
-      "h": 2800,
+      "w": 2002,
+      "h": 2353,
       "source": "app/page.tsx"
     },
     {
@@ -577,10 +577,10 @@
       "name": "PeerStates",
       "base": "PeerStates",
       "theme": "light",
-      "title": "상태 · 또래 카드 5종",
+      "title": "상태 · 또래 카드 6종",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1555,
+      "h": 2972,
       "source": "components/navi/peer-card.tsx"
     },
     {
@@ -591,7 +591,7 @@
       "title": "상태 · 목적지 유형 5종",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1920,
+      "h": 2170,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -599,10 +599,10 @@
       "name": "ModalErrors",
       "base": "ModalErrors",
       "theme": "light",
-      "title": "상태 · 모달 오류·저장 6종",
+      "title": "상태 · 모달 오류·저장 7종",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 2100,
+      "h": 3290,
       "source": "모달 공통 (폼 검증·저장 경로)"
     },
     {
@@ -610,10 +610,10 @@
       "name": "Confirmations",
       "base": "Confirmations",
       "theme": "light",
-      "title": "상태 · 삭제·초기화 확인",
+      "title": "상태 · 삭제·초기화·확인 창 7종",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1245,
+      "h": 2265,
       "source": "components/ui/alert-dialog.tsx 사용처"
     },
     {
@@ -621,10 +621,10 @@
       "name": "DarkStorageStates",
       "base": "StorageStates",
       "theme": "dark",
-      "title": "상태 · 저장소 로딩·복구 (다크)",
+      "title": "상태 · 저장소 로딩·복구 · 샘플에서 내 데이터로 (다크)",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1324,
+      "h": 2779,
       "source": "app/page.tsx"
     },
     {
@@ -632,10 +632,10 @@
       "name": "DarkEmptyStates",
       "base": "EmptyStates",
       "theme": "dark",
-      "title": "상태 · 미입력 6종 (다크)",
+      "title": "참고 · 미입력 7종 · 화면마다의 빈 카드 (다크)",
       "page": "상태 · 구현 참고",
-      "w": 390,
-      "h": 2800,
+      "w": 2002,
+      "h": 2353,
       "source": "app/page.tsx"
     },
     {
@@ -643,10 +643,10 @@
       "name": "DarkPeerStates",
       "base": "PeerStates",
       "theme": "dark",
-      "title": "상태 · 또래 카드 5종 (다크)",
+      "title": "상태 · 또래 카드 6종 (다크)",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1555,
+      "h": 2972,
       "source": "components/navi/peer-card.tsx"
     },
     {
@@ -657,7 +657,7 @@
       "title": "상태 · 목적지 유형 5종 (다크)",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1920,
+      "h": 2170,
       "source": "components/navi/goals-view.tsx"
     },
     {
@@ -665,10 +665,10 @@
       "name": "DarkModalErrors",
       "base": "ModalErrors",
       "theme": "dark",
-      "title": "상태 · 모달 오류·저장 6종 (다크)",
+      "title": "상태 · 모달 오류·저장 7종 (다크)",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 2100,
+      "h": 3290,
       "source": "모달 공통 (폼 검증·저장 경로)"
     },
     {
@@ -676,10 +676,10 @@
       "name": "DarkConfirmations",
       "base": "Confirmations",
       "theme": "dark",
-      "title": "상태 · 삭제·초기화 확인 (다크)",
+      "title": "상태 · 삭제·초기화·확인 창 7종 (다크)",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 1245,
+      "h": 2265,
       "source": "components/ui/alert-dialog.tsx 사용처"
     },
     {
@@ -690,7 +690,7 @@
       "title": "데스크톱 · 소비 내역",
       "page": "데스크톱",
       "w": 1440,
-      "h": 900,
+      "h": 976,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -701,7 +701,7 @@
       "title": "데스크톱 · 소비 내역 (다크)",
       "page": "데스크톱",
       "w": 1440,
-      "h": 900,
+      "h": 976,
       "source": "components/navi/spending-view.tsx"
     },
     {
@@ -712,7 +712,7 @@
       "title": "토큰 · 색 · 타이포 · 간격",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 1720,
+      "h": 2273,
       "source": "app/globals.css · lib/engine/constants.ts"
     },
     {
@@ -723,7 +723,7 @@
       "title": "컴포넌트 · 상태",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 2920,
+      "h": 4773,
       "source": "components/navi/shared.tsx · components/ui/button.tsx"
     },
     {
@@ -734,7 +734,7 @@
       "title": "컴포넌트 · 상태 (다크)",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 2920,
+      "h": 4773,
       "source": "components/navi/shared.tsx · components/ui/button.tsx"
     },
     {
@@ -746,7 +746,7 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)"
     },
     {
       "file": "DarkIntroPosition.dc.html",
@@ -757,7 +757,7 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)"
     },
     {
       "file": "IntroRoute.dc.html",
@@ -768,7 +768,7 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)"
     },
     {
       "file": "DarkIntroRoute.dc.html",
@@ -779,7 +779,7 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)"
     },
     {
       "file": "IntroDestination.dc.html",
@@ -790,7 +790,7 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)"
     },
     {
       "file": "DarkIntroDestination.dc.html",
@@ -801,7 +801,7 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)"
     },
     {
       "file": "HomeSetup.dc.html",
@@ -812,7 +812,7 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/home-layout-editor.tsx (AMEND 1 · first-run-12/14/15/16 · plan/v4-stocks.md §3)"
     },
     {
       "file": "DarkHomeSetup.dc.html",
@@ -823,29 +823,29 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/home-layout-editor.tsx (AMEND 1 · first-run-12/14/15/16 · plan/v4-stocks.md §3)"
     },
     {
       "file": "HomeConfigured.dc.html",
       "name": "HomeConfigured",
       "base": "HomeConfigured",
       "theme": "light",
-      "title": "홈 · 첫 실행 구성 반영",
+      "title": "홈 · 첫 실행 뒤 (내 데이터 · 카드 3개)",
       "page": "홈",
       "w": 390,
-      "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "h": 1178,
+      "source": "app/page.tsx · components/navi/start-checklist.tsx · home-hero.tsx (first-run-5 · first-run-14 · D7 · D9)"
     },
     {
       "file": "DarkHomeConfigured.dc.html",
       "name": "DarkHomeConfigured",
       "base": "HomeConfigured",
       "theme": "dark",
-      "title": "홈 · 첫 실행 구성 반영 (다크)",
+      "title": "홈 · 첫 실행 뒤 (내 데이터 · 카드 3개) (다크)",
       "page": "홈",
       "w": 390,
-      "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "h": 1178,
+      "source": "app/page.tsx · components/navi/start-checklist.tsx · home-hero.tsx (first-run-5 · first-run-14 · D7 · D9)"
     },
     {
       "file": "DestGoals.dc.html",
@@ -918,10 +918,10 @@
       "name": "StocksMine",
       "base": "StocksMine",
       "theme": "light",
-      "title": "주식 · 내 종목",
+      "title": "주식 · 내 종목 (계획 · 3단계)",
       "page": "주식",
       "w": 390,
-      "h": 844,
+      "h": 912,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
     },
     {
@@ -929,10 +929,10 @@
       "name": "DarkStocksMine",
       "base": "StocksMine",
       "theme": "dark",
-      "title": "주식 · 내 종목 (다크)",
+      "title": "주식 · 내 종목 (계획 · 3단계) (다크)",
       "page": "주식",
       "w": 390,
-      "h": 844,
+      "h": 912,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
     },
     {
@@ -940,7 +940,7 @@
       "name": "HoldingAdd",
       "base": "HoldingAdd",
       "theme": "light",
-      "title": "모달 · 보유 기록",
+      "title": "모달 · 보유 추가",
       "page": "주식",
       "w": 390,
       "h": 844,
@@ -951,7 +951,7 @@
       "name": "DarkHoldingAdd",
       "base": "HoldingAdd",
       "theme": "dark",
-      "title": "모달 · 보유 기록 (다크)",
+      "title": "모달 · 보유 추가 (다크)",
       "page": "주식",
       "w": 390,
       "h": 844,
@@ -984,7 +984,7 @@
       "name": "HomeStocksCard",
       "base": "HomeStocksCard",
       "theme": "light",
-      "title": "홈 · 주식 요약 카드",
+      "title": "홈 · 주식 요약 카드 (계획 · 3단계 뒤 · 앱에는 아직 없음)",
       "page": "홈",
       "w": 390,
       "h": 844,
@@ -995,7 +995,7 @@
       "name": "DarkHomeStocksCard",
       "base": "HomeStocksCard",
       "theme": "dark",
-      "title": "홈 · 주식 요약 카드 (다크)",
+      "title": "홈 · 주식 요약 카드 (계획 · 3단계 뒤 · 앱에는 아직 없음) (다크)",
       "page": "홈",
       "w": 390,
       "h": 844,
@@ -1116,10 +1116,10 @@
       "name": "StockStates",
       "base": "StockStates",
       "theme": "light",
-      "title": "참고 · 주식 탭 특수한 상황 6가지",
+      "title": "참고 · 주식 탭 특수한 상황 8가지",
       "page": "주식",
       "w": 1180,
-      "h": 880,
+      "h": 975,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
     },
     {
@@ -1127,10 +1127,10 @@
       "name": "DarkStockStates",
       "base": "StockStates",
       "theme": "dark",
-      "title": "참고 · 주식 탭 특수한 상황 6가지 (다크)",
+      "title": "참고 · 주식 탭 특수한 상황 8가지 (다크)",
       "page": "주식",
       "w": 1180,
-      "h": 880,
+      "h": 975,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
     },
     {
@@ -1163,7 +1163,7 @@
       "title": "참고 · 종목 데이터 새로 받기",
       "page": "주식",
       "w": 1180,
-      "h": 762,
+      "h": 750,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
     },
     {
@@ -1174,7 +1174,7 @@
       "title": "참고 · 종목 데이터 새로 받기 (다크)",
       "page": "주식",
       "w": 1180,
-      "h": 762,
+      "h": 750,
       "source": "v4 미구현 · plan/v4-stocks.md §4·§5"
     },
     {
@@ -1186,7 +1186,7 @@
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4)"
     },
     {
       "file": "DarkDaySheet.dc.html",
@@ -1197,7 +1197,7 @@
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4)"
     },
     {
       "file": "DaySheetList.dc.html",
@@ -1208,7 +1208,7 @@
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4)"
     },
     {
       "file": "DarkDaySheetList.dc.html",
@@ -1219,7 +1219,7 @@
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4)"
     },
     {
       "file": "DaySheetEdit.dc.html",
@@ -1230,7 +1230,7 @@
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-15)"
     },
     {
       "file": "DarkDaySheetEdit.dc.html",
@@ -1241,7 +1241,7 @@
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-15)"
     },
     {
       "file": "DoneCard.dc.html",
@@ -1252,7 +1252,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/done-card.tsx (plan/v5-calendar.md §4-4 · record-6 · record-20)"
     },
     {
       "file": "DarkDoneCard.dc.html",
@@ -1263,7 +1263,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/done-card.tsx (plan/v5-calendar.md §4-4 · record-6 · record-20)"
     },
     {
       "file": "DaySheetConfirm.dc.html",
@@ -1273,8 +1273,8 @@
       "title": "참고 · 저장을 한 번 더 물어보는 경우",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 900,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "h": 1221,
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-3 · record-5)"
     },
     {
       "file": "DarkDaySheetConfirm.dc.html",
@@ -1284,30 +1284,30 @@
       "title": "참고 · 저장을 한 번 더 물어보는 경우 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 900,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "h": 1221,
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-3 · record-5)"
     },
     {
       "file": "ClassifySheet.dc.html",
       "name": "ClassifySheet",
       "base": "ClassifySheet",
       "theme": "light",
-      "title": "분류하기 시트",
+      "title": "카테고리 고르기 시트",
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/classify-sheet.tsx (plan/v5-calendar.md §5-4 · spending-3)"
     },
     {
       "file": "DarkClassifySheet.dc.html",
       "name": "DarkClassifySheet",
       "base": "ClassifySheet",
       "theme": "dark",
-      "title": "분류하기 시트 (다크)",
+      "title": "카테고리 고르기 시트 (다크)",
       "page": "하루 시트 · 기록",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/classify-sheet.tsx (plan/v5-calendar.md §5-4 · spending-3)"
     },
     {
       "file": "HeroInsufficient.dc.html",
@@ -1318,7 +1318,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · D9)"
     },
     {
       "file": "DarkHeroInsufficient.dc.html",
@@ -1329,7 +1329,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · D9)"
     },
     {
       "file": "DaySheet360.dc.html",
@@ -1340,7 +1340,7 @@
       "page": "하루 시트 · 기록",
       "w": 360,
       "h": 640,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4)"
     },
     {
       "file": "DarkDaySheet360.dc.html",
@@ -1351,7 +1351,7 @@
       "page": "하루 시트 · 기록",
       "w": 360,
       "h": 640,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "source": "components/navi/day-sheet.tsx (plan/v5-calendar.md §4)"
     },
     {
       "file": "HeroFootnotes.dc.html",
@@ -1361,8 +1361,8 @@
       "title": "참고 · 홈 맨 위 카드의 안내 줄",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 640,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "h": 800,
+      "source": "components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · home-8)"
     },
     {
       "file": "DarkHeroFootnotes.dc.html",
@@ -1372,30 +1372,30 @@
       "title": "참고 · 홈 맨 위 카드의 안내 줄 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 640,
-      "source": "v5 미구현 · plan/v5-calendar.md §4·§5-4·§3-4"
+      "h": 800,
+      "source": "components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · home-8)"
     },
     {
       "file": "HomeCalendarStrip.dc.html",
       "name": "HomeCalendarStrip",
       "base": "HomeCalendarStrip",
       "theme": "light",
-      "title": "홈 · 달력 접힘 (최근 7일)",
+      "title": "홈 · 달력 접힘 (7일 줄)",
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx · home-hero.tsx (plan/v5-calendar.md §3)"
     },
     {
       "file": "DarkHomeCalendarStrip.dc.html",
       "name": "DarkHomeCalendarStrip",
       "base": "HomeCalendarStrip",
       "theme": "dark",
-      "title": "홈 · 달력 접힘 (최근 7일) (다크)",
+      "title": "홈 · 달력 접힘 (7일 줄) (다크)",
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx · home-hero.tsx (plan/v5-calendar.md §3)"
     },
     {
       "file": "HomeCalendar.dc.html",
@@ -1406,7 +1406,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3)"
     },
     {
       "file": "HomeCalendar360.dc.html",
@@ -1417,7 +1417,7 @@
       "page": "홈",
       "w": 360,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3)"
     },
     {
       "file": "HomeCalendarPrev.dc.html",
@@ -1428,7 +1428,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-18)"
     },
     {
       "file": "DarkHomeCalendar.dc.html",
@@ -1439,7 +1439,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3)"
     },
     {
       "file": "DarkHomeCalendar360.dc.html",
@@ -1450,7 +1450,7 @@
       "page": "홈",
       "w": 360,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3)"
     },
     {
       "file": "DarkHomeCalendarPrev.dc.html",
@@ -1461,7 +1461,7 @@
       "page": "홈",
       "w": 390,
       "h": 844,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-18)"
     },
     {
       "file": "CalendarCells.dc.html",
@@ -1471,8 +1471,8 @@
       "title": "참고 · 달력 칸 읽는 법",
       "page": "상태 · 구현 참고",
       "w": 1330,
-      "h": 830,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "h": 880,
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · record-11)"
     },
     {
       "file": "CalendarGridSizes.dc.html",
@@ -1482,8 +1482,8 @@
       "title": "참고 · 달력을 펼치면 어디서나 월 달력",
       "page": "상태 · 구현 참고",
       "w": 1150,
-      "h": 1670,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "h": 1745,
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-17)"
     },
     {
       "file": "DarkCalendarCells.dc.html",
@@ -1493,8 +1493,8 @@
       "title": "참고 · 달력 칸 읽는 법 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1330,
-      "h": 830,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "h": 880,
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · record-11)"
     },
     {
       "file": "DarkCalendarGridSizes.dc.html",
@@ -1504,8 +1504,8 @@
       "title": "참고 · 달력을 펼치면 어디서나 월 달력 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1150,
-      "h": 1670,
-      "source": "v5 미구현 · plan/v5-calendar.md §3"
+      "h": 1745,
+      "source": "components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-17)"
     },
     {
       "file": "DesktopHomeV5.dc.html",
@@ -1515,7 +1515,7 @@
       "title": "데스크톱 · 홈",
       "page": "데스크톱",
       "w": 1440,
-      "h": 1070,
+      "h": 1273,
       "source": "v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)"
     },
     {
@@ -1526,7 +1526,7 @@
       "title": "데스크톱 · 홈 (다크)",
       "page": "데스크톱",
       "w": 1440,
-      "h": 1070,
+      "h": 1273,
       "source": "v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)"
     },
     {
@@ -1534,22 +1534,22 @@
       "name": "HomeSetupStocksOn",
       "base": "HomeSetupStocksOn",
       "theme": "light",
-      "title": "첫 실행 · 홈 구성 · 주식 켬",
+      "title": "첫 실행 · 홈 구성 · 주식 알림 켬",
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/home-layout-editor.tsx (AMEND 1 · first-run-16 · plan/v4-stocks.md §3)"
     },
     {
       "file": "SettingsHomeEntry.dc.html",
       "name": "SettingsHomeEntry",
       "base": "SettingsHomeEntry",
       "theme": "light",
-      "title": "설정 · 「홈 구성 ›」 행",
+      "title": "설정",
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2"
+      "source": "components/navi/settings-sheet.tsx (D5 · home-9)"
     },
     {
       "file": "HomeLayoutEdit.dc.html",
@@ -1560,29 +1560,29 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2 · §7"
+      "source": "components/navi/home-layout-editor.tsx (first-run-15 · plan/v5-calendar.md §12-2)"
     },
     {
       "file": "DarkHomeSetupStocksOn.dc.html",
       "name": "DarkHomeSetupStocksOn",
       "base": "HomeSetupStocksOn",
       "theme": "dark",
-      "title": "첫 실행 · 홈 구성 · 주식 켬 (다크)",
+      "title": "첫 실행 · 홈 구성 · 주식 알림 켬 (다크)",
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3"
+      "source": "components/navi/home-layout-editor.tsx (AMEND 1 · first-run-16 · plan/v4-stocks.md §3)"
     },
     {
       "file": "DarkSettingsHomeEntry.dc.html",
       "name": "DarkSettingsHomeEntry",
       "base": "SettingsHomeEntry",
       "theme": "dark",
-      "title": "설정 · 「홈 구성 ›」 행 (다크)",
+      "title": "설정 (다크)",
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2"
+      "source": "components/navi/settings-sheet.tsx (D5 · home-9)"
     },
     {
       "file": "DarkHomeLayoutEdit.dc.html",
@@ -1593,14 +1593,14 @@
       "page": "첫 실행",
       "w": 390,
       "h": 844,
-      "source": "v4 미구현 · plan/v4-stocks.md §3 · plan/v5-calendar.md §12-2 · §7"
+      "source": "components/navi/home-layout-editor.tsx (first-run-15 · plan/v5-calendar.md §12-2)"
     },
     {
       "file": "DestPayoff.dc.html",
       "name": "DestPayoff",
       "base": "DestPayoff",
       "theme": "light",
-      "title": "목적지 · 상환 계획",
+      "title": "목적지 · 상환 계획 (5탭)",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
@@ -1611,7 +1611,7 @@
       "name": "DarkDestPayoff",
       "base": "DestPayoff",
       "theme": "dark",
-      "title": "목적지 · 상환 계획 (다크)",
+      "title": "목적지 · 상환 계획 (5탭) (다크)",
       "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
       "w": 390,
       "h": 844,
@@ -1655,10 +1655,10 @@
       "name": "HomeDefaultScroll",
       "base": "HomeDefaultScroll",
       "theme": "light",
-      "title": "홈 · 기본 5카드 전체 스크롤",
+      "title": "홈 · 기본 카드 4개 전체 스크롤",
       "page": "홈",
       "w": 390,
-      "h": 1360,
+      "h": 1241,
       "source": "v5 · plan/v5-calendar.md §3-1 · §10 2단계"
     },
     {
@@ -1699,10 +1699,10 @@
       "name": "DarkHomeDefaultScroll",
       "base": "HomeDefaultScroll",
       "theme": "dark",
-      "title": "홈 · 기본 5카드 전체 스크롤 (다크)",
+      "title": "홈 · 기본 카드 4개 전체 스크롤 (다크)",
       "page": "홈",
       "w": 390,
-      "h": 1360,
+      "h": 1241,
       "source": "v5 · plan/v5-calendar.md §3-1 · §10 2단계"
     },
     {
@@ -1713,7 +1713,7 @@
       "title": "참고 · 달력 아래 한 줄이 바뀌는 경우",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1570,
+      "h": 2629,
       "source": "v5 · plan/v5-calendar.md §3-3"
     },
     {
@@ -1724,7 +1724,7 @@
       "title": "참고 · 달력 아래 한 줄이 바뀌는 경우 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1570,
+      "h": 2629,
       "source": "v5 · plan/v5-calendar.md §3-3"
     },
     {
@@ -1735,7 +1735,7 @@
       "title": "참고 · 기록 창의 글이 바뀌는 경우",
       "page": "상태 · 구현 참고",
       "w": 1210,
-      "h": 1660,
+      "h": 1919,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
     },
     {
@@ -1746,7 +1746,7 @@
       "title": "참고 · 기록 창의 글이 바뀌는 경우 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1210,
-      "h": 1660,
+      "h": 1919,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
     },
     {
@@ -1757,7 +1757,7 @@
       "title": "참고 · 안 쓴 날을 표시하는 경우",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1190,
+      "h": 1252,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
     },
     {
@@ -1768,7 +1768,7 @@
       "title": "참고 · 저장 완료 카드의 경우들",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1100,
+      "h": 1534,
       "source": "v5 · plan/v5-calendar.md §4-4"
     },
     {
@@ -1779,7 +1779,7 @@
       "title": "참고 · 안 쓴 날을 표시하는 경우 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1190,
+      "h": 1252,
       "source": "v5 · plan/v5-calendar.md §4 · §8"
     },
     {
@@ -1790,7 +1790,7 @@
       "title": "참고 · 저장 완료 카드의 경우들 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1100,
+      "h": 1534,
       "source": "v5 · plan/v5-calendar.md §4-4"
     },
     {
@@ -1798,7 +1798,7 @@
       "name": "LedgerV5",
       "base": "LedgerV5",
       "theme": "light",
-      "title": "소비 · 내역 (분류 안 함 칩 · 날짜별 합계)",
+      "title": "소비 · 내역 (카테고리 없음 칩 · 날짜별 합계)",
       "page": "자산 · 소비",
       "w": 390,
       "h": 844,
@@ -1809,10 +1809,10 @@
       "name": "MonthlyCloseV5",
       "base": "MonthlyCloseV5",
       "theme": "light",
-      "title": "모달 · 월 마감 (분류 안 함 안내)",
+      "title": "모달 · 8월 첫 마감 (카테고리 없음 안내)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 1099,
       "source": "v5 · plan/v5-calendar.md §9"
     },
     {
@@ -1820,10 +1820,10 @@
       "name": "TransactionAddFromDaySheet",
       "base": "TransactionAddFromDaySheet",
       "theme": "light",
-      "title": "참고 · 거래 추가 — 하루 시트에서 넘어왔을 때",
+      "title": "참고 · 기록 추가 — 하루 시트에서 넘어왔을 때",
       "page": "하루 시트 · 기록",
       "w": 960,
-      "h": 850,
+      "h": 908,
       "source": "v5 · plan/v5-calendar.md §4"
     },
     {
@@ -1831,7 +1831,7 @@
       "name": "DarkLedgerV5",
       "base": "LedgerV5",
       "theme": "dark",
-      "title": "소비 · 내역 (분류 안 함 칩 · 날짜별 합계) (다크)",
+      "title": "소비 · 내역 (카테고리 없음 칩 · 날짜별 합계) (다크)",
       "page": "자산 · 소비",
       "w": 390,
       "h": 844,
@@ -1842,10 +1842,10 @@
       "name": "DarkMonthlyCloseV5",
       "base": "MonthlyCloseV5",
       "theme": "dark",
-      "title": "모달 · 월 마감 (분류 안 함 안내) (다크)",
+      "title": "모달 · 8월 첫 마감 (카테고리 없음 안내) (다크)",
       "page": "자산 · 소비",
       "w": 390,
-      "h": 844,
+      "h": 1099,
       "source": "v5 · plan/v5-calendar.md §9"
     },
     {
@@ -1853,10 +1853,10 @@
       "name": "DarkTransactionAddFromDaySheet",
       "base": "TransactionAddFromDaySheet",
       "theme": "dark",
-      "title": "참고 · 거래 추가 — 하루 시트에서 넘어왔을 때 (다크)",
+      "title": "참고 · 기록 추가 — 하루 시트에서 넘어왔을 때 (다크)",
       "page": "하루 시트 · 기록",
       "w": 960,
-      "h": 850,
+      "h": 908,
       "source": "v5 · plan/v5-calendar.md §4"
     },
     {
@@ -1864,10 +1864,10 @@
       "name": "InsufficientElsewhere",
       "base": "InsufficientElsewhere",
       "theme": "light",
-      "title": "참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들",
+      "title": "참고 · 월말 예상 기준이 서기 전 — 홈 밖의 화면들",
       "page": "상태 · 구현 참고",
       "w": 1230,
-      "h": 1390,
+      "h": 1864,
       "source": "v5 · plan/v5-calendar.md §3-4 · §9-22"
     },
     {
@@ -1875,10 +1875,10 @@
       "name": "FutureProvisional",
       "base": "FutureProvisional",
       "theme": "light",
-      "title": "참고 · 미래 · 자산 경로의 잠정 표시",
+      "title": "참고 · 미래 · 목적지의 임시 계산 표시",
       "page": "상태 · 구현 참고",
       "w": 1230,
-      "h": 1080,
+      "h": 1256,
       "source": "v5 · plan/v5-calendar.md §3-4"
     },
     {
@@ -1886,10 +1886,10 @@
       "name": "DarkInsufficientElsewhere",
       "base": "InsufficientElsewhere",
       "theme": "dark",
-      "title": "참고 · 예상 기준을 확인하기 전 — 홈 밖의 화면들 (다크)",
+      "title": "참고 · 월말 예상 기준이 서기 전 — 홈 밖의 화면들 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1230,
-      "h": 1390,
+      "h": 1864,
       "source": "v5 · plan/v5-calendar.md §3-4 · §9-22"
     },
     {
@@ -1897,10 +1897,10 @@
       "name": "DarkFutureProvisional",
       "base": "FutureProvisional",
       "theme": "dark",
-      "title": "참고 · 미래 · 자산 경로의 잠정 표시 (다크)",
+      "title": "참고 · 미래 · 목적지의 임시 계산 표시 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1230,
-      "h": 1080,
+      "h": 1256,
       "source": "v5 · plan/v5-calendar.md §3-4"
     },
     {
@@ -1908,10 +1908,10 @@
       "name": "LimitCardCases",
       "base": "LimitCardCases",
       "theme": "light",
-      "title": "참고 · 이번 달 한도 카드의 네 가지 경우",
+      "title": "참고 · 이번 달 한도 카드의 경우들",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 960,
+      "h": 1462,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -1919,10 +1919,10 @@
       "name": "RecurringPrefill",
       "base": "RecurringPrefill",
       "theme": "light",
-      "title": "반복 거래 · 방금 저장한 거래로 미리 채움",
+      "title": "반복 기록 · 방금 저장한 기록으로 미리 채움",
       "page": "하루 시트 · 기록",
       "w": 390,
-      "h": 844,
+      "h": 877,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -1930,10 +1930,10 @@
       "name": "DarkLimitCardCases",
       "base": "LimitCardCases",
       "theme": "dark",
-      "title": "참고 · 이번 달 한도 카드의 네 가지 경우 (다크)",
+      "title": "참고 · 이번 달 한도 카드의 경우들 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 960,
+      "h": 1462,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -1941,10 +1941,10 @@
       "name": "DarkRecurringPrefill",
       "base": "RecurringPrefill",
       "theme": "dark",
-      "title": "반복 거래 · 방금 저장한 거래로 미리 채움 (다크)",
+      "title": "반복 기록 · 방금 저장한 기록으로 미리 채움 (다크)",
       "page": "하루 시트 · 기록",
       "w": 390,
-      "h": 844,
+      "h": 877,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -1952,10 +1952,10 @@
       "name": "EtcSubline",
       "base": "EtcSubline",
       "theme": "light",
-      "title": "참고 · 분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치",
+      "title": "참고 · 카테고리 없는 소비와 안 쓴 날 — 소비 · 한도 · 코치",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 970,
+      "h": 1715,
       "source": "v5 · plan/v5-calendar.md §5-3 · §9"
     },
     {
@@ -1966,7 +1966,7 @@
       "title": "참고 · 가져오기 · 백업 안내",
       "page": "상태 · 구현 참고",
       "w": 1230,
-      "h": 1060,
+      "h": 1103,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -1974,10 +1974,10 @@
       "name": "DarkEtcSubline",
       "base": "EtcSubline",
       "theme": "dark",
-      "title": "참고 · 분류 안 한 소비와 안 쓴 날 — 소비 · 한도 · 코치 (다크)",
+      "title": "참고 · 카테고리 없는 소비와 안 쓴 날 — 소비 · 한도 · 코치 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 970,
+      "h": 1715,
       "source": "v5 · plan/v5-calendar.md §5-3 · §9"
     },
     {
@@ -1988,7 +1988,7 @@
       "title": "참고 · 가져오기 · 백업 안내 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1230,
-      "h": 1060,
+      "h": 1103,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -1996,11 +1996,11 @@
       "name": "TourHome1",
       "base": "TourHome1",
       "theme": "light",
-      "title": "첫 실행 안내 · 홈 1 / 3 현재 위치",
+      "title": "첫 실행 안내 · 홈 1 / 3 이번 달 소비",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourHome2.dc.html",
@@ -2011,7 +2011,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourHome3.dc.html",
@@ -2022,18 +2022,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourHome1.dc.html",
       "name": "DarkTourHome1",
       "base": "TourHome1",
       "theme": "dark",
-      "title": "첫 실행 안내 · 홈 1 / 3 현재 위치 (다크)",
+      "title": "첫 실행 안내 · 홈 1 / 3 이번 달 소비 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourHome2.dc.html",
@@ -2044,7 +2044,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourHome3.dc.html",
@@ -2055,7 +2055,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourAssets1.dc.html",
@@ -2066,7 +2066,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourAssets2.dc.html",
@@ -2077,18 +2077,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourAssets3.dc.html",
       "name": "TourAssets3",
       "base": "TourAssets3",
       "theme": "light",
-      "title": "첫 실행 안내 · 자산 3 / 3 현금성 자산",
+      "title": "첫 실행 안내 · 자산 3 / 3 현금성 비상금",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourAssets1.dc.html",
@@ -2099,7 +2099,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourAssets2.dc.html",
@@ -2110,18 +2110,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourAssets3.dc.html",
       "name": "DarkTourAssets3",
       "base": "TourAssets3",
       "theme": "dark",
-      "title": "첫 실행 안내 · 자산 3 / 3 현금성 자산 (다크)",
+      "title": "첫 실행 안내 · 자산 3 / 3 현금성 비상금 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourSpending1.dc.html",
@@ -2132,7 +2132,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourSpending2.dc.html",
@@ -2143,7 +2143,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourSpending3.dc.html",
@@ -2154,7 +2154,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourSpending1.dc.html",
@@ -2165,7 +2165,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourSpending2.dc.html",
@@ -2176,7 +2176,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourSpending3.dc.html",
@@ -2187,18 +2187,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourGoals1.dc.html",
       "name": "TourGoals1",
       "base": "TourGoals1",
       "theme": "light",
-      "title": "첫 실행 안내 · 목적지 1 / 3 월 저축 배분",
+      "title": "첫 실행 안내 · 목적지 1 / 3 매달 모으는 돈",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourGoals2.dc.html",
@@ -2209,7 +2209,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourGoals3.dc.html",
@@ -2220,18 +2220,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourGoals1.dc.html",
       "name": "DarkTourGoals1",
       "base": "TourGoals1",
       "theme": "dark",
-      "title": "첫 실행 안내 · 목적지 1 / 3 월 저축 배분 (다크)",
+      "title": "첫 실행 안내 · 목적지 1 / 3 매달 모으는 돈 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourGoals2.dc.html",
@@ -2242,7 +2242,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourGoals3.dc.html",
@@ -2253,7 +2253,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourFuture1.dc.html",
@@ -2264,7 +2264,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourFuture2.dc.html",
@@ -2275,7 +2275,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourFuture3.dc.html",
@@ -2286,7 +2286,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourFuture1.dc.html",
@@ -2297,7 +2297,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourFuture2.dc.html",
@@ -2308,7 +2308,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourFuture3.dc.html",
@@ -2319,7 +2319,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourDebts1.dc.html",
@@ -2330,18 +2330,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourDebts2.dc.html",
       "name": "TourDebts2",
       "base": "TourDebts2",
       "theme": "light",
-      "title": "첫 실행 안내 · 부채 2 / 3 고금리 경고",
+      "title": "첫 실행 안내 · 부채 2 / 3 상환 안내",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourDebts3.dc.html",
@@ -2352,7 +2352,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourDebts1.dc.html",
@@ -2363,18 +2363,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourDebts2.dc.html",
       "name": "DarkTourDebts2",
       "base": "TourDebts2",
       "theme": "dark",
-      "title": "첫 실행 안내 · 부채 2 / 3 고금리 경고 (다크)",
+      "title": "첫 실행 안내 · 부채 2 / 3 상환 안내 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourDebts3.dc.html",
@@ -2385,73 +2385,73 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourStrategy1.dc.html",
       "name": "TourStrategy1",
       "base": "TourStrategy1",
       "theme": "light",
-      "title": "첫 실행 안내 · 상환 전략 1 / 3 상환 방식",
+      "title": "첫 실행 안내 · 자산 › 상환 계획 1 / 3 저장된 계획",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourStrategy2.dc.html",
       "name": "TourStrategy2",
       "base": "TourStrategy2",
       "theme": "light",
-      "title": "첫 실행 안내 · 상환 전략 2 / 3 예상 완제",
+      "title": "첫 실행 안내 · 자산 › 상환 계획 2 / 3 다 갚는 달",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourStrategy3.dc.html",
       "name": "TourStrategy3",
       "base": "TourStrategy3",
       "theme": "light",
-      "title": "첫 실행 안내 · 상환 전략 3 / 3 완제 순서",
+      "title": "첫 실행 안내 · 자산 › 상환 계획 3 / 3 갚는 순서",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourStrategy1.dc.html",
       "name": "DarkTourStrategy1",
       "base": "TourStrategy1",
       "theme": "dark",
-      "title": "첫 실행 안내 · 상환 전략 1 / 3 상환 방식 (다크)",
+      "title": "첫 실행 안내 · 자산 › 상환 계획 1 / 3 저장된 계획 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourStrategy2.dc.html",
       "name": "DarkTourStrategy2",
       "base": "TourStrategy2",
       "theme": "dark",
-      "title": "첫 실행 안내 · 상환 전략 2 / 3 예상 완제 (다크)",
+      "title": "첫 실행 안내 · 자산 › 상환 계획 2 / 3 다 갚는 달 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourStrategy3.dc.html",
       "name": "DarkTourStrategy3",
       "base": "TourStrategy3",
       "theme": "dark",
-      "title": "첫 실행 안내 · 상환 전략 3 / 3 완제 순서 (다크)",
+      "title": "첫 실행 안내 · 자산 › 상환 계획 3 / 3 갚는 순서 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourLedger1.dc.html",
@@ -2462,7 +2462,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourLedger2.dc.html",
@@ -2473,18 +2473,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourLedger3.dc.html",
       "name": "TourLedger3",
       "base": "TourLedger3",
       "theme": "light",
-      "title": "첫 실행 안내 · 내역 3 / 3 거래 추가",
+      "title": "첫 실행 안내 · 내역 3 / 3 기록 추가",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourLedger1.dc.html",
@@ -2495,7 +2495,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourLedger2.dc.html",
@@ -2506,18 +2506,18 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourLedger3.dc.html",
       "name": "DarkTourLedger3",
       "base": "TourLedger3",
       "theme": "dark",
-      "title": "첫 실행 안내 · 내역 3 / 3 거래 추가 (다크)",
+      "title": "첫 실행 안내 · 내역 3 / 3 기록 추가 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourLimits1.dc.html",
@@ -2528,7 +2528,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourLimits2.dc.html",
@@ -2539,7 +2539,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourLimits3.dc.html",
@@ -2550,7 +2550,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourLimits1.dc.html",
@@ -2561,7 +2561,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourLimits2.dc.html",
@@ -2572,7 +2572,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourLimits3.dc.html",
@@ -2583,7 +2583,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourGoalDesign1.dc.html",
@@ -2594,7 +2594,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourGoalDesign2.dc.html",
@@ -2605,7 +2605,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourGoalDesign3.dc.html",
@@ -2616,7 +2616,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourGoalDesign1.dc.html",
@@ -2627,7 +2627,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourGoalDesign2.dc.html",
@@ -2638,7 +2638,7 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourGoalDesign3.dc.html",
@@ -2649,73 +2649,73 @@
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourPayoff1.dc.html",
       "name": "TourPayoff1",
       "base": "TourPayoff1",
       "theme": "light",
-      "title": "첫 실행 안내 · 상환 계획 1 / 3 가정",
+      "title": "첫 실행 안내 · 미래 › 상환 계획 1 / 3 추가 상환",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourPayoff2.dc.html",
       "name": "TourPayoff2",
       "base": "TourPayoff2",
       "theme": "light",
-      "title": "첫 실행 안내 · 상환 계획 2 / 3 비교",
+      "title": "첫 실행 안내 · 미래 › 상환 계획 2 / 3 비교",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "TourPayoff3.dc.html",
       "name": "TourPayoff3",
       "base": "TourPayoff3",
       "theme": "light",
-      "title": "첫 실행 안내 · 상환 계획 3 / 3 저장",
+      "title": "첫 실행 안내 · 미래 › 상환 계획 3 / 3 저장",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourPayoff1.dc.html",
       "name": "DarkTourPayoff1",
       "base": "TourPayoff1",
       "theme": "dark",
-      "title": "첫 실행 안내 · 상환 계획 1 / 3 가정 (다크)",
+      "title": "첫 실행 안내 · 미래 › 상환 계획 1 / 3 추가 상환 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourPayoff2.dc.html",
       "name": "DarkTourPayoff2",
       "base": "TourPayoff2",
       "theme": "dark",
-      "title": "첫 실행 안내 · 상환 계획 2 / 3 비교 (다크)",
+      "title": "첫 실행 안내 · 미래 › 상환 계획 2 / 3 비교 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "DarkTourPayoff3.dc.html",
       "name": "DarkTourPayoff3",
       "base": "TourPayoff3",
       "theme": "dark",
-      "title": "첫 실행 안내 · 상환 계획 3 / 3 저장 (다크)",
+      "title": "첫 실행 안내 · 미래 › 상환 계획 3 / 3 저장 (다크)",
       "page": "첫 실행 안내 · 화면마다 3단계",
       "w": 390,
       "h": 844,
-      "source": "미구현 · 첫 실행 안내 · plan/v5-calendar.md §10 11판 · design/CHANGES-2026-09-22.md"
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)"
     },
     {
       "file": "SettingsNotify.dc.html",
@@ -2725,8 +2725,8 @@
       "title": "모달 · 설정 › 알림 (기기 알림)",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
-      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md · NAVI-NOTIFY-MEETING-2026-09-23.md"
+      "h": 903,
+      "source": "components/navi/notify-settings.tsx (plan/v5-calendar.md §14 · tasks-12)"
     },
     {
       "file": "DarkSettingsNotify.dc.html",
@@ -2736,8 +2736,8 @@
       "title": "모달 · 설정 › 알림 (기기 알림) (다크)",
       "page": "모달 · 설정",
       "w": 390,
-      "h": 844,
-      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md · NAVI-NOTIFY-MEETING-2026-09-23.md"
+      "h": 903,
+      "source": "components/navi/notify-settings.tsx (plan/v5-calendar.md §14 · tasks-12)"
     },
     {
       "file": "NotifyCases.dc.html",
@@ -2747,8 +2747,8 @@
       "title": "참고 · 기기 알림 여섯 가지와 규칙",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 830,
-      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md"
+      "h": 1435,
+      "source": "lib/navi-notify.ts · components/navi/notify-settings.tsx (plan/v5-calendar.md §14)"
     },
     {
       "file": "DarkNotifyCases.dc.html",
@@ -2758,8 +2758,734 @@
       "title": "참고 · 기기 알림 여섯 가지와 규칙 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 830,
-      "source": "미구현 · 기기 알림 · design/CHANGES-2026-09-23.md"
+      "h": 1435,
+      "source": "lib/navi-notify.ts · components/navi/notify-settings.tsx (plan/v5-calendar.md §14)"
+    },
+    {
+      "file": "SpendingPastOpen.dc.html",
+      "name": "SpendingPastOpen",
+      "base": "SpendingPastOpen",
+      "theme": "light",
+      "title": "소비 · 지난 달 (마감 전)",
+      "page": "자산 · 소비",
+      "w": 390,
+      "h": 1264,
+      "source": "components/navi/spending-overview.tsx 월 마감 카드 (spending-4 · D9)"
+    },
+    {
+      "file": "DarkSpendingPastOpen.dc.html",
+      "name": "DarkSpendingPastOpen",
+      "base": "SpendingPastOpen",
+      "theme": "dark",
+      "title": "소비 · 지난 달 (마감 전) (다크)",
+      "page": "자산 · 소비",
+      "w": 390,
+      "h": 1264,
+      "source": "components/navi/spending-overview.tsx 월 마감 카드 (spending-4 · D9)"
+    },
+    {
+      "file": "SpendingPastChanged.dc.html",
+      "name": "SpendingPastChanged",
+      "base": "SpendingPastChanged",
+      "theme": "light",
+      "title": "소비 · 지난 달 (마감 뒤 기록이 바뀜)",
+      "page": "자산 · 소비",
+      "w": 390,
+      "h": 1212,
+      "source": "components/navi/spending-overview.tsx · reclose-spend-dialog.tsx (record-1 · D9)"
+    },
+    {
+      "file": "DarkSpendingPastChanged.dc.html",
+      "name": "DarkSpendingPastChanged",
+      "base": "SpendingPastChanged",
+      "theme": "dark",
+      "title": "소비 · 지난 달 (마감 뒤 기록이 바뀜) (다크)",
+      "page": "자산 · 소비",
+      "w": 390,
+      "h": 1212,
+      "source": "components/navi/spending-overview.tsx · reclose-spend-dialog.tsx (record-1 · D9)"
+    },
+    {
+      "file": "ProfileDialogNoItems.dc.html",
+      "name": "ProfileDialogNoItems",
+      "base": "ProfileDialogNoItems",
+      "theme": "light",
+      "title": "모달 · 내 수치 (자산 · 부채를 안 넣었을 때)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/numbers-sheet.tsx (D5 · first-run-2)"
+    },
+    {
+      "file": "SalarySheet.dc.html",
+      "name": "SalarySheet",
+      "base": "SalarySheet",
+      "theme": "light",
+      "title": "모달 · 월급 입력",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/salary-sheet.tsx (D5 · first-run-22)"
+    },
+    {
+      "file": "NetWorthRatioSheet.dc.html",
+      "name": "NetWorthRatioSheet",
+      "base": "NetWorthRatioSheet",
+      "theme": "light",
+      "title": "모달 · 순자산 대비 소비",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/net-worth-ratio-sheet.tsx (home-8)"
+    },
+    {
+      "file": "DarkProfileDialogNoItems.dc.html",
+      "name": "DarkProfileDialogNoItems",
+      "base": "ProfileDialogNoItems",
+      "theme": "dark",
+      "title": "모달 · 내 수치 (자산 · 부채를 안 넣었을 때) (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/numbers-sheet.tsx (D5 · first-run-2)"
+    },
+    {
+      "file": "DarkSalarySheet.dc.html",
+      "name": "DarkSalarySheet",
+      "base": "SalarySheet",
+      "theme": "dark",
+      "title": "모달 · 월급 입력 (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/salary-sheet.tsx (D5 · first-run-22)"
+    },
+    {
+      "file": "DarkNetWorthRatioSheet.dc.html",
+      "name": "DarkNetWorthRatioSheet",
+      "base": "NetWorthRatioSheet",
+      "theme": "dark",
+      "title": "모달 · 순자산 대비 소비 (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/net-worth-ratio-sheet.tsx (home-8)"
+    },
+    {
+      "file": "AssetEditDialog.dc.html",
+      "name": "AssetEditDialog",
+      "base": "AssetEditDialog",
+      "theme": "light",
+      "title": "모달 · 자산 수정",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/asset-view.tsx (assets-4)"
+    },
+    {
+      "file": "AssetBalanceCheck.dc.html",
+      "name": "AssetBalanceCheck",
+      "base": "AssetBalanceCheck",
+      "theme": "light",
+      "title": "모달 · 잔액 한 번에 확인 (자산 구성의 주황 띠에서 · 확인 필요 2개)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/balance-check-sheet.tsx (assets-15)"
+    },
+    {
+      "file": "DarkAssetEditDialog.dc.html",
+      "name": "DarkAssetEditDialog",
+      "base": "AssetEditDialog",
+      "theme": "dark",
+      "title": "모달 · 자산 수정 (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/asset-view.tsx (assets-4)"
+    },
+    {
+      "file": "DarkAssetBalanceCheck.dc.html",
+      "name": "DarkAssetBalanceCheck",
+      "base": "AssetBalanceCheck",
+      "theme": "dark",
+      "title": "모달 · 잔액 한 번에 확인 (자산 구성의 주황 띠에서 · 확인 필요 2개) (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/balance-check-sheet.tsx (assets-15)"
+    },
+    {
+      "file": "RecurringDialogOverlap.dc.html",
+      "name": "RecurringDialogOverlap",
+      "base": "RecurringDialogOverlap",
+      "theme": "light",
+      "title": "모달 · 반복 기록 (이번 달 겹침 확인)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 945,
+      "source": "components/navi/spending-view.tsx 반복 기록 (record-2)"
+    },
+    {
+      "file": "DarkRecurringDialogOverlap.dc.html",
+      "name": "DarkRecurringDialogOverlap",
+      "base": "RecurringDialogOverlap",
+      "theme": "dark",
+      "title": "모달 · 반복 기록 (이번 달 겹침 확인) (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 945,
+      "source": "components/navi/spending-view.tsx 반복 기록 (record-2)"
+    },
+    {
+      "file": "AssetDebtTypes.dc.html",
+      "name": "AssetDebtTypes",
+      "base": "AssetDebtTypes",
+      "theme": "light",
+      "title": "참고 · 자산 · 부채 유형 목록 · 새 부채 · 다 갚은 부채",
+      "page": "상태 · 구현 참고",
+      "w": 1400,
+      "h": 770,
+      "source": "lib/navi-asset-labels.ts · components/navi/asset-view.tsx (assets-6 · assets-7 · assets-14 · assets-23)"
+    },
+    {
+      "file": "DarkAssetDebtTypes.dc.html",
+      "name": "DarkAssetDebtTypes",
+      "base": "AssetDebtTypes",
+      "theme": "dark",
+      "title": "참고 · 자산 · 부채 유형 목록 · 새 부채 · 다 갚은 부채 (다크)",
+      "page": "상태 · 구현 참고",
+      "w": 1400,
+      "h": 770,
+      "source": "lib/navi-asset-labels.ts · components/navi/asset-view.tsx (assets-6 · assets-7 · assets-14 · assets-23)"
+    },
+    {
+      "file": "GoalsStates.dc.html",
+      "name": "GoalsStates",
+      "base": "GoalsStates",
+      "theme": "light",
+      "title": "참고 · 목적지 상태 7종 (가정 · 펼침 · 도착 · 목표일 없음 · 도착 어려움 · 상환 늦음 · 설계 미리 보기)",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
+      "w": 390,
+      "h": 4432,
+      "source": "components/navi/goals-view.tsx 매달 모으는 돈 가정 · 한 줄 펼침 · 도착한 목적지 (goals-9 · goals-10 · goals-7 · goals-24 · goals-26 · D13)"
+    },
+    {
+      "file": "GoalDesignStates.dc.html",
+      "name": "GoalDesignStates",
+      "base": "GoalDesignStates",
+      "theme": "light",
+      "title": "참고 · 새 목적지 설계 상태 2종 (처음 · 다른 금액 가정)",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
+      "w": 390,
+      "h": 1421,
+      "source": "components/navi/goal-tools.tsx 처음 · 다른 금액으로 계산해 보기 (goals-16 · goals-28 · D13)"
+    },
+    {
+      "file": "DarkGoalsStates.dc.html",
+      "name": "DarkGoalsStates",
+      "base": "GoalsStates",
+      "theme": "dark",
+      "title": "참고 · 목적지 상태 7종 (가정 · 펼침 · 도착 · 목표일 없음 · 도착 어려움 · 상환 늦음 · 설계 미리 보기) (다크)",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
+      "w": 390,
+      "h": 4432,
+      "source": "components/navi/goals-view.tsx 매달 모으는 돈 가정 · 한 줄 펼침 · 도착한 목적지 (goals-9 · goals-10 · goals-7 · goals-24 · goals-26 · D13)"
+    },
+    {
+      "file": "DarkGoalDesignStates.dc.html",
+      "name": "DarkGoalDesignStates",
+      "base": "GoalDesignStates",
+      "theme": "dark",
+      "title": "참고 · 새 목적지 설계 상태 2종 (처음 · 다른 금액 가정) (다크)",
+      "page": "목적지 · 미래 (지금 5탭 → 탭 합친 뒤)",
+      "w": 390,
+      "h": 1421,
+      "source": "components/navi/goal-tools.tsx 처음 · 다른 금액으로 계산해 보기 (goals-16 · goals-28 · D13)"
+    },
+    {
+      "file": "HomeTargetEditor.dc.html",
+      "name": "HomeTargetEditor",
+      "base": "HomeTargetEditor",
+      "theme": "light",
+      "title": "홈 · 소비 목표 조정 열림",
+      "page": "홈",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/home-hero.tsx 소비 목표 조정 편집기 (home-1 · D1 · D4)"
+    },
+    {
+      "file": "DarkHomeTargetEditor.dc.html",
+      "name": "DarkHomeTargetEditor",
+      "base": "HomeTargetEditor",
+      "theme": "dark",
+      "title": "홈 · 소비 목표 조정 열림 (다크)",
+      "page": "홈",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/home-hero.tsx 소비 목표 조정 편집기 (home-1 · D1 · D4)"
+    },
+    {
+      "file": "HomeMonthStart.dc.html",
+      "name": "HomeMonthStart",
+      "base": "HomeMonthStart",
+      "theme": "light",
+      "title": "홈 · 달이 바뀐 첫 주 (10월 2일)",
+      "page": "홈",
+      "w": 390,
+      "h": 1118,
+      "source": "components/navi/calendar-card.tsx 최근 7일 제목 · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)"
+    },
+    {
+      "file": "HomeSampleMode.dc.html",
+      "name": "HomeSampleMode",
+      "base": "HomeSampleMode",
+      "theme": "light",
+      "title": "홈 · 샘플 모드",
+      "page": "홈",
+      "w": 390,
+      "h": 1246,
+      "source": "app/page.tsx 샘플 띠 · calendar-card 샘플 문장 (D8 · language-ia-21 · first-run-17 · D9)"
+    },
+    {
+      "file": "DarkHomeMonthStart.dc.html",
+      "name": "DarkHomeMonthStart",
+      "base": "HomeMonthStart",
+      "theme": "dark",
+      "title": "홈 · 달이 바뀐 첫 주 (10월 2일) (다크)",
+      "page": "홈",
+      "w": 390,
+      "h": 1118,
+      "source": "components/navi/calendar-card.tsx 최근 7일 제목 · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)"
+    },
+    {
+      "file": "DarkHomeSampleMode.dc.html",
+      "name": "DarkHomeSampleMode",
+      "base": "HomeSampleMode",
+      "theme": "dark",
+      "title": "홈 · 샘플 모드 (다크)",
+      "page": "홈",
+      "w": 390,
+      "h": 1246,
+      "source": "app/page.tsx 샘플 띠 · calendar-card 샘플 문장 (D8 · language-ia-21 · first-run-17 · D9)"
+    },
+    {
+      "file": "DaySheetPastEmpty.dc.html",
+      "name": "DaySheetPastEmpty",
+      "base": "DaySheetPastEmpty",
+      "theme": "light",
+      "title": "하루 시트 · 기록 없는 어제",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/day-sheet.tsx 어제 · 빈 날 (record-11 · record-18)"
+    },
+    {
+      "file": "DaySheetDeleted.dc.html",
+      "name": "DaySheetDeleted",
+      "base": "DaySheetDeleted",
+      "theme": "light",
+      "title": "하루 시트 · 지운 뒤 (되돌리기)",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/day-sheet.tsx inlineNotice (record-6 · D10)"
+    },
+    {
+      "file": "DaySheetEditMoved.dc.html",
+      "name": "DaySheetEditMoved",
+      "base": "DaySheetEditMoved",
+      "theme": "light",
+      "title": "하루 시트 · 수정 · 날짜를 옮길 때",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/day-sheet.tsx moved (record-15)"
+    },
+    {
+      "file": "DarkDaySheetPastEmpty.dc.html",
+      "name": "DarkDaySheetPastEmpty",
+      "base": "DaySheetPastEmpty",
+      "theme": "dark",
+      "title": "하루 시트 · 기록 없는 어제 (다크)",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/day-sheet.tsx 어제 · 빈 날 (record-11 · record-18)"
+    },
+    {
+      "file": "DarkDaySheetDeleted.dc.html",
+      "name": "DarkDaySheetDeleted",
+      "base": "DaySheetDeleted",
+      "theme": "dark",
+      "title": "하루 시트 · 지운 뒤 (되돌리기) (다크)",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/day-sheet.tsx inlineNotice (record-6 · D10)"
+    },
+    {
+      "file": "DarkDaySheetEditMoved.dc.html",
+      "name": "DarkDaySheetEditMoved",
+      "base": "DaySheetEditMoved",
+      "theme": "dark",
+      "title": "하루 시트 · 수정 · 날짜를 옮길 때 (다크)",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/day-sheet.tsx moved (record-15)"
+    },
+    {
+      "file": "ClassifySheetPicker.dc.html",
+      "name": "ClassifySheetPicker",
+      "base": "ClassifySheetPicker",
+      "theme": "light",
+      "title": "카테고리 고르기 시트 · 줄에서 고르기 펼침",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/classify-sheet.tsx 줄 고르기 펼침 (spending-3 · a11y-1)"
+    },
+    {
+      "file": "DarkClassifySheetPicker.dc.html",
+      "name": "DarkClassifySheetPicker",
+      "base": "ClassifySheetPicker",
+      "theme": "dark",
+      "title": "카테고리 고르기 시트 · 줄에서 고르기 펼침 (다크)",
+      "page": "하루 시트 · 기록",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/classify-sheet.tsx 줄 고르기 펼침 (spending-3 · a11y-1)"
+    },
+    {
+      "file": "PayoffStates.dc.html",
+      "name": "PayoffStates",
+      "base": "PayoffStates",
+      "theme": "light",
+      "title": "참고 · 미래 › 상환 계획의 경우들",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 1501,
+      "source": "components/navi/payoff-plan.tsx 초안 · 다 갚지 못함 · 최소 상환만 · 모자람 (future-2/4/6/11/22/25 · D6 · D13 · D15)"
+    },
+    {
+      "file": "FutureStates.dc.html",
+      "name": "FutureStates",
+      "base": "FutureStates",
+      "theme": "light",
+      "title": "참고 · 미래 › 자산 경로의 경우들",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 1749,
+      "source": "components/navi/future-view.tsx 절감 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히 (future-1/2/5/11/12/19/21)"
+    },
+    {
+      "file": "HomeGlanceRows.dc.html",
+      "name": "HomeGlanceRows",
+      "base": "HomeGlanceRows",
+      "theme": "light",
+      "title": "참고 · 홈 자산 한눈에 줄 펼침",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 1045,
+      "source": "components/navi/home-glance.tsx 자산 한눈에 줄 펼침 (home-12)"
+    },
+    {
+      "file": "DarkPayoffStates.dc.html",
+      "name": "DarkPayoffStates",
+      "base": "PayoffStates",
+      "theme": "dark",
+      "title": "참고 · 미래 › 상환 계획의 경우들 (다크)",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 1501,
+      "source": "components/navi/payoff-plan.tsx 초안 · 다 갚지 못함 · 최소 상환만 · 모자람 (future-2/4/6/11/22/25 · D6 · D13 · D15)"
+    },
+    {
+      "file": "DarkFutureStates.dc.html",
+      "name": "DarkFutureStates",
+      "base": "FutureStates",
+      "theme": "dark",
+      "title": "참고 · 미래 › 자산 경로의 경우들 (다크)",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 1749,
+      "source": "components/navi/future-view.tsx 절감 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히 (future-1/2/5/11/12/19/21)"
+    },
+    {
+      "file": "DarkHomeGlanceRows.dc.html",
+      "name": "DarkHomeGlanceRows",
+      "base": "HomeGlanceRows",
+      "theme": "dark",
+      "title": "참고 · 홈 자산 한눈에 줄 펼침 (다크)",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 1045,
+      "source": "components/navi/home-glance.tsx 자산 한눈에 줄 펼침 (home-12)"
+    },
+    {
+      "file": "SampleModeTabs.dc.html",
+      "name": "SampleModeTabs",
+      "base": "SampleModeTabs",
+      "theme": "light",
+      "title": "참고 · 샘플 모드 띠 (모든 탭)",
+      "page": "상태 · 구현 참고",
+      "w": 1290,
+      "h": 823,
+      "source": "app/page.tsx 샘플 띠 (D8 · language-ia-21 · first-run-17)"
+    },
+    {
+      "file": "DebtUnpayable.dc.html",
+      "name": "DebtUnpayable",
+      "base": "DebtUnpayable",
+      "theme": "light",
+      "title": "참고 · 월 최소 상환액을 비운 부채",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 936,
+      "source": "components/navi/asset-view.tsx 부채 · 상환 계획 요약 (tasks-4 · D7 · D11 · D15)"
+    },
+    {
+      "file": "DarkSampleModeTabs.dc.html",
+      "name": "DarkSampleModeTabs",
+      "base": "SampleModeTabs",
+      "theme": "dark",
+      "title": "참고 · 샘플 모드 띠 (모든 탭) (다크)",
+      "page": "상태 · 구현 참고",
+      "w": 1290,
+      "h": 823,
+      "source": "app/page.tsx 샘플 띠 (D8 · language-ia-21 · first-run-17)"
+    },
+    {
+      "file": "DarkDebtUnpayable.dc.html",
+      "name": "DarkDebtUnpayable",
+      "base": "DebtUnpayable",
+      "theme": "dark",
+      "title": "참고 · 월 최소 상환액을 비운 부채 (다크)",
+      "page": "상태 · 구현 참고",
+      "w": 1230,
+      "h": 936,
+      "source": "components/navi/asset-view.tsx 부채 · 상환 계획 요약 (tasks-4 · D7 · D11 · D15)"
+    },
+    {
+      "file": "TourHomeChecklist.dc.html",
+      "name": "TourHomeChecklist",
+      "base": "TourHomeChecklist",
+      "theme": "light",
+      "title": "첫 실행 안내 · 홈 3 / 3 시작 순서 (처음 시작한 빈 홈)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_HOME_CHECKLIST_STEP · components/navi/start-checklist.tsx (first-run-5 · AMEND 2)"
+    },
+    {
+      "file": "TourHelpReplay.dc.html",
+      "name": "TourHelpReplay",
+      "base": "TourHelpReplay",
+      "theme": "light",
+      "title": "첫 실행 안내 · 제목 옆 ?로 다시 연 안내 (화면 안내)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour-policy.ts tourBadge · showTourHelp (first-run-3 · AMEND 2 · D14)"
+    },
+    {
+      "file": "TourRules.dc.html",
+      "name": "TourRules",
+      "base": "TourRules",
+      "theme": "light",
+      "title": "참고 · 첫 실행 안내 규칙 (빈 화면 · 닫기 · 다시 보기 · 배치)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 1200,
+      "h": 1760,
+      "source": "lib/navi-tour.ts · lib/navi-tour-policy.ts isEmptyScreen · components/navi/first-run-tour.tsx · app/first-run-tour.css (AMEND 2 · first-run-3/4/21 · D7 · D8)"
+    },
+    {
+      "file": "DarkTourHomeChecklist.dc.html",
+      "name": "DarkTourHomeChecklist",
+      "base": "TourHomeChecklist",
+      "theme": "dark",
+      "title": "첫 실행 안내 · 홈 3 / 3 시작 순서 (처음 시작한 빈 홈) (다크)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_HOME_CHECKLIST_STEP · components/navi/start-checklist.tsx (first-run-5 · AMEND 2)"
+    },
+    {
+      "file": "DarkTourHelpReplay.dc.html",
+      "name": "DarkTourHelpReplay",
+      "base": "TourHelpReplay",
+      "theme": "dark",
+      "title": "첫 실행 안내 · 제목 옆 ?로 다시 연 안내 (화면 안내) (다크)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour-policy.ts tourBadge · showTourHelp (first-run-3 · AMEND 2 · D14)"
+    },
+    {
+      "file": "DarkTourRules.dc.html",
+      "name": "DarkTourRules",
+      "base": "TourRules",
+      "theme": "dark",
+      "title": "참고 · 첫 실행 안내 규칙 (빈 화면 · 닫기 · 다시 보기 · 배치) (다크)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 1200,
+      "h": 1760,
+      "source": "lib/navi-tour.ts · lib/navi-tour-policy.ts isEmptyScreen · components/navi/first-run-tour.tsx · app/first-run-tour.css (AMEND 2 · first-run-3/4/21 · D7 · D8)"
+    },
+    {
+      "file": "HeroOverTarget.dc.html",
+      "name": "HeroOverTarget",
+      "base": "HeroOverTarget",
+      "theme": "light",
+      "title": "참고 · 홈 맨 위 카드 · 소비 목표를 넘을 때",
+      "page": "홈",
+      "w": 1230,
+      "h": 765,
+      "source": "components/navi/home-hero.tsx 배지 · 오른쪽 줄 · 셋째 칸 (D1 · D4 · home-1 · home-8)"
+    },
+    {
+      "file": "DarkHeroOverTarget.dc.html",
+      "name": "DarkHeroOverTarget",
+      "base": "HeroOverTarget",
+      "theme": "dark",
+      "title": "참고 · 홈 맨 위 카드 · 소비 목표를 넘을 때 (다크)",
+      "page": "홈",
+      "w": 1230,
+      "h": 765,
+      "source": "components/navi/home-hero.tsx 배지 · 오른쪽 줄 · 셋째 칸 (D1 · D4 · home-1 · home-8)"
+    },
+    {
+      "file": "TourHomeSample1.dc.html",
+      "name": "TourHomeSample1",
+      "base": "TourHomeSample1",
+      "theme": "light",
+      "title": "첫 실행 안내 · 홈 1 / 3 샘플로 둘러보기 (흐려진 샘플 띠 아래)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · 샘플 띠 app/page.tsx (D8 · language-ia-21 · AMEND 2)"
+    },
+    {
+      "file": "DarkTourHomeSample1.dc.html",
+      "name": "DarkTourHomeSample1",
+      "base": "TourHomeSample1",
+      "theme": "dark",
+      "title": "첫 실행 안내 · 홈 1 / 3 샘플로 둘러보기 (흐려진 샘플 띠 아래) (다크)",
+      "page": "첫 실행 안내 · 화면마다 3단계",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · 샘플 띠 app/page.tsx (D8 · language-ia-21 · AMEND 2)"
+    },
+    {
+      "file": "HomePrimaryGoal.dc.html",
+      "name": "HomePrimaryGoal",
+      "base": "HomePrimaryGoal",
+      "theme": "light",
+      "title": "홈 · 대표 목적지 카드를 켰을 때",
+      "page": "홈",
+      "w": 390,
+      "h": 1195,
+      "source": "app/page.tsx 홈 카드 primaryGoal · lib/navi-home-layout.ts HOME_CARD_KEYS (goals-14 · first-run-14)"
+    },
+    {
+      "file": "DarkHomePrimaryGoal.dc.html",
+      "name": "DarkHomePrimaryGoal",
+      "base": "HomePrimaryGoal",
+      "theme": "dark",
+      "title": "홈 · 대표 목적지 카드를 켰을 때 (다크)",
+      "page": "홈",
+      "w": 390,
+      "h": 1195,
+      "source": "app/page.tsx 홈 카드 primaryGoal · lib/navi-home-layout.ts HOME_CARD_KEYS (goals-14 · first-run-14)"
+    },
+    {
+      "file": "HomeTargetSaved.dc.html",
+      "name": "HomeTargetSaved",
+      "base": "HomeTargetSaved",
+      "theme": "light",
+      "title": "홈 · 소비 목표를 저장한 직후 (알림 · 종 배지 3)",
+      "page": "홈",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/home-hero.tsx 소비 목표 저장 · components/navi/save-notice.tsx (home-1 · D1 · D4 · D10)"
+    },
+    {
+      "file": "DarkHomeTargetSaved.dc.html",
+      "name": "DarkHomeTargetSaved",
+      "base": "HomeTargetSaved",
+      "theme": "dark",
+      "title": "홈 · 소비 목표를 저장한 직후 (알림 · 종 배지 3) (다크)",
+      "page": "홈",
+      "w": 390,
+      "h": 844,
+      "source": "components/navi/home-hero.tsx 소비 목표 저장 · components/navi/save-notice.tsx (home-1 · D1 · D4 · D10)"
+    },
+    {
+      "file": "AssetsStale.dc.html",
+      "name": "AssetsStale",
+      "base": "AssetsStale",
+      "theme": "light",
+      "title": "자산 · 잔액 확인이 필요한 자산이 있을 때",
+      "page": "자산 · 소비",
+      "w": 390,
+      "h": 1033,
+      "source": "components/navi/asset-view.tsx 잔액 확인 띠 · lib/navi-asset-freshness.ts (assets-15)"
+    },
+    {
+      "file": "DarkAssetsStale.dc.html",
+      "name": "DarkAssetsStale",
+      "base": "AssetsStale",
+      "theme": "dark",
+      "title": "자산 · 잔액 확인이 필요한 자산이 있을 때 (다크)",
+      "page": "자산 · 소비",
+      "w": 390,
+      "h": 1033,
+      "source": "components/navi/asset-view.tsx 잔액 확인 띠 · lib/navi-asset-freshness.ts (assets-15)"
+    },
+    {
+      "file": "GoalDialogPreview.dc.html",
+      "name": "GoalDialogPreview",
+      "base": "GoalDialogPreview",
+      "theme": "light",
+      "title": "모달 · 목적지 추가 (일반 저축 · 저장 전 미리 보기)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 981,
+      "source": "components/navi/goal-dialog.tsx 저축 유형 · 저장 전 미리 보기 (goals-15 · goals-3 · D1)"
+    },
+    {
+      "file": "DarkGoalDialogPreview.dc.html",
+      "name": "DarkGoalDialogPreview",
+      "base": "GoalDialogPreview",
+      "theme": "dark",
+      "title": "모달 · 목적지 추가 (일반 저축 · 저장 전 미리 보기) (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 981,
+      "source": "components/navi/goal-dialog.tsx 저축 유형 · 저장 전 미리 보기 (goals-15 · goals-3 · D1)"
+    },
+    {
+      "file": "AlertsPanelInfo.dc.html",
+      "name": "AlertsPanelInfo",
+      "base": "AlertsPanelInfo",
+      "theme": "light",
+      "title": "모달 · 알림 (중요 1 · 참고 1)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "lib/navi-alert-rows.ts 참고 줄 · components/navi/coach-panel.tsx 알림 (home-10 · assets-15)"
+    },
+    {
+      "file": "DarkAlertsPanelInfo.dc.html",
+      "name": "DarkAlertsPanelInfo",
+      "base": "AlertsPanelInfo",
+      "theme": "dark",
+      "title": "모달 · 알림 (중요 1 · 참고 1) (다크)",
+      "page": "모달 · 설정",
+      "w": 390,
+      "h": 844,
+      "source": "lib/navi-alert-rows.ts 참고 줄 · components/navi/coach-panel.tsx 알림 (home-10 · assets-15)"
     }
   ],
   "note": ".dc.html은 정적 HTML + 인라인 스타일입니다. <helmet> 안의 폰트/기본 CSS를 걷어내고 그 뒤의 최상위 div가 화면 하나입니다."

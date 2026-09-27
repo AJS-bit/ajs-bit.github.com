@@ -1,4 +1,6 @@
-import sys; sys.path.insert(0, '/tmp/claude-0/-home-user-ajs-bit-github-com/8f2afc13-0278-5882-ad06-7ee97dbbe248/scratchpad')
+"""소비 절감 가정 · 예산 검산 — 2026-09-26부터 옛 시안 모형(월 저축 63만원)의 기록으로만 남긴다.
+코칭 「카테고리 절감 가정」의 숫자는 앱 naviCategoryCuts(app_ref.json categoryCuts)가 출처다(NUMBERS.md)."""
+import sys; sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent))
 from amort import Debt
 DEBTS=[Debt('주택담보대출',6200,3.4,32),Debt('신용대출',2200,6.8,20),Debt('학자금대출',280,2.5,5),Debt('카드 할부',180,14.5,20,fixed_term=9)]
 def nw(months, save, wr=2.40, extra=15):

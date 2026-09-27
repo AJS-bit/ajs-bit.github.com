@@ -3,7 +3,7 @@
 원본 `canvas/Tokens.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:1720px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:30px`
+  `width:1200px height:2273px background:#FFFFFF color:#101828 padding:40px 44px display:flex flex-direction:column gap:30px`
   - `div`
     `display:flex align-items:flex-end justify-content:space-between gap:20px border-bottom:2px solid #101828`
     - `div`
@@ -15,8 +15,12 @@
           `font-size:12px font-weight:600 letter-spacing:0.14em color:#626D88`
       - `h1` **text 34px/700** — “색 · 타이포 · 간격 토큰”
         `font-size:34px font-weight:700 letter-spacing:-0.035em line-height:1.15 color:#101828`
-    - `p` **text 13px/400** — “2.2 구현에서 뽑아낸 값을 대체하는 새 토큰입니다. 카테고리·자산 고정 팔레트만 데이터 정체성으로 그대로 두고, ”
+    - `p` — “2.2 구현에서 뽑아낸 값을 대체하는 새 토큰입니다. 고정 팔레트만 데이터 정체성으로 그대로 두고, 전부 새로 정의”
       `font-size:13px line-height:1.55 color:#475467`
+      - `span` — “카테고리·자산”
+        `white-space:nowrap`
+      - `span` — “표면·잉크·상태색·타이포·간격은”
+        `white-space:nowrap`
   - `div`
     `display:grid grid-template-columns:repeat(2, minmax(0, 1fr)) gap:26px`
     - `div`
@@ -36,6 +40,15 @@
         - `div`
         - `div`
         - `div`
+      - `div`
+        `display:grid grid-template-columns:repeat(5, minmax(0, 1fr)) gap:8px margin-top:12px`
+        - `div`
+        - `div`
+        - `div`
+        - `div`
+        - `div`
+        - `div` — “= 달력 주 선 · 확인할 내용 위 선 · 범례 줄 위 · = 입력 칸 빨강) · = 외곽선 버튼 · = 목록 줄 ”
+          `font-size:10.5px line-height:1.45 color:#626D88`
     - `div`
       - `div` **text 12px/600** — “02 · 표면과 잉크 — DARK”
         `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88`
@@ -45,11 +58,17 @@
           `display:grid grid-template-columns:repeat(5, minmax(0, 1fr)) gap:8px`
         - `div`
           `display:grid grid-template-columns:repeat(5, minmax(0, 1fr)) gap:8px margin-top:10px`
+        - `div`
+          `display:grid grid-template-columns:repeat(5, minmax(0, 1fr)) gap:8px margin-top:10px`
+        - `div`
+          `display:grid grid-template-columns:repeat(5, minmax(0, 1fr)) gap:8px margin-top:10px`
+        - `div`
+          `display:flex align-items:center gap:10px margin-top:12px border-top:1px solid #232D45`
   - `div`
     - `div` **text 12px/600** — “03 · 브랜드와 상태색 — 의미가 고정된 색 · 라이트/다크 대응”
       `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88`
     - `div`
-      `display:grid grid-template-columns:repeat(6, minmax(0, 1fr)) gap:12px margin-top:12px`
+      `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) gap:10px margin-top:12px`
       - `div`
         `border:1px solid #E3E8F1 border-radius:14px`
         - `div`
@@ -86,20 +105,58 @@
           `height:62px background:#7A3FE4`
         - `div`
           `padding:10px 12px`
+      - `div`
+        `border:1px solid #E3E8F1 border-radius:14px`
+        - `div`
+          `height:62px background:#0A72AC`
+        - `div`
+          `padding:10px 12px`
     - `div` **Callout(info)**
       `display:flex gap:10px margin-top:12px padding:12px 14px background:#F4F6FB border-radius:12px`
-      - `span` — “홈 소비 가정, 미저장 상환 계획, 목표 계산기 결과처럼 저장 전 시뮬레이션은 모두 보라 + 점선 테두리 + “저장”
+      - `span` — “보라 #7A3FE4 + 점선 + ① 미래 › 상환 계획에서 저장된 계획과 달라진 초안 ② 미래 소비 절감 슬라이더가”
         `font-size:12px line-height:1.55 color:#475467`
-        - `span` — “보라 = 확정되지 않은 값.”
+        - `span` — “보라 = 저장되지 않는 가정뿐.”
           `font-weight:600 color:#101828`
-        - `span` — “회색(ink-4) = 미측정·미입력”
+        - `span` — “「저장되지 않는 가정」은”
+          `white-space:nowrap`
+        - `span` — “「매달 모으는 돈 바꿔 보기」(바뀐”
+          `white-space:nowrap`
+        - `span` — “「가정」”
+          `white-space:nowrap`
+        - `span` — “값(저장된”
+          `white-space:nowrap`
+        - `span` — “「저장된 계획」)도”
+          `white-space:nowrap`
+        - `span` — “「가정 종료」,”
+          `white-space:nowrap`
+        - `span` — “「되돌리기」”
+          `white-space:nowrap`
+        - `span` — “한 번도 넣지 않은 값은 회색 +”
           `font-weight:600 color:#101828`
+    - `div` **Callout(info)**
+      `display:flex gap:10px margin-top:10px padding:12px 14px background:#F4F6FB border-radius:12px`
+      - `span` — “히어로 = 월급 × 소비 목표 %, = 정했으면 그 값). 기준이 없으면 빨강이 아니라 회색 + 저축 · 상환 계획”
+        `font-size:12px line-height:1.55 color:#475467`
+        - `span` — “넘음 · 초과 색은 사용자가 정한 선으로만 칠합니다.”
+          `font-weight:600 color:#101828`
+        - `span` — “「한도」”
+          `white-space:nowrap`
+        - `span` — “한도(직접”
+          `white-space:nowrap`
+        - `span` — “「—」”
+          `white-space:nowrap`
+        - `span` — “「한도를 아직 안 정했어요」.”
+          `white-space:nowrap`
+        - `span` — “돼요」는”
+          `white-space:nowrap`
+        - `span` — “ink-3”
+          `white-space:nowrap`
   - `div`
     - `div`
       `display:flex align-items:baseline gap:12px`
       - `span` **text 12px/600** — “04 · 데이터 팔레트 — 2.2에서 그대로 유지”
         `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88`
-      - `span` **text 11.5px/400** — “거래·차트·범례가 이 색으로 식별되므로 변경하지 않습니다”
+      - `span` **text 11.5px/400** — “기록 · 차트 · 범례가 이 색으로 식별되므로 변경하지 않습니다”
         `font-size:11.5px color:#697182`
     - `div`
       `display:flex flex-wrap:wrap gap:7px margin-top:12px`
@@ -185,7 +242,7 @@
         `display:inline-flex align-items:center gap:6px height:30px padding:0 11px border-radius:99px border:1px dashed #CFD7E6`
         - `span`
           `width:10px height:10px border-radius:3px background:#34d17e`
-        - `span` **text 12px/400** — “저축/투자 · 소비 제외”
+        - `span` — “· 소비 제외”
           `font-size:12px color:#475467`
       - `div`
         `display:inline-flex align-items:center gap:6px height:30px padding:0 11px border-radius:99px border:1px dashed #CFD7E6`
@@ -219,6 +276,12 @@
           `width:10px height:10px border-radius:3px background:#f59e0b`
         - `span` **text 12px/400** — “부동산”
           `font-size:12px color:#475467`
+      - `div`
+        `display:inline-flex align-items:center gap:6px height:30px padding:0 11px border-radius:99px border:1px solid #E3E8F1`
+        - `span`
+          `width:10px height:10px border-radius:3px background:#64748B`
+        - `span` **text 12px/400** — “기타 자산”
+          `font-size:12px color:#475467`
   - `div`
     `display:grid grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr) gap:30px`
     - `div`
@@ -226,7 +289,7 @@
         `display:flex align-items:baseline gap:12px`
         - `span` **text 12px/600** — “05 · 타이포 위계”
           `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88`
-        - `span` **text 11.5px/400** — “IBM Plex Sans KR · 숫자는 항상 tabular-nums”
+        - `span` — “IBM Plex Sans KR · 숫자는 항상”
           `font-size:11.5px color:#697182`
       - `div`
         `display:flex flex-direction:column margin-top:12px border-top:1px solid #E3E8F1`
@@ -250,7 +313,7 @@
           `display:flex align-items:baseline gap:20px padding:13px 0 border-bottom:1px solid #EFF2F8`
       - `div` **Callout(info)**
         `display:flex gap:10px margin-top:12px padding:12px 14px background:#F4F6FB border-radius:12px`
-        - `span` — “2.2에는 17·18·20·21·23·26·32px가 뒤섞여 있었습니다. v3는 본문 역할을 로 고정하고, 여기에 ”
+        - `span` — “2.2에는 17·18·20·21·23·26·32px가 뒤섞여 있었습니다. v3는 본문 역할을 로 고정하고 단위 단계”
           `font-size:12px line-height:1.55 color:#475467`
     - `div`
       - `div` **text 12px/600** — “06 · 간격 · 모서리 · 그림자”
@@ -262,14 +325,18 @@
         - `div`
           `display:flex align-items:center gap:14px padding:11px 14px border-bottom:1px solid #EFF2F8`
         - `div`
+          `display:flex align-items:center gap:14px padding:11px 14px border-bottom:1px solid #EFF2F8`
+        - `div`
           `display:flex align-items:center gap:14px padding:14px background:#EDF0F7`
       - `div` **text 12px/600** — “07 · 그래프 규칙”
         `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88 margin-top:24px`
-      - `div` — “그래프 높이(모바일) · 소비 추이 150px · 미래 150px · 스파크라인 58px”
+      - `div` — “그래프 · 소비 추이 150px · 미래 150px · 스파크라인 58px”
         `margin-top:12px border:1px solid #E3E8F1 border-radius:14px padding:14px font-size:12px line-height:1.6 color:#475467`
-        - `span` — “그래프 규칙은 「컴포넌트 · 상태」 장의 03b · 그래프 규칙을 참고하세요.”
+        - `span` — “그래프 규칙은 장의 03b · 그래프 규칙을 참고하세요.”
           `font-weight:600 color:#101828`
         - `br`
+        - `span` — “높이(모바일)”
+          `white-space:nowrap`
       - `div` **text 12px/600** — “08 · 달력 규칙 — v5”
         `font-size:12px font-weight:600 letter-spacing:0.1em color:#626D88 margin-top:24px`
       - `div`

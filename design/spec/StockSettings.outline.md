@@ -46,7 +46,7 @@
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div` **text 15px/600** — “주식 기능 끄기”
           `display:flex align-items:center justify-content:center gap:6px height:44px width:100% border-radius:13px background:#FCEBEA border:none color:#C0342F font-size:15px font-weight:600`
-        - `p` **text 11.5px/400** — “탭·홈 카드·설정 항목이 사라지고 보유·관심 기록은 남아요.”
+        - `p` **text 11.5px/400** — “탭 · 홈 카드 · 설정 항목이 사라지고 보유 · 관심 종목은 남아요.”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

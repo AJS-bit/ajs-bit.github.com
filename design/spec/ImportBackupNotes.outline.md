@@ -3,21 +3,23 @@
 원본 `canvas/ImportBackupNotes.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1230px height:1060px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1230px height:1103px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
-  - `h2` **text 20px/700** — “가져오기 · 백업 — 확인 표시와 분류 안 함 표시가 어떻게 따라오는지”
+  - `h2` **text 20px/700** — “가져오기 · 백업 — 확인 표시와 카테고리 없음 표시가 어떻게 따라오는지”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` **text 13px/400** — “달력의 확인 표시(다 적었어요 · 안 썼어요)와 분류 안 함 표시는 백업 파일에 함께 들어갑니다. 전체 복원과 골라”
+  - `p` — “달력의 확인 적었어요 · 안 썼어요)와 카테고리 없음 표시는 백업 파일에 함께 들어갑니다. 전체 복원과 골라서 가져”
     `font-size:13px line-height:1.55 color:#626D88`
+    - `span` — “표시(다”
+      `white-space:nowrap`
   - `div`
     `display:flex gap:32px align-items:flex-start`
     - `div`
       `width:390px border-radius:24px`
-      - `div` **화면프레임**
-        `width:390px height:844px background:#2A3245 color:#101828 display:flex flex-direction:column`
+      - `div`
+        `width:390px height:884px background:#2A3245 color:#101828 display:flex flex-direction:column`
         - `div`
-          `height:40px display:flex align-items:flex-end justify-content:center`
+          `height:8px display:flex align-items:flex-end justify-content:center`
         - `div` **BottomSheet**
           `flex:1 min-height:0 background:#FFFFFF border-radius:26px 26px 0 0 display:flex flex-direction:column color:#101828`
     - `div`

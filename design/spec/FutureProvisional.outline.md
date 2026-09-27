@@ -3,12 +3,12 @@
 원본 `canvas/FutureProvisional.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1230px height:1080px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1230px height:1256px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
-  - `h2` **text 20px/700** — “미래 · 자산 경로 — 예상 기준을 확인하기 전의 잠정 표시”
+  - `h2` **text 20px/700** — “미래 · 목적지 — 월말 예상 기준이 서기 전의 임시 계산 표시”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` **text 13px/400** — “지난 소비 기록을 확인하기 전에도 미래 · 목표 화면의 예상 값은 그대로 보여 주되 잠정이라고 표시합니다. 왼쪽이 ”
+  - `p` **text 13px/400** — “8월을 마감하기 전에도 미래 · 목적지 화면의 예상 값은 그대로 보여 주되 임시 계산이라고 표시합니다. 왼쪽이 그 ”
     `font-size:13px line-height:1.55 color:#626D88`
   - `div`
     `display:flex gap:32px align-items:flex-start`

@@ -31,7 +31,7 @@
           `display:flex align-items:center gap:13px`
       - `div` **Card(18)**
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px 15px`
-        - `div` **text 12.5px/600** — “두 가지만 있으면 시작합니다”
+        - `div` **text 12.5px/600** — “이렇게 시작해 보세요”
           `font-size:12.5px font-weight:600 color:#475467`
         - `div`
           `display:flex align-items:center gap:11px min-height:52px border-bottom:1px solid #F3F5FA`
@@ -49,7 +49,7 @@
           `margin-top:11px`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
-      - `div` **PrimaryButton(48)** — “소비 기록하기”
+      - `div` **PrimaryButton(48)** — “오늘 쓴 돈 적기”
         `display:flex align-items:center justify-content:center gap:6px height:48px flex:1.4 border-radius:13px background:#3556E6 border:none color:#FFFFFF font-size:15px font-weight:600`
       - `div` **SecondaryButton(48)** — “닫기”
         `display:flex align-items:center justify-content:center gap:6px height:48px flex:1 border-radius:13px background:#FFFFFF border:1px solid #D7DEEA color:#475467 font-size:15px font-weight:600`

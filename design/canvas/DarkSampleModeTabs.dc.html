@@ -1,0 +1,689 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+    a { color: #7FA0FF; text-decoration: none; }
+    a:hover { color: #A8BCF5; }
+    text { font-family: 'IBM Plex Sans KR', system-ui, sans-serif; }
+  </style>
+</helmet>
+
+<div style="width: 1290px; height: 823px; background: #080C16; color: #EAEFF8; padding: 28px 30px 30px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; font-variant-numeric: tabular-nums;"><span style="align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: #A5B2C9; border: 1px solid #232D45; background: #121A2B; border-radius: 99px; padding: 4px 10px;">구현 참고 · 앱 화면이 아닙니다</span><h2 style="margin: 2px 0 0; font-size: 20px; font-weight: 700; letter-spacing: -0.025em; color: #EAEFF8;">샘플 모드 — 모든 탭 맨 위 띠</h2><p style="margin: 0 0 8px; font-size: 13px; line-height: 1.55; color: #8595AE; max-width: 860px;">샘플로 둘러보는 동안 다섯 탭 모두 머리줄 위에 같은 띠가 있습니다.</p><div style="display: flex; gap: 20px; flex-wrap: wrap;"><div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-size: 14px; font-weight: 700; color: #EAEFF8;">홈</div><div style="width: 392px; height: 196px; overflow: hidden; border-radius: 22px; border: 1px solid #232D45; background: #080C16; flex-shrink: 0;"><div style="width: 390px; height: 1246px; background: #080C16; color: #EAEFF8; display: flex; flex-direction: column; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 32px; padding: 0 14px; background: #1B2748; flex-shrink: 0;"><span style="font-size: 12px; font-weight: 500; line-height: 1.35; color: #A8BCF5; white-space: nowrap;">샘플 데이터로 둘러보는 중</span><span style="display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap;">내 데이터로 시작<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span></div>
+  <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 16px 10px; flex-shrink: 0;">
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 8px; height: 36px;">
+        <div style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="21" height="21" viewBox="1.2 -1.2 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg>
+        </div>
+        <span style="font-size: 15px; font-weight: 700; letter-spacing: 0.06em; color: #EAEFF8;">NAVI</span>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 0; margin-right: -4px; flex-shrink: 0;"><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10.6 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">설정</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">코칭</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position: absolute; top: 4px; right: 4px; min-width: 15px; height: 15px; border-radius: 99px; background: #E8635F; color: #121A2B; font-size: 10px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid #080C16;">1</span></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">알림</span></div></div>
+    </div>
+    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+      <h1 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #EAEFF8; white-space: nowrap;">오늘의 내비게이션</h1>
+      <span style="font-size: 12px; font-weight: 500; color: #8595AE; white-space: nowrap;">9월 8일 · 오늘 포함 23일 남음</span>
+    </div>
+  </div>
+
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 20px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7); flex-shrink: 0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 28px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: #8595AE; white-space: nowrap;">이번 달 소비</span>
+        <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px;">
+          <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 11px; border-radius: 99px; border: 1px solid #39455F; background: #121A2B; font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap; flex-shrink: 0;">소비 목표 조정</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 2px;">
+          <span style="font-size: 54px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; color: #EAEFF8;">31.1</span>
+          <span style="font-size: 25px; font-weight: 600; letter-spacing: -0.02em; color: #A5B2C9;">%</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px; padding-bottom: 4px;">
+          <span style="font-size: 11px; font-weight: 500; color: #8595AE; white-space: nowrap;">소비 목표까지</span>
+          <span style="font-size: 14px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">104만원 남음</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 5px;">
+        <span style="font-size: 13px; font-weight: 500; color: #A5B2C9;">월급 360만원 중 112만원 썼어요</span>
+        <span style="display: inline-flex; align-items: baseline; gap: 4px; flex-shrink: 0;"><span style="font-size: 11px; font-weight: 500; color: #7E8AA2;">순자산의</span><span style="font-size: 13px; font-weight: 600; letter-spacing: -0.02em; color: #A5B2C9;">1.2%</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="align-self: center; flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+      </div><div style="font-size: 12px; line-height: 1.45; color: #8595AE; margin-top: 3px;">아직 기록하지 않은 소비는 포함되지 않았어요</div><div style="font-size: 12px; line-height: 1.45; color: #8595AE; margin-top: 3px;">월말 예상을 보려면 6월 · 7월 · 8월을 마감해 주세요 · <span style="font-weight: 600; color: #7FA0FF; white-space: nowrap;">6월부터 마감하기 &rsaquo;</span></div>
+
+      <div style="margin-top: 15px;">
+        <div style="position: relative; height: 10px; border-radius: 99px; background: #232D45; overflow: visible;">
+          <div style="position: absolute; inset: 0 68.9% 0 0; border-radius: 99px; background: linear-gradient(90deg, #7FA0FF 0%, #9AA0FF 100%);"></div>
+          <div style="position: absolute; left: 60%; top: -5px; width: 2px; height: 20px; border-radius: 2px; background: #EAEFF8;"></div>
+        </div>
+        <div style="position: relative; height: 15px; margin-top: 5px;">
+          <span style="position: absolute; left: 0; font-size: 11px; color: #8595AE;">0%</span>
+          <span style="position: absolute; left: 60%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">소비 목표 60%</span>
+          <span style="position: absolute; right: 0; font-size: 11px; color: #8595AE;">100%</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 14px; padding-top: 13px; border-top: 1px solid #1E2739;">
+        <div style="display: flex; flex-direction: column; gap: 3px; padding-right: 10px;">
+          <span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">월급</span>
+          <span style="font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">360<span style="font-size: 13px; font-weight: 500; color: #A5B2C9;">만원</span></span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 3px; padding: 0 10px; border-left: 1px solid #1E2739;">
+          <span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">월말 예상</span>
+          <span style="font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: #7E8AA2;">—</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 3px; padding-left: 10px; border-left: 1px solid #1E2739;">
+          <span style="font-size: 11.5px; font-weight: 500; color: #8595AE; white-space: nowrap;">월말 예상 여유</span>
+          <span style="font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: #7E8AA2;">—</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px;">
+        <span style="font-size: 11px; line-height: 1.4; color: #8595AE; word-break: keep-all;"><span style="white-space:nowrap">월급(실수령)</span> 기준 · 저축 이체와 대출 갚은 돈은 쓴 돈에 넣지 않아요</span>
+        <span style="display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 600; color: #7FA0FF; white-space: nowrap; flex-shrink: 0;">월급 · 부수입 고치기<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"/></svg></span>
+      </div>
+
+</div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 13px 14px 13px; flex-shrink: 0; "><div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;"><span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">이번 달 소비 기록</span><span style="display: inline-flex; align-items: center; gap: 2px; font-size: 12px; font-weight: 600; color: #A5B2C9;">펼치기<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></div><div style="font-size: 12px; line-height: 1.45; color: #8595AE; margin-top: 2px;">날짜를 누르면 그날 쓴 돈을 적어요</div><div style="display: flex; justify-content: space-between; margin-top: 8px;"><div style="flex: 1 1 0; min-width: 0; max-width: 44px; height: 56px; border-radius: 10px; background: transparent;  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;"><span style="font-size: 10px; line-height: 1; font-weight: 500; color: #8595AE;">수</span><span style="font-size: 11px; line-height: 1; font-weight: 500; color: #A5B2C9;">2</span><span style="font-size: 11px; line-height: 13px; font-weight: 600; color: #8595AE; font-variant-numeric: tabular-nums;">—</span><span style="display: inline-flex; align-items: center; gap: 3px; height: 9px; box-sizing: border-box; padding-top: 2px; flex-shrink: 0;"></span></div><div style="flex: 1 1 0; min-width: 0; max-width: 44px; height: 56px; border-radius: 10px; background: transparent;  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;"><span style="font-size: 10px; line-height: 1; font-weight: 500; color: #8595AE;">목</span><span style="font-size: 11px; line-height: 1; font-weight: 500; color: #A5B2C9;">3</span><span style="font-size: 11px; line-height: 13px; font-weight: 600; color: #EAEFF8; font-variant-numeric: tabular-nums;">5.9만</span><span style="display: inline-flex; align-items: center; gap: 3px; height: 9px; box-sizing: border-box; padding-top: 2px; flex-shrink: 0;"></span></div><div style="flex: 1 1 0; min-width: 0; max-width: 44px; height: 56px; border-radius: 10px; background: transparent;  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;"><span style="font-size: 10px; line-height: 1; font-weight: 500; color: #8595AE;">금</span><span style="font-size: 11px; line-height: 1; font-weight: 500; color: #A5B2C9;">4</span><span style="font-size: 11px; line-height: 13px; font-weight: 600; color: #EAEFF8; font-variant-numeric: tabular-nums;">4,500</span><span style="display: inline-flex; align-items: center; gap: 3px; height: 9px; box-sizing: border-box; padding-top: 2px; flex-shrink: 0;"></span></div><div style="flex: 1 1 0; min-width: 0; max-width: 44px; height: 56px; border-radius: 10px; background: transparent;  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;"><span style="font-size: 10px; line-height: 1; font-weight: 500; color: #8595AE;">토</span><span style="font-size: 11px; line-height: 1; font-weight: 500; color: #A5B2C9;">5</span><span style="font-size: 11px; line-height: 13px; font-weight: 600; color: #EAEFF8; font-variant-numeric: tabular-nums;">1.2만</span><span style="display: inline-flex; align-items: center; gap: 3px; height: 9px; box-sizing: border-box; padding-top: 2px; flex-shrink: 0;"></span></div><div style="flex: 1 1 0; min-width: 0; max-width: 44px; height: 56px; border-radius: 10px; background: transparent;  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;"><span style="font-size: 10px; line-height: 1; font-weight: 500; color: #8595AE;">일</span><span style="font-size: 11px; line-height: 1; font-weight: 500; color: #A5B2C9;">6</span><span style="font-size: 11px; line-height: 13px; font-weight: 600; color: #8595AE; font-variant-numeric: tabular-nums;">—</span><span style="display: inline-flex; align-items: center; gap: 3px; height: 9px; box-sizing: border-box; padding-top: 2px; flex-shrink: 0;"><span style="font-size: 10px; line-height: 12px; font-weight: 500; color: #A5B2C9;">이체</span></span></div><div style="flex: 1 1 0; min-width: 0; max-width: 44px; height: 56px; border-radius: 10px; background: transparent;  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;"><span style="font-size: 10px; line-height: 1; font-weight: 500; color: #8595AE;">월</span><span style="font-size: 11px; line-height: 1; font-weight: 500; color: #A5B2C9;">7</span><span style="font-size: 11px; line-height: 13px; font-weight: 600; color: #8595AE; font-variant-numeric: tabular-nums;">—</span><span style="display: inline-flex; align-items: center; gap: 3px; height: 9px; box-sizing: border-box; padding-top: 2px; flex-shrink: 0;"></span></div><div style="flex: 1 1 0; min-width: 0; max-width: 44px; height: 56px; border-radius: 10px; background: #1B2748; box-shadow: inset 0 0 0 1.5px #7FA0FF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;"><span style="font-size: 10px; line-height: 1; font-weight: 500; color: #8595AE;">화</span><span style="font-size: 11px; line-height: 1; font-weight: 600; color: #EAEFF8;">8</span><span style="font-size: 11px; line-height: 13px; font-weight: 600; color: #EAEFF8; font-variant-numeric: tabular-nums;">3.7만</span><span style="display: inline-flex; align-items: center; gap: 3px; height: 9px; box-sizing: border-box; padding-top: 2px; flex-shrink: 0;"></span></div></div><div style="font-size: 11.5px; line-height: 1.45; color: #8595AE; margin-top: 6px;"><span style="white-space: nowrap;"><span style="font-weight: 600; color: #8595AE;">—</span> 기록 없음</span> · <span style="white-space: nowrap;"><span style="font-weight: 600; color: #A5B2C9;">0</span> 안 썼어요</span> · <span style="white-space: nowrap;"><svg style="display: inline-block; vertical-align: -1px;" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 다 적었어요</span></div><div style="font-size: 12.5px; line-height: 1.5; color: #A5B2C9; margin-top: 8px;">샘플에서는 <span style="white-space:nowrap">「다 적었어요」</span> 표시를 쓰지 않아요 · 카테고리는 저장할 때 골라요</div><div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 40px; margin-top: 6px;"><span style="flex: 1; min-width: 0; font-size: 12.5px; line-height: 1.5; color: #A5B2C9;">오늘 4건 37,000원</span><span style="display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 12px; border-radius: 99px; background: #1B2748; color: #7FA0FF; font-size: 13px; font-weight: 700; white-space: nowrap; flex-shrink: 0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>더 적기</span></div></div>
+
+    <div style="display: flex; gap: 12px; background: #121A2B; border: 1px solid #232D45; border-left: 3px solid #A9772C; border-radius: 18px; padding: 13px 14px; flex-shrink: 0;">
+      <div style="width: 34px; height: 34px; border-radius: 11px; background: #2E2617; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5B544" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #F5B544;">다음 안내</span>
+        <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.35; color: #EAEFF8; word-break: keep-all;">카드 할부 금리 <span style="white-space:nowrap">14.5%부터</span> 줄여보세요</span>
+        <span style="font-size: 12.5px; line-height: 1.45; color: #A5B2C9; word-break: keep-all;">고금리 부채는 자산이 자라는 속도를 가장 크게 낮춰요.</span>
+        <span style="font-size: 12.5px; font-weight: 600; color: #7FA0FF; margin-top: 5px;">상환 계획 보기 &rsaquo;</span>
+      </div>
+    </div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 12px 14px; flex-shrink: 0;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 8px;">
+        <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">이번 달 한도 <span style="font-weight: 500; color: #8595AE;">오늘 포함 하루 45,220원</span></span>
+        <div style="display: flex; align-items: center; gap: 4px; margin-left: auto;">
+          <span style="font-size: 13.5px; font-weight: 600; color: #3DD489; white-space: nowrap; flex-shrink: 0;">남은 한도 104만원</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+      <div style="font-size: 13px; line-height: 1.45; color: #A5B2C9; margin-top: 4px;">216만원 중 112만원 썼어요</div>
+      <div style="position: relative; height: 8px; border-radius: 99px; background: #232D45; margin-top: 9px; overflow: hidden;">
+        <div style="position: absolute; inset: 0 48.1% 0 0; border-radius: 99px; background: linear-gradient(90deg, #9AA0FF 0%, #B79BFF 100%);"></div>
+      </div>
+    </div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 4px 14px; flex-shrink: 0; "><div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 46px;"><div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">순자산</span><span style="font-size: 11.5px; color: #8595AE;">지난달들을 마감하면 도착 시점을 볼 수 있어요</span></div><div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;"><span style="display: inline-flex; align-items: baseline; gap: 4.5px; white-space: nowrap;"><span style="font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">9,350만원</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div></div></div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 4px 14px; flex-shrink: 0; "><div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 46px;"><div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">상환 계획</span><span style="font-size: 11.5px; color: #8595AE;">다 갚는 달 <span style="white-space: nowrap;">2036년 5월</span> · 고금리 우선</span></div><div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;"><span style="display: inline-flex; align-items: baseline; gap: 4.5px; white-space: nowrap;"><span style="font-size: 11.5px; font-weight: 500; color: #8595AE; white-space: nowrap;">매달 갚는 돈</span><span style="font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">92만원</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div></div></div>
+
+  </div>
+
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; height: 66px; padding: 8px 10px 0; background: #121A2B; border-top: 1px solid #232D45; flex-shrink: 0;"><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; border-radius: 99px; background: #1B2748; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg></div><span style="font-size: 11px; font-weight: 600; color: #7FA0FF;">홈</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v3"/><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M18 12a2 2 0 0 0 0 4h3v-4Z"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">자산</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">소비</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">목적지</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">미래</span></div></div>
+
+</div></div></div><div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-size: 14px; font-weight: 700; color: #EAEFF8;">자산</div><div style="width: 392px; height: 196px; overflow: hidden; border-radius: 22px; border: 1px solid #232D45; background: #080C16; flex-shrink: 0;"><div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 32px; padding: 0 14px; background: #1B2748; flex-shrink: 0;"><span style="font-size: 12px; font-weight: 500; line-height: 1.35; color: #A8BCF5; white-space: nowrap;">샘플 데이터로 둘러보는 중</span><span style="display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap;">내 데이터로 시작<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span></div><div style="width: 390px; height: 977px; background: #080C16; color: #EAEFF8; display: flex; flex-direction: column; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 12px; flex-shrink: 0;"><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;"><div style="display: flex; align-items: center; gap: 4px; min-height: 36px; min-width: 0;"><h1 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #EAEFF8;">자산</h1><span style="width: 28px; height: 28px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span></div><div style="display: flex; align-items: flex-start; gap: 0; margin-right: -4px; flex-shrink: 0;"><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10.6 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">설정</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">코칭</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position: absolute; top: 4px; right: 4px; min-width: 15px; height: 15px; border-radius: 99px; background: #E8635F; color: #121A2B; font-size: 10px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid #080C16;">1</span></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">알림</span></div></div></div><div style="display: flex; gap: 4px; background: #232D45; border-radius: 12px; padding: 3px;"><div style="flex: 1; height: 36px; border-radius: 9px; background: #2E3A54; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 600; color: #EAEFF8; box-shadow: 0 1px 2px rgba(0,0,0,.45);">자산 구성</div><div style="flex: 1; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 500; color: #8595AE;">부채</div><div style="flex: 1; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 500; color: #8595AE;">상환 계획</div></div></div>
+
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px; overflow: hidden;">
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 20px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7); flex-shrink: 0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: #8595AE;">순자산</span>
+        <span style="display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 600; color: #3DD489;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3DD489" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+          전월 대비 2.5%
+        </span>
+      </div>
+
+      <div style="display: flex; align-items: baseline; gap: 2px; margin-top: 6px;">
+        <span style="font-size: 38px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: #EAEFF8;">9,350</span>
+        <span style="font-size: 19px; font-weight: 600; color: #A5B2C9;">만원</span>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <svg width="326" height="58" viewBox="0 0 326 58" fill="none" style="display: block; width: 100%; height: 58px;">
+          <defs>
+            <linearGradient id="nwfill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3DD489" stop-opacity="0.26"/>
+              <stop offset="100%" stop-color="#3DD489" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 50 L53.2 48 L106.3 43.9 L159.5 39.8 L212.7 9 L265.8 30.5 L319 7 L319 58 L0 58 Z" fill="url(#nwfill)"/>
+          <path d="M0 50 L53.2 48 L106.3 43.9 L159.5 39.8 L212.7 9 L265.8 30.5 L319 7" stroke="#3DD489" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="319" cy="7" r="3.6" fill="#3DD489"/>
+          <circle cx="319" cy="7" r="6.6" fill="#3DD489" fill-opacity="0.16"/>
+        </svg>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+          <span style="font-size: 11px; color: #7E8AA2;">26년 3월</span>
+          <span style="font-size: 11px; color: #7E8AA2;">26년 5월</span>
+          <span style="font-size: 11px; color: #7E8AA2;">26년 7월</span>
+          <span style="font-size: 11px; font-weight: 600; color: #A5B2C9;">26년 9월</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 14px; padding-top: 13px; border-top: 1px solid #1E2739;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 500; color: #8595AE;">총자산 <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">1억 8,210만원</span></span>
+          <span style="font-size: 12px; font-weight: 500; color: #8595AE;">총부채 <span style="font-size: 13.5px; font-weight: 600; color: #E8635F;">8,860만원</span></span>
+        </div>
+        <div style="display: flex; height: 9px; border-radius: 99px; overflow: hidden; margin-top: 8px; background: #232D45;">
+          <div style="width: 51.3%; background: #3DD489;"></div>
+          <div style="width: 48.7%; background: repeating-linear-gradient(115deg, #8E4C49 0 4px, #B36F6C 4px 8px);"></div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 7px;">
+          <span style="font-size: 11px; color: #8595AE;">순자산 51.3%</span>
+          <span style="font-size: 11px; color: #8595AE;">부채/자산 48.7%</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 8px; flex-shrink: 0;">
+      <div style="flex: 1; background: #121A2B; border: 1px solid #232D45; border-radius: 14px; padding: 11px 12px;">
+        <div style="font-size: 11.5px; font-weight: 600; color: #A5B2C9;">현금성 비상금</div>
+        <div style="font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8; margin-top: 3px;">7.0<span style="font-size: 12.5px; font-weight: 500; color: #A5B2C9;">개월 치</span></div>
+        <div style="font-size: 11px; color: #8595AE; margin-top: 2px; white-space: nowrap;">생활비 기준 · 1,460만원</div>
+      </div>
+      <div style="flex: 1; background: #121A2B; border: 1px solid #232D45; border-radius: 14px; padding: 11px 12px;">
+        <div style="font-size: 11.5px; font-weight: 600; color: #A5B2C9;">현금+투자자산</div>
+        <div style="font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8; margin-top: 3px;">6,350<span style="font-size: 12.5px; font-weight: 500; color: #A5B2C9;">만원</span></div>
+        <div style="font-size: 11px; color: #8595AE; margin-top: 2px; white-space: nowrap;">전체 자산의 34.9%</div>
+      </div>
+    </div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 14px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;">
+          <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">자산 구성</span>
+          <span style="font-size: 12px; color: #8595AE;">5개 · 1억 8,210만원</span>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 4px; height: 30px; padding: 0 11px; border-radius: 9px; background: #1B2748; color: #7FA0FF; font-size: 12.5px; font-weight: 600;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          추가
+        </div>
+      </div>
+
+      <div style="display: flex; height: 10px; border-radius: 99px; overflow: hidden; margin-top: 12px; gap: 2px;">
+        <div style="width: 52.2%; background: #f59e0b;"></div>
+        <div style="width: 26.9%; background: #5b8dff;"></div>
+        <div style="width: 10.2%; background: #8b5cf6;"></div>
+        <div style="width: 8.0%; background: #38bdf8;"></div>
+        <div style="width: 2.7%; background: #64748b;"></div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 9px;"><span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: #A5B2C9; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #f59e0b; flex-shrink: 0;"></span>부동산 52%</span><span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: #A5B2C9; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #5b8dff; flex-shrink: 0;"></span>투자 27%</span><span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: #A5B2C9; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #8b5cf6; flex-shrink: 0;"></span>연금 10%</span><span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: #A5B2C9; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #38bdf8; flex-shrink: 0;"></span>현금성 8%</span><span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: #A5B2C9; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 99px; background: #64748b; flex-shrink: 0;"></span>기타 3%</span></div>
+
+      <div style="display: flex; flex-direction: column; margin-top: 6px;">
+        <div style="display: flex; align-items: center; gap: 9px; height: 48px; border-bottom: 1px solid #1E2739;">
+          <span style="width: 9px; height: 9px; border-radius: 3px; background: #f59e0b; flex-shrink: 0;"></span>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">전세 보증금</div>
+            <div style="font-size: 11px; color: #8595AE;">부동산 · 수익률 연 0.0%</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">9,500<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">만원</span></div>
+            <div style="font-size: 11px; color: #8595AE; white-space: nowrap;">전체의 52.2%</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; height: 48px; border-bottom: 1px solid #1E2739;">
+          <span style="width: 9px; height: 9px; border-radius: 3px; background: #5b8dff; flex-shrink: 0;"></span>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">ETF 계좌</div>
+            <div style="font-size: 11px; color: #8595AE;">투자 · 수익률 연 6.5%</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">4,890<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">만원</span></div>
+            <div style="font-size: 11px; color: #8595AE; white-space: nowrap;">전체의 26.9%</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; height: 48px; border-bottom: 1px solid #1E2739;">
+          <span style="width: 9px; height: 9px; border-radius: 3px; background: #8b5cf6; flex-shrink: 0;"></span>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">퇴직연금 DC</div>
+            <div style="font-size: 11px; color: #8595AE;">연금 · 수익률 연 4.0%</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">1,860<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">만원</span></div>
+            <div style="font-size: 11px; color: #8595AE; white-space: nowrap;">전체의 10.2%</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; height: 48px; border-bottom: 1px solid #1E2739;">
+          <span style="width: 9px; height: 9px; border-radius: 3px; background: #38bdf8; flex-shrink: 0;"></span>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">생활비 통장</div>
+            <div style="font-size: 11px; color: #8595AE;">현금성 · 수익률 연 2.5%</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">1,460<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">만원</span></div>
+            <div style="font-size: 11px; color: #8595AE; white-space: nowrap;">전체의 8.0%</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; height: 48px;">
+          <span style="width: 9px; height: 9px; border-radius: 3px; background: #64748b; flex-shrink: 0;"></span>
+          <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">청약저축</div>
+            <div style="font-size: 11px; color: #8595AE;">기타 · 수익률 연 1.8%</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; color: #EAEFF8;">500<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">만원</span></div>
+            <div style="font-size: 11px; color: #8595AE; white-space: nowrap;">전체의 2.7%</div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; height: 66px; padding: 8px 10px 0; background: #121A2B; border-top: 1px solid #232D45; flex-shrink: 0;"><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">홈</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; border-radius: 99px; background: #1B2748; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v3"/><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M18 12a2 2 0 0 0 0 4h3v-4Z"/></svg></div><span style="font-size: 11px; font-weight: 600; color: #7FA0FF;">자산</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">소비</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">목적지</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">미래</span></div></div>
+
+</div></div></div><div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-size: 14px; font-weight: 700; color: #EAEFF8;">소비</div><div style="width: 392px; height: 196px; overflow: hidden; border-radius: 22px; border: 1px solid #232D45; background: #080C16; flex-shrink: 0;"><div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 32px; padding: 0 14px; background: #1B2748; flex-shrink: 0;"><span style="font-size: 12px; font-weight: 500; line-height: 1.35; color: #A8BCF5; white-space: nowrap;">샘플 데이터로 둘러보는 중</span><span style="display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap;">내 데이터로 시작<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span></div><div style="width: 390px; height: 957px; background: #080C16; color: #EAEFF8; display: flex; flex-direction: column; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 12px; flex-shrink: 0;"><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;"><div style="display: flex; align-items: center; gap: 4px; min-height: 36px; min-width: 0;"><h1 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #EAEFF8;">소비</h1><span style="width: 28px; height: 28px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span></div><div style="display: flex; align-items: flex-start; gap: 0; margin-right: -4px; flex-shrink: 0;"><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10.6 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">설정</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">코칭</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position: absolute; top: 4px; right: 4px; min-width: 15px; height: 15px; border-radius: 99px; background: #E8635F; color: #121A2B; font-size: 10px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid #080C16;">1</span></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">알림</span></div></div></div><div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0;"><div style="display: flex; align-items: center; gap: 2px; height: 34px; padding: 0 4px; border-radius: 10px; background: #121A2B; border: 1px solid #232D45;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg><span style="font-size: 13px; font-weight: 600; color: #EAEFF8; padding: 0 4px;">2026년 9월</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#46536E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></div><div style="display: inline-flex; align-items: center; gap: 3px; height: 34px; padding: 0 11px; border-radius: 10px; background: #7FA0FF; color: #121A2B; font-size: 13px; font-weight: 600; flex-shrink: 0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#121A2B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>기록</div></div><div style="display: flex; gap: 4px; background: #232D45; border-radius: 12px; padding: 3px;"><div style="flex: 1; height: 36px; border-radius: 9px; background: #2E3A54; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 600; color: #EAEFF8; box-shadow: 0 1px 2px rgba(0,0,0,.45);">이번 달</div><div style="flex: 1; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 500; color: #8595AE;">내역</div><div style="flex: 1; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 500; color: #8595AE;">한도</div></div></div>
+
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px; overflow: hidden;">
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 20px; padding: 16px 14px 14px; box-shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7); flex-shrink: 0;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 0 2px;">
+        <div>
+          <div style="display: flex; align-items: baseline; gap: 2px;">
+            <span style="font-size: 34px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: #EAEFF8;">31.1</span>
+            <span style="font-size: 18px; font-weight: 600; color: #A5B2C9;">%</span>
+          </div>
+          <div style="font-size: 12px; font-weight: 500; color: #8595AE; margin-top: 4px;">월급 대비 지금까지 쓴 돈</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 5px;">
+          <span style="display: inline-flex; align-items: center; gap: 4px; background: #0F2C22; color: #3DD489; font-size: 11.5px; font-weight: 600; border-radius: 99px; padding: 4px 9px;">월말에도 목표 안</span>
+          <span style="font-size: 11.5px; color: #8595AE; white-space: nowrap;">소비 목표 60% · 한도 216만원</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 13px; padding: 0 2px;">
+        <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">계획한 속도로 쓰고 있나요?</span>
+        <span style="font-size: 12px; font-weight: 600; color: #A5B2C9; white-space: nowrap;">누적 112만원</span>
+      </div>
+
+      <div style="margin-top: 8px;">
+        <svg width="362" height="150" viewBox="0 0 362 150" fill="none" style="display: block; width: 100%; height: 150px;">
+          <defs>
+            <linearGradient id="spendfill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7FA0FF" stop-opacity="0.22"/>
+              <stop offset="100%" stop-color="#7FA0FF" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <path d="M12 118 L350 22.6" stroke="#4E5B76" stroke-width="1.4" stroke-dasharray="4 4" stroke-linecap="round"/>
+
+          <line x1="93.6" y1="118" x2="93.6" y2="6" stroke="#263049" stroke-width="1" stroke-dasharray="3 4"/>
+
+          <path d="M12 73.4 L23.7 73.4 L35.3 70.9 L47 70.7 L58.6 70.1 L70.3 70.1 L81.9 70.1 L93.6 68.5 L93.6 118 L12 118 Z" fill="url(#spendfill)"/>
+          <path d="M12 73.4 L23.7 73.4 L35.3 70.9 L47 70.7 L58.6 70.1 L70.3 70.1 L81.9 70.1 L93.6 68.5" stroke="#7FA0FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M93.6 68.5 L175.2 55.1 L256.8 41.5 L350 26.1" stroke="#6C86D8" stroke-width="2.2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <circle cx="93.6" cy="68.5" r="4" fill="#7FA0FF" stroke="#121A2B" stroke-width="1"/>
+          <text x="89" y="57" text-anchor="end" font-size="12" font-weight="600" fill="#EAEFF8" stroke="#121A2B" stroke-width="4" stroke-linejoin="round" paint-order="stroke">112만원</text>
+
+          <circle cx="350" cy="26.1" r="3.4" fill="#6C86D8"/>
+          <text x="350" y="14" text-anchor="end" font-size="12" font-weight="600" fill="#8FA6F2">월말 예상 208만원</text>
+
+          <line x1="12" y1="118" x2="350" y2="118" stroke="#232D45" stroke-width="1"/>
+          <text x="12" y="133" text-anchor="start" font-size="11" fill="#7E8AA2">1일</text>
+          <text x="93.6" y="133" text-anchor="middle" font-size="11" font-weight="600" fill="#A5B2C9">8일 오늘</text>
+          <text x="175.2" y="133" text-anchor="middle" font-size="11" fill="#7E8AA2">15일</text>
+          <text x="256.8" y="133" text-anchor="middle" font-size="11" fill="#7E8AA2">22일</text>
+          <text x="350" y="133" text-anchor="end" font-size="11" fill="#7E8AA2">30일</text>
+        </svg>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; margin-top: 4px; padding: 0 2px;">
+        <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #A5B2C9;"><span style="width: 14px; height: 2.5px; border-radius: 2px; background: #7FA0FF;"></span>실제 누적</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #A5B2C9;"><span style="width: 14px; height: 2.5px; border-radius: 2px; background: repeating-linear-gradient(90deg, #6C86D8 0 5px, transparent 5px 9px);"></span>월말 예상</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #A5B2C9;"><span style="width: 14px; height: 2.5px; border-radius: 2px; background: repeating-linear-gradient(90deg, #4E5B76 0 4px, transparent 4px 8px);"></span>계획선</span>
+      </div>
+      <p style="margin: 8px 0 0; padding: 0 2px; font-size: 11px; line-height: 1.45; color: #8595AE; word-break: keep-all;">계획선은 한도를 일수로 나눈 속도예요. 초반에 나가는 고정비가 있으면 실제 선이 먼저 올라갈 수 있어요.</p>
+    </div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 14px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;">
+          <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">카테고리별 소비</span>
+          <span style="font-size: 12px; color: #8595AE;">112만원 / 216만원</span>
+        </div>
+        <span style="font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap;">한도 보기 &rsaquo;</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; margin-top: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px; height: 46px;">
+          <div style="width: 30px; height: 30px; border-radius: 10px; background: #8b5cf618; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">주거/관리</span>
+              <span style="font-size: 13px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">47만원<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;"> / 50만원</span></span>
+            </div>
+            <div style="position: relative; height: 6px; border-radius: 99px; background: #1E2739; margin-top: 6px; overflow: hidden;">
+              <div style="position: absolute; inset: 0 6% 0 0; border-radius: 99px; background: #8b5cf6;"></div>
+            </div>
+          </div>
+          <span style="display: inline-flex; align-items: center; justify-content: flex-end; gap: 2px; min-width: 80px; font-size: 12px; font-weight: 600; color: #8595AE; white-space: nowrap; flex-shrink: 0;">한도의 94%<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; height: 46px;">
+          <div style="width: 30px; height: 30px; border-radius: 10px; background: #f9731618; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7.5 2v20"/><path d="M19.5 2c-1.7 1-3 3.5-3 6.5 0 2 1 3.5 3 3.5v10"/></svg>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">식비</span>
+              <span style="font-size: 13px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">24만원<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;"> / 45만원</span></span>
+            </div>
+            <div style="position: relative; height: 6px; border-radius: 99px; background: #1E2739; margin-top: 6px; overflow: hidden;">
+              <div style="position: absolute; inset: 0 47% 0 0; border-radius: 99px; background: #f97316;"></div>
+            </div>
+          </div>
+          <span style="display: inline-flex; align-items: center; justify-content: flex-end; gap: 2px; min-width: 80px; font-size: 12px; font-weight: 600; color: #8595AE; white-space: nowrap; flex-shrink: 0;">한도의 53%<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; height: 46px;">
+          <div style="width: 30px; height: 30px; border-radius: 10px; background: #0d948818; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1 1 0 0 1 1.5 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/></svg>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">보험</span>
+              <span style="font-size: 13px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">12만원<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;"> / 12만원</span></span>
+            </div>
+            <div style="position: relative; height: 6px; border-radius: 99px; background: #1E2739; margin-top: 6px; overflow: hidden;">
+              <div style="position: absolute; inset: 0 0% 0 0; border-radius: 99px; background: #0d9488;"></div>
+            </div>
+          </div>
+          <span style="display: inline-flex; align-items: center; justify-content: flex-end; gap: 2px; min-width: 80px; font-size: 12px; font-weight: 600; color: #8595AE; white-space: nowrap; flex-shrink: 0;">한도의 100%<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; height: 46px;">
+          <div style="width: 30px; height: 30px; border-radius: 10px; background: #6366f118; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">통신</span>
+              <span style="font-size: 13px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">8만원<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;"> / 8만원</span></span>
+            </div>
+            <div style="position: relative; height: 6px; border-radius: 99px; background: #1E2739; margin-top: 6px; overflow: hidden;">
+              <div style="position: absolute; inset: 0 0% 0 0; border-radius: 99px; background: #6366f1;"></div>
+            </div>
+          </div>
+          <span style="display: inline-flex; align-items: center; justify-content: flex-end; gap: 2px; min-width: 80px; font-size: 12px; font-weight: 600; color: #8595AE; white-space: nowrap; flex-shrink: 0;">한도의 100%<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; height: 46px;">
+          <div style="width: 30px; height: 30px; border-radius: 10px; background: #0ea5e918; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v6M16 5v6M2 11h19.6"/><path d="M18 17h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2v-4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6c0 1 .8 2 2 2h1"/><circle cx="7" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">교통</span>
+              <span style="font-size: 13px; font-weight: 600; color: #EAEFF8; white-space: nowrap;">7만원<span style="font-size: 11.5px; font-weight: 500; color: #8595AE;"> / 12만원</span></span>
+            </div>
+            <div style="position: relative; height: 6px; border-radius: 99px; background: #1E2739; margin-top: 6px; overflow: hidden;">
+              <div style="position: absolute; inset: 0 42% 0 0; border-radius: 99px; background: #0ea5e9;"></div>
+            </div>
+          </div>
+          <span style="display: inline-flex; align-items: center; justify-content: flex-end; gap: 2px; min-width: 80px; font-size: 12px; font-weight: 600; color: #8595AE; white-space: nowrap; flex-shrink: 0;">한도의 58%<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 14px; background: #121A2B; border: 1px solid #232D45; border-radius: 16px; flex-shrink: 0;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="#EAEFF8" stroke="none"><path d="M7 4.5v15l12-7.5Z"/></svg>
+      <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">소비 <span style="white-space:nowrap">추이·절감</span> 기회</span>
+    </div>
+
+
+
+  </div>
+
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; height: 66px; padding: 8px 10px 0; background: #121A2B; border-top: 1px solid #232D45; flex-shrink: 0;"><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">홈</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v3"/><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M18 12a2 2 0 0 0 0 4h3v-4Z"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">자산</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; border-radius: 99px; background: #1B2748; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span style="font-size: 11px; font-weight: 600; color: #7FA0FF;">소비</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">목적지</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">미래</span></div></div>
+
+</div></div></div><div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-size: 14px; font-weight: 700; color: #EAEFF8;">목적지</div><div style="width: 392px; height: 196px; overflow: hidden; border-radius: 22px; border: 1px solid #232D45; background: #080C16; flex-shrink: 0;"><div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 32px; padding: 0 14px; background: #1B2748; flex-shrink: 0;"><span style="font-size: 12px; font-weight: 500; line-height: 1.35; color: #A8BCF5; white-space: nowrap;">샘플 데이터로 둘러보는 중</span><span style="display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap;">내 데이터로 시작<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span></div><div style="width: 390px; height: 992px; background: #080C16; color: #EAEFF8; display: flex; flex-direction: column; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 12px; flex-shrink: 0;"><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;"><div style="display: flex; align-items: center; gap: 4px; min-height: 36px; min-width: 0;"><h1 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #EAEFF8;">목적지</h1><span style="width: 28px; height: 28px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span></div><div style="display: flex; align-items: flex-start; gap: 0; margin-right: -4px; flex-shrink: 0;"><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10.6 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">설정</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">코칭</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position: absolute; top: 4px; right: 4px; min-width: 15px; height: 15px; border-radius: 99px; background: #E8635F; color: #121A2B; font-size: 10px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid #080C16;">1</span></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">알림</span></div></div></div><div style="display: flex; gap: 4px; background: #232D45; border-radius: 12px; padding: 3px;"><div style="flex: 1; height: 36px; border-radius: 9px; background: #2E3A54; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 600; color: #EAEFF8; box-shadow: 0 1px 2px rgba(0,0,0,.45);">내 목적지</div><div style="flex: 1; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 500; color: #8595AE;">새 목적지 설계</div></div></div>
+
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px; overflow: hidden;">
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;"><span style="font-size: 11.5px; font-weight: 600; color: #8595AE;">목적지에 매달 필요한 돈</span><span style="font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap;">매달 모으는 돈 바꿔 보기 &rsaquo;</span></div><div style="display: flex; align-items: baseline; gap: 6px;"><span style="font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: #EAEFF8;">146<span style="font-size: 15px; font-weight: 600; color: #A5B2C9;">만원</span></span><span style="font-size: 12.5px; color: #A5B2C9;">매달 필요</span></div><span style="font-size: 12px; line-height: 1.45; color: #8595AE;">매달 모을 수 있는 돈은 지난달을 마감한 뒤 계산해요</span><div style="display: flex; gap: 8px; padding: 10px 11px; background: #1A2337; border-radius: 12px;"><span style="flex-shrink: 0; margin-top: 1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span><span style="font-size: 11.5px; line-height: 1.5; color: #8595AE;">지금은 임시 계산이라 부족하거나 여유가 있다고 판단하지 않아요.</span></div><span style="font-size: 12px; line-height: 1.45; color: #8595AE;">지난달들을 마감하면 확정돼요 · <span style="font-weight: 600; color: #7FA0FF; white-space: nowrap;">6월부터 마감하기 &rsaquo;</span></span></div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 12px 14px 8px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 6px;">
+        <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">진행 중인 목적지</span>
+        <span style="font-size: 12px; font-weight: 500; color: #8595AE;">우선순위 순으로 보여요</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 11px; padding: 11px 0; border-top: 1px solid #1E2739;">
+        <div style="width: 44px; height: 44px; border-radius: 99px; background: conic-gradient(#38bdf8 0% 68%, #232D45 68% 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <div style="width: 33px; height: 33px; border-radius: 99px; background: #121A2B; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 700; color: #5CC3F5;">68<span style="font-size: 8.5px; font-weight: 600;">%</span></div>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 5px;">
+            <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">비상금 6개월</span>
+          </div>
+          <div style="font-size: 12px; color: #A5B2C9; margin-top: 2px;">1,020 / 1,500만원 · 매달 70만원</div>
+          <div style="font-size: 11.5px; line-height: 1.45; color: #8595AE; margin-top: 1px;">도착 예상 2027년 4월 · <span style="color: #E8635F;">목표일보다 약 <span style="white-space: nowrap;">1개월</span> 늦어요</span></div>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 3px; height: 32px; padding: 0 10px; border-radius: 9px; background: #12293C; color: #5CC3F5; font-size: 12.5px; font-weight: 600; flex-shrink: 0;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5CC3F5" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          적립
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 11px; padding: 11px 0; border-top: 1px solid #1E2739;">
+        <div style="width: 44px; height: 44px; border-radius: 99px; background: conic-gradient(#B79BFF 0% 42%, #232D45 42% 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <div style="width: 33px; height: 33px; border-radius: 99px; background: #121A2B; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 700; color: #B79BFF;">42<span style="font-size: 8.5px; font-weight: 600;">%</span></div>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 5px;">
+            <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">투자 계좌 5,000만원</span>
+          </div>
+          <div style="font-size: 12px; color: #A5B2C9; margin-top: 2px;">2,100 / 5,000만원 · 매달 19만원</div>
+          <div style="font-size: 11.5px; line-height: 1.45; color: #8595AE; margin-top: 1px;">도착 예상 2033년 12월 · <span style="color: #E8635F;">목표일보다 약 <span style="white-space: nowrap;">4년 3개월</span> 늦어요</span> · 수익률 연 5.0%</div>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 3px; height: 32px; padding: 0 10px; border-radius: 9px; background: #241D3D; color: #C4A9FF; font-size: 12.5px; font-weight: 600; flex-shrink: 0;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C4A9FF" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          적립
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 11px; padding: 11px 0; border-top: 1px solid #1E2739;">
+        <div style="width: 44px; height: 44px; border-radius: 99px; background: conic-gradient(#F5B544 0% 31%, #232D45 31% 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <div style="width: 33px; height: 33px; border-radius: 99px; background: #121A2B; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 700; color: #F5B544;">31<span style="font-size: 8.5px; font-weight: 600;">%</span></div>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 5px;">
+            <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">신용대출 다 갚기</span><span style="font-size: 10px; font-weight: 600; color: #F5B544; background: #2E2617; border-radius: 5px; padding: 2px 5px; white-space: nowrap;">부채 상환</span>
+          </div>
+          <div style="font-size: 12px; color: #A5B2C9; margin-top: 2px;">남은 원금 2,200만원 · 연 6.8%</div>
+          <div style="font-size: 11.5px; line-height: 1.45; color: #8595AE; margin-top: 1px;">다 갚는 달 2030년 11월 · 상환 계획대로</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 11px; padding: 11px 0; border-top: 1px solid #1E2739;">
+        <div style="width: 44px; height: 44px; border-radius: 99px; background: conic-gradient(#7FA0FF 0% 47%, #232D45 47% 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <div style="width: 33px; height: 33px; border-radius: 99px; background: #121A2B; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 700; color: #7FA0FF;">47<span style="font-size: 8.5px; font-weight: 600;">%</span></div>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 5px;">
+            <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">순자산 2억원</span><span style="font-size: 10px; font-weight: 600; color: #7FA0FF; background: #1B2748; border-radius: 5px; padding: 2px 5px; white-space: nowrap;">순자산</span>
+          </div>
+          <div style="font-size: 12px; color: #A5B2C9; margin-top: 2px;">9,350만 / 2억원 · 자산에서 자동으로 계산</div>
+          <div style="font-size: 11.5px; line-height: 1.45; color: #8595AE; margin-top: 1px;">도착 예상 2031년 1월 · 미래 탭 계산</div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E8AA2" stroke-width="2.2" stroke-linecap="round" style="flex-shrink: 0;"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 46px; border-radius: 14px; border: 1.5px dashed #4E5B76; background: rgba(255,255,255,.03); color: #7FA0FF; font-size: 14px; font-weight: 600; flex-shrink: 0;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      목적지 추가
+    </div>
+
+  </div>
+
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; height: 66px; padding: 8px 10px 0; background: #121A2B; border-top: 1px solid #232D45; flex-shrink: 0;"><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">홈</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v3"/><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M18 12a2 2 0 0 0 0 4h3v-4Z"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">자산</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">소비</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; border-radius: 99px; background: #1B2748; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></div><span style="font-size: 11px; font-weight: 600; color: #7FA0FF;">목적지</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">미래</span></div></div>
+
+</div></div></div><div style="display: flex; flex-direction: column; gap: 8px;"><div style="font-size: 14px; font-weight: 700; color: #EAEFF8;">미래</div><div style="width: 392px; height: 196px; overflow: hidden; border-radius: 22px; border: 1px solid #232D45; background: #080C16; flex-shrink: 0;"><div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 32px; padding: 0 14px; background: #1B2748; flex-shrink: 0;"><span style="font-size: 12px; font-weight: 500; line-height: 1.35; color: #A8BCF5; white-space: nowrap;">샘플 데이터로 둘러보는 중</span><span style="display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; color: #7FA0FF; white-space: nowrap;">내 데이터로 시작<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span></div><div style="width: 390px; height: 1204px; background: #080C16; color: #EAEFF8; display: flex; flex-direction: column; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 12px; flex-shrink: 0;"><div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;"><div style="display: flex; align-items: center; gap: 4px; min-height: 36px; min-width: 0;"><h1 style="margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: #EAEFF8;">미래</h1><span style="width: 28px; height: 28px; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg></span></div><div style="display: flex; align-items: flex-start; gap: 0; margin-right: -4px; flex-shrink: 0;"><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 10.6 3.09V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">설정</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">코칭</span></div><div style="width: 44px; display: flex; flex-direction: column; align-items: center;"><div style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; position: relative;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#A5B2C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span style="position: absolute; top: 4px; right: 4px; min-width: 15px; height: 15px; border-radius: 99px; background: #E8635F; color: #121A2B; font-size: 10px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid #080C16;">1</span></div><span style="font-size: 10.5px; font-weight: 500; line-height: 1.2; color: #8595AE; white-space: nowrap;">알림</span></div></div></div><div style="display: flex; gap: 4px; background: #232D45; border-radius: 12px; padding: 3px;"><div style="flex: 1; height: 36px; border-radius: 9px; background: #2E3A54; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 600; color: #EAEFF8; box-shadow: 0 1px 2px rgba(0,0,0,.45);">자산 경로</div><div style="flex: 1; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 500; color: #8595AE;">상환 계획</div></div></div>
+
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px; overflow: hidden;">
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 20px; padding: 14px 14px 13px; box-shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.7); flex-shrink: 0;">
+
+      <div style="display: flex; align-items: center; gap: 8px; padding: 0 2px;">
+        <span style="font-size: 11px; font-weight: 500; color: #8595AE; width: 52px; flex-shrink: 0;">기간</span>
+        <div style="display: flex; gap: 5px; flex: 1;">
+          <div style="flex: 1; height: 30px; border-radius: 8px; background: #1A2337; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #8595AE;">5년</div>
+          <div style="flex: 1; height: 30px; border-radius: 8px; background: #7FA0FF; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #121A2B;">10년</div>
+          <div style="flex: 1; height: 30px; border-radius: 8px; background: #1A2337; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #8595AE;">20년</div>
+          <div style="flex: 1; height: 30px; border-radius: 8px; background: #1A2337; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #8595AE;">30년</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px; padding: 0 2px;">
+        <span style="font-size: 11px; font-weight: 500; color: #8595AE; width: 52px; flex-shrink: 0;">투자 환경</span>
+        <div style="display: flex; gap: 5px; flex: 1;"><div style="flex: 1; height: 40px; border-radius: 9px; background: #1A2337; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2;"><span style="font-size: 12.5px; font-weight: 600; color: #A5B2C9;">조심스럽게</span><span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">-0.3%</span></div><div style="flex: 1; height: 40px; border-radius: 9px; background: #0F2C22; border: 1px solid #2A6B4A; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2;"><span style="font-size: 12.5px; font-weight: 600; color: #3DD489;">보통</span><span style="font-size: 11.5px; font-weight: 500; color: #3DD489;">5.0%</span></div><div style="flex: 1; height: 40px; border-radius: 9px; background: #1A2337; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2;"><span style="font-size: 12.5px; font-weight: 600; color: #A5B2C9;">좋을 때</span><span style="font-size: 11.5px; font-weight: 500; color: #8595AE;">10.5%</span></div></div>
+      </div>
+      <div style="font-size: 11.5px; line-height: 1.5; color: #8595AE; margin-top: 7px; padding: 0 2px; word-break: keep-all;">앞으로 모을 돈에만 붙는 연 수익률이에요 · 보통 <span style="white-space:nowrap">5.0%는</span> 설정의 투자 자산 기본 수익률 · <span style="font-weight: 600; color: #7FA0FF; white-space: nowrap;">바꾸기 &rsaquo;</span></div>
+
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin-top: 14px; padding: 0 2px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #8595AE;">10년 뒤 순자산</div>
+          <div style="display: flex; align-items: baseline; gap: 3px; margin-top: 3px;">
+            <span style="font-size: 13px; font-weight: 500; color: #A5B2C9;">약</span>
+            <span style="font-size: 33px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: #EAEFF8;">3.82</span>
+            <span style="font-size: 17px; font-weight: 600; color: #A5B2C9;">억원</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 1px; padding-bottom: 3px;">
+          <span style="font-size: 11px; font-weight: 500; color: #8595AE; white-space: nowrap;">지금 9,350만원 대비</span>
+          <span style="display: inline-flex; align-items: center; gap: 3px; font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: #3DD489;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3DD489" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            약 2.88억원
+          </span>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px; padding-top: 8px;">
+        <svg width="362" height="150" viewBox="0 0 362 150" fill="none" style="display: block; width: 100%; height: 150px;">
+          <defs>
+            <linearGradient id="futfill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3DD489" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#3DD489" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <line x1="10" y1="93.3" x2="352" y2="93.3" stroke="#080C16" stroke-width="1"/><line x1="10" y1="54.7" x2="352" y2="54.7" stroke="#080C16" stroke-width="1"/><line x1="10" y1="16.0" x2="352" y2="16.0" stroke="#080C16" stroke-width="1"/>
+          <text x="12" y="89.3" font-size="11" fill="#4E5B76">2억</text><text x="12" y="50.7" font-size="11" fill="#4E5B76">4억</text><text x="12" y="12.0" font-size="11" fill="#4E5B76">6억</text>
+          <path d="M10.0 113.9 L44.2 108.1 L78.4 101.9 L112.6 95.0 L146.8 87.5 L181.0 79.3 L215.2 70.5 L249.4 60.8 L283.6 50.3 L317.8 38.8 L352.0 26.2 L352.0 77.9 L317.8 81.9 L283.6 85.7 L249.4 89.5 L215.2 93.2 L181.0 96.9 L146.8 100.5 L112.6 104.0 L78.4 107.4 L44.2 110.7 L10.0 113.9 Z" fill="#B79BFF" fill-opacity="0.13"/>
+          <path d="M10.0 113.9 L44.2 109.5 L78.4 104.9 L112.6 100.0 L146.8 94.8 L181.0 89.4 L215.2 83.7 L249.4 77.7 L283.6 71.5 L317.8 65.0 L352.0 58.2 L352.0 132.0 L10.0 132.0 Z" fill="url(#futfill)"/>
+          <path d="M10.0 113.9 L44.2 109.5 L78.4 104.9 L112.6 100.0 L146.8 94.8 L181.0 89.4 L215.2 83.7 L249.4 77.7 L283.6 71.5 L317.8 65.0 L352.0 58.2" stroke="#3DD489" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="10" cy="113.9" r="3.6" fill="#3DD489"/>
+          <text x="16" y="127.9" font-size="12" font-weight="600" fill="#A5B2C9">오늘 9,350만</text>
+          <circle cx="352" cy="58.2" r="4" fill="#3DD489"/>
+          <circle cx="352" cy="58.2" r="7.5" fill="#3DD489" fill-opacity="0.16"/>
+          <line x1="10" y1="132" x2="352" y2="132" stroke="#232D45" stroke-width="1"/>
+          <text x="10.0" y="146" text-anchor="start" font-size="11" fill="#7E8AA2">2026</text><text x="78.4" y="146" text-anchor="middle" font-size="11" fill="#7E8AA2">2028</text><text x="146.8" y="146" text-anchor="middle" font-size="11" fill="#7E8AA2">2030</text><text x="215.2" y="146" text-anchor="middle" font-size="11" fill="#7E8AA2">2032</text><text x="283.6" y="146" text-anchor="middle" font-size="11" fill="#7E8AA2">2034</text><text x="352.0" y="146" text-anchor="end" font-size="11" font-weight="600" fill="#A5B2C9">2036</text>
+        </svg>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px; padding: 0 2px;">
+        <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #A5B2C9;"><span style="width: 14px; height: 2.8px; border-radius: 2px; background: #3DD489;"></span>보통 3.82억</span>
+        <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #A5B2C9;"><span style="width: 14px; height: 9px; border-radius: 3px; background: #B79BFF; opacity: .22;"></span>범위 2.8억 ~ 5.47억</span>
+      </div>
+      <p style="margin: 7px 0 0; padding: 0 2px; font-size: 11.5px; line-height: 1.45; color: #8595AE;">물가 · 세금은 빼고 계산했어요 · <span style="font-weight: 600; color: #7FA0FF;">자세히 &rsaquo;</span></p>
+    </div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 13px 14px 5px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; gap: 6px; padding-bottom: 4px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <span style="font-size: 14px; font-weight: 600; color: #EAEFF8;">다음 자산 지점</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 40px; border-top: 1px solid #1E2739;">
+        <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">1억원</span>
+        <div style="display: flex; align-items: baseline; gap: 8px;">
+          <span style="font-size: 12px; color: #8595AE;">4개월 뒤</span>
+          <span style="font-size: 13px; font-weight: 600; color: #A5B2C9; width: 84px; text-align: right; white-space: nowrap;">2027년 1월</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 40px; border-top: 1px solid #1E2739;">
+        <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">1억 5,000만원</span>
+        <div style="display: flex; align-items: baseline; gap: 8px;">
+          <span style="font-size: 12px; color: #8595AE; white-space: nowrap;">2년 5개월 뒤</span>
+          <span style="font-size: 13px; font-weight: 600; color: #A5B2C9; width: 84px; text-align: right; white-space: nowrap;">2029년 2월</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 40px; border-top: 1px solid #1E2739;">
+        <span style="font-size: 13.5px; font-weight: 600; color: #EAEFF8;">2억원</span>
+        <div style="display: flex; align-items: baseline; gap: 8px;">
+          <span style="font-size: 12px; color: #8595AE;">4년 4개월 뒤</span>
+          <span style="font-size: 13px; font-weight: 600; color: #A5B2C9; width: 84px; text-align: right; white-space: nowrap;">2031년 1월</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 11px 14px 11px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; min-height: 25px;">
+        <span style="font-size: 13px; font-weight: 600; color: #A5B2C9; white-space: nowrap;">10년 뒤 +0원</span>
+      </div>
+      <p style="margin: 7px 0 0; font-size: 13.5px; font-weight: 600; letter-spacing: -0.015em; color: #EAEFF8;">한 달에 얼마를 아끼면? 밀어서 시험해 보세요</p>
+      <div style="display: flex; align-items: center; gap: 9px; margin-top: 6px;">
+        <span style="font-size: 11px; color: #7E8AA2; white-space: nowrap; flex-shrink: 0;">0원</span>
+        <div style="position: relative; height: 20px; flex: 1; min-width: 0;">
+          <div style="position: absolute; left: 0; right: 0; top: 8px; height: 5px; border-radius: 99px; background: #232D45;"></div>
+                    <div style="position: absolute; left: 0%; top: 0; width: 20px; height: 20px; margin-left: 0; border-radius: 99px; background: #121A2B; border: 2.5px solid #7FA0FF; box-shadow: 0 2px 6px rgba(53,86,230,.24);"></div>
+        </div>
+        <span style="font-size: 11px; color: #7E8AA2; white-space: nowrap; flex-shrink: 0;">45만원</span>
+      </div>
+      <div style="font-size: 11.5px; line-height: 1.45; color: #8595AE; margin-top: 7px;">줄인 만큼은 모두 매달 모으는 돈에 더한다고 봐요.</div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 70px; padding: 12px 14px; background: #121A2B; border: 1px solid #232D45; border-radius: 18px; flex-shrink: 0;">
+      <span style="font-size: 12.5px; font-weight: 600; color: #A5B2C9;">투자 환경별 비교 · 전체 경로</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    </div>
+
+    <div style="height: 86px; padding: 13px; background: #121A2B; border: 1px solid #232D45; border-radius: 18px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 58px; padding: 0 18px;">
+        <span style="font-size: 15px; font-weight: 650; color: #EAEFF8;">계산 방법 자세히</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 8px; padding: 2px 4px 0; margin-top: 21px; flex-shrink: 0;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8595AE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+      <span style="font-size: 11px; line-height: 1.65; color: #8595AE;">앞으로의 금액은 100만원 단위로 어림해 <span style="white-space:nowrap">「약」을</span> 붙였어요. 지금 금액은 입력한 그대로예요. 지금 넣은 값으로 그린 예상이에요.</span>
+    </div>
+
+  </div>
+
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; height: 66px; padding: 8px 10px 0; background: #121A2B; border-top: 1px solid #232D45; flex-shrink: 0;"><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 22V12h6v10"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">홈</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v3"/><path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><path d="M18 12a2 2 0 0 0 0 4h3v-4Z"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">자산</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">소비</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A95AB" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></div><span style="font-size: 11px; font-weight: 500; color: #8A95AB;">목적지</span></div><div style="display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; padding-top: 4px;"><div style="width: 40px; height: 24px; border-radius: 99px; background: #1B2748; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FA0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div><span style="font-size: 11px; font-weight: 600; color: #7FA0FF;">미래</span></div></div>
+
+</div></div></div></div><div style="background: #121A2B; border: 1px solid #232D45; border-radius: 18px; padding: 10px 18px 8px;"><div style="font-size: 12px; font-weight: 700; color: #EAEFF8; padding: 2px 0 4px;">구현 메모</div><div style="display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid #1E2739;"><span style="margin-top: 1px; flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #EAEFF8; color: #121A2B; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #121A2B;">1</span><div style="font-size: 12px; line-height: 1.55; color: #A5B2C9;">샘플 모드에서는 모든 탭 머리줄 위에 띠 하나 &lsquo;<b style="font-weight: 600; color: #EAEFF8;">샘플 데이터로 둘러보는 중 · 내 데이터로 시작 ›</b>&rsquo;만 둡니다. 다른 샘플 안내 · 저장 안내는 없습니다.</div></div><div style="display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid #1E2739;"><span style="margin-top: 1px; flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #EAEFF8; color: #121A2B; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #121A2B;">2</span><div style="font-size: 12px; line-height: 1.55; color: #A5B2C9;">&lsquo;<b style="font-weight: 600; color: #EAEFF8;">내 데이터로 시작 ›</b>&rsquo;을 누르면 파란 확인 창 &lsquo;<b style="font-weight: 600; color: #EAEFF8;">샘플을 치우고 내 데이터로 시작할까요?</b>&rsquo;(상태 페이지 StorageStates D) → 월급 입력 시트가 열립니다.</div></div><div style="display: flex; gap: 10px; padding: 7px 0;"><span style="margin-top: 1px; flex-shrink: 0; width: 17px; height: 17px; border-radius: 99px; background: #EAEFF8; color: #121A2B; font-size: 10.5px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #121A2B;">3</span><div style="font-size: 12px; line-height: 1.55; color: #A5B2C9;">그림은 각 탭의 머리줄 · 세그먼트까지만 <span style="white-space:nowrap">잘랐습니다(띠의</span> 자리). 샘플 홈 전체는 HomeSampleMode 장 — 샘플은 지난달들을 마감하지 않아 월말 예상 배지 · 매달 모을 수 있는 돈이 임시 계산입니다.</div></div></div></div>
+</x-dc>
+</body>
+</html>

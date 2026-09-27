@@ -9,6 +9,8 @@
 NAVI(자산 성장 내비게이션)의 UI를 v3 디자인으로 바꿉니다. **계산 로직·저장 형식은 바꾸지 않습니다.**
 디자인은 `design/canvas/`에 **v3 아트보드 77장**(라이트 39 · 다크 38)으로 그려져 있고, 모든 수치는 실제 계산으로 검증돼 있습니다.
 
+> **2026-09-25 덧붙임(가장 최근).** 사용성 점검 140건을 앱(v5-stage1 `a724aac`)이 구현했고, 시안(캔버스 317장 · 11페이지)이 그 앱을 따라잡았습니다. **먼저 `CHANGES-2026-09-25.md`와 `SPEC-COMPONENTS.md` 맨 위 「용어표와 공통 규칙」을 읽으세요** — 판정은 사용자가 정한 선으로만(D1) · 용어표(D4) · 설정 시트 구조(D5) · 상환 계획은 미래 탭에서만(D6) · 빈 화면(D7) · 저장 알림 → 40px 띠(D10) · 금액 칸 되읽기(D11) · 글자 달린 머리줄 + `?`(D14) · 첫 실행 안내(§28). 옮겨진 확정값: 다 갚는 달 2036년 5월(앱 달 규칙 · 전 완제 2036년 4월) · 10년 뒤 약 3.82억원 · 매달 모을 수 있는 돈 90만원 · 오늘 포함 23일 · 하루 45,220원. 앱이 기준이고 시안은 그 모습입니다 — 어긋나면 이 CHANGES 의 「앱에서 고칠 것」을 먼저 보세요.
+>
 > **2026-09-22 덧붙임(2026-09-21 덧붙임을 대체).** `canvas/`는 이제 단계 구분 없이 **지금 앱의 기준** 211장 · 11페이지입니다(화면 종류별 — 홈 · 하루 시트 · 기록 · 자산 · 소비 · 목적지 · 미래 · 첫 실행 · 첫 실행 안내 · 주식 · 모달 · 설정 · 데스크톱 · 상태 · 구현 참고 · 디자인 시스템). 이 지시서의 v3 범위는 이미 구현됐고, 그 뒤의 결정은 `CHANGES-2026-09-20.md` → `CHANGES-2026-09-21.md` → **`CHANGES-2026-09-22.md`** 순서로 쌓여 있습니다. 계획 원문은 `plan/v4-stocks.md` · `plan/v5-calendar.md`(11판). v5 컴포넌트 11종은 `SPEC-COMPONENTS.md` §27. 달력이 들어가기 전의 옛 장(`Main` · `HomeScroll` · `Ledger` · `MonthlyClose` · `DesktopHome`)은 캔버스 · `screens.json` · `SPEC-SCREENS.md`에 없습니다 — 홈은 `HomeCalendarStrip`, 내역은 `LedgerV5`, 월 마감은 `MonthlyCloseV5`, 데스크톱 홈은 `DesktopHomeV5`를 보세요.
 
 
@@ -34,9 +36,9 @@ https://raw.githubusercontent.com/AJS-bit/ajs-bit.github.com/claude/navi-ui-ux-r
 |---|---|---|
 | 1 | 이 문서 | 작업 순서·제약·완료 기준 |
 | 2 | **[`SPEC-COMPONENTS.md`](SPEC-COMPONENTS.md)** | **컴포넌트 24개의 실측 CSS. 화면보다 이것을 먼저 만듭니다** |
-| 3 | **[`SPEC-SCREENS.md`](SPEC-SCREENS.md)** | **캔버스 라이트 106장의 블록 체크리스트. 조립하면서 하나씩 지웁니다** |
+| 3 | **[`SPEC-SCREENS.md`](SPEC-SCREENS.md)** | **캔버스 라이트 159장의 블록 체크리스트. 조립하면서 하나씩 지웁니다** |
 | 4 | [`DESIGN-TOKENS-v3.md`](DESIGN-TOKENS-v3.md) · [`tokens.v3.json`](tokens.v3.json) | 색·타이포·간격 값의 출처 |
-| 5 | [`screens.json`](screens.json) | 아트보드 ↔ 소스 파일 매핑 (기계 판독용 · 캔버스 211장 · `page`가 캔버스 페이지 이름) |
+| 5 | [`screens.json`](screens.json) | 아트보드 ↔ 소스 파일 매핑 (기계 판독용 · 캔버스 317장 · `page`가 캔버스 페이지 이름 · `source`가 앱 파일) |
 | 6 | [`sample-data.json`](sample-data.json) | 시안이 그리는 가상 사용자 — 개발 픽스처로 그대로 사용 |
 | 7 | [`IMPLEMENTATION-PLAN.md`](IMPLEMENTATION-PLAN.md) | 파일별 작업 내용 (4단계) |
 | 8 | [`README.md`](README.md) | 왜 이렇게 바꿨는지 — 문제 진단과 5가지 원칙 |
@@ -228,7 +230,7 @@ cd design/canvas/_tools/calc
 python3 amort.py && python3 net.py && python3 goals.py && python3 coach.py
 ```
 
-시안에 적힌 완제일·도착일·총이자는 전부 이 스크립트에서 나온 값입니다.
+시안에 적힌 다 갚는 달·도착일·총이자는 전부 이 스크립트에서 나온 값입니다(2026-09-25부터 달 이름은 앱의 규칙 — 이번 달 + n개월).
 수치를 바꿔야 하면 **스크립트를 먼저 고치고** 결과를 화면에 옮기세요.
 
 ---

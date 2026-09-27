@@ -14,8 +14,8 @@
         `font-size:19px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828 white-space:nowrap`
       - `span` **text 12px/500** — “14개 테마”
         `font-size:12px font-weight:500 color:#626D88`
-    - `span` **StatusPill** — “9/4 종가”
-      `display:inline-flex align-items:center gap:4px background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px`
+    - `span` **StatusPill** — “9월 4일 종가”
+      `display:inline-flex align-items:center gap:4px background:#F0F2F7 color:#5B6880 font-size:11.5px font-weight:600 border-radius:99px padding:4px 9px white-space:nowrap`
   - `div` **본문(스크롤 영역)**
     `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
     - `div` **Callout(info)**
@@ -112,7 +112,7 @@
           `flex:1 font-size:13.5px font-weight:600 color:#101828 white-space:nowrap`
         - `span` **text 11.5px/400** — “7”
           `font-size:11.5px color:#626D88 white-space:nowrap`
-    - `p` — “데이터 기준일 2026-09-04 종가 · 설정에서 새로 받기 기준에 맞는 종목을 보여주는 것이지 투자 권유가 아니”
+    - `p` — “데이터 기준일 2026년 9월 4일 종가 · 설정 › 주식에서 새로 받기 업종별로 묶어 보여주는 것이지 투자 권유가”
       `font-size:11px line-height:1.5 color:#626D88`
       - `br`
   - `div` **BottomNav**

@@ -2,8 +2,8 @@
 
 원본 `canvas/ImportReview.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
-- `div` **화면프레임**
-  `width:390px height:844px background:#2A3245 color:#101828 display:flex flex-direction:column`
+- `div`
+  `width:390px height:905px background:#2A3245 color:#101828 display:flex flex-direction:column`
   - `div`
     `height:40px display:flex align-items:flex-end justify-content:center`
     - `span` **text 11.5px/500** — “배경을 눌러 닫기”
@@ -19,12 +19,12 @@
       - `div`
         - `h2` **text 18px/700** — “백업 불러오기”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` — “navi-backup-2026-09-01.json · 기록 35건 적용하기 전에 무엇이 바뀌는지 먼저 확인하세요.”
+        - `p` **text 12.5px/400** — “navi-backup-2026-09-01.json · 저장하기 전에 무엇이 바뀌는지 먼저 봐요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
     - `div`
-      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
+      `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:13px`
       - `div`
         - `div`
           `display:flex align-items:baseline justify-content:space-between gap:8px`
@@ -42,13 +42,19 @@
           `display:flex align-items:baseline justify-content:space-between gap:8px`
         - `div`
           `display:flex gap:8px`
+      - `div`
+        `display:flex align-items:center justify-content:space-between min-height:40px`
+        - `span` — “백업 설정 · 상세 내역”
+          `font-size:13px font-weight:600 color:#101828`
+      - `div` **text 11.5px/400** — “가져온 기록의 카테고리 없음 표시도 함께 와요 · 확인 표시는 전체 복원에서만 돌아와요 · 이미 있는 기록은 그대로”
+        `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `padding:12px 18px background:#F4F6FB border-top:1px solid #E3E8F1`
       - `div`
         `display:flex align-items:flex-start gap:9px`
         - `span`
           `width:20px height:20px border-radius:6px background:#3556E6 display:flex align-items:center justify-content:center`
-        - `span` **text 12.5px/400** — “바뀌는 내용을 확인했습니다.”
+        - `span` **text 12.5px/400** — “데이터 성격과 적용 후 내역을 확인했어요.”
           `font-size:12.5px line-height:1.5 color:#475467`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

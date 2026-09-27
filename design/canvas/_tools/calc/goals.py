@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-"""목적지 도착 시점 계산. 만원·월 단위."""
+"""목적지 도착 시점 계산. 만원·월 단위.
+
+2026-09-26부터 옛 시안 모형(월 저축 63만원 · 명목 월이율 · 자산 전체에 가중 2.4%)의 기록으로만 남긴다 — 시안 숫자의 출처는 goal_alloc.py이고 crosscheck.py가 앱과 대조한다(인계 폴더 NUMBERS.md)."""
 def ym(k, start=(2026, 9)):
     t = start[0]*12 + (start[1]-1) + k
     return t//12, t%12+1
@@ -47,4 +49,3 @@ assets = [('전세 보증금',9500,0.0),('ETF 계좌',4890,6.5),('퇴직연금 D
 A = sum(a for _,a,_ in assets); wr = sum(a*r for _,a,r in assets)/A
 print(f'  총자산 {A:,}만원 · 가중 기대수익 연 {wr:.2f}%')
 import importlib.util, sys
-spec = importlib.util.spec_from_file_location('am', '/tmp/claude-0/-home-user-ajs-bit-github-com/8f2afc13-0278-5882-ad06-7ee97dbbe248/scratchpad/amort.py')

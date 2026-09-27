@@ -7,19 +7,21 @@
   - `div`
     `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
     - `div`
-      `display:flex align-items:center justify-content:space-between gap:8px`
+      `display:flex align-items:flex-start justify-content:space-between gap:8px`
       - `div`
-        `display:flex align-items:baseline gap:8px`
+        `display:flex align-items:center gap:4px min-height:36px`
         - `h1` **text 21px/700** — “목적지”
-          `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.2 color:#101828`
-        - `span` **text 12px/500** — “4개 진행 중 · 앞으로의 항로”
-          `font-size:12px font-weight:500 color:#626D88`
+          `font-size:21px font-weight:700 letter-spacing:-0.03em line-height:1.25 color:#101828`
+        - `span`
+          `width:28px height:28px border-radius:99px display:inline-flex align-items:center justify-content:center`
       - `div`
-        `display:flex align-items:center gap:2px`
+        `display:flex align-items:flex-start gap:0`
         - `div`
-          `width:36px height:36px border-radius:11px display:flex align-items:center justify-content:center`
+          `width:44px display:flex flex-direction:column align-items:center`
         - `div`
-          `width:36px height:36px border-radius:11px display:flex align-items:center justify-content:center position:relative`
+          `width:44px display:flex flex-direction:column align-items:center`
+        - `div`
+          `width:44px display:flex flex-direction:column align-items:center`
     - `div`
       `display:flex gap:4px background:#E3E8F1 border-radius:12px padding:3px`
       - `div` **SegmentedItem** — “내 목적지”
@@ -34,32 +36,40 @@
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:15px 16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px`
-        - `span` **text 11px/600** — “월 저축 배분”
+        - `span` **text 11px/600** — “매달 모으는 돈”
           `font-size:11px font-weight:600 letter-spacing:0.07em color:#626D88`
-        - `span` **text 12.5px/600** — “배분 조정 ›”
-          `font-size:12.5px font-weight:600 color:#3556E6`
+        - `span` **text 12.5px/600** — “매달 모으는 돈 바꿔 보기 ›”
+          `font-size:12.5px font-weight:600 color:#3556E6 white-space:nowrap`
       - `div`
         `display:flex align-items:flex-end justify-content:space-between gap:10px margin-top:7px`
         - `div`
           `display:flex align-items:baseline gap:2px`
         - `span` — “모두 도착하려면”
-          `font-size:12.5px font-weight:500 color:#626D88`
+          `font-size:12.5px font-weight:500 color:#626D88 white-space:nowrap`
+      - `div` — “월급 + 부수입 390만 − 월말 예상 소비 208만 − 대출상환 92만 =”
+        `font-size:11.5px line-height:1.5 color:#475467 margin-top:6px letter-spacing:-0.02em white-space:nowrap`
+        - `span` — “90만원”
+          `white-space:nowrap`
+      - `div` **text 11.5px/400** — “홈의 '월말 예상 여유 8만원'은 소비 목표(월급의 60%)에서 월말 예상 소비를 뺀 돈이라 이 금액과 달라요.”
+        `font-size:11.5px line-height:1.5 color:#626D88 margin-top:4px`
       - `div` **ProgressTrack**
         `position:relative height:9px border-radius:99px background:#E8ECF5 margin-top:11px`
         - `div`
-          `position:absolute inset:0 54.3% 0 0 border-radius:99px background:linear-gradient(90deg, #3556E6 0%, #7A3FE4 100%)`
+          `position:absolute inset:0 38.4% 0 0 border-radius:99px background:linear-gradient(90deg, #3556E6 0%, #7A3FE4 100%)`
       - `div` **Callout(warn)**
-        `display:flex gap:8px margin-top:11px padding:10px 11px background:#FDF1E0 border-radius:12px`
-        - `span` — “월 이 부족해요. 기한을 늦추거나 우선순위가 낮은 목적지의 배분을 줄여보세요.”
-          `font-size:12.5px line-height:1.45 color:#7A3E0A`
+        `margin-top:11px padding:10px 11px 11px background:#FDF1E0 border-radius:12px`
+        - `div`
+          `display:flex gap:8px`
+        - `div`
+          `display:flex gap:8px flex-wrap:wrap margin-top:9px`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:12px 14px 8px`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px`
         - `span` **text 14px/600** — “진행 중인 목적지”
           `font-size:14px font-weight:600 color:#101828`
-        - `span` — “우선순위 순”
-          `display:inline-flex align-items:center gap:4px font-size:12px font-weight:500 color:#5B6880`
+        - `span` **text 12px/500** — “우선순위 순으로 보여요”
+          `font-size:12px font-weight:500 color:#626D88`
       - `div`
         `display:flex align-items:center gap:11px padding:11px 0 border-top:1px solid #F3F5FA`
         - `div`
@@ -88,10 +98,8 @@
           `width:44px height:44px border-radius:99px background:conic-gradient(#3556E6 0% 47%, #E8ECF5 47% 100%) display:flex align-items:center justify-content:center`
         - `div`
           `flex:1`
-    - `div`
+    - `div` — “목적지 추가”
       `display:flex align-items:center justify-content:center gap:6px height:46px border-radius:14px border:1.5px dashed #B9C3D6 background:rgba(255,255,255,.55) color:#3556E6 font-size:14px font-weight:600`
-      - `span` — “새 목적지 설계”
-        `white-space:nowrap`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
     - `div`

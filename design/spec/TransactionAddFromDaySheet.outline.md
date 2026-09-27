@@ -3,12 +3,12 @@
 원본 `canvas/TransactionAddFromDaySheet.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:960px height:850px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:960px height:908px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
-  - `h2` **text 20px/700** — “거래 추가 — 하루 시트에서 넘어왔을 때”
+  - `h2` **text 20px/700** — “기록 추가 — 하루 시트에서 넘어왔을 때”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` **text 13px/400** — “하루 시트 아래의 링크 「저축·투자로 기록 ›」를 누르면 소비 탭의 거래 추가 창이 이 모습으로 열립니다. 왼쪽 창”
+  - `p` **text 13px/400** — “하루 시트 아래의 링크 「저축·투자로 기록 ›」를 누르면 자세한 기록 추가 창이 이 모습으로 열립니다. 왼쪽 창의 ”
     `font-size:13px line-height:1.55 color:#626D88`
   - `div`
     `display:flex gap:28px align-items:flex-start`
@@ -42,5 +42,11 @@
           `font-size:12px font-weight:700 color:#101828`
         - `div`
           `display:flex align-items:center flex-wrap:wrap gap:6px margin-top:9px`
-        - `p` **text 12px/400** — “하루 시트에는 거래 종류 · 잔액 반영 · 계좌 선택이 없어서, 저축·투자와 대출상환은 이 창에서 남깁니다. 소비율”
+        - `p` **text 12px/400** — “하루 시트에는 기록 종류 · 잔액 반영 · 계좌 선택이 없어서, 저축·투자와 대출상환은 이 창에서 남깁니다. 소비율”
+          `font-size:12px line-height:1.55 color:#626D88`
+        - `div` **text 12px/700** — “다른 입구 — 이미 적은 이체를 고칠 때”
+          `font-size:12px font-weight:700 color:#101828 margin-top:14px`
+        - `div`
+          `display:flex align-items:center flex-wrap:wrap gap:6px margin-top:9px`
+        - `p` — “하루 시트 목록의 저축·투자 · 대출상환 줄 오른쪽 ›를 누르면 같은 창이 제목 열리고, 기록 종류 · 날짜 · 금”
           `font-size:12px line-height:1.55 color:#626D88`

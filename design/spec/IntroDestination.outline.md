@@ -26,7 +26,7 @@
           `margin-top:4px`
     - `span` **text 11px/600** — “목적지”
       `display:block margin-top:30px font-size:11px font-weight:600 letter-spacing:0.07em color:#3556E6`
-    - `h1` — “비상금 · 투자 · 상환, 언제 도착할지 날짜로 알려줍니다.”
+    - `h1` — “비상금 · 투자 · 상환, 언제 도착할지 날짜로 알려 줘요.”
       `font-size:23px font-weight:700 letter-spacing:-0.03em line-height:1.4 color:#101828`
       - `br`
     - `div`

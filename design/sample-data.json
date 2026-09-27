@@ -1,5 +1,5 @@
 {
-  "_": "시안 75장이 그리고 있는 단 하나의 가상 사용자입니다. 개발 픽스처로 그대로 쓰면 화면과 숫자가 일치합니다. 단위는 원이고, 화면에서는 만원으로 반올림해 표시합니다.",
+  "_": "시안이 그리고 있는 단 하나의 가상 사용자입니다. 개발 픽스처로 그대로 쓰면 화면과 숫자가 일치합니다. 단위는 원이고, 화면에서는 만원으로 반올림해 표시합니다. 2026-09-26부터 derived 값은 앱(v5-stage1 a724aac)의 계산 코드를 이 사용자에게 그대로 돌린 값입니다 — design/canvas/_tools/calc/app_ref.cjs(앱 실행) · sample_state.cjs(이 파일 → 앱 AppState) · crosscheck.py(파이썬 계산기 대조). 표 한 장은 인계 폴더 NUMBERS.md.",
   "asOf": "2026-09-08",
   "profile": {
     "age": 28,
@@ -9,19 +9,20 @@
     "spendTargetPct": 60,
     "fixedCostMonthly": 2500000,
     "expectedReturn": 5.0,
-    "_note": "spendTargetPct는 통계가 아니라 수정 가능한 계획 시작값입니다. 0%도 유효한 값이라 미입력으로 취급하면 안 됩니다."
+    "targetBurn": 1.8,
+    "_note": "spendTargetPct는 통계가 아니라 수정 가능한 계획 시작값입니다. 0%도 유효한 값이라 미입력으로 취급하면 안 됩니다. expectedReturn = 설정의 「투자 자산 기본 수익률」(연 %) — 새로 모은 돈과 수익률을 넣지 않은 투자 자산 · 투자 목적지에 붙는다(자산 가중 평균 2.40%와 다른 값). targetBurn = 「순자산 참고선」(월 %) · 앱 처음 값 1.8(시안에 따로 그린 곳 없음)."
   },
   "month": {
     "key": "2026-09",
     "daysDone": 8,
-    "daysLeft": 22,
+    "daysLeftInclusive": 23,
     "spendSoFar": 1120000,
     "spendProjected": 2084000,
     "limitTotal": 2160000,
     "transferToSavings": 630000,
     "debtRepayment": 920000,
-    "leftover": 270000,
-    "_note": "월말 예상 소비율 = spendProjected / netSalary = 57.9% — 홈 배지 · 아래 칸 · 또래 카드 · 자산 한눈에 · 지난달 비교가 쓴다. 208만원은 반올림 표시이므로 정밀값을 그대로 쓰세요 — 2,080,000이면 57.8%가 나옵니다. 쓴 돈 비율(2026-09-24 · 홈 · 소비 탭의 큰 숫자와 게이지 · 완료 카드 6순위) = spendSoFar / netSalary = 31.1% · 목표까지 28.9%p 남음 · 순자산 대비 = spendSoFar / derived.netWorth = 1.2%. 달력 9월 1~8일 칸 합 = spendSoFar(9월 1일 1,008,000원 = 관리비 · 공과금 · 보험 · 통신 · 구독 · 장보기 등 — 월세 700,000원은 9월 8일에 적는 장면(DaySheetConfirm · RecurringPrefill)이라 여기에 없다). 저축 이체와 대출상환은 두 비율 모두에서 제외합니다."
+    "capacity": 896000,
+    "_note": "월말 예상 소비율 = spendProjected / netSalary = 57.9% — 홈 배지 · 아래 칸 · 또래 카드 · 자산 한눈에 · 지난달 비교가 쓴다. 208만원은 반올림 표시이므로 정밀값을 그대로 쓰세요 — 2,080,000이면 57.8%가 나옵니다. 쓴 돈 비율(2026-09-24 · 홈 · 소비 탭의 큰 숫자와 게이지 · 완료 카드 6순위) = spendSoFar / netSalary = 31.1% · 히어로 오른쪽 줄 = limitTotal − spendSoFar = 「소비 목표까지 104만원 남음」(D4 · home-8 — 예전 「목표까지 28.9%p 남음」) · 순자산 대비 = spendSoFar / derived.netWorth = 1.2%. 달력 9월 1~8일 칸 합 = spendSoFar(9월 1일 1,008,000원 = 관리비 · 공과금 · 보험 · 통신 · 구독 · 장보기 등 — 월세 700,000원은 9월 8일에 적는 장면(DaySheetConfirm · RecurringPrefill)이라 여기에 없다). 저축 이체와 대출상환은 두 비율 모두에서 제외합니다. daysLeftInclusive = 오늘 포함 남은 날 max(1, 30 − 8 + 1)(D3 · tasks-2 — 예전 daysLeft 22). capacity = 「매달 모을 수 있는 돈」 = totalIncome − spendProjected − debtRepayment = 896,000원(앱 naviMetrics.capacity · D4) — 예전 leftover 270,000원(390 − 208 − 63 − 92, 「저축·투자 여력 27만원」)은 앱에 없는 값이라 뺐다. transferToSavings 63만원은 기록된 이체(ETF 자동이체 30만 등)라 계산에 들지 않는다. 월말 예상 2,084,000원은 엔진이 이번 달 고정비 705,500 · 변동비 414,500과 6 · 7 · 8월 평균(고정비 732,300 · 변동비 1,278,000)으로 정확히 낸다(sample_state.cjs)."
   },
   "assets": [
     { "name": "전세 보증금",  "type": "부동산", "value": 95000000, "rate": 0.0 },
@@ -38,15 +39,17 @@
       "installmentsLeft": 9,
       "_note": "180만 ÷ 9회 = 20만원. 엔진(simulateDebt)은 다른 부채와 똑같이 연 14.5%를 월할로 적용합니다." }
   ],
-  "repayment": { "strategy": "avalanche", "extraMonthly": 150000, "extraMax": 270000 },
+  "repayment": { "strategy": "avalanche", "extraMonthly": 150000, "extraMax": 2000000,
+    "_note": "extraMax = 미래 › 상환 계획 슬라이더 끝(앱 규칙 max(200만원, 가정 금액을 10만원 단위로 올린 값)) — 예전 시안의 「월 27만원」(저축·투자 여력)은 앱에 없다." },
   "goals": [
-    { "name": "비상금 6개월",        "kind": "emergency",   "target": 15000000, "saved": 10200000, "monthly": 350000, "homeGoal": true },
-    { "name": "투자 계좌 5,000만원", "kind": "investment",  "target": 50000000, "saved": 21000000, "monthly": 280000, "annualReturn": 5.0 },
-    { "name": "신용대출 완제",       "kind": "debt-payoff", "debts": ["신용대출"], "originalPrincipal": 32000000 },
-    { "name": "순자산 2억원",        "kind": "net-worth",   "target": 200000000 }
+    { "name": "비상금 6개월",        "kind": "emergency",   "target": 15000000, "saved": 10200000, "targetDate": "2027-03-08", "priority": 1 },
+    { "name": "투자 계좌 5,000만원", "kind": "investment",  "target": 50000000, "saved": 21000000, "targetDate": "2029-09-08", "priority": 2, "annualReturn": 5.0 },
+    { "name": "신용대출 다 갚기",    "kind": "debt-payoff", "debts": ["신용대출"], "originalPrincipal": 32000000, "targetDate": "2031-03-08", "priority": 2 },
+    { "name": "순자산 2억원",        "kind": "net-worth",   "target": 200000000, "targetDate": "2058-10-08", "priority": 3 }
   ],
+  "_goalsNote": "목표일 · 우선순위는 2026-09-26에 넣은 입력입니다(앱은 목표일이 없는 목적지를 「목표일을 다시 정해 주세요」로 뺀다). 비상금 2027-03 · 투자 2029-09는 옛 calc/goals.py의 목표일 그대로(6 · 36개월). 순자산 2억원은 목표일이 있으면 앱이 필요한 돈을 배분 합계에 더하므로(navi-goals.ts) D17의 「모두 도착하려면 146만원」을 지키려고 필요액이 0이 되는 첫 날(지금 자산이 연 2.40%로만 불어나도 닿는 달 · 385개월 뒤)로 두었다 — 순자산 줄은 늦을 때만 목표일 대비를 적으므로 화면에 이 날짜는 보이지 않는다. 예전 monthly(35만 · 28만)는 앱이 나누는 값이라 derived.goals로 옮겼고, homeGoal(홈 대표)은 기본 홈에 대표 목적지 카드가 없어 뺐다(goals-14). 이름 「신용대출 완제」 → 「신용대출 다 갚기」(language-ia-16).",
   "derived": {
-    "_": "아래는 design/canvas/_tools/calc 의 스크립트가 계산한 값입니다. 구현 엔진이 같은 값을 내야 합니다.",
+    "_": "앱 v5-stage1(a724aac) 계산 코드를 이 사용자에게 돌린 값(calc/app_ref.cjs → app_ref.json)이고, crosscheck.py가 파이썬 계산기(engine_ref · goal_alloc · limits · projection)와 이 표를 함께 대조합니다. 달 이름은 앱과 같게 「이번 달 + n개월」(예전 시안은 이번 달을 1로 세어 부채 다 갚는 달이 한 달 일렀다).",
     "totalAssets": 182100000,
     "totalDebt": 88600000,
     "netWorth": 93500000,
@@ -54,18 +57,30 @@
     "debtMinimumTotal": 770000,
     "monthlyRepayment": 920000,
     "assetWeightedReturn": 2.40,
+    "capacity": 896000,
+    "limit": { "total": 2160000, "planCap": 1515995, "daysLeftInclusive": 23, "dailyWon": 45220, "remain": 1040000,
+      "_": "total = 월급 × 소비 목표 60%(D1). planCap = 월급 + 부수입 − 목적지 필요액 합 − 대출상환 = 3,900,000 − 1,464,005 − 920,000 — 참고 정보(「저축 · 상환 계획까지 지키려면 152만원 안에서 쓰면 돼요」), 판정에 쓰지 않는다. dailyWon = remain ÷ 오늘 포함 23일, 10원 단위." },
+    "hero": { "salaryRatio": 31.1, "salaryRatioProjected": 57.9, "targetLeft": 1040000, "netWorthRatio": 1.2, "netWorthRatioProjected": 2.2, "monthEndLeft": 76000 },
     "payoff": {
-      "_": "engine/finance.ts의 simulateDebt와 같은 규칙. 예산 = 모든 최소 상환의 합 + 추가분으로 고정되며, 다 갚은 부채의 최소 상환액도 계속 굴러갑니다.",
-      "avalanche": { "end": "2036-04", "months": 116, "totalInterest": 17340000,
-        "order": [["카드 할부","2027-02"],["신용대출","2030-10"],["학자금대출","2031-08"],["주택담보대출","2036-04"]] },
-      "snowball":  { "end": "2036-04", "months": 116, "totalInterest": 17640000 },
-      "minimumOnly": { "end": "2038-09", "months": 145, "totalInterest": 22480000 }
+      "_": "engine/finance.ts의 simulateDebt와 같은 규칙. 예산 = 모든 최소 상환의 합 + 추가분으로 고정되며, 다 갚은 부채의 최소 상환액도 계속 굴러갑니다. baseline = 같은 방식 · 추가 상환 0(D6 「추가 상환이 없으면 …」). minimumOnly = 예전 설정 'current'(「최소 상환만」) — 풀린 최소 상환액이 목록 순서로 굴러가 baseline과 다르다.",
+      "avalanche": { "end": "2036-05", "months": 116, "totalInterest": 17340595,
+        "order": [["카드 할부","2027-03"],["신용대출","2030-11"],["학자금대출","2031-09"],["주택담보대출","2036-05"]] },
+      "snowball":  { "end": "2036-05", "months": 116, "totalInterest": 17643493 },
+      "baseline":  { "end": "2038-10", "months": 145, "totalInterest": 22481030 },
+      "minimumOnly": { "end": "2039-03", "months": 150, "totalInterest": 26616566 }
     },
-    "goalEta": { "비상금 6개월": "2027-11", "투자 계좌 5,000만원": "2032-06",
-                 "신용대출 완제": "2030-10", "순자산 2억원": "2031-10" },
-    "allocationNeeded": 1460000,
-    "netWorthIn10y": { "conservative_1.0": 285000000, "base_2.4": 321260000, "optimistic_5.0": 402000000 },
-    "netWorthMilestones": { "100000000": "2027-02", "150000000": "2029-07", "200000000": "2031-10" }
+    "goals": { "budget": 896000, "totalRequired": 1464005, "surplus": -568005,
+      "rows": {
+        "비상금 6개월": { "required": 800000, "allocated": 701217, "arrival": "2027-04", "deadline": "목표일보다 약 1개월 늦어요" },
+        "투자 계좌 5,000만원": { "required": 664005, "allocated": 194783, "arrival": "2033-12", "deadline": "목표일보다 약 4년 3개월 늦어요" },
+        "신용대출 다 갚기": { "arrival": "2030-11", "deadline": "목표일보다 약 4개월 빨라요" },
+        "순자산 2억원": { "arrival": "2031-01", "deadline": "목표일보다 약 27년 9개월 빨라요" } } },
+    "goalEta": { "비상금 6개월": "2027-04", "투자 계좌 5,000만원": "2033-12",
+                 "신용대출 다 갚기": "2030-11", "순자산 2억원": "2031-01" },
+    "allocationNeeded": 1464005,
+    "netWorthIn10y": { "bad": 279621882, "base": 381794439, "good": 547077792,
+      "_": "투자 환경(새로 모은 돈 연 수익률) 조심스럽게 −0.3% · 보통 5.0% · 좋을 때 10.5% — 앱 projectionSavingRate(균형형). 예전 키 conservative_1.0 · base_2.4 · optimistic_5.0(3.21억)은 월 63만원 · 가중 2.4% 모형이라 뺐다." },
+    "netWorthMilestones": { "100000000": "2027-01", "150000000": "2029-02", "200000000": "2031-01" }
   },
   "peer": {
     "_": "앱에는 세부 또래 통계가 내장돼 있지 않습니다. 확인되지 않은 평균·백분위·상위 %를 만들어 보여주면 안 됩니다.",

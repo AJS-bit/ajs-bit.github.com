@@ -3,13 +3,15 @@
 원본 `canvas/CalendarCells.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1330px height:830px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1330px height:880px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “달력 칸 읽는 법”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` **text 13px/400** — “칸의 숫자는 그날 소비 합계입니다(고정비 포함 · 이체 제외). 왼쪽 달력의 번호를 가운데에서 찾으세요.”
+  - `p` — “칸의 숫자는 그날 소비 포함 · 이체 제외). 왼쪽 달력의 번호를 가운데에서 찾으세요.”
     `font-size:13px line-height:1.55 color:#626D88`
+    - `span` — “합계입니다(고정비”
+      `white-space:nowrap`
   - `div`
     `display:flex gap:28px align-items:flex-start`
     - `div`
@@ -24,12 +26,14 @@
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) margin-top:8px`
         - `div`
           `display:flex flex-direction:column border-bottom:1px solid #EFF2F8`
+        - `div` — “· ·”
+          `font-size:11.5px line-height:1.45 color:#626D88 margin-top:6px`
         - `div` **text 12.5px/400** — “9월 기록한 소비 1,120,000원”
           `font-size:12.5px line-height:1.5 color:#475467 margin-top:8px`
         - `div`
           `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:8px`
         - `div`
-          `display:flex align-items:center justify-content:space-between height:32px margin-top:6px border-top:1px solid #EFF2F8`
+          `display:flex align-items:center justify-content:space-between gap:8px min-height:32px margin-top:6px border-top:1px solid #EFF2F8`
     - `div`
       `width:490px`
       - `div` **Card(18)**
@@ -56,6 +60,16 @@
         `font-size:12px line-height:1.6 color:#626D88`
         - `b` — “8/31”
           `font-weight:600 color:#475467`
+        - `span` — “테두리(1.5px)는”
+          `white-space:nowrap`
+        - `span` — “테두리(2px)가”
+          `white-space:nowrap`
+        - `span` — “생깁니다(그림에는”
+          `white-space:nowrap`
+        - `span` — “SPEC-COMPONENTS”
+          `white-space:nowrap`
+        - `span` — “적었어요」는”
+          `white-space:nowrap`
     - `div`
       `width:362px display:flex flex-direction:column gap:22px`
       - `div`
@@ -77,5 +91,5 @@
           `display:flex align-items:center gap:12px padding:9px 0 border-bottom:1px solid #F3F5FA`
         - `div`
           `display:flex align-items:center gap:12px padding:9px 0`
-        - `div` **text 12px/400** — “상태 줄 · 기록 창 · 저장 완료 카드의 합계는 줄이지 않고 원 단위 그대로 씁니다(오늘 4건 37,000원).”
+        - `div` — “상태 줄 · 기록 창 · 저장 완료 카드의 합계는 줄이지 않고 원 단위 그대로 4건 37,000원).”
           `font-size:12px line-height:1.5 color:#626D88 border-top:1px solid #F3F5FA`

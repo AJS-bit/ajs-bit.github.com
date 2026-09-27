@@ -52,7 +52,9 @@ def simulate(debts, extra=0.0, order='avalanche', start=(2026, 9), cap_months=60
                 payoff[d.name] = m
     y, mo = start
     def ym(k):
-        t = (y * 12 + (mo - 1)) + (k - 1)
+        # 앱과 같은 달 셈(payoffMonthText = 이번 달 + k). 2026-09-26 전에는 이번 달을 1로 세어(k − 1) 한 달 이르게 적었다
+        # — 2036년 4월 → 5월. 규칙 5 「엔진이 맞다」.
+        t = (y * 12 + (mo - 1)) + k
         return t // 12, t % 12 + 1
     return {'months': m, 'interest': interest,
             'payoff': {k: ym(v) for k, v in sorted(payoff.items(), key=lambda x: x[1])},

@@ -3,7 +3,7 @@
 원본 `canvas/CalendarGridSizes.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1150px height:1670px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1150px height:1745px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “달력을 펼치면 어디서나 월 달력”
@@ -29,12 +29,14 @@
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) margin-top:8px`
         - `div`
           `display:flex flex-direction:column border-bottom:1px solid #EFF2F8`
+        - `div` — “· ·”
+          `font-size:11.5px line-height:1.45 color:#626D88 margin-top:6px`
         - `div` **text 12.5px/400** — “9월 기록한 소비 1,120,000원”
           `font-size:12.5px line-height:1.5 color:#475467 margin-top:8px`
         - `div`
-          `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:8px`
+          `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:10px`
         - `div`
-          `display:flex align-items:center justify-content:space-between height:32px margin-top:6px border-top:1px solid #EFF2F8`
+          `display:flex align-items:center justify-content:space-between gap:8px min-height:32px margin-top:6px border-top:1px solid #EFF2F8`
     - `div`
       `width:362px display:flex flex-direction:column gap:8px`
       - `div`
@@ -52,12 +54,14 @@
           `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) margin-top:10px`
         - `div`
           `display:flex flex-direction:column border-bottom:1px solid #EFF2F8`
+        - `div` — “· ·”
+          `font-size:15px line-height:1.45 color:#626D88 margin-top:6px`
         - `div` **text 16px/400** — “9월 기록한 소비 1,120,000원”
           `font-size:16px line-height:1.5 color:#475467 margin-top:8px`
         - `div`
-          `display:flex align-items:center justify-content:space-between gap:10px min-height:48px margin-top:8px`
+          `display:flex align-items:center justify-content:space-between gap:10px min-height:48px margin-top:10px`
         - `div`
-          `display:flex align-items:center justify-content:space-between height:44px margin-top:6px border-top:1px solid #EFF2F8`
+          `display:flex align-items:center justify-content:space-between gap:8px min-height:44px margin-top:6px border-top:1px solid #EFF2F8`
         - `div`
           `display:flex align-items:center justify-content:space-between height:44px margin-top:2px border-top:1px solid #EFF2F8`
     - `div`
@@ -75,6 +79,14 @@
           `font-size:15px line-height:1.45 color:#626D88 margin-top:6px`
         - `div`
           `margin-top:8px`
+        - `div` — “· ·”
+          `font-size:15px line-height:1.45 color:#626D88 margin-top:6px`
+        - `div` **text 16px/400** — “9월 기록한 소비 1,120,000원”
+          `font-size:16px line-height:1.5 color:#475467 margin-top:8px`
+        - `div`
+          `display:flex align-items:center justify-content:space-between gap:10px min-height:48px margin-top:10px`
+        - `div`
+          `display:flex align-items:center justify-content:space-between gap:8px min-height:44px margin-top:6px border-top:1px solid #EFF2F8`
         - `div`
           `display:flex align-items:center justify-content:space-between height:44px margin-top:2px border-top:1px solid #EFF2F8`
   - `div`
@@ -96,7 +108,7 @@
       - `div`
         - `div` **text 14px/700** — “좁은 폰 + 큰 글자”
           `font-size:14px font-weight:700 letter-spacing:-0.01em color:#101828`
-        - `div` **text 12px/400** — “금액 글자를 조금 줄여 71.2만도 잘리지 않아요”
+        - `div` **text 12px/400** — “금액 글자를 조금 줄여 71.2만도 잘리지 않아요 · 그림은 셋째 주까지만 잘랐어요”
           `font-size:12px line-height:1.5 color:#626D88 margin-top:2px`
       - `div` **Card(18)**
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 8px 13px`
@@ -124,14 +136,26 @@
         - `div` **text 15px/400** — “날짜를 누르면 그날 쓴 돈을 적어요”
           `font-size:15px line-height:1.45 color:#626D88 margin-top:2px`
         - `div`
-          `display:flex justify-content:space-between margin-top:10px`
+          `display:flex justify-content:space-between margin-top:8px`
+        - `div` — “· ·”
+          `font-size:15px line-height:1.45 color:#626D88 margin-top:6px`
         - `div`
           `display:flex align-items:center justify-content:space-between gap:10px min-height:48px margin-top:10px`
         - `div`
-          `display:flex align-items:center justify-content:space-between height:44px margin-top:6px border-top:1px solid #EFF2F8`
+          `display:flex align-items:center justify-content:space-between gap:8px min-height:44px margin-top:6px border-top:1px solid #EFF2F8`
   - `div`
     `margin-top:24px display:flex flex-direction:column gap:4px`
     - `div` **text 12px/600** — “구현 메모”
       `font-size:12px font-weight:600 color:#475467`
-    - `p` **text 12px/400** — “가장 좁은 폰은 화면 너비 320px, 달력 칸은 39 × 56입니다. 큰 글자에서는 칸 높이가 72가 됩니다. 좁”
+    - `p` — “가장 좁은 폰은 화면 너비 320px, 달력 칸은 39 × 56입니다. 큰 글자에서는 칸 높이가 72가 됩니다. 좁”
       `font-size:12px line-height:1.6 color:#626D88`
+      - `span` — “7등분(최대”
+        `white-space:nowrap`
+      - `span` — “「+ 오늘 쓴 돈 적기」와”
+        `white-space:nowrap`
+      - `span` — “줄(오늘”
+        `white-space:nowrap`
+      - `span` — “「+ 더 적기」)은”
+        `white-space:nowrap`
+      - `span` — “「—」”
+        `white-space:nowrap`
