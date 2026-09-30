@@ -53,7 +53,7 @@ v4 · v5 생성기는 `if __name__` 가드 없이 **import되는 순간 장을 �
 |---|---|
 | `outline.py` | 아트보드 → `design/spec/<이름>.outline.md` 블록 개요. 400줄짜리 마크업을 150줄 구조로 줄인다 |
 | `gen_spec_screens.py` | 아트보드 → `design/SPEC-SCREENS.md` 화면별 조립 체크리스트 |
-| `render_png.py` | 아트보드 → `design/preview/*.png`. 만든 앱을 같은 방식으로 캡처해 비교할 때도 쓴다 |
+| `render_png.py` | 아트보드 → PNG(기본 출력은 임시 폴더 `navi-preview/` · `--out`으로 바꿈 — 렌더는 저장소에 두지 않는다). 만든 앱을 같은 방식으로 캡처해 비교할 때도 쓴다 |
 
 ```bash
 python3 outline.py && python3 gen_spec_screens.py && python3 render_png.py

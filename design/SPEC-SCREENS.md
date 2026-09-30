@@ -12,7 +12,7 @@
 
 ## Assets — 자산 · 구성
 
-`canvas/Assets.dc.html` · 390×977 · 원본 `components/navi/asset-view.tsx` · 렌더 `preview/Assets.png`
+`canvas/Assets.dc.html` · 390×977 · 원본 `components/navi/asset-view.tsx`
 
 > 순자산이 주 지표. 스파크라인 + 구성 막대 + 계좌 행 리스트로, 2.2의 가운데 정렬 타일 5개를 대체한다.
 
@@ -31,7 +31,7 @@
 
 ## Debts — 자산 · 부채
 
-`canvas/Debts.dc.html` · 390×909 · 원본 `components/navi/asset-view.tsx` · 렌더 `preview/Debts.png`
+`canvas/Debts.dc.html` · 390×909 · 원본 `components/navi/asset-view.tsx`
 
 > 부채 4건을 잔액 순으로 세운다(주택담보 → 신용 → 학자금 → 카드). 가장 높은 금리 한 건에만 빨간 「최고 금리」 배지(카드 할부 14.5%). 요약값은 「평균 금리 연 4.4%」.
 
@@ -52,7 +52,7 @@
 
 ## Strategy — 자산 · 상환 계획(읽기 전용 요약)
 
-`canvas/Strategy.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx` · 렌더 `preview/Strategy.png`
+`canvas/Strategy.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx`
 
 > 자산 › 상환 계획 = 저장된 상환 계획의 읽기 전용 요약. 다 갚는 달 · 상환 방식 · 갚는 순서를 보여 주고, 바꾸는 곳은 미래 › 상환 계획 한 곳뿐(「상환 계획 바꾸기 ›」 · D6).
 
@@ -71,7 +71,7 @@
 
 ## Spending — 소비 · 이번 달
 
-`canvas/Spending.dc.html` · 390×957 · 원본 `components/navi/spending-view.tsx` · 렌더 `preview/Spending.png`
+`canvas/Spending.dc.html` · 390×957 · 원본 `components/navi/spending-view.tsx`
 
 > 이번 달 소비 속도. 누적 그래프는 오늘까지 실선, 월말까지 점선 예상선으로 오른쪽 빈 공간을 채운다.
 
@@ -90,7 +90,7 @@
 
 ## Limits — 소비 · 한도
 
-`canvas/Limits.dc.html` · 390×1106 · 원본 `components/navi/spending-view.tsx` · 렌더 `preview/Limits.png`
+`canvas/Limits.dc.html` · 390×1106 · 원본 `components/navi/spending-view.tsx`
 
 > 소비 목표 기준 총한도(알약 「자동 ›」/「직접 ›」 → 한도 조정) · 참고 줄(회색 · 판정 아님 · D1) · 소비 경고 · 카테고리 배분. 「배분 편집」은 「카테고리 배분」 제목과 같은 줄 오른쪽.
 
@@ -111,7 +111,7 @@
 
 ## SpendingPast — 소비 · 지난 달 (마감)
 
-`canvas/SpendingPast.dc.html` · 390×1212 · 원본 `components/navi/spending-view.tsx` · 렌더 `preview/SpendingPast.png`
+`canvas/SpendingPast.dc.html` · 390×1212 · 원본 `components/navi/spending-view.tsx`
 
 > 지난 달 월 요약. 맨 위 월 마감 카드가 그 달 상태(마감함 · 마감 전 · 마감 뒤 기록이 바뀜)를 말하고 「마감값 보기·고치기 ›」로 연다. 기록은 내역에서 고친다.
 
@@ -138,7 +138,7 @@
 
 ## Goals — 목적지 · 내 목적지
 
-`canvas/Goals.dc.html` · 390×992 · 원본 `components/navi/goals-view.tsx` · 렌더 `preview/Goals.png`
+`canvas/Goals.dc.html` · 390×992 · 원본 `components/navi/goals-view.tsx`
 
 > 목적지 목록. GoalRing + 도착 예상 시점. 배분이 모자라면 얼마가 부족한지 숫자로 말한다.
 
@@ -157,7 +157,7 @@
 
 ## GoalDesign — 목적지 · 새 목적지 설계
 
-`canvas/GoalDesign.dc.html` · 390×1231 · 원본 `components/navi/goal-tools.tsx` · 렌더 `preview/GoalDesign.png`
+`canvas/GoalDesign.dc.html` · 390×1231 · 원본 `components/navi/goal-tools.tsx`
 
 > 새 목적지를 만들 때 목표액·기간에서 월 납입액이 역산되는 화면.
 
@@ -176,7 +176,7 @@
 
 ## Future — 미래 · 자산 경로
 
-`canvas/Future.dc.html` · 390×1204 · 원본 `components/navi/future-view.tsx` · 렌더 `preview/Future.png`
+`canvas/Future.dc.html` · 390×1204 · 원본 `components/navi/future-view.tsx`
 
 > 10년 뒤 순자산 경로. 투자 환경 「조심스럽게 · 보통 · 좋을 때」는 보기 선택이라 보라가 아니다(D13). 다음 자산 지점 · 절감 가정(0원보다 클 때만 보라).
 
@@ -201,7 +201,7 @@
 
 ## Payoff — 미래 · 상환 계획
 
-`canvas/Payoff.dc.html` · 390×924 · 원본 `components/navi/future-view.tsx` · 렌더 `preview/Payoff.png`
+`canvas/Payoff.dc.html` · 390×924 · 원본 `components/navi/future-view.tsx`
 
 > 미래 › 상환 계획 — 상환 방식 · 월 추가 상환액을 바꾸는 유일한 곳(D6). 저장된 계획 + 「추가 상환이 없으면 …」 기준 줄 · 상환 방식 비교 한 줄(D15) · 다 갚는 달 · 갚는 순서 · 「상환 계획 저장」.
 
@@ -220,7 +220,7 @@
 
 ## Onboarding — 첫 실행 · 시작 방법 고르기
 
-`canvas/Onboarding.dc.html` · 390×844 · 원본 `components/navi/data-choice-screen.tsx (first-run-19 · D8 · AMEND 1)` · 렌더 `preview/Onboarding.png`
+`canvas/Onboarding.dc.html` · 390×844 · 원본 `components/navi/data-choice-screen.tsx (first-run-19 · D8 · AMEND 1)`
 
 > 첫 실행 · 시작 방법 고르기. 파란 칸 「내 데이터로 시작」(주 행동) / 흰 칸 「샘플로 둘러보기」와 저장 위치 안내만 — ‹ 뒤로 = 홈 구성(AMEND 1).
 
@@ -241,7 +241,7 @@
 
 ## ProfileDialog — 모달 · 내 수치
 
-`canvas/ProfileDialog.dc.html` · 390×1229 · 원본 `components/navi/shared.tsx` · 렌더 `preview/ProfileDialog.png`
+`canvas/ProfileDialog.dc.html` · 390×1229 · 원본 `components/navi/shared.tsx`
 
 > 설정 › 내 수치. 월급 (실수령) · 부수입(선택 사항) · 소비 목표 + 접힘 「표시 이름 · 순자산 참고선」. 월급이 홈의 분모다. 월 추가 상환액은 상환 계획에서 바꾸는 줄(D5).
 
@@ -263,7 +263,7 @@
 
 ## TransactionAdd — 모달 · 기록 추가
 
-`canvas/TransactionAdd.dc.html` · 390×844 · 원본 `components/navi/transaction-link-fields.tsx` · 렌더 `preview/TransactionAdd.png`
+`canvas/TransactionAdd.dc.html` · 390×844 · 원본 `components/navi/transaction-link-fields.tsx`
 
 > 기록 추가(자세히). 잔액 반영 토글과 계좌 연결이 여기 있다. 금액은 원 단위 · 쉼표(D11).
 
@@ -291,7 +291,7 @@
 
 ## LimitEditor — 모달 · 한도 조정
 
-`canvas/LimitEditor.dc.html` · 390×1297 · 원본 `components/navi/spending-analysis.tsx` · 렌더 `preview/LimitEditor.png`
+`canvas/LimitEditor.dc.html` · 390×1297 · 원본 `components/navi/spending-analysis.tsx`
 
 > 한도 조정. 합계가 예산을 넘는지 즉시 보여준다.
 
@@ -318,7 +318,7 @@
 
 ## AssetDialog — 모달 · 자산 추가
 
-`canvas/AssetDialog.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx` · 렌더 `preview/AssetDialog.png`
+`canvas/AssetDialog.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx`
 
 > 자산 추가. 이름과 평가액만 필수.
 
@@ -343,7 +343,7 @@
 
 ## DebtDialog — 모달 · 부채 수정
 
-`canvas/DebtDialog.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx` · 렌더 `preview/DebtDialog.png`
+`canvas/DebtDialog.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx`
 
 > 부채 수정. 금리·최소상환액이 상환 시뮬레이션의 입력이다.
 
@@ -372,7 +372,7 @@
 
 ## GoalDialog — 모달 · 목적지 추가
 
-`canvas/GoalDialog.dc.html` · 390×844 · 원본 `components/navi/goals-view.tsx` · 렌더 `preview/GoalDialog.png`
+`canvas/GoalDialog.dc.html` · 390×844 · 원본 `components/navi/goals-view.tsx`
 
 > 목적지 추가. 유형에 따라 입력 필드가 바뀐다.
 
@@ -401,7 +401,7 @@
 
 ## RecurringDialog — 모달 · 반복 기록
 
-`canvas/RecurringDialog.dc.html` · 390×844 · 원본 `components/navi/spending-view.tsx` · 렌더 `preview/RecurringDialog.png`
+`canvas/RecurringDialog.dc.html` · 390×844 · 원본 `components/navi/spending-view.tsx`
 
 > 반복 기록. 등록된 규칙 목록(켬/꺼 둠) + 새 규칙. 기존 반복 규칙 형식을 바꾸지 않는다.
 
@@ -422,7 +422,7 @@
 
 ## GoalContribute — 모달 · 적립
 
-`canvas/GoalContribute.dc.html` · 390×892 · 원본 `components/navi/goals-view.tsx` · 렌더 `preview/GoalContribute.png`
+`canvas/GoalContribute.dc.html` · 390×892 · 원본 `components/navi/goals-view.tsx`
 
 > 목적지에 적립액을 더한다. 시뮬레이션이 아니라 기록이다.
 
@@ -448,7 +448,7 @@
 
 ## ImportReview — 모달 · 백업 불러오기
 
-`canvas/ImportReview.dc.html` · 390×905 · 원본 `components/navi/import-review.tsx` · 렌더 `preview/ImportReview.png`
+`canvas/ImportReview.dc.html` · 390×905 · 원본 `components/navi/import-review.tsx`
 
 > 백업 불러오기 검토. 「기존에 추가」 / 「전체 교체」 · 불러올 항목 건수(새로 추가 · 이미 있음 · 값이 다름 · 기존 유지) · 지금 → 적용 후를 보여 준 뒤 확인받는다.
 
@@ -476,7 +476,7 @@
 
 ## CoachPanel — 모달 · 코칭
 
-`canvas/CoachPanel.dc.html` · 390×942 · 원본 `components/navi/coach-panel.tsx` · 렌더 `preview/CoachPanel.png`
+`canvas/CoachPanel.dc.html` · 390×942 · 원본 `components/navi/coach-panel.tsx`
 
 > 코칭. 저장된 기록을 보고 중요한 순서로 안내를 보여 준다(번호 · 링크 하나씩) + 카테고리 절감 가정.
 
@@ -500,7 +500,7 @@
 
 ## CoachEmpty — 모달 · 코칭 기록 없음
 
-`canvas/CoachEmpty.dc.html` · 390×844 · 원본 `components/navi/coach-panel.tsx` · 렌더 `preview/CoachEmpty.png`
+`canvas/CoachEmpty.dc.html` · 390×844 · 원본 `components/navi/coach-panel.tsx`
 
 > 코칭 기록이 없을 때. 0건을 성과처럼 보이게 하지 않는다.
 
@@ -525,7 +525,7 @@
 
 ## AlertsPanel — 모달 · 알림 (중요 1건)
 
-`canvas/AlertsPanel.dc.html` · 390×844 · 원본 `components/navi/coach-panel.tsx` · 렌더 `preview/AlertsPanel.png`
+`canvas/AlertsPanel.dc.html` · 390×844 · 원본 `components/navi/coach-panel.tsx`
 
 > 알림 목록. 중요 · 참고로 묶고, 머리줄 종 배지 = 중요 수. 읽어도 기록은 바뀌지 않는다.
 
@@ -548,7 +548,7 @@
 
 ## AlertsEmpty — 모달 · 알림 0건
 
-`canvas/AlertsEmpty.dc.html` · 390×844 · 원본 `components/navi/coach-panel.tsx` · 렌더 `preview/AlertsEmpty.png`
+`canvas/AlertsEmpty.dc.html` · 390×844 · 원본 `components/navi/coach-panel.tsx`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`
@@ -569,7 +569,7 @@
 
 ## PeerDialog — 모달 · 또래 기준 등록
 
-`canvas/PeerDialog.dc.html` · 390×844 · 원본 `components/navi/peer-card.tsx` · 렌더 `preview/PeerDialog.png`
+`canvas/PeerDialog.dc.html` · 390×844 · 원본 `components/navi/peer-card.tsx`
 
 > 또래 기준 등록. 나이대는 초반(0~3)/중반(4~6)/후반(7~9)으로만 나눈다.
 
@@ -600,7 +600,7 @@
 
 ## StorageStates — 상태 · 저장소 로딩·복구 · 샘플에서 내 데이터로
 
-`canvas/StorageStates.dc.html` · 390×2779 · 원본 `app/page.tsx` · 렌더 `preview/StorageStates.png`
+`canvas/StorageStates.dc.html` · 390×2779 · 원본 `app/page.tsx`
 
 > 저장소 로딩·복구 상태 모음. 로딩과 "데이터 없음"은 다른 화면이다.
 
@@ -645,7 +645,7 @@
 
 ## EmptyStates — 참고 · 미입력 7종 · 화면마다의 빈 카드
 
-`canvas/EmptyStates.dc.html` · 2002×2353 · 원본 `app/page.tsx` · 렌더 `preview/EmptyStates.png`
+`canvas/EmptyStates.dc.html` · 2002×2353 · 원본 `app/page.tsx`
 
 > 미입력 일곱 가지와 화면마다의 빈 카드. **미입력을 0원이나 좋은 성과로 표시하지 않는다**는 규칙이 그림으로 있는 시트.
 
@@ -660,7 +660,7 @@
 
 ## PeerStates — 상태 · 또래 카드 6종
 
-`canvas/PeerStates.dc.html` · 390×2972 · 원본 `components/navi/peer-card.tsx` · 렌더 `preview/PeerStates.png`
+`canvas/PeerStates.dc.html` · 390×2972 · 원본 `components/navi/peer-card.tsx`
 
 > 또래 카드 6종. 통계가 없으면 없다고 말한다. 평균·백분위·상위 %를 지어내지 않는다.
 
@@ -701,7 +701,7 @@
 
 ## GoalTypes — 상태 · 목적지 유형 5종
 
-`canvas/GoalTypes.dc.html` · 390×2170 · 원본 `components/navi/goals-view.tsx` · 렌더 `preview/GoalTypes.png`
+`canvas/GoalTypes.dc.html` · 390×2170 · 원본 `components/navi/goals-view.tsx`
 
 > 목적지 유형 5종의 카드 변형.
 
@@ -730,7 +730,7 @@
 
 ## ModalErrors — 상태 · 모달 오류·저장 7종
 
-`canvas/ModalErrors.dc.html` · 390×3290 · 원본 `모달 공통 (폼 검증·저장 경로)` · 렌더 `preview/ModalErrors.png`
+`canvas/ModalErrors.dc.html` · 390×3290 · 원본 `모달 공통 (폼 검증·저장 경로)`
 
 > 모달 오류·저장 7종. 각 오류의 문구와 위치가 정해져 있다.
 
@@ -767,7 +767,7 @@
 
 ## Confirmations — 상태 · 삭제·초기화·확인 창 7종
 
-`canvas/Confirmations.dc.html` · 390×2265 · 원본 `components/ui/alert-dialog.tsx 사용처` · 렌더 `preview/Confirmations.png`
+`canvas/Confirmations.dc.html` · 390×2265 · 원본 `components/ui/alert-dialog.tsx 사용처`
 
 > 삭제·초기화·확인 창 7종. 되돌릴 수 없는 동작은 무엇이 사라지는지 말한다.
 
@@ -808,7 +808,7 @@
 
 ## DesktopLedger — 데스크톱 · 소비 내역
 
-`canvas/DesktopLedger.dc.html` · 1440×976 · 원본 `components/navi/spending-view.tsx` · 렌더 `preview/DesktopLedger.png`
+`canvas/DesktopLedger.dc.html` · 1440×976 · 원본 `components/navi/spending-view.tsx`
 
 > 데스크톱 내역. 표 형태(카테고리 · 제목 · 연결 · 금액). 소비율 제외 행은 회색 금액(− 없음)과 「소비율 제외」 배지로 구분한다. 오른쪽은 요약 카드 넷.
 
@@ -829,7 +829,7 @@
 
 ## Tokens — 토큰 · 색 · 타이포 · 간격
 
-`canvas/Tokens.dc.html` · 1200×2273 · 원본 `app/globals.css · lib/engine/constants.ts` · 렌더 `preview/Tokens.png`
+`canvas/Tokens.dc.html` · 1200×2273 · 원본 `app/globals.css · lib/engine/constants.ts`
 
 > 토큰 시트. 구현이 아니라 참조용.
 
@@ -844,7 +844,7 @@
 
 ## Components — 컴포넌트 · 상태
 
-`canvas/Components.dc.html` · 1200×4773 · 원본 `components/navi/shared.tsx · components/ui/button.tsx` · 렌더 `preview/Components.png`
+`canvas/Components.dc.html` · 1200×4773 · 원본 `components/navi/shared.tsx · components/ui/button.tsx`
 
 > 컴포넌트·상태 시트. SPEC-COMPONENTS.md의 그림판.
 
@@ -860,7 +860,7 @@
 
 ## IntroPosition — 첫 실행 · 소개 1 현재 위치
 
-`canvas/IntroPosition.dc.html` · 390×844 · 원본 `components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)` · 렌더 `preview/IntroPosition.png`
+`canvas/IntroPosition.dc.html` · 390×844 · 원본 `components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)`
 
 - [ ] **div** — “소개 1 / 3”
       `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
@@ -879,7 +879,7 @@
 
 ## IntroRoute — 첫 실행 · 소개 2 항로
 
-`canvas/IntroRoute.dc.html` · 390×844 · 원본 `components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)` · 렌더 `preview/IntroRoute.png`
+`canvas/IntroRoute.dc.html` · 390×844 · 원본 `components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)`
 
 - [ ] **div** — “소개 2 / 3”
       `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
@@ -896,7 +896,7 @@
 
 ## IntroDestination — 첫 실행 · 소개 3 목적지
 
-`canvas/IntroDestination.dc.html` · 390×844 · 원본 `components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)` · 렌더 `preview/IntroDestination.png`
+`canvas/IntroDestination.dc.html` · 390×844 · 원본 `components/navi/intro-flow.tsx (first-run-13 · plan/v4-stocks.md §3)`
 
 - [ ] **div** — “소개 3 / 3”
       `flex:1 min-height:0 display:flex flex-direction:column padding:0 20px`
@@ -913,7 +913,7 @@
 
 ## HomeSetup — 첫 실행 · 홈 구성
 
-`canvas/HomeSetup.dc.html` · 390×844 · 원본 `components/navi/home-layout-editor.tsx (AMEND 1 · first-run-12/14/15/16 · plan/v4-stocks.md §3)` · 렌더 `preview/HomeSetup.png`
+`canvas/HomeSetup.dc.html` · 390×844 · 원본 `components/navi/home-layout-editor.tsx (AMEND 1 · first-run-12/14/15/16 · plan/v4-stocks.md §3)`
 
 - [ ] **div** — “홈 구성”
       `padding:0 20px`
@@ -926,7 +926,7 @@
 
 ## HomeConfigured — 홈 · 첫 실행 뒤 (내 데이터 · 카드 3개)
 
-`canvas/HomeConfigured.dc.html` · 390×1178 · 원본 `app/page.tsx · components/navi/start-checklist.tsx · home-hero.tsx (first-run-5 · first-run-14 · D7 · D9)` · 렌더 `preview/HomeConfigured.png`
+`canvas/HomeConfigured.dc.html` · 390×1178 · 원본 `app/page.tsx · components/navi/start-checklist.tsx · home-hero.tsx (first-run-5 · first-run-14 · D7 · D9)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -947,7 +947,7 @@
 
 ## DestGoals — 목적지 · 내 목적지 (5탭)
 
-`canvas/DestGoals.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/DestGoals.png`
+`canvas/DestGoals.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -964,7 +964,7 @@
 
 ## DestFuture — 목적지 · 자산 경로 (5탭)
 
-`canvas/DestFuture.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/DestFuture.png`
+`canvas/DestFuture.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -987,7 +987,7 @@
 
 ## HomeStocksOff — 홈 · 주식 꺼짐 (4탭)
 
-`canvas/HomeStocksOff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksOff.png`
+`canvas/HomeStocksOff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **본문(스크롤 영역)** — “이번 달 소비”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px justify-content:flex-end padding:0 14px 14px`
@@ -1008,7 +1008,7 @@
 
 ## StocksMine — 주식 · 내 종목 (계획 · 3단계)
 
-`canvas/StocksMine.dc.html` · 390×912 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StocksMine.png`
+`canvas/StocksMine.dc.html` · 390×912 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “주식”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1025,7 +1025,7 @@
 
 ## HoldingAdd — 모달 · 보유 추가
 
-`canvas/HoldingAdd.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HoldingAdd.png`
+`canvas/HoldingAdd.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:60px display:flex align-items:flex-end justify-content:center`
@@ -1054,7 +1054,7 @@
 
 ## StocksEmpty — 주식 · 빈 상태
 
-`canvas/StocksEmpty.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StocksEmpty.png`
+`canvas/StocksEmpty.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “주식”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1067,7 +1067,7 @@
 
 ## HomeStocksCard — 홈 · 주식 요약 카드 (계획 · 3단계 뒤 · 앱에는 아직 없음)
 
-`canvas/HomeStocksCard.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/HomeStocksCard.png`
+`canvas/HomeStocksCard.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **본문(스크롤 영역)** — “이번 달 소비”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px justify-content:flex-end padding:0 14px 14px`
@@ -1088,7 +1088,7 @@
 
 ## StocksHome — 주식 · 둘러보기
 
-`canvas/StocksHome.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StocksHome.png`
+`canvas/StocksHome.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “주식”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1109,7 +1109,7 @@
 
 ## StockListGrowth — 주식 · 성장주 목록
 
-`canvas/StockListGrowth.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockListGrowth.png`
+`canvas/StockListGrowth.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “성장주”
       `display:flex align-items:center gap:6px padding:12px 12px 12px`
@@ -1126,7 +1126,7 @@
 
 ## StockListDividend — 주식 · 배당주 목록
 
-`canvas/StockListDividend.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockListDividend.png`
+`canvas/StockListDividend.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “배당주”
       `display:flex align-items:center gap:6px padding:12px 12px 12px`
@@ -1143,7 +1143,7 @@
 
 ## StockDetail — 주식 · 종목 상세
 
-`canvas/StockDetail.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockDetail.png`
+`canvas/StockDetail.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “삼성전자”
       `display:flex align-items:center gap:6px padding:12px 12px 12px`
@@ -1162,7 +1162,7 @@
 
 ## StockThemes — 주식 · 테마
 
-`canvas/StockThemes.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockThemes.png`
+`canvas/StockThemes.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “테마”
       `display:flex align-items:center gap:6px padding:12px 12px 12px`
@@ -1179,7 +1179,7 @@
 
 ## StockStates — 참고 · 주식 탭 특수한 상황 8가지
 
-`canvas/StockStates.dc.html` · 1180×975 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockStates.png`
+`canvas/StockStates.dc.html` · 1180×975 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1192,7 +1192,7 @@
 
 ## StockSettings — 모달 · 설정 › 주식
 
-`canvas/StockSettings.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/StockSettings.png`
+`canvas/StockSettings.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:60px display:flex align-items:flex-end justify-content:center`
@@ -1212,7 +1212,7 @@
 
 ## SnapshotUpdate — 참고 · 종목 데이터 새로 받기
 
-`canvas/SnapshotUpdate.dc.html` · 1180×750 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5` · 렌더 `preview/SnapshotUpdate.png`
+`canvas/SnapshotUpdate.dc.html` · 1180×750 · 원본 `v4 미구현 · plan/v4-stocks.md §4·§5`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1225,7 +1225,7 @@
 
 ## DaySheet — 하루 시트 · 오늘 (키보드 열림)
 
-`canvas/DaySheet.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4)` · 렌더 `preview/DaySheet.png`
+`canvas/DaySheet.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4)`
 
 - [ ] **div**
       `height:30px`
@@ -1236,7 +1236,7 @@
 
 ## DaySheetList — 하루 시트 · 기록 있는 과거 날 (목록 우선)
 
-`canvas/DaySheetList.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4)` · 렌더 `preview/DaySheetList.png`
+`canvas/DaySheetList.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4)`
 
 - [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `flex:1 min-height:0 display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
@@ -1247,7 +1247,7 @@
 
 ## DaySheetEdit — 하루 시트 · 수정 모드
 
-`canvas/DaySheetEdit.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-15)` · 렌더 `preview/DaySheetEdit.png`
+`canvas/DaySheetEdit.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-15)`
 
 - [ ] **div**
       `height:30px`
@@ -1258,7 +1258,7 @@
 
 ## DoneCard — 홈 · 저장 뒤 완료 카드
 
-`canvas/DoneCard.dc.html` · 390×844 · 원본 `components/navi/done-card.tsx (plan/v5-calendar.md §4-4 · record-6 · record-20)` · 렌더 `preview/DoneCard.png`
+`canvas/DoneCard.dc.html` · 390×844 · 원본 `components/navi/done-card.tsx (plan/v5-calendar.md §4-4 · record-6 · record-20)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1281,7 +1281,7 @@
 
 ## DaySheetConfirm — 참고 · 저장을 한 번 더 물어보는 경우
 
-`canvas/DaySheetConfirm.dc.html` · 1200×1221 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-3 · record-5)` · 렌더 `preview/DaySheetConfirm.png`
+`canvas/DaySheetConfirm.dc.html` · 1200×1221 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4 · record-3 · record-5)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1296,7 +1296,7 @@
 
 ## ClassifySheet — 카테고리 고르기 시트
 
-`canvas/ClassifySheet.dc.html` · 390×844 · 원본 `components/navi/classify-sheet.tsx (plan/v5-calendar.md §5-4 · spending-3)` · 렌더 `preview/ClassifySheet.png`
+`canvas/ClassifySheet.dc.html` · 390×844 · 원본 `components/navi/classify-sheet.tsx (plan/v5-calendar.md §5-4 · spending-3)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `flex:1 min-height:0 display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
@@ -1307,7 +1307,7 @@
 
 ## HeroInsufficient — 홈 · 히어로 이력 부족
 
-`canvas/HeroInsufficient.dc.html` · 390×844 · 원본 `components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · D9)` · 렌더 `preview/HeroInsufficient.png`
+`canvas/HeroInsufficient.dc.html` · 390×844 · 원본 `components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · D9)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1326,7 +1326,7 @@
 
 ## DaySheet360 — 하루 시트 · 360 × 640 작은 폰
 
-`canvas/DaySheet360.dc.html` · 360×640 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4)` · 렌더 `preview/DaySheet360.png`
+`canvas/DaySheet360.dc.html` · 360×640 · 원본 `components/navi/day-sheet.tsx (plan/v5-calendar.md §4)`
 
 - [ ] **div**
       `height:30px`
@@ -1335,7 +1335,7 @@
 
 ## HeroFootnotes — 참고 · 홈 맨 위 카드의 안내 줄
 
-`canvas/HeroFootnotes.dc.html` · 1200×800 · 원본 `components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · home-8)` · 렌더 `preview/HeroFootnotes.png`
+`canvas/HeroFootnotes.dc.html` · 1200×800 · 원본 `components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · home-8)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1350,7 +1350,7 @@
 
 ## HomeCalendarStrip — 홈 · 달력 접힘 (7일 줄)
 
-`canvas/HomeCalendarStrip.dc.html` · 390×844 · 원본 `components/navi/calendar-card.tsx · home-hero.tsx (plan/v5-calendar.md §3)` · 렌더 `preview/HomeCalendarStrip.png`
+`canvas/HomeCalendarStrip.dc.html` · 390×844 · 원본 `components/navi/calendar-card.tsx · home-hero.tsx (plan/v5-calendar.md §3)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1373,7 +1373,7 @@
 
 ## HomeCalendar — 홈 · 달력 펼침 (월 달력)
 
-`canvas/HomeCalendar.dc.html` · 390×844 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3)` · 렌더 `preview/HomeCalendar.png`
+`canvas/HomeCalendar.dc.html` · 390×844 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3)`
 
 - [ ] **본문(스크롤 영역)** — “2026년 9월”
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
@@ -1390,7 +1390,7 @@
 
 ## HomeCalendar360 — 홈 · 달력 펼침 · 360px (월 달력 그대로)
 
-`canvas/HomeCalendar360.dc.html` · 360×844 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3)` · 렌더 `preview/HomeCalendar360.png`
+`canvas/HomeCalendar360.dc.html` · 360×844 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3)`
 
 - [ ] **본문(스크롤 영역)** — “2026년 9월”
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
@@ -1407,7 +1407,7 @@
 
 ## HomeCalendarPrev — 홈 · 달력 펼침 · ‹ 지난달 8월 보기
 
-`canvas/HomeCalendarPrev.dc.html` · 390×844 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-18)` · 렌더 `preview/HomeCalendarPrev.png`
+`canvas/HomeCalendarPrev.dc.html` · 390×844 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-18)`
 
 - [ ] **본문(스크롤 영역)** — “2026년 8월”
       `flex:1 min-height:0 display:flex flex-direction:column gap:9px padding:0 14px`
@@ -1424,7 +1424,7 @@
 
 ## CalendarCells — 참고 · 달력 칸 읽는 법
 
-`canvas/CalendarCells.dc.html` · 1330×880 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · record-11)` · 렌더 `preview/CalendarCells.png`
+`canvas/CalendarCells.dc.html` · 1330×880 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · record-11)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1437,7 +1437,7 @@
 
 ## CalendarGridSizes — 참고 · 달력을 펼치면 어디서나 월 달력
 
-`canvas/CalendarGridSizes.dc.html` · 1150×1745 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-17)` · 렌더 `preview/CalendarGridSizes.png`
+`canvas/CalendarGridSizes.dc.html` · 1150×1745 · 원본 `components/navi/calendar-card.tsx (plan/v5-calendar.md §3 · home-17)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1454,7 +1454,7 @@
 
 ## DesktopHomeV5 — 데스크톱 · 홈
 
-`canvas/DesktopHomeV5.dc.html` · 1440×1273 · 원본 `v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)` · 렌더 `preview/DesktopHomeV5.png`
+`canvas/DesktopHomeV5.dc.html` · 1440×1273 · 원본 `v5 · 데스크톱 달력 자리(2026-09-21 결정 · plan/v5-calendar.md §10 10판 메모)`
 
 - [ ] **div** — “NAVI”
       `width:232px background:#FFFFFF display:flex flex-direction:column padding:22px 16px 18px`
@@ -1467,7 +1467,7 @@
 
 ## HomeSetupStocksOn — 첫 실행 · 홈 구성 · 주식 알림 켬
 
-`canvas/HomeSetupStocksOn.dc.html` · 390×844 · 원본 `components/navi/home-layout-editor.tsx (AMEND 1 · first-run-16 · plan/v4-stocks.md §3)` · 렌더 `preview/HomeSetupStocksOn.png`
+`canvas/HomeSetupStocksOn.dc.html` · 390×844 · 원본 `components/navi/home-layout-editor.tsx (AMEND 1 · first-run-16 · plan/v4-stocks.md §3)`
 
 - [ ] **div** — “홈 구성”
       `padding:0 20px`
@@ -1480,7 +1480,7 @@
 
 ## SettingsHomeEntry — 설정
 
-`canvas/SettingsHomeEntry.dc.html` · 390×844 · 원본 `components/navi/settings-sheet.tsx (D5 · home-9)` · 렌더 `preview/SettingsHomeEntry.png`
+`canvas/SettingsHomeEntry.dc.html` · 390×844 · 원본 `components/navi/settings-sheet.tsx (D5 · home-9)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:60px display:flex align-items:flex-end justify-content:center`
@@ -1504,7 +1504,7 @@
 
 ## HomeLayoutEdit — 설정 › 홈 구성 (처음 실행 뒤에 다시 고칠 때)
 
-`canvas/HomeLayoutEdit.dc.html` · 390×844 · 원본 `components/navi/home-layout-editor.tsx (first-run-15 · plan/v5-calendar.md §12-2)` · 렌더 `preview/HomeLayoutEdit.png`
+`canvas/HomeLayoutEdit.dc.html` · 390×844 · 원본 `components/navi/home-layout-editor.tsx (first-run-15 · plan/v5-calendar.md §12-2)`
 
 - [ ] **div**
       `position:absolute left:0 right:0 bottom:0 height:12px background:#FFFFFF border-top:1px solid #E3E8F1`
@@ -1515,7 +1515,7 @@
 
 ## DestPayoff — 목적지 · 상환 계획 (5탭)
 
-`canvas/DestPayoff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4` · 렌더 `preview/DestPayoff.png`
+`canvas/DestPayoff.dc.html` · 390×844 · 원본 `v4 미구현 · plan/v4-stocks.md §4`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1532,7 +1532,7 @@
 
 ## DaySheetScrolled — 하루 시트 · 키보드를 내린 모습
 
-`canvas/DaySheetScrolled.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §4` · 렌더 `preview/DaySheetScrolled.png`
+`canvas/DaySheetScrolled.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §4`
 
 - [ ] **div**
       `height:30px`
@@ -1541,7 +1541,7 @@
 
 ## DaySheetNoSpend — 하루 시트 · 소비 0건인 날 (오늘은 안 썼어요)
 
-`canvas/DaySheetNoSpend.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetNoSpend.png`
+`canvas/DaySheetNoSpend.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §4 · §8`
 
 - [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `flex:1 min-height:0 display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
@@ -1552,7 +1552,7 @@
 
 ## ReviewListSheet — 확인할 내용 목록 시트
 
-`canvas/ReviewListSheet.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §3-3` · 렌더 `preview/ReviewListSheet.png`
+`canvas/ReviewListSheet.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §3-3`
 
 - [ ] **div** — “시안 주석 · 앱에는 보이지 않아요”
       `flex:1 min-height:0 display:flex flex-direction:column justify-content:center`
@@ -1565,7 +1565,7 @@
 
 ## HomeDefaultScroll — 홈 · 기본 카드 4개 전체 스크롤
 
-`canvas/HomeDefaultScroll.dc.html` · 390×1241 · 원본 `v5 · plan/v5-calendar.md §3-1 · §10 2단계` · 렌더 `preview/HomeDefaultScroll.png`
+`canvas/HomeDefaultScroll.dc.html` · 390×1241 · 원본 `v5 · plan/v5-calendar.md §3-1 · §10 2단계`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1588,7 +1588,7 @@
 
 ## CalendarStatusLines — 참고 · 달력 아래 한 줄이 바뀌는 경우
 
-`canvas/CalendarStatusLines.dc.html` · 1200×2629 · 원본 `v5 · plan/v5-calendar.md §3-3` · 렌더 `preview/CalendarStatusLines.png`
+`canvas/CalendarStatusLines.dc.html` · 1200×2629 · 원본 `v5 · plan/v5-calendar.md §3-3`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1601,7 +1601,7 @@
 
 ## DaySheetStates — 참고 · 기록 창의 글이 바뀌는 경우
 
-`canvas/DaySheetStates.dc.html` · 1210×1919 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetStates.png`
+`canvas/DaySheetStates.dc.html` · 1210×1919 · 원본 `v5 · plan/v5-calendar.md §4 · §8`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1616,7 +1616,7 @@
 
 ## DaySheetNoSpendStates — 참고 · 안 쓴 날을 표시하는 경우
 
-`canvas/DaySheetNoSpendStates.dc.html` · 1200×1252 · 원본 `v5 · plan/v5-calendar.md §4 · §8` · 렌더 `preview/DaySheetNoSpendStates.png`
+`canvas/DaySheetNoSpendStates.dc.html` · 1200×1252 · 원본 `v5 · plan/v5-calendar.md §4 · §8`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1631,7 +1631,7 @@
 
 ## DoneCardStates — 참고 · 저장 완료 카드의 경우들
 
-`canvas/DoneCardStates.dc.html` · 1200×1534 · 원본 `v5 · plan/v5-calendar.md §4-4` · 렌더 `preview/DoneCardStates.png`
+`canvas/DoneCardStates.dc.html` · 1200×1534 · 원본 `v5 · plan/v5-calendar.md §4-4`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1644,7 +1644,7 @@
 
 ## LedgerV5 — 소비 · 내역 (카테고리 없음 칩 · 날짜별 합계)
 
-`canvas/LedgerV5.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §9 · components/navi/spending-tab.tsx` · 렌더 `preview/LedgerV5.png`
+`canvas/LedgerV5.dc.html` · 390×844 · 원본 `v5 · plan/v5-calendar.md §9 · components/navi/spending-tab.tsx`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1661,7 +1661,7 @@
 
 ## MonthlyCloseV5 — 모달 · 8월 첫 마감 (카테고리 없음 안내)
 
-`canvas/MonthlyCloseV5.dc.html` · 390×1099 · 원본 `v5 · plan/v5-calendar.md §9` · 렌더 `preview/MonthlyCloseV5.png`
+`canvas/MonthlyCloseV5.dc.html` · 390×1099 · 원본 `v5 · plan/v5-calendar.md §9`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`
@@ -1690,7 +1690,7 @@
 
 ## TransactionAddFromDaySheet — 참고 · 기록 추가 — 하루 시트에서 넘어왔을 때
 
-`canvas/TransactionAddFromDaySheet.dc.html` · 960×908 · 원본 `v5 · plan/v5-calendar.md §4` · 렌더 `preview/TransactionAddFromDaySheet.png`
+`canvas/TransactionAddFromDaySheet.dc.html` · 960×908 · 원본 `v5 · plan/v5-calendar.md §4`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
@@ -1703,7 +1703,7 @@
 
 ## InsufficientElsewhere — 참고 · 월말 예상 기준이 서기 전 — 홈 밖의 화면들
 
-`canvas/InsufficientElsewhere.dc.html` · 1230×1864 · 원본 `v5 · plan/v5-calendar.md §3-4 · §9-22` · 렌더 `preview/InsufficientElsewhere.png`
+`canvas/InsufficientElsewhere.dc.html` · 1230×1864 · 원본 `v5 · plan/v5-calendar.md §3-4 · §9-22`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1718,7 +1718,7 @@
 
 ## FutureProvisional — 참고 · 미래 · 목적지의 임시 계산 표시
 
-`canvas/FutureProvisional.dc.html` · 1230×1256 · 원본 `v5 · plan/v5-calendar.md §3-4` · 렌더 `preview/FutureProvisional.png`
+`canvas/FutureProvisional.dc.html` · 1230×1256 · 원본 `v5 · plan/v5-calendar.md §3-4`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1731,7 +1731,7 @@
 
 ## LimitCardCases — 참고 · 이번 달 한도 카드의 경우들
 
-`canvas/LimitCardCases.dc.html` · 1200×1462 · 원본 `v5 · plan/v5-calendar.md §10 3단계` · 렌더 `preview/LimitCardCases.png`
+`canvas/LimitCardCases.dc.html` · 1200×1462 · 원본 `v5 · plan/v5-calendar.md §10 3단계`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1746,7 +1746,7 @@
 
 ## RecurringPrefill — 반복 기록 · 방금 저장한 기록으로 미리 채움
 
-`canvas/RecurringPrefill.dc.html` · 390×877 · 원본 `v5 · plan/v5-calendar.md §10 3단계` · 렌더 `preview/RecurringPrefill.png`
+`canvas/RecurringPrefill.dc.html` · 390×877 · 원본 `v5 · plan/v5-calendar.md §10 3단계`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`
@@ -1765,7 +1765,7 @@
 
 ## EtcSubline — 참고 · 카테고리 없는 소비와 안 쓴 날 — 소비 · 한도 · 코치
 
-`canvas/EtcSubline.dc.html` · 1200×1715 · 원본 `v5 · plan/v5-calendar.md §5-3 · §9` · 렌더 `preview/EtcSubline.png`
+`canvas/EtcSubline.dc.html` · 1200×1715 · 원본 `v5 · plan/v5-calendar.md §5-3 · §9`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1780,7 +1780,7 @@
 
 ## ImportBackupNotes — 참고 · 가져오기 · 백업 안내
 
-`canvas/ImportBackupNotes.dc.html` · 1230×1103 · 원본 `v5 · plan/v5-calendar.md §10 3단계` · 렌더 `preview/ImportBackupNotes.png`
+`canvas/ImportBackupNotes.dc.html` · 1230×1103 · 원본 `v5 · plan/v5-calendar.md §10 3단계`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -1793,7 +1793,7 @@
 
 ## TourHome1 — 첫 실행 안내 · 홈 1 / 3 이번 달 소비
 
-`canvas/TourHome1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourHome1.png`
+`canvas/TourHome1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1818,7 +1818,7 @@
 
 ## TourHome2 — 첫 실행 안내 · 홈 2 / 3 달력으로 기록
 
-`canvas/TourHome2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourHome2.png`
+`canvas/TourHome2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1843,7 +1843,7 @@
 
 ## TourHome3 — 첫 실행 안내 · 홈 3 / 3 다음 안내
 
-`canvas/TourHome3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourHome3.png`
+`canvas/TourHome3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **Header** — “NAVI”
       `margin-top:-397px display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -1868,7 +1868,7 @@
 
 ## TourAssets1 — 첫 실행 안내 · 자산 1 / 3 세 탭
 
-`canvas/TourAssets1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourAssets1.png`
+`canvas/TourAssets1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1887,7 +1887,7 @@
 
 ## TourAssets2 — 첫 실행 안내 · 자산 2 / 3 순자산
 
-`canvas/TourAssets2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourAssets2.png`
+`canvas/TourAssets2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1906,7 +1906,7 @@
 
 ## TourAssets3 — 첫 실행 안내 · 자산 3 / 3 현금성 비상금
 
-`canvas/TourAssets3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourAssets3.png`
+`canvas/TourAssets3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1925,7 +1925,7 @@
 
 ## TourSpending1 — 첫 실행 안내 · 소비 1 / 3 세 탭
 
-`canvas/TourSpending1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourSpending1.png`
+`canvas/TourSpending1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1944,7 +1944,7 @@
 
 ## TourSpending2 — 첫 실행 안내 · 소비 2 / 3 속도 그래프
 
-`canvas/TourSpending2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourSpending2.png`
+`canvas/TourSpending2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1963,7 +1963,7 @@
 
 ## TourSpending3 — 첫 실행 안내 · 소비 3 / 3 카테고리
 
-`canvas/TourSpending3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourSpending3.png`
+`canvas/TourSpending3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `margin-top:-151px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -1982,7 +1982,7 @@
 
 ## TourGoals1 — 첫 실행 안내 · 목적지 1 / 3 매달 모으는 돈
 
-`canvas/TourGoals1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourGoals1.png`
+`canvas/TourGoals1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2001,7 +2001,7 @@
 
 ## TourGoals2 — 첫 실행 안내 · 목적지 2 / 3 도착 예상
 
-`canvas/TourGoals2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourGoals2.png`
+`canvas/TourGoals2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2020,7 +2020,7 @@
 
 ## TourGoals3 — 첫 실행 안내 · 목적지 3 / 3 목적지 추가
 
-`canvas/TourGoals3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourGoals3.png`
+`canvas/TourGoals3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “목적지”
       `margin-top:-186px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2039,7 +2039,7 @@
 
 ## TourFuture1 — 첫 실행 안내 · 미래 1 / 3 자산 경로
 
-`canvas/TourFuture1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourFuture1.png`
+`canvas/TourFuture1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “미래”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2064,7 +2064,7 @@
 
 ## TourFuture2 — 첫 실행 안내 · 미래 2 / 3 다음 지점
 
-`canvas/TourFuture2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourFuture2.png`
+`canvas/TourFuture2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “미래”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2089,7 +2089,7 @@
 
 ## TourFuture3 — 첫 실행 안내 · 미래 3 / 3 가정
 
-`canvas/TourFuture3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourFuture3.png`
+`canvas/TourFuture3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “미래”
       `margin-top:-398px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2114,7 +2114,7 @@
 
 ## TourDebts1 — 첫 실행 안내 · 부채 1 / 3 총부채
 
-`canvas/TourDebts1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourDebts1.png`
+`canvas/TourDebts1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2135,7 +2135,7 @@
 
 ## TourDebts2 — 첫 실행 안내 · 부채 2 / 3 상환 안내
 
-`canvas/TourDebts2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourDebts2.png`
+`canvas/TourDebts2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2156,7 +2156,7 @@
 
 ## TourDebts3 — 첫 실행 안내 · 부채 3 / 3 부채 목록
 
-`canvas/TourDebts3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourDebts3.png`
+`canvas/TourDebts3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2177,7 +2177,7 @@
 
 ## TourStrategy1 — 첫 실행 안내 · 자산 › 상환 계획 1 / 3 저장된 계획
 
-`canvas/TourStrategy1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourStrategy1.png`
+`canvas/TourStrategy1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2196,7 +2196,7 @@
 
 ## TourStrategy2 — 첫 실행 안내 · 자산 › 상환 계획 2 / 3 다 갚는 달
 
-`canvas/TourStrategy2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourStrategy2.png`
+`canvas/TourStrategy2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2215,7 +2215,7 @@
 
 ## TourStrategy3 — 첫 실행 안내 · 자산 › 상환 계획 3 / 3 갚는 순서
 
-`canvas/TourStrategy3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourStrategy3.png`
+`canvas/TourStrategy3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2234,7 +2234,7 @@
 
 ## TourLedger1 — 첫 실행 안내 · 내역 1 / 3 검색 · 칩
 
-`canvas/TourLedger1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourLedger1.png`
+`canvas/TourLedger1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2253,7 +2253,7 @@
 
 ## TourLedger2 — 첫 실행 안내 · 내역 2 / 3 날짜 묶음
 
-`canvas/TourLedger2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourLedger2.png`
+`canvas/TourLedger2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `margin-top:-365px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2272,7 +2272,7 @@
 
 ## TourLedger3 — 첫 실행 안내 · 내역 3 / 3 기록 추가
 
-`canvas/TourLedger3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourLedger3.png`
+`canvas/TourLedger3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `margin-top:-53px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2291,7 +2291,7 @@
 
 ## TourLimits1 — 첫 실행 안내 · 한도 1 / 3 총한도
 
-`canvas/TourLimits1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourLimits1.png`
+`canvas/TourLimits1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2312,7 +2312,7 @@
 
 ## TourLimits2 — 첫 실행 안내 · 한도 2 / 3 카테고리 배분
 
-`canvas/TourLimits2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourLimits2.png`
+`canvas/TourLimits2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `margin-top:-300px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2333,7 +2333,7 @@
 
 ## TourLimits3 — 첫 실행 안내 · 한도 3 / 3 계산 근거
 
-`canvas/TourLimits3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourLimits3.png`
+`canvas/TourLimits3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “소비”
       `margin-top:-300px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2354,7 +2354,7 @@
 
 ## TourGoalDesign1 — 첫 실행 안내 · 새 목적지 설계 1 / 3 두 탭
 
-`canvas/TourGoalDesign1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourGoalDesign1.png`
+`canvas/TourGoalDesign1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2373,7 +2373,7 @@
 
 ## TourGoalDesign2 — 첫 실행 안내 · 새 목적지 설계 2 / 3 추천
 
-`canvas/TourGoalDesign2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourGoalDesign2.png`
+`canvas/TourGoalDesign2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2392,7 +2392,7 @@
 
 ## TourGoalDesign3 — 첫 실행 안내 · 새 목적지 설계 3 / 3 입력
 
-`canvas/TourGoalDesign3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourGoalDesign3.png`
+`canvas/TourGoalDesign3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “목적지”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2411,7 +2411,7 @@
 
 ## TourPayoff1 — 첫 실행 안내 · 미래 › 상환 계획 1 / 3 추가 상환
 
-`canvas/TourPayoff1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourPayoff1.png`
+`canvas/TourPayoff1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “미래”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2430,7 +2430,7 @@
 
 ## TourPayoff2 — 첫 실행 안내 · 미래 › 상환 계획 2 / 3 비교
 
-`canvas/TourPayoff2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourPayoff2.png`
+`canvas/TourPayoff2.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “미래”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2449,7 +2449,7 @@
 
 ## TourPayoff3 — 첫 실행 안내 · 미래 › 상환 계획 3 / 3 저장
 
-`canvas/TourPayoff3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)` · 렌더 `preview/TourPayoff3.png`
+`canvas/TourPayoff3.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · lib/navi-tour-policy.ts (AMEND 2 · first-run-3/4/21)`
 
 - [ ] **div** — “미래”
       `margin-top:-118px display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2468,7 +2468,7 @@
 
 ## SettingsNotify — 모달 · 설정 › 알림 (기기 알림)
 
-`canvas/SettingsNotify.dc.html` · 390×903 · 원본 `components/navi/notify-settings.tsx (plan/v5-calendar.md §14 · tasks-12)` · 렌더 `preview/SettingsNotify.png`
+`canvas/SettingsNotify.dc.html` · 390×903 · 원본 `components/navi/notify-settings.tsx (plan/v5-calendar.md §14 · tasks-12)`
 
 - [ ] **div**
       `height:24px`
@@ -2493,7 +2493,7 @@
 
 ## NotifyCases — 참고 · 기기 알림 여섯 가지와 규칙
 
-`canvas/NotifyCases.dc.html` · 1200×1435 · 원본 `lib/navi-notify.ts · components/navi/notify-settings.tsx (plan/v5-calendar.md §14)` · 렌더 `preview/NotifyCases.png`
+`canvas/NotifyCases.dc.html` · 1200×1435 · 원본 `lib/navi-notify.ts · components/navi/notify-settings.tsx (plan/v5-calendar.md §14)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -2508,7 +2508,7 @@
 
 ## SpendingPastOpen — 소비 · 지난 달 (마감 전)
 
-`canvas/SpendingPastOpen.dc.html` · 390×1264 · 원본 `components/navi/spending-overview.tsx 월 마감 카드 (spending-4 · D9)` · 렌더 `preview/SpendingPastOpen.png`
+`canvas/SpendingPastOpen.dc.html` · 390×1264 · 원본 `components/navi/spending-overview.tsx 월 마감 카드 (spending-4 · D9)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2533,7 +2533,7 @@
 
 ## SpendingPastChanged — 소비 · 지난 달 (마감 뒤 기록이 바뀜)
 
-`canvas/SpendingPastChanged.dc.html` · 390×1212 · 원본 `components/navi/spending-overview.tsx · reclose-spend-dialog.tsx (record-1 · D9)` · 렌더 `preview/SpendingPastChanged.png`
+`canvas/SpendingPastChanged.dc.html` · 390×1212 · 원본 `components/navi/spending-overview.tsx · reclose-spend-dialog.tsx (record-1 · D9)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -2558,7 +2558,7 @@
 
 ## ProfileDialogNoItems — 모달 · 내 수치 (자산 · 부채를 안 넣었을 때)
 
-`canvas/ProfileDialogNoItems.dc.html` · 390×844 · 원본 `components/navi/numbers-sheet.tsx (D5 · first-run-2)` · 렌더 `preview/ProfileDialogNoItems.png`
+`canvas/ProfileDialogNoItems.dc.html` · 390×844 · 원본 `components/navi/numbers-sheet.tsx (D5 · first-run-2)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:60px display:flex align-items:flex-end justify-content:center`
@@ -2578,7 +2578,7 @@
 
 ## SalarySheet — 모달 · 월급 입력
 
-`canvas/SalarySheet.dc.html` · 390×844 · 원본 `components/navi/salary-sheet.tsx (D5 · first-run-22)` · 렌더 `preview/SalarySheet.png`
+`canvas/SalarySheet.dc.html` · 390×844 · 원본 `components/navi/salary-sheet.tsx (D5 · first-run-22)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `flex:0 1 447px min-height:12px display:flex align-items:flex-end justify-content:center`
@@ -2601,7 +2601,7 @@
 
 ## NetWorthRatioSheet — 모달 · 순자산 대비 소비
 
-`canvas/NetWorthRatioSheet.dc.html` · 390×844 · 원본 `components/navi/net-worth-ratio-sheet.tsx (home-8)` · 렌더 `preview/NetWorthRatioSheet.png`
+`canvas/NetWorthRatioSheet.dc.html` · 390×844 · 원본 `components/navi/net-worth-ratio-sheet.tsx (home-8)`
 
 - [ ] **div**
       `height:551px`
@@ -2616,7 +2616,7 @@
 
 ## AssetEditDialog — 모달 · 자산 수정
 
-`canvas/AssetEditDialog.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx (assets-4)` · 렌더 `preview/AssetEditDialog.png`
+`canvas/AssetEditDialog.dc.html` · 390×844 · 원본 `components/navi/asset-view.tsx (assets-4)`
 
 - [ ] **Scrim여백** — “배경을 눌러 닫기”
       `height:190px display:flex align-items:flex-end justify-content:center`
@@ -2641,7 +2641,7 @@
 
 ## AssetBalanceCheck — 모달 · 잔액 한 번에 확인 (자산 구성의 주황 띠에서 · 확인 필요 2개)
 
-`canvas/AssetBalanceCheck.dc.html` · 390×844 · 원본 `components/navi/balance-check-sheet.tsx (assets-15)` · 렌더 `preview/AssetBalanceCheck.png`
+`canvas/AssetBalanceCheck.dc.html` · 390×844 · 원본 `components/navi/balance-check-sheet.tsx (assets-15)`
 
 - [ ] **Scrim여백** — “배경을 눌러 닫기”
       `height:190px display:flex align-items:flex-end justify-content:center`
@@ -2662,7 +2662,7 @@
 
 ## RecurringDialogOverlap — 모달 · 반복 기록 (이번 달 겹침 확인)
 
-`canvas/RecurringDialogOverlap.dc.html` · 390×945 · 원본 `components/navi/spending-view.tsx 반복 기록 (record-2)` · 렌더 `preview/RecurringDialogOverlap.png`
+`canvas/RecurringDialogOverlap.dc.html` · 390×945 · 원본 `components/navi/spending-view.tsx 반복 기록 (record-2)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`
@@ -2683,7 +2683,7 @@
 
 ## AssetDebtTypes — 참고 · 자산 · 부채 유형 목록 · 새 부채 · 다 갚은 부채
 
-`canvas/AssetDebtTypes.dc.html` · 1400×770 · 원본 `lib/navi-asset-labels.ts · components/navi/asset-view.tsx (assets-6 · assets-7 · assets-14 · assets-23)` · 렌더 `preview/AssetDebtTypes.png`
+`canvas/AssetDebtTypes.dc.html` · 1400×770 · 원본 `lib/navi-asset-labels.ts · components/navi/asset-view.tsx (assets-6 · assets-7 · assets-14 · assets-23)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
@@ -2696,7 +2696,7 @@
 
 ## GoalsStates — 참고 · 목적지 상태 7종 (가정 · 펼침 · 도착 · 목표일 없음 · 도착 어려움 · 상환 늦음 · 설계 미리 보기)
 
-`canvas/GoalsStates.dc.html` · 390×4432 · 원본 `components/navi/goals-view.tsx 매달 모으는 돈 가정 · 한 줄 펼침 · 도착한 목적지 (goals-9 · goals-10 · goals-7 · goals-24 · goals-26 · D13)` · 렌더 `preview/GoalsStates.png`
+`canvas/GoalsStates.dc.html` · 390×4432 · 원본 `components/navi/goals-view.tsx 매달 모으는 돈 가정 · 한 줄 펼침 · 도착한 목적지 (goals-9 · goals-10 · goals-7 · goals-24 · goals-26 · D13)`
 
 - [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
@@ -2757,7 +2757,7 @@
 
 ## GoalDesignStates — 참고 · 새 목적지 설계 상태 2종 (처음 · 다른 금액 가정)
 
-`canvas/GoalDesignStates.dc.html` · 390×1421 · 원본 `components/navi/goal-tools.tsx 처음 · 다른 금액으로 계산해 보기 (goals-16 · goals-28 · D13)` · 렌더 `preview/GoalDesignStates.png`
+`canvas/GoalDesignStates.dc.html` · 390×1421 · 원본 `components/navi/goal-tools.tsx 처음 · 다른 금액으로 계산해 보기 (goals-16 · goals-28 · D13)`
 
 - [ ] **div** — “구현 참고 · 앱 화면이 아닙니다”
       `padding:0 2px 6px`
@@ -2778,7 +2778,7 @@
 
 ## HomeTargetEditor — 홈 · 소비 목표 조정 열림
 
-`canvas/HomeTargetEditor.dc.html` · 390×844 · 원본 `components/navi/home-hero.tsx 소비 목표 조정 편집기 (home-1 · D1 · D4)` · 렌더 `preview/HomeTargetEditor.png`
+`canvas/HomeTargetEditor.dc.html` · 390×844 · 원본 `components/navi/home-hero.tsx 소비 목표 조정 편집기 (home-1 · D1 · D4)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -2793,7 +2793,7 @@
 
 ## HomeMonthStart — 홈 · 달이 바뀐 첫 주 (10월 2일)
 
-`canvas/HomeMonthStart.dc.html` · 390×1118 · 원본 `components/navi/calendar-card.tsx 최근 7일 제목 · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)` · 렌더 `preview/HomeMonthStart.png`
+`canvas/HomeMonthStart.dc.html` · 390×1118 · 원본 `components/navi/calendar-card.tsx 최근 7일 제목 · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -2816,7 +2816,7 @@
 
 ## HomeSampleMode — 홈 · 샘플 모드
 
-`canvas/HomeSampleMode.dc.html` · 390×1246 · 원본 `app/page.tsx 샘플 띠 · calendar-card 샘플 문장 (D8 · language-ia-21 · first-run-17 · D9)` · 렌더 `preview/HomeSampleMode.png`
+`canvas/HomeSampleMode.dc.html` · 390×1246 · 원본 `app/page.tsx 샘플 띠 · calendar-card 샘플 문장 (D8 · language-ia-21 · first-run-17 · D9)`
 
 - [ ] **SampleBanner** — “샘플 데이터로 둘러보는 중”
       `display:flex align-items:center justify-content:space-between gap:8px height:32px padding:0 14px background:#E9EDFD`
@@ -2841,7 +2841,7 @@
 
 ## DaySheetPastEmpty — 하루 시트 · 기록 없는 어제
 
-`canvas/DaySheetPastEmpty.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx 어제 · 빈 날 (record-11 · record-18)` · 렌더 `preview/DaySheetPastEmpty.png`
+`canvas/DaySheetPastEmpty.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx 어제 · 빈 날 (record-11 · record-18)`
 
 - [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `flex:1 min-height:0 display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
@@ -2852,7 +2852,7 @@
 
 ## DaySheetDeleted — 하루 시트 · 지운 뒤 (되돌리기)
 
-`canvas/DaySheetDeleted.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx inlineNotice (record-6 · D10)` · 렌더 `preview/DaySheetDeleted.png`
+`canvas/DaySheetDeleted.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx inlineNotice (record-6 · D10)`
 
 - [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `flex:1 min-height:0 display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
@@ -2863,7 +2863,7 @@
 
 ## DaySheetEditMoved — 하루 시트 · 수정 · 날짜를 옮길 때
 
-`canvas/DaySheetEditMoved.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx moved (record-15)` · 렌더 `preview/DaySheetEditMoved.png`
+`canvas/DaySheetEditMoved.dc.html` · 390×844 · 원본 `components/navi/day-sheet.tsx moved (record-15)`
 
 - [ ] **div** — “배경을 눌러 닫기 · 앱이 다시 시작되면 저장하지 않은 내용은 사라져요”
       `flex:1 min-height:0 display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
@@ -2874,7 +2874,7 @@
 
 ## ClassifySheetPicker — 카테고리 고르기 시트 · 줄에서 고르기 펼침
 
-`canvas/ClassifySheetPicker.dc.html` · 390×844 · 원본 `components/navi/classify-sheet.tsx 줄 고르기 펼침 (spending-3 · a11y-1)` · 렌더 `preview/ClassifySheetPicker.png`
+`canvas/ClassifySheetPicker.dc.html` · 390×844 · 원본 `components/navi/classify-sheet.tsx 줄 고르기 펼침 (spending-3 · a11y-1)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `flex:1 min-height:0 display:flex align-items:flex-end justify-content:center padding:0 20px 12px text-align:center`
@@ -2885,7 +2885,7 @@
 
 ## PayoffStates — 참고 · 미래 › 상환 계획의 경우들
 
-`canvas/PayoffStates.dc.html` · 1230×1501 · 원본 `components/navi/payoff-plan.tsx 초안 · 다 갚지 못함 · 최소 상환만 · 모자람 (future-2/4/6/11/22/25 · D6 · D13 · D15)` · 렌더 `preview/PayoffStates.png`
+`canvas/PayoffStates.dc.html` · 1230×1501 · 원본 `components/navi/payoff-plan.tsx 초안 · 다 갚지 못함 · 최소 상환만 · 모자람 (future-2/4/6/11/22/25 · D6 · D13 · D15)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -2900,7 +2900,7 @@
 
 ## FutureStates — 참고 · 미래 › 자산 경로의 경우들
 
-`canvas/FutureStates.dc.html` · 1230×1749 · 원본 `components/navi/future-view.tsx 절감 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히 (future-1/2/5/11/12/19/21)` · 렌더 `preview/FutureStates.png`
+`canvas/FutureStates.dc.html` · 1230×1749 · 원본 `components/navi/future-view.tsx 절감 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히 (future-1/2/5/11/12/19/21)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -2915,7 +2915,7 @@
 
 ## HomeGlanceRows — 참고 · 홈 자산 한눈에 줄 펼침
 
-`canvas/HomeGlanceRows.dc.html` · 1230×1045 · 원본 `components/navi/home-glance.tsx 자산 한눈에 줄 펼침 (home-12)` · 렌더 `preview/HomeGlanceRows.png`
+`canvas/HomeGlanceRows.dc.html` · 1230×1045 · 원본 `components/navi/home-glance.tsx 자산 한눈에 줄 펼침 (home-12)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -2930,7 +2930,7 @@
 
 ## SampleModeTabs — 참고 · 샘플 모드 띠 (모든 탭)
 
-`canvas/SampleModeTabs.dc.html` · 1290×823 · 원본 `app/page.tsx 샘플 띠 (D8 · language-ia-21 · first-run-17)` · 렌더 `preview/SampleModeTabs.png`
+`canvas/SampleModeTabs.dc.html` · 1290×823 · 원본 `app/page.tsx 샘플 띠 (D8 · language-ia-21 · first-run-17)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -2945,7 +2945,7 @@
 
 ## DebtUnpayable — 참고 · 월 최소 상환액을 비운 부채
 
-`canvas/DebtUnpayable.dc.html` · 1230×936 · 원본 `components/navi/asset-view.tsx 부채 · 상환 계획 요약 (tasks-4 · D7 · D11 · D15)` · 렌더 `preview/DebtUnpayable.png`
+`canvas/DebtUnpayable.dc.html` · 1230×936 · 원본 `components/navi/asset-view.tsx 부채 · 상환 계획 요약 (tasks-4 · D7 · D11 · D15)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -2960,7 +2960,7 @@
 
 ## TourHomeChecklist — 첫 실행 안내 · 홈 3 / 3 시작 순서 (처음 시작한 빈 홈)
 
-`canvas/TourHomeChecklist.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_HOME_CHECKLIST_STEP · components/navi/start-checklist.tsx (first-run-5 · AMEND 2)` · 렌더 `preview/TourHomeChecklist.png`
+`canvas/TourHomeChecklist.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_HOME_CHECKLIST_STEP · components/navi/start-checklist.tsx (first-run-5 · AMEND 2)`
 
 - [ ] **Header** — “NAVI”
       `margin-top:-348px display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -2983,7 +2983,7 @@
 
 ## TourHelpReplay — 첫 실행 안내 · 제목 옆 ?로 다시 연 안내 (화면 안내)
 
-`canvas/TourHelpReplay.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour-policy.ts tourBadge · showTourHelp (first-run-3 · AMEND 2 · D14)` · 렌더 `preview/TourHelpReplay.png`
+`canvas/TourHelpReplay.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour-policy.ts tourBadge · showTourHelp (first-run-3 · AMEND 2 · D14)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -3002,7 +3002,7 @@
 
 ## TourRules — 참고 · 첫 실행 안내 규칙 (빈 화면 · 닫기 · 다시 보기 · 배치)
 
-`canvas/TourRules.dc.html` · 1200×1760 · 원본 `lib/navi-tour.ts · lib/navi-tour-policy.ts isEmptyScreen · components/navi/first-run-tour.tsx · app/first-run-tour.css (AMEND 2 · first-run-3/4/21 · D7 · D8)` · 렌더 `preview/TourRules.png`
+`canvas/TourRules.dc.html` · 1200×1760 · 원본 `lib/navi-tour.ts · lib/navi-tour-policy.ts isEmptyScreen · components/navi/first-run-tour.tsx · app/first-run-tour.css (AMEND 2 · first-run-3/4/21 · D7 · D8)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px white-space:nowrap`
@@ -3015,7 +3015,7 @@
 
 ## HeroOverTarget — 참고 · 홈 맨 위 카드 · 소비 목표를 넘을 때
 
-`canvas/HeroOverTarget.dc.html` · 1230×765 · 원본 `components/navi/home-hero.tsx 배지 · 오른쪽 줄 · 셋째 칸 (D1 · D4 · home-1 · home-8)` · 렌더 `preview/HeroOverTarget.png`
+`canvas/HeroOverTarget.dc.html` · 1230×765 · 원본 `components/navi/home-hero.tsx 배지 · 오른쪽 줄 · 셋째 칸 (D1 · D4 · home-1 · home-8)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
@@ -3030,7 +3030,7 @@
 
 ## TourHomeSample1 — 첫 실행 안내 · 홈 1 / 3 샘플로 둘러보기 (흐려진 샘플 띠 아래)
 
-`canvas/TourHomeSample1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · 샘플 띠 app/page.tsx (D8 · language-ia-21 · AMEND 2)` · 렌더 `preview/TourHomeSample1.png`
+`canvas/TourHomeSample1.dc.html` · 390×844 · 원본 `components/navi/first-run-tour.tsx · lib/navi-tour.ts TOUR_STEPS · 샘플 띠 app/page.tsx (D8 · language-ia-21 · AMEND 2)`
 
 - [ ] **SampleBanner** — “샘플 데이터로 둘러보는 중”
       `display:flex align-items:center justify-content:space-between gap:8px height:32px padding:0 14px background:#E9EDFD`
@@ -3057,7 +3057,7 @@
 
 ## HomePrimaryGoal — 홈 · 대표 목적지 카드를 켰을 때
 
-`canvas/HomePrimaryGoal.dc.html` · 390×1195 · 원본 `app/page.tsx 홈 카드 primaryGoal · lib/navi-home-layout.ts HOME_CARD_KEYS (goals-14 · first-run-14)` · 렌더 `preview/HomePrimaryGoal.png`
+`canvas/HomePrimaryGoal.dc.html` · 390×1195 · 원본 `app/page.tsx 홈 카드 primaryGoal · lib/navi-home-layout.ts HOME_CARD_KEYS (goals-14 · first-run-14)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -3080,7 +3080,7 @@
 
 ## HomeTargetSaved — 홈 · 소비 목표를 저장한 직후 (알림 · 종 배지 3)
 
-`canvas/HomeTargetSaved.dc.html` · 390×844 · 원본 `components/navi/home-hero.tsx 소비 목표 저장 · components/navi/save-notice.tsx (home-1 · D1 · D4 · D10)` · 렌더 `preview/HomeTargetSaved.png`
+`canvas/HomeTargetSaved.dc.html` · 390×844 · 원본 `components/navi/home-hero.tsx 소비 목표 저장 · components/navi/save-notice.tsx (home-1 · D1 · D4 · D10)`
 
 - [ ] **Header** — “NAVI”
       `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
@@ -3101,7 +3101,7 @@
 
 ## AssetsStale — 자산 · 잔액 확인이 필요한 자산이 있을 때
 
-`canvas/AssetsStale.dc.html` · 390×1033 · 원본 `components/navi/asset-view.tsx 잔액 확인 띠 · lib/navi-asset-freshness.ts (assets-15)` · 렌더 `preview/AssetsStale.png`
+`canvas/AssetsStale.dc.html` · 390×1033 · 원본 `components/navi/asset-view.tsx 잔액 확인 띠 · lib/navi-asset-freshness.ts (assets-15)`
 
 - [ ] **div** — “자산”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -3118,7 +3118,7 @@
 
 ## GoalDialogPreview — 모달 · 목적지 추가 (일반 저축 · 저장 전 미리 보기)
 
-`canvas/GoalDialogPreview.dc.html` · 390×981 · 원본 `components/navi/goal-dialog.tsx 저축 유형 · 저장 전 미리 보기 (goals-15 · goals-3 · D1)` · 렌더 `preview/GoalDialogPreview.png`
+`canvas/GoalDialogPreview.dc.html` · 390×981 · 원본 `components/navi/goal-dialog.tsx 저축 유형 · 저장 전 미리 보기 (goals-15 · goals-3 · D1)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`
@@ -3148,7 +3148,7 @@
 
 ## AlertsPanelInfo — 모달 · 알림 (중요 1 · 참고 1)
 
-`canvas/AlertsPanelInfo.dc.html` · 390×844 · 원본 `lib/navi-alert-rows.ts 참고 줄 · components/navi/coach-panel.tsx 알림 (home-10 · assets-15)` · 렌더 `preview/AlertsPanelInfo.png`
+`canvas/AlertsPanelInfo.dc.html` · 390×844 · 원본 `lib/navi-alert-rows.ts 참고 줄 · components/navi/coach-panel.tsx 알림 (home-10 · assets-15)`
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`

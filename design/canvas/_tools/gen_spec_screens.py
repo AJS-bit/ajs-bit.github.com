@@ -174,7 +174,7 @@ def main():
         n = a['name']
         buf.append(f"## {n} — {a['title']}")
         buf.append('')
-        buf.append(f"`canvas/{a['file']}` · {a['w']}×{a['h']} · 원본 `{a['source']}` · 렌더 `preview/{n}.png`")
+        buf.append(f"`canvas/{a['file']}` · {a['w']}×{a['h']} · 원본 `{a['source']}`")
         buf.append('')
         if n in INTENT:
             buf.append(f"> {INTENT[n]}")

@@ -1,8 +1,8 @@
-"""아트보드(.dc.html) → PNG. `design/preview/`의 렌더를 만든 스크립트입니다.
+"""아트보드(.dc.html) → PNG. 렌더는 저장소에 두지 않습니다(옛 `design/preview/`는 2026-09-30에 지움) — 기본 출력은 임시 폴더.
 
 만든 앱 화면을 아트보드와 나란히 비교할 때 같은 방식으로 캡처하면 됩니다.
 
-    python3 render_png.py                   # 전부 → ../../preview/
+    python3 render_png.py                   # 전부 → <임시 폴더>/navi-preview/
     python3 render_png.py Main Assets       # 일부만
     python3 render_png.py --scale 2         # 2배 (기본 1.5)
     python3 render_png.py --out /tmp/shots  # 출력 위치
@@ -69,7 +69,7 @@ def crop(png, w, h):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('names', nargs='*', help='아트보드 이름 (비우면 전부)')
-    ap.add_argument('--out', default=str(DESIGN / 'preview'))
+    ap.add_argument('--out', default=os.path.join(tempfile.gettempdir(), 'navi-preview'))
     ap.add_argument('--scale', type=float, default=1.5)
     ap.add_argument('--chrome', default=None)
     ap.add_argument('--font-css', default=None, help='로컬 웹폰트 CSS 경로 (file:// 또는 상대경로)')
