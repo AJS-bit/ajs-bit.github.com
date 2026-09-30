@@ -20,7 +20,7 @@
 | `gen_notify.py` | 기기 알림 2장(`SettingsNotify` · `NotifyCases`)과 다크 짝. `gen_v5`를 import 하므로 v4 · v5 장도 다시 써진다(멱등) |
 | `nobreak.py` | 낱말 중간 꺾임 막기(D14 · a11y-11) — 낫표 · 괄호(앞 낱말부터 닫는 괄호 + 조사까지 통째로 · 띄어쓰기가 든 묶음은 22자까지 · 어느 묶음도 괄호 안에서 끝나거나 시작하지 않음 — 2026-09-27 fix-up 6) · 붙임표 · 숫자 % + 조사(`50%로`) 자리만 `white-space:nowrap`으로 묶는다(글자는 그대로 · 멱등 · 2026-09-27 fix-up 5). `gen_v5.w`(2026-09-26 새로 고친 장) · `gen_notify` · `refresh_components_v5` · `gen_tour`(`TourRules`)가 쓴다 |
 | `nocode.py` | 그린 글에서 결정 · 점검 번호(`(D7)` · `(home-8)` · `AMEND 2` · `NUMBERS §4` …)를 찾는다 — `sync_screens.py`가 라이트 장의 글에 번호가 있으면 1로 끝난다(2026-09-27 fix-up 3 · 번호는 CHANGES · SPEC 문서에만) |
-| `brand_mark.py` | 앱마크 규격(종이비행기 = 네모의 약 54% · 무게중심 가운데) · `fix()`가 손편집 장도 고친다 |
+| `brand_mark.py` | 앱마크 규격(2026-09-30 「하루가 쌓인 길」 · 네모와 같은 크기 svg · 그림 45.4%) · `fix()`가 옛 종이비행기가 남은 손편집 장을 고친다 · 로고 파일 묶음은 `design/brand/gen_brand.py` |
 | `refresh_components_v5.py` | `Components.dc.html`의 **08 · v5 절만** 지금의 v5 장(`HomeCalendarStrip` · `HomeCalendar` · `DaySheet` · `DoneCard` · `ClassifySheet` · `HeroInsufficient` · `HeroFootnotes`)에서 다시 잘라 와 채운다. 01~07절과 루트 크기는 건드리지 않는다. `gen_v5.py` 뒤 · `darken.py` 앞 |
 | `sync_screens.py` | `gen_canvas.py` **뒤에** 돌린다. `canvas.json`의 제목 · 페이지 · 크기를 `design/screens.json`에 맞추고, `.dc.html` 루트 크기와 등록부가 어긋난 장 · 출처(`SOURCE`)가 없는 새 장을 알려 준다(있으면 종료 코드 1). 새 장을 더하면 이 파일의 `SOURCE`에 출처(앱 파일 또는 계획 절)를 적는다 |
 | `seed_doc.py` | 캔버스 페이지 `navi-redesign.html` 안의 `appifact-doc` JSON 블록을 디스크의 아트보드 · `canvas.json`으로 다시 채운다(`gen_canvas.py` 뒤 · publish 앞). design 스킬의 `seed-canvas.mjs`가 없을 때 쓴다 |

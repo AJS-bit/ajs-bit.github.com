@@ -20,6 +20,7 @@ plan/v4-stocks.md §3(첫 실행 흐름)·§7(1단계)·§10. 라이트를 만�
     python3 gen_v4.py            # 8 + 8장 → ../
 """
 import pathlib
+import brand_mark
 from gen_common import *
 from darken import darken
 from gen_calendar import calendar_card, calendar_thumb, cell, day_state, NO_RECORD, TODAY, WD
@@ -28,8 +29,6 @@ OUT = pathlib.Path(__file__).resolve().parent.parent
 V4 = ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeSetupStocksOn', 'SettingsHomeEntry', 'HomeLayoutEdit', 'HomeConfigured']
 
 BRAND_GRAD = 'linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%)'
-ARROW = ('M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1'
-         'L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z')
 KA = ' word-break: keep-all;'
 
 
@@ -48,10 +47,8 @@ def w(name, body, keep_all=True):
     print('wrote', name, '+ Dark' + name)
 
 
-def mark(size=32, radius=10, glyph=21):   # brand_mark.py 규격(2026-09-23) — 종이비행기 54% · 무게중심 가운데
-    return (f'<div style="width: {size}px; height: {size}px; border-radius: {radius}px; background: {BRAND_GRAD}; '
-            f'display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
-            f'<svg width="{glyph}" height="{glyph}" viewBox="1.2 -1.2 24 24" fill="#FFFFFF"><path d="{ARROW}"/></svg></div>')
+def mark(size=32, radius=10):   # brand_mark.py 규격(2026-09-30) — 하루가 쌓인 길 · 네모의 45.4%
+    return brand_mark.tile(size, radius, BRAND_GRAD)
 
 
 # ══════════════ 공통 조각 ══════════════

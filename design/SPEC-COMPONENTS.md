@@ -104,8 +104,8 @@ display flex · align-items center · justify-content space-between · gap 8 · 
 홈:     컨테이너 display flex · column · gap 6 · padding 12 16 10 · flex-shrink 0
         1행: 좌 [앱마크 + "NAVI"] / 우 [설정 · 코칭 · 알림]  (space-between)
         2행: PageTitle "오늘의 내비게이션" + 날짜 줄 "9월 8일 · 오늘 포함 23일 남음"(D3)
-        앱마크: 32×32 · border-radius 10 · background linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) · 흰 종이비행기 21×21
-                (viewBox 1.2 -1.2 24 24 — 무게중심 가운데 · `_tools/brand_mark.py`)
+        앱마크: 32×32 · border-radius 10 · background linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) · 흰 「하루가 쌓인 길」
+                (svg 32×32 · viewBox 0 0 108 108 — 그림은 29.5 ~ 78.5 = 네모의 45.4% · `_tools/brand_mark.py` · 파일 `design/brand/`)
         워드마크: 15px/700 · letter-spacing 0.06em · #101828
 다른 탭: 컨테이너 display flex · column · gap 10 · padding 14 16 12 · flex-shrink 0
         1행: 좌 [h1 제목 + `?`] / 우 [설정 · 코칭 · 알림]
@@ -120,13 +120,17 @@ display flex · align-items center · justify-content space-between · gap 8 · 
 샘플 모드: 모든 탭의 머리줄 위에 SampleBanner(§1) 한 줄 — 다른 샘플 안내는 없음(D8)
 ```
 
-**앱마크 path는 이 값을 그대로 쓰세요** (viewBox 0 0 24 24, fill #FFFFFF):
+**앱마크 그림은 이 값을 그대로 쓰세요** (2026-09-30 · viewBox 0 0 108 108 · 흰색 · 안드로이드 적응형 아이콘과 같은 좌표):
 
 ```
-M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z
+적은 날(채운 칸 13×13 · rx 3.6): (29.5, 65.5) · (47.5, 65.5) · (47.5, 47.5) · (65.5, 47.5)   — 왼쪽 아래에서 계단으로
+안 적은 날(점 r 2.3):            (36, 36) · (54, 36) · (36, 54) · (72, 72)
+목적지(빈 원):                   중심 (72, 36) · r 5.4 · 선 3.4
+알림 · 테마 아이콘(단색):         점 r 3.0 · 원 r 5.3 · 선 3.6 · viewBox 18 18 72 72
 ```
 
-이전 path는 광학 중심이 오른쪽 아래로 0.7px 밀려 있었습니다. 고친 값이라 되돌리지 마세요.
+svg 파일은 `design/brand/svg/`, 안드로이드 벡터는 `design/brand/android/`(`gen_brand.py`가 만듦). 적응형 전경은 가운데 기준 72/108로 줄여, 보이는 아이콘에서도 그림이 45.4%입니다.
+종이비행기(2026-09-23)는 폰에서 길 안내 앱처럼 보여 바뀌었습니다 — `CHANGES-2026-09-30.md`.
 
 ## 3. PageTitle
 

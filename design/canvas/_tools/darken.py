@@ -70,7 +70,6 @@ PAT = re.compile('|'.join(re.escape(k) for k in KEYS), re.IGNORECASE)
 
 BRAND_GRAD_DARK = 'linear-gradient(140deg, #7FA0FF 0%, #B79BFF 100%)'
 BRAND_GRAD = 'linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%)'
-ARROW = 'M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z'
 
 
 KEEP = re.compile(r'<!--dc-keep-->(.*?)<!--/dc-keep-->', re.S)
@@ -176,9 +175,8 @@ def darken(text, name='', knob=KNOB_OFF_DARK, seg=None):
     out = out.replace('rgba(16,24,40,.08)', 'rgba(0,0,0,.5)')
     out = out.replace('rgba(16,24,40,.2)', 'rgba(0,0,0,.6)')
     out = out.replace('rgba(16,24,40,.5)', 'rgba(0,0,0,.8)')
-    # 브랜드 그라디언트와 마크 화살표는 라이트/다크 동일
+    # 브랜드 그라디언트는 라이트/다크 동일(마크 그림은 brand_mark 가 white 로 적어 MAP 을 안 탐)
     out = out.replace(BRAND_GRAD_DARK, BRAND_GRAD)
-    out = re.sub(r'fill="#121A2B"(\s*><path d="' + re.escape(ARROW) + r')', r'fill="#FFFFFF"\1', out)
     # 부채 해치 패턴
     out = out.replace('#E0908C 0 4px, #F0BFBD 4px 8px', '#8E4C49 0 4px, #B36F6C 4px 8px')
     # 한도 초과 구간 빗금(ModalErrors B) — 빨강은 MAP이 바꾸고 옅은 줄만 여기서

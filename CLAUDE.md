@@ -16,6 +16,7 @@
 | `design/` | **v3 디자인 인계 묶음(확정본).** 코덱스가 GitHub raw로 읽습니다. 입구 `design/여기부터.md`, 지시서 `design/CODEX-BRIEF.md` |
 | `design/canvas/*.dc.html` | 아트보드 파일 327장(라이트 164 · 다크 163 · `Tokens`만 다크 없음). 캔버스에는 **317장 · 11페이지**(화면 종류별 · 2026-09-26) — 달력 없는 옛 홈 `Main` · `HomeScroll`, 옛 `Ledger` · `MonthlyClose`, 옛 `DesktopHome`(+다크)은 생성기 원본 전용이라 캔버스 · `screens.json` · SPEC-SCREENS에 없음(`gen_canvas.py` `SOURCE_ONLY`). **값의 최종 기준** |
 | `design/canvas/_tools/` | 생성기·다크 변환·렌더·계산기. 먼저 `_tools/README.md`를 읽을 것 |
+| `design/brand/` | 로고 파일 묶음(svg · 안드로이드 벡터 · png). `gen_brand.py`가 `_tools/brand_mark.py`의 그림에서 만든다 |
 | `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 맨 위 **용어표와 공통 규칙**(2026-09-25 · D1 ~ D16) · 컴포넌트 24개(+ v5 11종 — §27 · 첫 실행 안내 카드 — §28) 실측 CSS · 화면별 조립 체크리스트(라이트 159장) |
 | `plan/v4-stocks.md` | **v4 계획.** §9에 결정 사항. 페이지판은 `plan/_tools/md2page.py`로 생성 |
 | `plan/v5-calendar.md` | **v5 계획 — 홈 달력과 빠른 소비 입력.** §12에 결정 37개(1~18이 방향 · 36은 폐기) · §14 기기 알림. 14판(2026-09-25 사용성 점검 140건 · 앱 따라잡기 — §10 14판 메모 · §12 표의 바뀐 행 표시) · 13판(2026-09-24 히어로 게이지 · 달력 카드). 페이지판은 `md2page.py v5-calendar.md` |
@@ -107,6 +108,15 @@
   - 시안 장은 이 상태들을 그리지 않아 바뀌지 않았습니다.
   - 기록: `design/CHANGES-2026-09-25.md` 「2026-09-29 최종 점검」 절. 인계 폴더 `outputs/NAVI-CLAUDE-REQUEST-2026-09-29-FINAL-CHECK.md` · `NAVI-CODEX-FINAL-CHECK-2026-09-29.md` · `-RECHECK`~`-RECHECK4` · `NAVI-CLAUDE-VERDICT-2026-09-29-FINAL-CHECK.md`.
   - 앱 `v5-stage1` `405e941`(`c6c031d` · `ad196da` 포함) — tsc · vitest 93파일 2,056 · boundary · QA 9종 통과. APK `outputs/NAVI-v5-stage1-final-check-405e941-2026-09-29.apk`(서명 d658e495).
+
+- **앱 로고 「하루가 쌓인 길」 (2026-09-30).**
+  - 시작: 사용자 「이 로고가 앱 아이콘이면 진짜 내비 앱이랑 헷갈릴 것 같아」.
+  - 탐색: 클로드 · Fable 5.1 · 코덱스가 따로 그리고 서로 비판 검토했습니다(1회차 https://claude.ai/artifact/7uAK7mE4NLYmWtodUMsNeW · 2회차 https://claude.ai/artifact/UN2oMRd41pckQ6xywJ7NfG · 폰 미리보기 https://claude.ai/artifact/MEPXZ4GNUjBRBwSnhJoXEX).
+  - 결정: 「클로드 C2로 가자 · 앱이랑 시안, 캔버스 뭐든 다 이걸로 통일」.
+  - 그림: 적은 날 = 채운 칸 넷(계단) · 안 적은 날 = 점 넷 · 목적지 = 빈 원. 바탕은 파랑 → 보라 그대로입니다.
+  - 규격: `_tools/brand_mark.py` 하나(svg = 네모 크기 · viewBox 0 0 108 108 · 그림 45.4%). 로고 파일은 `design/brand/`(`gen_brand.py`).
+  - 적용: 시안 라이트 30 · 다크 29개 파일의 마크 한 줄만 바뀌었습니다. 캔버스 41번째 판입니다.
+  - 기록: `design/CHANGES-2026-09-30.md`(「앱에서 고칠 것」 포함).
 
 ## 사용자가 정한 작업 규칙 — 반드시
 

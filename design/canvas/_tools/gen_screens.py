@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import brand_mark
 import pathlib
 import re
 from gen_common import *
@@ -48,7 +49,7 @@ w('Onboarding', frame(
     f'<span style="width: 32px; height: 44px; margin-left: -6px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">{icon("left", 22, C["INK2"], 2)}</span>'      # 앱 뒤로 버튼 32 폭 · x 14 → 마크 x 54(2026-09-27 fix-up 3 · 예전 44 · 마크 x 60)
     f'<div style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%); '
     f'display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
-    f'<svg width="21" height="21" viewBox="1.2 -1.2 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></div>'
+    f'{brand_mark.svg(32)}</div>'
     f'<span style="font-size: 12px; font-weight: 500; color: {C["INK3"]};">시작 방법 고르기</span></div>'
     f'<h1 style="margin: 6px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.35; color: {C["INK"]};">어떤 데이터로 시작할까요?</h1>'
     f'<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: {C["INK2"]};">'
@@ -90,7 +91,7 @@ def brand_row():
     return (f'<div style="display: flex; align-items: center; gap: 9px; padding: 2px 4px 4px;">'
             f'<div style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%); '
             f'display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
-            f'<svg width="21" height="21" viewBox="1.2 -1.2 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></div>'
+            f'{brand_mark.svg(32)}</div>'
             f'<span style="font-size: 17px; font-weight: 700; letter-spacing: 0.06em; color: {C["INK"]};">NAVI</span></div>')
 
 

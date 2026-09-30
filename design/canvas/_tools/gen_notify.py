@@ -3,6 +3,7 @@
   SettingsNotify  설정 › 알림 시트(390 × 844) — 전체 스위치 · 조용한 시간 · 여섯 항목(기본 켬 3) · 테스트 · 다음 알림.
   NotifyCases     구현 참고 장 — 여섯 알림의 기기 카드 모양 · 문구 · 누르면 가는 곳 · 규칙.
 회의 기록: navi-handoff/outputs/NAVI-NOTIFY-MEETING-2026-09-23.md. 다크는 darken 으로 같이 쓴다."""
+import brand_mark
 import pathlib
 from gen_common import C, icon, sheet, sheet_footer, note, toggle, btn, doc
 from gen_v5 import spec_frame, mark
@@ -92,7 +93,7 @@ def phone_notice(title, body_text, when):
     """안드로이드 알림 카드 모양(앱 아이콘 · 앱 이름 · 시각 · 제목 · 본문). 금액 · 이름은 기본 숨김이라 본문에 숫자가 없다."""
     return (f'<div style="width: 362px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 16px; padding: 12px 14px; '
             f'box-shadow: 0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24);">'
-            f'<div style="display: flex; align-items: center; gap: 7px;"><div style="width: 16px; height: 16px; border-radius: 5px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%);"></div>'
+            f'<div style="display: flex; align-items: center; gap: 7px;">{brand_mark.tile(16, 5)}'
             f'<span style="font-size: 11.5px; font-weight: 600; color: {C["INK2"]};">NAVI</span><span style="font-size: 11.5px; color: {C["INK4"]};">· {when}</span></div>'
             f'<div style="font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: {C["INK"]}; margin-top: 7px;">{title}</div>'
             f'<div style="font-size: 12.5px; line-height: 1.45; color: {C["INK2"]}; margin-top: 2px;">{body_text}</div></div>')
