@@ -172,11 +172,15 @@ m_dec = re.search(r'<h2 id="(s\d+)"><span class="num">§\d+</span>[^<]*결정해
 DECIDE_ID = m_dec.group(1) if m_dec else 's9'
 
 CSS = CSS.replace('#DECIDE_ID', '#' + DECIDE_ID)
+# 머리 마크 = 앱마크 규격 하나(design/canvas/_tools/brand_mark.py · 네모의 54% · 2026-09-30) — 계획 페이지도 앱 · 시안과 같은 로고
+sys.path.insert(0, str(PLAN.parent / 'design' / 'canvas' / '_tools'))
+import brand_mark  # noqa: E402
+MARK = brand_mark.svg(26)
 page = f'''<title>NAVI {VER} 계획</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <style>{CSS}</style>
 <main>
-<div class="mark"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M20.28 2.32 2.88 9.62c-.9.4-.8 1.7.1 2l6.6 2.2c.3.1.5.3.6.6l2.2 6.6c.3.9 1.6 1 2 .1L21.68 3.72c.3-.8-.6-1.7-1.4-1.4Z"/></svg></i><span>NAVI</span><em>· {TAG}</em></div>
+<div class="mark"><i>{MARK}</i><span>NAVI</span><em>· {TAG}</em></div>
 {body}
 <div class="foot">원본 <a href="https://github.com/AJS-bit/ajs-bit.github.com/blob/claude/navi-ui-ux-redesign-nzxoxz/plan/{SRC.name}">plan/{SRC.name}</a> · 이 페이지는 그 파일을 그대로 옮긴 것이라 두 곳이 다르면 파일이 기준입니다.</div>
 </main>'''

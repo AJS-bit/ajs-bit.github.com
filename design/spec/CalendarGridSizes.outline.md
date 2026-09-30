@@ -6,7 +6,7 @@
   `width:1150px height:1745px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
-  - `h2` **text 20px/700** — “달력을 펼치면 어디서나 월 달력”
+  - `h2` **text 20px/700** — “달력은 어느 폭 · 글자 크기에서나 월 달력”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
   - `p` **text 13px/400** — “화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다. 접어 둔 최근 7일 줄도 칸 그”
     `font-size:13px line-height:1.55 color:#626D88`

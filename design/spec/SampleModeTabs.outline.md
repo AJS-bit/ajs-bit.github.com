@@ -19,7 +19,7 @@
       - `div`
         `width:392px height:196px border-radius:22px border:1px solid #E3E8F1 background:#EDF0F7`
         - `div`
-          `width:390px height:1246px background:#EDF0F7 color:#101828 display:flex flex-direction:column`
+          `width:390px height:1537px background:#EDF0F7 color:#101828 display:flex flex-direction:column`
     - `div`
       `display:flex flex-direction:column gap:8px`
       - `div` **text 14px/700** — “자산”

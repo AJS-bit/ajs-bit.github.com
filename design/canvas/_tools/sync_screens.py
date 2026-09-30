@@ -123,6 +123,8 @@ SOURCE_NOW = {
     'DoneCard': 'components/navi/done-card.tsx (plan/v5-calendar.md §4-4 · record-6 · record-20)',
     'ClassifySheet': 'components/navi/classify-sheet.tsx (plan/v5-calendar.md §5-4 · spending-3)',
     'HeroInsufficient': 'components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · D9)', 'HeroFootnotes': 'components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · home-8)',
+    # 2026-09-30 홈 달력은 펼친 월 달력이 기본 — 달이 바뀐 첫 주 장도 펼친 10월(최근 7일 제목은 접었을 때만)
+    'HomeMonthStart': 'components/navi/calendar-card.tsx 펼친 월초 달력(첫 줄 지난달 칸 · 접으면 최근 7일 제목) · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)',
     'SettingsNotify': 'components/navi/notify-settings.tsx (plan/v5-calendar.md §14 · tasks-12)', 'NotifyCases': 'lib/navi-notify.ts · components/navi/notify-settings.tsx (plan/v5-calendar.md §14)',
 }
 

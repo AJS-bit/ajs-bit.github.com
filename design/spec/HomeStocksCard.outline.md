@@ -53,29 +53,41 @@
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px`
-        - `span` **text 14px/600** — “이번 달 소비 기록”
-          `font-size:14px font-weight:600 color:#101828`
-        - `span` — “펼치기”
-          `display:inline-flex align-items:center gap:2px font-size:12px font-weight:600 color:#475467`
+        `display:flex align-items:center justify-content:space-between gap:6px min-height:32px`
+        - `div`
+          `display:flex align-items:center gap:4px`
+        - `div`
+          `display:flex align-items:center gap:6px`
       - `div` **text 12px/400** — “날짜를 누르면 그날 쓴 돈을 적어요”
-        `font-size:12px line-height:1.45 color:#626D88 margin-top:2px`
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:6px`
       - `div`
-        `display:flex justify-content:space-between margin-top:8px`
+        `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) margin-top:8px`
+        - `span` **text 11px/500** — “일”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “월”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “화”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “수”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “목”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “금”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “토”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+      - `div`
+        `display:flex flex-direction:column border-bottom:1px solid #EFF2F8`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
-        - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
-        - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:#E9EDFD box-shadow:inset 0 0 0 1.5px #3556E6 display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
       - `div` — “· ·”
         `font-size:11.5px line-height:1.45 color:#626D88 margin-top:6px`
         - `span` — “기록 없음”
@@ -84,6 +96,8 @@
           `white-space:nowrap`
         - `span` — “다 적었어요”
           `white-space:nowrap`
+      - `div` **text 12.5px/400** — “9월 기록한 소비 1,120,000원”
+        `font-size:12.5px line-height:1.5 color:#475467 margin-top:8px`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:10px`
         - `span` **text 12.5px/400** — “오늘 4건 37,000원”

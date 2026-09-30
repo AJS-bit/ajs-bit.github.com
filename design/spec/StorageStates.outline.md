@@ -3,7 +3,7 @@
 원본 `canvas/StorageStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:390px height:2779px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
+  `width:390px height:2787px background:#EDF0F7 color:#101828 padding:18px 14px 20px display:flex flex-direction:column gap:8px`
   - `div`
     `padding:0 2px 6px`
     - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
@@ -17,7 +17,7 @@
   - `div`
     `display:flex align-items:center gap:9px padding:2px 4px 4px`
     - `div`
-      `width:32px height:32px border-radius:10px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
+      `width:40px height:40px border-radius:11px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
     - `span` **text 17px/700** — “NAVI”
       `font-size:17px font-weight:700 letter-spacing:0.06em color:#101828`
   - `div` **Card(18)**

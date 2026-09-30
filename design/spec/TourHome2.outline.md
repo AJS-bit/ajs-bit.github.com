@@ -5,7 +5,7 @@
 - `div` **화면프레임**
   `width:390px height:844px background:#EDF0F7 color:#101828 display:flex flex-direction:column position:relative`
   - `div` **Header**
-    `display:flex flex-direction:column gap:6px padding:12px 16px 10px`
+    `margin-top:-455px display:flex flex-direction:column gap:6px padding:12px 16px 10px`
     - `div`
       `display:flex align-items:flex-start justify-content:space-between gap:8px`
       - `div`
@@ -77,29 +77,41 @@
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 14px 13px`
       - `div`
-        `display:flex align-items:center justify-content:space-between gap:8px`
-        - `span` **text 14px/600** — “이번 달 소비 기록”
-          `font-size:14px font-weight:600 color:#101828`
-        - `span` — “펼치기”
-          `display:inline-flex align-items:center gap:2px font-size:12px font-weight:600 color:#475467`
+        `display:flex align-items:center justify-content:space-between gap:6px min-height:32px`
+        - `div`
+          `display:flex align-items:center gap:4px`
+        - `div`
+          `display:flex align-items:center gap:6px`
       - `div` **text 12px/400** — “날짜를 누르면 그날 쓴 돈을 적어요”
-        `font-size:12px line-height:1.45 color:#626D88 margin-top:2px`
+        `font-size:12px line-height:1.45 color:#626D88 margin-top:6px`
       - `div`
-        `display:flex justify-content:space-between margin-top:8px`
+        `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) margin-top:8px`
+        - `span` **text 11px/500** — “일”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “월”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “화”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “수”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “목”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “금”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+        - `span` **text 11px/500** — “토”
+          `text-align:center font-size:11px font-weight:500 color:#626D88`
+      - `div`
+        `display:flex flex-direction:column border-bottom:1px solid #EFF2F8`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
         - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
-        - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:transparent display:flex flex-direction:column align-items:center justify-content:center gap:2px`
-        - `div`
-          `flex:1 1 0 height:56px border-radius:10px background:#E9EDFD box-shadow:inset 0 0 0 1.5px #3556E6 display:flex flex-direction:column align-items:center justify-content:center gap:2px`
+          `display:grid grid-template-columns:repeat(7, minmax(0, 1fr)) border-top:1px solid #EFF2F8 padding:2px 0`
       - `div` — “· ·”
         `font-size:11.5px line-height:1.45 color:#626D88 margin-top:6px`
         - `span` — “기록 없음”
@@ -108,6 +120,8 @@
           `white-space:nowrap`
         - `span` — “다 적었어요”
           `white-space:nowrap`
+      - `div` **text 12.5px/400** — “9월 기록한 소비 1,120,000원”
+        `font-size:12.5px line-height:1.5 color:#475467 margin-top:8px`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:10px`
         - `span` **text 12.5px/400** — “오늘 4건 37,000원”
@@ -197,11 +211,9 @@
   - `div`
     `position:absolute left:0 top:0 width:390px height:778px`
     - `div`
-      `position:absolute left:14px top:475px width:362px height:243px border-radius:18px box-shadow:0 0 0 2px rgba(255,255,255,.95), 0 0 0 4px #3556E6, 0 0 0 9999px rgba(16,24,40,.62)`
-    - `div`
-      `position:absolute left:44px top:456px width:13px height:13px background:#FFFFFF border-left:1px solid #E3E8F1 border-top:1px solid #E3E8F1 transform:rotate(225deg)`
+      `position:absolute left:14px top:20px width:362px height:557px border-radius:18px box-shadow:0 0 0 2px rgba(255,255,255,.95), 0 0 0 4px #3556E6, 0 0 0 9999px rgba(16,24,40,.62)`
     - `div` **Card(18)**
-      `position:absolute left:14px bottom:315px width:362px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px box-shadow:0 12px 32px -12px rgba(16,24,40,.45) font-size:13px line-height:1.55 color:#101828`
+      `position:absolute left:14px bottom:14px width:362px background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:16px box-shadow:0 12px 32px -12px rgba(16,24,40,.45) font-size:13px line-height:1.55 color:#101828`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px flex-wrap:wrap font-size:11.5px font-weight:600 color:#626D88`
         - `span` — “처음 안내”

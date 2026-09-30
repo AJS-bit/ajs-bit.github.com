@@ -15,7 +15,7 @@
         - `div`
           `display:flex align-items:center gap:4px`
         - `div`
-          `display:flex align-items:center gap:8px`
+          `display:flex align-items:center gap:6px`
       - `div` **text 12px/400** — “날짜를 누르면 그날 쓴 돈을 적어요”
         `font-size:12px line-height:1.45 color:#626D88 margin-top:6px`
       - `div`

@@ -558,7 +558,7 @@
       "title": "상태 · 저장소 로딩·복구 · 샘플에서 내 데이터로",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 2779,
+      "h": 2787,
       "source": "app/page.tsx"
     },
     {
@@ -569,7 +569,7 @@
       "title": "참고 · 미입력 7종 · 화면마다의 빈 카드",
       "page": "상태 · 구현 참고",
       "w": 2002,
-      "h": 2353,
+      "h": 2667,
       "source": "app/page.tsx"
     },
     {
@@ -624,7 +624,7 @@
       "title": "상태 · 저장소 로딩·복구 · 샘플에서 내 데이터로 (다크)",
       "page": "상태 · 구현 참고",
       "w": 390,
-      "h": 2779,
+      "h": 2787,
       "source": "app/page.tsx"
     },
     {
@@ -635,7 +635,7 @@
       "title": "참고 · 미입력 7종 · 화면마다의 빈 카드 (다크)",
       "page": "상태 · 구현 참고",
       "w": 2002,
-      "h": 2353,
+      "h": 2667,
       "source": "app/page.tsx"
     },
     {
@@ -723,7 +723,7 @@
       "title": "컴포넌트 · 상태",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 4773,
+      "h": 4826,
       "source": "components/navi/shared.tsx · components/ui/button.tsx"
     },
     {
@@ -734,7 +734,7 @@
       "title": "컴포넌트 · 상태 (다크)",
       "page": "디자인 시스템",
       "w": 1200,
-      "h": 4773,
+      "h": 4826,
       "source": "components/navi/shared.tsx · components/ui/button.tsx"
     },
     {
@@ -833,7 +833,7 @@
       "title": "홈 · 첫 실행 뒤 (내 데이터 · 카드 3개)",
       "page": "홈",
       "w": 390,
-      "h": 1178,
+      "h": 1492,
       "source": "app/page.tsx · components/navi/start-checklist.tsx · home-hero.tsx (first-run-5 · first-run-14 · D7 · D9)"
     },
     {
@@ -844,7 +844,7 @@
       "title": "홈 · 첫 실행 뒤 (내 데이터 · 카드 3개) (다크)",
       "page": "홈",
       "w": 390,
-      "h": 1178,
+      "h": 1492,
       "source": "app/page.tsx · components/navi/start-checklist.tsx · home-hero.tsx (first-run-5 · first-run-14 · D7 · D9)"
     },
     {
@@ -1317,7 +1317,7 @@
       "title": "홈 · 히어로 이력 부족",
       "page": "홈",
       "w": 390,
-      "h": 844,
+      "h": 1501,
       "source": "components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · D9)"
     },
     {
@@ -1328,7 +1328,7 @@
       "title": "홈 · 히어로 이력 부족 (다크)",
       "page": "홈",
       "w": 390,
-      "h": 844,
+      "h": 1501,
       "source": "components/navi/home-hero.tsx (plan/v5-calendar.md §3-4 · D9)"
     },
     {
@@ -1380,7 +1380,7 @@
       "name": "HomeCalendarStrip",
       "base": "HomeCalendarStrip",
       "theme": "light",
-      "title": "홈 · 달력 접힘 (7일 줄)",
+      "title": "홈 · 달력을 접었을 때 (7일 줄)",
       "page": "홈",
       "w": 390,
       "h": 844,
@@ -1391,7 +1391,7 @@
       "name": "DarkHomeCalendarStrip",
       "base": "HomeCalendarStrip",
       "theme": "dark",
-      "title": "홈 · 달력 접힘 (7일 줄) (다크)",
+      "title": "홈 · 달력을 접었을 때 (7일 줄) (다크)",
       "page": "홈",
       "w": 390,
       "h": 844,
@@ -1402,7 +1402,7 @@
       "name": "HomeCalendar",
       "base": "HomeCalendar",
       "theme": "light",
-      "title": "홈 · 달력 펼침 (월 달력)",
+      "title": "홈 · 달력 펼침 (월 달력 · 기본)",
       "page": "홈",
       "w": 390,
       "h": 844,
@@ -1435,7 +1435,7 @@
       "name": "DarkHomeCalendar",
       "base": "HomeCalendar",
       "theme": "dark",
-      "title": "홈 · 달력 펼침 (월 달력) (다크)",
+      "title": "홈 · 달력 펼침 (월 달력 · 기본) (다크)",
       "page": "홈",
       "w": 390,
       "h": 844,
@@ -1479,7 +1479,7 @@
       "name": "CalendarGridSizes",
       "base": "CalendarGridSizes",
       "theme": "light",
-      "title": "참고 · 달력을 펼치면 어디서나 월 달력",
+      "title": "참고 · 달력은 어느 폭 · 글자 크기에서나 월 달력",
       "page": "상태 · 구현 참고",
       "w": 1150,
       "h": 1745,
@@ -1501,7 +1501,7 @@
       "name": "DarkCalendarGridSizes",
       "base": "CalendarGridSizes",
       "theme": "dark",
-      "title": "참고 · 달력을 펼치면 어디서나 월 달력 (다크)",
+      "title": "참고 · 달력은 어느 폭 · 글자 크기에서나 월 달력 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1150,
       "h": 1745,
@@ -1658,7 +1658,7 @@
       "title": "홈 · 기본 카드 4개 전체 스크롤",
       "page": "홈",
       "w": 390,
-      "h": 1241,
+      "h": 1555,
       "source": "v5 · plan/v5-calendar.md §3-1 · §10 2단계"
     },
     {
@@ -1702,7 +1702,7 @@
       "title": "홈 · 기본 카드 4개 전체 스크롤 (다크)",
       "page": "홈",
       "w": 390,
-      "h": 1241,
+      "h": 1555,
       "source": "v5 · plan/v5-calendar.md §3-1 · §10 2단계"
     },
     {
@@ -1713,7 +1713,7 @@
       "title": "참고 · 달력 아래 한 줄이 바뀌는 경우",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 2629,
+      "h": 2673,
       "source": "v5 · plan/v5-calendar.md §3-3"
     },
     {
@@ -1724,7 +1724,7 @@
       "title": "참고 · 달력 아래 한 줄이 바뀌는 경우 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 2629,
+      "h": 2673,
       "source": "v5 · plan/v5-calendar.md §3-3"
     },
     {
@@ -1911,7 +1911,7 @@
       "title": "참고 · 이번 달 한도 카드의 경우들",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1462,
+      "h": 1464,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -1933,7 +1933,7 @@
       "title": "참고 · 이번 달 한도 카드의 경우들 (다크)",
       "page": "상태 · 구현 참고",
       "w": 1200,
-      "h": 1462,
+      "h": 1464,
       "source": "v5 · plan/v5-calendar.md §10 3단계"
     },
     {
@@ -3033,8 +3033,8 @@
       "title": "홈 · 달이 바뀐 첫 주 (10월 2일)",
       "page": "홈",
       "w": 390,
-      "h": 1118,
-      "source": "components/navi/calendar-card.tsx 최근 7일 제목 · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)"
+      "h": 1432,
+      "source": "components/navi/calendar-card.tsx 펼친 월초 달력(첫 줄 지난달 칸 · 접으면 최근 7일 제목) · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)"
     },
     {
       "file": "HomeSampleMode.dc.html",
@@ -3044,7 +3044,7 @@
       "title": "홈 · 샘플 모드",
       "page": "홈",
       "w": 390,
-      "h": 1246,
+      "h": 1537,
       "source": "app/page.tsx 샘플 띠 · calendar-card 샘플 문장 (D8 · language-ia-21 · first-run-17 · D9)"
     },
     {
@@ -3055,8 +3055,8 @@
       "title": "홈 · 달이 바뀐 첫 주 (10월 2일) (다크)",
       "page": "홈",
       "w": 390,
-      "h": 1118,
-      "source": "components/navi/calendar-card.tsx 최근 7일 제목 · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)"
+      "h": 1432,
+      "source": "components/navi/calendar-card.tsx 펼친 월초 달력(첫 줄 지난달 칸 · 접으면 최근 7일 제목) · home-hero 0건 (home-17 · home-6 · D9 · first-run-5)"
     },
     {
       "file": "DarkHomeSampleMode.dc.html",
@@ -3066,7 +3066,7 @@
       "title": "홈 · 샘플 모드 (다크)",
       "page": "홈",
       "w": 390,
-      "h": 1246,
+      "h": 1537,
       "source": "app/page.tsx 샘플 띠 · calendar-card 샘플 문장 (D8 · language-ia-21 · first-run-17 · D9)"
     },
     {
@@ -3385,7 +3385,7 @@
       "title": "홈 · 대표 목적지 카드를 켰을 때",
       "page": "홈",
       "w": 390,
-      "h": 1195,
+      "h": 1509,
       "source": "app/page.tsx 홈 카드 primaryGoal · lib/navi-home-layout.ts HOME_CARD_KEYS (goals-14 · first-run-14)"
     },
     {
@@ -3396,7 +3396,7 @@
       "title": "홈 · 대표 목적지 카드를 켰을 때 (다크)",
       "page": "홈",
       "w": 390,
-      "h": 1195,
+      "h": 1509,
       "source": "app/page.tsx 홈 카드 primaryGoal · lib/navi-home-layout.ts HOME_CARD_KEYS (goals-14 · first-run-14)"
     },
     {
@@ -3407,7 +3407,7 @@
       "title": "홈 · 소비 목표를 저장한 직후 (알림 · 종 배지 3)",
       "page": "홈",
       "w": 390,
-      "h": 844,
+      "h": 1510,
       "source": "components/navi/home-hero.tsx 소비 목표 저장 · components/navi/save-notice.tsx (home-1 · D1 · D4 · D10)"
     },
     {
@@ -3418,7 +3418,7 @@
       "title": "홈 · 소비 목표를 저장한 직후 (알림 · 종 배지 3) (다크)",
       "page": "홈",
       "w": 390,
-      "h": 844,
+      "h": 1510,
       "source": "components/navi/home-hero.tsx 소비 목표 저장 · components/navi/save-notice.tsx (home-1 · D1 · D4 · D10)"
     },
     {

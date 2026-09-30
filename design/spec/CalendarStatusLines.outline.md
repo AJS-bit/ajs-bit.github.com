@@ -3,12 +3,12 @@
 원본 `canvas/CalendarStatusLines.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1200px height:2629px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1200px height:2673px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “달력 아래 한 줄이 바뀌는 경우”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
-  - `p` — “접어 둔 달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장과 적기 기록이 없으면 버튼)이 있습니다. 아래 경우에”
+  - `p` — “달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장과 적기 기록이 없으면 버튼)이 있습니다. 아래 경우에는 그 줄”
     `font-size:13px line-height:1.55 color:#626D88`
     - `span` — “알약(오늘”
       `white-space:nowrap`
@@ -30,7 +30,7 @@
           `display:flex align-items:center justify-content:space-between gap:10px min-height:40px margin-top:10px`
         - `div`
           `display:flex align-items:center justify-content:space-between gap:8px min-height:32px margin-top:6px border-top:1px solid #EFF2F8`
-      - `p` — “상태 줄은 입니다. 그림은 기록이 있고 저녁 6시 전)입니다.”
+      - `p` — “상태 줄은 입니다. 그림은 접어 둔 7일 줄의 기록이 있고 저녁 6시 전)입니다.”
         `font-size:12px line-height:1.5 color:#626D88`
         - `b` — “날짜 칸 아래 한 줄”
           `font-weight:600 color:#475467`

@@ -5,8 +5,9 @@ plan/v4-stocks.md §3(첫 실행 흐름)·§7(1단계)·§10. 라이트를 만�
 다크 짝까지 쓴다. 홈 아트보드의 머리줄·히어로·다음 안내·이번 달 한도는 Main.dc.html에서 그대로
 잘라 온다(Main 과 1px도 다르지 않아야 하므로 다시 그리지 않는다).
 
-홈 구성 목록과 홈에는 v5 계획(§3-1 · §3-5 · §9-12)의 달력 카드(제목 `이번 달 소비 기록` · 2026-09-24)가 들어간다 — 달력 조각은 gen_calendar 에서 가져온다
-(Main 에는 달력이 없어 잘라 올 마커가 없다. HomeCalendarStrip 과 같은 calendar_card(False) 를 쓴다).
+홈 구성 목록과 홈에는 v5 계획(§3-1 · §3-5 · §9-12)의 달력 카드가 들어간다 — 달력 조각은 gen_calendar 에서 가져온다
+(Main 에는 달력이 없어 잘라 올 마커가 없다). 2026-09-30부터 홈의 달력은 펼친 월 달력이 기본이라 HomeDefaultScroll 과 같은
+calendar_card(HOME_EXPANDED) 를 쓴다(머리줄 `‹ 2026년 9월 ›` · 「접기 ▴」 — 접은 7일 줄 「이번 달 소비 기록」은 HomeCalendarStrip).
 
 2026-09-26(사용성 140건 · 앱 v5-stage1 a724aac 이 기준):
 - 소개 1 = 달력 예시 카드 + 간단한 위치 카드 두 장 · h1 `쓴 돈을 달력에 숫자만 적으면 / 월급의 몇 %를 썼는지 바로 보여요` · 자물쇠 한 줄(폰 문구) — first-run-13.
@@ -23,7 +24,7 @@ import pathlib
 import brand_mark
 from gen_common import *
 from darken import darken
-from gen_calendar import calendar_card, calendar_thumb, cell, day_state, NO_RECORD, TODAY, WD
+from gen_calendar import calendar_card, calendar_thumb, cell, day_state, NO_RECORD, TODAY, WD, HOME_EXPANDED
 
 OUT = pathlib.Path(__file__).resolve().parent.parent
 V4 = ['IntroPosition', 'IntroRoute', 'IntroDestination', 'HomeSetup', 'HomeSetupStocksOn', 'SettingsHomeEntry', 'HomeLayoutEdit', 'HomeConfigured']
@@ -47,7 +48,7 @@ def w(name, body, keep_all=True):
     print('wrote', name, '+ Dark' + name)
 
 
-def mark(size=32, radius=10):   # brand_mark.py 규격(2026-09-30) — 하루가 쌓인 길 · 네모의 45.4%
+def mark(size=32, radius=10):   # brand_mark.py 규격(2026-09-30) — 하루가 쌓인 길 · 네모의 54%(같은 날 둘째 결정 · 앱 아이콘과 같은 비율)
     return brand_mark.tile(size, radius, BRAND_GRAD)
 
 
@@ -360,9 +361,11 @@ assert '8월 합계 고치기' not in hero_bare and hero_bare.count('<div') == h
 _b = header.index('<span style="position: absolute; top: 4px; right: 4px;')
 header_nobadge = header[:_b] + header[header.index('</span>', _b) + len('</span>'):]      # 알림 0건 — 종 배지 없음
 assert header.count('>1</span>') == 1 and '>1</span>' not in header_nobadge
-# 달력 카드 — Main 에는 달력이 없어 잘라 올 마커(M_CAL)가 없다. HomeCalendarStrip 과 같은 접힘 카드를 공용 조각으로 만든다.
-calendar_block = calendar_card(False)
-assert calendar_block.count('이번 달 소비 기록') == 1 and '펼치기' in calendar_block and '더 적기' in calendar_block and '기록 없음' in calendar_block
+# 달력 카드 — Main 에는 달력이 없어 잘라 올 마커(M_CAL)가 없다. HomeDefaultScroll 과 같은 펼친 월 달력(홈의 기본 · 2026-09-30)을 공용 조각으로 만든다.
+# 이 조각을 HomeStocksOff(home_canon) · HomeStocksCard(gen_v4_stocks)가 받아 쓴다 — 접은 7일 줄은 HomeCalendarStrip 에만.
+calendar_block = calendar_card(HOME_EXPANDED)
+assert (calendar_block.count('2026년 9월') == 1 and '접기' in calendar_block and '펼치기' not in calendar_block and '이번 달 소비 기록' not in calendar_block
+        and '더 적기' in calendar_block and '기록 없음' in calendar_block and '9월 기록한 소비 1,120,000원' in calendar_block)
 
 
 def line_card(label, sub, value, value_label=None, missing=False):
@@ -471,11 +474,14 @@ def limit_empty():
             f'<div style="height: 8px; border-radius: 99px; background: {C["TRACK"]}; margin-top: 9px;"></div></div>')
 
 
-# 첫 홈 달력 — 2 ~ 7일 `—`, 오늘(8) 기록 0건 → 파란 `+` · 가득 찬 폭 `+ 오늘 쓴 돈 적기` · 확인할 내용 없음(home-4 · record-11).
-calendar_empty = calendar_card(False, states={d: NO_RECORD for d in range(2, 9)}, review=0)
+# 첫 홈 달력 — 펼친 9월(홈의 기본 · 2026-09-30): 첫 줄 8/30 · 8/31(이웃 달) · 1 ~ 7일 `—`, 오늘(8) 기록 0건 → 파란 `+` ·
+# 합계 줄 `9월 기록이 아직 없어요`(0원이라고 쓰지 않음) · 가득 찬 폭 `+ 오늘 쓴 돈 적기` · 확인할 내용 없음(home-4 · record-11).
+# 시작일 = 오늘(9월 8일에 「내 데이터로 시작」) — 그 전 날 · 앞 이웃 달 칸도 기록이 없으면 `—`(since).
+calendar_empty = calendar_card(HOME_EXPANDED, states={d: NO_RECORD for d in range(1, 9)}, since=TODAY, review=0)
+assert '9월 기록이 아직 없어요' in calendar_empty and '오늘 쓴 돈 적기' in calendar_empty and '확인할 내용' not in calendar_empty and '5.5만' not in calendar_empty
 networth_empty = line_card('순자산', '자산을 입력하면 현재 위치를 알 수 있어요', '—', missing=True)
 payoff_empty = line_card('상환 계획', '부채 입력 전', '—', missing=True)
-HOME_EMPTY_H = 1178      # 자연 높이 1154 + 24(앱 문서 1189 · 390 · 9월 8일). gen_canvas TALL · screens.json 과 같아야 한다
+HOME_EMPTY_H = 1492      # 자연 높이 1468 + 24(2026-09-30 펼친 빈 9월 · 예전 접힌 줄 1154 + 24 = 1178). gen_canvas TALL · screens.json 과 같아야 한다
 w('HomeConfigured', frame(
     f'\n  {header_nobadge}\n\n  {M_CONTENT}\n\n    {hero_empty()}\n\n    {calendar_empty}\n\n    {start_checklist()}\n\n'
     f'    {limit_empty()}\n\n    {networth_empty}\n\n  </div>\n\n'

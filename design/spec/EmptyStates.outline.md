@@ -3,7 +3,7 @@
 원본 `canvas/EmptyStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:2002px height:2353px background:#EDF0F7 color:#101828 padding:28px 40px 30px display:flex flex-direction:column gap:10px`
+  `width:2002px height:2667px background:#EDF0F7 color:#101828 padding:28px 40px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
   - `h2` **text 20px/700** — “미입력 · 빈 상태 — 일곱 가지 경우와 화면마다의 빈 카드”

@@ -543,22 +543,26 @@ STATUS_OPEN = f'<span style="flex: 1; min-width: 0; font-size: {STATUS_FS}px; li
 assert _base.count(STATUS_OPEN) == 1
 status_left_card = _base.replace(STATUS_OPEN, STATUS_OPEN.replace(f'{TODAY_TEXT}</span>', f'{TODAY_TEXT}{mark(1, pos="margin-left: 6px; vertical-align: -3px;")}</span>'))
 
-# 펼친 달력에서 아직 오지 않은 날을 눌렀을 때 — 그 달 합계 줄은 그대로, 오늘 합계 자리에 3초 안내(알약은 그대로) · 확인할 내용 행(캐논 = 항목 하나의 이름)도 그대로
-# (2026-09-24 최종 점검 후속 — 안내가 떠 있는 동안 행이 사라지는 것처럼 보이지 않게. 행이 없는 견본은 샘플 · 처음 쓰는 날뿐)
-future_card = card(month_bar('2026년 9월', prev_on=True, next_on=False) + hint(mt=6) + month_grid('sep', weeks=slice(1, 3)) + legend()      # 범례 줄은 어느 견본에나(record-11 #3)
-                   + status_line(f'9월 기록한 소비 {SEP_TOTAL:,}원') + today_tail(day_state('sep', TODAY), '아직 오지 않은 날은 적을 수 없어요', mt=8)
+# 펼친 달력에서 아직 오지 않은 날을 눌렀을 때 — 2026-09-30: 3초 안내는 날짜 위 안내 줄 자리(「날짜를 누르면 그날 쓴 돈을 적어요」 대신 · 앱 calendar-card tapNote).
+# 홈의 기본이 펼친 달력이 되면서 칸 아래 줄은 폰 첫 화면 밖(390 × 844 에서 탭 막대 아래)이라 누른 결과가 안 보였다. 그 달 합계 줄 · 오늘 합계 + 알약 ·
+# 확인할 내용 행(캐논 = 항목 하나의 이름)은 그대로(2026-09-24 최종 점검 후속 — 안내가 떠 있는 동안 행이 사라지는 것처럼 보이지 않게).
+FUTURE_NOTE = '아직 오지 않은 날은 적을 수 없어요'      # 앱 calendar-card FUTURE_NOTE
+future_card = card(month_bar('2026년 9월', prev_on=True, next_on=False) + hint(mt=6, text=FUTURE_NOTE) + month_grid('sep', weeks=slice(1, 3)) + legend()      # 범례 줄은 어느 견본에나(record-11 #3)
+                   + status_line(f'9월 기록한 소비 {SEP_TOTAL:,}원') + today_tail(day_state('sep', TODAY), TODAY_TEXT, mt=10)
                    + cal_review_row(REVIEW_UNCAT),
                    pad='13px 14px 13px')
-assert REVIEW_UNCAT in future_card
+assert REVIEW_UNCAT in future_card and future_card.count(FUTURE_NOTE) == 1 and '날짜를 누르면 그날 쓴 돈을 적어요' not in future_card
 
 # 샘플 문장은 늘 위 줄(버튼일 때도 알약일 때도) — 샘플에서 그날 첫 기록을 저장해 버튼이 알약으로 바뀌어도 카드 높이가 같다
 # (2026-09-24 통합 점검 — 알약 옆에 두면 첫 저장에 카드가 한 줄 줄어든다). 알약 옆은 오늘 합계. 샘플에는 ✓ · 안 썼어요 표시가 없다.
 SAMPLE_TEXT = '샘플에서는 「다 적었어요」 표시를 쓰지 않아요 · 카테고리는 저장할 때 골라요'      # 앱 문구(record-11 · D4)
+# 6일은 샘플에서 이체만 있는 날(안 썼어요 표시가 없다) — 숫자 없이 `이체`만(앱 sumText null · 2026-09-30 · 예전 「— 이체」).
+# 알약 줄은 앱처럼 위 10(.calendar-entry-row · 샘플 문장 줄은 위 8) — HomeSampleMode 와 같다.
 _sample_base = calendar_card(False, review=0, states={3: ('5.9만', False, False, False), 4: ('4,500', False, False, False),
-                                                       5: ('1.2만', False, False, False), 6: ('—', False, True, False)})
+                                                       5: ('1.2만', False, False, False), 6: ('', False, True, False)})
 _pill = pill_row(TODAY_TEXT, mt=10)
 assert _sample_base.count(_pill) == 1
-sample_card = _sample_base.replace(_pill, status_line(SAMPLE_TEXT, mt=8) + pill_row(TODAY_TEXT, mt=6))
+sample_card = _sample_base.replace(_pill, status_line(SAMPLE_TEXT, mt=8) + pill_row(TODAY_TEXT, mt=10))
 
 # 1 ~ 6일 — 스트립에 지난달 날이 들어가 제목이 `최근 7일 소비 기록`(home-17 #2). 9월 3일에 본 모습(8/28 ~ 9/3).
 MONTH_START_STRIP = [('8/28', '금', (fmt_sum(96_000), True, False, False), False), ('8/29', '토', (fmt_sum(35_000), True, False, False), False),
@@ -571,11 +575,12 @@ month_start_card = calendar_card(False, title=RECENT_TITLE, strip=MONTH_START_ST
                                  review='카테고리 없는 기록 2건 · 월말 전에 정리')
 assert '최근 7일 소비 기록' in month_start_card and '8/28' in month_start_card
 
-# 막힌 ‹ — 8월을 보는 중 ‹ 를 누르면 3초 동안 그 달 합계 자리에 `더 이전 달은 소비 › 내역에서 볼 수 있어요 · 내역 보기 ›`(home-18 #1).
-_aug = calendar_card(True, month='aug')      # 확인할 내용 행(캐논 7건)은 8월을 보는 동안에도 그대로(앱 · 막힌 ‹ 앞뒤 모두 · 2026-09-27 fix-up 2)
-_aug_total = status_line(month_total_text(8, 1_715_200), False, mt=8)
-assert _aug.count(_aug_total) == 1
-blocked_card = _aug.replace(_aug_total, status_line(st('더 이전 달은 소비 › 내역에서 볼 수 있어요', '내역 보기 &rsaquo;'), mt=8))
+# 막힌 ‹ — 8월을 보는 중 ‹ 를 누르면 3초 동안 `더 이전 달은 소비 › 내역에서 볼 수 있어요 · 내역 보기 ›`(home-18 #1) —
+# 2026-09-30부터 날짜 위 안내 줄 자리(앱 calendar-card tapNote · 8월 합계 줄은 그대로). 확인할 내용 행(캐논 7건)도 8월을 보는 동안 그대로(2026-09-27 fix-up 2).
+BLOCKED_NOTE = st('더 이전 달은 소비 › 내역에서 볼 수 있어요', '내역 보기 &rsaquo;')
+blocked_card = calendar_card(True, month='aug', tap_note=BLOCKED_NOTE)
+assert (blocked_card.count('더 이전 달은') == 1 and status_line(month_total_text(8, 1_715_200), False, mt=8) in blocked_card
+        and '날짜를 누르면 그날 쓴 돈을 적어요' not in blocked_card)
 
 # 그 달 기록 0건 · 안 썼어요 표시만(D7) — 펼친 9월: 칸은 모두 —, 6일만 0, 오늘 +. 합계 줄 `9월 기록이 아직 없어요 · 안 썼어요 표시만 있어요` + 버튼.
 ZERO_MONTH = {d: NO_RECORD for d in range(1, 9)}
@@ -602,12 +607,12 @@ STATUS_CASES = [
      calendar_card(False, states={TODAY: ('—', False, True, False)}, status='오늘 소비 없음 · 이체 30만', review=2)),
     ('확인할 내용이 둘 이상일 때', '행이 「확인할 내용 N개 ›」가 되고 누르면 목록 시트가 열립니다(예: 마감 뒤 8월에 기록을 더한 날). 하나뿐이면 다른 견본처럼 그 항목 이름이고 바로 엽니다.',
      calendar_card(False, review=2)),
-    ('아직 오지 않은 날을 눌렀을 때', '기록 창은 열리지 않고 3초 동안 오늘 합계 자리에 이 문장이 옵니다.', future_card),
+    ('아직 오지 않은 날을 눌렀을 때', '기록 창은 열리지 않고 3초 동안 날짜 위 안내 줄 자리에 이 문장이 옵니다. 칸 아래 줄은 그대로입니다.', future_card),
     ('샘플 데이터로 둘러보는 중일 때', '언제나 이 문장이 위 줄에 있고, 알약 옆은 오늘 합계입니다. ✓ · 0 표시가 없고 확인할 내용 행도 없습니다.', sample_card),
     ('처음 쓰는 날 · 시작일이 오늘일 때', '시작일 전 날도 기록이 없으면 다른 빈 날처럼 —입니다. 오늘 칸의 +와 버튼으로 시작하고, 확인할 내용 행은 없습니다.',
      calendar_card(False, today_empty=True, since=TODAY, review=0)),
-    ('달이 바뀐 첫 주(1 ~ 6일)', '스트립에 지난달 날이 들어가 제목이 「최근 7일 소비 기록」이고, 지난달 날은 8/28처럼 달을 붙입니다.', month_start_card),
-    ('지난달(8월)을 보다가 ‹를 눌렀을 때', '더 앞선 달은 달력에서 열지 않습니다. 3초 동안 이 문장이 그 달 합계 자리에 옵니다.', blocked_card),
+    ('달이 바뀐 첫 주(1 ~ 6일)', '접어 둔 7일 줄에 지난달 날이 들어가 제목이 「최근 7일 소비 기록」이고, 지난달 날은 8/28처럼 달을 붙입니다. 펼친 달력은 첫 줄의 지난달 칸입니다.', month_start_card),
+    ('지난달(8월)을 보다가 ‹를 눌렀을 때', '더 앞선 달은 달력에서 열지 않습니다. 3초 동안 이 문장이 날짜 위 안내 줄 자리에 옵니다. 8월 합계 줄은 그대로입니다.', blocked_card),
 ]
 # 펼친 달력 · 오늘 기록이 아직 없을 때 — 왼쪽 열 맨 아래(카드가 길어 오른쪽 격자에 두면 한 줄이 통째로 늘어난다)
 FIRST_OPEN = calendar_card(True, today_empty=True, review=REVIEW_TODAY_GONE)
@@ -617,11 +622,13 @@ assert month_total_text(9, 0) == '9월 기록이 아직 없어요'
 STATUS_MEMO = [
     (1, '상태 줄은 언제나 한 문장입니다. 회색 12.5px이고 평가하는 말이나 느낌표를 쓰지 않습니다. 오늘 기록이 0건이면(안 썼어요 표시가 아니면) 문장 대신 '
         '「+ 오늘 쓴 돈 적기」 <span style="white-space: nowrap;">버튼(40)이</span> 오고, 기록이 있으면 문장 오른쪽에 「+ 더 적기」(안 썼어요 표시면 「+ 적기」) 알약이 붙습니다. 알약 줄도 높이 40이라 저장해도 카드 높이가 그대로입니다.'),
-    (None, f'달력을 펼치면 그 위에 그 달 합계 한 줄(9월 기록한 소비 {SEP_TOTAL:,}원)이 더 있고, 오늘 합계와 알약(또는 버튼)은 그 아래 줄입니다. 지난달을 볼 때는 8월 합계만 말하고 버튼 · 알약이 없습니다. '
-        f'그 달 소비 기록이 0건이면 합계 줄은 0원이 아니라 「{month_total_text(9, 0)}」이고, 안 썼어요 표시만 있으면 「{MARKS_ONLY}」를 붙입니다(버튼일 때는 합계 줄 끝, 알약일 때는 오늘 줄 끝).'),
-    (None, '표시가 풀렸어요 · 3초 안내는 어느 달을 보든 오늘 합계 자리를 대신합니다 — 알약 옆 같은 줄이라 줄 높이 40이 그대로이고, 펼친 달력의 그 달 합계 줄과 확인할 내용 행도 그대로입니다. '
+    (None, f'펼친 달력(홈의 기본)은 그 위에 그 달 합계 한 줄(9월 기록한 소비 {SEP_TOTAL:,}원)이 더 있고, 오늘 합계와 알약(또는 버튼)은 그 아래 줄입니다. 지난달을 볼 때는 8월 합계만 말하고 버튼 · 알약이 없습니다. '
+        f'그 달 소비 기록이 0건이면 합계 줄은 0원이 아니라 「{month_total_text(9, 0)}」이고, 안 썼어요 표시만 있으면 「{MARKS_ONLY}」를 붙입니다(버튼일 때는 합계 줄 끝, 알약일 때는 오늘 줄 끝). '
+        '샘플 모드는 펼쳐도 그 달 합계 줄이 없고 위 줄이 샘플 문장입니다.'),
+    (None, '「표시가 풀렸어요 · 다시 표시」는 어느 달을 보든 오늘 합계 자리를 대신합니다 — 알약 옆 같은 줄이라 줄 높이 40이 그대로이고, 펼친 달력의 그 달 합계 줄과 확인할 내용 행도 그대로입니다. '
         '버튼이 있을 때(오늘 0건)는 버튼 위 한 줄입니다. 샘플 문장은 늘 위 줄이고 알약 옆은 오늘 합계라, 샘플에서 첫 기록을 저장해도 카드 높이가 같습니다. 저장 실패는 여기가 아니라 기록 창 안에 남습니다. '
-        '지난달을 보다가 흐린 ‹를 누르면 3초 동안 그 달 합계 자리에 「더 이전 달은 소비 › 내역에서 볼 수 있어요 · 내역 보기 ›」가 옵니다. 칸 아래 범례 줄은 어느 상태에서나 늘 있습니다.'),
+        '날짜 · ‹를 누른 3초 안내 — 「아직 오지 않은 날은 적을 수 없어요」와, 지난달을 보다가 흐린 ‹를 누른 「더 이전 달은 소비 › 내역에서 볼 수 있어요 · 내역 보기 ›」 — 는 칸 아래가 아니라 '
+        '날짜 위 안내 줄(「날짜를 누르면 그날 쓴 돈을 적어요」) 자리에 3초 동안 옵니다. 펼친 달력에서 칸 아래 줄은 폰 첫 화면 밖이라 누른 결과가 안 보여서입니다. 칸 아래 범례 줄은 어느 상태에서나 늘 있습니다.'),
 ]
 
 
@@ -633,7 +640,7 @@ def cap(title, desc):
 status_left = (
     f'<div style="width: 362px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px;">{status_left_card}'
     f'<p style="margin: 2px 2px 8px; font-size: 12px; line-height: 1.5; color: {C["INK3"]};">상태 줄은 '
-    f'<b style="font-weight: 600; color: {C["INK2"]};">날짜 칸 아래 한 줄</b>입니다. 그림은 평소(오늘 기록이 있고 저녁 6시 전)입니다.</p>'
+    f'<b style="font-weight: 600; color: {C["INK2"]};">날짜 칸 아래 한 줄</b>입니다. 그림은 접어 둔 7일 줄의 평소(오늘 기록이 있고 저녁 6시 전)입니다.</p>'
     f'{memo_card(STATUS_MEMO)}'
     f'<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px;">'
     + cap('펼친 달력 · 오늘 기록이 아직 없을 때', '그 달 합계 한 줄 아래에 버튼이 옵니다. 오늘 칸에는 파란 +. 합계는 오늘을 뺀 그 달 기록입니다.')
@@ -642,10 +649,10 @@ status_left = (
     + cap('그 달 기록이 0건이고 안 썼어요 표시만 있을 때', '합계 줄이 0원이 아니라 「9월 기록이 아직 없어요 · 안 썼어요 표시만 있어요」입니다. 접어 두면 버튼 위에 「안 썼어요 표시만 있어요」.')
     + f'{zero_month_card}</div></div>')
 
-CSL_H = 2629      # 2026-09-27 fix-up 5 자연 2605 + 24(이체만 견본 설명 · 확인할 내용 2개) · fix-up 2 자연 2587 + 24(오늘 기록이 없는 견본 · 막힌 ‹ 에 확인할 내용 행) · DZ4 검토 — 자연 2549 + 24(아직 오지 않은 날 견본에 범례 줄 · 낱말 묶음) · 이전 자연 2527 + 24(2026-09-26 · 저녁 링크 뒤 · 이체만 · 항목 하나 · 첫 주 · 막힌 ‹ · 그 달 0건)
+CSL_H = 2673      # 2026-09-30 자연 2649 + 24(3초 안내는 안내 줄 자리 · 샘플 6일 이체만 · 알약 줄 위 10 · 메모) · 2026-09-27 fix-up 5 자연 2605 + 24(이체만 견본 설명 · 확인할 내용 2개) · fix-up 2 자연 2587 + 24(오늘 기록이 없는 견본 · 막힌 ‹ 에 확인할 내용 행) · DZ4 검토 — 자연 2549 + 24(아직 오지 않은 날 견본에 범례 줄 · 낱말 묶음) · 이전 자연 2527 + 24(2026-09-26 · 저녁 링크 뒤 · 이체만 · 항목 하나 · 첫 주 · 막힌 ‹ · 그 달 0건)
 w('CalendarStatusLines', spec_frame(
     1200, CSL_H, '달력 아래 한 줄이 바뀌는 경우',      # 2026-09-26 DZ3 1570 → 1613(칸 아래 범례 줄 · 자연 1589 + 24)
          # 2026-09-24 1050 → 1160(견본 카드마다 안내 줄 · 적기 줄 40) → 1500(처음 쓰는 날 · 펼친 달력 오늘 0건 견본) → 1540(최종 점검 후속 · 미래 견본의 확인할 내용 행 · 메모) → 1570(통합 점검 · 샘플 문장 위 줄 · 자연 높이 1543.5)
-    '접어 둔 달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장과 적기 알약(오늘 기록이 없으면 버튼)이 있습니다. 아래 경우에는 그 줄이 바뀝니다.',
+    '달력의 날짜 칸 아래에는 오늘 합계를 말하는 한 문장과 적기 알약(오늘 기록이 없으면 버튼)이 있습니다. 아래 경우에는 그 줄이 바뀝니다. 홈의 기본은 펼친 월 달력이고, 견본 대부분은 짧게 보이려고 접은 7일 줄로 그렸습니다.',
     f'<div style="display: flex; gap: 32px; align-items: flex-start;">{status_left}'
     f'{grid2([(cap(t, d), pic) for t, d, pic in STATUS_CASES])}</div>', sub_w=760), keep_all=True)

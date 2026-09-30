@@ -80,7 +80,7 @@ PAYOFF_H = 924      # 자연 높이 900 + 24(저장된 상환 계획이에요 �
 GOALDESIGN_H = 1231      # 자연 높이 1207 + 24(저장하면 이렇게 바뀌어요 · 다른 금액으로 계산해 보기까지 · 추천 칸 120 × 126 앱 실측)
 GOALSSTATES_H = 4432      # 2026-09-27 fix-up 3 자연 4408 + 24(A 가정 줄 여백 · D ① 목록 카드를 따로) · 2026-09-27 fix-up 2 자연 4364 + 24(D ① 식 줄 · 홈 여유 안내 · D ③ 펼친 부채 목적지 칸 넷) · 자연 높이 4051 + 24(2026-09-27 fix-up · D ① ~ ④ · C 목적지 추가) · 예전 2706 + 24
 GOALDESIGNSTATES_H = 1421      # 자연 높이 1397 + 24
-STORAGE_H = 2779      # 자연 높이 2755 + 24(실제 웹폰트로 잼 · 2026-09-27 fix-up 2 가져오기 오류 줄 가운데 · 아이콘 없음)
+STORAGE_H = 2787      # 자연 높이 2763 + 24(2026-09-30 A 마크 줄 32 → 40 · 앱 저장소 화면) · 2026-09-27 fix-up 2 자연 2755 + 24(실제 웹폰트로 잼 · 가져오기 오류 줄 가운데 · 아이콘 없음)
 REF_PILL = (f'<span style="display: inline-block; margin-bottom: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; '
             f'color: {C["INK2"]}; border: 1px solid {C["LINE"]}; background: {C["SURF"]}; border-radius: 99px; padding: 4px 10px; '
             f'white-space: nowrap;">구현 참고 · 앱 화면이 아닙니다</span>')
@@ -88,10 +88,11 @@ REF_PILL = (f'<span style="display: inline-block; margin-bottom: 8px; font-size:
 # 앱 components/navi/storage-error-screen.tsx · app/page.tsx(a724aac · a11y-5 · first-run-22 · D8 · D10 · a11y-17).
 # 확인 창은 앱 AlertDialog 모양 — 아이콘 칸 없이 가운데 제목 · 본문, 옅은 띠의 바닥, 390 폭에서 버튼은 세로(주 행동 먼저).
 def brand_row():
+    """A · 불러오는 중 위의 마크 줄 — 앱 저장소 화면(StorageLoadingScreen · StorageErrorView)의 `.setup-brand .brand-mark` 는 40 × 40 ·
+    모서리 11(globals.css `.brand-mark` 40 · 뒤의 `.brand-mark` 가 모서리를 --radius-control 11 로 · svg 100% — 2026-09-30 앱 번들 실측 ·
+    SPEC §2 「저장소 화면 40」). 예전 판은 머리줄 크기 32 로 줄여 그렸다. 「NAVI」 글자(17 · 사이 9)는 예전 그대로다(앱은 23 · 0.09em · 사이 11)."""
     return (f'<div style="display: flex; align-items: center; gap: 9px; padding: 2px 4px 4px;">'
-            f'<div style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%); '
-            f'display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
-            f'{brand_mark.svg(32)}</div>'
+            f'{brand_mark.tile(40, 11)}'
             f'<span style="font-size: 17px; font-weight: 700; letter-spacing: 0.06em; color: {C["INK"]};">NAVI</span></div>')
 
 
