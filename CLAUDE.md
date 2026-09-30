@@ -116,7 +116,9 @@
   - 그림: 적은 날 = 채운 칸 넷(계단) · 안 적은 날 = 점 넷 · 목적지 = 빈 원. 바탕은 파랑 → 보라 그대로입니다.
   - 규격: `_tools/brand_mark.py` 하나(svg = 네모 크기 · viewBox 0 0 108 108 · 그림 45.4%). 로고 파일은 `design/brand/`(`gen_brand.py`).
   - 적용: 시안 라이트 30 · 다크 29개 파일의 마크 한 줄만 바뀌었습니다. 캔버스 41번째 판입니다.
-  - 기록: `design/CHANGES-2026-09-30.md`(「앱에서 고칠 것」 포함).
+  - 앱: `v5-stage1` `c9aaf44`에 반영했습니다(런처 · 테마 단색 · 알림 · splash · 앱 안 마크 `navi-mark.tsx` · favicon · og). tsc · vitest 2,056 · QA 9종이 통과했습니다.
+    APK는 `outputs/NAVI-v5-stage1-logo-c9aaf44-2026-09-30.apk`(서명 d658e495)입니다.
+  - 기록: `design/CHANGES-2026-09-30.md`.
 
 ## 사용자가 정한 작업 규칙 — 반드시
 

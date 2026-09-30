@@ -123,7 +123,15 @@ def android_files():
 
 # ── PNG (PIL · 8배로 그려 줄임) ──────────────────────────────────────────────────────
 def png(size, kind):
-    """kind: 'icon'(둥근 네모 · 웹 · 레거시 런처) · 'round'(원) · 'square'(꽉 참 · 스토어) · 'notify'(흰 단색 · 투명)."""
+    """kind: 'icon'(둥근 네모 · 웹 · 레거시 런처) · 'round'(원) · 'square'(꽉 참 · 스토어) · 'notify'(흰 단색 · 투명)
+    · 'fg'(적응형 전경 PNG — 투명 바탕에 흰 그림 × FG_SCALE)."""
+    if kind == 'fg':
+        from PIL import Image
+        big = png(round(size * FG_SCALE), 'notify_plain')
+        im = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+        off = (size - big.width) // 2
+        im.paste(big, (off, off), big)
+        return im
     from PIL import Image, ImageDraw
     K = 8
     S = size * K
@@ -135,6 +143,9 @@ def png(size, kind):
     if kind == 'notify':
         im = Image.new('RGBA', (S, S), (0, 0, 0, 0))
         view, off, mono = 72, 18, True
+    elif kind == 'notify_plain':          # 108 전체 칸 · 보통 두께 · 투명(전경 PNG 의 재료)
+        im = Image.new('RGBA', (S, S), (0, 0, 0, 0))
+        view, off, mono = 108, 0, False
     else:
         # 대각선 그라디언트: t = (x + y) / (2S)
         row = Image.new('RGB', (2 * S, 1))
@@ -173,9 +184,20 @@ def png(size, kind):
     rd.ellipse((P(cx - ro), P(cy - ro), P(cx + ro), P(cy + ro)), fill=255)
     rd.ellipse((P(cx - ri), P(cy - ri), P(cx + ri), P(cy + ri)), fill=0)
     im.paste(Image.new('RGBA', (S, S), white), (0, 0), ring)
-    if kind != 'notify':
+    if kind not in ('notify', 'notify_plain'):
         im.putalpha(Image.composite(im.getchannel('A'), Image.new('L', (S, S), 0), mask))
     return im.resize((size, size), Image.LANCZOS)
+
+
+def splash(w, h, bg='#182644'):
+    """앱을 열 때 화면 PNG(옛 기기 · 캐패시터 splash) — 앱 splash 테마와 같은 짙은 남색 바탕 가운데에 흰 그림.
+    그림 한 변 = 짧은 변의 22%(안드로이드 12+ 시스템 splash 에서 전경이 보이는 크기와 비슷)."""
+    from PIL import Image
+    im = Image.new('RGBA', (w, h), bg)
+    side = round(min(w, h) * 0.22 * 108 / 49)       # 그림(49) 이 짧은 변의 22% 가 되게 108 칸 크기를 잡음
+    mark = png(side, 'notify_plain')
+    im.paste(mark, ((w - side) // 2, (h - side) // 2), mark)
+    return im.convert('RGB')
 
 
 PNGS = {'png/icon-512.png': (512, 'icon'), 'png/icon-192.png': (192, 'icon'), 'png/apple-touch-icon-180.png': (180, 'square'),
