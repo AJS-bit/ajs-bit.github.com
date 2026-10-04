@@ -666,7 +666,7 @@ import_sheet = sheet(
                           f'{diffrow("새로 추가", 24, "new", "기록 21 · 자산 2 · 목적지 1")}'
                           f'{diffrow("이미 있음 · 건너뜀", 8, "dup", "같은 기록 ID")}'
                           f'{diffrow("값이 다름 · 기존 유지", 2, "conf", "같은 ID의 내용이 다름")}'
-                          f'{diffrow("검토 필요", 1, "chk", "비슷한 기존 기록 있음", last=True)}</div>') +
+                          f'{diffrow("검토 필요", 1, "chk", "비슷한 기록이 이미 있어요", last=True)}</div>') +
     group('적용 후', f'<div style="display: flex; gap: 8px;">'
                       f'<div style="flex: 1; padding: 12px; background: {C["INSET"]}; border-radius: 13px;">'
                       f'<div style="font-size: 11.5px; color: {C["INK3"]};">지금</div>'
@@ -955,6 +955,21 @@ no_spend = plain_card(
       f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK2"]}; margin-top: 4px;">월급에서 얼마가 남는지 알아야 앞으로의 자산을 계산할 수 있어요. 기록하지 않은 소비를 0원으로 보지 않아요.</div>'
       f'<div style="display: flex; justify-content: center; margin-top: 10px;">{btn("소비 기록하기", "secondary", h=40, full=False).replace("gap: 6px;", "gap: 6px; padding: 0 16px;", 1)}</div></div>'      # 앱 — 가운데 회색 보조 버튼
     + FUT_FOOT)
+# ② 월급을 넣지 않았을 때(앱 naviProjectionStatus 'no-income' · 2026-10-04): 월급 + 부수입이 비어 있으면 자산이 있어도 경로를 그리지 않는다 —
+# 경로 카드(— · 중립 칸 · 각주) → 다음 자산 지점 카드 없음 → 절감 카드(보통 카드 · 「10년 뒤 —」 · 잠긴 슬라이더 · 「월급을 넣으면 조정할 수 있어요」)
+no_income = plain_card(
+    fut_top(f'<span style="font-size: 33px; font-weight: 700; color: {C["INK4"]};">—</span>', '지금 9,350만원 대비', '—', C["INK4"])
+    + f'<div style="margin-top: 12px; padding: 14px; background: {C["INSET"]}; border-radius: 14px; text-align: center;">'
+      f'<div style="font-size: 14px; font-weight: 600; color: {C["INK"]};">월급을 넣으면 자산 경로를 그려요</div>'
+      f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK2"]}; margin-top: 4px;">월급이 비어 있으면 들어오는 돈을 0원으로 보고 그리지 않아요.</div>'
+      f'<div style="display: flex; justify-content: center; margin-top: 10px;">{btn("월급 입력하기 ›", "secondary", h=40, full=False).replace("gap: 6px;", "gap: 6px; padding: 0 16px;", 1)}</div></div>'
+    + FUT_FOOT)
+no_income_cut = plain_card(
+    f'<div style="display: flex; align-items: center; justify-content: flex-end; min-height: 25px;"><span style="font-size: 13px; font-weight: 600; color: {C["INK4"]}; white-space: nowrap;">10년 뒤 —</span></div>'
+    + f'<p style="margin: 7px 0 0; font-size: 13.5px; font-weight: 600; letter-spacing: -0.015em; color: {C["INK"]};">월급을 넣으면 조정할 수 있어요</p>'
+    + cut_slider(0, C["DIS"], '—')
+    + CUT_FOOTNOTE, pad='11px 14px')
+no_income_all = f'<div style="display: flex; flex-direction: column; gap: 10px;">{no_income}{no_income_cut}</div>'
 MILE_DASH = f'<span style="font-size: 13px; font-weight: 600; color: {C["INK4"]};">—</span>'
 no_spend_mile = plain_card(
     f'<div style="display: flex; align-items: center; gap: 6px; padding-bottom: 4px;">{icon("pin", 15, C["BRAND"], 1.9)}<span style="font-size: 14px; font-weight: 600; color: {C["INK"]};">다음 자산 지점</span></div>'
@@ -973,12 +988,13 @@ debt_grow = plain_card(
     # (2026-09-27 fix-up 5 · 예전 작은 주황 안내 상자에 그림 · 글 · 링크가 한 줄)
     + f'<div style="margin-top: 12px; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 14px; background: {C["WARN_SOFT"]}; border-radius: 14px; text-align: center;">'
       f'{icon("warn", 20, C["WARN"], 2)}'
-      f'<div style="font-size: 15px; font-weight: 600; line-height: 21px; color: {C["WARN_INK"]};">잔액이 늘어나는 대출이 있어 경로를 그릴 수 없어요</div>'
-      f'<div style="font-size: 13px; line-height: 19.5px; color: {C["INK3"]};">전세자금대출은 월 30만원보다 많이 내야 줄어요.</div>'
+      f'<div style="font-size: 15px; font-weight: 600; line-height: 21px; color: {C["WARN_INK"]};">월 최소 상환액을 넣으면 경로를 그려요</div>'
+      f'<div style="font-size: 13px; line-height: 19.5px; color: {C["INK3"]};">전세자금대출의 월 최소 상환액이 비어 있어요. 비워 두면 갚는 돈이 0원이라 잔액이 늘어나는 것으로 계산돼요.</div>'
       f'<div style="display: inline-flex; align-items: center; height: 44px; padding: 0 10px; margin-top: 4px; border-radius: 13px; background: {C["BG"]}; border: 1px solid {C["LINE"]}; '
-      f'font-size: 12.5px; font-weight: 600; color: {C["WARN"]}; white-space: nowrap;">부채 수정 &rsaquo;</div></div>'
+      f'font-size: 12.5px; font-weight: 600; color: {C["WARN"]}; white-space: nowrap;">월 최소 상환액 넣기 &rsaquo;</div></div>'
     + FUT_FOOT
-    + f'<div style="margin-top: 10px; font-size: 12px; color: {C["INK3"]};">다음 자산 지점 카드는 없고, 절감 카드는 보통 카드 「부채 조건을 고치면 조정할 수 있어요」</div>')
+    + f'<div style="margin-top: 10px; font-size: 12px; line-height: 1.5; color: {C["INK3"]};">다음 자산 지점 카드는 없고, 절감 카드는 보통 카드 「부채 조건을 고치면 조정할 수 있어요」. '
+      f'최소 상환액을 넣었는데도 이자보다 적게 내면 제목이 「잔액이 늘어나는 대출이 있어 경로를 그릴 수 없어요」 · 본문 「전세자금대출은 월 30만원보다 많이 내야 줄어요.」 · 「부채 수정 ›」입니다.</div>')
 draft_notice = (f'<div style="padding: 12px 14px; background: {C["WARN_SOFT"]}; border-radius: 14px; display: flex; flex-direction: column; gap: 4px;">'
                 f'<span style="font-size: 13.5px; font-weight: 700; color: {C["WARN_INK"]};">저장 전 상환 가정으로 비교 중</span>'
                 f'<span style="font-size: 12px; line-height: 1.5; color: {C["WARN_INK"]};">월 추가 20만원 · 고금리 우선. 저장된 계획은 아직 바뀌지 않았어요.</span>'
@@ -1043,7 +1059,8 @@ details = f'<div style="display: flex; flex-direction: column; gap: 10px;">{extr
 FUTS_MEMO = memo_box([
     (1, f'절감 가정이 0원보다 클 때만 가정입니다 — 큰 숫자 부분을 보라 점선 상자로 두르고 {code("저장되지 않는 가정")} · {code("월 15만원 절감 가정 · 원래 약 3.82억원 · 가정 종료")}, 경로는 보라 점선 하나 + 범위 띠(보통 초록 선 없음) · 범례 {code("가정 4.05억 · 범위 2.97억 ~ 5.78억")}. 절감 카드도 보라 점선 · 배지. '
         f'0원이면 절감 카드는 보통 카드(실선 · 배지 없음 · {code("10년 뒤 +0원")} 기본 글자색 · 손잡이 파랑)이고 머리 줄 높이는 배지 자리 그대로라 움직여도 카드가 흔들리지 않습니다(2026-09-27 결정).'),
-    (2, f'소비 기록이 없으면 경로를 그리지 않고 {code("—")} + 중립 칸 한 장(기록하지 않은 소비를 0원으로 보지 않음) · 다음 자산 지점은 값 {code("—")} · 절감 카드는 보통 카드 {code("10년 뒤 —")}와 잠긴 슬라이더. 잔액이 늘어나는 대출이 있으면 주황 칸 + {code("부채 수정 ›")}.'),
+    (2, f'소비 기록이 없으면 경로를 그리지 않고 {code("—")} + 중립 칸 한 장(기록하지 않은 소비를 0원으로 보지 않음) · 다음 자산 지점은 값 {code("—")} · 절감 카드는 보통 카드 {code("10년 뒤 —")}와 잠긴 슬라이더. 잔액이 늘어나는 대출이 있으면 주황 칸 + {code("부채 수정 ›")} — 그 대출의 월 최소 상환액이 비어 있으면 까닭을 {code("월 최소 상환액을 넣으면 경로를 그려요")} + {code("월 최소 상환액 넣기 ›")}로 말합니다. '
+        f'자산은 있는데 월급 + 부수입이 비어 있으면 0원 월급으로 경로를 그리지 않고 {code("월급을 넣으면 자산 경로를 그려요")} + {code("월급 입력하기 ›")} · 다음 자산 지점 카드 없음 · 절감 카드 {code("월급을 넣으면 조정할 수 있어요")}.'),
     (3, f'미래 › 상환 계획에서 저장하지 않은 초안을 들고 자산 경로로 오면 맨 위 주황 알림 {code("저장 전 상환 가정으로 비교 중")}. 매달 남는 돈이 모자라면 {code("매달 45만원 부족 · …")}.'),
     (4, f'두 칸을 모두 연 모습 — 투자 환경별 10년 뒤(모두 {code("약")} · 100만원 단위) · 부채 잔액(8,860만 → 2036년 5월 0) · 순자산 지점 여섯 줄 · 띠 설명, 그리고 계산 기준 열한 칸(날짜는 연도까지) · 계산 방법 문단.')])
 future_states = (f'<div style="display: flex; gap: 24px; align-items: flex-start;">'
@@ -1051,11 +1068,11 @@ future_states = (f'<div style="display: flex; gap: 24px; align-items: flex-start
                              case(1, '절감 카드 — 15만원일 때', '머리에 10년 뒤 차이.', cut_card), case(1, '절감 카드 — 0원일 때(Future 장)', '보통 카드. 움직이는 순간 위처럼 바뀝니다.', cut_zero),
                              case(3, '저장 전 상환 초안을 들고 왔을 때', '맨 위 주황 알림.', draft_notice), case(3, '매달 남는 돈이 모자랄 때', '10년 뒤 순자산 위 한 줄.', short_row)])
                  + col(362, [case(2, '소비 기록이 없을 때', '경로 대신 기록하자는 칸 하나 · 지점은 — · 절감 카드는 보통 카드.', no_spend_all),
-                             case(2, '잔액이 늘어나는 대출이 있을 때', '경로를 그리지 않고 까닭과 고칠 곳.', debt_grow)])
+                             case(2, '월 최소 상환액이 빈 대출이 막았을 때', '경로를 그리지 않고 칸이 비어서라는 까닭과 넣을 곳.', debt_grow), case(2, '월급을 넣지 않았을 때', '자산만 있고 월급 + 부수입이 비어 있을 때 · 0원 월급으로 그리지 않습니다.', no_income_all)])
                  + col(362, [case(4, '자세히를 열었을 때', '투자 환경별 비교 · 전체 경로와 계산 방법 자세히 두 칸.', details)])
                  + '</div>' + FUTS_MEMO)
-FUTS_W, FUTS_H = 1230, 1749      # 2026-09-27 fix-up 3 자연 1725 + 24(① 앱 그래프 · 0원 카드 · ② 지점 · 절감 카드 · ④ 두 칸 연 모습) · 자연 1360 + 24(DZ4 검토 — 「상환 계획 확인」 버튼 · 「소비 기록하기」 보조 버튼)
-w('FutureStates', spec_frame(FUTS_W, FUTS_H, '미래 › 자산 경로 — 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히',
+FUTS_W, FUTS_H = 1230, 2032      # 2026-10-04 월급 없음 카드를 둘째 열에 더해 자연 1980 + 52 · 2026-09-27 fix-up 3 자연 1725 + 24(① 앱 그래프 · 0원 카드 · ② 지점 · 절감 카드 · ④ 두 칸 연 모습) · 자연 1360 + 24(DZ4 검토 — 「상환 계획 확인」 버튼 · 「소비 기록하기」 보조 버튼)
+w('FutureStates', spec_frame(FUTS_W, FUTS_H, '미래 › 자산 경로 — 가정 · 기록 없음 · 월급 없음 · 늘어나는 대출 · 초안 · 자세히',
                              '기본(Future 장)은 절감 가정 0원입니다. 숫자는 시안 사용자 9월 8일(보통 5.0% · 10년 뒤 약 3.82억원).', future_states, sub_w=860), keep_all=True)
 
 
@@ -1085,7 +1102,7 @@ def glance_card(open_=None):
         if open_ == k == 'future':
             html += glance_panel(['지금 속도로 모으면 10년 뒤 순자산은 약 3.82억원이에요.', '물가 · 세금은 빼고 계산했어요.'], '미래 탭에서 경로 보기')
         if open_ == k == 'score':
-            parts = [('자산 대비 소비', 23, 40), ('매달 모을 수 있는 돈', 14, 30), ('부채 건전성', 6, 15), ('비상금', 15, 15)]
+            parts = [('순자산 대비 소비', 23, 40), ('매달 모을 수 있는 돈', 14, 30), ('부채 건전성', 6, 15), ('비상금', 15, 15)]
             bars = ''.join(f'<div style="margin-top: 9px;"><div style="display: flex; justify-content: space-between; font-size: 12px; color: {C["INK2"]};"><span>{n}</span><span style="font-weight: 600; color: {C["INK"]};">{v}/{m}</span></div>'
                            f'<div style="position: relative; height: 5px; border-radius: 99px; background: {C["TRACK"]}; margin-top: 4px;"><div style="position: absolute; inset: 0 {100 - v / m * 100:.1f}% 0 0; border-radius: 99px; background: {C["BRAND"]};"></div></div></div>' for n, v, m in parts)
             ring = (f'<div style="width: 78px; height: 78px; border-radius: 99px; background: conic-gradient({C["BRAND"]} 0% 58%, {C["TRACK"]} 58% 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
@@ -1106,7 +1123,7 @@ glance_empty = plain_card(''.join(
                            '월말 예상이 임시 계산이면 — 월말 예상은 아직 임시 계산이라 달라질 수 있어요.',
                            '0 < 비율 < 0.05%면 — 0.1% 미만'])), pad='6px 14px')
 GL_MEMO = memo_box([(1, f'한 번에 한 줄만 펼칩니다. 펼친 칸은 그 줄 바로 아래. 금액 쓰는 법은 미래 탭과 같은 {code("약")} + 100만원 단위.'),
-                    (2, f'자산 종합 점수 = 자산 대비 소비 40 + 매달 모을 수 있는 돈 30 + 부채 건전성 15 + 비상금 15(시안 사용자 58점 · 보통). 지난달을 마감하기 전이면 {code("지난달을 마감한 뒤 점수를 보여 드려요.")}.')])
+                    (2, f'자산 종합 점수 = 순자산 대비 소비 40 + 매달 모을 수 있는 돈 30 + 부채 건전성 15 + 비상금 15(시안 사용자 58점 · 보통). 지난달을 마감하기 전이면 {code("지난달을 마감한 뒤 점수를 보여 드려요.")}.')])
 glance_body = (f'<div style="display: flex; gap: 20px; align-items: flex-start;">'
                + col(270, [case(1, '접힘', '홈 구성에서 켠 사람만.', glance_card())])
                + col(270, [case(1, '순자산 대비 월말 예상', '월말 예상과 지금까지 쓴 돈 두 기준.', glance_card('burn'))])

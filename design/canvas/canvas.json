@@ -2797,7 +2797,7 @@
       "x": 1310,
       "y": 33896,
       "w": 1230,
-      "h": 1749,
+      "h": 2032,
       "title": "참고 · 미래 › 자산 경로의 경우들"
     },
     {
@@ -2813,7 +2813,7 @@
       "file": "DarkPayoffStates.dc.html",
       "page": "states",
       "x": 0,
-      "y": 35697,
+      "y": 35980,
       "w": 1230,
       "h": 1501,
       "title": "참고 · 미래 › 상환 계획의 경우들 (다크)"
@@ -2822,16 +2822,16 @@
       "file": "DarkFutureStates.dc.html",
       "page": "states",
       "x": 1310,
-      "y": 35697,
+      "y": 35980,
       "w": 1230,
-      "h": 1749,
+      "h": 2032,
       "title": "참고 · 미래 › 자산 경로의 경우들 (다크)"
     },
     {
       "file": "DarkHomeGlanceRows.dc.html",
       "page": "states",
       "x": 2620,
-      "y": 35697,
+      "y": 35980,
       "w": 1230,
       "h": 1045,
       "title": "참고 · 홈 자산 한눈에 줄 펼침 (다크)"
@@ -2840,7 +2840,7 @@
       "file": "SampleModeTabs.dc.html",
       "page": "states",
       "x": 0,
-      "y": 37614,
+      "y": 38180,
       "w": 1290,
       "h": 823,
       "title": "참고 · 샘플 모드 띠 (모든 탭)"
@@ -2849,7 +2849,7 @@
       "file": "DebtUnpayable.dc.html",
       "page": "states",
       "x": 1370,
-      "y": 37614,
+      "y": 38180,
       "w": 1230,
       "h": 936,
       "title": "참고 · 월 최소 상환액을 비운 부채"
@@ -2858,7 +2858,7 @@
       "file": "DarkSampleModeTabs.dc.html",
       "page": "states",
       "x": 0,
-      "y": 38602,
+      "y": 39168,
       "w": 1290,
       "h": 823,
       "title": "참고 · 샘플 모드 띠 (모든 탭) (다크)"
@@ -2867,7 +2867,7 @@
       "file": "DarkDebtUnpayable.dc.html",
       "page": "states",
       "x": 1370,
-      "y": 38602,
+      "y": 39168,
       "w": 1230,
       "h": 936,
       "title": "참고 · 월 최소 상환액을 비운 부채 (다크)"

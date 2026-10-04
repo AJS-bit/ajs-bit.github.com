@@ -3,10 +3,10 @@
 원본 `canvas/FutureStates.dc.html`. 값이 다르면 **원본이 맞습니다.**
 
 - `div`
-  `width:1230px height:1749px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
+  `width:1230px height:2032px background:#EDF0F7 color:#101828 padding:28px 30px 30px display:flex flex-direction:column gap:10px`
   - `span` **text 11px/600** — “구현 참고 · 앱 화면이 아닙니다”
     `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
-  - `h2` **text 20px/700** — “미래 › 자산 경로 — 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히”
+  - `h2` **text 20px/700** — “미래 › 자산 경로 — 가정 · 기록 없음 · 월급 없음 · 늘어나는 대출 · 초안 · 자세히”
     `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
   - `p` — “장)은 절감 가정 0원입니다. 숫자는 시안 사용자 9월 5.0% · 10년 뒤 약 3.82억원).”
     `font-size:13px line-height:1.55 color:#626D88`
@@ -55,6 +55,11 @@
         - `div`
         - `div` **Card(18)**
           `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
+      - `div`
+        `display:flex flex-direction:column gap:8px`
+        - `div`
+        - `div`
+          `display:flex flex-direction:column gap:10px`
     - `div`
       `width:362px display:flex flex-direction:column gap:22px`
       - `div`
@@ -101,6 +106,16 @@
         - `b` — “10년 뒤 —”
           `font-weight:600 color:#101828`
         - `b` — “부채 수정 ›”
+          `font-weight:600 color:#101828`
+        - `b` — “월 최소 상환액을 넣으면 경로를 그려요”
+          `font-weight:600 color:#101828`
+        - `b` — “월 최소 상환액 넣기 ›”
+          `font-weight:600 color:#101828`
+        - `b` — “월급을 넣으면 자산 경로를 그려요”
+          `font-weight:600 color:#101828`
+        - `b` — “월급 입력하기 ›”
+          `font-weight:600 color:#101828`
+        - `b` — “월급을 넣으면 조정할 수 있어요”
           `font-weight:600 color:#101828`
     - `div`
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`

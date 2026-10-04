@@ -2904,11 +2904,11 @@
 
 ## FutureStates — 참고 · 미래 › 자산 경로의 경우들
 
-`canvas/FutureStates.dc.html` · 1230×1749 · 원본 `components/navi/future-view.tsx 절감 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히 (future-1/2/5/11/12/19/21)`
+`canvas/FutureStates.dc.html` · 1230×2032 · 원본 `components/navi/future-view.tsx 절감 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히 (future-1/2/5/11/12/19/21)`
 
 - [ ] text 11px/600 — “구현 참고 · 앱 화면이 아닙니다”
       `font-size:11px font-weight:600 letter-spacing:0.02em color:#475467 border:1px solid #E3E8F1 background:#FFFFFF border-radius:99px padding:4px 10px`
-- [ ] text 20px/700 — “미래 › 자산 경로 — 가정 · 기록 없음 · 늘어나는 대출 · 초안 · 자세히”
+- [ ] text 20px/700 — “미래 › 자산 경로 — 가정 · 기록 없음 · 월급 없음 · 늘어나는 대출 · 초안 · 자세히”
       `font-size:20px font-weight:700 letter-spacing:-0.025em color:#101828`
 - [ ] **p** — “기본(Future 장)은 절감 가정 0원입니다. 숫자는 시안 사용자 9월 8일(보통 5.0% ”
       `font-size:13px line-height:1.55 color:#626D88`

@@ -63,7 +63,7 @@
       `display:flex gap:10px padding:7px 0`
       - `span` **text 10.5px/700** — “2”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` — “자산 종합 점수 = 자산 대비 소비 40 + 매달 모을 수 있는 돈 30 + 부채 건전성 15 + 비상금 15(시안”
+      - `div` — “자산 종합 점수 = 순자산 대비 소비 40 + 매달 모을 수 있는 돈 30 + 부채 건전성 15 + 비상금 15(시”
         `font-size:12px line-height:1.55 color:#475467`
         - `b` — “지난달을 마감한 뒤 점수를 보여 드려요.”
           `font-weight:600 color:#101828`

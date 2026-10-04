@@ -53,7 +53,7 @@ WIDE = {'DesktopHome': (1440, 900), 'DesktopLedger': (1440, 976), 'DarkDesktopHo
         'ImportBackupNotes': (1230, 1103), 'DarkImportBackupNotes': (1230, 1103),
         'NotifyCases': (1200, 1435), 'DarkNotifyCases': (1200, 1435),   # 2026-09-27 fix-up 4 알림 줄 56(자연 1411 + 24)   # 2026-09-26 DZ4 꺼져 있을 때 · 처음 묻는 카드
         # 2026-09-26 DZ4 새 구현 참고 장(gen_v5_screens)
-        'PayoffStates': (1230, 1501), 'DarkPayoffStates': (1230, 1501), 'FutureStates': (1230, 1749), 'DarkFutureStates': (1230, 1749),
+        'PayoffStates': (1230, 1501), 'DarkPayoffStates': (1230, 1501), 'FutureStates': (1230, 2032), 'DarkFutureStates': (1230, 2032),
         'HomeGlanceRows': (1230, 1045), 'DarkHomeGlanceRows': (1230, 1045), 'SampleModeTabs': (1290, 823), 'DarkSampleModeTabs': (1290, 823),
         'DebtUnpayable': (1230, 936), 'DarkDebtUnpayable': (1230, 936),   # 기기 알림 참고 장 (gen_notify.py · 2026-09-23)
         # v4 구현 참고 장 (gen_v4_stocks.py)

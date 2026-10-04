@@ -481,7 +481,7 @@ w('ImportReview', sheet(
                           f'{diffrow("새로 추가", 24, "new", "기록 21 · 자산 2 · 목적지 1")}'
                           f'{diffrow("이미 있음 · 건너뜀", 8, "dup", "같은 기록 ID")}'
                           f'{diffrow("값이 다름 · 기존 유지", 2, "conf", "같은 ID의 내용이 다름")}'
-                          f'{diffrow("검토 필요", 1, "chk", "비슷한 기존 기록 있음", last=True)}</div>', fixed=True) +
+                          f'{diffrow("검토 필요", 1, "chk", "비슷한 기록이 이미 있어요", last=True)}</div>', fixed=True) +
     group('적용 후', f'<div style="display: flex; gap: 8px;">'
                       f'<div style="flex: 1; padding: 12px; background: {C["INSET"]}; border-radius: 13px;">'
                       f'<div style="font-size: 11.5px; color: {C["INK3"]};">지금</div>'
