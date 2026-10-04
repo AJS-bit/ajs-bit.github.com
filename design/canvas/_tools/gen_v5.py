@@ -822,12 +822,12 @@ def hero_insufficient(second=FOOT_NO_HISTORY, big='0.1', caption='월급 360만�
     return h
 
 
-# 다음 안내(first-run-5 #2 · 앱 nextBestAction): 이 사람은 캐논 부채(카드 할부 14.5%)가 있어 늘 있는 안내 `카드 할부 금리 14.5%부터 줄여보세요`가 먼저 온다
+# 다음 안내(first-run-5 #2 · 앱 nextBestAction): 이 사람은 캐논 부채(카드 할부 14.5%)가 있어 늘 있는 안내 `금리 14.5%인 카드 할부부터 갚아 보세요`가 먼저 온다
 # (앱 그대로 · 종 배지 중요 1 과 같은 까닭). 연 10% 이상 부채가 없는 사람은 빠진 날 안내 `어제 쓴 돈도 적어 볼까요?`(info) — InsufficientElsewhere ⑤ 에 둘 다 그린다.
 # 예전 사실 카드(`기록한 소비 5,000원 · …`)는 앱에 없다.
 GUIDE_TITLE = '투자 계좌 5,000만원에 매달 47만원이 더 필요해요'
 assert s1.guide_block.count(GUIDE_TITLE) == 1 and s1.guide_block.count('목적지 보기 &rsaquo;') == 1
-first_guide = (s1.guide_block.replace(GUIDE_TITLE, '카드 할부 금리 14.5%부터 줄여보세요')
+first_guide = (s1.guide_block.replace(GUIDE_TITLE, '금리 14.5%인 카드 할부부터 갚아 보세요')
                .replace('지금 매달 모으는 돈으로는 목표일에 닿기 어려워요. 목표일이나 순서를 바꿔 보세요.', '고금리 부채는 자산이 자라는 속도를 가장 크게 낮춰요.')
                .replace('목적지 보기 &rsaquo;', '상환 계획 보기 &rsaquo;'))
 guide_missing_day = guidance('info', '다음 안내', '어제 쓴 돈도 적어 볼까요?', '빠진 날을 채울수록 이번 달 쓴 돈이 정확해져요.', '7일 적기')
@@ -906,7 +906,7 @@ def hero_fragment(notes):
 
 
 NOTE_R = '8월에 새 기록이 있어요 · ' + LINKY % '8월 합계 고치기'                    # D9 · record-1 — 마감한 달의 기록이 마감 뒤 바뀌었을 때(링크 줄)
-NOTE_R2 = '지난 기록에 새 기록이 있어요 · ' + LINKY % '합계 고치기'
+NOTE_R2 = '마감한 달에 새 기록이 있어요 · ' + LINKY % '합계 고치기'
 NOTE_A = '카테고리 없는 32,000원은 적은 금액 그대로 예상에 더했어요'
 NOTE_B = '카테고리 없는 지난 기록도 평균에 넣었어요. 카테고리를 고르면 다시 계산해요.'
 NOTE_C = '지난 고정비 기록을 보고 앞으로 나갈 돈도 예상했어요'
@@ -917,7 +917,7 @@ CANON_NOTES = [NOTE_A, NOTE_C]
 assert s1.hero_block.count(NOTE_A) == 1 and s1.hero_block.count(NOTE_C) == 1 and '8월 합계 고치기' not in s1.hero_block and NOTE_B not in s1.hero_block
 FOOTNOTE_CASES = [
     (1, '덧붙일 말이 없을 때', '월급 · 부수입 고치기 줄로 카드가 끝납니다.', []),
-    (2, '마감한 달에 새 기록이 있을 때', '첫 줄은 링크 줄입니다. 배지 · 월말 예상 · 여유는 그대로입니다. 두 달 이상이면 「지난 기록에 새 기록이 있어요 · 합계 고치기 ›」.', [NOTE_R]),
+    (2, '마감한 달에 새 기록이 있을 때', '첫 줄은 링크 줄입니다. 배지 · 월말 예상 · 여유는 그대로입니다. 두 달 이상이면 「마감한 달에 새 기록이 있어요 · 합계 고치기 ›」.', [NOTE_R]),
     (3, '이번 달에 카테고리 없는 기록이 있을 때', '안내가 한 줄 붙습니다.', [NOTE_A]),
     (4, '지난달 기록으로 예상을 계산한 날', '카테고리 없는 지난 기록이 평균에 들어갔거나 고정비를 지난 기록으로 예상했을 때. 이번 달 기록만으로 계산한 날에는 나오지 않습니다.', [NOTE_B, NOTE_C]),
     (5, '기록이 한 달치뿐일 때', '안내가 한 줄 붙습니다.', [NOTE_D])]
@@ -1400,7 +1400,7 @@ w('HomeSampleMode', frame(
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">\n\n'
     f'    {hero_provisional("월말 예상을 보려면 6월 · 7월 · 8월을 마감해 주세요 · " + LINK % "6월부터 마감하기")}\n\n'
     f'    {cal_sample}\n\n    {first_guide}\n\n    {limit_stage12()}\n\n'
-    f'    {s1.line_card("순자산", "지난달들을 마감하면 도착 시점을 볼 수 있어요", "9,350만원")}\n\n    {s1.payoff_card}\n\n  </div>\n\n'
+    f'    {s1.line_card("순자산", "지난 몇 달을 마감하면 도착 시점을 볼 수 있어요", "9,350만원")}\n\n    {s1.payoff_card}\n\n  </div>\n\n'
     f'  {bottomnav(0)}\n', h=SAMPLE_H), keep_all=True)
 
 
@@ -1426,7 +1426,7 @@ GUIDE_T = '투자 계좌 5,000만원에 매달 47만원이 더 필요해요'
 GUIDE_B = '지금 매달 모으는 돈으로는 목표일에 닿기 어려워요. 목표일이나 순서를 바꿔 보세요.'
 assert s1.guide_block.count(GUIDE_T) == 1 and s1.guide_block.count(GUIDE_B) == 1 and s1.guide_block.count('목적지 보기 &rsaquo;') == 1
 guide_over = (s1.guide_block.replace(GUIDE_T, '월말엔 소비 목표 50%를 넘어요')
-              .replace(GUIDE_B, '월말 예상 월급의 57.9%예요. 월 28만원 줄이면 소비 목표 안이에요.').replace('목적지 보기 &rsaquo;', '줄일 소비 찾기 &rsaquo;'))
+              .replace(GUIDE_B, '월말 예상은 월급의 57.9%예요. 월 28만원 줄이면 소비 목표 안이에요.').replace('목적지 보기 &rsaquo;', '줄일 소비 찾기 &rsaquo;'))
 limit_50 = limit_stage12()
 for _a, _b in [('오늘 포함 하루 45,220원', '오늘 포함 하루 29,570원'), ('남은 한도 104만원', '남은 한도 68만원'), ('216만원 중 112만원 썼어요', '180만원 중 112만원 썼어요'),
                ('inset: 0 48.1% 0 0', 'inset: 0 37.8% 0 0')]:

@@ -193,7 +193,7 @@ def darken(text, name='', knob=KNOB_OFF_DARK, seg=None):
 
 SCREENS = ['Main', 'HomeScroll', 'Assets', 'Debts', 'Strategy', 'Spending', 'Ledger',
            'Limits', 'Goals', 'GoalDesign', 'Future', 'Payoff', 'Onboarding', 'SpendingPast',
-           'SpendingPastOpen', 'SpendingPastChanged']   # 2026-09-25 지난 달 마감 전 · 마감 뒤 바뀜(gen_rest)
+           'SpendingPastOpen', 'SpendingPastChanged']   # 2026-09-25 지난달 마감 전 · 마감 뒤 바뀜(gen_rest)
 MODALS = ['LimitEditor', 'TransactionAdd', 'ProfileDialog', 'AssetDialog', 'DebtDialog',
           'GoalDialog', 'RecurringDialog', 'MonthlyClose', 'ImportReview', 'CoachPanel',
           'AlertsPanel', 'AlertsEmpty', 'PeerDialog', 'GoalContribute', 'CoachEmpty',

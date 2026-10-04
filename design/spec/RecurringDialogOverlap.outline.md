@@ -19,7 +19,7 @@
       - `div`
         - `h2` **text 18px/700** — “반복 기록”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “매달 반복되는 기록이에요. 앱을 열면 시작 월 이후 지난 결제일도 반영해요.”
+        - `p` **text 12.5px/400** — “매달 반복되는 기록이에요. 앱을 열면 시작 월부터 이미 지난 결제일도 기록으로 만들어요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`

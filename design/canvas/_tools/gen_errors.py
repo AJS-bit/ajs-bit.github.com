@@ -196,7 +196,7 @@ f = card(
     f'<div style="text-align: center; padding: 4px 4px 0;">'
     f'<div style="font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: {C["INK"]};">저장하지 않고 닫을까요?</div>'
     f'<div style="font-size: 12.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 6px;">'
-    f'이번에 넣은 내용은 저장되지 않아요. 계속 작성하면 넣은 값을 그대로 둘 수 있어요.</div></div>'
+    f'이번에 넣은 내용은 저장되지 않아요. 계속 작성하면 넣은 값이 그대로 남아요.</div></div>'
     f'<div style="display: flex; flex-direction: column; gap: 7px; margin-top: 15px;">'
     f'<div style="display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 11px; background: {C["NEG_SOFT"]}; color: {C["NEG"]}; font-size: 14px; font-weight: 600;">변경 버리고 닫기</div>'
     f'<div style="display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 11px; background: #E8ECF5; border: 2px solid {C["BRAND"]}; box-shadow: 0 0 0 3px rgba(53,86,230,.18); color: {C["INK"]}; font-size: 14px; font-weight: 600;">계속 작성</div></div>',

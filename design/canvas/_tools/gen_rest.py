@@ -100,7 +100,7 @@ w('GoalContribute', sheet(
         f'</div>',
         pad='13px 15px') +
 
-    note('이 기록은 목적지의 모은 돈만 바꿔요. 통장에 실제로 넣었다면 위에서 잔액도 함께 늘릴 수 있어요.', 'mute'),
+    note('이 적립은 목적지의 모은 돈만 바꿔요. 통장에 실제로 넣었다면 위에서 잔액도 함께 늘릴 수 있어요.', 'mute'),
 
     # 앱 하네스(390 × 844)는 시트 윗변 60 · 본문이 넘쳐 스크롤 — 시안은 본문을 다 펼쳐 그린다(2026-09-27 fix-up 5 · 예전 윗변 40 · 844 안에 눌러 담음)
     sheet_footer('취소', '적립하기'), scrim_h=60, body_pb=14, h=CONTRIB_H), keep_all=True)
@@ -247,7 +247,7 @@ def types_sheet(h):
 
 
 # ══════════════════════════════════════════════════════════════
-# 3 · 소비 · 지난 달 월 요약 (spending-4 · spending-18 · spending-23 · record-1 · D9 · components/navi/spending-overview.tsx)
+# 3 · 소비 · 지난달 월 요약 (spending-4 · spending-18 · spending-23 · record-1 · D9 · components/navi/spending-overview.tsx)
 # 세 장: 마감한 7월(SpendingPast) · 아직 마감 안 한 8월(SpendingPastOpen · 6월만 마감한 날) · 마감 뒤 기록이 바뀐 8월(SpendingPastChanged).
 # 값은 앱에 시안 사용자(W/design-state.json)를 넣은 화면 그대로(NUMBERS §5 · 2026-09-25 캡처).
 # ══════════════════════════════════════════════════════════════
@@ -320,7 +320,7 @@ TREND_FOLD = card(f'<div style="display: flex; align-items: center; gap: 8px; fo
 # 없는 탭은 없는 자리에서 설명한다 — 카드로 따로 두지 않는다.
 tab_note = (f'<div style="display: flex; align-items: center; gap: 7px; padding: 0 16px 10px; flex-shrink: 0;">'
             f'{icon("info", 13, C["INK4"], 1.9)}'
-            f'<span style="font-size: 12px; color: {C["INK3"]};">지난 달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요</span></div>')
+            f'<span style="font-size: 12px; color: {C["INK3"]};">지난달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요</span></div>')
 
 
 def close_card(title, body, right, tone=None):
@@ -393,8 +393,8 @@ OPEN_CARD = (f'<div style="background: {C["SURF"]}; border: 1.5px solid {C["WARN
              f'{month_chips()}</div>')
 w('SpendingPastOpen', *past_screen(
     '2026년 8월', OPEN_CARD,
-    past_hero('지난 달 기록', badge('마감 전', 'mute'), None, '월급 대비 소비 · 마감하면 보여요', '1.9%',
-              [('월급', '—', '', C["INK3"]), ('월 소비 합계', '172', '만원', None), ('소비·상환 후', '—', '', C["INK3"])], '지금 월급으로 지난달을 채우지 않아요'),
+    past_hero('지난달 기록', badge('마감 전', 'mute'), None, '월급 대비 소비 · 마감하면 보여요', '1.9%',
+              [('월급', '—', '', C["INK3"]), ('월 소비 합계', '172', '만원', None), ('소비·상환 후', '—', '', C["INK3"])], '지금 월급으로 지난달을 계산하지 않아요'),
     past_chart(AUG_DAYS, '172만원'),
     past_cats('172만원', 13, [('주거/관리', 50, 29), ('식비', 30, 17), ('쇼핑', 18, 10), ('문화/여가', 13, 7), ('보험', 12, 7)]), h=PAST_H['SpendingPastOpen']))
 
@@ -466,7 +466,7 @@ w('CoachEmpty', sheet(
             f'<div style="font-size: 11px; color: {C["INK4"]}; margin-top: 1px;">{b}</div></div></div>'
             for ic, t, b in [
                 ('arrowur', '고금리 부채부터 줄이기', '넣은 금리를 보고 먼저 갚을 부채를 알려 드려요'),
-                ('target', '목적지 도착을 당기는 법', '카테고리를 줄이면 몇 개월 빨라지는지'),
+                ('target', '목적지에 더 빨리 도착하기', '카테고리를 줄이면 몇 개월 빨라지는지'),
             ])
         + '</div>'
         + f'<div style="margin-top: 11px;">'

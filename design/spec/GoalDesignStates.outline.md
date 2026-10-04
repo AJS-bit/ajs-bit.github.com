@@ -82,7 +82,7 @@
       `display:flex align-items:center justify-content:space-between gap:8px`
       - `span` **text 13.5px/600** — “매달 30만원 넣는 가정 · 계산 기준”
         `font-size:13.5px font-weight:600 color:#101828`
-    - `div` **text 12px/400** — “매달 넣을 돈을 넣어 보면 그 돈으로 모았을 때를 보라 점선으로 보여 줘요. 이 목적지 하나만 본 가정이에요. 목적”
+    - `div` **text 12px/400** — “매달 넣을 돈을 적어 보면 그 돈으로 모았을 때를 보라 점선으로 보여 줘요. 이 목적지 하나만 본 가정이에요. 목적”
       `font-size:12px line-height:1.55 color:#475467 margin-top:8px`
     - `div`
       `margin-top:12px`
@@ -103,9 +103,9 @@
           `font-size:22px font-weight:700 letter-spacing:-0.03em color:#6B32D6 margin-top:2px`
       - `span` **text 12px/600** — “목표액에 닿아요”
         `font-size:12px font-weight:600 color:#6B32D6`
-    - `div` **text 11.5px/400** — “보라 실선: 매달 넣어야 할 돈으로 모으면 · 회색 점선: 원금만(수익 없이 넣은 돈) · 보라 점선: 매달 넣을 ”
+    - `div` **text 11.5px/400** — “보라 실선: 매달 넣어야 할 돈으로 모은 금액 · 회색 점선: 원금만(수익 없이 넣은 돈) · 보라 점선: 매달 넣”
       `font-size:11.5px line-height:1.55 color:#626D88 margin-top:10px`
-    - `div` **text 11.5px/400** — “필요한 것만 고르세요. 비상금은 자산 탭의 현금성 자산으로 채워 드려요 · 비상금으로 따로 둔 돈만 넣으려면 고쳐 ”
+    - `div` **text 11.5px/400** — “추천 목적지는 필요한 것만 고르세요. 비상금은 자산 탭의 현금성 자산으로 채워 드려요 · 비상금으로 따로 둔 돈만 ”
       `font-size:11.5px line-height:1.55 color:#626D88 margin-top:8px`
   - `div` **text 11.5px/400** — “보라 점선 · 「가정」은 금액을 넣은 뒤에만 그려요. 넣은 금액은 저장되지 않아요.”
     `font-size:11.5px line-height:1.5 color:#626D88 padding:0 4px`

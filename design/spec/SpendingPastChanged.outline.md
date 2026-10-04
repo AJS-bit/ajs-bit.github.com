@@ -38,7 +38,7 @@
         `flex:1 height:36px border-radius:9px display:flex align-items:center justify-content:center font-size:13.5px font-weight:500 color:#5B6880`
   - `div`
     `display:flex align-items:center gap:7px padding:0 16px 10px`
-    - `span` **text 12px/400** — “지난 달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
+    - `span` **text 12px/400** — “지난달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
       `font-size:12px color:#626D88`
   - `div` **본문(스크롤 영역)**
     `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`

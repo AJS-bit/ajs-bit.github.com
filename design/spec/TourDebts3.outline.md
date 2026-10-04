@@ -156,7 +156,7 @@
           `white-space:nowrap`
       - `div` **text 16px/700** — “부채 한 건씩”
         `margin-top:8px font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.35 color:#101828`
-      - `div` **text 13px/400** — “건마다 종류 · 금리 · 월 최소 상환액이에요. 추가로 새 부채를 넣고, 누르면 고칠 수 있어요.”
+      - `div` **text 13px/400** — “건마다 종류 · 금리 · 월 최소 상환액이에요. 새 부채도 추가하고, 누르면 고칠 수 있어요.”
         `margin-top:8px font-size:13px line-height:1.55 color:#475467`
       - `div`
         `display:flex align-items:center justify-content:space-between flex-wrap:wrap gap:4px 8px margin-top:14px`

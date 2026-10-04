@@ -142,7 +142,7 @@
           `font-size:11px font-weight:600 letter-spacing:0.06em color:#B45309`
         - `span` — “월말엔 소비 목표 넘어요”
           `font-size:15px font-weight:600 letter-spacing:-0.015em line-height:1.35 color:#101828`
-        - `span` — “월말 예상 월급의 . 월 28만원 줄이면 소비 목표 안이에요.”
+        - `span` — “월말 예상은 월급의 . 월 28만원 줄이면 소비 목표 안이에요.”
           `font-size:12.5px line-height:1.45 color:#475467`
         - `span` **text 12.5px/600** — “줄일 소비 찾기 ›”
           `font-size:12.5px font-weight:600 color:#3556E6 margin-top:5px`

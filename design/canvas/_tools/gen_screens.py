@@ -161,9 +161,9 @@ w('StorageStates', state_sheet(
       err_card(tail=f'<div style="width: 100%; margin-top: 13px; text-align: left;">'
                + err_line('백업 파일을 읽지 못했습니다. NAVI 또는 자산 나침반의 JSON 백업을 골라 주세요. 지금 기록은 그대로예요.') + '</div>') +
       cap('읽을 수 있는 백업을 고르면 이 카드 아래에 「백업 불러오기」가 열립니다 — 「{파일} · 저장 전에 무엇이 바뀌는지 먼저 봐요.」 · 불러올 항목 · 지금 → 적용 후 · '
-          '「데이터 성격과 적용 후 내역을 확인했어요.」 · 취소 / 「이 내용으로 적용」(확인 전엔 회색). 바로 덮어쓰지 않아요.')),
+          '「데이터 종류와 적용 후 내역을 확인했어요.」 · 취소 / 「이 내용으로 적용」(확인 전엔 회색). 바로 덮어쓰지 않아요.')),
      ('D · 샘플에서 내 데이터로 전환',
-      alert_dialog('샘플을 치우고 내 데이터로 시작할까요?', '지금 본 샘플 예시만 지워져요. 샘플은 백업되지 않아요.',
+      alert_dialog('샘플을 치우고 내 데이터로 시작할까요?', '지금 보는 샘플만 지워져요. 샘플은 백업되지 않아요.',
                    btn('내 데이터로 시작', 'primary', h=44) + grey_btn('계속 둘러보기')) +
       cap('샘플 모드 맨 위 띠 「샘플 데이터로 둘러보는 중 · 내 데이터로 시작 ›」에서 열립니다. 「내 데이터로 시작」을 누르면 월급 입력 시트가 열려요.'))],
     h=STORAGE_H).replace('<h2 ', REF_PILL + '<h2 ', 1), keep_all=True)
@@ -646,7 +646,7 @@ w('Payoff', frame(
              f'<span style="font-size: 11px; color: {C["INK4"]};">최소 상환만</span>'
              f'<span style="font-size: 11px; color: {C["INK4"]};">월 {PAYOFF_MAX}만원</span></div>'
              f'<div style="font-size: 12px; line-height: 1.45; color: {C["INK3"]}; margin-top: 8px;">저축 · 상환 계획까지 지키려면 이번 달 152만원 안에서 쓰면 돼요</div>'
-             f'<div style="margin-top: 10px;">{note("최소 상환 월 77만원은 줄일 수 없어 슬라이더에서 뺐어요.", "mute")}</div>'),
+             f'<div style="margin-top: 10px;">{note("월 최소 상환액 77만원은 줄일 수 없어 슬라이더에서 뺐어요.", "mute")}</div>'),
         card(f'<div style="display: flex; gap: 8px;">{compare("고금리 우선", "2036년 5월", "9년 8개월 뒤", "1,734만원", best=True)}'
              f'{compare("소액 우선", "2036년 5월", "9년 8개월 뒤", "1,764만원")}</div>'
              f'<div style="margin-top: 11px;">{info_box}</div>',
@@ -899,14 +899,14 @@ gd_asm = hero(
     f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; margin-top: 8px;">위의 「저장하면 이렇게 바뀌어요」는 매달 넣어야 할 돈(24만원) 기준 그대로예요.</div>', pad=15)
 gd_asm_body = card(
     f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;"><span style="font-size: 13.5px; font-weight: 600; color: {C["INK"]};">매달 30만원 넣는 가정 · 계산 기준</span>{icon("down", 16, C["INK3"], 2)}</div>'
-    f'<div style="font-size: 12px; line-height: 1.55; color: {C["INK2"]}; margin-top: 8px;">매달 넣을 돈을 넣어 보면 그 돈으로 모았을 때를 보라 점선으로 보여 줘요. 이 목적지 하나만 본 가정이에요. 목적지로 저장해도 이 금액은 참고로만 남고, 실제로 이 목적지에 매달 넣을 돈은 다른 목적지와 함께 나눠 정해요.</div>'
+    f'<div style="font-size: 12px; line-height: 1.55; color: {C["INK2"]}; margin-top: 8px;">매달 넣을 돈을 적어 보면 그 돈으로 모았을 때를 보라 점선으로 보여 줘요. 이 목적지 하나만 본 가정이에요. 목적지로 저장해도 이 금액은 참고로만 남고, 실제로 이 목적지에 매달 넣을 돈은 다른 목적지와 함께 나눠 정해요.</div>'
     f'<div style="margin-top: 12px;">{solo(gd_field("매달 넣을 돈 (가정)", "30", "만원", rb="30만원"))}</div>'
     f'<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; margin-top: 12px; padding: 12px; background: {C["VIO_SOFT"]}; border-radius: 14px;">'
     f'<div><div style="font-size: 11.5px; font-weight: 600; color: {C["VIO_STRONG"]};">가정대로 7년 뒤</div>'
     f'<div style="font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: {C["VIO_STRONG"]}; margin-top: 2px;">3,553<span style="font-size: 14px; font-weight: 600;">만원</span></div></div>'
     f'<span style="font-size: 12px; font-weight: 600; color: {C["VIO_STRONG"]};">목표액에 닿아요</span></div>'
-    f'<div style="font-size: 11.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 10px;">보라 실선: 매달 넣어야 할 돈으로 모으면 · 회색 점선: 원금만(수익 없이 넣은 돈) · 보라 점선: 매달 넣을 돈 (가정). 매달 말에 넣고 수익률이 그대로라고 보고 계산해요. 물가 · 세금 · 수수료는 빼고 계산했어요.</div>'
-    f'<div style="font-size: 11.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 8px;">필요한 것만 고르세요. 비상금은 자산 탭의 현금성 자산으로 채워 드려요 · 비상금으로 따로 둔 돈만 넣으려면 고쳐 주세요. 생활비 25년치는 1년 소비의 25배를 참고로 쓴 값이고, 은퇴할 수 있다는 뜻은 아니에요.</div>',
+    f'<div style="font-size: 11.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 10px;">보라 실선: 매달 넣어야 할 돈으로 모은 금액 · 회색 점선: 원금만(수익 없이 넣은 돈) · 보라 점선: 매달 넣을 돈 (가정). 매달 말에 넣고 수익률이 그대로라고 보고 계산해요. 물가 · 세금 · 수수료는 빼고 계산했어요.</div>'
+    f'<div style="font-size: 11.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 8px;">추천 목적지는 필요한 것만 고르세요. 비상금은 자산 탭의 현금성 자산으로 채워 드려요 · 비상금으로 따로 둔 돈만 넣으려면 고쳐 주세요. 생활비 25년치는 1년 소비의 25배를 참고로 쓴 값이고, 은퇴할 수 있다는 뜻은 아니에요.</div>',
     pad="14px")
 
 w('GoalDesignStates', state_sheet(

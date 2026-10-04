@@ -269,7 +269,7 @@
         `text-align:center padding:4px 4px 0`
         - `div` **text 16px/700** — “저장하지 않고 닫을까요?”
           `font-size:16px font-weight:700 letter-spacing:-0.02em color:#101828`
-        - `div` **text 12.5px/400** — “이번에 넣은 내용은 저장되지 않아요. 계속 작성하면 넣은 값을 그대로 둘 수 있어요.”
+        - `div` **text 12.5px/400** — “이번에 넣은 내용은 저장되지 않아요. 계속 작성하면 넣은 값이 그대로 남아요.”
           `font-size:12.5px line-height:1.55 color:#626D88 margin-top:6px`
       - `div`
         `display:flex flex-direction:column gap:7px margin-top:15px`

@@ -50,10 +50,10 @@ SETS = {
         ('자산', 'Assets', 'DarkAssets'),
         ('소비', 'Spending', 'DarkSpending'),
     ]),
-    'compare-2-screens': ('탭 5개 — 목적지 · 미래 · 지난 달', [
+    'compare-2-screens': ('탭 5개 — 목적지 · 미래 · 지난달', [
         ('목적지', 'Goals', 'DarkGoals'),
         ('미래', 'Future', 'DarkFuture'),
-        ('소비 · 지난 달', 'SpendingPast', 'DarkSpendingPast'),
+        ('소비 · 지난달', 'SpendingPast', 'DarkSpendingPast'),
     ]),
     'compare-3-modals': ('모달 — 거래 추가 · 적립액 추가 · 월 마감', [
         ('거래 추가', 'TransactionAdd', 'DarkTransactionAdd'),

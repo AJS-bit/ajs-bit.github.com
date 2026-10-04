@@ -46,7 +46,7 @@
         `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
         - `span`
           `margin-top:1px`
-        - `span` **text 11.5px/400** — “이 기록은 목적지의 모은 돈만 바꿔요. 통장에 실제로 넣었다면 위에서 잔액도 함께 늘릴 수 있어요.”
+        - `span` **text 11.5px/400** — “이 적립은 목적지의 모은 돈만 바꿔요. 통장에 실제로 넣었다면 위에서 잔액도 함께 늘릴 수 있어요.”
           `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

@@ -54,6 +54,7 @@ v4 · v5 생성기는 `if __name__` 가드 없이 **import되는 순간 장을 �
 | `outline.py` | 아트보드 → `design/spec/<이름>.outline.md` 블록 개요. 400줄짜리 마크업을 150줄 구조로 줄인다 |
 | `gen_spec_screens.py` | 아트보드 → `design/SPEC-SCREENS.md` 화면별 조립 체크리스트 |
 | `render_png.py` | 아트보드 → PNG(기본 출력은 임시 폴더 `navi-preview/` · `--out`으로 바꿈 — 렌더는 저장소에 두지 않는다). 만든 앱을 같은 방식으로 캡처해 비교할 때도 쓴다 |
+| `ba_shot.cjs` · `ba_overflow.cjs` | 전 · 후 비교(Playwright · 규칙 1) — 작업 트리와 git `HEAD`의 같은 장을 찍어 `<이름>.before.png` · `.after.png`로 쌓고, 맨 아래 · 맨 오른쪽 위치와 잘린 칸을 견준다. `NAVI_UI_PLAYWRIGHT_MODULE` · `NAVI_UI_BROWSER` 필요. Brave가 없는 맨에서 `render_png.py --chrome`이 Chrome for Testing으로 파일을 못 만들 때 쓴다(2026-10-02) |
 
 ```bash
 python3 outline.py && python3 gen_spec_screens.py && python3 render_png.py

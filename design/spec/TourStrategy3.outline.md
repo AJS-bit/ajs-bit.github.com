@@ -119,7 +119,7 @@
           `white-space:nowrap`
       - `div` **text 16px/700** — “이 순서로 갚아요”
         `margin-top:8px font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.35 color:#101828`
-      - `div` **text 13px/400** — “먼저 끝나는 빚부터 다 갚는 달을 순서대로 보여 줘요. 다 갚은 돈은 다음 빚으로 넘어가요.”
+      - `div` **text 13px/400** — “먼저 끝나는 빚부터 다 갚는 달을 순서대로 보여 줘요. 다 갚은 빚에 내던 돈은 다음 빚으로 넘어가요.”
         `margin-top:8px font-size:13px line-height:1.55 color:#475467`
       - `div`
         `display:flex align-items:center justify-content:space-between flex-wrap:wrap gap:4px 8px margin-top:14px`

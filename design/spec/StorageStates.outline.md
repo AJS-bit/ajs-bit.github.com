@@ -156,7 +156,7 @@
       `padding:20px 18px 16px text-align:center`
       - `div` **text 16px/700** — “샘플을 치우고 내 데이터로 시작할까요?”
         `font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.4 color:#101828`
-      - `div` **text 12.5px/400** — “지금 본 샘플 예시만 지워져요. 샘플은 백업되지 않아요.”
+      - `div` **text 12.5px/400** — “지금 보는 샘플만 지워져요. 샘플은 백업되지 않아요.”
         `font-size:12.5px line-height:1.55 color:#475467 margin-top:6px`
     - `div`
       `display:flex flex-direction:column gap:8px padding:12px 14px 14px background:#F4F6FB border-top:1px solid #E3E8F1`

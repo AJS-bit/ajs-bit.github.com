@@ -130,13 +130,13 @@
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “6”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` — “또래 카드 — 월말 예상으로 판단하는 ‘ ’ 줄 대신 ‘ ’. 구간 · 기준 등록 · 자세히 접힘)는 그대로입니다.”
+      - `div` — “또래 카드 — 월말 예상으로 판단하는 ‘ ’ 줄 대신 ‘ ’. · 기준 등록 · 자세히 접힘)는 그대로입니다. 월급”
         `font-size:12px line-height:1.55 color:#475467`
         - `b` — “월말에도 소비 목표 60% 안이에요”
           `font-weight:600 color:#101828`
         - `b` — “이번 달 기록 · 기록한 소비 5,000원”
           `font-weight:600 color:#101828`
-        - `span` — “나머지(연령”
+        - `span` — “나머지(나이대”
           `white-space:nowrap`
         - `b` — “이번 달 기록이 아직 없어요”
           `font-weight:600 color:#101828`

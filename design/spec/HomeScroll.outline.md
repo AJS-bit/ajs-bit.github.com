@@ -40,7 +40,7 @@
           `background:#F7F4FE border-radius:12px padding:10px 11px`
         - `div`
           `background:#F7F4FE border-radius:12px padding:10px 11px`
-      - `p` **text 11px/400** — “가정일 뿐이며 저장되지 않아요. 실제 기록 · 한도 · 목적지는 그대로예요.”
+      - `p` **text 11px/400** — “저장되지 않는 가정이에요. 실제 기록 · 한도 · 목적지는 그대로예요.”
         `font-size:11px line-height:1.45 color:#626D88`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -66,7 +66,7 @@
           `font-weight:500 color:#475467`
       - `div`
         `display:flex gap:7px margin-top:10px padding:9px 10px background:#F4F6FB border-radius:11px`
-        - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 현”
+        - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 조사 인원 1,200명 ”
           `flex:1 font-size:11px line-height:1.45 color:#626D88`
     - `div` **Card(18)**
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:4px 14px`

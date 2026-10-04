@@ -128,7 +128,7 @@
           `display:inline-flex align-items:center gap:5px min-height:22px padding:2px 9px border-radius:99px background:#E9EDFD color:#3556E6 font-weight:700 letter-spacing:0.02em white-space:nowrap`
         - `span` — “상환 계획 2 / 3”
           `white-space:nowrap`
-      - `div` **text 16px/700** — “얼마나 빨라지나”
+      - `div` **text 16px/700** — “얼마나 빨라지나요”
         `margin-top:8px font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.35 color:#101828`
       - `div` **text 13px/400** — “고금리 우선 · 소액 우선 방식별로 다 갚는 달과 총이자를 비교해요. 지금 방식과의 차이도 함께요.”
         `margin-top:8px font-size:13px line-height:1.55 color:#475467`

@@ -234,7 +234,7 @@ coach_first = mini_sheet('코칭', '저장된 기록을 보고 중요한 순서�
 
 # ⑤ 또래 카드 — PeerStates 의 B 에서 월말 예상으로 판단하는 초록 줄만 `이번 달 기록 · 기록한 소비 5,000원` 한 줄로(앱 · home-13).
 PS = src('PeerStates')
-i_b = PS.index('B · 연령 구간 있음')
+i_b = PS.index('B · 나이대 있음')
 i_card = PS.index('<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-radius: 18px; padding: 14px;">', i_b)
 i_c = PS.index('<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #606B7D; padding: 6px 2px 0;">C ·', i_card)
 peer_b = PS[i_card:i_c].rstrip()
@@ -274,7 +274,7 @@ ins_memo = memo_box([
         f'참고 줄 {code("저축 · 상환 계획까지 지키려면 152만원 안에서 쓰면 돼요")}는 회색 12px(판정 아님). 카테고리 줄의 {code("초과 예상")}은 없습니다.'),
     (4, f'코치 — 예상에서 나오는 안내(월말 예상 · 매달 모을 수 있는 돈 · 모든 목적지가 제때 도착해요)가 없습니다. 카테고리 비중 · 고금리 부채처럼 기록에서 나오는 안내와 사실 안내만 남습니다.'),
     (5, f'다음 안내 — 늘 있는 안내가 있으면 그것(카드 할부 금리 · 상환 계획 보기 ›), 없으면 빠진 날 안내 {code("어제 쓴 돈도 적어 볼까요? · 7일 적기 ›")}. 홈(HeroInsufficient)과 같은 카드입니다.'),
-    (6, f'또래 카드 — 월말 예상으로 판단하는 {code("월말에도 소비 목표 60% 안이에요")} 줄 대신 {code("이번 달 기록 · 기록한 소비 5,000원")}. 나머지(연령 구간 · 기준 등록 · 자세히 접힘)는 그대로입니다. '
+    (6, f'또래 카드 — 월말 예상으로 판단하는 {code("월말에도 소비 목표 60% 안이에요")} 줄 대신 {code("이번 달 기록 · 기록한 소비 5,000원")}. 나머지(나이대 · 기준 등록 · 자세히 접힘)는 그대로입니다. '
         f'월급이 있고 이번 달 기록이 0건이면 제목이 {code("이번 달 기록이 아직 없어요")} · 버튼은 {code("소비 기록하기")} 하나입니다(월급 입력을 다시 묻지 않음).'),
     (7, f'알림 — 예상으로 만든 알림은 목록과 개수(제목 · 머리줄 종 배지)에서 모두 빠집니다. 목록은 중요 · 참고로 묶고, 종 배지 = 중요 수(1)입니다.')],
     tail=f'판정은 하나입니다 — 월말 예상 기준(지난달 마감)이 서기 전이면 위 일곱 곳이 전부 이 모양이고, 서면 전부 원래 화면으로 돌아갑니다. 그래서 월말 예상으로 판단하는 {code("월말에도 목표 안")}이 어디에도 없습니다. '
@@ -378,7 +378,7 @@ tapped_block = (f'<div style="background: {C["SURF"]}; border: 1px solid {C["LIN
                 + f'<div style="font-size: 12px; line-height: 1.45; color: {C["INK3"]}; margin-top: 8px; padding: 0 2px;">{CLOSE_LINE}</div></div>')
 
 fut_memo = memo_box([
-    (1, f'{code("10년 뒤 순자산 약 3.82억원")} 옆에 {code("임시 계산")}. 값은 계산한 그대로이고, 흐리게 하거나 {code("—")}로 가리지 않습니다. 칩은 버튼이라 누르면 그 아래에 {code("8월을 마감하면 확정돼요 · 8월 마감하기 ›")}가 한 줄 열립니다(두 달 이상이면 {code("지난달들을 마감하면 확정돼요 · 6월부터 마감하기 ›")}). 각주에는 이유 문장을 붙이지 않습니다.'),
+    (1, f'{code("10년 뒤 순자산 약 3.82억원")} 옆에 {code("임시 계산")}. 값은 계산한 그대로이고, 흐리게 하거나 {code("—")}로 가리지 않습니다. 칩은 버튼이라 누르면 그 아래에 {code("8월을 마감하면 확정돼요 · 8월 마감하기 ›")}가 한 줄 열립니다(두 달 이상이면 {code("지난 몇 달을 마감하면 확정돼요 · 6월부터 마감하기 ›")}). 각주에는 이유 문장을 붙이지 않습니다.'),
     (2, f'다음 자산 지점은 도착 달 세 줄이 모두 같은 예상에서 나오므로 줄마다 붙이지 않고 카드 제목 옆에 한 번만 붙입니다.'),
     (3, f'절감 카드에는 붙이지 않습니다. 0원이면 보통 카드(실선 · 배지 없음 · {code("10년 뒤 +0원")} 기본 글자색)이고, 0 위로 움직이면 그때만 보라 점선 + {code("저장되지 않는 가정")}이 붙습니다 — 사용자가 넣은 가정은 이미 모양으로 구분됩니다(2026-09-27 결정).'),
     (4, f'목적지 화면 — 맨 위 카드가 {code("목적지에 매달 필요한 돈 146만원 매달 필요")}로 바뀌고 매달 모을 수 있는 돈 숫자와 부족 · 여유 판단을 숨깁니다. 줄은 {code("매달 N만원 필요")}이고 도착 예상 옆에 작은 칩(목표일보다 늦다는 말은 하지 않음). '
@@ -614,33 +614,33 @@ for i, (name, meta, amt, on) in enumerate([("ETF 자동이체", "매월 6일 · 
         f'{toggle(on)}{icon("more", 16, C["INK4"], 2.2)}</div>')
 # 앱 .recurring-prefill-note — 위 4 · 아래 10 · 안쪽 8 12 · 모서리 11 · 12 / 400 / 18 ink-2(2026-09-27 fix-up 5 · 예전 안쪽 10 12 · 아래 12 · 12.5 / 1.55)
 PREFILL_NOTE = (f'<div style="display: flex; flex-direction: column; padding: 8px 12px; background: {C["INSET"]}; border-radius: 11px; margin: 4px 0 10px; font-size: 12px; line-height: 18px; color: {C["INK2"]};">'
-                f'<span>방금 저장한 기록에서 채웠어요</span><span>이번 달 건은 이 기록으로 이미 있어요</span></div>')      # 앱 문구(spending-13) · 두 줄 같은 모양(앱 — 첫 줄도 굵지 않음)
+                f'<span>방금 저장한 기록에서 채웠어요</span><span>이번 달 반복 기록은 이 기록으로 이미 있어요</span></div>')      # 앱 문구(spending-13) · 두 줄 같은 모양(앱 — 첫 줄도 굵지 않음)
 # 반복 규칙 안내 상자 · 시작 월 = gen_modals RULE_NOTE · new_rule 과 같은 앱 치수(위 11 · 안쪽 10 11 · 접힌 칸 11.5 / 500 ink-3 · 삼각 뒤 3 · 시작 월 10 아래 · 2026-09-27 fix-up 5)
 RULE_NOTE_V5 = (
     f'<div style="display: flex; gap: 8px; padding: 10px 11px; background: {C["INSET"]}; border-radius: 12px; margin-top: 11px;">'
     f'<span style="flex-shrink: 0; margin-top: 1px;">{icon("info", 14, C["INK3"], 1.9)}</span>'
-    f'<div style="min-width: 0;"><div style="font-size: 11.5px; line-height: 17.25px; color: {C["INK3"]};">이번 달 결제일이 이미 지났으면 저장하자마자 이번 달 건이 생겨요 · 이미 적어 둔 같은 돈이 있으면 먼저 물어봐요</div>'
-    f'<div style="display: flex; align-items: center; gap: 3px; margin-top: 6px; font-size: 11.5px; font-weight: 500; line-height: 17.25px; color: {C["INK3"]};">{_tri()}반복 규칙 적용 안내</div></div></div>')
+    f'<div style="min-width: 0;"><div style="font-size: 11.5px; line-height: 17.25px; color: {C["INK3"]};">이번 달 결제일이 이미 지났으면 저장하자마자 이번 달 기록이 만들어져요 · 이미 적어 둔 같은 기록이 있으면 먼저 물어봐요</div>'
+    f'<div style="display: flex; align-items: center; gap: 3px; margin-top: 6px; font-size: 11.5px; font-weight: 500; line-height: 17.25px; color: {C["INK3"]};">{_tri()}반복 기록이 만들어지는 방식</div></div></div>')
 MONTH_FIELD = (f'<div style="margin-top: 10px;"><div style="font-size: 12px; font-weight: 600; color: {C["INK2"]}; margin-bottom: 7px;">시작 월</div>'
                f'<div style="display: flex; align-items: center; justify-content: space-between; height: 46px; padding: 0 12px; border-radius: 11px; '
                f'border: 1px solid {C["INPUT"]}; background: {C["SURF"]};"><span style="font-size: 15px; color: {C["INK"]};">2026년 10월</span>'
                f'{icon("cal", 16, C["INK2"], 1.9)}</div></div>')
 PREFILL_H = 877      # 2026-09-27 fix-up 5 자연 853 + 24(앱 치수 — 채움 안내 12 / 18 · 규칙 안내 · 시작 월 10 아래) · DZ4 검토 자연 870 + 24(채움 안내 두 줄 같은 모양) · 이전 자연 868 + 24(목록이 먼저 · 새 규칙 안내 상자 · 시작 월 한 줄 · 적용 안내)
 w('RecurringPrefill', sheet(
-    '반복 기록', '매달 반복되는 기록이에요. 앱을 열면 시작 월 이후 지난 결제일도 반영해요.',
-    group('등록된 규칙', f'<div style="padding: 0 13px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 14px;">{"".join(rules)}</div>',
+    '반복 기록', '매달 반복되는 기록이에요. 앱을 열면 시작 월부터 이미 지난 결제일도 기록으로 만들어요.',
+    group('등록된 반복 기록', f'<div style="padding: 0 13px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 14px;">{"".join(rules)}</div>',
           meta='3건 · 켜짐 2건')
-    + group('새 규칙', PREFILL_NOTE
+    + group('새 반복 기록', PREFILL_NOTE
             + _pair(field("이름", "월세", required=True), field("금액", "700,000", "원", required=True, w=136))      # 앱 이름 208 · 금액 136
             + _pair(select_field("카테고리", "주거/관리", required=True), field("결제일", "8", "일", w=104), mt=12)
             + MONTH_FIELD + RULE_NOTE_V5),
-    sheet_footer('닫기', '규칙 추가'), scrim_h=40, h=PREFILL_H), keep_all=True)
+    sheet_footer('닫기', '반복 기록 추가'), scrim_h=40, h=PREFILL_H), keep_all=True)
 
 
 # ══════════════════════════════════════════════════════════════
 # 6. ImportBackupNotes — 가져오기 · 백업 안내 문구 (rank 31 · v5-3)
 # ══════════════════════════════════════════════════════════════
-IMPORT_NOTE = '가져온 기록의 카테고리 없음 표시도 함께 와요 · 확인 표시는 전체 복원에서만 돌아와요 · 이미 있는 기록은 그대로예요'           # 앱 문구(D4)
+IMPORT_NOTE = '불러온 기록의 카테고리 없음 표시도 함께 반영돼요 · 확인 표시는 전체 교체에서만 반영돼요 · 이미 있는 기록은 그대로예요'           # 앱 문구(D4)
 UNCHECK_NOTE = '9월 5일 표시가 풀렸어요'                                                                                                  # 계획 §8 원문(` · 다시 표시`는 링크)
 
 
@@ -657,11 +657,11 @@ def diffrow(label, count, tone, desc, last=False):      # gen_modals.diffrow 와
 
 checkbox_on = (f'<div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 20px; height: 20px; border-radius: 6px; background: {C["BRAND"]}; display: flex; '
                f'align-items: center; justify-content: center; flex-shrink: 0;">{icon("check", 13, "#FFFFFF", 3)}</span>'
-               f'<span style="font-size: 12.5px; line-height: 1.5; color: {C["INK2"]};">데이터 성격과 적용 후 내역을 확인했어요.</span></div>')
+               f'<span style="font-size: 12.5px; line-height: 1.5; color: {C["INK2"]};">데이터 종류와 적용 후 내역을 확인했어요.</span></div>')
 import_sheet = sheet(
     '백업 불러오기', 'navi-backup-2026-09-01.json · 저장하기 전에 무엇이 바뀌는지 먼저 봐요.',      # 앱 설정 › 백업 불러오기(app/page.tsx) · ImportReview 와 같게 — 「저장 전에」는 복구 화면 쪽
-    group('적용 방식', segmented(['기존에 추가', '전체 교체'], 0) +
-          f'<div style="margin-top: 9px;">{note("「기존에 추가」는 겹치지 않는 기록만 넣어요. 「전체 교체」를 고르면 지금 기록이 모두 사라져요.", "mute")}</div>') +
+    group('적용 방식', segmented(['합치기', '전체 교체'], 0) +
+          f'<div style="margin-top: 9px;">{note("「합치기」는 겹치지 않는 기록만 넣어요. 「전체 교체」를 고르면 지금 기록이 모두 사라져요.", "mute")}</div>') +
     group('불러올 항목', f'<div style="padding: 0 13px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 14px;">'
                           f'{diffrow("새로 추가", 24, "new", "기록 21 · 자산 2 · 목적지 1")}'
                           f'{diffrow("이미 있음 · 건너뜀", 8, "dup", "같은 기록 ID")}'
@@ -679,7 +679,7 @@ import_sheet = sheet(
                       f'<div style="font-size: 11.5px; color: {C["INK3"]}; margin-top: 2px;">순자산 9,850만원</div></div></div>'
                       f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 44px; margin-top: 10px; padding: 0 13px; border-radius: 12px; background: {C["INSET"]};">'
                       f'<span style="font-size: 13px; font-weight: 600; color: {C["INK"]};">백업 설정 · 상세 내역</span><span style="font-size: 12px; font-weight: 600; color: {C["INK3"]};">내 데이터 &rsaquo;</span></div>'
-                      f'<div style="font-size: 11.5px; line-height: 1.5; color: {C["INK3"]}; margin-top: 8px;">순자산 목적지의 모은 돈은 가져온 뒤의 자산 · 부채 잔액으로 계산해요.</div>'
+                      f'<div style="font-size: 11.5px; line-height: 1.5; color: {C["INK3"]}; margin-top: 8px;">순자산 목적지의 모은 돈은 불러온 뒤의 자산 · 부채 잔액으로 계산해요.</div>'
                       # 앱 import-review .import-quick-entry-note = 확인 칸 바로 위 마지막 줄(2026-09-27 fix-up 3 · 예전엔 불러올 항목 목록 바로 아래)
                       f'<div style="display: flex; align-items: flex-start; gap: 4px; margin-top: 8px; padding: 0 2px;">'
                       f'<span style="font-size: 11.5px; line-height: 1.5; color: {C["INK3"]};">{IMPORT_NOTE}</span>{imark(1)}</div>'),
@@ -720,8 +720,8 @@ path_table = (f'<div style="background: {C["SURF"]}; border: 1px solid {C["LINE"
               + path_row('골라서 가져오기', '새로 추가된 기록의 표시만 따라옵니다. 이미 있어 건너뛴 기록에는 씌우지 않습니다', '오지 않습니다. 소비가 새로 들어간 날짜의 지금 확인만 풀립니다')
               + path_row('같은 파일을 다시', '사용자가 뺀 표시를 되살리지 않습니다', '바뀌지 않습니다', last=True) + '</div>')
 ib_memo = memo_box([
-    (1, f'가져오기 화면 — 확인 칸 바로 위 회색 글 한 줄(두 줄로 접힘 · 적용 후 · 백업 설정 · 순자산 목적지 안내 다음). 「기존에 추가」는 값이 다른 기록을 덮어쓰지 않습니다(기존 유지).'),
-    (2, f'백업은 설정 시트 › 데이터에서 합니다. 내보낸 결과(「백업 파일을 저장했어요」 · 실패하면 「백업 파일을 저장하지 못했습니다. 다시 시도해 주세요.」)는 시트 안에 한 줄로 남습니다. 저장 방식 한 줄은 폰 「이 기기에 암호화해 저장해요」 · 웹 「이 브라우저에만 보관해요」.'),
+    (1, f'가져오기 화면 — 확인 칸 바로 위 회색 글 한 줄(두 줄로 접힘 · 적용 후 · 백업 설정 · 순자산 목적지 안내 다음). 「합치기」는 값이 다른 기록을 덮어쓰지 않습니다(기존 유지).'),
+    (2, f'백업은 설정 시트 › 데이터에서 합니다. 내보낸 결과(「백업 파일을 저장했어요」 · 실패하면 「백업 파일을 저장하지 못했습니다. 다시 시도해 주세요.」)는 시트 안에 한 줄로 남습니다. 저장 방식 한 줄은 폰 「이 기기에 암호화해 저장해요」 · 웹 「이 브라우저에만 저장해요」.'),
     (3, f'가져온 소비가 안 썼어요로 표시한 날에 들어가면 그 날의 표시가 풀리고, 달력 카드에서 {code("9월 5일 표시가 풀렸어요 · 다시 표시")}로 알립니다. 의미색 없이 중립 상자입니다.')])
 ib_right = (f'<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 22px;">'
             f'<div style="display: grid; grid-template-columns: repeat(2, 362px); gap: 22px 20px; align-items: start;">'
@@ -795,7 +795,7 @@ draft_slider = vio_card(
     + f'<div style="font-size: 12.5px; color: {C["INK2"]}; margin-top: 10px;">지금 계획에서 매달 남는 돈 약 90만원</div>'
     + f'<div style="margin-top: 8px;">{slider(10, C["VIO"])}</div>' + slider_ends()
     + f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; margin-top: 8px;">저축 · 상환 계획까지 지키려면 152만원 → 147만원 안에서 쓰면 돼요<br>소비 목표 216만원(월급의 60%)은 그대로예요</div>'
-    + info_lines(['최소 상환 월 77만원은 줄일 수 없어 슬라이더에서 뺐어요.']))      # 앱: 초안에도 참고 줄 아래 안내 상자가 남는다(2026-09-27 fix-up 3)
+    + info_lines(['월 최소 상환액 77만원은 줄일 수 없어 슬라이더에서 뺐어요.']))      # 앱: 초안에도 참고 줄 아래 안내 상자가 남는다(2026-09-27 fix-up 3)
 draft_compare = plain_card(
     f'<div style="display: flex; gap: 8px;">{pay_compare("고금리 우선", "2035년 9월", "9년 뒤", "1,614만원", sel="vio", reco=True)}{pay_compare("소액 우선", "2035년 10월", "9년 1개월 뒤", "1,643만원")}</div>'
     + info_lines(['고금리 우선이 이자를 30만원 덜 내고 1개월 먼저 끝나요', '추가 상환이 없으면 2038년 10월 · 이자 2,248만원', B2('3년 1개월 빨리 끝나고 이자 634만원 덜 내요')]), pad='13px 14px')
@@ -835,7 +835,7 @@ short_slider = vio_card(
     + f'<div style="margin-top: 8px;">{slider(75, C["VIO"])}</div>' + slider_ends()
     + f'<div style="margin-top: 8px;">{note("매달 45만원이 모자라 모아 둔 돈에서 꺼내 써요", "warn", "warn")}</div>'      # 앱 payoff-plan: 슬라이더 끝 글자 뒤 · 참고 줄 앞(2026-09-27 fix-up)
     + f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; margin-top: 8px;">저축 · 상환 계획까지 지키려면 152만원 → 49만원 안에서 쓰면 돼요<br>소비 목표 216만원(월급의 60%)은 그대로예요</div>'
-    + info_lines(['최소 상환 월 77만원은 줄일 수 없어 슬라이더에서 뺐어요.']))      # 앱: 초안에도 참고 줄 아래 안내 상자가 남는다(2026-09-27 fix-up 3)
+    + info_lines(['월 최소 상환액 77만원은 줄일 수 없어 슬라이더에서 뺐어요.']))      # 앱: 초안에도 참고 줄 아래 안내 상자가 남는다(2026-09-27 fix-up 3)
 
 cap_rows = ''.join(
     f'<div style="font-size: 12.5px; line-height: 1.5; color: {C["INK2"]}; padding: 8px 0; {"border-top: 1px solid " + C["LINE_ROW"] + ";" if i else ""}">{t}</div>'
@@ -887,7 +887,7 @@ def fut_top(val_html, right_label, right_val, right_col=None, pre=''):
 
 
 # 가정 15만(앱 하네스 · naviProject spendDelta 150,000 · 2026-09-27 fix-up 3): 10년 뒤 보통 404,948,913원(약 4.05억) · 늘어나는 폭 311,448,913 → 약 3.11억 · 10년 뒤 차이 +약 2,300만원 ·
-# 범위(조심스럽게 ~ 좋을 때) 297,327,160 ~ 577,850,663 → 2.97억 ~ 5.78억. 앱은 가정이 있으면 보라 점선 경로 하나 + 범위 띠(보통 초록 선 없음) · 범례 「가정 · 범위」 · 해 축 6개 · 금액 눈금(Future 그래프와 같은 축).
+# 범위(나쁠 때 ~ 좋을 때) 297,327,160 ~ 577,850,663 → 2.97억 ~ 5.78억. 앱은 가정이 있으면 보라 점선 경로 하나 + 범위 띠(보통 초록 선 없음) · 범례 「가정 · 범위」 · 해 축 6개 · 금액 눈금(Future 그래프와 같은 축).
 # 보라 점선 상자는 큰 숫자 부분만 두른다(카드 전체가 아님 · 앱 future-view).
 CUT_BASE = [93_500_000, 118_110_561, 144_081_502, 171_450_846, 200_297_680, 230_631_966, 262_380_645, 295_611_189, 330_396_139, 366_811_736, 404_948_913]
 CUT_BAD = [93_500_000, 111_941_256, 130_861_861, 150_252_500, 170_142_408, 190_489_051, 211_164_075, 232_176_706, 253_538_122, 275_259_914, 297_327_160]
@@ -952,7 +952,7 @@ no_spend = plain_card(
     fut_top(f'<span style="font-size: 33px; font-weight: 700; color: {C["INK4"]};">—</span>', '지금 9,350만원 대비', '—', C["INK4"])
     + f'<div style="margin-top: 12px; padding: 14px; background: {C["INSET"]}; border-radius: 14px; text-align: center;">'
       f'<div style="font-size: 14px; font-weight: 600; color: {C["INK"]};">소비를 며칠 기록하면 경로를 그려요</div>'
-      f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK2"]}; margin-top: 4px;">월급에서 얼마가 남는지 알아야 앞으로의 자산을 계산할 수 있어요. 기록 전 소비를 0원으로 치지 않아요.</div>'
+      f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK2"]}; margin-top: 4px;">월급에서 얼마가 남는지 알아야 앞으로의 자산을 계산할 수 있어요. 기록하지 않은 소비를 0원으로 보지 않아요.</div>'
       f'<div style="display: flex; justify-content: center; margin-top: 10px;">{btn("소비 기록하기", "secondary", h=40, full=False).replace("gap: 6px;", "gap: 6px; padding: 0 16px;", 1)}</div></div>'      # 앱 — 가운데 회색 보조 버튼
     + FUT_FOOT)
 MILE_DASH = f'<span style="font-size: 13px; font-weight: 600; color: {C["INK4"]};">—</span>'
@@ -1000,7 +1000,7 @@ cmp_rows = ''.join(
     f'<div style="flex: 1; min-width: 0;"><div style="font-size: 12px; {"font-weight: 600; " if on else ""}color: {C["INK"] if on else C["INK2"]};">{n} · 앞으로 모을 돈 연 {r}</div>'
     f'<div style="font-size: 11.5px; {"font-weight: 600; " if on else ""}color: {C["INK"] if on else C["INK3"]}; margin-top: 2px;">지금보다 약 {d}억원 늘어요</div></div>'
     f'<div style="font-size: 14px; font-weight: 700; color: {C["INK"]}; white-space: nowrap;">약 {v}억원</div></div>'
-    for i, (n, r, v, d, on) in enumerate([('조심스럽게', '-0.3%', '2.8', '1.86', False), ('보통', '5.0%', '3.82', '2.88', True), ('좋을 때', '10.5%', '5.47', '4.54', False)]))
+    for i, (n, r, v, d, on) in enumerate([('나쁠 때', '-0.3%', '2.8', '1.86', False), ('보통', '5.0%', '3.82', '2.88', True), ('좋을 때', '10.5%', '5.47', '4.54', False)]))
 # 부채 잔액(보통 · 월 추가 15만원 · 고금리 우선) — 8,860만 → 2036년 5월 0원(116개월 뒤 · naviProject debts)
 DEBT_Y = [88_600_000, 81_204_055, 73_336_694, 65_006_861, 56_184_974, 46_913_239, 37_319_707, 27_394_863, 17_127_266, 6_505_078]
 _dx = lambda m: 12 + m / 120 * 314
@@ -1013,7 +1013,7 @@ debt_svg = (f'<svg width="334" height="92" viewBox="0 0 334 92" fill="none" styl
             + ''.join(f'<text x="{_dx(i * 12):.1f}" y="86" text-anchor="{"start" if i == 0 else ("end" if i == 10 else "middle")}" font-size="11" fill="#697182">{2026 + i}</text>' for i in range(0, 11, 2))
             + '</svg>')
 MILE_ROWS = [('1억원', '', '4개월 뒤 · 2027년 1월'), ('1억 5,000만원', '', '2년 5개월 뒤 · 2029년 2월'), ('2억원', '', '4년 4개월 뒤 · 2031년 1월'),
-             ('3억원', '', '7년 8개월 뒤 · 2034년 5월'), ('4억원', '', '10년 안에 미도달'), ('6억 2,520만원', '생활비 25년치', '10년 안에 미도달')]
+             ('3억원', '', '7년 8개월 뒤 · 2034년 5월'), ('4억원', '', '10년 안에 닿기 어려워요'), ('6억 2,520만원', '생활비 25년치', '10년 안에 닿기 어려워요')]
 mile_list = ''.join(
     f'<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 36px; {"border-top: 1px solid " + C["LINE_ROW"] + ";" if i else ""}">'
     f'<span style="font-size: 13px; font-weight: 600; color: {C["INK"]}; white-space: nowrap;">{n}'
@@ -1026,11 +1026,11 @@ extra_open = plain_card(
     + f'<div style="font-size: 13px; font-weight: 700; color: {C["INK"]}; margin-top: 12px;">10년 뒤 투자 환경별 비교</div>{cmp_rows}'
     + SUBH('부채 잔액') + debt_svg
     + SUBH('순자산 지점', 10) + f'<div style="margin-top: 4px;">{mile_list}</div>'
-    + f'<div style="font-size: 11.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 10px;">색칠한 띠는 조심스럽게 ~ 좋을 때 사이예요. 일어날 확률이 아니에요. '
+    + f'<div style="font-size: 11.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 10px;">색칠한 띠는 나쁠 때 ~ 좋을 때 사이예요. 일어날 확률이 아니에요. '
       f'기간 · 투자 환경 · 소비 절감 · 저장 안 한 상환 가정은 다른 탭에 다녀와도 그대로이고, 앱을 닫으면 처음으로 돌아가요. 저장된 기록은 바뀌지 않아요.</div>', pad='13px 14px')
 TILES = [('계산 기준일', '2026년 9월 8일'), ('최근 기록일', '2026년 9월 8일'), ('자산 갱신일', '2026년 9월 1일'), ('지금 자산', '1억 8,210만원 · 5개'),
          ('지금 부채', '8,860만원 · 4개'), ('예측 조건', '10년 · 보통 · 앞으로 모을 돈 연 5.0%'),
-         ('앞으로 모을 돈의 수익률', '조심스럽게 -0.3% · 보통 5.0% · 좋을 때 10.5%'), ('지금 가진 자산의 평균 수익률', '연 2.4% · 자산마다 넣은 수익률로'),
+         ('앞으로 모을 돈의 수익률', '나쁠 때 -0.3% · 보통 5.0% · 좋을 때 10.5%'), ('지금 가진 자산의 평균 수익률', '연 2.4% · 자산마다 넣은 수익률로'),
          ('이번 달 월말 예상 소비', '208만원'), ('매달 모으는 돈', '90만원'), ('매달 추가 상환', '15만원')]
 tiles = (f'<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; margin-top: 12px;">'
          + ''.join(f'<div style="padding: 9px 10px; background: {C["INSET"]}; border-radius: 12px;"><div style="font-size: 11px; line-height: 1.4; color: {C["INK3"]};">{k}</div>'
@@ -1038,12 +1038,12 @@ tiles = (f'<div style="display: grid; grid-template-columns: repeat(2, minmax(0,
 how_open = plain_card(
     fold_head('계산 방법 자세히') + tiles
     + f'<div style="font-size: 11.5px; line-height: 1.55; color: {C["INK3"]}; margin-top: 10px;">자산마다 넣은 수익률(없으면 종류별 기본값)로 계산해요. 지금의 월급 · 소비 · 모으는 돈 · 대출 금리가 그대로 이어진다고 봐요. '
-      f'물가(연 2.5%) · 세금 · 수수료는 빼고 계산했어요. 모으는 돈이 모자란 달에는 투자 수익을 붙이지 않아요. 실제 수익이나 도착을 약속하지 않아요.</div>', pad='13px 14px')
+      f'물가(연 2.5%) · 세금 · 수수료는 빼고 계산했어요. 모으는 돈이 모자란 달에는 투자 수익을 붙이지 않아요. 실제 수익이나 도착 시점을 보장하지 않아요.</div>', pad='13px 14px')
 details = f'<div style="display: flex; flex-direction: column; gap: 10px;">{extra_open}{how_open}</div>'
 FUTS_MEMO = memo_box([
     (1, f'절감 가정이 0원보다 클 때만 가정입니다 — 큰 숫자 부분을 보라 점선 상자로 두르고 {code("저장되지 않는 가정")} · {code("월 15만원 절감 가정 · 원래 약 3.82억원 · 가정 종료")}, 경로는 보라 점선 하나 + 범위 띠(보통 초록 선 없음) · 범례 {code("가정 4.05억 · 범위 2.97억 ~ 5.78억")}. 절감 카드도 보라 점선 · 배지. '
         f'0원이면 절감 카드는 보통 카드(실선 · 배지 없음 · {code("10년 뒤 +0원")} 기본 글자색 · 손잡이 파랑)이고 머리 줄 높이는 배지 자리 그대로라 움직여도 카드가 흔들리지 않습니다(2026-09-27 결정).'),
-    (2, f'소비 기록이 없으면 경로를 그리지 않고 {code("—")} + 중립 칸 한 장(기록 전 소비를 0원으로 치지 않음) · 다음 자산 지점은 값 {code("—")} · 절감 카드는 보통 카드 {code("10년 뒤 —")}와 잠긴 슬라이더. 잔액이 늘어나는 대출이 있으면 주황 칸 + {code("부채 수정 ›")}.'),
+    (2, f'소비 기록이 없으면 경로를 그리지 않고 {code("—")} + 중립 칸 한 장(기록하지 않은 소비를 0원으로 보지 않음) · 다음 자산 지점은 값 {code("—")} · 절감 카드는 보통 카드 {code("10년 뒤 —")}와 잠긴 슬라이더. 잔액이 늘어나는 대출이 있으면 주황 칸 + {code("부채 수정 ›")}.'),
     (3, f'미래 › 상환 계획에서 저장하지 않은 초안을 들고 자산 경로로 오면 맨 위 주황 알림 {code("저장 전 상환 가정으로 비교 중")}. 매달 남는 돈이 모자라면 {code("매달 45만원 부족 · …")}.'),
     (4, f'두 칸을 모두 연 모습 — 투자 환경별 10년 뒤(모두 {code("약")} · 100만원 단위) · 부채 잔액(8,860만 → 2036년 5월 0) · 순자산 지점 여섯 줄 · 띠 설명, 그리고 계산 기준 열한 칸(날짜는 연도까지) · 계산 방법 문단.')])
 future_states = (f'<div style="display: flex; gap: 24px; align-items: flex-start;">'
@@ -1131,7 +1131,7 @@ GO_TOP0 = '<div style="background: #FFFFFF; border: 1px solid #E3E8F1; border-ra
 assert GO.count(GO_TOP0) == 1
 _go_top = balanced_at(GO, GO.index(GO_TOP0))
 assert '매달 모으는 돈 바꿔 보기' in _go_top and '목적지에 나눠 넣는 중' in _go_top
-SAMPLE_CLOSE = f'지난달들을 마감하면 확정돼요 · <span style="font-weight: 600; color: {C["BRAND"]}; white-space: nowrap;">6월부터 마감하기 &rsaquo;</span>'      # D9 · 두 달 이상
+SAMPLE_CLOSE = f'지난 몇 달을 마감하면 확정돼요 · <span style="font-weight: 600; color: {C["BRAND"]}; white-space: nowrap;">6월부터 마감하기 &rsaquo;</span>'      # D9 · 두 달 이상
 goals_sample = GO.replace(_go_top, swap(goals_top, CLOSE_LINE, SAMPLE_CLOSE), 1)
 smt_tabs = [('홈', tab_top('HomeSampleMode', strip=False)), ('자산', tab_top('Assets')), ('소비', tab_top('Spending')),
             ('목적지', tab_top('Goals', html=goals_sample)), ('미래', tab_top('Future'))]

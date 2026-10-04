@@ -72,7 +72,7 @@
           `font-size:14px font-weight:700 color:#101828`
         - `span` **text 10.5px/700** — “기본 켬”
           `font-size:10.5px font-weight:700 padding:2px 7px border-radius:99px background:#E9EDFD color:#3556E6`
-      - `div` **text 12px/400** — “매월 1일 · 마감 알림과 한 건”
+      - `div` **text 12px/400** — “매월 1일 · 마감 알림과 함께”
         `font-size:12px color:#626D88 margin-top:-4px`
       - `div`
         `width:362px background:#FFFFFF border:1px solid #E3E8F1 border-radius:16px padding:12px 14px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
@@ -92,7 +92,7 @@
         `display:flex align-items:center gap:7px`
         - `span` **text 10.5px/700** — “4”
           `width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-        - `span` **text 14px/700** — “미마감 재안내”
+        - `span` **text 14px/700** — “마감 다시 알림”
           `font-size:14px font-weight:700 color:#101828`
         - `span` **text 10.5px/700** — “설정에서 켬”
           `font-size:10.5px font-weight:700 padding:2px 7px border-radius:99px background:#F4F6FB color:#626D88`

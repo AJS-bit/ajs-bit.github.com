@@ -46,7 +46,7 @@
         `display:flex align-items:center justify-content:space-between min-height:40px`
         - `span` — “백업 설정 · 상세 내역”
           `font-size:13px font-weight:600 color:#101828`
-      - `div` **text 11.5px/400** — “가져온 기록의 카테고리 없음 표시도 함께 와요 · 확인 표시는 전체 복원에서만 돌아와요 · 이미 있는 기록은 그대로”
+      - `div` **text 11.5px/400** — “불러온 기록의 카테고리 없음 표시도 함께 반영돼요 · 확인 표시는 전체 교체에서만 반영돼요 · 이미 있는 기록은 그”
         `font-size:11.5px line-height:1.5 color:#626D88`
     - `div`
       `padding:12px 18px background:#F4F6FB border-top:1px solid #E3E8F1`
@@ -54,7 +54,7 @@
         `display:flex align-items:flex-start gap:9px`
         - `span`
           `width:20px height:20px border-radius:6px background:#3556E6 display:flex align-items:center justify-content:center`
-        - `span` **text 12.5px/400** — “데이터 성격과 적용 후 내역을 확인했어요.”
+        - `span` **text 12.5px/400** — “데이터 종류와 적용 후 내역을 확인했어요.”
           `font-size:12.5px line-height:1.5 color:#475467`
     - `div`
       `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`

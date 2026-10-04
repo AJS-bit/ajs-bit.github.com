@@ -105,8 +105,8 @@ TARGET_CARD = (
 LOCK_NOTE = (      # 앱 .profile-information(위 9 · 안쪽 10 11 · 11.5 / 17.25 · 링크는 같은 문단의 글자 버튼 11.5 / 500 — 2026-09-27 fix-up 5)
     f'<div style="display: flex; gap: 8px; padding: 10px 11px; background: {C["INSET"]}; border-radius: 12px; margin-top: 9px;">'
     f'<span style="flex-shrink: 0; margin-top: 1px;">{icon("lock", 14, C["INK3"], 1.9)}</span>'
-    f'<div style="min-width: 0; font-size: 11.5px; line-height: 17.25px; color: {C["INK3"]};">자산 5건 · 부채 4건의 총액은 합계로 고정돼요. '
-    f'<span style="font-weight: 500; color: {C["BRAND"]}; white-space: nowrap;">개별 자산 · 부채에서 고치기 &rsaquo;</span></div></div>')
+    f'<div style="min-width: 0; font-size: 11.5px; line-height: 17.25px; color: {C["INK3"]};">자산 5건 · 부채 4건의 합계라서 여기서는 고칠 수 없어요. '
+    f'<span style="font-weight: 500; color: {C["BRAND"]}; white-space: nowrap;">자산 탭에서 고치기 &rsaquo;</span></div></div>')
 
 
 # 앱 numbers-sheet 하네스(390 × 844 · 시트 윗변 60) 그대로 — 「선택 사항」 = 이름 뒤 9 · 접힌 칸은 「추가 설정」 묶음 안 맨 끝(위 12) ·
@@ -114,7 +114,7 @@ LOCK_NOTE = (      # 앱 .profile-information(위 9 · 안쪽 10 11 · 11.5 / 17
 NUM_OPEN = (
     f'<div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">'
     + solo(field('표시 이름', '예: 주성', ph=True)).replace('font-size: 15px; font-weight: 400;', 'font-size: 14px; font-weight: 500;', 1)
-    + f'<div><div style="font-size: 12px; font-weight: 600; line-height: 18px; color: {C["INK2"]}; margin-bottom: 7px;">한 달에 순자산의 몇 %까지 써도 괜찮을지</div>'
+    + f'<div><div style="font-size: 12px; font-weight: 600; line-height: 18px; color: {C["INK2"]}; margin-bottom: 7px;">한 달에 순자산의 몇 %까지 쓸까요?</div>'
       f'<div style="display: flex; align-items: center; gap: 5px; width: 192px; height: 46px; padding: 0 12px; border-radius: 11px; border: 1px solid {C["INPUT"]}; background: {C["SURF"]};">'
       f'<span style="flex: 1; text-align: right; font-size: 17px; font-weight: 600; color: {C["INK"]};">1.8</span><span style="font-size: 13px; font-weight: 500; color: {C["INK3"]};">%</span></div></div>'
     + f'<div style="font-size: 12px; line-height: 18px; color: {C["INK3"]};">참고로만 보여 줘요 · 지금 순자산이면 월 168만원 · 연 21.6%</div></div>')
@@ -131,7 +131,7 @@ def profile_sheet(items=True, h=844, scrim=60):
     else:
         extra += rowbtn('자산 · 부채는 자산 탭에서 하나씩 넣어요', mt=12) + fold_line('표시 이름 · 순자산 참고선')
     return sheet(
-        '내 수치', '월급과 소비 목표만 있으면 홈이 계산돼요. 나머지는 언제든 채워도 돼요.',
+        '내 수치', '월급과 소비 목표만 있으면 홈의 숫자가 계산돼요. 나머지는 언제든 채워도 돼요.',
         group('기본', pair(field('월급 (실수령)', '360', '만원', readback='360만원'),
                           field('나이', '28', '세', optional=True, w=104, helper='또래 비교에만 써요', opt_gap=9))) +
         group('소비 목표', TARGET_CARD) +
@@ -215,7 +215,7 @@ def bal_row(name, sub, man, readback):
 
 
 w('AssetBalanceCheck', sheet(
-    '잔액 한 번에 확인', '통장·증권 앱에서 지금 금액을 보고, 같으면 그대로예요를 누르세요.',
+    '잔액 한 번에 확인', '통장·증권 앱에서 지금 금액을 보고, 같으면 「그대로예요」를 누르세요.',
     f'<div style="font-size: 11.5px; font-weight: 600; line-height: 17px; color: {C["INK3"]}; flex-shrink: 0;">2개 중 0개 확인함</div>'
     + f'<div style="display: flex; flex-direction: column; gap: 10px; flex-shrink: 0;">'
     + bal_row('ETF 계좌', '투자 · 마지막 확인 7월 30일', '4,890', '4,890만원')
@@ -346,13 +346,13 @@ def month_field(label, value):
             f'{icon("cal", 16, C["INK2"], 1.9)}</div></div>')
 
 
-# 앱 .recurring-information-fidelity(위 11 · 안쪽 10 11 · 11.5 / 17.25) · 안의 접힌 칸 「▸ 반복 규칙 적용 안내」(6 아래 · 11.5 / 500 ink-3 · 삼각 뒤 3)
+# 앱 .recurring-information-fidelity(위 11 · 안쪽 10 11 · 11.5 / 17.25) · 안의 접힌 칸 「▸ 반복 기록이 만들어지는 방식」(6 아래 · 11.5 / 500 ink-3 · 삼각 뒤 3)
 # (2026-09-27 fix-up 5 · 예전 안쪽 11 12 · 접힌 칸 12.5 / 500 ink-2 · 7 아래 · 삼각 뒤 6)
 RULE_NOTE = (
     f'<div style="display: flex; gap: 8px; padding: 10px 11px; background: {C["INSET"]}; border-radius: 12px; margin-top: 11px;">'
     f'<span style="flex-shrink: 0; margin-top: 1px;">{icon("info", 14, C["INK3"], 1.9)}</span>'
-    f'<div style="min-width: 0;"><div style="font-size: 11.5px; line-height: 17.25px; color: {C["INK3"]};">이번 달 결제일이 이미 지났으면 저장하자마자 이번 달 건이 생겨요 · 이미 적어 둔 같은 돈이 있으면 먼저 물어봐요</div>'
-    f'<div style="display: flex; align-items: center; gap: 3px; margin-top: 6px; font-size: 11.5px; font-weight: 500; line-height: 17.25px; color: {C["INK3"]};">{tri()}반복 규칙 적용 안내</div></div></div>')
+    f'<div style="min-width: 0;"><div style="font-size: 11.5px; line-height: 17.25px; color: {C["INK3"]};">이번 달 결제일이 이미 지났으면 저장하자마자 이번 달 기록이 만들어져요 · 이미 적어 둔 같은 기록이 있으면 먼저 물어봐요</div>'
+    f'<div style="display: flex; align-items: center; gap: 3px; margin-top: 6px; font-size: 11.5px; font-weight: 500; line-height: 17.25px; color: {C["INK3"]};">{tri()}반복 기록이 만들어지는 방식</div></div></div>')
 
 
 def new_rule(name, amt, cat, day, start):
@@ -362,12 +362,12 @@ def new_rule(name, amt, cat, day, start):
             + f'<div style="margin-top: 10px;">{month_field("시작 월", start)}</div>' + RULE_NOTE)
 
 
-RECUR_DESC = '매달 반복되는 기록이에요. 앱을 열면 시작 월 이후 지난 결제일도 반영해요.'
+RECUR_DESC = '매달 반복되는 기록이에요. 앱을 열면 시작 월부터 이미 지난 결제일도 기록으로 만들어요.'
 w('RecurringDialog', sheet(
     '반복 기록', RECUR_DESC,
-    group('등록된 규칙', rule_rows(), meta='3건 · 켜짐 2건') +
-    group('새 규칙', new_rule('넷플릭스', '13,500', '구독', '15', '2026년 10월')),
-    sheet_footer('닫기', '규칙 추가'), scrim_h=40, h=H['RecurringDialog']))
+    group('등록된 반복 기록', rule_rows(), meta='3건 · 켜짐 2건') +
+    group('새 반복 기록', new_rule('넷플릭스', '13,500', '구독', '15', '2026년 10월')),
+    sheet_footer('닫기', '반복 기록 추가'), scrim_h=40, h=H['RecurringDialog']))
 
 # 겹침 확인(record-2) — 9월 1일에 이미 적은 관리비 320,000원(LedgerV5)과 같은 규칙을 이번 달부터 만들 때
 OVERLAP_BTN = lambda t, soft: (
@@ -382,8 +382,8 @@ OVERLAP_BOX = (
     f'<div style="display: flex; gap: 8px;">{OVERLAP_BTN("이번 달은 건너뛰기", True)}{OVERLAP_BTN("그래도 추가", False)}</div></div>')
 w('RecurringDialogOverlap', sheet(
     '반복 기록', RECUR_DESC,
-    group('등록된 규칙', rule_rows(), meta='3건 · 켜짐 2건') +
-    group('새 규칙', new_rule('관리비', '320,000', '주거/관리', '1', '2026년 9월')) + OVERLAP_BOX,
+    group('등록된 반복 기록', rule_rows(), meta='3건 · 켜짐 2건') +
+    group('새 반복 기록', new_rule('관리비', '320,000', '주거/관리', '1', '2026년 9월')) + OVERLAP_BOX,
     sheet_footer('닫기', '이번 달은 건너뛰기'), scrim_h=40, h=H['RecurringDialogOverlap']))
 
 
@@ -427,7 +427,7 @@ w('MonthlyCloseV5', sheet(
           f'<div style="padding: 2px 13px; background: {C["INSET"]}; border-radius: 14px;">'
           f'{kv("일반 소비 합계", "1,715,200원")}'
           f'{kv("월급 대비 소비율", "<span style=" + chr(34) + "color: " + C["INK3"] + "; font-weight: 500;" + chr(34) + ">— &nbsp;월급을 넣으면 보여요</span>")}'
-          f'{kv("월말 자산 총액", "180,400,000원")}{kv("월말 부채 총액", "89,200,000원", last=True)}</div>', fixed=True) +
+          f'{kv("월말 총자산", "180,400,000원")}{kv("월말 총부채", "89,200,000원", last=True)}</div>', fixed=True) +
     f'<div style="display: flex; align-items: center; justify-content: space-between; height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid {C["LINE"]}; flex-shrink: 0;">'
     f'<span style="font-size: 13.5px; font-weight: 600; color: {C["BRAND"]};">바뀐 게 있으면 자산 고치기 &rsaquo;</span>{icon("down", 16, C["INK3"], 2)}</div>'
     f'<div style="font-size: 12px; line-height: 1.5; color: {C["INK3"]}; flex-shrink: 0;">소비 합계는 기록에서 계산해요. 마감 뒤 기록을 고치면 합계를 고치라고 알려 드려요.</div>',
@@ -453,7 +453,7 @@ w('MonthlyClose', sheet(
     group('자동으로 채워진 값',
           f'<div style="padding: 2px 13px; background: {C["INSET"]}; border-radius: 14px;">'
           f'{kv("일반 소비 합계", "1,715,200원")}{kv("월급 대비 소비율", "47.6%")}'
-          f'{kv("월말 자산 총액", "180,400,000원")}{kv("월말 부채 총액", "89,200,000원", last=True)}</div>', fixed=True),
+          f'{kv("월말 총자산", "180,400,000원")}{kv("월말 총부채", "89,200,000원", last=True)}</div>', fixed=True),
     sheet_footer('취소', '마감 저장', save_kind='disabled'),
     sticky=f'<div style="padding: 11px 18px 12px; background: {C["INSET"]}; border-top: 1px solid {C["LINE"]}; flex-shrink: 0;">'
            f'{checkbox("이 달의 수입·상환·잔액을 확인했고, 빠진 소비 기록이 없는지 살펴봤어요", False)}</div>',
@@ -475,8 +475,8 @@ def diffrow(label, count, tone, desc, last=False):
 
 w('ImportReview', sheet(
     '백업 불러오기', 'navi-backup-2026-09-01.json · 저장하기 전에 무엇이 바뀌는지 먼저 봐요.',
-    group('적용 방식', segmented(['기존에 추가', '전체 교체'], 0) +
-          f'<div style="margin-top: 9px;">{note("「기존에 추가」는 겹치지 않는 기록만 넣어요. 「전체 교체」를 고르면 지금 기록이 모두 사라져요.", "mute")}</div>') +
+    group('적용 방식', segmented(['합치기', '전체 교체'], 0) +
+          f'<div style="margin-top: 9px;">{note("「합치기」는 겹치지 않는 기록만 넣어요. 「전체 교체」를 고르면 지금 기록이 모두 사라져요.", "mute")}</div>') +
     group('불러올 항목', f'<div style="padding: 0 13px; background: {C["SURF"]}; border: 1px solid {C["LINE"]}; border-radius: 14px;">'
                           f'{diffrow("새로 추가", 24, "new", "기록 21 · 자산 2 · 목적지 1")}'
                           f'{diffrow("이미 있음 · 건너뜀", 8, "dup", "같은 기록 ID")}'
@@ -495,10 +495,10 @@ w('ImportReview', sheet(
     f'<div style="display: flex; align-items: center; justify-content: space-between; min-height: 40px; flex-shrink: 0;">'
     f'<span style="font-size: 13px; font-weight: 600; color: {C["INK"]};">백업 설정 · 상세 내역 <span style="font-weight: 500; font-size: 12px; color: {C["INK3"]}; margin-left: 6px;">내 데이터</span></span>'
     f'{icon("right", 15, C["INK4"], 2)}</div>'
-    f'<div style="font-size: 11.5px; line-height: 1.5; color: {C["INK3"]}; flex-shrink: 0;">가져온 기록의 카테고리 없음 표시도 함께 와요 · 확인 표시는 전체 복원에서만 돌아와요 · 이미 있는 기록은 그대로예요</div>',
+    f'<div style="font-size: 11.5px; line-height: 1.5; color: {C["INK3"]}; flex-shrink: 0;">불러온 기록의 카테고리 없음 표시도 함께 반영돼요 · 확인 표시는 전체 교체에서만 반영돼요 · 이미 있는 기록은 그대로예요</div>',
     sheet_footer('취소', '이 내용으로 적용'),
     sticky=f'<div style="padding: 12px 18px; background: {C["INSET"]}; border-top: 1px solid {C["LINE"]}; flex-shrink: 0;">'
-           f'{checkbox("데이터 성격과 적용 후 내역을 확인했어요.", True)}</div>', scrim_h=40, body_gap=13, h=H['ImportReview']))
+           f'{checkbox("데이터 종류와 적용 후 내역을 확인했어요.", True)}</div>', scrim_h=40, body_gap=13, h=H['ImportReview']))
 
 
 # ══════════════ 8. 코칭 (home-11 · D6 · D13 · lib/navi-insights.ts — 시안 사용자의 엔진 목록 · NUMBERS §12) ══════════════
@@ -604,7 +604,7 @@ w('AlertsPanelInfo', sheet(
 w('PeerDialog', sheet(
     '20대 후반 비교 기준', '만 27~29세 구간에 쓸 기준을 직접 등록해요. 앱이 만든 값이 아니에요.',
     note('NAVI에는 세부 연령별 통계가 <span style="font-weight:600">들어 있지 않아요.</span> 여기 넣은 값은 화면에서 항상 “내가 등록한 기준”으로 표시되고, 순위나 상위 %로 바뀌지 않아요.', 'warn', 'warn') +
-    f'<div style="display: flex; gap: 10px;">{field("연령 구간", "20대 후반 · 만 27~29세", state="readonly")}</div>'
+    f'<div style="display: flex; gap: 10px;">{field("나이대", "20대 후반 · 만 27~29세", state="readonly")}</div>'
     f'<div style="display: flex; gap: 10px;">{field("평균 소비율", "62", "%", required=True)}{field("조사 인원", "1200", "명", w=132)}</div>'
     f'<div style="display: flex; gap: 10px;">{field("기준 연도", "2025", "년", required=True, w=132)}{field("소비율 계산 기준", "월급 (실수령)", state="readonly")}</div>'
     f'<div style="flex: 1; min-height: 0; display: flex; flex-direction: column;">{solo(field("자료 출처", "직접 입력한 예시 기준", required=True, helper="화면에 그대로 표시돼요"))}</div>'
@@ -642,7 +642,7 @@ CONFIRM_BLOCKS = [
              [('삭제', 'danger'), ('취소', 'plain')])),
     ('B · 기록 지우기 — 반복 기록이 만든 건',
      confirm('이 기록을 지울까요?', ['9월 6일 ETF 자동이체 300,000원 · 이번 달에 만들어진 이 건만 지워요 · 같은 달에 다시 생기지 않고 반복 기록은 그대로예요',
-                                  '연결 잔액을 이미 확정해서 지금 잔액은 바뀌지 않아요.'],      # 캐논 9월 6일 연결은 확정됨(design-state transactionLinks settled · 앱 하네스 · 2026-09-27 fix-up 2)
+                                  '연결 계좌의 잔액을 이미 확정해서 지금 잔액은 바뀌지 않아요'],      # 캐논 9월 6일 연결은 확정됨(design-state transactionLinks settled · 앱 하네스 · 2026-09-27 fix-up 2)
              [('지우기', 'danger'), ('취소', 'plain')])),
     ('B′ · 기록 지우기 — 보통 기록',
      confirm('이 기록을 지울까요?', ['9월 8일 점심 9,000원 · 지우면 9월 소비율과 한도가 다시 계산돼요'],
@@ -651,8 +651,8 @@ CONFIRM_BLOCKS = [
      confirm('비상금 6개월 목적지를 삭제할까요?', ['목적지를 지우면 매달 필요한 돈을 다시 계산해요.',
                                             '지금 모은 돈 1,020만원은 이 목적지에 적어 둔 숫자라 함께 지워져요. 자산 탭의 잔액은 그대로예요.'],
              [('삭제', 'danger'), ('취소', 'plain')])),
-    ('D · 반복 규칙 지우기',
-     confirm('ETF 자동이체 반복 규칙을 지울까요?', ['앞으로 자동 기록이 생기지 않아요. 이미 만들어진 지난 기록은 그대로 남아요.'],
+    ('D · 반복 기록 지우기',
+     confirm('ETF 자동이체 반복 기록을 지울까요?', ['앞으로 자동 기록이 생기지 않아요. 이미 만들어진 지난 기록은 그대로 남아요.'],
              [('지우기', 'danger'), ('취소', 'plain')])),
     ('E · 모든 데이터 지우기',
      confirm('모든 데이터를 지울까요?', ['이 기기에 저장된 자산 · 기록 · 목적지가 모두 지워져요. 필요하면 먼저 백업을 내보내 주세요.'],

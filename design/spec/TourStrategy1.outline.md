@@ -119,7 +119,7 @@
           `white-space:nowrap`
       - `div` **text 16px/700** — “저장된 상환 계획”
         `margin-top:8px font-size:16px font-weight:700 letter-spacing:-0.02em line-height:1.35 color:#101828`
-      - `div` **text 13px/400** — “갚는 방식과 월 추가 상환액이에요. 바꾸려면 아래 버튼으로 미래 › 상환 계획에 가서 시험하고 저장해요.”
+      - `div` **text 13px/400** — “상환 방식과 월 추가 상환액이에요. 바꾸려면 아래 버튼으로 미래 › 상환 계획에 가서 시험하고 저장해요.”
         `margin-top:8px font-size:13px line-height:1.55 color:#475467`
       - `div`
         `display:flex align-items:center justify-content:space-between flex-wrap:wrap gap:4px 8px margin-top:14px`

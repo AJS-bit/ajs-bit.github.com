@@ -125,7 +125,7 @@ def capacity_band(case='zero'):
         line, sub = '목적지에 나눠 넣고 남은 돈이에요', '월급 + 부수입 − 월말 예상 소비 − 대출상환 = 매달 모을 수 있는 돈 · 목적지에 나눠 넣는 중'
         right = f'<span style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: {C["BRAND"]};{NW}">27<span style="font-size: 12.5px; font-weight: 600;">만원</span></span>'
     elif case == 'provisional':
-        line, sub = '매달 모을 수 있는 돈은 지난달을 마감한 뒤 계산해요', '지난달들을 마감하면 확정돼요 · <span style="font-weight: 600; color: #3556E6; white-space: nowrap;">6월부터 마감하기 &rsaquo;</span>'
+        line, sub = '매달 모을 수 있는 돈은 지난달을 마감한 뒤 계산해요', '지난 몇 달을 마감하면 확정돼요 · <span style="font-weight: 600; color: #3556E6; white-space: nowrap;">6월부터 마감하기 &rsaquo;</span>'
     else:
         line = '—'
         sub = '월급과 소비 기록을 넣으면 매달 모을 수 있는 돈을 계산해 드려요. <span style="font-weight: 600; color: #3556E6; white-space: nowrap;">월급 입력하기 &rsaquo;</span>'
@@ -568,7 +568,7 @@ FRAG = f'border: 1px solid {C["INPUT"]}; border-radius: 22px; overflow: hidden; 
 band_emergency = guardrail(GUARD_EMERGENCY)
 # 월말 예상이 소비 목표를 넘을 때 — 앱 알림 문구(D1 · D4 · home-8). 판정은 소비 목표로만 · 누르면 이번 달 소비로(한도가 아니라).
 # 값은 앱 하네스(캐논 + 9월 2일 쇼핑 300,000원 → 월말 예상 66.2% · NUMBERS §14 · 2026-09-27 fix-up 2 — 63.2%는 옛 장의 값)
-band_over = guardrail('월말엔 소비 목표 60%를 넘어요 · 월말 예상 월급의 66.2%예요. 월 22만원 줄이면 소비 목표 안이에요.', '이번 달 소비')      # 앱 알림 둘째 문장까지(2026-09-27 fix-up 3)
+band_over = guardrail('월말엔 소비 목표 60%를 넘어요 · 월말 예상은 월급의 66.2%예요. 월 22만원 줄이면 소비 목표 안이에요.', '이번 달 소비')      # 앱 알림 둘째 문장까지(2026-09-27 fix-up 3)
 row_short = card(list_rows([GROWTH[5]]), pad='2px 14px')
 row_nodiv = card(list_rows([next(r for r in DIVIDEND if r[0] == '맥쿼리인프라')]), pad='2px 14px')
 list_badges = (f'<div style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">'

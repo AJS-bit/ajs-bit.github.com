@@ -121,7 +121,7 @@
           `font-size:15px font-weight:650 color:#101828`
     - `div`
       `display:flex gap:8px padding:2px 4px 0 margin-top:21px`
-      - `span` **text 11px/400** — “앞으로의 금액은 100만원 단위로 어림해 「약」을 붙였어요. 지금 금액은 입력한 그대로예요. 지금 넣은 값으로 그린”
+      - `span` **text 11px/400** — “앞으로의 금액은 100만원 단위로 어림해 「약」을 붙였어요. 지금 금액은 입력한 그대로예요. 지금 넣은 값으로 계산”
         `font-size:11px line-height:1.65 color:#626D88`
   - `div` **BottomNav**
     `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`

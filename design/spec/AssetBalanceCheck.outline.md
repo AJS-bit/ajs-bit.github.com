@@ -19,7 +19,7 @@
       - `div`
         - `h2` **text 18px/700** — “잔액 한 번에 확인”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “통장·증권 앱에서 지금 금액을 보고, 같으면 그대로예요를 누르세요.”
+        - `p` **text 12.5px/400** — “통장·증권 앱에서 지금 금액을 보고, 같으면 「그대로예요」를 누르세요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
     - `div`
       `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`

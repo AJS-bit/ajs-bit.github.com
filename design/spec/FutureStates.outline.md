@@ -90,11 +90,11 @@
       `display:flex gap:10px padding:7px 0 border-bottom:1px solid #F3F5FA`
       - `span` **text 10.5px/700** — “2”
         `margin-top:1px width:17px height:17px border-radius:99px background:#101828 color:#FFFFFF font-size:10.5px font-weight:700 display:inline-flex align-items:center justify-content:center box-shadow:0 0 0 2px #FFFFFF`
-      - `div` — “소비 기록이 없으면 경로를 그리지 않고 ‘ ’ + 중립 칸 한 전 소비를 0원으로 치지 않음) · 다음 자산 지점은”
+      - `div` — “소비 기록이 없으면 경로를 그리지 않고 ‘ ’ + 중립 칸 한 않은 소비를 0원으로 보지 않음) · 다음 자산 지점”
         `font-size:12px line-height:1.55 color:#475467`
         - `b` — “—”
           `font-weight:600 color:#101828`
-        - `span` — “장(기록”
+        - `span` — “장(기록하지”
           `white-space:nowrap`
         - `b` — “—”
           `font-weight:600 color:#101828`

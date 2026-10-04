@@ -124,7 +124,7 @@ w('IntroPosition', intro(1, '현재 위치',
 route_card = card(
     eyebrow_row('항로', f'<span style="font-size: 12px; font-weight: 600; color: {C["INK"]}; white-space: nowrap;">현재 31.1% · 소비 목표 60%</span>')
     + f'<div style="margin-top: 16px;">{route_bar()}</div>')
-guide_card = guidance('warn', '다음 안내', '카드 할부 금리 14.5%부터 줄여 보세요',
+guide_card = guidance('warn', '다음 안내', '금리 14.5%인 카드 할부부터 갚아 보세요',
                       '고금리 부채는 자산이 자라는 속도를 가장 크게 낮춰요.', '상환 계획 보기')
 
 w('IntroRoute', intro(2, '항로', '소비 목표까지 얼마나 남았는지,<br>지금 무엇을 하면 되는지 알려 줘요.', route_card + guide_card))
@@ -479,8 +479,8 @@ def limit_empty():
 # 시작일 = 오늘(9월 8일에 「내 데이터로 시작」) — 그 전 날 · 앞 이웃 달 칸도 기록이 없으면 `—`(since).
 calendar_empty = calendar_card(HOME_EXPANDED, states={d: NO_RECORD for d in range(1, 9)}, since=TODAY, review=0)
 assert '9월 기록이 아직 없어요' in calendar_empty and '오늘 쓴 돈 적기' in calendar_empty and '확인할 내용' not in calendar_empty and '5.5만' not in calendar_empty
-networth_empty = line_card('순자산', '자산을 입력하면 현재 위치를 알 수 있어요', '—', missing=True)
-payoff_empty = line_card('상환 계획', '부채 입력 전', '—', missing=True)
+networth_empty = line_card('순자산', '자산을 넣으면 순자산을 알 수 있어요', '—', missing=True)
+payoff_empty = line_card('상환 계획', '넣은 부채 없음', '—', missing=True)
 HOME_EMPTY_H = 1492      # 자연 높이 1468 + 24(2026-09-30 펼친 빈 9월 · 예전 접힌 줄 1154 + 24 = 1178). gen_canvas TALL · screens.json 과 같아야 한다
 w('HomeConfigured', frame(
     f'\n  {header_nobadge}\n\n  {M_CONTENT}\n\n    {hero_empty()}\n\n    {calendar_empty}\n\n    {start_checklist()}\n\n'

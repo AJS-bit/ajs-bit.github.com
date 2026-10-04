@@ -146,7 +146,7 @@
         `display:flex flex-direction:column gap:3px`
         - `span` **text 11px/600** — “다음 안내”
           `font-size:11px font-weight:600 letter-spacing:0.06em color:#B45309`
-        - `span` — “카드 할부 금리 줄여보세요”
+        - `span` — “금리 카드 할부부터 갚아 보세요”
           `font-size:15px font-weight:600 letter-spacing:-0.015em line-height:1.35 color:#101828`
         - `span` **text 12.5px/400** — “고금리 부채는 자산이 자라는 속도를 가장 크게 낮춰요.”
           `font-size:12.5px line-height:1.45 color:#475467`

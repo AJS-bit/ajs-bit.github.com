@@ -109,15 +109,15 @@
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
-## SpendingPast — 소비 · 지난 달 (마감)
+## SpendingPast — 소비 · 지난달 (마감)
 
 `canvas/SpendingPast.dc.html` · 390×1212 · 원본 `components/navi/spending-view.tsx`
 
-> 지난 달 월 요약. 맨 위 월 마감 카드가 그 달 상태(마감함 · 마감 전 · 마감 뒤 기록이 바뀜)를 말하고 「마감값 보기·고치기 ›」로 연다. 기록은 내역에서 고친다.
+> 지난달 월 요약. 맨 위 월 마감 카드가 그 달 상태(마감함 · 마감 전 · 마감 뒤 기록이 바뀜)를 말하고 「마감값 보기·고치기 ›」로 연다. 기록은 내역에서 고친다.
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **div** — “지난 달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
+- [ ] **div** — “지난달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
       `display:flex align-items:center gap:7px padding:0 16px 10px`
 - [ ] **본문(스크롤 영역)** — “7월 마감 · 8월 2일에 마감했어요”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
@@ -178,7 +178,7 @@
 
 `canvas/Future.dc.html` · 390×1204 · 원본 `components/navi/future-view.tsx`
 
-> 10년 뒤 순자산 경로. 투자 환경 「조심스럽게 · 보통 · 좋을 때」는 보기 선택이라 보라가 아니다(D13). 다음 자산 지점 · 절감 가정(0원보다 클 때만 보라).
+> 10년 뒤 순자산 경로. 투자 환경 「나쁠 때 · 보통 · 좋을 때」는 보기 선택이라 보라가 아니다(D13). 다음 자산 지점 · 절감 가정(0원보다 클 때만 보라).
 
 - [ ] **div** — “미래”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
@@ -403,7 +403,7 @@
 
 `canvas/RecurringDialog.dc.html` · 390×844 · 원본 `components/navi/spending-view.tsx`
 
-> 반복 기록. 등록된 규칙 목록(켬/꺼 둠) + 새 규칙. 기존 반복 규칙 형식을 바꾸지 않는다.
+> 반복 기록. 등록된 반복 기록 목록(켬/꺼 둠) + 새 반복 기록. 기존 반복 규칙 형식을 바꾸지 않는다.
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`
@@ -413,10 +413,10 @@
         `display:flex justify-content:center padding:9px 0 0`
   - [ ] **div** — “반복 기록”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
-  - [ ] **div** — “등록된 규칙”
+  - [ ] **div** — “등록된 반복 기록”
         `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
-    - [ ] **div** — “등록된 규칙”
-    - [ ] **div** — “새 규칙”
+    - [ ] **div** — “등록된 반복 기록”
+    - [ ] **div** — “새 반복 기록”
   - [ ] **div** — “닫기”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
 
@@ -441,7 +441,7 @@
     - [ ] **div** — “이번에 넣은 돈 *”
     - [ ] **Card(18)** — “저장하면 이렇게 바뀌어요”
           `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:13px 15px`
-    - [ ] **Callout(info)** — “이 기록은 목적지의 모은 돈만 바꿔요. 통장에 실제로 넣었다면 위에서 잔액도 함께 늘릴 수 있”
+    - [ ] **Callout(info)** — “이 적립은 목적지의 모은 돈만 바꿔요. 통장에 실제로 넣었다면 위에서 잔액도 함께 늘릴 수 있”
           `display:flex gap:8px padding:10px 11px background:#F4F6FB border-radius:12px`
   - [ ] **div** — “취소”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
@@ -450,7 +450,7 @@
 
 `canvas/ImportReview.dc.html` · 390×905 · 원본 `components/navi/import-review.tsx`
 
-> 백업 불러오기 검토. 「기존에 추가」 / 「전체 교체」 · 불러올 항목 건수(새로 추가 · 이미 있음 · 값이 다름 · 기존 유지) · 지금 → 적용 후를 보여 준 뒤 확인받는다.
+> 백업 불러오기 검토. 「합치기」 / 「전체 교체」 · 불러올 항목 건수(새로 추가 · 이미 있음 · 값이 다름 · 기존 유지) · 지금 → 적용 후를 보여 준 뒤 확인받는다.
 
 - [ ] **div** — “배경을 눌러 닫기”
       `height:40px display:flex align-items:flex-end justify-content:center`
@@ -467,9 +467,9 @@
     - [ ] **div** — “적용 후”
     - [ ] **div** — “백업 설정 · 상세 내역 내 데이터”
           `display:flex align-items:center justify-content:space-between min-height:40px`
-    - [ ] text 11.5px/400 — “가져온 기록의 카테고리 없음 표시도 함께 와요 · 확인 표시는 전체 복원에서만 돌아와요 · 이”
+    - [ ] text 11.5px/400 — “불러온 기록의 카테고리 없음 표시도 함께 반영돼요 · 확인 표시는 전체 교체에서만 반영돼요 ·”
           `font-size:11.5px line-height:1.5 color:#626D88`
-  - [ ] **div** — “데이터 성격과 적용 후 내역을 확인했어요.”
+  - [ ] **div** — “데이터 종류와 적용 후 내역을 확인했어요.”
         `padding:12px 18px background:#F4F6FB border-top:1px solid #E3E8F1`
   - [ ] **div** — “취소”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
@@ -585,7 +585,7 @@
         `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
     - [ ] **Callout(warn)** — “NAVI에는 세부 연령별 통계가 들어 있지 않아요. 여기 넣은 값은 화면에서 항상 “내가 등록”
           `display:flex gap:8px padding:10px 11px background:#FDF1E0 border-radius:12px`
-    - [ ] **div** — “연령 구간”
+    - [ ] **div** — “나이대”
           `display:flex gap:10px`
     - [ ] **div** — “평균 소비율 *”
           `display:flex gap:10px`
@@ -670,7 +670,7 @@
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “또래와 내 페이스”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
-- [ ] text 11px/600 — “B · 연령 구간 있음 · 비교 기준 없음”
+- [ ] text 11px/600 — “B · 나이대 있음 · 비교 기준 없음”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **Card(18)** — “20대 후반”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -789,9 +789,9 @@
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
 - [ ] **div** — “비상금 6개월 목적지를 삭제할까요?”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px -16px rgba(16,24,40,.28)`
-- [ ] text 11px/600 — “D · 반복 규칙 지우기”
+- [ ] text 11px/600 — “D · 반복 기록 지우기”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
-- [ ] **div** — “ETF 자동이체 반복 규칙을 지울까요?”
+- [ ] **div** — “ETF 자동이체 반복 기록을 지울까요?”
       `background:#FFFFFF border:1px solid #E3E8F1 border-radius:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px -16px rgba(16,24,40,.28)`
 - [ ] text 11px/600 — “E · 모든 데이터 지우기”
       `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -1760,10 +1760,10 @@
         `display:flex justify-content:center padding:9px 0 0`
   - [ ] **div** — “반복 기록”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
-  - [ ] **div** — “등록된 규칙”
+  - [ ] **div** — “등록된 반복 기록”
         `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
-    - [ ] **div** — “등록된 규칙”
-    - [ ] **div** — “새 규칙”
+    - [ ] **div** — “등록된 반복 기록”
+    - [ ] **div** — “새 반복 기록”
   - [ ] **div** — “닫기”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
 
@@ -2490,7 +2490,7 @@
           `margin-top:3px`
     - [ ] **div** — “확인”
           `margin-top:3px`
-    - [ ] **div** — “절전 상태와 기기 설정에 따라 늦거나 빠질 수 있어요. 앱을 35일 넘게 안 열면 예약이 멈춰”
+    - [ ] **div** — “절전 상태와 기기 설정에 따라 늦게 오거나 오지 않을 수 있어요. 앱을 35일 넘게 안 열면 ”
           `margin-top:3px`
   - [ ] **div** — “닫기”
         `display:flex gap:10px padding:12px 18px 20px border-top:1px solid #EFF2F8`
@@ -2510,19 +2510,19 @@
 - [ ] **div** — “규칙”
       `margin-top:22px padding:16px 18px background:#FFFFFF border:1px solid #E3E8F1 border-radius:16px`
 
-## SpendingPastOpen — 소비 · 지난 달 (마감 전)
+## SpendingPastOpen — 소비 · 지난달 (마감 전)
 
 `canvas/SpendingPastOpen.dc.html` · 390×1264 · 원본 `components/navi/spending-overview.tsx 월 마감 카드 (spending-4 · D9)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **div** — “지난 달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
+- [ ] **div** — “지난달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
       `display:flex align-items:center gap:7px padding:0 16px 10px`
 - [ ] **본문(스크롤 영역)** — “8월은 아직 마감하지 않았어요”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
   - [ ] **Card(18)** — “8월은 아직 마감하지 않았어요”
         `background:#FFFFFF border:1.5px solid #DE8A2A border-radius:18px padding:13px 14px`
-  - [ ] **HeroCard** — “지난 달 기록”
+  - [ ] **HeroCard** — “지난달 기록”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:20px padding:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px -14px rgba(16,24,40,.24)`
   - [ ] **Card(18)** — “31일 동안 이렇게 썼어요”
         `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -2535,13 +2535,13 @@
 - [ ] **BottomNav** — “홈”
       `display:flex align-items:flex-start justify-content:space-between gap:2px height:66px padding:8px 10px 0 background:#FFFFFF border-top:1px solid #E3E8F1`
 
-## SpendingPastChanged — 소비 · 지난 달 (마감 뒤 기록이 바뀜)
+## SpendingPastChanged — 소비 · 지난달 (마감 뒤 기록이 바뀜)
 
 `canvas/SpendingPastChanged.dc.html` · 390×1212 · 원본 `components/navi/spending-overview.tsx · reclose-spend-dialog.tsx (record-1 · D9)`
 
 - [ ] **div** — “소비”
       `display:flex flex-direction:column gap:10px padding:14px 16px 12px`
-- [ ] **div** — “지난 달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
+- [ ] **div** — “지난달에는 한도 탭이 없어요 · 기록은 내역에서 고쳐요”
       `display:flex align-items:center gap:7px padding:0 16px 10px`
 - [ ] **본문(스크롤 영역)** — “8월 마감 뒤 기록이 바뀌었어요”
       `flex:1 min-height:0 display:flex flex-direction:column gap:10px padding:0 14px`
@@ -2676,10 +2676,10 @@
         `display:flex justify-content:center padding:9px 0 0`
   - [ ] **div** — “반복 기록”
         `display:flex align-items:flex-start justify-content:space-between gap:10px padding:12px 18px 14px border-bottom:1px solid #EFF2F8`
-  - [ ] **div** — “등록된 규칙”
+  - [ ] **div** — “등록된 반복 기록”
         `flex:1 min-height:0 padding:14px 18px 0 display:flex flex-direction:column gap:15px`
-    - [ ] **div** — “등록된 규칙”
-    - [ ] **div** — “새 규칙”
+    - [ ] **div** — “등록된 반복 기록”
+    - [ ] **div** — “새 반복 기록”
     - [ ] **Callout(info)** — “9월 1일에 같은 금액(주거/관리 320,000원)이 이미 있어요 — 이번 달은 건너뛸까요?”
           `padding:11px 12px margin-top:12px background:#F4F6FB border-radius:12px display:flex flex-direction:column gap:9px`
   - [ ] **div** — “닫기”

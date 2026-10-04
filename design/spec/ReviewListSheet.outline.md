@@ -20,7 +20,7 @@
         `display:flex gap:8px font-size:11.5px line-height:1.5`
         - `span` — “이 화면”
           `width:96px color:rgba(255,255,255,.55)`
-        - `span` — “마감한 8월에 기록을 더한 30일 식비 55,000원 · 지난 달 소비 같은 장면)의 두 항목. 기본 장면 9월 8”
+        - `span` — “마감한 8월에 기록을 더한 30일 식비 55,000원 · 지난달 소비 같은 장면)의 두 항목. 기본 장면 9월 8일”
           `flex:1 color:rgba(255,255,255,.86)`
       - `div`
         `display:flex gap:8px font-size:11.5px line-height:1.5`

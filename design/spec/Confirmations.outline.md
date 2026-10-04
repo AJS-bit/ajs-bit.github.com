@@ -38,7 +38,7 @@
         `font-size:16px font-weight:500 line-height:24px color:#101828`
       - `p` **text 14px/400** — “9월 6일 ETF 자동이체 300,000원 · 이번 달에 만들어진 이 건만 지워요 · 같은 달에 다시 생기지 않고 ”
         `font-size:14px line-height:20px color:#626D88`
-      - `p` **text 14px/400** — “연결 잔액을 이미 확정해서 지금 잔액은 바뀌지 않아요.”
+      - `p` **text 14px/400** — “연결 계좌의 잔액을 이미 확정해서 지금 잔액은 바뀌지 않아요”
         `font-size:14px line-height:20px color:#626D88`
     - `div`
       `display:flex flex-direction:column gap:8px padding:16px background:#F8FAFD border-top:1px solid #E3E8F1`
@@ -80,13 +80,13 @@
         `display:flex align-items:center justify-content:center height:32px padding:0 10px border-radius:13px background:#FCEBEA border:1px solid transparent color:#C0342F font-size:16px font-weight:400`
       - `div` **text 16px/400** — “취소”
         `display:flex align-items:center justify-content:center height:32px padding:0 10px border-radius:13px background:#EDF0F7 border:1px solid #E3E8F1 color:#101828 font-size:16px font-weight:400`
-  - `div` **text 11px/600** — “D · 반복 규칙 지우기”
+  - `div` **text 11px/600** — “D · 반복 기록 지우기”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
   - `div`
     `background:#FFFFFF border:1px solid #E3E8F1 border-radius:16px box-shadow:0 1px 2px rgba(16,24,40,.04), 0 8px 24px -16px rgba(16,24,40,.28)`
     - `div`
       `padding:16px text-align:center`
-      - `div` **text 16px/500** — “ETF 자동이체 반복 규칙을 지울까요?”
+      - `div` **text 16px/500** — “ETF 자동이체 반복 기록을 지울까요?”
         `font-size:16px font-weight:500 line-height:24px color:#101828`
       - `p` **text 14px/400** — “앞으로 자동 기록이 생기지 않아요. 이미 만들어진 지난 기록은 그대로 남아요.”
         `font-size:14px line-height:20px color:#626D88`

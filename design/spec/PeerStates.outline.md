@@ -22,7 +22,7 @@
         `font-size:14px font-weight:600 color:#101828`
     - `div` **text 11.5px/400** — “앱에는 또래 통계가 없어요 · 출처가 있는 기준을 직접 넣어 비교해요”
       `font-size:11.5px line-height:1.45 color:#626D88 margin-top:4px`
-    - `p` **text 15px/600** — “나이를 입력하면 내 연령 구간을 볼 수 있어요”
+    - `p` **text 15px/600** — “나이를 입력하면 내 나이대를 볼 수 있어요”
       `font-size:15px font-weight:600 letter-spacing:-0.015em color:#101828`
     - `p` **text 12.5px/400** — “20대 초반·중반·후반처럼 나눠서 알려 드려요.”
       `font-size:12.5px line-height:1.5 color:#475467`
@@ -32,7 +32,7 @@
         `height:42px padding:0 18px border-radius:12px background:#3556E6 display:flex align-items:center justify-content:center font-size:14px font-weight:600 color:#FFFFFF white-space:nowrap`
     - `div`
       `margin-top:13px border-top:1px solid #EFF2F8`
-      - `div` **text 11px/600** — “나이가 없어도 할 수 있어요”
+      - `div` **text 11px/600** — “나이를 입력하지 않아도 소비 점검은 할 수 있어요”
         `font-size:11px font-weight:600 letter-spacing:0.06em color:#626D88`
       - `div`
         `display:flex align-items:center justify-content:space-between gap:8px margin-top:7px`
@@ -42,9 +42,9 @@
           `font-size:12.5px font-weight:600 color:#3556E6 white-space:nowrap`
     - `div`
       `display:flex align-items:center gap:7px margin-top:12px padding:10px 11px background:#F4F6FB border-radius:11px`
-      - `span` **text 11.5px/400** — “소비 목표 · 비교 기준 자세히”
+      - `span` **text 11.5px/400** — “소비 목표 · 비교 기준 자세히 보기”
         `flex:1 font-size:11.5px color:#626D88`
-  - `div` **text 11px/600** — “B · 연령 구간 있음 · 비교 기준 없음”
+  - `div` **text 11px/600** — “B · 나이대 있음 · 비교 기준 없음”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
   - `div` **Card(18)**
     `background:#FFFFFF border:1px solid #E3E8F1 border-radius:18px padding:14px`
@@ -79,7 +79,7 @@
         `font-size:13px font-weight:600 color:#0F7B47`
     - `div`
       `display:flex align-items:center gap:7px margin-top:12px padding:10px 11px background:#F4F6FB border-radius:11px`
-      - `span` **text 11.5px/400** — “소비 목표 · 비교 기준 자세히”
+      - `span` **text 11.5px/400** — “소비 목표 · 비교 기준 자세히 보기”
         `flex:1 font-size:11.5px color:#626D88`
   - `div` **text 11px/600** — “C · 직접 등록한 기준으로 비교 가능”
     `font-size:11px font-weight:600 letter-spacing:0.06em color:#606B7D padding:6px 2px 0`
@@ -117,7 +117,7 @@
         `font-weight:500 color:#475467`
     - `div`
       `display:flex gap:7px margin-top:11px padding:9px 10px background:#F4F6FB border-radius:11px`
-      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 현”
+      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 조사 인원 1,200명 ”
         `flex:1 font-size:11px line-height:1.5 color:#626D88`
         - `br`
         - `span` — “직접 입력한 예시 기준”
@@ -156,7 +156,7 @@
         `flex:1 height:42px border-radius:12px background:#FFFFFF border:1px solid #D7DEEA display:flex align-items:center justify-content:center font-size:14px font-weight:600 color:#475467 white-space:nowrap`
     - `div`
       `display:flex gap:7px margin-top:11px padding:9px 10px background:#F4F6FB border-radius:11px`
-      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 현”
+      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 조사 인원 1,200명 ”
         `flex:1 font-size:11px line-height:1.5 color:#626D88`
         - `br`
         - `span` — “직접 입력한 예시 기준”
@@ -193,7 +193,7 @@
         `height:42px padding:0 18px border-radius:12px background:#3556E6 display:flex align-items:center justify-content:center font-size:14px font-weight:600 color:#FFFFFF white-space:nowrap`
     - `div`
       `display:flex gap:7px margin-top:11px padding:9px 10px background:#F4F6FB border-radius:11px`
-      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 현”
+      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 조사 인원 1,200명 ”
         `flex:1 font-size:11px line-height:1.5 color:#626D88`
         - `br`
         - `span` — “직접 입력한 예시 기준”
@@ -228,7 +228,7 @@
           `font-size:12px line-height:1.5 color:#475467 margin-top:4px`
     - `div`
       `display:flex gap:7px margin-top:11px padding:9px 10px background:#F4F6FB border-radius:11px`
-      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 현”
+      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 조사 인원 1,200명 ”
         `flex:1 font-size:11px line-height:1.5 color:#626D88`
         - `br`
         - `span` — “직접 입력한 예시 기준”
@@ -253,7 +253,7 @@
       - `div`
         - `div` **text 13.5px/600** — “해가 바뀌었어요. 나이가 맞나요?”
           `font-size:13.5px font-weight:600 color:#0A5F8F`
-        - `div` **text 12px/400** — “입력 연도가 바뀌었어요. 만 나이를 확인하면 비교를 다시 보여드려요.”
+        - `div` **text 12px/400** — “입력한 나이가 올해 기준이 아닐 수 있어요. 만 나이를 확인하면 비교를 다시 보여 드려요.”
           `font-size:12px line-height:1.5 color:#0A5F8F margin-top:4px`
     - `div`
       `display:flex gap:8px margin-top:11px`
@@ -261,7 +261,7 @@
         `height:42px padding:0 18px border-radius:12px background:#3556E6 display:flex align-items:center justify-content:center font-size:14px font-weight:600 color:#FFFFFF white-space:nowrap`
     - `div`
       `display:flex gap:7px margin-top:11px padding:9px 10px background:#F4F6FB border-radius:11px`
-      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 표본 1,200명 · 현”
+      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2025년 · 조사 인원 1,200명 ”
         `flex:1 font-size:11px line-height:1.5 color:#626D88`
         - `br`
         - `span` — “직접 입력한 예시 기준”
@@ -284,7 +284,7 @@
       - `div`
         - `div` **text 13.5px/600** — “비교 기준의 연도를 확인해 주세요”
           `font-size:13.5px font-weight:600 color:#7A3E0A`
-        - `div` **text 12px/400** — “현재보다 나중 연도의 기준은 비교에 사용하지 않아요. 등록한 기준의 연도를 수정해 주세요.”
+        - `div` **text 12px/400** — “아직 오지 않은 연도의 기준은 비교에 쓰지 않아요. 등록한 기준의 연도를 수정해 주세요.”
           `font-size:12px line-height:1.5 color:#7A3E0A margin-top:4px`
     - `div`
       `display:flex gap:8px margin-top:11px`
@@ -292,7 +292,7 @@
         `height:42px padding:0 18px border-radius:12px background:#FFFFFF border:1.5px solid #3556E6 display:flex align-items:center justify-content:center font-size:14px font-weight:600 color:#3556E6 white-space:nowrap`
     - `div`
       `display:flex gap:7px margin-top:11px padding:9px 10px background:#F4F6FB border-radius:11px`
-      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2027년 · 표본 1,200명 ·”
+      - `span` — “내가 직접 등록한 기준이에요. 앱에 내장된 통계나 순위가 아니에요. 출처 · 2027년 · 조사 인원 1,200명 ”
         `flex:1 font-size:11px line-height:1.5 color:#626D88`
         - `br`
         - `span` — “직접 입력한 예시 기준”

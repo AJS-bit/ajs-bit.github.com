@@ -19,7 +19,7 @@
       - `div`
         - `h2` **text 18px/700** — “내 수치”
           `font-size:18px font-weight:700 letter-spacing:-0.025em color:#101828`
-        - `p` **text 12.5px/400** — “월급과 소비 목표만 있으면 홈이 계산돼요. 나머지는 언제든 채워도 돼요.”
+        - `p` **text 12.5px/400** — “월급과 소비 목표만 있으면 홈의 숫자가 계산돼요. 나머지는 언제든 채워도 돼요.”
           `font-size:12.5px line-height:1.45 color:#626D88`
       - `div`
         `width:36px height:36px border-radius:11px background:#F4F6FB display:flex align-items:center justify-content:center`
