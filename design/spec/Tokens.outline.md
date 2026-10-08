@@ -10,7 +10,7 @@
       - `div`
         `display:flex align-items:center gap:10px`
         - `div`
-          `width:30px height:30px border-radius:10px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
+          `width:30px height:30px border-radius:10px`
         - `span` **text 12px/600** — “NAVI DESIGN SYSTEM v3”
           `font-size:12px font-weight:600 letter-spacing:0.14em color:#626D88`
       - `h1` **text 34px/700** — “색 · 타이포 · 간격 토큰”
@@ -72,7 +72,7 @@
       - `div`
         `border:1px solid #E3E8F1 border-radius:14px`
         - `div`
-          `height:62px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%)`
+          `height:62px background:#2445FF`
         - `div`
           `padding:10px 12px`
       - `div`

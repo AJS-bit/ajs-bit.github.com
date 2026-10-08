@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
-    <path android:pathData="M54,0A54,54 0 1 1 54,108A54,54 0 1 1 54,0Z"><aapt:attr name="android:fillColor"><gradient android:type="linear" android:startX="5.098691" android:startY="-4.278310" android:endX="102.901309" android:endY="112.278310"><item android:offset="0" android:color="#3556E6"/><item android:offset="1" android:color="#7A3FE4"/></gradient></aapt:attr></path>
-    <!-- Pre-26 shows the whole 108dp tile: the symbol is 54% of it, the same ratio as every NAVI icon (design/brand/gen_brand.py TILE_SCALE). -->
-    <path android:fillColor="#FFFFFF" android:pathData="M29.125,67.687H36.028A4.285,4.285 0 0 1 40.313,71.972V78.875A4.285,4.285 0 0 1 36.028,83.16H29.125A4.285,4.285 0 0 1 24.84,78.875V71.972A4.285,4.285 0 0 1 29.125,67.687ZM50.548,67.687H57.452A4.285,4.285 0 0 1 61.736,71.972V78.875A4.285,4.285 0 0 1 57.452,83.16H50.548A4.285,4.285 0 0 1 46.264,78.875V71.972A4.285,4.285 0 0 1 50.548,67.687ZM50.548,46.264H57.452A4.285,4.285 0 0 1 61.736,50.548V57.452A4.285,4.285 0 0 1 57.452,61.736H50.548A4.285,4.285 0 0 1 46.264,57.452V50.548A4.285,4.285 0 0 1 50.548,46.264ZM71.972,46.264H78.875A4.285,4.285 0 0 1 83.16,50.548V57.452A4.285,4.285 0 0 1 78.875,61.736H71.972A4.285,4.285 0 0 1 67.687,57.452V50.548A4.285,4.285 0 0 1 71.972,46.264ZM29.839,32.576A2.737,2.737 0 1 0 35.314,32.576A2.737,2.737 0 1 0 29.839,32.576ZM51.263,32.576A2.737,2.737 0 1 0 56.737,32.576A2.737,2.737 0 1 0 51.263,32.576ZM29.839,54A2.737,2.737 0 1 0 35.314,54A2.737,2.737 0 1 0 29.839,54ZM72.686,75.424A2.737,2.737 0 1 0 78.161,75.424A2.737,2.737 0 1 0 72.686,75.424Z"/>
-    <path android:fillColor="#00000000" android:strokeColor="#FFFFFF" android:strokeWidth="4.047" android:pathData="M68.997,32.576A6.427,6.427 0 1 0 81.851,32.576A6.427,6.427 0 1 0 68.997,32.576Z"/>
+<!-- NAVI 아이콘 — design/brand/gen_brand.py 가 만든다(규격 design/canvas/_tools/brand_mark.py). 손으로 고치지 말 것 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+  <path android:fillColor="#FF2445FF" android:pathData="M0,54A54,54 0 1 0 108,54A54,54 0 1 0 0,54Z"/>
+  <group>
+    <clip-path android:pathData="M0,54A54,54 0 1 0 108,54A54,54 0 1 0 0,54Z"/>
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="20.566" android:strokeLineJoin="round" android:strokeLineCap="round" android:fillColor="#00000000" android:pathData="M-40.078,145.547L-11.602,145.547L-11.602,117.07L16.875,117.07L16.875,88.594L45.352,88.594L45.352,60.117L73.828,60.117"/>
+    <path android:fillColor="#FFFFFFFF" android:fillAlpha="0.45" android:pathData="M13.711,31.641A3.164,3.164 0 1 0 20.039,31.641A3.164,3.164 0 1 0 13.711,31.641ZM42.188,31.641A3.164,3.164 0 1 0 48.516,31.641A3.164,3.164 0 1 0 42.188,31.641ZM13.711,60.117A3.164,3.164 0 1 0 20.039,60.117A3.164,3.164 0 1 0 13.711,60.117ZM70.664,88.594A3.164,3.164 0 1 0 76.992,88.594A3.164,3.164 0 1 0 70.664,88.594Z"/>
+    <path android:fillColor="#00000000" android:strokeColor="#FFFFC94D" android:strokeWidth="5.695" android:pathData="M65.443,31.641A8.385,8.385 0 1 0 82.213,31.641A8.385,8.385 0 1 0 65.443,31.641Z"/>
+  </group>
 </vector>

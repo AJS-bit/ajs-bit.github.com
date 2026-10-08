@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 시작 화면 아이콘 — design/brand/gen_brand.py. 밝은 모드 = 런처 아이콘(A + 노란 원) · 어두운 모드 = 샴페인 -->
+<resources>
+    <item name="navi_splash_icon" type="drawable">@mipmap/ic_launcher_navi</item>
+</resources>

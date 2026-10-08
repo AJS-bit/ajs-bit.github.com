@@ -9,7 +9,7 @@
     - `div`
       `display:flex align-items:center gap:10px padding:0 6px`
       - `div`
-        `width:34px height:34px border-radius:11px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
+        `width:34px height:34px border-radius:11px`
       - `div`
         - `div` **text 16px/700** — “NAVI”
           `font-size:16px font-weight:700 letter-spacing:0.06em color:#101828 line-height:1.2`

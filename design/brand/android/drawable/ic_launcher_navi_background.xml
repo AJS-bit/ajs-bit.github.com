@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NAVI 아이콘 — design/brand/gen_brand.py 가 만든다(규격 design/canvas/_tools/brand_mark.py). 손으로 고치지 말 것 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+  <path android:fillColor="#FF2445FF" android:pathData="M0,0H108V108H0Z"/>
+</vector>

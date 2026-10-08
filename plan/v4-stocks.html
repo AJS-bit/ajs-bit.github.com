@@ -28,8 +28,10 @@ body{margin:0;background:var(--canvas);color:var(--ink);
   font-variant-numeric:tabular-nums;padding:0 16px}
 main{max-width:720px;margin:0 auto;padding-block:40px 96px}
 .mark{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
-.mark i{width:26px;height:26px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
-  background:linear-gradient(140deg,#3556E6 0%,#7A3FE4 100%)}
+.mark i{width:26px;height:26px;border-radius:8px;display:inline-flex;overflow:hidden;flex-shrink:0}
+.mark i .m-d{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mark i .m-l{display:none}:root:not([data-theme="light"]) .mark i .m-d{display:block}}
+:root[data-theme="dark"] .mark i .m-l{display:none}:root[data-theme="dark"] .mark i .m-d{display:block}
 .mark span{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
 .mark em{font-style:normal;font-size:12px;color:var(--ink3);font-weight:500}
 h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.25;margin:0 0 6px;text-wrap:balance}
@@ -73,7 +75,7 @@ td strong{color:var(--ink);font-weight:600}
 @media (max-width:480px){h1{font-size:24px}h2{font-size:17px}td:first-child{white-space:normal}}
 </style>
 <main>
-<div class="mark"><i><svg width="26" height="26" viewBox="8.63 8.63 90.74 90.74"><rect x="29.5" y="65.5" width="13" height="13" rx="3.6" fill="white"/><rect x="47.5" y="65.5" width="13" height="13" rx="3.6" fill="white"/><rect x="47.5" y="47.5" width="13" height="13" rx="3.6" fill="white"/><rect x="65.5" y="47.5" width="13" height="13" rx="3.6" fill="white"/><circle cx="36" cy="36" r="2.3" fill="white"/><circle cx="54" cy="36" r="2.3" fill="white"/><circle cx="36" cy="54" r="2.3" fill="white"/><circle cx="72" cy="72" r="2.3" fill="white"/><circle cx="72" cy="36" r="5.4" fill="none" stroke="white" stroke-width="3.4"/></svg></i><span>NAVI</span><em>· v4 계획 초안</em></div>
+<div class="mark"><i><svg class="m-l" width="26" height="26" viewBox="0 0 1024 1024" style="display: block;"><rect width="1024" height="1024" fill="#2445FF"/><path d="M-380 1380 L-110 1380 L-110 1110 L160 1110 L160 840 L430 840 L430 570 L700 570" fill="none" stroke="#FFFFFF" stroke-width="195" stroke-linejoin="round" stroke-linecap="round"/><g opacity="0.45"><circle cx="160" cy="300" r="30" fill="#FFFFFF"/><circle cx="430" cy="300" r="30" fill="#FFFFFF"/><circle cx="160" cy="570" r="30" fill="#FFFFFF"/><circle cx="700" cy="840" r="30" fill="#FFFFFF"/></g><circle cx="700" cy="300" r="79.5" fill="none" stroke="#FFC94D" stroke-width="54"/></svg><svg class="m-d" width="26" height="26" viewBox="0 0 1024 1024" style="display: block;"><defs><linearGradient id="navi-champagne-plan" gradientUnits="userSpaceOnUse" x1="100" y1="1000" x2="720" y2="560"><stop offset="0" stop-color="#6F6D68"/><stop offset="0.5" stop-color="#ABA698"/><stop offset="0.85" stop-color="#CDBF98"/><stop offset="1" stop-color="#D3C79F"/></linearGradient></defs><rect width="1024" height="1024" fill="#07070B"/><path d="M-380 1380 L-110 1380 L-110 1110 L160 1110 L160 840 L430 840 L430 570 L700 570" fill="none" stroke="url(#navi-champagne-plan)" stroke-width="195" stroke-linejoin="round" stroke-linecap="round"/><g opacity="0.38"><circle cx="160" cy="300" r="30" fill="#A09C90"/><circle cx="430" cy="300" r="30" fill="#A09C90"/><circle cx="160" cy="570" r="30" fill="#A09C90"/><circle cx="700" cy="840" r="30" fill="#A09C90"/></g><circle cx="700" cy="300" r="79.5" fill="none" stroke="#FFC94D" stroke-width="54"/></svg></i><span>NAVI</span><em>· v4 계획 초안</em></div>
 <h1>NAVI v4 계획 — 첫 실행 · 홈 구성 · 주식탭</h1>
 <p class="meta">작성 2026-09-14 · 검토용 초안(작성 당시 시안 없음 — 지금은 캔버스 6~10페이지) · 2026-09-21 최신화 점검 반영(§3 · §4 · §5-2 · §6 · §7 · §8 · §9 결정 8과 「2026-09-21 시안에서 정한 것」) · 같은 날 데스크톱 홈(<code>DesktopHomeV5</code>)을 그림 그대로 채택(그 메모의 열린 것 가운데 「데스크톱」을 닫음) · 2026-09-25 사용성 점검 140건 · 앱 따라잡기(§9 아래 메모 — 홈 구성 단계는 사용자 요청으로 유지 · 주식 스위치 = 알림 받기 · 탭 이름 <code>목적지</code>) · 2026-09-30 홈 달력은 펼친 월 달력이 기본(§9 아래 메모)</p>
 <hr>

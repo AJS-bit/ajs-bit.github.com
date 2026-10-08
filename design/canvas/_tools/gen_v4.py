@@ -48,8 +48,8 @@ def w(name, body, keep_all=True):
     print('wrote', name, '+ Dark' + name)
 
 
-def mark(size=32, radius=10):   # brand_mark.py 규격(2026-09-30) — 하루가 쌓인 길 · 네모의 54%(같은 날 둘째 결정 · 앱 아이콘과 같은 비율)
-    return brand_mark.tile(size, radius, BRAND_GRAD)
+def mark(size=32, radius=10):   # brand_mark.py 규격(2026-10-09) — 라이트 장은 「A + 노란 원」 · 다크 장은 darken 이 「샴페인」으로
+    return brand_mark.tile(size, radius)
 
 
 # ══════════════ 공통 조각 ══════════════

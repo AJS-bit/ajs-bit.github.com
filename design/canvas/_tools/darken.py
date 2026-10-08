@@ -3,6 +3,8 @@
 import re
 import pathlib
 
+import brand_mark
+
 SRC = pathlib.Path(__file__).resolve().parent.parent
 
 MAP = {
@@ -149,6 +151,8 @@ def darken(text, name='', knob=KNOB_OFF_DARK, seg=None):
     # <!--dc-keep-->…<!--/dc-keep--> 구간은 라이트/다크가 같아야 하는 반전 요소
     # (어두운 배경 위 흰 글자 토스트 등)이라 매핑에서 제외한다.
     kept = []
+    # 앱마크 — 라이트 「A + 노란 원」 → 다크 「샴페인」(brand_mark.to_dark 가 dc-keep 으로 감싸 아래 색 변환을 안 탐 · 2026-10-09)
+    text = brand_mark.to_dark(text, name)
 
     def _stash(m):
         kept.append(m.group(1))
@@ -175,7 +179,7 @@ def darken(text, name='', knob=KNOB_OFF_DARK, seg=None):
     out = out.replace('rgba(16,24,40,.08)', 'rgba(0,0,0,.5)')
     out = out.replace('rgba(16,24,40,.2)', 'rgba(0,0,0,.6)')
     out = out.replace('rgba(16,24,40,.5)', 'rgba(0,0,0,.8)')
-    # 브랜드 그라디언트는 라이트/다크 동일(마크 그림은 brand_mark 가 white 로 적어 MAP 을 안 탐)
+    # 브랜드 그라디언트는 라이트/다크 동일
     out = out.replace(BRAND_GRAD_DARK, BRAND_GRAD)
     # 부채 해치 패턴
     out = out.replace('#E0908C 0 4px, #F0BFBD 4px 8px', '#8E4C49 0 4px, #B36F6C 4px 8px')

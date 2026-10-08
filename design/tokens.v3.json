@@ -84,7 +84,7 @@
     "brandGradient": {
       "value": "linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%)",
       "sameInDark": true,
-      "usage": "로고 마크 전용. 카드 배경에는 쓰지 않습니다."
+      "usage": "로고 마크 전용이었으나 2026-10-09 새 앱 아이콘부터 쓰는 곳 없음(로고는 그림이 바탕 네모까지 그림 — 라이트 #2445FF · 다크 #07070B · 노란 원 #FFC94D · SPEC-COMPONENTS §2). 카드 배경에는 쓰지 않습니다."
     },
     "semantics": {
       "violet": "저장되지 않는 가정(시뮬레이션) 전용. 저장된 기록에는 쓰지 않음",

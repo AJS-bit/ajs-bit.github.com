@@ -16,7 +16,7 @@
 | `design/` | **v3 디자인 인계 묶음(확정본).** 코덱스가 GitHub raw로 읽습니다. 입구 `design/여기부터.md`, 지시서 `design/CODEX-BRIEF.md` |
 | `design/canvas/*.dc.html` | 아트보드 파일 327장(라이트 164 · 다크 163 · `Tokens`만 다크 없음). 캔버스에는 **317장 · 11페이지**(화면 종류별 · 2026-09-26) — 달력 없는 옛 홈 `Main` · `HomeScroll`, 옛 `Ledger` · `MonthlyClose`, 옛 `DesktopHome`(+다크)은 생성기 원본 전용이라 캔버스 · `screens.json` · SPEC-SCREENS에 없음(`gen_canvas.py` `SOURCE_ONLY`). **값의 최종 기준** |
 | `design/canvas/_tools/` | 생성기·다크 변환·렌더·계산기. 먼저 `_tools/README.md`를 읽을 것 |
-| `design/brand/` | 로고 파일 묶음(svg · 안드로이드 벡터 · png). `gen_brand.py`가 `_tools/brand_mark.py`의 그림에서 만든다 |
+| `design/brand/` | 로고 파일 묶음(svg · 안드로이드 리소스 — 앱 res와 같은 경로 · png · og). `gen_brand.py`가 `_tools/brand_mark.py`의 그림에서 만든다 |
 | `design/SPEC-COMPONENTS.md` · `SPEC-SCREENS.md` | 맨 위 **용어표와 공통 규칙**(2026-09-25 · D1 ~ D16) · 컴포넌트 24개(+ v5 11종 — §27 · 첫 실행 안내 카드 — §28) 실측 CSS · 화면별 조립 체크리스트(라이트 159장) |
 | `plan/v4-stocks.md` | **v4 계획.** §9에 결정 사항. 페이지판은 `plan/_tools/md2page.py`로 생성 |
 | `plan/v5-calendar.md` | **v5 계획 — 홈 달력과 빠른 소비 입력.** §12에 결정 37개(1~18이 방향 · 36은 폐기) · §14 기기 알림. 15판(2026-09-30 홈 달력은 펼친 월 달력이 기본 — §10 15판 메모 · §12-35 바뀜) · 14판(2026-09-25 사용성 점검 140건 · 앱 따라잡기 — §10 14판 메모 · §12 표의 바뀐 행 표시) · 13판(2026-09-24 히어로 게이지 · 달력 카드). 페이지판은 `md2page.py v5-calendar.md` |
@@ -160,6 +160,14 @@
   - 기록: `design/CHANGES-2026-10-02.md`(바뀐 말 표 · 일부러 안 바꾼 것 · 확인할 것).
   - **남은 7가지 모두 반영(2026-10-04 · 사용자 「권장안대로가 7가지 다 고쳐 — 3 · 4번도 고치는 선택」):** 점수 카드 글자 3곳 · 백업 불러오기 줄 설명 · 결제수단 오류 문구(보호 파일) · 엔진 코치 · 경고 · 등급 설명의 해요체(보호 파일 73쌍 · 화면에는 안 나오는 글) · 최소 상환액이 빈 대출이 막은 미래 경로 안내 · 월급 없이 자산만 있을 때 미래 경로(새 상태 `no-income` — 0원 월급으로 그리지 않음) · 테마 힌트(`navi-theme-hint`)로 시작 화면 번쩍임 한 번 줄임. 앱 `v5-stage1` `cc094d4` · `7b65828`(보호 파일 · `docs/protected-changes-v5.md` 7절) · `fa407a7`. 시안은 `HomeGlanceRows` · `ImportReview` · `ImportBackupNotes` · `FutureStates`(월 최소 상환액 빈 대출 카드 문구 + 새 카드 「월급을 넣지 않았을 때」 · 높이 2032) 8장(+ 다크)만 바뀌었다. 캔버스 44번째 판. 기록 `design/CHANGES-2026-10-02.md` 「2026-10-04 남은 7가지」. 전 · 후 도구 `_tools/ba_shot.cjs` · `ba_overflow.cjs`.
 
+- **새 앱 아이콘 (2026-10-09).**
+  - 시작: 사용자 「앱 아이콘이 모양은 마음에 드는데 색상이나 배치가 아쉽다 — 샵백처럼 범위를 넘거나, 툭 · aspect처럼 검은 바탕에 강렬한 포인트」. 클로드 · 소넷 5.5 · GPT Astra가 오르카 터미널에서 따로 그림(effort xhigh).
+  - 결정: 「라이트 모드랑 기본 앱 아이콘은 A + 노란 원 · 다크 모드의 앱 안 로고와 시작 화면은 2-C 샴페인」 → 전 · 후(https://claude.ai/artifact/X58815iqs4Tzx6TQGN6MGt) 「반영해」.
+  - 그림(1024 = 보이는 네모): 굵은 길 한 획이 왼쪽 아래 밖에서 들어와 계단으로 오름 · 점 넷 · 노란 원 `#FFC94D`. 라이트 바탕 `#2445FF` + 흰 길 · 다크 바탕 `#07070B` + 백금 → 샴페인 길(비네팅 없음) · 단색판 = 안전 원 안. 규격 `_tools/brand_mark.py`(`LIGHT` · `DARK` · `MONO` · `tile()` · `to_dark()` · `fix()`) — 옛 「네모의 54%」는 끝남.
+  - 자리: 런처 · 앱 목록 · 스토어 · 웹 = A + 노란 원 하나(런처는 폰 모드를 못 따라감 — 에뮬레이터 확인) · 시작 화면 = 폰 모드(별칭 `navi_splash_icon` · values-night = `navi_splash_dark`) · 앱 안 = 앱 테마(`html.dark`) · 테마 아이콘 · 알림 = 단색판.
+  - 시안: 59장(라이트 30 · 다크 29 — 다크는 `darken.py`가 `to_dark()`로) · `Tokens` 로고 칸(`app mark`) · 넘침 0px 차 · 캔버스 45번째 판 · 계획 페이지 머리 마크. 로고 파일 `design/brand/`(android/는 앱 res와 같은 경로 · 같은 바이트 · og는 `og_shot.cjs`). 기록 `design/CHANGES-2026-10-09.md` · SPEC §2.
+  - 앱 `v5-stage1` `ac25508` — tsc · vitest 2,172(새 `navi-1009-icon` 14 · 실패 3은 `navi-goals-view`의 날짜 의존으로 이 변경 전부터) · 린트 기준 65 · QA 9종. 에뮬레이터(시험용 패키지)에서 런처 · 시작 화면 · 앱 안 · 테마 아이콘 · 실제 알림 아이콘 확인. APK `outputs/NAVI-v5-stage1-icon-ac25508-2026-10-09.apk`(서명 d658e495).
+
 ## 사용자가 정한 작업 규칙 — 반드시
 
 1. **시안을 바꾸기 전에 before/after 렌더를 보여주고 검사받습니다.** 승인 전에 원본을 고치지 않습니다. 새 시안도 그려서 보여준 뒤 반영합니다.
@@ -172,7 +180,7 @@
 
 ## 도구와 함정 — 지난 작업에서 실제로 걸린 것
 
-- **앱 안 마크 svg에 padding을 주지 마세요.** 여백은 viewBox(`brand_mark.VIEWBOX` · 앱 `navi-mark.tsx` `VIEW_BOX`)가 정합니다 — 2026-09-30 홈 머리줄에 옛 종이비행기용 padding 5.5px가 남아 새 마크가 30%로 줄었고, 로고를 바꿀 때 `.brand-mark` · `.v4-setup-mark`만 찾고 `.app-topbar-brand > svg`를 놓쳤습니다. 로고를 바꾸면 앱 CSS에서 마크 svg 규칙을 전부 찾으세요.
+- **앱 안 마크 svg에 padding을 주지 마세요.** svg는 네모와 같은 크기 · viewBox `0 0 1024 1024`(2026-10-09 · `brand_mark.svg` · 앱 `navi-mark.tsx` `VIEW_BOX`)이고 네모가 모서리를 자릅니다(바탕을 칠하지 않음) — 2026-09-30 홈 머리줄에 옛 종이비행기용 padding 5.5px가 남아 새 마크가 30%로 줄었고, 로고를 바꿀 때 `.brand-mark` · `.v4-setup-mark`만 찾고 `.app-topbar-brand > svg`를 놓쳤습니다. 로고를 바꾸면 앱 CSS에서 마크 svg 규칙을 전부 찾으세요.
 - **홈이 나오는 장의 달력은 `gen_calendar.HOME_EXPANDED`(펼침) 하나를 씁니다.** 접힌 7일 줄은 상태를 설명하는 장(`HomeCalendarStrip` · `CalendarCells` ⑨ · `CalendarGridSizes` · `CalendarStatusLines` · `Components` 08)에만 남습니다.
 
 - **아트보드 대부분(라이트 97장 중 81장)은 생성기 산물입니다.** `.dc.html`만 고치면 생성기를 다시 돌릴 때 되돌아갑니다. 생성기와 파일을 **둘 다** 고치세요. 손으로 쓴 파일 목록은 `_tools/README.md`에 있습니다.

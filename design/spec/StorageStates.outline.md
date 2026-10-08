@@ -17,7 +17,7 @@
   - `div`
     `display:flex align-items:center gap:9px padding:2px 4px 4px`
     - `div`
-      `width:40px height:40px border-radius:11px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
+      `width:40px height:40px border-radius:11px`
     - `span` **text 17px/700** — “NAVI”
       `font-size:17px font-weight:700 letter-spacing:0.06em color:#101828`
   - `div` **Card(18)**

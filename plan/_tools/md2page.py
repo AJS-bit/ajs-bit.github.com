@@ -119,8 +119,10 @@ body{margin:0;background:var(--canvas);color:var(--ink);
   font-variant-numeric:tabular-nums;padding:0 16px}
 main{max-width:720px;margin:0 auto;padding-block:40px 96px}
 .mark{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px}
-.mark i{width:26px;height:26px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
-  background:linear-gradient(140deg,#3556E6 0%,#7A3FE4 100%)}
+.mark i{width:26px;height:26px;border-radius:8px;display:inline-flex;overflow:hidden;flex-shrink:0}
+.mark i .m-d{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mark i .m-l{display:none}:root:not([data-theme="light"]) .mark i .m-d{display:block}}
+:root[data-theme="dark"] .mark i .m-l{display:none}:root[data-theme="dark"] .mark i .m-d{display:block}
 .mark span{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
 .mark em{font-style:normal;font-size:12px;color:var(--ink3);font-weight:500}
 h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.25;margin:0 0 6px;text-wrap:balance}
@@ -172,10 +174,12 @@ m_dec = re.search(r'<h2 id="(s\d+)"><span class="num">§\d+</span>[^<]*결정해
 DECIDE_ID = m_dec.group(1) if m_dec else 's9'
 
 CSS = CSS.replace('#DECIDE_ID', '#' + DECIDE_ID)
-# 머리 마크 = 앱마크 규격 하나(design/canvas/_tools/brand_mark.py · 네모의 54% · 2026-09-30) — 계획 페이지도 앱 · 시안과 같은 로고
+# 머리 마크 = 앱마크 규격 하나(design/canvas/_tools/brand_mark.py · 2026-10-09) — 계획 페이지도 앱 · 시안과 같은 로고.
+# 밝은 테마는 「A + 노란 원」, 어두운 테마는 「샴페인」(앱 안 로고와 같게 테마를 따름)
 sys.path.insert(0, str(PLAN.parent / 'design' / 'canvas' / '_tools'))
 import brand_mark  # noqa: E402
-MARK = brand_mark.svg(26)
+MARK = (brand_mark.svg(26).replace('<svg ', '<svg class="m-l" ', 1)
+        + brand_mark.svg(26, dark=True, gid='navi-champagne-plan').replace('<svg ', '<svg class="m-d" ', 1))
 page = f'''<title>NAVI {VER} 계획</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <style>{CSS}</style>

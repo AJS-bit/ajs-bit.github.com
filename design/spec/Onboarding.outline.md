@@ -11,7 +11,7 @@
       - `span`
         `width:32px height:44px display:inline-flex align-items:center justify-content:center`
       - `div`
-        `width:32px height:32px border-radius:10px background:linear-gradient(140deg, #3556E6 0%, #7A3FE4 100%) display:flex align-items:center justify-content:center`
+        `width:32px height:32px border-radius:10px`
       - `span` **text 12px/500** — “시작 방법 고르기”
         `font-size:12px font-weight:500 color:#626D88`
     - `h1` **text 22px/700** — “어떤 데이터로 시작할까요?”
