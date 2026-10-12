@@ -174,6 +174,12 @@
   - 시안: 홈 장 17장(+ 다크) · `EmptyStates` A · `Components` 08 · `CalendarStatusLines` · `CalendarGridSizes` 글 · 높이(예: `HomeDefaultScroll` 1241) · 첫 실행 안내 자리 — 다시 재니 9/30 전 값과 같음. 기록 `design/CHANGES-2026-10-12.md` · v5 계획 16판 · v4 계획 §9 아래 메모.
   - 앱 `v5-stage1` `07e9ca8`: `calendarExpanded` 처음 값 `false` 한 줄 + 테스트 · QA 스크립트 5개의 기본값 검사 — vitest 2,175 · QA 9종 통과 · 에뮬레이터 확인. APK `outputs/NAVI-v5-stage1-calendar-folded-07e9ca8-2026-10-12.apk`(서명 d658e495). 캔버스 46번째 판 · v5 계획 24판 · v4 13판 publish.
 
+- **주식 · 출시 회의 (2026-10-12 ~ 13) · 사용자 결정 대기.**
+  - 시작: 사용자 「주식 쪽 어떻게 구현하고 실현할건지 … 회의해봐 · 진짜 앱을 출시할거야 · 인터넷에 연결돼서 모든 기능이 구현되는 앱」. 1차는 같은 모델끼리(GPT Astra ultra · Sonnet 5.5 ultracode · Opus 5.5 ultracode, 서로 못 봄), 2차는 다른 모델끼리 R1 교차 검증 → R2 답변 → R3 합의안 서명(이의 A 47 · S 43 · O 26) → R4 처리 확인. 오르카 분할 창에서 진행.
+  - 결과: 합의 64 · 남은 이견 14 · 사용자 결정 37 · 외부 확인 20. 기록은 이 맥의 `~/navi-meeting/stocks-meeting-1012/`(최종본 `p2/CONSENSUS-FINAL.md` · 처리표 `p2/R3-DISPOSITION.md` · 앱 사본 `~/navi-meeting/app-snapshot` = 07e9ca8). 저장소가 공개라 회의 기록은 옮기지 않았다. 결정 페이지 https://claude.ai/artifact/HsFs5cWwTiUFiRVEqPYyaM · v4 계획 §9 아래 메모(v4 14판 publish).
+  - 진행자 판단 규칙: 근거로 못 가르면 승인된 현행이 기본값, 팀 권장은 나란히, 어느 팀도 안 낸 안은 「진행자 안」. 그래서 받기는 「누를 때만」(plan :225) · 보유 → 계좌 토글 기본 꺼짐 · 경고 띠 현행 · 버전 이름은 값으로 묻기(지금 `2.3-fixes`).
+  - 다음: 사용자가 U1(왜 · 누구에게 · 돈) · U2(「모든 기능 · 최종 버전」 범위와 중간 공개) · U3(가격 자료에 돈을 쓸 수도 있나)을 정하면, 문의 초안(Play 지원 · 가격 공급자 · 변호사)을 만든다. 규칙 3은 U4에서 다시 정한다(아래 규칙 3은 그때까지 그대로).
+
 ## 사용자가 정한 작업 규칙 — 반드시
 
 1. **시안을 바꾸기 전에 before/after 렌더를 보여주고 검사받습니다.** 승인 전에 원본을 고치지 않습니다. 새 시안도 그려서 보여준 뒤 반영합니다.

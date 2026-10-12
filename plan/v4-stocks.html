@@ -77,7 +77,7 @@ td strong{color:var(--ink);font-weight:600}
 <main>
 <div class="mark"><i><svg class="m-l" width="26" height="26" viewBox="0 0 1024 1024" style="display: block;"><rect width="1024" height="1024" fill="#2445FF"/><path d="M-380 1380 L-110 1380 L-110 1110 L160 1110 L160 840 L430 840 L430 570 L700 570" fill="none" stroke="#FFFFFF" stroke-width="195" stroke-linejoin="round" stroke-linecap="round"/><g opacity="0.45"><circle cx="160" cy="300" r="30" fill="#FFFFFF"/><circle cx="430" cy="300" r="30" fill="#FFFFFF"/><circle cx="160" cy="570" r="30" fill="#FFFFFF"/><circle cx="700" cy="840" r="30" fill="#FFFFFF"/></g><circle cx="700" cy="300" r="79.5" fill="none" stroke="#FFC94D" stroke-width="54"/></svg><svg class="m-d" width="26" height="26" viewBox="0 0 1024 1024" style="display: block;"><defs><linearGradient id="navi-champagne-plan" gradientUnits="userSpaceOnUse" x1="100" y1="1000" x2="720" y2="560"><stop offset="0" stop-color="#6F6D68"/><stop offset="0.5" stop-color="#ABA698"/><stop offset="0.85" stop-color="#CDBF98"/><stop offset="1" stop-color="#D3C79F"/></linearGradient></defs><rect width="1024" height="1024" fill="#07070B"/><path d="M-380 1380 L-110 1380 L-110 1110 L160 1110 L160 840 L430 840 L430 570 L700 570" fill="none" stroke="url(#navi-champagne-plan)" stroke-width="195" stroke-linejoin="round" stroke-linecap="round"/><g opacity="0.38"><circle cx="160" cy="300" r="30" fill="#A09C90"/><circle cx="430" cy="300" r="30" fill="#A09C90"/><circle cx="160" cy="570" r="30" fill="#A09C90"/><circle cx="700" cy="840" r="30" fill="#A09C90"/></g><circle cx="700" cy="300" r="79.5" fill="none" stroke="#FFC94D" stroke-width="54"/></svg></i><span>NAVI</span><em>· v4 계획 초안</em></div>
 <h1>NAVI v4 계획 — 첫 실행 · 홈 구성 · 주식탭</h1>
-<p class="meta">작성 2026-09-14 · 검토용 초안(작성 당시 시안 없음 — 지금은 캔버스 6~10페이지) · 2026-09-21 최신화 점검 반영(§3 · §4 · §5-2 · §6 · §7 · §8 · §9 결정 8과 「2026-09-21 시안에서 정한 것」) · 같은 날 데스크톱 홈(<code>DesktopHomeV5</code>)을 그림 그대로 채택(그 메모의 열린 것 가운데 「데스크톱」을 닫음) · 2026-09-25 사용성 점검 140건 · 앱 따라잡기(§9 아래 메모 — 홈 구성 단계는 사용자 요청으로 유지 · 주식 스위치 = 알림 받기 · 탭 이름 <code>목적지</code>) · 2026-09-30 홈 달력은 펼친 월 달력이 기본(§9 아래 메모) · 2026-10-12 홈 달력은 다시 접힌 7일 줄이 기본(§9 아래 메모)</p>
+<p class="meta">작성 2026-09-14 · 검토용 초안(작성 당시 시안 없음 — 지금은 캔버스 6~10페이지) · 2026-09-21 최신화 점검 반영(§3 · §4 · §5-2 · §6 · §7 · §8 · §9 결정 8과 「2026-09-21 시안에서 정한 것」) · 같은 날 데스크톱 홈(<code>DesktopHomeV5</code>)을 그림 그대로 채택(그 메모의 열린 것 가운데 「데스크톱」을 닫음) · 2026-09-25 사용성 점검 140건 · 앱 따라잡기(§9 아래 메모 — 홈 구성 단계는 사용자 요청으로 유지 · 주식 스위치 = 알림 받기 · 탭 이름 <code>목적지</code>) · 2026-09-30 홈 달력은 펼친 월 달력이 기본(§9 아래 메모) · 2026-10-12 홈 달력은 다시 접힌 7일 줄이 기본(§9 아래 메모) · 2026-10-12 ~ 13 주식 · 출시 회의(§9 아래 메모 — 사용자 결정 대기)</p>
 <hr>
 <h2 id="s0"><span class="num">§0</span>한 줄로</h2>
 <p><strong>주식탭은 "또 하나의 증권앱"이 아니라 "내 항로에 연결된 주식 화면"으로 만듭니다.</strong> 증권앱은 내 월급·소비율·목적지를 모릅니다. NAVI는 압니다. 그게 유일하게 남들이 못 하는 차별점입니다.</p>
@@ -289,6 +289,15 @@ stocks.snapshot       앱에 내장. 사용자 데이터 아님. 백업에 안 �
 <ol>
 <li><strong>구성 반영 홈 · 주식 단계 홈의 첫 카드는 접힌 7일 줄</strong>(제목 <code>이번 달 소비 기록</code> · <code>펼치기 ▾</code>). <code>HomeConfigured</code>는 다음 안내(<code>시작 순서</code>)가 다시 첫 화면 안이고 높이 1178(9/30 전과 같음), 주식 단계의 두 장은 844 그대로 아래로 민 모습입니다.</li>
 <li><strong>그대로인 것.</strong> 홈 구성 목록 · 소개 1의 7일 줄 예시 · 데스크톱 홈(늘 펼침) · 주식 요약 카드 · 저장 형식(<code>settings.homeLayout</code>).</li>
+</ol>
+<h3>2026-10-12 ~ 13 주식 · 출시 회의 — 결정 대기</h3>
+<p>사용자 「이제 주식 쪽 어떻게 구현하고 실현할건지 … 회의해봐 슬슬 진짜 앱을 출시할거야 최종버전이 나와야돼 인터넷에 연결돼서 모든 기능이 구현되는 앱을」. GPT Astra(ultra) · Claude Sonnet 5.5(ultracode) · Claude Opus 5.5(ultracode)가 오르카 터미널에서 같은 모델끼리 1차 회의를 하고, 다른 모델끼리 2차(교차 검증 → 답변 → 합의안 서명 → 처리 확인)로 서로 검증했습니다.</p>
+<ol>
+<li><strong>결과.</strong> 합의 64 · 남은 이견 14 · 사용자 결정 37 · 외부 확인 20. 결정 페이지 https://claude.ai/artifact/HsFs5cWwTiUFiRVEqPYyaM. 기록 전체는 이 맥의 <code>~/navi-meeting/stocks-meeting-1012/</code>(최종본 <code>p2/CONSENSUS-FINAL.md</code> · 이의 처리표 <code>p2/R3-DISPOSITION.md</code>)에 있습니다. 이 저장소는 공개라 옮기지 않았습니다.</li>
+<li><strong>이 계획에서 아직 바뀐 것은 없습니다.</strong> 근거로 못 가르는 곳은 이 계획의 승인된 현행이 기본입니다: §5-4 「설정에서 누르면 정적 파일 하나 · 자동 갱신 없음」, 보유 → 계좌 토글 기본 꺼짐(<code>HoldingAdd</code>), 주식 홈 경고 띠(<code>StocksHome</code> — 공개는 변호사 답 뒤), §7 단계 순서. 받는 코드는 §7대로 5단계(v4-5)에 처음 들어갑니다.</li>
+<li><strong>출시를 막는 셋.</strong> 가격 권리(무료 공식 시세는 재배포 금지라 앱의 종가는 유료 계약으로만) · 투자자문업 해당 여부(확인 안 됨 — 변호사 서면) · Play 계정 유형(금융 서비스면 조직 계정 — 해당 여부는 Play 지원에 문의).</li>
+<li><strong>규칙 3은 다시 정하는 중.</strong> 세 팀 모두 「개인 기록은 기기에, 인터넷은 주식 자료 받기에만」을 권했지만, 요청 원문에 받칠 낱말이 없어 AI 권장입니다. 사용자가 정합니다.</li>
+<li><strong>먼저 정할 셋.</strong> 왜 · 누구에게 출시하나(돈을 받나) · 「모든 기능 · 최종 버전」의 범위와 중간 단계 공개 · 가격 자료에 돈을 쓸 수도 있나. 범위의 기본은 승인된 남은 단계 전부(세 팀 같음)이고, 왜 · 누구에게 · 중간 단계 공개 · 가격 자료 비용에는 권장이 없습니다. 근거가 아니라 사용자의 의도로 정해지는 질문이라 진행자 안을 거뒀습니다.</li>
 </ol>
 <hr>
 <h2 id="s10"><span class="num">§10</span>다음</h2>
