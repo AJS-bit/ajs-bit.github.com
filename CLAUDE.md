@@ -172,7 +172,7 @@
   - 시작: 사용자 「다시 접힌 걸 기본으로 하자」 → 「굳이 전 걸로 되돌릴 필요 있나? 어차피 접힌 화면은 지금도 있는데 그냥 기본을 접힌 걸로」. 옛 화면으로 되돌리지 않고 지금의 접힌 화면(`접기 ▴` 뒤)을 처음 모습으로만.
   - 규칙: `펼치기 ▾`로 펼친 것은 같은 실행 안에서만(앱이 새로 시작되면 다시 접힘 · 저장 없음) · 데스크톱 늘 펼침 · 9/30에 함께 고친 3초 안내 자리 · 누르는 영역 44 · 알림으로 연 이번 달 규칙은 그대로.
   - 시안: 홈 장 17장(+ 다크) · `EmptyStates` A · `Components` 08 · `CalendarStatusLines` · `CalendarGridSizes` 글 · 높이(예: `HomeDefaultScroll` 1241) · 첫 실행 안내 자리 — 다시 재니 9/30 전 값과 같음. 기록 `design/CHANGES-2026-10-12.md` · v5 계획 16판 · v4 계획 §9 아래 메모.
-  - 앱 `v5-stage1` `e9c90cc`: `calendarExpanded` 처음 값 `false` 한 줄 + 테스트 · QA 스크립트 6개의 기본값 검사 — vitest 2,175 · QA 9종 통과 · 에뮬레이터 확인. APK `outputs/NAVI-v5-stage1-calendar-folded-e9c90cc-2026-10-12.apk`(서명 d658e495). 캔버스 46번째 판 · v5 계획 24판 · v4 13판 publish.
+  - 앱 `v5-stage1` `e9c90cc`: `calendarExpanded` 처음 값 `false` 한 줄 + 테스트 · QA 스크립트 5개의 기본값 검사 — vitest 2,175 · QA 9종 통과 · 에뮬레이터 확인. APK `outputs/NAVI-v5-stage1-calendar-folded-e9c90cc-2026-10-12.apk`(서명 d658e495). 캔버스 46번째 판 · v5 계획 24판 · v4 13판 publish.
 
 ## 사용자가 정한 작업 규칙 — 반드시
 
