@@ -9,7 +9,8 @@ darken()으로 다크 짝을 쓴다. 홈은 Main.dc.html을 잘라 쓴다(히어
 
 2026-09-20 최신화 점검 반영: 새 장 `DaySheetScrolled`(키보드를 내린 하루 시트 — 오늘 기록 · + 1건 더 보기 · 다 적었어요) ·
 `HomeDefaultScroll`(기본 카드 홈 전체 스크롤 · 높이는 HOME_DEFAULT_H). `DaySheet360`은 360 × 640. `DoneCard` · `HeroInsufficient`에 달력 카드.
-2026-09-30: 홈의 달력은 펼친 월 달력이 기본 — 홈 장은 calendar_card(HOME_EXPANDED). 접은 7일 줄은 HomeCalendarStrip(「접기 ▴」를 누른 뒤) ·
+2026-10-12: 홈의 달력은 다시 접힌 7일 줄이 기본(사용자 「기본을 접힌 걸로」) — 홈 장은 calendar_card(HOME_EXPANDED = False). 펼친 월 달력은 HomeCalendar 등 상태 장.
+2026-09-30 ~ 10-11: 홈의 달력은 펼친 월 달력이 기본 — 홈 장은 calendar_card(HOME_EXPANDED). 접은 7일 줄은 HomeCalendarStrip(「접기 ▴」를 누른 뒤) ·
 CalendarCells ⑨ · CalendarGridSizes 에만. HeroInsufficient · HomeTargetSaved 는 펼친 달력 아래의 기본 카드 넷(다음 안내 · 한도 · 순자산 한 줄 ·
 상환 계획 한 줄)이 끝까지 보이는 전체 스크롤 장이다(앱 docH 와 같은 끝 · HomeTargetSaved 의 알림은 끝까지 내린 화면의 자리).
 밖에서 불러 쓰는 조각: spec_frame · mark · case_cap · case_grid · sample · memo_row · sheet_frame · sheet_header · day_sheet_body ·
@@ -560,7 +561,8 @@ assert '취소' not in DONE_CARD and '분류' not in DONE_CARD
 # 2026-09-30: 홈의 기본인 펼친 월 달력. 완료 카드가 요일 줄 중간부터 덮는다 — 요일 글자는 아래 절반이 가려지고 첫 주부터는 모두 카드 밑(4.9만 칸도).
 calendar_after = calendar_card(HOME_EXPANDED, states={TODAY: (fmt_sum(49_000), False, False, False)}, status='오늘 5건 49,000원',
                                review='카테고리 없는 기록 8건 · 카테고리 고르기', month_total=1_132_000)
-assert calendar_after.count('>4.9만<') == 1 and '3.7만' not in calendar_after and '9월 기록한 소비 1,132,000원' in calendar_after
+if HOME_EXPANDED:   # 펼친 달력일 때만의 글자(접힌 기본이면 그 달 합계 줄 · 머리줄 달 이름이 없다)
+    assert calendar_after.count('>4.9만<') == 1 and '3.7만' not in calendar_after and '9월 기록한 소비 1,132,000원' in calendar_after
 # 완료 카드 아래 끝(766)과 탭 바(778) 사이 12px 틈에 밑의 카드 글자가 비치지 않게 본문을 751 에서 자른다(778 − 27).
 # 실제 글꼴 실측(2026-09-30 · 펼친 달력 556.8): 달력 474.4 ~ 1031.2 · 요일 줄 551.8 ~ 573.8 · 첫 주 573.8 ~ · 완료 카드 563.9 ~ 766.0 · 본문 102.8 ~ 751.0 —
 # 요일 줄의 아래 절반(563.9 ~ 573.8)과 첫 주부터는 완료 카드 밑에 가려지고(4.9만 칸도), 틈(766 ~ 778)에는 장 바탕만 보인다.
@@ -842,8 +844,9 @@ assert calendar_first_strip.count('>—<') == 7 and calendar_first_strip.count('
 # 홈(HeroInsufficient) — 펼친 9월(2026-09-30 기본): 첫 줄 8/30 · 8/31(시작일 전 이웃 달) · 1 ~ 7일 `—` + 범례 `—` = 2 + 7 + 1 ·
 # 그 달 합계 줄 `9월 기록한 소비 5,000원` · 오늘 줄 `오늘 1건 5,000원` + 「+ 더 적기」
 calendar_first = calendar_card(HOME_EXPANDED, since=FIRST_SINCE, review=0, status='오늘 1건 5,000원', states=FIRST_STATES, month_total=5_000)
-assert (calendar_first.count('>—<') == 10 and calendar_first.count('>5,000<') == 1 and '9월 기록한 소비 5,000원' in calendar_first
-        and '확인할 내용' not in calendar_first and '5.5만' not in calendar_first)
+if HOME_EXPANDED:   # 펼친 달력일 때만의 글자(접힌 기본이면 그 달 합계 줄 · 머리줄 달 이름이 없다)
+    assert (calendar_first.count('>—<') == 10 and calendar_first.count('>5,000<') == 1 and '9월 기록한 소비 5,000원' in calendar_first
+            and '확인할 내용' not in calendar_first and '5.5만' not in calendar_first)
 # 한도 `오늘 포함 하루 93,700원`(D3 · NUMBERS §6) · 둘째 줄 `216만원 중 5,000원 썼어요`(home-3) · 달 중간에 시작한 사람은 남은 한도를 초록 대신 기본 글자색 +
 # `9월 5일부터 기록 · 그 전 소비는 빠져 있어요`(tasks-1 · D3 · 앱 homeLimitView).
 SINCE_LINE = '9월 5일부터 기록 · 그 전 소비는 빠져 있어요'
@@ -866,7 +869,7 @@ assert networth_first.count(NETWORTH_FIRST) == 1 and '도착 예상' not in netw
 # 앱처럼 기본 카드 넷(다음 안내 · 이번 달 한도 · 순자산 한 줄 · 상환 계획 한 줄)이 끝까지 보이는 전체 스크롤 장으로
 # (다른 전체 스크롤 홈 장과 같게 카드 사이 10 · 아래 14). 높이 = 자연 높이 + 24(gen_canvas TALL · screens.json 과 같게). 앱 하네스 insufficient 의 docH 는 1501 —
 # 카드 위치는 한도 카드까지 같고, 차이 2 는 한도 카드의 「9월 5일부터 기록」 줄 위 여백(시안 2 · 앱 .home-limit-note 4 · limit_first 를 쓰는 LimitCardCases ⑧ 도 같음).
-HERO_INS_H = 1501      # 자연 높이 1477 + 24(시작일 줄 위 여백 4 — 앱과 같게 · 2026-09-30 기본 카드 넷까지 · 한도 카드에서 끝나던 판은 1332 + 24 · 예전 844 고정)
+HERO_INS_H = 1187      # 자연 높이 1163 + 24(2026-10-12 접힌 7일 줄 · 9/30 ~ 10/11 펼친 달력 1477 + 24 = 1501 — 시작일 줄 위 여백 4 — 앱과 같게 · 2026-09-30 기본 카드 넷까지 · 한도 카드에서 끝나던 판은 1332 + 24 · 예전 844 고정)
 w('HeroInsufficient', frame(
     f'\n  {header_first}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">\n\n'
@@ -1041,7 +1044,7 @@ peer_block = s1.cut(_scroll_src, P_PEER, P_ROWS).rstrip()
 assert peer_block.count('또래와 내 페이스') == 1 and peer_block.count('<div') == peer_block.count('</div>') and '순자산 대비 월말 예상' not in peer_block
 assert peer_block.count('내 월말 예상') == 1 and '내 소비율' not in peer_block      # 또래 카드는 월말 예상으로 비교(2026-09-24 이름)
 
-# 홈 · 달력을 접었을 때 — 「접기 ▴」를 누른 뒤의 모습(같은 실행 안에서만 남고 앱이 다시 시작되면 다시 펼침 · 2026-09-30 · 홈의 기본은 펼친 월 달력 = HomeDefaultScroll).
+# 홈 · 접힌 달력(최근 7일) — 2026-10-12부터 홈의 기본과 같은 모습(HomeDefaultScroll 의 첫 화면). 9/30 ~ 10/11 에는 「접기 ▴」를 누른 뒤의 모습이었다.
 # 히어로 그대로, 첫 카드가 달력(최근 7일). 그 아래로 다음 안내 · 이번 달 한도 · 순자산 한 줄 · 상환 계획 한 줄이 이어진다(앱 DEFAULT_HOME_CARDS ·
 # 화면 아래에서 잘림 · HomeDefaultScroll 과 같은 순서 — 2026-09-27 fix-up 2: 예전 대표 목적지는 기본 카드가 아니다). Components 08 · 09 · ⑪ 이 이 장을 잘라 쓴다.
 w('HomeCalendarStrip', frame(
@@ -1050,9 +1053,9 @@ w('HomeCalendarStrip', frame(
     f'    {s1.hero_block}\n\n    {calendar_card(False)}\n\n    {s1.guide_block}\n\n    {limit_stage12()}\n\n    {s1.networth_card}\n\n    {s1.payoff_card}\n\n  </div>\n\n'
     f'  {bottomnav(0)}\n'))
 
-# 홈 · 기본 카드 전체 스크롤 — 앱 DEFAULT_HOME_CARDS(홈 구성을 저장하지 않은 사람): 히어로 · 달력(고정 · 펼친 월 달력이 기본 · 2026-09-30) · 다음 안내 · 이번 달 한도 · 순자산 한 줄 · 상환 계획 한 줄.
+# 홈 · 기본 카드 전체 스크롤 — 앱 DEFAULT_HOME_CARDS(홈 구성을 저장하지 않은 사람): 히어로 · 달력(고정 · 접힌 7일 줄이 기본 · 2026-10-12) · 다음 안내 · 이번 달 한도 · 순자산 한 줄 · 상환 계획 한 줄.
 # 대표 목적지 · 또래는 기본이 아니다(goals-14 · first-run-14). 스크롤 전체 길이를 한 장에(390 · 캐논 각주 두 줄). 첫 실행 안내 홈 1 ~ 3 의 바탕.
-HOME_DEFAULT_H = 1555      # 자연 높이 1531 + 24(2026-09-30 펼친 달력 · 예전 접힌 줄 1217 + 24 = 1241) — gen_canvas TALL · screens.json 과 같아야 한다
+HOME_DEFAULT_H = 1241      # 자연 높이 1217 + 24(2026-10-12 접힌 7일 줄이 기본 · 9/30 ~ 10/11 펼친 달력 1531 + 24 = 1555) — gen_canvas TALL · screens.json 과 같아야 한다
 w('HomeDefaultScroll', frame(
     f'\n  {s1.header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">\n\n'
@@ -1244,7 +1247,7 @@ sizes_row2 = ('<div style="display: flex; gap: 36px; align-items: flex-start; ma
               + '</div>')
 
 w('CalendarGridSizes', spec_frame(
-    1150, 1745, '달력은 어느 폭 · 글자 크기에서나 월 달력',      # 2026-09-30 제목 — 홈의 기본이 펼친 월 달력이라 「펼치면」을 뺐다      # 2026-09-27 fix-up 3 자연 1721 + 24(목록 여덟 줄 · 「이번 달로」 11px)      # 2026-09-26 1714 → 1750(목록 보기 아래 범례 · 합계 · 알약 · 확인할 내용 · 자연 1726 + 24)      # 2026-09-24 1490 → 1670(카드마다 안내 줄 · 적기 버튼/알약 줄) → 2026-09-26 DZ3 1714(칸 아래 범례 줄 · 자연 1690 + 24)
+    1150, 1745, '달력을 펼치면 어디서나 월 달력',      # 2026-10-12 제목 — 홈의 기본이 다시 접힌 7일 줄이라 「펼치면」을 되돌렸다(9/30 ~ 10/11 「달력은 어느 폭 · 글자 크기에서나 월 달력」)      # 2026-09-27 fix-up 3 자연 1721 + 24(목록 여덟 줄 · 「이번 달로」 11px)      # 2026-09-26 1714 → 1750(목록 보기 아래 범례 · 합계 · 알약 · 확인할 내용 · 자연 1726 + 24)      # 2026-09-24 1490 → 1670(카드마다 안내 줄 · 적기 버튼/알약 줄) → 2026-09-26 DZ3 1714(칸 아래 범례 줄 · 자연 1690 + 24)
     '화면이 좁아도, 글자를 크게 써도 날짜를 세로로 늘어놓은 목록으로 바뀌지 않습니다. 접어 둔 최근 7일 줄도 칸 그대로입니다.',
     sizes_row1 + sizes_row2 + sizes_memo))
 
@@ -1341,9 +1344,10 @@ def limit_before():
 
 # 확인할 내용 = `9월 카테고리 없는 기록 7건 · 마감 전에 정리` 하나(앱 10월 2일 · 캐논 · 2026-09-27 fix-up — 예전 합계 고치기 항목은 캐논에 없다).
 cal_oct = calendar_card(HOME_EXPANDED, month='oct', review=REVIEW_PREV_UNCAT)
-assert ('2026년 10월' in cal_oct and '10월 기록이 아직 없어요' in cal_oct and '오늘 쓴 돈 적기' in cal_oct and REVIEW_PREV_UNCAT in cal_oct
-        and '합계 고치기' not in cal_oct and '최근 7일 소비 기록' not in cal_oct and cal_oct.count('>—<') == 6)      # 9/27 ~ 9/30 · 10/1 · 범례
-MONTH_START_H = 1432      # 자연 높이 1408 + 24(2026-09-30 펼친 10월 · 예전 접힌 줄 1094 + 24 = 1118)
+if HOME_EXPANDED:   # 펼친 달력일 때만의 글자(접힌 기본이면 그 달 합계 줄 · 머리줄 달 이름이 없다)
+    assert ('2026년 10월' in cal_oct and '10월 기록이 아직 없어요' in cal_oct and '오늘 쓴 돈 적기' in cal_oct and REVIEW_PREV_UNCAT in cal_oct
+            and '합계 고치기' not in cal_oct and '최근 7일 소비 기록' not in cal_oct and cal_oct.count('>—<') == 6)      # 9/27 ~ 9/30 · 10/1 · 범례
+MONTH_START_H = 1118      # 자연 높이 1094 + 24(2026-10-12 접힌 7일 줄 · 9/30 ~ 10/11 펼친 10월 1408 + 24 = 1432)
 w('HomeMonthStart', frame(
     f'\n  {s1.header.replace(DATE_LINE, "10월 2일 · 오늘 포함 30일 남음")}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">\n\n'
@@ -1391,10 +1395,16 @@ _sample_base = calendar_card(HOME_EXPANDED, review=0, month_total=SEP_TOTAL,
                                      {1: (fmt_sum(1_008_000), 0, False), 3: ('5.9만', 0, False), 4: ('4,500', 0, False), 5: ('1.2만', 0, False),
                                       6: ('', 0, True)}.items()})
 _sample_month = status_line(month_total_text(9, SEP_TOTAL), False, mt=8)
-assert _sample_base.count(_sample_month) == 1 and _sample_base.count(pill_row(TODAY_TEXT, mt=10)) == 1
-cal_sample = _sample_base.replace(_sample_month, status_line(SAMPLE_CAL_TEXT, mt=8))
+if HOME_EXPANDED:   # 펼친 달력일 때만의 글자(접힌 기본이면 그 달 합계 줄 · 머리줄 달 이름이 없다)
+    assert _sample_base.count(_sample_month) == 1 and _sample_base.count(pill_row(TODAY_TEXT, mt=10)) == 1
+if HOME_EXPANDED:
+    cal_sample = _sample_base.replace(_sample_month, status_line(SAMPLE_CAL_TEXT, mt=8))
+else:   # 접힌 7일 줄(홈의 기본 · 2026-10-12): 그 달 합계 줄이 없으니 샘플 문장을 알약 줄 위에 넣는다(13판 · 샘플 문장은 늘 위 줄)
+    _sample_pill = pill_row(TODAY_TEXT, mt=10)
+    assert _sample_base.count(_sample_pill) == 1
+    cal_sample = _sample_base.replace(_sample_pill, status_line(SAMPLE_CAL_TEXT, mt=8) + pill_row(TODAY_TEXT, mt=6))
 assert '기록한 소비' not in cal_sample and cal_sample.count(SAMPLE_CAL_TEXT) == 1
-SAMPLE_H = 1537      # 자연 높이 1513 + 24(2026-09-30 펼친 9월 · 예전 접힌 줄 1222 + 24 = 1246)
+SAMPLE_H = 1246      # 자연 높이 1222 + 24(2026-10-12 접힌 7일 줄 · 9/30 ~ 10/11 펼친 9월 1513 + 24 = 1537)
 w('HomeSampleMode', frame(
     f'\n  {sample_strip()}\n  {s1.header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">\n\n'
@@ -1408,7 +1418,7 @@ w('HomeSampleMode', frame(
 # ── HomePrimaryGoal · 홈 구성에서 「대표 목적지」를 고른 사람(앱 HOME_CARD_KEYS primaryGoal · 하네스 homeLayout = 대표 목적지 · 한도 · 순자산 · 상환 계획) ──
 # 카드는 Main 의 대표 목적지 조각 그대로(68% 고리 · 「대표 목적지 ⌄」 목적지 고르기 · 비상금 6개월 · 1,020 / 1,500만원 · 도착까지 7개월 · 매달 70만원 · ›).
 # 기본 홈(HomeDefaultScroll)에는 없다 — 다음 안내 자리를 이 카드가 대신한 구성. 스크롤 전체를 한 장에.
-PRIMARY_H = 1509      # 자연 높이 1485 + 24(2026-09-30 펼친 달력 · 예전 1171 + 24 = 1195) —(gen_canvas TALL · screens.json 과 같게)
+PRIMARY_H = 1195      # 자연 높이 1171 + 24(2026-10-12 접힌 7일 줄 · 9/30 ~ 10/11 펼친 달력 1485 + 24 = 1509) —(gen_canvas TALL · screens.json 과 같게)
 w('HomePrimaryGoal', frame(
     f'\n  {s1.header}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">\n\n'
@@ -1444,7 +1454,7 @@ TARGET_NOTICE = ('<!--dc-keep--><div style="position: absolute; left: 14px; righ
 # 알림은 앱 그대로 탭 막대 위 12(position: fixed · bottom 78 · 자리를 비워 두지 않음)라, 끝까지 내린 화면과 같은 자리 — 장의 아래에서 78 위 —
 # 에 그린다. 그러면 알림(92.3)이 상환 계획 한 줄을 덮고, 바뀐 것(히어로 · 종 배지 3 · 다음 안내 · 180만원 한도)은 모두 알림 위에 보인다
 # (순자산 한 줄은 알림 바로 위). 예전 판의 본문 아래 여백 93(알림이 한도 카드를 덮지 않게 둔 빈 자리)은 앱에 없는 자리라 뺐다.
-TARGET_SAVED_H = 1510      # 자연 높이 1486 + 24(2026-09-30 기본 카드 넷까지 · 앱 docH 1510 · 알림 여백 93 을 둔 판은 1433 + 24 · 예전 844 고정)
+TARGET_SAVED_H = 1196      # 자연 높이 1172 + 24(2026-10-12 접힌 7일 줄 · 9/30 ~ 10/11 펼친 달력 1486 + 24 = 1510 — 2026-09-30 기본 카드 넷까지 · 앱 docH 1510 · 알림 여백 93 을 둔 판은 1433 + 24 · 예전 844 고정)
 w('HomeTargetSaved', frame(
     f'\n  {header_bell3}\n\n'
     f'  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; overflow: hidden;">\n\n'

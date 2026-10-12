@@ -35,7 +35,7 @@ plan/v5-calendar.md(9판). gen_v5.py 에서 옮겨 왔다 — gen_v4.py · gen_v
 - 1 ~ 6일처럼 스트립에 지난달 날이 들어가면 제목이 `최근 7일 소비 기록` — title · strip 인수.
 
 2026-09-30(사용자 결정 「입력을 달력으로 하니까 달력은 펼쳐진게 기본으로」 · 앱 app/page.tsx useState(true)):
-- 홈의 달력은 펼친 월 달력이 기본이다 — 홈 장은 calendar_card(HOME_EXPANDED, …). 「접기 ▴」를 누른 7일 줄은 같은 실행 안에서만 남고
+- (2026-10-12에 바뀜 — 아래) 홈의 달력은 펼친 월 달력이 기본이었다 — 홈 장은 calendar_card(HOME_EXPANDED, …). 「접기 ▴」를 누른 7일 줄은 같은 실행 안에서만 남고
   (앱이 다시 시작되면 다시 펼침 · 저장 없음) 그 모습은 상태 장(HomeCalendarStrip · CalendarCells ⑨ · CalendarGridSizes · CalendarStatusLines · Components 08)에만 그린다.
 - 달이 바뀐 첫 주 견본(HomeMonthStart · 10월 2일)을 위해 10월 자료(month='oct' · 오늘 OCT_TODAY) — 첫 줄 9/27 ~ 9/30 은 이웃 달 칸.
 - 펼친 달력에서 날짜 · ‹ 를 누른 3초 안내(아직 오지 않은 날 · 더 이전 달)는 칸 아래 상태 줄이 아니라 머리줄 아래 안내 줄 자리(hint(text=…) ·
@@ -47,9 +47,11 @@ from gen_common import C, icon, card
 WD = ['일', '월', '화', '수', '목', '금', '토']
 TODAY = 8
 OCT_TODAY = 2        # 달이 바뀐 첫 주 견본(HomeMonthStart)의 오늘 — 2026년 10월 2일(금) · 10월 1일 목요일 · 31일 · 5주
-# 홈의 달력은 펼친 월 달력이 기본(2026-09-30 · 앱 page.tsx calendarExpanded useState(true)). 홈 장은 모두 이 값으로 부른다 —
+# 홈의 달력은 접힌 최근 7일 줄이 기본(2026-10-12 사용자 결정 「기본을 접힌 걸로」 · 앱 page.tsx calendarExpanded useState(false) — 2026-09-30의 펼침 기본을 바꿈).
+# 「펼치기 ▾」는 같은 실행 안에서만 남는다. 홈 장은 모두 이 값으로 부른다 — 펼친 월 달력은 상태 장(HomeCalendar · HomeCalendarPrev · CalendarGridSizes …)에.
+# (2026-09-30 주석) 홈의 달력은 펼친 월 달력이 기본(앱 useState(true)). 홈 장은 모두 이 값으로 부른다 —
 # 접은 7일 줄(False)은 「접기 ▴」를 누른 뒤의 모습을 보여 주는 상태 장에서만.
-HOME_EXPANDED = True
+HOME_EXPANDED = False
 
 
 def fmt_sum(n):
@@ -408,7 +410,7 @@ TODAY_TEXT = '오늘 4건 37,000원'          # 기본 자료의 오늘(9/8) —
 def calendar_card(expanded=False, pressed=None, pad=14, month='sep', large=False, with_list_link=False,
                   states=None, since=None, status=None, review=REVIEW_CANON, scroll=False, fold=True, today_empty=False, month_total=None,
                   title=None, strip=None, tap_note=None):
-    """접힘(최근 7일 스트립) · 펼침(월 달력) 카드. 홈 장은 expanded=HOME_EXPANDED(펼침이 기본 · 2026-09-30) — 접힘은 「접기 ▴」 뒤의 모습(상태 장).
+    """접힘(최근 7일 스트립) · 펼침(월 달력) 카드. 홈 장은 expanded=HOME_EXPANDED(접힘이 기본 · 2026-10-12 · 9/30~10/11은 펼침) — 펼침은 「펼치기 ▾」 뒤의 모습(상태 장).
     states = {날짜: (합계 글자, ✓, 이체, 0원 표시)} 기본 자료를 덮어쓸 칸 · since = 시작일(이전 칸은 옅은 빈 칸) ·
     status = 상태 문장(접힘) · review = `확인할 내용 N개`(수 · 0이면 행 없음) 또는 항목 하나의 이름(글자 · 기본 = 캐논 REVIEW_CANON) · scroll = 320px(칸 44 고정 · 카드 안 가로 스크롤 · 오늘이 오른쪽 끝) ·
     large = 큰 글자(칸 높이 72). fold=False(펼침에만) = 머리줄에 `접기`를 두지 않는다 — 늘 펼쳐 두는 데스크톱 홈.
