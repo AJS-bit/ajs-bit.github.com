@@ -98,7 +98,7 @@
 
 ## 9. Play 스토어 준비
 
-사용자 「Play 스토어 할거야 준비해」. 조사 · 앱 점검 · 등록정보 · 처리방침 · 신고 답 초안을 만들었다(이 맥의 `~/navi-meeting/diet-1013/play/`). 앱은 지금 `com.anjusung.navi` · versionCode 7 · `2.3-fixes` · targetSdk 36(새 앱 기준을 이미 넘음).
+사용자 「Play 스토어 할거야 준비해」. 조사 · 앱 점검 · 등록정보 · 처리방침 · 신고 답 초안을 만들었다(이 맥의 `~/navi-meeting/diet-1013/v2/play/`). 앱은 지금 `com.anjusung.navi` · versionCode 7 · `2.3-fixes` · targetSdk 36(새 앱 기준을 이미 넘음).
 
 - **사용자가 할 일:** Play Console 개인 개발자 계정(US$25 · 신분증 · 본인 명의 카드 · 개발자 전화번호가 한국 사용자에게 공개) · 테스터 15명(새 개인 계정은 12명이 14일 이어서 테스트해야 출시 신청 — https://support.google.com/googleplay/android-developer/answer/14151465 ).
 - **막는 것:** 업로드 키가 없다(지금 APK는 디버그 키 `d658e495`) → 업로드 키 · release 서명 · AAB 빌드 · Play 앱 서명. 처리방침 주소 · 앱 안 처리방침 · 문의 이메일이 없다. 스크린샷은 v6 앱으로 새로 찍는다(지금 그림은 비율이 규격 밖). 기능 그래픽 1024 × 500 새로.
